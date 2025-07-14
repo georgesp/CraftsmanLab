@@ -1,11 +1,10 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import App from './App';
+import { HomePage } from './home-page';
 
 describe('App Component', () => {
   test('affiche le nom de la société CraftsmanLab', () => {
-    render(<App />);
+    render(<HomePage />);
     
     // Vérifier que le nom "CraftsmanLab" apparaît dans la barre de navigation
     const navTitle = screen.getByText('CraftsmanLab');
@@ -17,7 +16,7 @@ describe('App Component', () => {
   });
 
   test('affiche le contenu principal de la page', () => {
-    render(<App />);
+    render(<HomePage />);
     
     // Vérifier que le sous-titre est présent
     const subtitle = screen.getByText(/Excellence en développement et innovation technologique/i);
