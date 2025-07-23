@@ -15,10 +15,9 @@ describe('ContactPage', () => {
     
     expect(screen.getByText('Contactez-nous')).toBeInTheDocument();
     expect(screen.getByText('Envoyez-nous un message')).toBeInTheDocument();
-    expect(screen.getByLabelText('Nom complet')).toBeInTheDocument();
-    expect(screen.getByLabelText('Email')).toBeInTheDocument();
-    expect(screen.getByLabelText('Sujet')).toBeInTheDocument();
-    expect(screen.getByLabelText('Message')).toBeInTheDocument();
+    // Vérifier que les champs du formulaire sont présents
+    expect(screen.getByRole('textbox', { name: /nom complet/i })).toBeInTheDocument();
+    expect(screen.getByRole('textbox', { name: /email/i })).toBeInTheDocument();
   });
 
   test('renders contact information', () => {
@@ -33,22 +32,19 @@ describe('ContactPage', () => {
   test('form submission shows success message', async () => {
     render(<ContactPageWrapper />);
     
-    // Remplir le formulaire
-    fireEvent.change(screen.getByLabelText('Nom complet'), {
-      target: { value: 'John Doe' }
-    });
-    fireEvent.change(screen.getByLabelText('Email'), {
-      target: { value: 'john@example.com' }
-    });
-    fireEvent.change(screen.getByLabelText('Sujet'), {
-      target: { value: 'Test Subject' }
-    });
-    fireEvent.change(screen.getByLabelText('Message'), {
-      target: { value: 'Test message content' }
-    });
+    // Remplir le formulaire en utilisant les rôles et noms
+    const nameInput = screen.getByRole('textbox', { name: /nom complet/i });
+    const emailInput = screen.getByRole('textbox', { name: /email/i });
+    const subjectInput = screen.getByRole('textbox', { name: /sujet/i });
+    const messageInput = screen.getByRole('textbox', { name: /message/i });
+    
+    fireEvent.change(nameInput, { target: { value: 'John Doe' } });
+    fireEvent.change(emailInput, { target: { value: 'john@example.com' } });
+    fireEvent.change(subjectInput, { target: { value: 'Test Subject' } });
+    fireEvent.change(messageInput, { target: { value: 'Test message content' } });
 
     // Soumettre le formulaire
-    fireEvent.click(screen.getByText('Envoyer le message'));
+    fireEvent.click(screen.getByRole('button', { name: /envoyer le message/i }));
 
     // Vérifier le message de succès
     await waitFor(() => {
@@ -66,5 +62,27 @@ describe('ContactPage', () => {
     expect(contactLink).toBeInTheDocument();
     expect(homeLink.closest('a')).toHaveAttribute('href', '/');
     expect(contactLink.closest('a')).toHaveAttribute('href', '/contact');
+  });
+
+  test('renders opening hours section', () => {
+    render(<ContactPageWrapper />);
+    
+    expect(screen.getByText('Horaires d\'ouverture')).toBeInTheDocument();
+    expect(screen.getByText((_, element) => {
+      return element?.textContent === 'Lundi - Vendredi: 9h00 - 18h00';
+    })).toBeInTheDocument();
+    expect(screen.getByText((_, element) => {
+      return element?.textContent === 'Samedi: 10h00 - 16h00';
+    })).toBeInTheDocument();
+    expect(screen.getByText((_, element) => {
+      return element?.textContent === 'Dimanche: Fermé';
+    })).toBeInTheDocument();
+  });
+
+  test('renders call-to-action section', () => {
+    render(<ContactPageWrapper />);
+    
+    expect(screen.getByText(/Prêt à démarrer votre projet/)).toBeInTheDocument();
+    expect(screen.getByText(/Découvrez comment nos solutions peuvent transformer/)).toBeInTheDocument();
   });
 });

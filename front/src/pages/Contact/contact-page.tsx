@@ -3,18 +3,18 @@ import {
   Container,
   Typography,
   Box,
-  AppBar,
-  Toolbar,
   TextField,
   Button,
   Grid,
   Card,
   CardContent,
-  Alert,
-  Link as MuiLink
+  Alert
 } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
-import { Email, Phone, LocationOn } from '@mui/icons-material';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { Email, Phone, LocationOn, AccessTime, Send } from '@mui/icons-material';
+import { telerikTheme } from '../../theme/theme';
+import { Header } from '../../components';
 
 export const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -50,48 +50,58 @@ export const ContactPage: React.FC = () => {
   };
 
   return (
-    <>
-      <AppBar position="static" sx={{ width: '100%', boxShadow: 2 }}>
-        <Toolbar sx={{ justifyContent: 'space-between' }}>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 0, textAlign: 'left', pl: 1 }}>
-            CraftsmanLab
-          </Typography>
-          <Box sx={{ display: 'flex', gap: 2 }}>
-            <MuiLink component={RouterLink} to="/" color="inherit" underline="hover">
-              Accueil
-            </MuiLink>
-            <MuiLink component={RouterLink} to="/contact" color="inherit" underline="hover">
-              Contact
-            </MuiLink>
-          </Box>
-        </Toolbar>
-      </AppBar>
+    <ThemeProvider theme={telerikTheme}>
+      <CssBaseline />
+      <Header />
 
       <Container maxWidth="lg">
-        <Box sx={{ my: 4 }}>
-          <Typography variant="h2" component="h1" gutterBottom align="center">
+        {/* Hero Section */}
+        <Box sx={{ 
+          textAlign: 'center', 
+          py: { xs: 6, md: 8 },
+          background: 'linear-gradient(135deg, rgba(255, 99, 88, 0.05) 0%, rgba(64, 224, 208, 0.05) 100%)',
+          borderRadius: 4,
+          my: 4
+        }}>
+          <Typography variant="h1" component="h1" gutterBottom>
             Contactez-nous
           </Typography>
-          <Typography variant="h5" component="h2" gutterBottom align="center" color="text.secondary">
-            Nous sommes là pour répondre à vos questions
+          <Typography variant="h5" component="h2" gutterBottom color="text.secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
+            Nous sommes là pour répondre à vos questions et vous accompagner dans vos projets
           </Typography>
         </Box>
 
         {showSuccess && (
-          <Alert severity="success" sx={{ mb: 4 }}>
+          <Alert 
+            severity="success" 
+            sx={{ 
+              mb: 4, 
+              borderRadius: 2,
+              '& .MuiAlert-message': {
+                fontSize: '1rem'
+              }
+            }}
+          >
             Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.
           </Alert>
         )}
 
-        <Grid container spacing={4}>
+        <Grid container spacing={4} sx={{ mb: 8 }}>
           {/* Formulaire de contact */}
-          <Grid item xs={12} md={8}>
-            <Card>
-              <CardContent sx={{ p: 4 }}>
-                <Typography variant="h4" component="h3" gutterBottom>
-                  Envoyez-nous un message
+          <Grid item xs={12} lg={8}>
+            <Card sx={{ borderRadius: 3, boxShadow: 3 }}>
+              <CardContent sx={{ p: { xs: 3, md: 5 } }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+                  <Send sx={{ mr: 2, color: 'primary.main', fontSize: 32 }} />
+                  <Typography variant="h3" component="h2">
+                    Envoyez-nous un message
+                  </Typography>
+                </Box>
+                <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+                  Remplissez le formulaire ci-dessous et nous vous répondrons rapidement.
                 </Typography>
-                <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2 }}>
+                
+                <Box component="form" onSubmit={handleSubmit}>
                   <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
                       <TextField
@@ -145,6 +155,7 @@ export const ContactPage: React.FC = () => {
                         type="submit"
                         variant="contained"
                         size="large"
+                        startIcon={<Send />}
                         sx={{ px: 4, py: 1.5 }}
                       >
                         Envoyer le message
@@ -157,64 +168,114 @@ export const ContactPage: React.FC = () => {
           </Grid>
 
           {/* Informations de contact */}
-          <Grid item xs={12} md={4}>
-            <Card>
-              <CardContent sx={{ p: 4 }}>
-                <Typography variant="h4" component="h3" gutterBottom>
-                  Nos coordonnées
-                </Typography>
-                <Box sx={{ mt: 3 }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                    <Email sx={{ mr: 2, color: 'primary.main' }} />
-                    <Box>
-                      <Typography variant="subtitle1" fontWeight="bold">
-                        Email
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
+          <Grid item xs={12} lg={4}>
+            <Grid container spacing={3}>
+              {/* Coordonnées */}
+              <Grid item xs={12}>
+                <Card sx={{ borderRadius: 3 }}>
+                  <CardContent sx={{ p: 4 }}>
+                    <Typography variant="h4" component="h3" gutterBottom sx={{ mb: 3 }}>
+                      Nos coordonnées
+                    </Typography>
+                    
+                    <Box sx={{ mb: 3 }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                        <Email sx={{ mr: 2, color: 'primary.main', fontSize: 24 }} />
+                        <Typography variant="h6" fontWeight="600">
+                          Email
+                        </Typography>
+                      </Box>
+                      <Typography variant="body1" color="text.secondary" sx={{ ml: 4 }}>
                         contact@craftsmanlab.com
                       </Typography>
                     </Box>
-                  </Box>
-                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                    <Phone sx={{ mr: 2, color: 'primary.main' }} />
-                    <Box>
-                      <Typography variant="subtitle1" fontWeight="bold">
-                        Téléphone
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                    
+                    <Box sx={{ mb: 3 }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                        <Phone sx={{ mr: 2, color: 'primary.main', fontSize: 24 }} />
+                        <Typography variant="h6" fontWeight="600">
+                          Téléphone
+                        </Typography>
+                      </Box>
+                      <Typography variant="body1" color="text.secondary" sx={{ ml: 4 }}>
                         +33 1 23 45 67 89
                       </Typography>
                     </Box>
-                  </Box>
-                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                    <LocationOn sx={{ mr: 2, color: 'primary.main' }} />
+                    
                     <Box>
-                      <Typography variant="subtitle1" fontWeight="bold">
-                        Adresse
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                        <LocationOn sx={{ mr: 2, color: 'primary.main', fontSize: 24 }} />
+                        <Typography variant="h6" fontWeight="600">
+                          Adresse
+                        </Typography>
+                      </Box>
+                      <Typography variant="body1" color="text.secondary" sx={{ ml: 4 }}>
                         123 Rue de l'Innovation<br />
                         75001 Paris, France
                       </Typography>
                     </Box>
-                  </Box>
-                </Box>
+                  </CardContent>
+                </Card>
+              </Grid>
 
-                <Box sx={{ mt: 4, p: 3, backgroundColor: '#f5f5f5', borderRadius: 2 }}>
-                  <Typography variant="h6" gutterBottom>
-                    Horaires d'ouverture
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Lundi - Vendredi: 9h00 - 18h00<br />
-                    Samedi: 10h00 - 16h00<br />
-                    Dimanche: Fermé
-                  </Typography>
-                </Box>
-              </CardContent>
-            </Card>
+              {/* Horaires */}
+              <Grid item xs={12}>
+                <Card sx={{ borderRadius: 3, background: 'linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%)' }}>
+                  <CardContent sx={{ p: 4 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+                      <AccessTime sx={{ mr: 2, color: 'primary.main', fontSize: 24 }} />
+                      <Typography variant="h5" fontWeight="600">
+                        Horaires d'ouverture
+                      </Typography>
+                    </Box>
+                    <Box sx={{ space: 1 }}>
+                      <Typography variant="body1" sx={{ mb: 1 }}>
+                        <strong>Lundi - Vendredi:</strong> 9h00 - 18h00
+                      </Typography>
+                      <Typography variant="body1" sx={{ mb: 1 }}>
+                        <strong>Samedi:</strong> 10h00 - 16h00
+                      </Typography>
+                      <Typography variant="body1">
+                        <strong>Dimanche:</strong> Fermé
+                      </Typography>
+                    </Box>
+                  </CardContent>
+                </Card>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
+
+        {/* Section d'appel à l'action */}
+        <Box sx={{ 
+          textAlign: 'center', 
+          py: 6,
+          background: 'linear-gradient(135deg, rgba(255, 99, 88, 0.05) 0%, rgba(64, 224, 208, 0.05) 100%)',
+          borderRadius: 4,
+          mb: 4
+        }}>
+          <Typography variant="h3" component="h2" gutterBottom>
+            Prêt à démarrer votre projet ?
+          </Typography>
+          <Typography variant="h6" color="text.secondary" sx={{ mb: 4, maxWidth: 600, mx: 'auto' }}>
+            Découvrez comment nos solutions peuvent transformer votre développement financier
+          </Typography>
+          <Button
+            variant="contained"
+            size="large"
+            sx={{ px: 4, py: 1.5, mr: 2 }}
+          >
+            Essai Gratuit
+          </Button>
+          <Button
+            variant="outlined"
+            size="large"
+            sx={{ px: 4, py: 1.5 }}
+          >
+            Voir nos Solutions
+          </Button>
+        </Box>
       </Container>
-    </>
+    </ThemeProvider>
   );
 };
