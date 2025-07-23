@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Typography, Box, AppBar, Toolbar, Grid, Card, CardContent, Chip } from '@mui/material';
+import { Container, Typography, Box, AppBar, Toolbar, Grid, Card, CardContent, Chip, Button, Link as MuiLink } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
@@ -18,10 +19,18 @@ export const HomePage: React.FC = () => (
   <ThemeProvider theme={theme}>
     <CssBaseline />
     <AppBar position="static" sx={{ width: '100%', boxShadow: 2 }}>
-      <Toolbar sx={{ justifyContent: 'flex-start' }}>
+      <Toolbar sx={{ justifyContent: 'space-between' }}>
         <Typography variant="h6" component="div" sx={{ flexGrow: 0, textAlign: 'left', pl: 1 }}>
           CraftsmanLab
         </Typography>
+        <Box sx={{ display: 'flex', gap: 2 }}>
+          <MuiLink component={RouterLink} to="/" color="inherit" underline="hover">
+            Accueil
+          </MuiLink>
+          <MuiLink component={RouterLink} to="/contact" color="inherit" underline="hover">
+            Contact
+          </MuiLink>
+        </Box>
       </Toolbar>
     </AppBar>
     <Container maxWidth="lg">
@@ -33,6 +42,17 @@ export const HomePage: React.FC = () => (
         <Typography variant="h5" component="h2" gutterBottom align="center" color="text.secondary">
           Excellence en développement et innovation technologique
         </Typography>
+        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+          <Button
+            component={RouterLink}
+            to="/contact"
+            variant="contained"
+            size="large"
+            sx={{ px: 4, py: 1.5 }}
+          >
+            Contactez-nous
+          </Button>
+        </Box>
       </Box>
 
       {/* Section description de l'entreprise dans un encadré bleu très clair */}
