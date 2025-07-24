@@ -18,4 +18,6 @@
 
 
 ## Tests
-- Les tests doivent utiliser le framework xUnit et NSubstitute.
+- Les tests doivent utiliser le framework xUnit et NSubstitute avec la dernière version stable.
+- Les mock doivent être créés avec NSubstitute seulement pour les méthodes qui sont appelées dans le test.
+- 
