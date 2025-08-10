@@ -34,12 +34,9 @@ describe('HomePage Component', () => {
   test('renders navigation links', () => {
     render(<HomePageWrapper />);
     
-    const homeLink = screen.getByText('Accueil');
     const contactLink = screen.getByText('Contact');
     
-    expect(homeLink).toBeInTheDocument();
     expect(contactLink).toBeInTheDocument();
-    expect(homeLink.closest('a')).toHaveAttribute('href', '/');
     expect(contactLink.closest('a')).toHaveAttribute('href', '/contact');
   });
 

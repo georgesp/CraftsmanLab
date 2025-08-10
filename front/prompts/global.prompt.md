@@ -1,7 +1,13 @@
+### Couleurs UI
+
+- Utilisez les couleurs définies dans `src/utils/colors.ts` pour garantir la cohérence visuelle.
+- Pour les descriptions courtes de prompts, utilisez la couleur `grey800` (`#424242`).
+- Ajoutez toute nouvelle couleur dans ce fichier pour centraliser la palette du projet.
 # Développement d'un Site de Gestion de Prompts
 
 ## Contexte
 Créer une application React TypeScript pour proposer et gérer des prompts en fonction de différents besoins utilisateurs.
+Tu dois répondre en français.
 
 ## Exigences Fonctionnelles
 1. **Catalogue de Prompts** : Affichage organisé par catégories et tags
@@ -174,3 +180,16 @@ test('should filter prompts when category is selected', async () => {
 6. **Performance** : Optimisations intégrées dès la conception
 
 Ce prompt force l'adoption des meilleures pratiques techniques tout en maintenant une architecture robuste et évolutive.
+
+## Centralisation des couleurs
+Toutes les couleurs utilisées dans l'application (boutons, liens, backgrounds, etc.) doivent être référencées dans un fichier unique `src/utils/colors.ts`. Utilisez exclusivement ces constantes dans tout le code pour garantir la cohérence visuelle et faciliter la maintenance du design.
+
+Exemple :
+```ts
+export const COLORS = {
+  primaryBlue: '#0A66C2',
+  primaryRed: '#FF5C5C',
+  lightRedBg: '#FF5C5C11',
+  lightBlueBg: '#0A66C211',
+};
+```

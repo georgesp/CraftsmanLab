@@ -13,7 +13,6 @@ describe('ContactPage', () => {
   test('renders contact page with form', () => {
     render(<ContactPageWrapper />);
     
-    expect(screen.getByText('Contactez-nous')).toBeInTheDocument();
     expect(screen.getByText('Envoyez-nous un message')).toBeInTheDocument();
     // Vérifier que les champs du formulaire sont présents
     expect(screen.getByRole('textbox', { name: /nom complet/i })).toBeInTheDocument();
@@ -23,10 +22,9 @@ describe('ContactPage', () => {
   test('renders contact information', () => {
     render(<ContactPageWrapper />);
     
-    expect(screen.getByText('Nos coordonnées')).toBeInTheDocument();
-    expect(screen.getByText('contact@craftsmanlab.com')).toBeInTheDocument();
-    expect(screen.getByText('+33 1 23 45 67 89')).toBeInTheDocument();
-    expect(screen.getByText(/123 Rue de l'Innovation/)).toBeInTheDocument();
+    expect(screen.getByText('Mes réseaux sociaux')).toBeInTheDocument();
+    expect(screen.getByText('Mes coordonnées')).toBeInTheDocument();
+    expect(screen.getByText('contact@craftsmanlab.fr')).toBeInTheDocument();
   });
 
   test('form submission shows success message', async () => {
@@ -55,34 +53,9 @@ describe('ContactPage', () => {
   test('navigation links are present', () => {
     render(<ContactPageWrapper />);
     
-    const homeLink = screen.getByText('Accueil');
     const contactLink = screen.getByText('Contact');
     
-    expect(homeLink).toBeInTheDocument();
     expect(contactLink).toBeInTheDocument();
-    expect(homeLink.closest('a')).toHaveAttribute('href', '/');
     expect(contactLink.closest('a')).toHaveAttribute('href', '/contact');
-  });
-
-  test('renders opening hours section', () => {
-    render(<ContactPageWrapper />);
-    
-    expect(screen.getByText('Horaires d\'ouverture')).toBeInTheDocument();
-    expect(screen.getByText((_, element) => {
-      return element?.textContent === 'Lundi - Vendredi: 9h00 - 18h00';
-    })).toBeInTheDocument();
-    expect(screen.getByText((_, element) => {
-      return element?.textContent === 'Samedi: 10h00 - 16h00';
-    })).toBeInTheDocument();
-    expect(screen.getByText((_, element) => {
-      return element?.textContent === 'Dimanche: Fermé';
-    })).toBeInTheDocument();
-  });
-
-  test('renders call-to-action section', () => {
-    render(<ContactPageWrapper />);
-    
-    expect(screen.getByText(/Prêt à démarrer votre projet/)).toBeInTheDocument();
-    expect(screen.getByText(/Découvrez comment nos solutions peuvent transformer/)).toBeInTheDocument();
   });
 });

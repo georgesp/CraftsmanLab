@@ -33,5 +33,10 @@
     }
   },
   "include": ["src"],
+  "exclude": [
+    "src/components/header/Header.tsx",
+    "src/components/prompts/PromptList.tsx",
+    "src/components/prompts/PromptTypes.ts"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

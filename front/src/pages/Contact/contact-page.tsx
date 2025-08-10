@@ -12,8 +12,9 @@ import {
 } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { Email, Phone, LocationOn, AccessTime, Send } from '@mui/icons-material';
+import { Email, Send } from '@mui/icons-material';
 import { telerikTheme } from '../../theme/theme';
+import { COLORS } from '../../utils/colors';
 import { Header } from '../../components';
 
 export const ContactPage: React.FC = () => {
@@ -58,16 +59,17 @@ export const ContactPage: React.FC = () => {
         {/* Hero Section */}
         <Box sx={{ 
           textAlign: 'center', 
-          py: { xs: 6, md: 8 },
+          py: { xs: 1.5, md: 2 },
           background: 'linear-gradient(135deg, rgba(255, 99, 88, 0.05) 0%, rgba(64, 224, 208, 0.05) 100%)',
-          borderRadius: 4,
-          my: 4
+          borderRadius: 1,
+          my: 2
         }}>
-          <Typography variant="h1" component="h1" gutterBottom>
-            Contactez-nous
+          <Typography variant="h2" component="h1" gutterBottom sx={{ fontSize: { xs: '1.6rem', md: '2.2rem' } }}>
+            Développeur Freelance .NET & IA
           </Typography>
-          <Typography variant="h5" component="h2" gutterBottom color="text.secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
-            Nous sommes là pour répondre à vos questions et vous accompagner dans vos projets
+          <Typography variant="body1" component="h2" gutterBottom color="text.secondary" sx={{ maxWidth: 1100, mx: 'auto', fontSize: { xs: '1rem', md: '1.15rem' } }}>
+            Vous cherchez un développeur .NET expérimenté, avec des compétences en Intelligence Artificielle ?<br />
+            N'hésitez pas à me contacter pour discuter de vos besoins ou de vos projets !
           </Typography>
         </Box>
 
@@ -89,7 +91,7 @@ export const ContactPage: React.FC = () => {
         <Grid container spacing={4} sx={{ mb: 8 }}>
           {/* Formulaire de contact */}
           <Grid item xs={12} lg={8}>
-            <Card sx={{ borderRadius: 3, boxShadow: 3 }}>
+            <Card sx={{ borderRadius: 1, boxShadow: 3 }}>
               <CardContent sx={{ p: { xs: 3, md: 5 } }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
                   <Send sx={{ mr: 2, color: 'primary.main', fontSize: 32 }} />
@@ -170,12 +172,76 @@ export const ContactPage: React.FC = () => {
           {/* Informations de contact */}
           <Grid item xs={12} lg={4}>
             <Grid container spacing={3}>
-              {/* Coordonnées */}
+              {/* Réseaux sociaux */}
               <Grid item xs={12}>
-                <Card sx={{ borderRadius: 3 }}>
+                <Card sx={{ borderRadius: 1, mb: 3 }}>
                   <CardContent sx={{ p: 4 }}>
                     <Typography variant="h4" component="h3" gutterBottom sx={{ mb: 3 }}>
-                      Nos coordonnées
+                      Mes réseaux sociaux
+                    </Typography>
+                    <Box sx={{ display: 'flex', gap: 3 }}>
+                      <Button
+                        component="a"
+                        href="https://www.malt.fr/profile/georgesportier"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        startIcon={
+                          <img src="/malt.png" alt="Malt" style={{ width: 28, height: 28, borderRadius: '50%' }} />
+                        }
+                        sx={{
+                          color: COLORS.primaryRed,
+                          borderColor: COLORS.primaryRed,
+                          borderWidth: 2,
+                          borderStyle: 'solid',
+                          borderRadius: 2,
+                          px: 2,
+                          py: 1,
+                          fontWeight: 600,
+                          textTransform: 'none',
+                          '&:hover': {
+                            background: COLORS.lightRedBg,
+                            borderColor: COLORS.primaryRed,
+                          },
+                        }}
+                      >
+                        Malt
+                      </Button>
+                      <Button
+                        component="a"
+                        href="https://www.linkedin.com/in/georgesportier/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        startIcon={
+                          <img src="/linkedin.png" alt="LinkedIn" style={{ width: 28, height: 28, borderRadius: '50%' }} />
+                        }
+                        sx={{
+                          color: COLORS.primaryBlue,
+                          borderColor: COLORS.primaryBlue,
+                          borderWidth: 2,
+                          borderStyle: 'solid',
+                          borderRadius: 2,
+                          px: 2,
+                          py: 1,
+                          fontWeight: 600,
+                          textTransform: 'none',
+                          '&:hover': {
+                            background: COLORS.lightBlueBg,
+                            borderColor: COLORS.primaryBlue,
+                          },
+                        }}
+                      >
+                        LinkedIn
+                      </Button>
+                    </Box>
+                  </CardContent>
+                </Card>
+              </Grid>
+              {/* Coordonnées */}
+              <Grid item xs={12}>
+                <Card sx={{ borderRadius: 1 }}>
+                  <CardContent sx={{ p: 4 }}>
+                    <Typography variant="h4" component="h3" gutterBottom sx={{ mb: 3 }}>
+                      Mes coordonnées
                     </Typography>
                     
                     <Box sx={{ mb: 3 }}>
@@ -186,57 +252,18 @@ export const ContactPage: React.FC = () => {
                         </Typography>
                       </Box>
                       <Typography variant="body1" color="text.secondary" sx={{ ml: 4 }}>
-                        contact@craftsmanlab.com
-                      </Typography>
-                    </Box>
-                    
-                    <Box sx={{ mb: 3 }}>
-                      <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                        <Phone sx={{ mr: 2, color: 'primary.main', fontSize: 24 }} />
-                        <Typography variant="h6" fontWeight="600">
-                          Téléphone
-                        </Typography>
-                      </Box>
-                      <Typography variant="body1" color="text.secondary" sx={{ ml: 4 }}>
-                        +33 1 23 45 67 89
-                      </Typography>
-                    </Box>
-                    
-                    <Box>
-                      <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                        <LocationOn sx={{ mr: 2, color: 'primary.main', fontSize: 24 }} />
-                        <Typography variant="h6" fontWeight="600">
-                          Adresse
-                        </Typography>
-                      </Box>
-                      <Typography variant="body1" color="text.secondary" sx={{ ml: 4 }}>
-                        123 Rue de l'Innovation<br />
-                        75001 Paris, France
-                      </Typography>
-                    </Box>
-                  </CardContent>
-                </Card>
-              </Grid>
-
-              {/* Horaires */}
-              <Grid item xs={12}>
-                <Card sx={{ borderRadius: 3, background: 'linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%)' }}>
-                  <CardContent sx={{ p: 4 }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                      <AccessTime sx={{ mr: 2, color: 'primary.main', fontSize: 24 }} />
-                      <Typography variant="h5" fontWeight="600">
-                        Horaires d'ouverture
-                      </Typography>
-                    </Box>
-                    <Box sx={{ space: 1 }}>
-                      <Typography variant="body1" sx={{ mb: 1 }}>
-                        <strong>Lundi - Vendredi:</strong> 9h00 - 18h00
-                      </Typography>
-                      <Typography variant="body1" sx={{ mb: 1 }}>
-                        <strong>Samedi:</strong> 10h00 - 16h00
-                      </Typography>
-                      <Typography variant="body1">
-                        <strong>Dimanche:</strong> Fermé
+                        <a
+                          href="mailto:contact@craftsmanlab.fr"
+                          style={{
+                            color: 'inherit',
+                            textDecoration: 'none',
+                            transition: 'color 0.2s',
+                          }}
+                          onMouseOver={e => (e.currentTarget.style.color = COLORS.primaryBlue)}
+                          onMouseOut={e => (e.currentTarget.style.color = 'inherit')}
+                        >
+                          contact@craftsmanlab.fr
+                        </a>
                       </Typography>
                     </Box>
                   </CardContent>
@@ -245,36 +272,6 @@ export const ContactPage: React.FC = () => {
             </Grid>
           </Grid>
         </Grid>
-
-        {/* Section d'appel à l'action */}
-        <Box sx={{ 
-          textAlign: 'center', 
-          py: 6,
-          background: 'linear-gradient(135deg, rgba(255, 99, 88, 0.05) 0%, rgba(64, 224, 208, 0.05) 100%)',
-          borderRadius: 4,
-          mb: 4
-        }}>
-          <Typography variant="h3" component="h2" gutterBottom>
-            Prêt à démarrer votre projet ?
-          </Typography>
-          <Typography variant="h6" color="text.secondary" sx={{ mb: 4, maxWidth: 600, mx: 'auto' }}>
-            Découvrez comment nos solutions peuvent transformer votre développement financier
-          </Typography>
-          <Button
-            variant="contained"
-            size="large"
-            sx={{ px: 4, py: 1.5, mr: 2 }}
-          >
-            Essai Gratuit
-          </Button>
-          <Button
-            variant="outlined"
-            size="large"
-            sx={{ px: 4, py: 1.5 }}
-          >
-            Voir nos Solutions
-          </Button>
-        </Box>
       </Container>
     </ThemeProvider>
   );

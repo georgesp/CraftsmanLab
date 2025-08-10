@@ -4,6 +4,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { telerikTheme } from '../../theme/theme';
+import { COLORS } from '../../utils/colors';
 import { Download, Business, Speed, Security, Support, TrendingUp } from '@mui/icons-material';
 import { Header } from '../../components';
 
@@ -17,8 +18,8 @@ export const HomePage: React.FC = () => (
       <Box sx={{ 
         textAlign: 'center', 
         py: { xs: 8, md: 12 },
-        background: 'linear-gradient(135deg, rgba(255, 99, 88, 0.05) 0%, rgba(64, 224, 208, 0.05) 100%)',
-        borderRadius: 4,
+        background: `linear-gradient(135deg, ${COLORS.lightRedBg} 0%, ${COLORS.lightBlueBg} 100%)`,
+        borderRadius: 1,
         my: 4
       }}>
         <Typography variant="h1" component="h1" gutterBottom sx={{ mb: 3 }}>
@@ -64,7 +65,7 @@ export const HomePage: React.FC = () => (
         <Grid container spacing={4}>
           <Grid item xs={12} md={6} lg={4}>
             <Card sx={{ height: '100%', textAlign: 'center', p: 3 }}>
-              <Business sx={{ fontSize: 60, color: 'primary.main', mb: 2 }} />
+              <Business sx={{ fontSize: 60, color: COLORS.primaryBlue, mb: 2 }} />
               <Typography variant="h5" component="h3" gutterBottom>
                 Solution Complète
               </Typography>
@@ -76,7 +77,7 @@ export const HomePage: React.FC = () => (
           </Grid>
           <Grid item xs={12} md={6} lg={4}>
             <Card sx={{ height: '100%', textAlign: 'center', p: 3 }}>
-              <Speed sx={{ fontSize: 60, color: 'primary.main', mb: 2 }} />
+              <Speed sx={{ fontSize: 60, color: COLORS.primaryBlue, mb: 2 }} />
               <Typography variant="h5" component="h3" gutterBottom>
                 Productivité Inégalée
               </Typography>
@@ -88,7 +89,7 @@ export const HomePage: React.FC = () => (
           </Grid>
           <Grid item xs={12} md={6} lg={4}>
             <Card sx={{ height: '100%', textAlign: 'center', p: 3 }}>
-              <Security sx={{ fontSize: 60, color: 'primary.main', mb: 2 }} />
+              <Security sx={{ fontSize: 60, color: COLORS.primaryBlue, mb: 2 }} />
               <Typography variant="h5" component="h3" gutterBottom>
                 Sécurité Avancée
               </Typography>
@@ -100,7 +101,7 @@ export const HomePage: React.FC = () => (
           </Grid>
           <Grid item xs={12} md={6} lg={4}>
             <Card sx={{ height: '100%', textAlign: 'center', p: 3 }}>
-              <Support sx={{ fontSize: 60, color: 'primary.main', mb: 2 }} />
+              <Support sx={{ fontSize: 60, color: COLORS.primaryBlue, mb: 2 }} />
               <Typography variant="h5" component="h3" gutterBottom>
                 Support Expert
               </Typography>
@@ -112,7 +113,7 @@ export const HomePage: React.FC = () => (
           </Grid>
           <Grid item xs={12} md={6} lg={4}>
             <Card sx={{ height: '100%', textAlign: 'center', p: 3 }}>
-              <TrendingUp sx={{ fontSize: 60, color: 'primary.main', mb: 2 }} />
+              <TrendingUp sx={{ fontSize: 60, color: COLORS.primaryBlue, mb: 2 }} />
               <Typography variant="h5" component="h3" gutterBottom>
                 ROI Optimisé
               </Typography>
@@ -124,7 +125,7 @@ export const HomePage: React.FC = () => (
           </Grid>
           <Grid item xs={12} md={6} lg={4}>
             <Card sx={{ height: '100%', textAlign: 'center', p: 3 }}>
-              <Business sx={{ fontSize: 60, color: 'secondary.main', mb: 2 }} />
+              <Business sx={{ fontSize: 60, color: COLORS.primaryRed, mb: 2 }} />
               <Typography variant="h5" component="h3" gutterBottom>
                 Modernisation
               </Typography>
@@ -138,7 +139,7 @@ export const HomePage: React.FC = () => (
       </Box>
 
       {/* Specialized Solutions Section */}
-      <Box sx={{ py: 8, backgroundColor: 'grey.50', borderRadius: 4, my: 6 }}>
+  <Box sx={{ py: 8, backgroundColor: COLORS.lightBlueBg, borderRadius: 4, my: 6 }}>
         <Container>
           <Typography variant="h2" component="h2" gutterBottom align="center" sx={{ mb: 2 }}>
             Solutions Spécialisées FinTech
@@ -248,7 +249,7 @@ export const HomePage: React.FC = () => (
         
         <Grid container spacing={4} sx={{ mb: 6 }}>
           <Grid item xs={6} md={3}>
-            <Typography variant="h3" color="primary.main" sx={{ fontWeight: 'bold' }}>
+            <Typography variant="h3" sx={{ fontWeight: 'bold', color: COLORS.primaryBlue }}>
               275K+
             </Typography>
             <Typography variant="body1" color="text.secondary">
@@ -256,7 +257,7 @@ export const HomePage: React.FC = () => (
             </Typography>
           </Grid>
           <Grid item xs={6} md={3}>
-            <Typography variant="h3" color="primary.main" sx={{ fontWeight: 'bold' }}>
+            <Typography variant="h3" sx={{ fontWeight: 'bold', color: COLORS.primaryBlue }}>
               3.5M+
             </Typography>
             <Typography variant="body1" color="text.secondary">
@@ -264,7 +265,7 @@ export const HomePage: React.FC = () => (
             </Typography>
           </Grid>
           <Grid item xs={6} md={3}>
-            <Typography variant="h3" color="primary.main" sx={{ fontWeight: 'bold' }}>
+            <Typography variant="h3" sx={{ fontWeight: 'bold', color: COLORS.primaryBlue }}>
               400+
             </Typography>
             <Typography variant="body1" color="text.secondary">
@@ -272,7 +273,7 @@ export const HomePage: React.FC = () => (
             </Typography>
           </Grid>
           <Grid item xs={6} md={3}>
-            <Typography variant="h3" color="primary.main" sx={{ fontWeight: 'bold' }}>
+            <Typography variant="h3" sx={{ fontWeight: 'bold', color: COLORS.primaryBlue }}>
               15
             </Typography>
             <Typography variant="body1" color="text.secondary">
