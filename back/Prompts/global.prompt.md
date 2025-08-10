@@ -1,3 +1,6 @@
+# Règles language
+- Parler en français
+
 # Règles de codage pour le projet CraftsmanLab.Sql
 
 - Chaque classe d'implémentation doit avoir une interface correspondante dans le même dossier que la classe.
@@ -11,6 +14,7 @@
 - Les noms doivent être explicites et refléter leur responsabilité.
 - Les fichiers de test reprennent le nom de la classe testée suivi de "Tests" (ex: MaClasseSqlTests).
 - Les espaces de noms suivent la structure du dossier (ex: CraftsmanLab.Sql.MonDossier).
+- Chaque classe doit être dans son propre fichier. 
 
 ## IOC
 - Utiliser l'injection de dépendances pour les classes qui dépendent d'autres services ou classes.
@@ -20,4 +24,6 @@
 ## Tests
 - Les tests doivent utiliser le framework xUnit et NSubstitute avec la dernière version stable.
 - Les mock doivent être créés avec NSubstitute seulement pour les méthodes qui sont appelées dans le test.
-- 
+
+## DB
+- Utiliser Dapper pour les opérations de base de données.

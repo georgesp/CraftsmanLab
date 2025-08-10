@@ -12,7 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Prompts\global.prompt.md = Prompts\global.prompt.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CraftsmanLab.Sql.Tests", "CraftsmanLab.Sql.Tests\CraftsmanLab.Sql.Tests.csproj", "{ACEA8B99-E9BF-4F59-9326-F6D215EA54F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CraftsmanLab.IntegrationTests", "CraftsmanLab.IntegrationTests\CraftsmanLab.IntegrationTests.csproj", "{ACEA8B99-E9BF-4F59-9326-F6D215EA54F6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{72C5303A-B17A-455F-92E1-B449DBCE7B1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ACEA8B99-E9BF-4F59-9326-F6D215EA54F6} = {72C5303A-B17A-455F-92E1-B449DBCE7B1C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {190BBB01-CAAE-499B-9189-B808000CB871}

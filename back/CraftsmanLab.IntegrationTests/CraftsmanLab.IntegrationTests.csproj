@@ -115,7 +115,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AzureSqlConnectionTests.cs" />
+    <Compile Include="AzureTests.cs" />
+    <Compile Include="CraftsmanLabConfigurationTests.cs" />
+    <Compile Include="PromptRepositoryIntegrationTests.cs" />
+    <Compile Include="PromptRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

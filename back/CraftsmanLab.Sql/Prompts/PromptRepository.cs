@@ -1,36 +1,89 @@
-﻿using System;
+﻿using CraftsmanLab.Sql.Configuration;
+using CraftsmanLab.Sql.Repositories;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CraftsmanLab.Sql
 {
-    public class PromptRepository : IPromptRepository
+    public class PromptRepository : BaseRepository, IPromptRepository
     {
-        public Task AddPromptAsync(string prompt)
+        public PromptRepository(ICraftsmanLabConfiguration configuration) : base(configuration)
         {
-            throw new NotImplementedException();
         }
 
-        public Task DeletePromptAsync(int id)
+        public async Task<Prompt> GetPromptByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            const string sql = @"
+                SELECT Id, Title, Content, CreatedDate, ModifiedDate 
+                FROM Prompts 
+                WHERE Id = @Id";
+
+            return await QuerySingleOrDefaultAsync<Prompt>(sql, new { Id = id });
         }
 
-        public Task<string> GetPromptByIdAsync(int id)
+        public async Task<IEnumerable<Prompt>> GetPromptsAsync()
         {
-            throw new NotImplementedException();
+            const string sql = @"
+                SELECT Id, Title, Content, CreatedDate, ModifiedDate 
+                FROM Prompts 
+                ORDER BY CreatedDate DESC";
+
+            return await QueryAsync<Prompt>(sql);
         }
 
-        public Task<IEnumerable<string>> GetPromptsAsync()
+        public async Task<IEnumerable<Prompt>> SearchByTitleAsync(string title)
         {
-            throw new NotImplementedException();
+            const string sql = @"
+                SELECT Id, Title, Content, CreatedDate, ModifiedDate 
+                FROM Prompts 
+                WHERE Title LIKE @Title
+                ORDER BY CreatedDate DESC";
+
+            return await QueryAsync<Prompt>(sql, new { Title = $"%{title}%" });
         }
 
-        public Task UpdatePromptAsync(int id, string prompt)
+        public async Task<int> AddPromptAsync(Prompt prompt)
         {
-            throw new NotImplementedException();
+            const string sql = @"
+                INSERT INTO Prompts (Title, Content, CreatedDate, ModifiedDate)
+                OUTPUT INSERTED.Id
+                VALUES (@Title, @Content, GETUTCDATE(), GETUTCDATE())";
+
+            return await ExecuteScalarAsync<int>(sql, prompt);
+        }
+
+        public async Task<int> UpdatePromptAsync(Prompt prompt)
+        {
+            const string sql = @"
+                UPDATE Prompts 
+                SET Title = @Title, 
+                    Content = @Content, 
+                    ModifiedDate = GETUTCDATE()
+                WHERE Id = @Id";
+
+            return await ExecuteAsync(sql, prompt);
+        }
+
+        public async Task<int> DeletePromptAsync(int id)
+        {
+            const string sql = "DELETE FROM Prompts WHERE Id = @Id";
+            return await ExecuteAsync(sql, new { Id = id });
+        }
+
+        public async Task<int> CountAsync()
+        {
+            const string sql = "SELECT COUNT(*) FROM Prompts";
+            return await ExecuteScalarAsync<int>(sql);
+        }
+
+        public async Task<IEnumerable<Prompt>> GetRecentAsync(int count)
+        {
+            const string sql = @"
+                SELECT TOP (@Count) Id, Title, Content, CreatedDate, ModifiedDate 
+                FROM Prompts 
+                ORDER BY CreatedDate DESC";
+
+            return await QueryAsync<Prompt>(sql, new { Count = count });
         }
     }
 }
