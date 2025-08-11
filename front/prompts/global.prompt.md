@@ -7,7 +7,7 @@
 
 ## Contexte
 Créer une application React TypeScript pour proposer et gérer des prompts en fonction de différents besoins utilisateurs.
-Tu dois répondre en français.
+Tu dois répondre en français (Et oui si jamais un anglais reprend le projet, il aura juste à demander de tout traduire en anglais..).
 
 ## Exigences Techniques
 
