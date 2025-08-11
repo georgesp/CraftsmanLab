@@ -15,6 +15,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { Email, Send } from '@mui/icons-material';
 import { telerikTheme } from '../../theme/theme';
 import { COLORS } from '../../utils/colors';
+import { CONTACT_EMAIL } from '../../utils/constants';
 import { Header } from '../../components';
 
 export const ContactPage: React.FC = () => {
@@ -253,7 +254,7 @@ export const ContactPage: React.FC = () => {
                       </Box>
                       <Typography variant="body1" color="text.secondary" sx={{ ml: 4 }}>
                         <a
-                          href="mailto:contact@craftsmanlab.fr"
+                          href={`mailto:${CONTACT_EMAIL}`}
                           style={{
                             color: 'inherit',
                             textDecoration: 'none',
@@ -262,7 +263,7 @@ export const ContactPage: React.FC = () => {
                           onMouseOver={e => (e.currentTarget.style.color = COLORS.primaryBlue)}
                           onMouseOut={e => (e.currentTarget.style.color = 'inherit')}
                         >
-                          contact@craftsmanlab.fr
+                          {CONTACT_EMAIL}
                         </a>
                       </Typography>
                     </Box>
