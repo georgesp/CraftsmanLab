@@ -274,7 +274,7 @@ MyProject.Api/
 
 const PromptBody: React.FC = () => {
   const [showCopySuccess, setShowCopySuccess] = useState(false);
-  const writtenOn = new Date().toLocaleDateString('fr-FR');
+  const writtenOn = meta.writtenOn ? new Date(meta.writtenOn).toLocaleDateString('fr-FR') : new Date().toLocaleDateString('fr-FR');
 
   const description = `Ce document regroupe les règles obligatoires et les meilleures pratiques pour le développement d'applications ASP.NET Core. Il s'appuie sur l'AspNetCore Guidance de David Fowler et adapte les recommandations au contexte du workspace.`;
 
@@ -369,6 +369,7 @@ export const meta = {
   slug: 'aspnet-core-guidances',
   title: 'ASP.NET Core Guidances',
   shortDescription: "Règles et bonnes pratiques ASP.NET Core.",
+  writtenOn: '2025-08-11',
 };
 
 const moduleExport: PromptModule = {

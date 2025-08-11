@@ -18,7 +18,11 @@ const entries: PromptEntry[] = Object.entries(metaModules).flatMap(([path, mod])
   return [{ ...meta, load }];
 });
 
-entries.sort((a, b) => a.title.localeCompare(b.title));
+entries.sort((a, b) => {
+  // Newest first; fallback to title for stability
+  const byDate = (b.writtenOn ?? '').localeCompare(a.writtenOn ?? '');
+  return byDate !== 0 ? byDate : a.title.localeCompare(b.title);
+});
 
 export const promptsList: PromptEntry[] = entries;
 

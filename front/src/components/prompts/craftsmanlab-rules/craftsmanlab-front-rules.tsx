@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { Box, Typography, IconButton, Snackbar, Alert } from '@mui/material';
 import { ContentCopy } from '@mui/icons-material';
 import type { PromptModule } from '..';
@@ -11,9 +11,13 @@ export const promptText = rawGlobalPrompt;
 
 const PromptBody: React.FC = () => {
   const [showCopySuccess, setShowCopySuccess] = useState(false);
-  const writtenOn = useMemo(() => new Date().toLocaleDateString('fr-FR'), []);
+  const writtenOn = meta.writtenOn ? new Date(meta.writtenOn).toLocaleDateString('fr-FR') : new Date().toLocaleDateString('fr-FR');
 
-  const description = `C’est le prompt que j’ai utilisé et mis à jour au fur et à mesure pour la construction de mon site internet.`;
+  const description = `
+  Ce prompt a été utilisé pour faire toute la création du socle du site internet CraftsmanLab, je l'ai ensuite enrichi pour y ajouter certaines règles d'architecture au fur et à mesure des developpements.
+  
+  Vous pouvez l'utiliser comme base pour vos propres développements.
+  `;
 
   const handleCopy = async () => {
     try {
@@ -92,6 +96,7 @@ export const meta = {
   slug: 'craftsmanlab-rules',
   title: 'CraftsmanLab Rules',
   shortDescription: "Règles et conventions CraftsmanLab (rendu direct du global.prompt.md).",
+  writtenOn: '2025-08-10',
 };
 
 const moduleExport: PromptModule = {

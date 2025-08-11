@@ -83,6 +83,7 @@ export const meta = {
   slug: 'more',
   title: 'More coming soon...',
   shortDescription: '',
+  writtenOn: '2030-08-11',
 };
 
 const moduleExport: PromptModule = {

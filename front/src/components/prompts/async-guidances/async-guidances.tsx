@@ -139,7 +139,9 @@ public async Task TestAsync()
 
 const PromptBody: React.FC = () => {
   const [showCopySuccess, setShowCopySuccess] = useState(false);
-  const writtenOn = new Date().toLocaleDateString('fr-FR');
+  const writtenOn = meta.writtenOn
+    ? new Date(meta.writtenOn).toLocaleDateString('fr-FR')
+    : new Date().toLocaleDateString('fr-FR');
 
   const handleCopy = async () => {
     try {
@@ -235,6 +237,7 @@ export const meta = {
   slug: 'dot-net-async-best-practices',
   title: '.NET Async Best Practices',
   shortDescription: "Guide complet des bonnes pratiques asynchronisme .NET/ASP.NET Core avec exemples concrets.",
+  writtenOn: '2025-08-11',
 };
 
 const moduleExport: PromptModule = {
