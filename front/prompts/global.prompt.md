@@ -9,14 +9,6 @@
 Créer une application React TypeScript pour proposer et gérer des prompts en fonction de différents besoins utilisateurs.
 Tu dois répondre en français.
 
-## Exigences Fonctionnelles
-1. **Catalogue de Prompts** : Affichage organisé par catégories et tags
-2. **Recherche et Filtrage** : Recherche textuelle et filtres avancés
-3. **Gestion des Prompts** : CRUD complet avec versioning
-4. **Interface Utilisateur** : Navigation intuitive et responsive
-5. **Persistance** : Sauvegarde locale et/ou API backend
-
-## Exigences Techniques
 ## Exigences Techniques
 
 ### Architecture et Organisation
