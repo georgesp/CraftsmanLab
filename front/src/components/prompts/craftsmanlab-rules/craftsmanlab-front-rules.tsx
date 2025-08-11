@@ -94,8 +94,8 @@ const PromptBody: React.FC = () => {
 
 export const meta = {
   slug: 'craftsmanlab-rules',
-  title: 'CraftsmanLab Rules',
-  shortDescription: "Règles et conventions CraftsmanLab (rendu direct du global.prompt.md).",
+  title: 'CraftsmanLab front rules',
+  shortDescription: "Règles et conventions utilisées pour le développement du site.",
   writtenOn: '2025-08-10',
 };
 

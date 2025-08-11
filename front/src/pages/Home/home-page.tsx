@@ -1,12 +1,17 @@
-import React from 'react';
-import { Container, Typography, Box, Grid, Card, CardContent, Chip, Button } from '@mui/material';
+import * as React from 'react';
+import { Container, Typography, Box, Grid, Card, Button, IconButton, Tooltip } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { telerikTheme } from '../../theme/theme';
 import { COLORS } from '../../utils/colors';
-import { Download, Business, Speed, Security, Support, TrendingUp } from '@mui/icons-material';
+import { Download, Business, Speed, Security, Support, TrendingUp, ArrowForward } from '@mui/icons-material';
 import { Header } from '../../components';
+// Lazy-load the prompts grid to avoid importing import.meta-based registry in tests
+const LazyPromptCardsGrid = React.lazy(() =>
+  import('../../components/prompts/prompt-cards-grid').then((m) => ({ default: m.PromptCardsGrid }))
+);
+
 
 export const HomePage: React.FC = () => (
   <ThemeProvider theme={telerikTheme}>
@@ -64,7 +69,7 @@ export const HomePage: React.FC = () => (
         
         <Grid container spacing={4}>
           <Grid item xs={12} md={6} lg={4}>
-            <Card sx={{ height: '100%', textAlign: 'center', p: 3 }}>
+            <Card sx={{ height: '100%', textAlign: 'center', p: 3, borderRadius: 1 }}>
               <Business sx={{ fontSize: 60, color: COLORS.primaryBlue, mb: 2 }} />
               <Typography variant="h5" component="h3" gutterBottom>
                 Solution Complète
@@ -76,7 +81,7 @@ export const HomePage: React.FC = () => (
             </Card>
           </Grid>
           <Grid item xs={12} md={6} lg={4}>
-            <Card sx={{ height: '100%', textAlign: 'center', p: 3 }}>
+            <Card sx={{ height: '100%', textAlign: 'center', p: 3, borderRadius: 1 }}>
               <Speed sx={{ fontSize: 60, color: COLORS.primaryBlue, mb: 2 }} />
               <Typography variant="h5" component="h3" gutterBottom>
                 Productivité Inégalée
@@ -88,7 +93,7 @@ export const HomePage: React.FC = () => (
             </Card>
           </Grid>
           <Grid item xs={12} md={6} lg={4}>
-            <Card sx={{ height: '100%', textAlign: 'center', p: 3 }}>
+            <Card sx={{ height: '100%', textAlign: 'center', p: 3, borderRadius: 1 }}>
               <Security sx={{ fontSize: 60, color: COLORS.primaryBlue, mb: 2 }} />
               <Typography variant="h5" component="h3" gutterBottom>
                 Sécurité Avancée
@@ -100,7 +105,7 @@ export const HomePage: React.FC = () => (
             </Card>
           </Grid>
           <Grid item xs={12} md={6} lg={4}>
-            <Card sx={{ height: '100%', textAlign: 'center', p: 3 }}>
+            <Card sx={{ height: '100%', textAlign: 'center', p: 3, borderRadius: 1 }}>
               <Support sx={{ fontSize: 60, color: COLORS.primaryBlue, mb: 2 }} />
               <Typography variant="h5" component="h3" gutterBottom>
                 Support Expert
@@ -112,7 +117,7 @@ export const HomePage: React.FC = () => (
             </Card>
           </Grid>
           <Grid item xs={12} md={6} lg={4}>
-            <Card sx={{ height: '100%', textAlign: 'center', p: 3 }}>
+            <Card sx={{ height: '100%', textAlign: 'center', p: 3, borderRadius: 1 }}>
               <TrendingUp sx={{ fontSize: 60, color: COLORS.primaryBlue, mb: 2 }} />
               <Typography variant="h5" component="h3" gutterBottom>
                 ROI Optimisé
@@ -124,7 +129,7 @@ export const HomePage: React.FC = () => (
             </Card>
           </Grid>
           <Grid item xs={12} md={6} lg={4}>
-            <Card sx={{ height: '100%', textAlign: 'center', p: 3 }}>
+            <Card sx={{ height: '100%', textAlign: 'center', p: 3, borderRadius: 1 }}>
               <Business sx={{ fontSize: 60, color: COLORS.primaryRed, mb: 2 }} />
               <Typography variant="h5" component="h3" gutterBottom>
                 Modernisation
@@ -138,173 +143,38 @@ export const HomePage: React.FC = () => (
         </Grid>
       </Box>
 
-      {/* Specialized Solutions Section */}
-  <Box sx={{ py: 8, backgroundColor: COLORS.lightBlueBg, borderRadius: 4, my: 6 }}>
-        <Container>
-          <Typography variant="h2" component="h2" gutterBottom align="center" sx={{ mb: 2 }}>
-            Solutions Spécialisées FinTech
+      {/* Specialized Solutions Section -> Latest Prompts Preview */}
+      <Box>
+        <Card variant="outlined" sx={{ p: { xs: 2, md: 4 }, borderRadius: 1, backgroundColor: COLORS.lightBlueBg, maxWidth: 1200, mx: 'auto', position: 'relative' }}>
+          <Tooltip title="Voir tous les prompts">
+            <IconButton
+              component={RouterLink}
+              to="/prompts"
+              color="primary"
+              sx={{ position: 'absolute', top: 16, right: 16, zIndex: 1, bgcolor: 'background.paper', boxShadow: 1 }}
+              size="medium"
+              aria-label="Voir tous les prompts"
+            >
+              <ArrowForward fontSize="inherit" />
+            </IconButton>
+          </Tooltip>
+          <Typography variant="h6" align="center" color="text.secondary" sx={{ mb: 4, maxWidth: 700, mx: 'auto' }}>
+            Un aperçu des derniers prompts publiés
           </Typography>
-          <Typography variant="h6" align="center" color="text.secondary" sx={{ mb: 6, maxWidth: 700, mx: 'auto' }}>
-            Découvrez nos outils spécialisés pour accélérer votre développement dans le secteur financier
-          </Typography>
-          
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={6} lg={4}>
-              <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <CardContent sx={{ flexGrow: 1, p: 3 }}>
-                  <Chip label="API Banking" color="primary" size="small" sx={{ mb: 2 }} />
-                  <Typography variant="h6" component="h3" gutterBottom>
-                    API Bancaires Sécurisées
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                    Développement d'APIs REST conformes PCI-DSS avec authentification JWT et validation des transactions en temps réel.
-                  </Typography>
-                  <Button size="small" sx={{ mt: 'auto' }}>En savoir plus</Button>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <CardContent sx={{ flexGrow: 1, p: 3 }}>
-                  <Chip label="Conformité" color="secondary" size="small" sx={{ mb: 2 }} />
-                  <Typography variant="h6" component="h3" gutterBottom>
-                    Audit RGPD Automatisé
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                    Outils d'analyse automatique pour identifier les non-conformités RGPD et proposer des corrections pour la protection des données.
-                  </Typography>
-                  <Button size="small" sx={{ mt: 'auto' }}>En savoir plus</Button>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <CardContent sx={{ flexGrow: 1, p: 3 }}>
-                  <Chip label="Algorithmes" color="success" size="small" sx={{ mb: 2 }} />
-                  <Typography variant="h6" component="h3" gutterBottom>
-                    Calcul de Risque Financier
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                    Bibliothèques d'algorithmes avancés pour le calcul de risque de crédit, VaR et scoring client en temps réel.
-                  </Typography>
-                  <Button size="small" sx={{ mt: 'auto' }}>En savoir plus</Button>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <CardContent sx={{ flexGrow: 1, p: 3 }}>
-                  <Chip label="Tests" color="warning" size="small" sx={{ mb: 2 }} />
-                  <Typography variant="h6" component="h3" gutterBottom>
-                    Tests Automatisés FinTech
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                    Framework de tests spécialisé avec simulation de scénarios de marché et validation des transactions financières.
-                  </Typography>
-                  <Button size="small" sx={{ mt: 'auto' }}>En savoir plus</Button>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <CardContent sx={{ flexGrow: 1, p: 3 }}>
-                  <Chip label="Blockchain" color="info" size="small" sx={{ mb: 2 }} />
-                  <Typography variant="h6" component="h3" gutterBottom>
-                    Smart Contracts DeFi
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                    Développement de smart contracts Solidity pour protocoles DeFi avec gestion des garanties et liquidités.
-                  </Typography>
-                  <Button size="small" sx={{ mt: 'auto' }}>En savoir plus</Button>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <CardContent sx={{ flexGrow: 1, p: 3 }}>
-                  <Chip label="Sécurité" color="error" size="small" sx={{ mb: 2 }} />
-                  <Typography variant="h6" component="h3" gutterBottom>
-                    Audit de Sécurité
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                    Outils d'audit automatique pour applications de paiement avec détection de vulnérabilités et recommendations.
-                  </Typography>
-                  <Button size="small" sx={{ mt: 'auto' }}>En savoir plus</Button>
-                </CardContent>
-              </Card>
-            </Grid>
-          </Grid>
-        </Container>
+          <Box sx={{ px: { xs: 0, md: 1 } }}>
+            {(() => {
+              const isTest = typeof globalThis.process !== 'undefined' && globalThis.process?.env?.NODE_ENV === 'test';
+              if (isTest) return null;
+              return (
+                <React.Suspense fallback={null}>
+                  <LazyPromptCardsGrid maxItems={6} showMore={false} />
+                </React.Suspense>
+              );
+            })()}
+          </Box>
+        </Card>
       </Box>
 
-      {/* Trust Section */}
-      <Box sx={{ py: 8, textAlign: 'center' }}>
-        <Typography variant="h2" component="h2" gutterBottom sx={{ mb: 2 }}>
-          Faites Confiance aux Experts
-        </Typography>
-        <Typography variant="h6" color="text.secondary" sx={{ mb: 6, maxWidth: 800, mx: 'auto' }}>
-          Une qualité sans compromis grâce à 15 ans d'expérience dans l'aide à des millions de 
-          développeurs pour créer des expériences utilisateur exceptionnelles pour des applications critiques.
-        </Typography>
-        
-        <Grid container spacing={4} sx={{ mb: 6 }}>
-          <Grid item xs={6} md={3}>
-            <Typography variant="h3" sx={{ fontWeight: 'bold', color: COLORS.primaryBlue }}>
-              275K+
-            </Typography>
-            <Typography variant="body1" color="text.secondary">
-              Clients
-            </Typography>
-          </Grid>
-          <Grid item xs={6} md={3}>
-            <Typography variant="h3" sx={{ fontWeight: 'bold', color: COLORS.primaryBlue }}>
-              3.5M+
-            </Typography>
-            <Typography variant="body1" color="text.secondary">
-              Développeurs
-            </Typography>
-          </Grid>
-          <Grid item xs={6} md={3}>
-            <Typography variant="h3" sx={{ fontWeight: 'bold', color: COLORS.primaryBlue }}>
-              400+
-            </Typography>
-            <Typography variant="body1" color="text.secondary">
-              Récompenses
-            </Typography>
-          </Grid>
-          <Grid item xs={6} md={3}>
-            <Typography variant="h3" sx={{ fontWeight: 'bold', color: COLORS.primaryBlue }}>
-              15
-            </Typography>
-            <Typography variant="body1" color="text.secondary">
-              Années d'expertise
-            </Typography>
-          </Grid>
-        </Grid>
-
-        <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Button
-            variant="contained"
-            size="large"
-            startIcon={<Download />}
-            sx={{ px: 4, py: 1.5 }}
-          >
-            Essai Gratuit de 30 Jours
-          </Button>
-          <Button
-            component={RouterLink}
-            to="/contact"
-            variant="outlined"
-            size="large"
-            sx={{ px: 4, py: 1.5 }}
-          >
-            Contactez-nous
-          </Button>
-        </Box>
-        <Typography variant="body2" sx={{ mt: 2, color: 'text.secondary' }}>
-          • Support technique gratuit pendant l'essai • Aucune carte de crédit requise
-        </Typography>
-      </Box>
     </Container>
   </ThemeProvider>
 );

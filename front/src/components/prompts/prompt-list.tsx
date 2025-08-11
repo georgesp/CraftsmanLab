@@ -6,12 +6,21 @@ import { promptsList } from './registry';
 type Props = {
   selectedSlug?: string;
   onNavigate?: () => void;
+  maxItems?: number;
 };
 
-export const PromptList: React.FC<Props> = ({ selectedSlug, onNavigate }) => {
+export const PromptList: React.FC<Props> = ({ selectedSlug, onNavigate, maxItems }) => {
+  const items = (() => {
+    if (maxItems && maxItems > 0) {
+      // Exclude placeholder "more" from the limited list
+      const filtered = promptsList.filter(p => p.slug !== 'more');
+      return filtered.slice(0, maxItems);
+    }
+    return promptsList;
+  })();
   return (
     <List dense aria-label="prompts disponibles">
-      {promptsList.map(p => (
+      {items.map(p => (
         p.slug === 'more'
           ? (
             <ListItemButton

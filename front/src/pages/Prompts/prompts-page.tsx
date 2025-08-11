@@ -1,18 +1,16 @@
 import React from 'react';
-import { Container, Typography, Grid, CardActionArea, Box } from '@mui/material';
+import { Container, Typography, Box, Card } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { Link as RouterLink } from 'react-router-dom';
 import { telerikTheme } from '../../theme/theme';
 import { Header } from '../../components';
-import { promptsList } from '../../components/prompts/registry';
+import { PromptCardsGrid } from '../../components/prompts/prompt-cards-grid';
 import { COLORS } from '../../utils/colors';
 import {
   PromptsPageContainer,
   // ExplanationBox,
   GridContainer,
-  PromptCard,
-  PromptCardContent,
+  
 } from './styles';
 
 export const PromptsPage: React.FC = () => {
@@ -45,38 +43,21 @@ export const PromptsPage: React.FC = () => {
                   <br />
                   Il faut vraiment voir l'IA comme une personne à part entière dans le sens où si l'instruction est vague, elle risque de mal interpréter vos attentes et de fournir des réponses inappropriées ou hors sujet.
                 </Typography>
-                <Box sx={{ borderTop: '1px solid', borderColor: 'grey.300', marginTop: 3 }} />
               </PromptsPageContainer>
         <GridContainer>
-          <Grid container spacing={4}>
-            {promptsList.map(p => (
-              <Grid item xs={12} md={6} lg={4} key={p.slug}>
-                <PromptCard>
-                  {p.slug === 'more' ? (
-                    <PromptCardContent style={{ height: '100%', cursor: 'default' }}>
-                      <Typography variant="h5" component="h3" gutterBottom>
-                        {p.title}
-                      </Typography>
-            <Typography variant="body1" sx={{ color: COLORS.grey800 }}>
-                        {p.shortDescription}
-                      </Typography>
-                    </PromptCardContent>
-                  ) : (
-                    <CardActionArea component={RouterLink} to={`/prompts/${p.slug}`} sx={{ height: '100%' }}>
-                      <PromptCardContent>
-                        <Typography variant="h5" component="h3" gutterBottom>
-                          {p.title}
-                        </Typography>
-              <Typography variant="body1" sx={{ color: COLORS.grey800 }}>
-                          {p.shortDescription}
-                        </Typography>
-                      </PromptCardContent>
-                    </CardActionArea>
-                  )}
-                </PromptCard>
-              </Grid>
-            ))}
-          </Grid>
+          <Card
+            variant="outlined"
+            sx={{
+              backgroundColor: COLORS.lightBlueBg,
+              borderRadius: 1,
+              p: { xs: 2, md: 4 },
+              boxShadow: 0,
+              maxWidth: 1200,
+              mx: 'auto',
+            }}
+          >
+            <PromptCardsGrid />
+          </Card>
         </GridContainer>
       </Container>
     </ThemeProvider>
