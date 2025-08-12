@@ -12,7 +12,6 @@ export const meta = {
 const KeyValueCollectionTip: React.FC = () => {
   return (
     <Box>
-      <Typography variant="h2" gutterBottom>Petit rappel : collections clé-valeur C#</Typography>
       <Typography paragraph>
         Dico, map, table de hachage… tu veux associer des clés à des valeurs ? Voici ce qu’il faut retenir pour ne pas te mélanger les pinceaux.
       </Typography>

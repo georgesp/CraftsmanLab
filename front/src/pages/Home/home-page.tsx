@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Container, Typography, Box, Grid, Card, Button, IconButton, Tooltip } from '@mui/material';
+import { Container, Typography, Box, Card, IconButton, Tooltip } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { telerikTheme } from '../../theme/theme';
 import { COLORS } from '../../utils/colors';
-import { Download, Business, Speed, Security, Support, TrendingUp, ArrowForward } from '@mui/icons-material';
+import { ArrowForward } from '@mui/icons-material';
 import { LazyTipCardsGrid } from '../../components/tips/tip-cards-grid-lazy';
 import { Header } from '../../components';
 // Lazy-load the prompts grid to avoid importing import.meta-based registry in tests

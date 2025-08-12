@@ -12,7 +12,6 @@ export const meta = {
 const CollectionTip: React.FC = () => {
   return (
     <Box>
-      <Typography variant="h2" gutterBottom>Petit pense-bête : interfaces de collections C#</Typography>
       <Typography paragraph>
         Tu hésites entre IEnumerable, ICollection ou IList ? Voici le minimum à retenir pour ne pas te planter dans tes signatures ou tes retours d’API.
       </Typography>

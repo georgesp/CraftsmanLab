@@ -36,7 +36,7 @@ export const Header: React.FC = () => {
             underline="none"
             sx={{ fontWeight: 500, fontSize: '1.05rem', '&:hover': { color: 'primary.main' } }}
           >
-            Tips
+            Tips / Penses-bêtes
           </MuiLink>
           <MuiLink
             component={RouterLink}

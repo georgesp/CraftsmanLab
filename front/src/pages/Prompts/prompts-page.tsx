@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Typography, Box, Card } from '@mui/material';
+import { Container, Typography, Card } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { telerikTheme } from '../../theme/theme';
