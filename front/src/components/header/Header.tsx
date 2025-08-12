@@ -70,8 +70,8 @@ export const Header: React.FC = () => {
 
   return (
     <StyledAppBar position="static">
-      <StyledToolbar>
-        <MuiLink component={RouterLink} to="/" underline="none" sx={{ display: 'flex', alignItems: 'center' }}>
+      <StyledToolbar sx={{ justifyContent: 'flex-end' }}>
+        <MuiLink component={RouterLink} to="/" underline="none" sx={{ display: 'flex', alignItems: 'center', mr: 'auto' }}>
           <Box
             component="img"
             src="/noBgColor.png"
@@ -79,10 +79,9 @@ export const Header: React.FC = () => {
             sx={{ height: 56, width: 'auto', objectFit: 'contain', display: 'block', flexShrink: 0 }}
           />
         </MuiLink>
-        {/* Barre de recherche à gauche du menu */}
-        <Box sx={{ flex: 1, display: 'flex', alignItems: 'center', mx: 2 }}>
+  <Box sx={{ display: 'flex', alignItems: 'center', minWidth: 0, maxWidth: 520, width: '100%', mr: 3 }}>
           <ClickAwayListener onClickAway={handleClickAway}>
-            <Box component="form" onSubmit={handleSubmit} sx={{ position: 'relative', width: '100%', maxWidth: 520 }}>
+            <Box component="form" onSubmit={handleSubmit} sx={{ position: 'relative', width: '100%' }}>
               <Paper
                 variant="outlined"
                 sx={{
@@ -150,21 +149,21 @@ export const Header: React.FC = () => {
         <NavigationContainer>
           <MuiLink
             component={RouterLink}
-            to="/prompts"
-            color="text.primary"
-            underline="none"
-            sx={{ fontWeight: 500, fontSize: '1.05rem', '&:hover': { color: 'primary.main' } }}
-          >
-            Prompts
-          </MuiLink>
-          <MuiLink
-            component={RouterLink}
             to="/tips"
             color="text.primary"
             underline="none"
             sx={{ fontWeight: 500, fontSize: '1.05rem', '&:hover': { color: 'primary.main' } }}
           >
             Tips / Penses-bêtes
+          </MuiLink>
+          <MuiLink
+            component={RouterLink}
+            to="/prompts"
+            color="text.primary"
+            underline="none"
+            sx={{ fontWeight: 500, fontSize: '1.05rem', '&:hover': { color: 'primary.main' } }}
+          >
+            Prompts
           </MuiLink>
           <MuiLink
             component={RouterLink}
