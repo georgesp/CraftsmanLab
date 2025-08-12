@@ -36,7 +36,7 @@ export const HomePage: React.FC = () => (
               component={RouterLink}
               to="/tips"
               color="primary"
-              sx={{ position: 'absolute', top: 0, right: 0, zIndex: 1, bgcolor: 'background.paper', boxShadow: 1 }}
+              sx={{ position: 'absolute', top: 0, right: 0, zIndex: 1, bgcolor: 'background.paper', boxShadow: 1, borderRadius: 1 }}
               size="medium"
               aria-label="Voir tous les tips"
             >
@@ -66,7 +66,7 @@ export const HomePage: React.FC = () => (
               component={RouterLink}
               to="/prompts"
               color="primary"
-              sx={{ position: 'absolute', top: 16, right: 16, zIndex: 1, bgcolor: 'background.paper', boxShadow: 1 }}
+              sx={{ position: 'absolute', top: 16, right: 16, zIndex: 1, bgcolor: 'background.paper', boxShadow: 1, borderRadius: 1 }}
               size="medium"
               aria-label="Voir tous les prompts"
             >
