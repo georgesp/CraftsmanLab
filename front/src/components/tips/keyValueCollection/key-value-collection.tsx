@@ -5,7 +5,7 @@ import { Box, Typography } from '@mui/material';
 export const meta = {
   slug: 'key-value-collection',
   title: 'Collections clé-valeur C#',
-  shortDescription: 'Comparer IDictionary, IReadOnlyDictionary et autres structures clé-valeur.',
+  shortDescription: 'Différentes structures clé-valeur (IDictionary, IReadOnlyDictionary, etc..)',
   writtenOn: '2025-08-11'
 };
 

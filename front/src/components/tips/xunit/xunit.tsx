@@ -6,7 +6,7 @@ import { CodeBlock } from '../../ui/CodeBlock';
 export const meta = {
   slug: 'xunit',
   title: 'xUnit',
-  shortDescription: 'Écrire et organiser des tests avec xUnit : bases, fixtures et bonnes pratiques.',
+  shortDescription: 'Écrire des tests avec xUnit : bases, fixtures et bonnes pratiques.',
   writtenOn: '2025-08-12',
 };
 

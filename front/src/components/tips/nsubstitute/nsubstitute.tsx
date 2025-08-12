@@ -6,7 +6,7 @@ import { CodeBlock } from '../../ui/CodeBlock';
 export const meta = {
   slug: 'nsubstitute',
   title: 'NSubstitute',
-  shortDescription: 'Mocker en .NET avec NSubstitute : bases, exemples et bonnes pratiques.',
+  shortDescription: 'Mocker avec NSubstitute : bases, exemples et bonnes pratiques.',
   writtenOn: '2025-08-12',
 };
 

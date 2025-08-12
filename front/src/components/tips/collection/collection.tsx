@@ -5,7 +5,7 @@ import { Box, Typography } from '@mui/material';
 export const meta = {
   slug: 'collection',
   title: 'Collections C#',
-  shortDescription: 'Panorama des interfaces de collections séquentielles (IEnumerable, ICollection, IList, IReadOnlyCollection, etc.)',
+  shortDescription: 'Différentes collections en C# (IEnumerable, ICollection, IList, IReadOnlyCollection, etc..)',
   writtenOn: '2025-08-11'
 };
 
