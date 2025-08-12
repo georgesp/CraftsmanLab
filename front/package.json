@@ -47,7 +47,12 @@
     "setupFilesAfterEnv": [
       "<rootDir>/src/setupTests.ts"
     ],
-  "moduleNameMapper": {
+    "moduleNameMapper": {
+  "^@/utils/search-client$": "<rootDir>/src/utils/search-client.jest.ts",
+  "^utils/search-client$": "<rootDir>/src/utils/search-client.jest.ts",
+  "^@/utils/searchClient$": "<rootDir>/src/utils/search-client.jest.ts",
+  "^utils/searchClient$": "<rootDir>/src/utils/search-client.jest.ts",
+      "^@/(.*)$": "<rootDir>/src/$1",
       "\\.(css|less|scss|sass)$": "identity-obj-proxy"
     }
   }

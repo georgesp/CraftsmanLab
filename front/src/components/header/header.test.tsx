@@ -33,4 +33,11 @@ describe('Header', () => {
     const navigation = screen.getByRole('banner');
     expect(navigation).toBeInTheDocument();
   });
+
+  test('renders search input', () => {
+    render(<HeaderWrapper />);
+    const searchInput = screen.getByPlaceholderText('Rechercher…');
+    expect(searchInput).toBeInTheDocument();
+    expect(searchInput).toHaveAttribute('aria-label', 'Rechercher');
+  });
 });

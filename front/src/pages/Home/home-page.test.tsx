@@ -22,13 +22,13 @@ describe('HomePage Component', () => {
   test('renders main hero section', () => {
     render(<HomePageWrapper />);
     
-    // Vérifier que le titre principal est présent
-    const mainTitle = screen.getByText(/Excellence en Développement Financier/i);
+    // Vérifier que le titre principal (actuel) est présent
+    const mainTitle = screen.getByText(/Tips \/ Rappels/i);
     expect(mainTitle).toBeInTheDocument();
-    
-    // Vérifier que le sous-titre est présent
-    const subtitle = screen.getByText(/Accélérez votre développement avec la suite d'outils/i);
-    expect(subtitle).toBeInTheDocument();
+
+    // Vérifier qu'un extrait du sous-texte est présent
+    const subtitleSnippet = screen.getByText(/petits rappels/i);
+    expect(subtitleSnippet).toBeInTheDocument();
   });
 
   test('renders navigation links', () => {
@@ -40,27 +40,22 @@ describe('HomePage Component', () => {
     expect(contactLink.closest('a')).toHaveAttribute('href', '/contact');
   });
 
-  test('renders key benefits section', () => {
+  test('renders latest prompts preview section', () => {
     render(<HomePageWrapper />);
-    
-    // Vérifier que la section des avantages clés est présente
-    const benefitsTitle = screen.getByText('Avantages Clés');
-    expect(benefitsTitle).toBeInTheDocument();
-    
-    // Vérifier quelques avantages clés
-    expect(screen.getByText('Solution Complète')).toBeInTheDocument();
-    expect(screen.getByText('Productivité Inégalée')).toBeInTheDocument();
-    expect(screen.getByText('Sécurité Avancée')).toBeInTheDocument();
+    const previewText = screen.getByText(/Un aperçu des derniers prompts publiés/i);
+    expect(previewText).toBeInTheDocument();
   });
 
   test('renders call-to-action buttons', () => {
     render(<HomePageWrapper />);
     
-    // Vérifier que les boutons d'appel à l'action sont présents
-    const trialButtons = screen.getAllByText(/Essai Gratuit/i);
-    expect(trialButtons.length).toBeGreaterThan(0);
-    
-    const contactButtons = screen.getAllByText(/Contactez-nous/i);
-    expect(contactButtons.length).toBeGreaterThan(0);
+    // Boutons (icônes) menant aux pages tips et prompts (présents en haut des sections)
+    const tipsCta = screen.getByLabelText('Voir tous les tips');
+    expect(tipsCta).toBeInTheDocument();
+    expect(tipsCta.closest('a')).toHaveAttribute('href', '/tips');
+
+    const promptsCta = screen.getByLabelText('Voir tous les prompts');
+    expect(promptsCta).toBeInTheDocument();
+    expect(promptsCta.closest('a')).toHaveAttribute('href', '/prompts');
   });
 });

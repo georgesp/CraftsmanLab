@@ -23,6 +23,7 @@
     /* Base URL and Paths */
     "baseUrl": "src",
     "paths": {
+  "@/*": ["*"],
       "pages/*": ["pages/*"],
       "components/*": ["components/*"],
       "hooks/*": ["hooks/*"],
