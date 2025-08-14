@@ -32,22 +32,7 @@ export const PromptCardsGrid: React.FC<Props> = ({ maxItems, showMore = true, se
   {items.map(p => (
         <Grid item xs={12} sm={6} md={3} lg={3} xl={3} key={p.slug}>
           <PromptCard>
-            {p.slug === 'more' ? (
-              <PromptCardContent sx={{ display: 'flex', flexDirection: 'column', height: '100%', cursor: 'default' }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                  <TextSnippetIcon fontSize="small" sx={{ color: COLORS.mediumGrey }} />
-                  <Typography variant="h5" component="h3" sx={{ fontWeight: 700, textDecoration: 'underline', mb: 0, color: COLORS.titleColor }}>
-                    {p.title}
-                  </Typography>
-                </Box>
-                <Divider sx={{ mt: 2, mb: 1, borderColor: COLORS.dividerLight, opacity: 1, mx: -3 }} />
-                <Typography variant="body1" sx={{ color: COLORS.grey800, flexGrow: 1 }}>
-                  {p.shortDescription}
-                </Typography>
-                <Divider sx={{ mt: 1, mb: 1, borderColor: COLORS.dividerLight, opacity: 1, mx: -3 }} />
-                <KeywordChips keywords={p.keywords} />
-              </PromptCardContent>
-            ) : (
+            
               <RouterLink to={`/prompts/${p.slug}`} style={{ display: 'block', height: '100%', color: 'inherit', textDecoration: 'none' }}>
                 <PromptCardContent sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
@@ -64,7 +49,7 @@ export const PromptCardsGrid: React.FC<Props> = ({ maxItems, showMore = true, se
                   <KeywordChips keywords={p.keywords} />
                 </PromptCardContent>
               </RouterLink>
-            )}
+            
           </PromptCard>
         </Grid>
       ))}

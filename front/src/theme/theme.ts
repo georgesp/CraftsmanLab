@@ -1,5 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 import { PRIMARY_BLUE, PRIMARY_BLUE_LIGHT, PRIMARY_BLUE_DARK } from '../styles/colors';
+import { COLORS } from '../utils/colors';
 
 export const telerikTheme = createTheme({
   palette: {
@@ -16,8 +17,8 @@ export const telerikTheme = createTheme({
       contrastText: '#000000',
     },
     background: {
-      default: '#ffffff',
-      paper: '#fafafa',
+      default: COLORS.defaultBg,
+      paper: '#F8FBFD',
     },
     text: {
       primary: '#2d3748',
@@ -140,7 +141,7 @@ export const telerikTheme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: '#ffffff',
+          backgroundColor: COLORS.defaultBg,
           color: '#2d3748',
           boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
           borderBottom: '1px solid #e2e8f0',

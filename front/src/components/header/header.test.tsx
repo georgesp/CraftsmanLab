@@ -14,8 +14,9 @@ describe('Header', () => {
   test('renders logo image', () => {
     render(<HeaderWrapper />);
     const logo = screen.getByAltText('CraftsmanLab');
-    expect(logo).toBeInTheDocument();
-    expect(logo).toHaveAttribute('src', '/noBgColor.png');
+  expect(logo).toBeInTheDocument();
+  // The header uses the white-background logo in the current implementation
+  expect(logo).toHaveAttribute('src', '/noBgColorWhite.png');
   });
 
   test('renders navigation links', () => {

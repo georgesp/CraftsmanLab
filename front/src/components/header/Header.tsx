@@ -154,7 +154,7 @@ export const Header: React.FC = () => {
             underline="none"
             sx={{ fontWeight: 500, fontSize: '1.05rem' }}
           >
-            Tips / Penses-bêtes
+            Tips / Mémos
           </MuiLink>
           <MuiLink
             component={RouterLink}

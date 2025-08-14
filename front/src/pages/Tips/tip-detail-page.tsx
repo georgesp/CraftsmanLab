@@ -44,7 +44,7 @@ export const TipDetailPage: React.FC = () => {
             <Grid container spacing={4} key={entry.slug}>
               <Grid item xs={12} md={4} lg={3}>
                 <Paper variant="outlined" sx={{ p: 2, position: 'sticky', top: 24 }}>
-                  <Typography variant="h6" sx={{ mb: 2 }}>Tips / Penses-bêtes</Typography>
+                  <Typography variant="h6" sx={{ mb: 2 }}>Tips / Mémos</Typography>
                   <TipList selectedSlug={entry.slug} />
                 </Paper>
               </Grid>

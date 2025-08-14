@@ -12,4 +12,5 @@ export const COLORS = {
   mediumGrey: '#B9BBBE', // Nouveau gris moyen pour l'utilisation
   dividerLight: '#B9BBBE', // Encore éclaircie (+30%) pour séparateurs discrets
   white: '#FFFFFF', // Blanc pour les textes et éléments sur fond sombre
+  defaultBg: '#F7FAFC', // Fond par défaut très clair pour parties non colorées
 };

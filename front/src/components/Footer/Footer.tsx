@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
       mt: 8,
       px: 3,
       py: 2,
-      backgroundColor: COLORS.white,
+      backgroundColor: COLORS.defaultBg,
       borderTop: `1px solid ${COLORS.mediumGrey}`,
       display: 'flex',
       alignItems: 'center',

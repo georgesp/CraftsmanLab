@@ -94,7 +94,7 @@ const PromptBody: React.FC = () => {
 
 export const meta = {
   slug: 'craftsmanlab-rules',
-  title: 'CraftsmanLab front rules',
+  title: 'My Global React Rules',
   shortDescription: "Règles et conventions utilisées pour le développement du site.",
   writtenOn: '2025-08-10',
   keywords: ['C#' as const],

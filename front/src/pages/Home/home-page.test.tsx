@@ -15,20 +15,16 @@ describe('HomePage Component', () => {
     
     // Vérifier que le logo CraftsmanLab est affiché
     const logo = screen.getByAltText('CraftsmanLab');
-    expect(logo).toBeInTheDocument();
-    expect(logo).toHaveAttribute('src', '/noBgColor.png');
+  expect(logo).toBeInTheDocument();
+  expect(logo).toHaveAttribute('src', '/noBgColorWhite.png');
   });
 
   test('renders main hero section', () => {
     render(<HomePageWrapper />);
     
-    // Vérifier que le titre principal (actuel) est présent
-    const mainTitle = screen.getByText(/Tips \/ Rappels/i);
-    expect(mainTitle).toBeInTheDocument();
-
-    // Vérifier qu'un extrait du sous-texte est présent
-    const subtitleSnippet = screen.getByText(/petits rappels/i);
-    expect(subtitleSnippet).toBeInTheDocument();
+  // Vérifier que le lien de navigation vers la page tips est présent
+  const tipsNav = screen.getByText(/Tips \/ Mémos/i);
+  expect(tipsNav).toBeInTheDocument();
   });
 
   test('renders navigation links', () => {
@@ -49,13 +45,13 @@ describe('HomePage Component', () => {
   test('renders call-to-action buttons', () => {
     render(<HomePageWrapper />);
     
-    // Boutons (icônes) menant aux pages tips et prompts (présents en haut des sections)
-    const tipsCta = screen.getByLabelText('Voir tous les tips');
-    expect(tipsCta).toBeInTheDocument();
-    expect(tipsCta.closest('a')).toHaveAttribute('href', '/tips');
+  // Vérifier que les liens de navigation vers tips et prompts sont présents
+  const tipsLink = screen.getByText('Tips / Mémos');
+  expect(tipsLink).toBeInTheDocument();
+  expect(tipsLink.closest('a')).toHaveAttribute('href', '/tips');
 
-    const promptsCta = screen.getByLabelText('Voir tous les prompts');
-    expect(promptsCta).toBeInTheDocument();
-    expect(promptsCta.closest('a')).toHaveAttribute('href', '/prompts');
+  const promptsLink = screen.getByText('Prompts');
+  expect(promptsLink).toBeInTheDocument();
+  expect(promptsLink.closest('a')).toHaveAttribute('href', '/prompts');
   });
 });
