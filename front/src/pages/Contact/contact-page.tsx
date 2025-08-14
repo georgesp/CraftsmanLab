@@ -16,7 +16,7 @@ import { Email, Send } from '@mui/icons-material';
 import { telerikTheme } from '../../theme/theme';
 import { COLORS } from '../../utils/colors';
 import { CONTACT_EMAIL } from '../../utils/constants';
-import { Header } from '../../components';
+import { Header, Footer } from '../../components';
 
 export const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -59,7 +59,7 @@ export const ContactPage: React.FC = () => {
       <Container maxWidth="lg">
         {/* Hero Section */}
         <Box sx={{ 
-          textAlign: 'center', 
+          textAlign: 'left', 
           py: { xs: 1.5, md: 2 },
           background: 'linear-gradient(135deg, rgba(255, 99, 88, 0.05) 0%, rgba(64, 224, 208, 0.05) 100%)',
           borderRadius: 1,
@@ -273,7 +273,8 @@ export const ContactPage: React.FC = () => {
             </Grid>
           </Grid>
         </Grid>
-      </Container>
+  </Container>
+  <Footer />
     </ThemeProvider>
   );
 };

@@ -3,7 +3,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Container, Card, Typography } from '@mui/material';
 import { telerikTheme } from '../../theme/theme';
-import { Header } from '../../components';
+import { Header, Footer } from '../../components';
 import { TipCardsGrid } from '../../components/tips/tip-cards-grid';
 import { COLORS } from '../../utils/colors';
 import { GridContainer, PromptsPageContainer } from '../Prompts/styles';
@@ -13,31 +13,33 @@ export const TipsPage: React.FC = () => {
 		<ThemeProvider theme={telerikTheme}>
 			<CssBaseline />
 			<Header />
-			<Container maxWidth="lg">
-				<PromptsPageContainer>
-					<Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 600 }}>
-						Tips .NET / C#
-					</Typography>
-					<Typography variant="body1">
+			<Container maxWidth={false} disableGutters sx={{ px: 0, mx: 0, width: '100%' }}>
+				<PromptsPageContainer sx={{ px: 0, mx: 0, width: '100%', ml: 2 }}>
+					<div style={{ position: 'relative', paddingLeft: '3rem' }}>
+						<span style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 10, background: COLORS.darkGreyBg }} />
+					<Typography variant="body1" sx={{ px: 0, mx: 0, width: '100%' }}>
 						Une collection de fiches synthétiques sur des concepts fondamentaux de l'écosystème .NET et C#. Chaque tip vise à clarifier un point d'architecture, une interface clé ou une bonne pratique d'API.
 					</Typography>
+					</div>
 				</PromptsPageContainer>
 				<GridContainer>
-					<Card
-						variant="outlined"
-						sx={{
-							backgroundColor: COLORS.lightBlueBg,
-							borderRadius: 1,
-							p: { xs: 2, md: 4 },
-							boxShadow: 0,
-							maxWidth: 1200,
-							mx: 'auto',
-						}}
+								<Card
+									variant="outlined"
+									sx={{
+										backgroundColor: COLORS.darkGreyBg,
+										borderRadius: '12px',
+										p: { xs: 2, md: 4 },
+										boxShadow: 0,
+										borderLeft: 0,
+										borderRight: 0,
+										width: '100%'
+									}}
 					>
 						<TipCardsGrid />
 					</Card>
 				</GridContainer>
 			</Container>
+		<Footer />
 		</ThemeProvider>
 	);
 };

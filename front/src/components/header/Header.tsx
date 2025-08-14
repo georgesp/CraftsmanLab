@@ -74,12 +74,12 @@ export const Header: React.FC = () => {
         <MuiLink component={RouterLink} to="/" underline="none" sx={{ display: 'flex', alignItems: 'center', mr: 'auto' }}>
           <Box
             component="img"
-            src="/noBgColor.png"
+            src="/noBgColorWhite.png"
             alt="CraftsmanLab"
             sx={{ height: 56, width: 'auto', objectFit: 'contain', display: 'block', flexShrink: 0 }}
           />
         </MuiLink>
-  <Box sx={{ display: 'flex', alignItems: 'center', minWidth: 0, maxWidth: 520, width: '100%', mr: 3 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', minWidth: 0, maxWidth: 520, width: '100%', mr: 3 }}>
           <ClickAwayListener onClickAway={handleClickAway}>
             <Box component="form" onSubmit={handleSubmit} sx={{ position: 'relative', width: '100%' }}>
               <Paper
@@ -89,7 +89,7 @@ export const Header: React.FC = () => {
                   display: 'flex',
                   alignItems: 'center',
                   height: 40,
-                  borderRadius: 1,
+                  borderRadius: 0,
                 }}
               >
                 <InputBase
@@ -116,9 +116,9 @@ export const Header: React.FC = () => {
                         <ListItemButton selected={idx === selectedIndex} onClick={() => handleSelect(r.kind, r.slug)}>
                           <ListItemIcon sx={{ minWidth: 36 }}>
                             {r.kind === 'tip' ? (
-                              <TipsAndUpdatesIcon color="primary" fontSize="small" />
+                              <TipsAndUpdatesIcon fontSize="small" sx={{ color: COLORS.mediumGrey }} />
                             ) : (
-                              <TextSnippetIcon color="action" fontSize="small" />
+                              <TextSnippetIcon fontSize="small" sx={{ color: COLORS.mediumGrey }} />
                             )}
                           </ListItemIcon>
                           <ListItemText
@@ -150,27 +150,27 @@ export const Header: React.FC = () => {
           <MuiLink
             component={RouterLink}
             to="/tips"
-            color="text.primary"
+            color="inherit"
             underline="none"
-            sx={{ fontWeight: 500, fontSize: '1.05rem', '&:hover': { color: 'primary.main' } }}
+            sx={{ fontWeight: 500, fontSize: '1.05rem' }}
           >
             Tips / Penses-bêtes
           </MuiLink>
           <MuiLink
             component={RouterLink}
             to="/prompts"
-            color="text.primary"
+            color="inherit"
             underline="none"
-            sx={{ fontWeight: 500, fontSize: '1.05rem', '&:hover': { color: 'primary.main' } }}
+            sx={{ fontWeight: 500, fontSize: '1.05rem' }}
           >
             Prompts
           </MuiLink>
           <MuiLink
             component={RouterLink}
             to="/contact"
-            color="text.primary"
+            color="inherit"
             underline="none"
-            sx={{ fontWeight: 500, fontSize: '1.05rem', '&:hover': { color: 'primary.main' } }}
+            sx={{ fontWeight: 500, fontSize: '1.05rem' }}
           >
             Contact
           </MuiLink>

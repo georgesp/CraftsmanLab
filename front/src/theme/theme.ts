@@ -37,7 +37,7 @@ export const telerikTheme = createTheme({
     },
   },
   typography: {
-    fontFamily: '"Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif',
+  fontFamily: 'Inter Tight, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif',
     h1: {
       fontSize: '3rem',
       fontWeight: 700,
@@ -126,7 +126,7 @@ export const telerikTheme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: '16px',
+          borderRadius: '12px',
           boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
           border: '1px solid #e2e8f0',
           '&:hover': {
@@ -166,7 +166,7 @@ export const telerikTheme = createTheme({
     MuiChip: {
       styleOverrides: {
         root: {
-          borderRadius: '20px',
+          borderRadius: '8px',
           fontWeight: 500,
           fontSize: '0.875rem',
         },
@@ -174,7 +174,7 @@ export const telerikTheme = createTheme({
     },
   },
   shape: {
-    borderRadius: 8,
+  borderRadius: 8,
   },
   spacing: 8,
 });

@@ -40,18 +40,18 @@ export const PromptsList = styled(List)({
 });
 
 export const PromptsListItem = styled(ListItemButton)(({ theme }) => ({
-  borderRadius: 1,
+  borderRadius: '8px',
   marginBottom: theme.spacing(0.5),
 }));
 
 export const CodeBlock = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.grey[100],
   padding: theme.spacing(2),
-  borderRadius: theme.spacing(2),
+  borderRadius: '8px',
   whiteSpace: 'pre-wrap',
   wordBreak: 'break-word',
   overflowWrap: 'break-word',
-  fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+  fontFamily: 'Inter Tight, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
   fontSize: '0.9rem',
   border: '1px solid',
   borderColor: theme.palette.grey[200],

@@ -175,7 +175,7 @@ const PromptBody: React.FC = () => {
               right: 8,
               zIndex: 1,
               backgroundColor: 'rgba(255, 255, 255, 0.9)',
-              borderRadius: 1,
+              borderRadius: 0,
               border: '1px solid',
               borderColor: 'grey.300',
               width: 32,
@@ -196,7 +196,7 @@ const PromptBody: React.FC = () => {
           >
             <ContentCopy fontSize="small" />
           </IconButton>
-        <CodeBlock component="pre" sx={{ border: '1px solid', borderColor: 'grey.300', borderRadius: 1 }}>
+  <CodeBlock component="pre" sx={{ border: '1px solid', borderColor: 'grey.300', borderRadius: 0 }}>
           {promptText}
         </CodeBlock>
       </Box>
@@ -224,7 +224,7 @@ const PromptBody: React.FC = () => {
               David Fowler
             </Link>
           </Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic', textAlign: 'right' }}>
+          <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic', textAlign: 'left' }}>
             Écrit le {writtenOn}
           </Typography>
         </Box>
@@ -238,6 +238,7 @@ export const meta = {
   title: '.NET Async Best Practices',
   shortDescription: "Guide complet des bonnes pratiques asynchronisme .NET/ASP.NET Core avec exemples concrets.",
   writtenOn: '2025-08-11',
+  keywords: ['C#' as const],
 };
 
 const moduleExport: PromptModule = {

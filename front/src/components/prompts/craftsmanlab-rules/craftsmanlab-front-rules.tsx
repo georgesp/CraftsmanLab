@@ -44,7 +44,7 @@ const PromptBody: React.FC = () => {
             right: 8,
             zIndex: 1,
             backgroundColor: 'rgba(255, 255, 255, 0.9)',
-            borderRadius: 1,
+            borderRadius: 0,
             border: '1px solid',
             borderColor: 'grey.300',
             width: 32,
@@ -62,7 +62,7 @@ const PromptBody: React.FC = () => {
         >
           <ContentCopy fontSize="small" />
         </IconButton>
-        <CodeBlock component="pre" sx={{ border: '1px solid', borderColor: 'grey.300', borderRadius: 1 }}>
+  <CodeBlock component="pre" sx={{ border: '1px solid', borderColor: 'grey.300', borderRadius: 0 }}>
           {promptText}
         </CodeBlock>
       </Box>
@@ -83,7 +83,7 @@ const PromptBody: React.FC = () => {
           <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic' }}>
             Source: Fichier global.prompt.md du projet
           </Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic', textAlign: 'right' }}>
+          <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic', textAlign: 'left' }}>
             Écrit le {writtenOn}
           </Typography>
         </Box>
@@ -97,6 +97,7 @@ export const meta = {
   title: 'CraftsmanLab front rules',
   shortDescription: "Règles et conventions utilisées pour le développement du site.",
   writtenOn: '2025-08-10',
+  keywords: ['C#' as const],
 };
 
 const moduleExport: PromptModule = {

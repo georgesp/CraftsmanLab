@@ -41,7 +41,7 @@ const PromptBody: React.FC = () => {
             right: 8,
             zIndex: 1,
             backgroundColor: 'rgba(255, 255, 255, 0.9)',
-            borderRadius: 1,
+            borderRadius: 0,
             border: '1px solid',
             borderColor: 'grey.300',
             width: 32,
@@ -84,6 +84,7 @@ export const meta = {
   title: 'More coming soon...',
   shortDescription: '',
   writtenOn: '2030-08-11',
+  keywords: ['C#' as const],
 };
 
 const moduleExport: PromptModule = {

@@ -6,10 +6,10 @@ export const ContactContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const HeroSection = styled(Box)(({ theme }) => ({
-  textAlign: 'center',
+  textAlign: 'left',
   padding: theme.spacing(6, 0),
   background: 'linear-gradient(135deg, rgba(255, 99, 88, 0.05) 0%, rgba(64, 224, 208, 0.05) 100%)',
-  borderRadius: theme.spacing(4),
+  borderRadius: '12px',
   margin: theme.spacing(4, 0),
   [theme.breakpoints.up('md')]: {
     padding: theme.spacing(8, 0),
@@ -23,14 +23,14 @@ export const HeroSubtitle = styled(Typography)({
 
 export const SuccessAlert = styled(Alert)(({ theme }) => ({
   marginBottom: theme.spacing(4),
-  borderRadius: theme.spacing(2),
+  borderRadius: '12px',
   '& .MuiAlert-message': {
     fontSize: '1rem',
   },
 }));
 
 export const ContactCard = styled(Card)(({ theme }) => ({
-  borderRadius: theme.spacing(3),
+  borderRadius: '12px',
   boxShadow: theme.shadows[3],
 }));
 
@@ -55,8 +55,8 @@ export const SubmitButton = styled(Button)(({ theme }) => ({
   padding: theme.spacing(1.5, 4),
 }));
 
-export const InfoCard = styled(Card)(({ theme }) => ({
-  borderRadius: theme.spacing(3),
+export const InfoCard = styled(Card)(() => ({
+  borderRadius: '12px',
 }));
 
 export const InfoCardContent = styled(CardContent)(({ theme }) => ({
@@ -81,8 +81,8 @@ export const InfoItemDescription = styled(Typography)(({ theme }) => ({
   marginLeft: theme.spacing(4),
 }));
 
-export const HoursCard = styled(Card)(({ theme }) => ({
-  borderRadius: theme.spacing(3),
+export const HoursCard = styled(Card)(() => ({
+  borderRadius: '12px',
   background: 'linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%)',
 }));
 
@@ -103,10 +103,10 @@ export const HoursContent = styled(Box)(({ theme }) => ({
 }));
 
 export const CTASection = styled(Box)(({ theme }) => ({
-  textAlign: 'center',
+  textAlign: 'left',
   padding: theme.spacing(6, 0),
   background: 'linear-gradient(135deg, rgba(25, 118, 210, 0.05) 0%, rgba(156, 39, 176, 0.05) 100%)',
-  borderRadius: theme.spacing(4),
+  borderRadius: '12px',
   margin: theme.spacing(6, 0),
   [theme.breakpoints.up('md')]: {
     padding: theme.spacing(8, 0),

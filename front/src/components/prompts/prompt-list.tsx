@@ -25,7 +25,7 @@ export const PromptList: React.FC<Props> = ({ selectedSlug, onNavigate, maxItems
           ? (
             <ListItemButton
               key={p.slug}
-              sx={{ borderRadius: 1, mb: 0.5, cursor: 'default' }}
+              sx={{ mb: 0.5, cursor: 'default' }}
               disableRipple
               tabIndex={-1}
             >
@@ -39,7 +39,7 @@ export const PromptList: React.FC<Props> = ({ selectedSlug, onNavigate, maxItems
               to={`/prompts/${p.slug}`}
               selected={selectedSlug === p.slug}
               onClick={onNavigate}
-              sx={{ borderRadius: 1, mb: 0.5 }}
+              sx={{ mb: 0.5 }}
             >
               <ListItemText primary={p.title} secondary={p.shortDescription} />
             </ListItemButton>

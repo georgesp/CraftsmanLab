@@ -8,6 +8,7 @@ export const meta = {
   title: 'NSubstitute',
   shortDescription: 'Mocker avec NSubstitute : bases, exemples et bonnes pratiques.',
   writtenOn: '2025-08-12',
+  keywords: ['C#' as const],
 };
 
 // Code blocks rendered with shared CodeBlock component

@@ -4,7 +4,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { useParams } from 'react-router-dom';
 import { telerikTheme } from '../../theme/theme';
-import { Header } from '../../components';
+import { Header, Footer } from '../../components';
 import { findPromptBySlug } from '../../components/prompts/registry';
 import { PromptList } from '../../components/prompts/prompt-list';
 
@@ -68,7 +68,8 @@ export const PromptDetailPage: React.FC = () => {
           )}
         </Box>
       </Container>
-      <Snackbar
+  <Footer />
+  <Snackbar
         open={copyOpen}
         autoHideDuration={2000}
         onClose={() => setCopyOpen(false)}

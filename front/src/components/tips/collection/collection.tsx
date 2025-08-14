@@ -6,7 +6,8 @@ export const meta = {
   slug: 'collection',
   title: 'Collections C#',
   shortDescription: 'Différentes collections en C# (IEnumerable, ICollection, IList, IReadOnlyCollection, etc..)',
-  writtenOn: '2025-08-11'
+  writtenOn: '2025-08-11',
+  keywords: ['C#' as const],
 };
 
 const CollectionTip: React.FC = () => {

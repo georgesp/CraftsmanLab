@@ -9,7 +9,7 @@ export const PromptsPageContainer = styled(Box)(({ theme }) => ({
 export const ExplanationBox = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.grey[100],
   border: `1px solid ${theme.palette.grey[200]}`,
-  borderRadius: theme.spacing(1),
+  borderRadius: '12px',
   padding: theme.spacing(3),
   marginBottom: theme.spacing(4),
   fontSize: '1.08rem',
@@ -28,9 +28,9 @@ export const GridContainer = styled(Box)(({ theme }) => ({
   paddingBottom: theme.spacing(4),
 }));
 
-export const PromptCard = styled(Card)(({ theme }) => ({
+export const PromptCard = styled(Card)(() => ({
   height: '100%',
-  borderRadius: theme.spacing(1),
+  borderRadius: '12px',
   overflow: 'hidden',
 }));
 

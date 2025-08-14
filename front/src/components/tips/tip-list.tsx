@@ -26,7 +26,7 @@ export const TipList: React.FC<Props> = ({ selectedSlug, onNavigate, maxItems })
           to={`/tips/${t.slug}`}
           selected={selectedSlug === t.slug}
           onClick={onNavigate}
-          sx={{ borderRadius: 1, mb: 0.5 }}
+          sx={{ mb: 0.5 }}
         >
           <ListItemText primary={t.title} secondary={t.shortDescription} />
         </ListItemButton>

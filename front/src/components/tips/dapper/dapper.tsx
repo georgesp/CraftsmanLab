@@ -8,6 +8,7 @@ export const meta = {
   title: 'Utilisation de Dapper',
   shortDescription: 'Utilisation de Dapper (DTO, alias, multi‑mapping).',
   writtenOn: '2025-08-12',
+  keywords: ['C#' as const],
 };
 
 const DapperTip: React.FC = () => {
