@@ -5,7 +5,7 @@ import { Container, Card, Typography } from '@mui/material';
 import { telerikTheme } from '../../theme/theme';
 import { Header, Footer } from '../../components';
 import { TipCardsGrid } from '../../components/tips/tip-cards-grid';
-import { COLORS } from '../../utils/colors';
+import { COLORS } from '../../styles/colors';
 import { GridContainer, PromptsPageContainer } from '../Prompts/styles';
 
 export const TipsPage: React.FC = () => {

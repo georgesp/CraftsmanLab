@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import { COLORS } from '../../utils/colors';
+import { COLORS } from '../../styles/colors';
 
 export const Footer: React.FC = () => {
   return (

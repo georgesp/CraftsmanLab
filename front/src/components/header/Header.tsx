@@ -5,7 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import { searchAll, type SearchHit } from '@/utils/search-client';
-import { COLORS } from '../../utils/colors';
+import { COLORS } from '../../styles/colors';
 import {
   StyledAppBar,
   StyledToolbar,

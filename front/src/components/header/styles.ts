@@ -1,6 +1,6 @@
 import { styled } from '@mui/material/styles';
 import { AppBar, Toolbar, Box, Link } from '@mui/material';
-import { COLORS } from '../../utils/colors';
+import { COLORS } from '../../styles/colors';
 
 export const StyledAppBar = styled(AppBar)({
   width: '100%',

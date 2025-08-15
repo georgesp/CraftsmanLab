@@ -13,7 +13,7 @@ describe('ContactPage', () => {
   test('renders contact page with form', () => {
     render(<ContactPageWrapper />);
     
-    expect(screen.getByText('Envoyez-nous un message')).toBeInTheDocument();
+    expect(screen.getByText('Envoyez-moi un message')).toBeInTheDocument();
     // Vérifier que les champs du formulaire sont présents
     expect(screen.getByRole('textbox', { name: /nom complet/i })).toBeInTheDocument();
     expect(screen.getByRole('textbox', { name: /email/i })).toBeInTheDocument();

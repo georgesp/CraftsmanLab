@@ -1,13 +1,12 @@
 import { createTheme } from '@mui/material/styles';
-import { PRIMARY_BLUE, PRIMARY_BLUE_LIGHT, PRIMARY_BLUE_DARK } from '../styles/colors';
-import { COLORS } from '../utils/colors';
+import { COLORS } from '../styles/colors';
 
 export const telerikTheme = createTheme({
   palette: {
     primary: {
-      main: PRIMARY_BLUE,
-      light: PRIMARY_BLUE_LIGHT,
-      dark: PRIMARY_BLUE_DARK,
+      main: COLORS.primary.main,
+      light: COLORS.primary.light,
+      dark: COLORS.primary.dark,
       contrastText: '#ffffff',
     },
     secondary: {
@@ -97,7 +96,7 @@ export const telerikTheme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: '8px',
+          borderRadius: 0,
           padding: '12px 24px',
           fontSize: '1rem',
           fontWeight: 600,
@@ -108,18 +107,18 @@ export const telerikTheme = createTheme({
           },
         },
         contained: {
-          background: 'linear-gradient(135deg, #1976d2 0%, #63a4ff 100%)',
+          background: `linear-gradient(135deg, ${COLORS.primary.main} 0%, ${COLORS.primary.light} 100%)`,
           color: '#fff',
           '&:hover': {
-            background: 'linear-gradient(135deg, #115293 0%, #1976d2 100%)',
+            background: `linear-gradient(135deg, ${COLORS.primary.dark} 0%, ${COLORS.primary.main} 100%)`,
           },
         },
         outlined: {
           borderWidth: '2px',
-          borderColor: '#1976d2',
+          borderColor: COLORS.primary.main,
           '&:hover': {
             borderWidth: '2px',
-            borderColor: '#115293',
+            borderColor: COLORS.primary.dark,
           },
         },
       },
@@ -127,7 +126,7 @@ export const telerikTheme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: '12px',
+          borderRadius: 0,
           boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
           border: '1px solid #e2e8f0',
           '&:hover': {
@@ -152,7 +151,7 @@ export const telerikTheme = createTheme({
       styleOverrides: {
         root: {
           '& .MuiOutlinedInput-root': {
-            borderRadius: '8px',
+            borderRadius: 0,
             '&:hover .MuiOutlinedInput-notchedOutline': {
               borderColor: '#1976d2',
             },
@@ -167,15 +166,22 @@ export const telerikTheme = createTheme({
     MuiChip: {
       styleOverrides: {
         root: {
-          borderRadius: '8px',
+          borderRadius: 0,
           fontWeight: 500,
           fontSize: '0.875rem',
         },
       },
     },
+    MuiAlert: {
+      styleOverrides: {
+        root: {
+          borderRadius: 0,
+        },
+      },
+    },
   },
   shape: {
-  borderRadius: 8,
+  borderRadius: 0,
   },
   spacing: 8,
 });

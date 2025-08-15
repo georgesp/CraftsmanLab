@@ -3,7 +3,7 @@ import { Container, Typography, Box, Card } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { telerikTheme } from '../../theme/theme';
-import { COLORS } from '../../utils/colors';
+import { COLORS } from '../../styles/colors';
 import { LazyTipCardsGrid } from '../../components/tips/tip-cards-grid-lazy';
 import { Header, Footer } from '../../components';
 // Lazy-load the prompts grid to avoid importing import.meta-based registry in tests

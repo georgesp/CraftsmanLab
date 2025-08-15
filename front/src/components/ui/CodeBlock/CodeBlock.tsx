@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import { COLORS } from '../../../utils/colors';
+import { COLORS } from '../../../styles/colors';
 
 export type CodeBlockProps = {
   code: string;

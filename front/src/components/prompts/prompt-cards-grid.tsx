@@ -4,7 +4,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import { Link as RouterLink } from 'react-router-dom';
 import { promptsList } from './registry';
-import { COLORS } from '../../utils/colors';
+import { COLORS } from '../../styles/colors';
 import { PromptCard, PromptCardContent } from '../../pages/Prompts/styles';
 import { KeywordChips } from '../ui/KeywordChips';
 

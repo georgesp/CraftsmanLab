@@ -5,7 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { telerikTheme } from '../../theme/theme';
 import { Header, Footer } from '../../components';
 import { PromptCardsGrid } from '../../components/prompts/prompt-cards-grid';
-import { COLORS } from '../../utils/colors';
+import { COLORS } from '../../styles/colors';
 import {
   PromptsPageContainer,
   // ExplanationBox,

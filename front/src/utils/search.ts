@@ -1,5 +1,5 @@
 // Utilitaire de recherche: indexe le contenu brut des Tips et des Prompts
-// Respecte les règles de couleurs centralisées via src/utils/colors.ts si besoin côté UI
+// Respecte les règles de couleurs centralisées via src/styles/colors.ts si besoin côté UI
 
 export type SearchKind = 'tip' | 'prompt';
 
