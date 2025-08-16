@@ -64,7 +64,6 @@ export const HomePage: React.FC = () => (
             mb: 6,
             borderLeft: 0,
             borderRight: 0,
-            borderRadius: '12px',
             width: '100%',
           }}
         >

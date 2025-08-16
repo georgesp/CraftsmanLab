@@ -40,7 +40,6 @@ export const PromptsList = styled(List)({
 });
 
 export const PromptsListItem = styled(ListItemButton)(({ theme }) => ({
-  borderRadius: '8px',
   marginBottom: theme.spacing(0.5),
 }));
 

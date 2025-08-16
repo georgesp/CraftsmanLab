@@ -27,7 +27,6 @@ export const TipsPage: React.FC = () => {
 									variant="outlined"
 									sx={{
 										backgroundColor: COLORS.darkGreyBg,
-										borderRadius: '12px',
 										p: { xs: 2, md: 4 },
 										boxShadow: 0,
 										borderLeft: 0,
