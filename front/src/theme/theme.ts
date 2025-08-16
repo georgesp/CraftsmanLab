@@ -1,5 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 import { COLORS } from '../styles/colors';
+import { TYPOGRAPHY } from '../styles/typography';
 
 export const telerikTheme = createTheme({
   palette: {
@@ -37,59 +38,59 @@ export const telerikTheme = createTheme({
     },
   },
   typography: {
-  fontFamily: 'Inter Tight, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif',
+    fontFamily: TYPOGRAPHY.fontFamily,
     h1: {
-      fontSize: '3rem',
-      fontWeight: 700,
-      lineHeight: 1.2,
-      letterSpacing: '-0.02em',
+      fontSize: TYPOGRAPHY.fontSizes.h1,
+      fontWeight: TYPOGRAPHY.fontWeights.bold,
+      lineHeight: TYPOGRAPHY.lineHeights.tight,
+      letterSpacing: TYPOGRAPHY.letterSpacing.tight,
       color: '#2d3748',
     },
     h2: {
-      fontSize: '2.5rem',
-      fontWeight: 600,
-      lineHeight: 1.3,
-      letterSpacing: '-0.01em',
+      fontSize: TYPOGRAPHY.fontSizes.h2,
+      fontWeight: TYPOGRAPHY.fontWeights.semiBold,
+      lineHeight: TYPOGRAPHY.lineHeights.normal,
+      letterSpacing: TYPOGRAPHY.letterSpacing.normal,
       color: '#2d3748',
     },
     h3: {
-      fontSize: '2rem',
-      fontWeight: 600,
-      lineHeight: 1.4,
+      fontSize: TYPOGRAPHY.fontSizes.h3,
+      fontWeight: TYPOGRAPHY.fontWeights.semiBold,
+      lineHeight: TYPOGRAPHY.lineHeights.normal,
       color: '#2d3748',
     },
     h4: {
-      fontSize: '1.5rem',
-      fontWeight: 600,
-      lineHeight: 1.4,
+      fontSize: TYPOGRAPHY.fontSizes.h4,
+      fontWeight: TYPOGRAPHY.fontWeights.semiBold,
+      lineHeight: TYPOGRAPHY.lineHeights.normal,
       color: '#2d3748',
     },
     h5: {
-      fontSize: '1.25rem',
-      fontWeight: 500,
-      lineHeight: 1.5,
+      fontSize: TYPOGRAPHY.fontSizes.h5,
+      fontWeight: TYPOGRAPHY.fontWeights.medium,
+      lineHeight: TYPOGRAPHY.lineHeights.relaxed,
       color: '#4a5568',
     },
     h6: {
-      fontSize: '1.125rem',
-      fontWeight: 500,
-      lineHeight: 1.5,
+      fontSize: TYPOGRAPHY.fontSizes.h6,
+      fontWeight: TYPOGRAPHY.fontWeights.medium,
+      lineHeight: TYPOGRAPHY.lineHeights.relaxed,
       color: '#4a5568',
     },
     body1: {
-      fontSize: '1rem',
-      lineHeight: 1.6,
+      fontSize: TYPOGRAPHY.fontSizes.body1,
+      lineHeight: TYPOGRAPHY.lineHeights.relaxed,
       color: '#4a5568',
     },
     body2: {
-      fontSize: '0.875rem',
-      lineHeight: 1.5,
+      fontSize: TYPOGRAPHY.fontSizes.body2,
+      lineHeight: TYPOGRAPHY.lineHeights.relaxed,
       color: '#718096',
     },
     button: {
       textTransform: 'none',
-      fontWeight: 600,
-      fontSize: '1rem',
+      fontWeight: TYPOGRAPHY.fontWeights.semiBold,
+      fontSize: TYPOGRAPHY.fontSizes.button,
     },
   },
   components: {
@@ -98,8 +99,8 @@ export const telerikTheme = createTheme({
         root: {
           borderRadius: 0,
           padding: '12px 24px',
-          fontSize: '1rem',
-          fontWeight: 600,
+          fontSize: TYPOGRAPHY.fontSizes.button,
+          fontWeight: TYPOGRAPHY.fontWeights.semiBold,
           textTransform: 'none',
           boxShadow: 'none',
           '&:hover': {
@@ -167,8 +168,8 @@ export const telerikTheme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 0,
-          fontWeight: 500,
-          fontSize: '0.875rem',
+          fontWeight: TYPOGRAPHY.fontWeights.medium,
+          fontSize: TYPOGRAPHY.fontSizes.caption,
         },
       },
     },

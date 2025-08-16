@@ -12,6 +12,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { Email, Send } from '@mui/icons-material';
 import { telerikTheme } from '../../theme/theme';
 import { COLORS } from '../../styles/colors';
+import { TYPOGRAPHY } from '../../styles/typography';
 import { CONTACT_EMAIL } from '../../utils/constants';
 import { Header, Footer } from '../../components';
 import {
@@ -72,10 +73,10 @@ export const ContactPage: React.FC = () => {
             {/* Left column: Hero + Info cards */}
             <Box sx={{ flex: { xs: '1 1 100%', md: '0 0 50%' }, maxWidth: { xs: '100%', md: '50%' } }}>
               <HeroSection>
-                <Typography variant="h2" gutterBottom sx={{ fontSize: { xs: '1.6rem', md: '2.2rem' } }}>
+                <Typography variant="h2" gutterBottom sx={{ fontSize: TYPOGRAPHY.responsiveFontSizes.h2 }}>
                   Développeur Freelance .NET & IA
                 </Typography>
-                <HeroSubtitle variant="body1" gutterBottom align="left" color="text.secondary" sx={{ fontSize: { xs: '1rem', md: '1.15rem' } }}>
+                <HeroSubtitle variant="body1" gutterBottom align="left" color="text.secondary" sx={{ fontSize: TYPOGRAPHY.responsiveFontSizes.body1 }}>
                   Vous cherchez un développeur .NET expérimenté, avec des compétences en Intelligence Artificielle ?<br />
                   Ou vous aimeriez voir certaines choses ajoutées sur le site ?<br />
                   N'hésitez pas à me contacter pour discuter de vos besoins ou de vos projets !

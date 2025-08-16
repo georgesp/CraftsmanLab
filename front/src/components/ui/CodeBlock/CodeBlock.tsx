@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import { COLORS } from '../../../styles/colors';
+import { TYPOGRAPHY } from '../../../styles/typography';
 
 export type CodeBlockProps = {
   code: string;
@@ -27,9 +28,9 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ code, ariaLabel, maxHeight
   borderRadius: '8px',
         overflowX: 'auto',
         maxHeight,
-  fontFamily: 'Inter Tight, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
-        fontSize: '0.9rem',
-        lineHeight: 1.6,
+  fontFamily: TYPOGRAPHY.fontFamily,
+        fontSize: TYPOGRAPHY.fontSizes.small,
+        lineHeight: TYPOGRAPHY.lineHeights.relaxed,
         whiteSpace: 'pre',
       }}
     >

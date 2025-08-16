@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { telerikTheme } from '../../theme/theme';
+import { PAGE_SPACING } from '../../styles/spacing';
 import { Header } from '../../components';
 import { findTipBySlug } from '../../components/tips/registry';
 import { Container, Box, Grid, Paper, Typography, Alert } from '@mui/material';
@@ -36,7 +37,7 @@ export const TipDetailPage: React.FC = () => {
       <CssBaseline />
       <Header />
       <Container maxWidth="lg">
-        <Box sx={{ py: { xs: 6, md: 8 }, my: 4 }}>
+        <Box sx={{ py: PAGE_SPACING.detail.paddingY, my: PAGE_SPACING.detail.marginY }}>
           {!entry && (
             <Alert severity="warning">Aucun tip trouvé pour « {slug} »</Alert>
           )}

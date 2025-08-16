@@ -1,11 +1,13 @@
 import { styled } from '@mui/material/styles';
 import { Box, Typography, Paper, Button, List, ListItemButton } from '@mui/material';
+import { TYPOGRAPHY } from '../../styles/typography';
+import { PAGE_SPACING } from '../../styles/spacing';
 
 export const DetailContainer = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(6, 0),
-  margin: theme.spacing(4, 0),
+  padding: theme.spacing(PAGE_SPACING.detail.paddingY.xs, 0),
+  margin: theme.spacing(PAGE_SPACING.detail.marginY, 0),
   [theme.breakpoints.up('md')]: {
-    padding: theme.spacing(8, 0),
+    padding: theme.spacing(PAGE_SPACING.detail.paddingY.md, 0),
   },
 }));
 
@@ -50,8 +52,8 @@ export const CodeBlock = styled(Box)(({ theme }) => ({
   whiteSpace: 'pre-wrap',
   wordBreak: 'break-word',
   overflowWrap: 'break-word',
-  fontFamily: 'Inter Tight, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
-  fontSize: '0.9rem',
+  fontFamily: TYPOGRAPHY.fontFamily,
+  fontSize: TYPOGRAPHY.fontSizes.small,
   border: '1px solid',
   borderColor: theme.palette.grey[200],
 }));

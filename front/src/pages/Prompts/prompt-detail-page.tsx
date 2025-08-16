@@ -4,6 +4,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { useParams } from 'react-router-dom';
 import { telerikTheme } from '../../theme/theme';
+import { PAGE_SPACING } from '../../styles/spacing';
 import { Header, Footer } from '../../components';
 import { findPromptBySlug } from '../../components/prompts/registry';
 import { PromptList } from '../../components/prompts/prompt-list';
@@ -40,7 +41,7 @@ export const PromptDetailPage: React.FC = () => {
       <CssBaseline />
       <Header />
       <Container maxWidth="lg">
-        <Box sx={{ py: { xs: 6, md: 8 }, my: 4 }}>
+        <Box sx={{ py: PAGE_SPACING.detail.paddingY, my: PAGE_SPACING.detail.marginY }}>
           {!entry && (
             <Alert severity="warning">Aucun prompt trouvé pour « {slug} »</Alert>
           )}

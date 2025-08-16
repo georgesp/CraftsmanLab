@@ -1,17 +1,19 @@
 import { styled } from '@mui/material/styles';
 import { Box, Card, CardContent, Alert, Typography, Button } from '@mui/material';
 import { COLORS } from '../../styles/colors';
+import { TYPOGRAPHY } from '../../styles/typography';
+import { PAGE_SPACING } from '../../styles/spacing';
 
 export const ContactContainer = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(4, 0),
+  padding: theme.spacing(PAGE_SPACING.container.paddingTop, 0, PAGE_SPACING.container.paddingBottom, 0),
 }));
 
 export const HeroSection = styled(Box)(({ theme }) => ({
   textAlign: 'left',
-  padding: theme.spacing(6, 2),
-  margin: theme.spacing(1, 0, 4, 0),
+  padding: theme.spacing(PAGE_SPACING.hero.paddingTop.xs, PAGE_SPACING.hero.paddingX.xs, PAGE_SPACING.hero.paddingBottom.xs, PAGE_SPACING.hero.paddingX.xs),
+  margin: theme.spacing(PAGE_SPACING.hero.marginTop, 0, PAGE_SPACING.hero.marginBottom, 0),
   [theme.breakpoints.up('md')]: {
-    padding: theme.spacing(8, 4),
+    padding: theme.spacing(PAGE_SPACING.hero.paddingTop.md, PAGE_SPACING.hero.paddingX.md, PAGE_SPACING.hero.paddingBottom.md, PAGE_SPACING.hero.paddingX.md),
   },
 }));
 
@@ -26,7 +28,7 @@ export const HeroSubtitle = styled(Typography)(({ theme }) => ({
 export const SuccessAlert = styled(Alert)(({ theme }) => ({
   marginBottom: theme.spacing(4),
   '& .MuiAlert-message': {
-    fontSize: '1rem',
+    fontSize: TYPOGRAPHY.fontSizes.body1,
   },
 }));
 
