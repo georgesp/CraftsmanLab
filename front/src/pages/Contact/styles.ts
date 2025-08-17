@@ -98,47 +98,4 @@ export const InfoItemDescription = styled(Typography)(({ theme }) => ({
   marginLeft: theme.spacing(4),
 }));
 
-export const HoursCard = styled(Card)(() => ({
-  background: 'linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%)',
-}));
 
-export const HoursCardContent = styled(CardContent)(({ theme }) => ({
-  padding: theme.spacing(4),
-}));
-
-export const HoursHeader = styled(Box)(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  marginBottom: theme.spacing(3),
-}));
-
-export const HoursContent = styled(Box)(({ theme }) => ({
-  '& > *': {
-    marginBottom: theme.spacing(1),
-  },
-}));
-
-export const CTASection = styled(Box)(({ theme }) => ({
-  textAlign: 'left',
-  padding: theme.spacing(6, 0),
-  background: 'linear-gradient(135deg, rgba(25, 118, 210, 0.05) 0%, rgba(156, 39, 176, 0.05) 100%)',
-  margin: theme.spacing(6, 0),
-  [theme.breakpoints.up('md')]: {
-    padding: theme.spacing(8, 0),
-  },
-}));
-
-export const CTASubtitle = styled(Typography)(({ theme }) => ({
-  marginBottom: theme.spacing(4),
-  maxWidth: 600,
-  margin: `0 auto ${theme.spacing(4)}px auto`,
-}));
-
-export const CTAButton = styled(Button)(({ theme }) => ({
-  padding: theme.spacing(1.5, 4),
-  marginRight: theme.spacing(2),
-}));
-
-export const CTAButtonSecondary = styled(Button)(({ theme }) => ({
-  padding: theme.spacing(1.5, 4),
-}));
