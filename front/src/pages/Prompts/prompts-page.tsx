@@ -8,9 +8,8 @@ import { PromptCardsGrid } from '../../components/prompts/prompt-cards-grid';
 import { COLORS } from '../../styles/colors';
 import {
   PromptsPageContainer,
-  // ExplanationBox,
   GridContainer,
-  
+
 } from './styles';
 
 export const PromptsPage: React.FC = () => {

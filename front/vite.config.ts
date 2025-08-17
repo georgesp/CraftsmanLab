@@ -45,6 +45,8 @@ export default defineConfig({
     include: ['react', 'react-dom', '@mui/material', '@emotion/react', '@emotion/styled']
   },
   build: {
+    // Configuration pour Azure Static Web Apps - output to 'build' instead of 'dist'
+    outDir: 'build',
     // Configuration pour améliorer la compatibilité
     commonjsOptions: {
       include: [/node_modules/]
