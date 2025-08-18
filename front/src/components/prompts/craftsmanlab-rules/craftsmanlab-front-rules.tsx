@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box, Typography, IconButton, Snackbar, Alert } from '@mui/material';
 import { ContentCopy } from '@mui/icons-material';
 import type { PromptModule } from '..';
-import { CodeBlock } from '../styles';
+import { CodeBlock } from '../../ui/CodeBlock';
 
 // Import raw markdown content without duplication
 import rawGlobalPrompt from '../../../../prompts/global.prompt.md?raw';
@@ -14,7 +14,7 @@ const PromptBody: React.FC = () => {
   const writtenOn = meta.writtenOn ? new Date(meta.writtenOn).toLocaleDateString('fr-FR') : new Date().toLocaleDateString('fr-FR');
 
   const description = `
-  Ce prompt a été utilisé pour faire toute la création du socle du site internet CraftsmanLab, je l'ai ensuite enrichi pour y ajouter certaines règles d'architecture au fur et à mesure des developpements.
+  Ce prompt a été utilisé pour créer le socle du site internet CraftsmanLab ; je l'ai ensuite enrichi pour y ajouter certaines règles d'architecture au fur et à mesure des développements.
   
   Vous pouvez l'utiliser comme base pour vos propres développements.
   `;
@@ -62,9 +62,7 @@ const PromptBody: React.FC = () => {
         >
           <ContentCopy fontSize="small" />
         </IconButton>
-  <CodeBlock component="pre" sx={{ border: '1px solid', borderColor: 'grey.300', borderRadius: 0 }}>
-          {promptText}
-        </CodeBlock>
+  <CodeBlock code={promptText} />
       </Box>
 
       <Snackbar

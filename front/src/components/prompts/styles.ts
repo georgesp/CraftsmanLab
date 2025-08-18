@@ -1,18 +1,10 @@
 import { styled } from '@mui/material/styles';
-import { Box } from '@mui/material';
-import { TYPOGRAPHY } from '../../styles/typography';
+import Box from '@mui/material/Box';
 
-// Kept CodeBlock below; other styled helpers removed as they were not referenced
-
-export const CodeBlock = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.grey[100],
-  padding: theme.spacing(2),
-  borderRadius: '8px',
-  whiteSpace: 'pre-wrap',
-  wordBreak: 'break-word',
-  overflowWrap: 'break-word',
-  fontFamily: TYPOGRAPHY.fontFamily,
-  fontSize: TYPOGRAPHY.fontSizes.small,
-  border: '1px solid',
-  borderColor: theme.palette.grey[200],
+// Export d'un container minimal pour éviter les imports inutilisés ailleurs
+export const PromptsContainer = styled(Box)(() => ({
+	width: '100%',
 }));
+
+// Note: ce fichier contient un export léger. Si vous préférez le supprimer,
+// vérifiez les exclusions dans les utilitaires qui peuvent référencer ce chemin.

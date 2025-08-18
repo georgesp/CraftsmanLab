@@ -54,14 +54,14 @@ export const PromptsPage: React.FC = () => {
                     </Typography>
                     <Typography variant="body1" sx={{ px: 0, mx: 0, width: '100%' }}>
                       Un prompt système est le texte de base que l’on transmet à un modèle d’intelligence artificielle avant toute interaction.
-                      Il est en général stocké dans un fichier markdown (.md) à la racine du projet, on peut en avoir plusieurs en fonction des besoins, périmètres.
+                      Il est en général stocké dans un fichier markdown (.md) à la racine du projet ; on peut en avoir plusieurs en fonction des besoins et des périmètres.
                       <br />
-                      C’est un peu les dix commandements qui seront pris en considération par l’agent IA lors de la génération de ses réponses et de son code.
+                      Ce sont un peu les dix commandements qui seront pris en considération par l’agent IA lors de la génération de ses réponses et de son code.
                       <br /><br />
-                      Pour être sûr que ces règles soient bien prises en compte il vaut mieux le préciser au début de la conversation avec l’IA.
+                      Pour être sûr que ces règles soient bien prises en compte, il vaut mieux les préciser au début de la conversation avec l’IA.
                       <br /><br />
-                      Par exemple:<br />
-                      <i>«En prenant en compte les règles du fichier rules.prompt.md, j’aimerai que tu … »</i>
+                      Par exemple :<br />
+                      <i>«En prenant en compte les règles du fichier rules.prompt.md, j'aimerais que tu … »</i>
                     </Typography>
                     <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 600, marginTop: 2, px: 0, mx: 0, width: '100%' }}>
                       Pourquoi un bon prompt est essentiel avec l'IA ?

@@ -49,12 +49,36 @@ export const ContactPage: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulation d'envoi du formulaire
-    // eslint-disable-next-line no-console
-    console.log('Formulaire soumis:', formData);
-    setShowSuccess(true);
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setTimeout(() => setShowSuccess(false), 5000);
+    (async () => {
+      try {
+        // endpoint configurable via Vite env VITE_CONTACT_API_URL, sinon '/send-email'
+        const apiUrl = (import.meta as any).env?.VITE_CONTACT_API_URL || '/send-email';
+        const res = await fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        });
+
+        if (!res.ok) {
+          const err = await res.text();
+          // eslint-disable-next-line no-console
+          console.error('Erreur envoi formulaire:', err);
+          // show a simple alert for now
+          // eslint-disable-next-line no-alert
+          alert('Une erreur est survenue lors de l\'envoi. Veuillez réessayer.');
+          return;
+        }
+
+        setShowSuccess(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setShowSuccess(false), 5000);
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error('Erreur envoi formulaire:', error);
+        // eslint-disable-next-line no-alert
+        alert('Impossible de contacter le serveur d\'envoi.');
+      }
+    })();
   };
 
   return (

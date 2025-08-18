@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box, Typography, Link, IconButton, Snackbar, Alert } from '@mui/material';
 import { ContentCopy } from '@mui/icons-material';
 import type { PromptModule } from '..';
-import { CodeBlock } from '../styles';
+import { CodeBlock } from '../../ui/CodeBlock';
 
 export const promptText = `# Guide et Règles ASP.NET Core
 
@@ -328,9 +328,7 @@ const PromptBody: React.FC = () => {
         >
           <ContentCopy fontSize="small" />
         </IconButton>
-  <CodeBlock component="pre" sx={{ border: '1px solid', borderColor: 'grey.300', borderRadius: 0 }}>
-          {promptText}
-        </CodeBlock>
+  <CodeBlock code={promptText} />
       </Box>
 
       <Snackbar
