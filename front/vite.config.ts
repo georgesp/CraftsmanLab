@@ -20,6 +20,19 @@ export default defineConfig({
     // Configuration réseau
     host: 'localhost',
     port: 5173,
+    proxy: {
+      // Proxy les requêtes d'API d'envoi d'email vers le serveur local (dev)
+      '/send-email': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+        secure: false,
+      },
+      '/health': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+        secure: false,
+      },
+    },
     // Forcer le rechargement complet plutôt que le HMR sur les montages réseau
     hmr: {
       overlay: true
