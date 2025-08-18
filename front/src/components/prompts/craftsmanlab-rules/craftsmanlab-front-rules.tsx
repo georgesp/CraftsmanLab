@@ -14,7 +14,7 @@ const PromptBody: React.FC = () => {
   const writtenOn = meta.writtenOn ? new Date(meta.writtenOn).toLocaleDateString('fr-FR') : new Date().toLocaleDateString('fr-FR');
 
   const description = `
-  Ce prompt a été utilisé pour faire toute la création du socle du site internet CraftsmanLab, je l'ai ensuite enrichi pour y ajouter certaines règles d'architecture au fur et à mesure des developpements.
+  Ce prompt a été utilisé pour créer le socle du site internet CraftsmanLab ; je l'ai ensuite enrichi pour y ajouter certaines règles d'architecture au fur et à mesure des développements.
   
   Vous pouvez l'utiliser comme base pour vos propres développements.
   `;

@@ -42,7 +42,7 @@ export const TipsPage: React.FC = () => {
 								<span style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 10, background: COLORS.darkGreyBg }} />
 								<Typography variant="body1" sx={{ px: 0, mx: 0, width: '100%' }}>
 									Une collection de fiches synthétiques sur des concepts fondamentaux de l'écosystème .NET et C#. Chaque tip vise à clarifier un point d'architecture, une interface clé ou une bonne pratique d'API. <br />
-									Soyez pas surpris, les contenus des fiches ont été générés avec l'aide le d'IA
+									Ne soyez pas surpris : les contenus des fiches ont été générés avec l'aide de l'IA.
 								</Typography>
 							</div>
 						</Box>

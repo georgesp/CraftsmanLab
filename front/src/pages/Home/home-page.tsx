@@ -32,11 +32,11 @@ export const HomePage: React.FC = () => (
           color="text.secondary"
           sx={{ mb: 6, marginLeft: 3 }}
         >
-          Au cours de mes missions, je me suis toujours dit que ça serait utile
-          d'avoir un endoit avec les petits rappels.
+          Au cours de mes missions, je me suis toujours dit que ce serait utile
+          d'avoir un endroit avec de petits rappels.
           <br />
-          Et parce que même avec l'IA il faut valider des pull requests et ne
-          pas oublier ses classiques.
+          Et parce que même avec l'IA, il faut valider des pull requests et ne
+          pas oublier les fondamentaux.
         </Typography> */}
         <Box sx={{ px: 0, mx: 0, width: '100%' }}>
           {/* Arrow card intégrée dans la grille via seeAllLink */}
