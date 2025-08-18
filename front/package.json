@@ -8,9 +8,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-  "preview": "vite preview",
-  "test": "jest",
-  "start:server": "node server/send-email.cjs"
+    "preview": "vite preview",
+    "test": "jest"
   },
   "dependencies": {
     "@emotion/react": "^11.13.5",
@@ -20,10 +19,6 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.28.0"
-  ,"express": "^4.18.2",
-  "nodemailer": "^6.9.3",
-  "body-parser": "^1.20.2",
-  "cors": "^2.8.5"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
@@ -52,10 +47,10 @@
       "<rootDir>/src/setupTests.ts"
     ],
     "moduleNameMapper": {
-  "^@/utils/search-client$": "<rootDir>/src/utils/search-client.jest.ts",
-  "^utils/search-client$": "<rootDir>/src/utils/search-client.jest.ts",
-  "^@/utils/searchClient$": "<rootDir>/src/utils/search-client.jest.ts",
-  "^utils/searchClient$": "<rootDir>/src/utils/search-client.jest.ts",
+      "^@/utils/search-client$": "<rootDir>/src/utils/search-client.jest.ts",
+      "^utils/search-client$": "<rootDir>/src/utils/search-client.jest.ts",
+      "^@/utils/searchClient$": "<rootDir>/src/utils/search-client.jest.ts",
+      "^utils/searchClient$": "<rootDir>/src/utils/search-client.jest.ts",
       "^@/(.*)$": "<rootDir>/src/$1",
       "\\.(css|less|scss|sass)$": "identity-obj-proxy"
     }

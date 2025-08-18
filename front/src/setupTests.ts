@@ -5,6 +5,12 @@ const { TextEncoder, TextDecoder } = require('util');
 global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder;
 
+// Mock global de fetch pour les tests
+global.fetch = jest.fn();
+
+// Mock global d'alert pour les tests
+global.alert = jest.fn();
+
 // Mock de window.matchMedia pour Material-UI
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
