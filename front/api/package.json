@@ -1,0 +1,12 @@
+{
+  "name": "azure-functions-contact-api",
+  "version": "1.0.0",
+  "description": "Azure Functions API pour le formulaire de contact",
+  "main": "send-email/index.js",
+  "dependencies": {
+    "nodemailer": "^6.9.3"
+  },
+  "devDependencies": {
+    "@azure/functions": "^4.0.0"
+  }
+}

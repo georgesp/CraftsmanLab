@@ -51,8 +51,10 @@ export const ContactPage: React.FC = () => {
     e.preventDefault();
     (async () => {
       try {
-        // endpoint configurable via Vite env VITE_CONTACT_API_URL, sinon '/send-email'
-        const apiUrl = (import.meta as any).env?.VITE_CONTACT_API_URL || '/send-email';
+              // Configuration pour l'envoi du mail
+      // Utiliser l'endpoint Azure Functions
+      const apiUrl = '/api/send-email';
+        
         const res = await fetch(apiUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

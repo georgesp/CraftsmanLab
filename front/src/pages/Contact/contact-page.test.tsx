@@ -10,6 +10,11 @@ const ContactPageWrapper = () => (
 );
 
 describe('ContactPage', () => {
+  beforeEach(() => {
+    // Nettoyer les mocks avant chaque test
+    jest.clearAllMocks();
+  });
+
   test('renders contact page with form', () => {
     render(<ContactPageWrapper />);
     
@@ -28,6 +33,13 @@ describe('ContactPage', () => {
   });
 
   test('form submission shows success message', async () => {
+    // Mock fetch pour simuler un succès
+    const mockFetch = global.fetch as jest.Mock;
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({ message: 'Email envoyé avec succès' })
+    });
+
     render(<ContactPageWrapper />);
     
     // Remplir le formulaire en utilisant les rôles et noms
@@ -43,6 +55,22 @@ describe('ContactPage', () => {
 
     // Soumettre le formulaire
     fireEvent.click(screen.getByRole('button', { name: /envoyer le message/i }));
+
+    // Vérifier que fetch a été appelé avec les bonnes données
+    await waitFor(() => {
+      expect(mockFetch).toHaveBeenCalledWith('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: 'John Doe',
+          email: 'john@example.com',
+          subject: 'Test Subject',
+          message: 'Test message content'
+        })
+      });
+    });
 
     // Vérifier le message de succès
     await waitFor(() => {
