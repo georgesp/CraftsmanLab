@@ -55,23 +55,29 @@ export const ContactPage: React.FC = () => {
       // Utiliser l'endpoint Azure Functions
       const apiUrl = '/api/send-email';
         
-        const res = await fetch(apiUrl, {
+  const res = await fetch(apiUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData),
         });
 
+  // Minimal status log kept for quick visibility
+  console.log('Réponse reçue - Status:', res.status);
+
         if (!res.ok) {
           const err = await res.text();
           // eslint-disable-next-line no-console
-          console.error('Erreur envoi formulaire:', err);
+          console.error('Erreur envoi formulaire - Status:', res.status);
+          console.error('Erreur envoi formulaire - Body:', err);
           // show a simple alert for now
           // eslint-disable-next-line no-alert
-          alert('Une erreur est survenue lors de l\'envoi. Veuillez réessayer.');
+          alert(`Une erreur est survenue lors de l'envoi (${res.status}): ${err}`);
           return;
         }
 
-        setShowSuccess(true);
+  await res.json();
+
+  setShowSuccess(true);
         setFormData({ name: '', email: '', subject: '', message: '' });
         setTimeout(() => setShowSuccess(false), 5000);
       } catch (error) {

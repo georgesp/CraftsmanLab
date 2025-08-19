@@ -5,8 +5,5 @@
   "main": "send-email/index.js",
   "dependencies": {
     "nodemailer": "^6.9.3"
-  },
-  "devDependencies": {
-    "@azure/functions": "^4.0.0"
   }
 }
