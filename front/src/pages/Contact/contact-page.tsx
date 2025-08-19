@@ -6,6 +6,7 @@ import {
   Button,
   Grid,
   Box,
+  CircularProgress,
 } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -41,6 +42,7 @@ export const ContactPage: React.FC = () => {
     message: ''
   });
   const [showSuccess, setShowSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -51,18 +53,20 @@ export const ContactPage: React.FC = () => {
     e.preventDefault();
     (async () => {
       try {
-              // Configuration pour l'envoi du mail
-      // Utiliser l'endpoint Azure Functions
-      const apiUrl = '/api/send-email';
+        setIsLoading(true);
         
-  const res = await fetch(apiUrl, {
+        // Configuration pour l'envoi du mail
+        // Utiliser l'endpoint Azure Functions
+        const apiUrl = '/api/send-email';
+        
+        const res = await fetch(apiUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData),
         });
 
-  // Minimal status log kept for quick visibility
-  console.log('Réponse reçue - Status:', res.status);
+        // Minimal status log kept for quick visibility
+        console.log('Réponse reçue - Status:', res.status);
 
         if (!res.ok) {
           const err = await res.text();
@@ -75,9 +79,9 @@ export const ContactPage: React.FC = () => {
           return;
         }
 
-  await res.json();
+        await res.json();
 
-  setShowSuccess(true);
+        setShowSuccess(true);
         setFormData({ name: '', email: '', subject: '', message: '' });
         setTimeout(() => setShowSuccess(false), 5000);
       } catch (error) {
@@ -85,6 +89,8 @@ export const ContactPage: React.FC = () => {
         console.error('Erreur envoi formulaire:', error);
         // eslint-disable-next-line no-alert
         alert('Impossible de contacter le serveur d\'envoi.');
+      } finally {
+        setIsLoading(false);
       }
     })();
   };
@@ -233,6 +239,7 @@ export const ContactPage: React.FC = () => {
                           onChange={handleInputChange}
                           required
                           variant="outlined"
+                          disabled={isLoading}
                         />
                       </Grid>
                       <Grid item xs={12}>
@@ -245,6 +252,7 @@ export const ContactPage: React.FC = () => {
                           onChange={handleInputChange}
                           required
                           variant="outlined"
+                          disabled={isLoading}
                         />
                       </Grid>
                       <Grid item xs={12}>
@@ -256,6 +264,7 @@ export const ContactPage: React.FC = () => {
                           onChange={handleInputChange}
                           required
                           variant="outlined"
+                          disabled={isLoading}
                         />
                       </Grid>
                       <Grid item xs={12}>
@@ -269,6 +278,7 @@ export const ContactPage: React.FC = () => {
                           onChange={handleInputChange}
                           required
                           variant="outlined"
+                          disabled={isLoading}
                         />
                       </Grid>
                       <Grid item xs={12}>
@@ -276,9 +286,16 @@ export const ContactPage: React.FC = () => {
                           type="submit"
                           variant="contained"
                           size="large"
-                          startIcon={<Send sx={{ color: COLORS.defaultBg }} />}
+                          disabled={isLoading}
+                          startIcon={
+                            isLoading ? (
+                              <CircularProgress size={20} sx={{ color: COLORS.defaultBg }} />
+                            ) : (
+                              <Send sx={{ color: COLORS.defaultBg }} />
+                            )
+                          }
                         >
-                          Envoyer le message
+                          {isLoading ? 'Envoi en cours...' : 'Envoyer le message'}
                         </SubmitButton>
                       </Grid>
                     </Grid>
