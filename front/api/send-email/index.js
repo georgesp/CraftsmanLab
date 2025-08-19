@@ -1,7 +1,6 @@
-const { app } = require('@azure/functions');
 const nodemailer = require('nodemailer');
 
-// Configuration SMTP centralisée (importée de constants)
+// Configuration SMTP centralisée
 const SMTP_CONFIG = {
   HOST_VAR: 'SMTP_HOST',
   PORT_VAR: 'SMTP_PORT', 
@@ -32,14 +31,10 @@ const validateSmtpConfig = (env) => {
   };
 };
 
-app.http('send-email', {
-  methods: ['POST', 'OPTIONS'],
-  authLevel: 'anonymous',
-  route: 'send-email',
-  handler: async (request, context) => {
+module.exports = async function (context, req) {
     context.log('Fonction send-email appelée');
-    context.log('Méthode HTTP:', request.method);
-    context.log('URL:', request.url);
+    context.log('Méthode HTTP:', req.method);
+    context.log('URL:', req.url);
     
     // Enable CORS pour Azure Static Web Apps
     const corsHeaders = {
@@ -49,55 +44,49 @@ app.http('send-email', {
     };
 
     // Handle preflight CORS request
-    if (request.method === 'OPTIONS') {
-      return {
+    if (req.method === 'OPTIONS') {
+      context.res = {
         status: 200,
         headers: corsHeaders,
         body: ''
       };
+      return;
     }
 
-    if (request.method !== 'POST') {
-      return {
+    if (req.method !== 'POST') {
+      context.res = {
         status: 405,
         headers: corsHeaders,
-        jsonBody: { error: 'Method not allowed' }
+        body: JSON.stringify({ error: 'Method not allowed' })
       };
+      return;
     }
 
-    let body;
-    try {
-      body = await request.json();
-      context.log('Body reçu:', body);
-    } catch (e) {
-      context.log.error('Erreur parsing JSON:', e);
-      return {
-        status: 400,
-        headers: corsHeaders,
-        jsonBody: { error: 'Invalid JSON' }
-      };
-    }
-
+    const body = req.body;
+    context.log('Body reçu:', body);
+    
     const { name, email, subject, message } = body || {};
     context.log('Champs extraits:', { name, email, subject, message: message ? 'présent' : 'absent' });
     
     if (!name || !email || !subject || !message) {
       context.log.error('Champs manquants détectés');
-      return {
+      context.res = {
         status: 400,
         headers: corsHeaders,
-        jsonBody: { error: 'Champs manquants' }
+        body: JSON.stringify({ error: 'Champs manquants' })
       };
+      return;
     }
 
     // Validation basique de l'email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      return {
+      context.res = {
         status: 400,
         headers: corsHeaders,
-        jsonBody: { error: 'Email invalide' }
+        body: JSON.stringify({ error: 'Email invalide' })
       };
+      return;
     }
 
     try {
@@ -146,14 +135,14 @@ app.http('send-email', {
       context.log('Email envoyé avec succès:', info.messageId);
       context.log('Détails de l\'envoi:', info);
       
-      return {
+      context.res = {
         status: 200,
         headers: corsHeaders,
-        jsonBody: { 
+        body: JSON.stringify({ 
           success: true, 
           message: 'Email envoyé avec succès',
           messageId: info.messageId 
-        }
+        })
       };
 
     } catch (error) {
@@ -163,14 +152,15 @@ app.http('send-email', {
       // Si erreur de validation SMTP, retourner message spécifique
       if (error.message.includes('Variables d\'environnement SMTP manquantes')) {
         context.log.error('Variables d\'environnement SMTP manquantes');
-        return {
+        context.res = {
           status: 500,
           headers: corsHeaders,
-          jsonBody: { 
+          body: JSON.stringify({ 
             error: 'Configuration serveur manquante',
             details: error.message 
-          }
+          })
         };
+        return;
       }
       
       // Log des erreurs SMTP spécifiques
@@ -181,15 +171,14 @@ app.http('send-email', {
         context.log.error('Réponse du serveur SMTP:', error.response);
       }
       
-      return {
+      context.res = {
         status: 500,
         headers: corsHeaders,
-        jsonBody: { 
+        body: JSON.stringify({ 
           error: 'Erreur lors de l\'envoi de l\'email',
           details: error.message,
           code: error.code || 'UNKNOWN'
-        }
+        })
       };
     }
-  }
-});
+};
