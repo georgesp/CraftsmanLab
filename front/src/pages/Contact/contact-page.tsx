@@ -55,17 +55,14 @@ export const ContactPage: React.FC = () => {
       // Utiliser l'endpoint Azure Functions
       const apiUrl = '/api/send-email';
         
-        console.log('Envoi du formulaire vers:', apiUrl);
-        console.log('Données envoyées:', formData);
-        
-        const res = await fetch(apiUrl, {
+  const res = await fetch(apiUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData),
         });
 
-        console.log('Réponse reçue - Status:', res.status);
-        console.log('Réponse reçue - Headers:', Object.fromEntries(res.headers.entries()));
+  // Minimal status log kept for quick visibility
+  console.log('Réponse reçue - Status:', res.status);
 
         if (!res.ok) {
           const err = await res.text();
@@ -78,10 +75,9 @@ export const ContactPage: React.FC = () => {
           return;
         }
 
-        const responseData = await res.json();
-        console.log('Succès:', responseData);
-        
-        setShowSuccess(true);
+  await res.json();
+
+  setShowSuccess(true);
         setFormData({ name: '', email: '', subject: '', message: '' });
         setTimeout(() => setShowSuccess(false), 5000);
       } catch (error) {
