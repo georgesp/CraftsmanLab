@@ -37,6 +37,10 @@ app.http('send-email', {
   authLevel: 'anonymous',
   route: 'send-email',
   handler: async (request, context) => {
+    context.log('Fonction send-email appelée');
+    context.log('Méthode HTTP:', request.method);
+    context.log('URL:', request.url);
+    
     // Enable CORS pour Azure Static Web Apps
     const corsHeaders = {
       'Access-Control-Allow-Origin': '*',
@@ -64,7 +68,9 @@ app.http('send-email', {
     let body;
     try {
       body = await request.json();
+      context.log('Body reçu:', body);
     } catch (e) {
+      context.log.error('Erreur parsing JSON:', e);
       return {
         status: 400,
         headers: corsHeaders,
@@ -73,8 +79,10 @@ app.http('send-email', {
     }
 
     const { name, email, subject, message } = body || {};
+    context.log('Champs extraits:', { name, email, subject, message: message ? 'présent' : 'absent' });
     
     if (!name || !email || !subject || !message) {
+      context.log.error('Champs manquants détectés');
       return {
         status: 400,
         headers: corsHeaders,
@@ -93,10 +101,14 @@ app.http('send-email', {
     }
 
     try {
+      context.log('Début du traitement de l\'envoi d\'email');
+      context.log('Variables d\'environnement disponibles:', Object.keys(process.env).filter(k => k.startsWith('SMTP_') || k === 'CONTACT_EMAIL'));
+      
       // Utilisation de la fonction de validation centralisée
       const config = validateSmtpConfig(process.env);
+      context.log('Configuration SMTP validée:', { host: config.host, port: config.port, user: config.user });
       
-      const transporter = nodemailer.createTransporter({
+      const transporter = nodemailer.createTransport({
         host: config.host,
         port: config.port,
         secure: config.port === 465, // true for 465, false for 587
@@ -105,6 +117,8 @@ app.http('send-email', {
           pass: config.pass,
         },
       });
+
+      context.log('Transporter créé, envoi en cours...');
 
       const mailOptions = {
         from: `"${name}" <${config.user}>`, // Use SMTP user as sender
@@ -129,7 +143,8 @@ app.http('send-email', {
       };
 
       const info = await transporter.sendMail(mailOptions);
-      context.log('Email envoyé:', info.messageId);
+      context.log('Email envoyé avec succès:', info.messageId);
+      context.log('Détails de l\'envoi:', info);
       
       return {
         status: 200,
@@ -142,10 +157,12 @@ app.http('send-email', {
       };
 
     } catch (error) {
-      context.log.error('Erreur envoi email:', error);
+      context.log.error('Erreur détaillée lors de l\'envoi email:', error);
+      context.log.error('Stack trace:', error.stack);
       
       // Si erreur de validation SMTP, retourner message spécifique
       if (error.message.includes('Variables d\'environnement SMTP manquantes')) {
+        context.log.error('Variables d\'environnement SMTP manquantes');
         return {
           status: 500,
           headers: corsHeaders,
@@ -156,12 +173,21 @@ app.http('send-email', {
         };
       }
       
+      // Log des erreurs SMTP spécifiques
+      if (error.code) {
+        context.log.error('Code d\'erreur SMTP:', error.code);
+      }
+      if (error.response) {
+        context.log.error('Réponse du serveur SMTP:', error.response);
+      }
+      
       return {
         status: 500,
         headers: corsHeaders,
         jsonBody: { 
           error: 'Erreur lors de l\'envoi de l\'email',
-          details: error.message 
+          details: error.message,
+          code: error.code || 'UNKNOWN'
         }
       };
     }

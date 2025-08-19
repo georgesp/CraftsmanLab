@@ -33,11 +33,21 @@ describe('ContactPage', () => {
   });
 
   test('form submission shows success message', async () => {
-    // Mock fetch pour simuler un succès
+    // Mock fetch pour simuler un succès avec un objet Response complet
     const mockFetch = global.fetch as jest.Mock;
+    const mockHeaders = new Map([
+      ['content-type', 'application/json']
+    ]);
+    
     mockFetch.mockResolvedValueOnce({
       ok: true,
-      json: async () => ({ message: 'Email envoyé avec succès' })
+      status: 200,
+      headers: {
+        entries: () => mockHeaders.entries(),
+        get: (key: string) => mockHeaders.get(key),
+        has: (key: string) => mockHeaders.has(key)
+      },
+      json: async () => ({ success: true, message: 'Email envoyé avec succès' })
     });
 
     render(<ContactPageWrapper />);
