@@ -1,0 +1,14 @@
+node_modules
+**/node_modules
+npm-debug.log
+.DS_Store
+*.map
+*.ts
+src/**
+prompts/**
+../prompts/**
+build/**
+public/**
+.git
+.vscode
+.env
