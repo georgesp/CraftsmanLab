@@ -5,6 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { telerikTheme } from '../../theme/theme';
 import { PAGE_SPACING } from '../../styles/spacing';
 import { Header } from '../../components';
+import { COLORS } from '../../styles/colors';
 import { findTipBySlug } from '../../components/tips/registry';
 import { Container, Box, Grid, Paper, Typography, Alert } from '@mui/material';
 import { TipList } from '../../components/tips/tip-list';
@@ -44,7 +45,7 @@ export const TipDetailPage: React.FC = () => {
           {entry && (
             <Grid container spacing={4} key={entry.slug}>
               <Grid item xs={12} md={4} lg={3}>
-                <Paper variant="outlined" sx={{ p: 2, position: 'sticky', top: 24 }}>
+                <Paper variant="outlined" sx={{ p: 2, position: 'sticky', top: 24, borderColor: COLORS.itemListHover }}>
                   <Typography variant="h6" sx={{ mb: 2 }}>Tips / Mémos</Typography>
                   <TipList selectedSlug={entry.slug} />
                 </Paper>

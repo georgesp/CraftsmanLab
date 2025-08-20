@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { telerikTheme } from '../../theme/theme';
 import { PAGE_SPACING } from '../../styles/spacing';
 import { Header, Footer } from '../../components';
+import { COLORS } from '../../styles/colors';
 import { findPromptBySlug } from '../../components/prompts/registry';
 import { PromptList } from '../../components/prompts/prompt-list';
 
@@ -49,7 +50,7 @@ export const PromptDetailPage: React.FC = () => {
           {entry && (
             <Grid container spacing={4} key={entry.slug}>
               <Grid item xs={12} md={4} lg={3}>
-                <Paper variant="outlined" sx={{ p: 2, position: 'sticky', top: 24 }}>
+                <Paper variant="outlined" sx={{ p: 2, position: 'sticky', top: 24, borderColor: COLORS.itemListHover }}>
                   <Typography variant="h6" sx={{ mb: 2 }}>Prompts</Typography>
                   <PromptList selectedSlug={entry.slug} />
                 </Paper>
