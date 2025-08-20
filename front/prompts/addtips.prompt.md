@@ -10,6 +10,7 @@
 # Ajouter un nouveau tip C#/.NET
 
 Pour ajouter un nouveau tip, crée un fichier `.tsx` dans un sous-dossier de `src/components/tips/` (un dossier par thème ou famille de tips si besoin).
+On n'affiche pas de numérotation, mais on doit jouer sur les tailles de police
 
 ## Structure minimale d’un module tip
 
