@@ -1,16 +1,24 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { Link as MuiLink, Box, InputBase, Paper, List, ListItem, ListItemButton, ListItemIcon, ListItemText, ClickAwayListener, IconButton } from '@mui/material';
+import {
+  Link as MuiLink,
+  Box,
+  InputBase,
+  Paper,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  ClickAwayListener,
+  IconButton,
+} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import { searchAll, type SearchHit } from '@/utils/search-client';
 import { COLORS } from '../../styles/colors';
-import {
-  StyledAppBar,
-  StyledToolbar,
-  NavigationContainer,
-} from './styles';
+import { StyledAppBar, StyledToolbar, NavigationContainer } from './styles';
 
 export const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -20,8 +28,14 @@ export const Header: React.FC = () => {
   const results = useMemo(() => (query.trim() ? searchAll(query) : []), [query]);
 
   // Reset selection when query changes or panel closes
-  useEffect(() => { setSelectedIndex(-1); }, [query]);
-  useEffect(() => { if (!open) setSelectedIndex(-1); }, [open]);
+  useEffect(() => {
+    setSelectedIndex(-1);
+  }, [query]);
+
+  useEffect(() => {
+    if (!open) setSelectedIndex(-1);
+  }, [open]);
+
   useEffect(() => {
     // Clamp selection if results list becomes shorter
     if (selectedIndex >= results.length) setSelectedIndex(results.length - 1);
@@ -30,6 +44,7 @@ export const Header: React.FC = () => {
   const handleSubmit = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     if (!results.length) return;
+
     // Navigue vers l'élément sélectionné (ou le premier si aucun sélectionné)
     const index = selectedIndex >= 0 ? selectedIndex : 0;
     const target = results[index];
@@ -44,7 +59,9 @@ export const Header: React.FC = () => {
 
   const handleFocus = () => setOpen(true);
 
-  const handleClickAway = () => { setOpen(false); };
+  const handleClickAway = () => {
+    setOpen(false);
+  };
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
     if (e.key === 'ArrowDown') {
@@ -56,12 +73,14 @@ export const Header: React.FC = () => {
       });
       return;
     }
+
     if (e.key === 'ArrowUp') {
       e.preventDefault();
       if (!open) setOpen(true);
       setSelectedIndex((prev) => Math.max(prev - 1, 0));
       return;
     }
+
     if (e.key === 'Enter') {
       e.preventDefault();
       handleSubmit();
@@ -71,7 +90,12 @@ export const Header: React.FC = () => {
   return (
     <StyledAppBar position="static">
       <StyledToolbar sx={{ justifyContent: 'flex-end' }}>
-        <MuiLink component={RouterLink} to="/" underline="none" sx={{ display: 'flex', alignItems: 'center', mr: 'auto' }}>
+        <MuiLink
+          component={RouterLink}
+          to="/"
+          underline="none"
+          sx={{ display: 'flex', alignItems: 'center', mr: 'auto' }}
+        >
           <Box
             component="img"
             src="/noBgColorWhite.png"
@@ -79,7 +103,18 @@ export const Header: React.FC = () => {
             sx={{ height: 56, width: 'auto', objectFit: 'contain', display: 'block', flexShrink: 0 }}
           />
         </MuiLink>
-        <Box sx={{ display: 'flex', alignItems: 'center', minWidth: 0, maxWidth: 520, width: '100%', mr: 3 }}>
+
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            minWidth: 0,
+            maxWidth: 520,
+            width: ['100%', '60%', '40%'],
+            mr: 3,
+            flex: '1 1 auto',
+          }}
+        >
           <ClickAwayListener onClickAway={handleClickAway}>
             <Box component="form" onSubmit={handleSubmit} sx={{ position: 'relative', width: '100%' }}>
               <Paper
@@ -97,19 +132,45 @@ export const Header: React.FC = () => {
                   placeholder="Rechercher…"
                   inputProps={{ 'aria-label': 'Rechercher' }}
                   value={query}
-                  onChange={(e) => { setQuery(e.target.value); if (!open) setOpen(true); }}
+                  onChange={(e) => {
+                    setQuery(e.target.value);
+                    if (!open) setOpen(true);
+                  }}
                   onFocus={handleFocus}
                   onKeyDown={handleKeyDown}
-                    sx={{ ml: 1, flex: 1, color: COLORS.darkTheme.inputText, '& input::placeholder': { color: COLORS.darkTheme.inputText, opacity: 0.6 } }}
+                  sx={{
+                    ml: 1,
+                    flex: '1 1 auto',
+                    minWidth: 0,
+                    color: COLORS.darkTheme.inputText,
+                    '& input::placeholder': { color: COLORS.darkTheme.inputText, opacity: 0.6 },
+                  }}
                 />
-                  <IconButton aria-label="Lancer la recherche" type="button" onClick={() => handleSubmit()} size="small" sx={{ color: COLORS.darkTheme.inputText }}>
-                    <SearchIcon fontSize="small" />
-                  </IconButton>
+
+                <IconButton
+                  aria-label="Lancer la recherche"
+                  type="button"
+                  onClick={() => handleSubmit()}
+                  size="small"
+                  sx={{ color: COLORS.darkTheme.inputText, flex: '0 0 auto' }}
+                >
+                  <SearchIcon fontSize="small" />
+                </IconButton>
               </Paper>
+
               {open && results.length > 0 && (
                 <Paper
                   elevation={4}
-                  sx={{ position: 'absolute', top: '44px', left: 0, right: 0, zIndex: 10, maxHeight: 360, overflowY: 'auto', backgroundColor: COLORS.darkTheme.inputBackground }}
+                  sx={{
+                    position: 'absolute',
+                    top: '44px',
+                    left: 0,
+                    right: 0,
+                    zIndex: 10,
+                    maxHeight: 360,
+                    overflowY: 'auto',
+                    backgroundColor: COLORS.darkTheme.inputBackground,
+                  }}
                 >
                   <List dense disablePadding>
                     {results.map((r: SearchHit, idx: number) => (
@@ -117,15 +178,36 @@ export const Header: React.FC = () => {
                         <ListItemButton selected={idx === selectedIndex} onClick={() => handleSelect(r.kind, r.slug)}>
                           <ListItemIcon sx={{ minWidth: 44, mr: 1 }}>
                             {r.kind === 'tip' ? (
-                              <Box sx={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36, border: `1px solid ${COLORS.searchResultIcon}`, borderRadius: 1 }}>
+                              <Box
+                                sx={{
+                                  display: 'inline-flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  width: 36,
+                                  height: 36,
+                                  border: `1px solid ${COLORS.searchResultIcon}`,
+                                  borderRadius: 1,
+                                }}
+                              >
                                 <TipsAndUpdatesIcon fontSize="large" sx={{ color: COLORS.searchResultIcon, fontSize: 20 }} />
                               </Box>
                             ) : (
-                              <Box sx={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36, border: `1px solid ${COLORS.searchResultIcon}`, borderRadius: 1 }}>
+                              <Box
+                                sx={{
+                                  display: 'inline-flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  width: 36,
+                                  height: 36,
+                                  border: `1px solid ${COLORS.searchResultIcon}`,
+                                  borderRadius: 1,
+                                }}
+                              >
                                 <TextSnippetIcon fontSize="large" sx={{ color: COLORS.searchResultIcon, fontSize: 20 }} />
                               </Box>
                             )}
                           </ListItemIcon>
+
                           <ListItemText
                             primary={r.title}
                             secondary={r.shortDescription}
@@ -138,45 +220,29 @@ export const Header: React.FC = () => {
                   </List>
                 </Paper>
               )}
+
               {open && query.trim() && results.length === 0 && (
                 <Paper
                   elevation={4}
                   sx={{ position: 'absolute', top: '44px', left: 0, right: 0, zIndex: 10, backgroundColor: COLORS.darkTheme.inputBackground }}
                 >
-                  <Box sx={{ p: 1.5, color: COLORS.darkTheme.inputText, fontSize: 14 }}>
-                    Aucun résultat
-                  </Box>
+                  <Box sx={{ p: 1.5, color: COLORS.darkTheme.inputText, fontSize: 14 }}>Aucun résultat</Box>
                 </Paper>
               )}
             </Box>
           </ClickAwayListener>
         </Box>
+
         <NavigationContainer>
-          <MuiLink
-            component={RouterLink}
-            to="/tips"
-            color="inherit"
-            underline="none"
-            sx={{ fontWeight: 500, fontSize: '1.05rem' }}
-          >
+          <MuiLink component={RouterLink} to="/tips" color="inherit" underline="none" sx={{ fontWeight: 500, fontSize: '1.05rem' }}>
             Tips / Mémos
           </MuiLink>
-          <MuiLink
-            component={RouterLink}
-            to="/prompts"
-            color="inherit"
-            underline="none"
-            sx={{ fontWeight: 500, fontSize: '1.05rem' }}
-          >
+
+          <MuiLink component={RouterLink} to="/prompts" color="inherit" underline="none" sx={{ fontWeight: 500, fontSize: '1.05rem' }}>
             Prompts
           </MuiLink>
-          <MuiLink
-            component={RouterLink}
-            to="/contact"
-            color="inherit"
-            underline="none"
-            sx={{ fontWeight: 500, fontSize: '1.05rem' }}
-          >
+
+          <MuiLink component={RouterLink} to="/contact" color="inherit" underline="none" sx={{ fontWeight: 500, fontSize: '1.05rem' }}>
             Contact
           </MuiLink>
         </NavigationContainer>
