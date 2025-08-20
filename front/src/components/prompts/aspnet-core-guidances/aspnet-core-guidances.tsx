@@ -3,6 +3,7 @@ import { Box, Typography, Link, IconButton, Snackbar, Alert } from '@mui/materia
 import { ContentCopy } from '@mui/icons-material';
 import type { PromptModule } from '..';
 import { CodeBlock } from '../../ui/CodeBlock';
+import { COLORS } from 'styles/colors';
 
 export const promptText = `# Guide et Règles ASP.NET Core
 
@@ -317,10 +318,9 @@ const PromptBody: React.FC = () => {
             alignItems: 'center',
             justifyContent: 'center',
             transition: 'background 0.2s, color 0.2s',
-            color: 'inherit',
+            color: COLORS.copyBtnColor,
             '&:hover': {
-              backgroundColor: 'primary.main',
-              color: '#fff',
+              color: COLORS.copyBtnColorHover,
             },
           }}
           size="small"

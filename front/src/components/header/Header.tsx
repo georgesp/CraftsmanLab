@@ -90,6 +90,7 @@ export const Header: React.FC = () => {
                   alignItems: 'center',
                   height: 40,
                   borderRadius: 0,
+                  backgroundColor: COLORS.darkTheme.inputBackground,
                 }}
               >
                 <InputBase
@@ -99,33 +100,37 @@ export const Header: React.FC = () => {
                   onChange={(e) => { setQuery(e.target.value); if (!open) setOpen(true); }}
                   onFocus={handleFocus}
                   onKeyDown={handleKeyDown}
-                  sx={{ ml: 1, flex: 1 }}
+                    sx={{ ml: 1, flex: 1, color: COLORS.darkTheme.inputText, '& input::placeholder': { color: COLORS.darkTheme.inputText, opacity: 0.6 } }}
                 />
-                <IconButton aria-label="Lancer la recherche" type="button" onClick={() => handleSubmit()} size="small">
-                  <SearchIcon fontSize="small" />
-                </IconButton>
+                  <IconButton aria-label="Lancer la recherche" type="button" onClick={() => handleSubmit()} size="small" sx={{ color: COLORS.darkTheme.inputText }}>
+                    <SearchIcon fontSize="small" />
+                  </IconButton>
               </Paper>
               {open && results.length > 0 && (
                 <Paper
                   elevation={4}
-                  sx={{ position: 'absolute', top: '44px', left: 0, right: 0, zIndex: 10, maxHeight: 360, overflowY: 'auto' }}
+                  sx={{ position: 'absolute', top: '44px', left: 0, right: 0, zIndex: 10, maxHeight: 360, overflowY: 'auto', backgroundColor: COLORS.darkTheme.inputBackground }}
                 >
                   <List dense disablePadding>
                     {results.map((r: SearchHit, idx: number) => (
                       <ListItem key={`${r.kind}-${r.slug}`} disablePadding>
                         <ListItemButton selected={idx === selectedIndex} onClick={() => handleSelect(r.kind, r.slug)}>
-                          <ListItemIcon sx={{ minWidth: 36 }}>
+                          <ListItemIcon sx={{ minWidth: 44, mr: 1 }}>
                             {r.kind === 'tip' ? (
-                              <TipsAndUpdatesIcon fontSize="small" sx={{ color: COLORS.mediumGrey }} />
+                              <Box sx={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36, border: `1px solid ${COLORS.searchResultIcon}`, borderRadius: 1 }}>
+                                <TipsAndUpdatesIcon fontSize="large" sx={{ color: COLORS.searchResultIcon, fontSize: 20 }} />
+                              </Box>
                             ) : (
-                              <TextSnippetIcon fontSize="small" sx={{ color: COLORS.mediumGrey }} />
+                              <Box sx={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36, border: `1px solid ${COLORS.searchResultIcon}`, borderRadius: 1 }}>
+                                <TextSnippetIcon fontSize="large" sx={{ color: COLORS.searchResultIcon, fontSize: 20 }} />
+                              </Box>
                             )}
                           </ListItemIcon>
                           <ListItemText
                             primary={r.title}
                             secondary={r.shortDescription}
-                            primaryTypographyProps={{ noWrap: true }}
-                            secondaryTypographyProps={{ noWrap: true, sx: { color: COLORS.grey800 } }}
+                            primaryTypographyProps={{ noWrap: true, sx: { color: COLORS.darkTheme.inputText } }}
+                            secondaryTypographyProps={{ noWrap: true, sx: { color: COLORS.darkTheme.inputText } }}
                           />
                         </ListItemButton>
                       </ListItem>
@@ -136,9 +141,9 @@ export const Header: React.FC = () => {
               {open && query.trim() && results.length === 0 && (
                 <Paper
                   elevation={4}
-                  sx={{ position: 'absolute', top: '44px', left: 0, right: 0, zIndex: 10 }}
+                  sx={{ position: 'absolute', top: '44px', left: 0, right: 0, zIndex: 10, backgroundColor: COLORS.darkTheme.inputBackground }}
                 >
-                  <Box sx={{ p: 1.5, color: COLORS.grey800, fontSize: 14 }}>
+                  <Box sx={{ p: 1.5, color: COLORS.darkTheme.inputText, fontSize: 14 }}>
                     Aucun résultat
                   </Box>
                 </Paper>

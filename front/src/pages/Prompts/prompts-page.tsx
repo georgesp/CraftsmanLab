@@ -18,7 +18,7 @@ export const PromptsPage: React.FC = () => {
       <CssBaseline />
       <Header />
 
-            <Container maxWidth={false} disableGutters sx={{ px: 0, mx: 0, width: '100%' }}>
+            <Container maxWidth={false} disableGutters sx={{ px: 0, mx: 0, width: '100%', backgroundColor: COLORS.darkGreyBg, minHeight: '100vh' }}>
               <PromptsPageContainer sx={{ px: 0, mx: 0, width: '100%', ml: 2 }}>
                 <Box sx={{ display: 'flex', alignItems: 'stretch', gap: { xs: 2, sm: 4 }, flexWrap: { xs: 'wrap', md: 'nowrap' } }}>
                   <Box
@@ -49,10 +49,10 @@ export const PromptsPage: React.FC = () => {
                   </Box>
                   <div style={{ position: 'relative', paddingLeft: '3rem', flex: 1, marginRight: '2rem' }}>
                     <span style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 10, background: COLORS.darkGreyBg }} />
-                    <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 600, px: 0, mx: 0, width: '100%' }}>
+                    <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 600, px: 0, mx: 0, width: '100%', color: 'text.primary' }}>
                       Qu'est-ce qu'un prompt ?
                     </Typography>
-                    <Typography variant="body1" sx={{ px: 0, mx: 0, width: '100%' }}>
+                    <Typography variant="body1" sx={{ px: 0, mx: 0, width: '100%', color: 'text.primary' }}>
                       Un prompt système est le texte de base que l’on transmet à un modèle d’intelligence artificielle avant toute interaction.
                       Il est en général stocké dans un fichier markdown (.md) à la racine du projet ; on peut en avoir plusieurs en fonction des besoins et des périmètres.
                       <br />
@@ -63,24 +63,24 @@ export const PromptsPage: React.FC = () => {
                       Par exemple :<br />
                       <i>«En prenant en compte les règles du fichier rules.prompt.md, j'aimerais que tu … »</i>
                     </Typography>
-                    <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 600, marginTop: 2, px: 0, mx: 0, width: '100%' }}>
+                    <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 600, marginTop: 2, px: 0, mx: 0, width: '100%', color: 'text.primary' }}>
                       Pourquoi un bon prompt est essentiel avec l'IA ?
                     </Typography>
-                    <Typography variant="body1" sx={{ px: 0, mx: 0, width: '100%' }}>
+                    <Typography variant="body1" sx={{ px: 0, mx: 0, width: '100%', color: 'text.primary' }}>
                       Un prompt bien rédigé permet d'obtenir des réponses plus pertinentes, précises et adaptées à vos besoins. Il guide l'intelligence artificielle, réduit les malentendus et maximise la valeur des outils IA. Prendre le temps de formuler un prompt clair, structuré et contextuel est la clé pour exploiter tout le potentiel de l'IA, que ce soit pour générer du texte, analyser des données ou automatiser des tâches.
                       <br />
-                      Il faut vraiment voir l'IA comme une personne à part entière dans le sens où si l'instruction est vague, elle risque de mal interpréter vos attentes et de fournir des réponses inappropriées ou hors sujet.
+                      Il faut vraiment voir l'IA comme une personne à part entière dans le sens où si l'instruction est vague, elle risque de mal interpréter vos attentes et de fournir des réponses inappropriées ou hors sujet, on parle ici d'alignement avec l'IA.
                     </Typography>
                   </div>
                 </Box>
               </PromptsPageContainer>
         <GridContainer>
-            <Card
+      <Card
               variant="outlined"
               sx={{ 
                 p: { xs: 2, md: 4 }, 
                 backgroundColor: COLORS.darkGreyBg, 
-                mb: 6, 
+        mb: 0, 
                 borderLeft: 0, 
                 borderRight: 0, 
                 width: '100%' 

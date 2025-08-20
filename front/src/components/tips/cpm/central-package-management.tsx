@@ -1,6 +1,7 @@
 import React from 'react';
 import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';
+import { CodeBlock } from '../../ui/CodeBlock';
 
 export const meta = {
   slug: 'central-package-management',
@@ -17,7 +18,7 @@ const CentralPackageManagementTip: React.FC = () => {
       <Typography variant="subtitle1" gutterBottom sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
         (Un petit guide sans prise de tête)
       </Typography>
-      
+
       <Typography variant="h5" gutterBottom sx={{ mt: 3 }}>Pourquoi l'utiliser ?</Typography>
       <ul>
         <li><strong>Uniformité :</strong> Toutes les références NuGet dans votre solution pointent vers la même version d'un package. Fini les conflits où ProjectA utilise Newtonsoft.Json v12.x et ProjectB v13.x.</li>
@@ -31,52 +32,29 @@ const CentralPackageManagementTip: React.FC = () => {
       </Typography>
 
       <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>1. Créez votre solution (si ce n'est déjà fait)</Typography>
-      <Box component="pre" sx={{ bgcolor: 'grey.100', p: 2, borderRadius: 1, overflow: 'auto' }}>
-        <code>dotnet new sln -n MySolution</code>
-      </Box>
-      
+      <CodeBlock ariaLabel="cpm-create-sln" code={`dotnet new sln -n MySolution`} />
+
       <Typography paragraph sx={{ mt: 2 }}>Ajoutez vos projets :</Typography>
-      <Box component="pre" sx={{ bgcolor: 'grey.100', p: 2, borderRadius: 1, overflow: 'auto' }}>
-        <code>{`dotnet new classlib -o src/LibA
-dotnet new console -o src/App
-dotnet sln add src/**/*.csproj`}</code>
-      </Box>
+      <CodeBlock ariaLabel="cpm-add-projects" code={`dotnet new classlib -o src/LibA\ndotnet new console -o src/App\ndotnet sln add src/**/*.csproj`} />
 
       <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>2. Activez CPM</Typography>
       <Typography paragraph>
         Dans la racine de votre solution, créez un fichier <code>Directory.Packages.props</code> :
       </Typography>
-      <Box component="pre" sx={{ bgcolor: 'grey.100', p: 2, borderRadius: 1, overflow: 'auto' }}>
-        <code>{`<?xml version="1.0" encoding="utf-8"?>
-<Project>
-  <ItemGroup>
-    <!-- Centralized package versions -->
-    <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageVersion Include="Serilog" Version="2.12.0" />
-  </ItemGroup>
-</Project>`}</code>
-      </Box>
+      <CodeBlock ariaLabel="cpm-directory-packages" code={`<?xml version="1.0" encoding="utf-8"?>\n<Project>\n  <ItemGroup>\n    <!-- Centralized package versions -->\n    <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />\n    <PackageVersion Include="Serilog" Version="2.12.0" />\n  </ItemGroup>\n</Project>`} />
 
       <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>3. Modifiez les projets pour qu'ils utilisent CPM</Typography>
       <Typography paragraph>
         Dans chaque fichier .csproj :
       </Typography>
-      <Box component="pre" sx={{ bgcolor: 'grey.100', p: 2, borderRadius: 1, overflow: 'auto' }}>
-        <code>{`<Project Sdk="Microsoft.NET.Sdk">
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" />
-    <PackageReference Include="Serilog" />
-  </ItemGroup>
-</Project>`}</code>
-      </Box>
+      <CodeBlock ariaLabel="cpm-csproj-sample" code={`<Project Sdk="Microsoft.NET.Sdk">\n  <ItemGroup>\n    <PackageReference Include="Newtonsoft.Json" />\n    <PackageReference Include="Serilog" />\n  </ItemGroup>\n</Project>`} />
+
       <Typography paragraph>
         <strong>Important :</strong> Si un projet avait déjà une version définie, supprimez-la. Le SDK se chargera de récupérer la valeur du fichier central.
       </Typography>
 
       <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>4. Vérifiez</Typography>
-      <Box component="pre" sx={{ bgcolor: 'grey.100', p: 2, borderRadius: 1, overflow: 'auto' }}>
-        <code>dotnet restore</code>
-      </Box>
+      <CodeBlock ariaLabel="cpm-restore" code={`dotnet restore`} />
       <Typography paragraph>
         Vous devriez voir que les packages sont récupérés à partir des versions déclarées dans Directory.Packages.props. Ouvrez un .csproj ; il n'y aura plus de <code>&lt;PackageReference ... Version="..."&gt;</code>.
       </Typography>
@@ -120,8 +98,7 @@ dotnet sln add src/**/*.csproj`}</code>
         <li>Faites un <code>dotnet restore</code>.</li>
       </ul>
 
-      <Box mt={4} pt={2} borderTop={theme => `1px solid ${theme.palette.divider}`}
-        sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <Box mt={4} pt={2} borderTop={theme => `1px solid ${theme.palette.divider}`} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
           <a href="https://learn.microsoft.com/en-us/dotnet/core/packaging/central-package-management" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
             Source : Microsoft Docs – Central Package Management

@@ -23,8 +23,8 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ code, ariaLabel, maxHeight
       sx={{
         p: 2,
         m: 0,
-        bgcolor: (t) => (t.palette.mode === 'dark' ? t.palette.grey[900] : t.palette.grey[100]),
-        color: (t) => (t.palette.mode === 'dark' ? t.palette.grey[100] : COLORS.grey800),
+        bgcolor: (t) => (t.palette.mode === 'dark' ? COLORS.codeBlockTextDark : COLORS.codeBlockTextLight),
+        color: (t) => (t.palette.mode === 'dark' ? COLORS.codeBlockTextLight : COLORS.codeBlockTextDark),
   borderRadius: '8px',
         overflowX: 'auto',
         maxHeight,

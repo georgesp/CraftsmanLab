@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography, Divider, Box, IconButton } from '@mui/material';
+import { Grid, Typography, Box, IconButton } from '@mui/material';
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Link as RouterLink } from 'react-router-dom';
@@ -29,21 +29,22 @@ export const TipCardsGrid: React.FC<Props> = ({ maxItems, seeAllLink, seeAllLabe
   return (
     <Grid container spacing={4}>
       {items.map(t => (
-        <Grid item xs={12} sm={6} md={3} lg={3} xl={3} key={t.slug}>
-          <PromptCard>
+        <Grid item xs={12} sm={6} md={4} lg={4} xl={4} key={t.slug}>
+          <PromptCard sx={{ backgroundColor: COLORS.cardBgDark, boxShadow: 'none', border: 'none' }}>
             <RouterLink to={`/tips/${t.slug}`} style={{ display: 'block', height: '100%', color: 'inherit', textDecoration: 'none' }}>
               <PromptCardContent sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                  <TipsAndUpdatesIcon fontSize="small" sx={{ color: COLORS.mediumGrey }} />
-                  <Typography variant="h5" component="h3" sx={{ fontWeight: 700, textDecoration: 'underline', mb: 0, color: COLORS.titleColor }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
+                    <Box sx={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36, border: `1px solid ${COLORS.tipsIcon}`, borderRadius: 1 }}>
+                      <TipsAndUpdatesIcon fontSize="large" sx={{ color: COLORS.tipsIcon, fontSize: 20 }} />
+                    </Box>
+                  <Typography variant="h5" component="h3" sx={{ fontWeight: 700, mb: 0, color: 'text.primary' }}>
                     {t.title}
                   </Typography>
                 </Box>
-                <Divider sx={{ mt: 1, mb: 1, borderColor: COLORS.dividerLight, opacity: 1, mx: -3 }} />
-                <Typography variant="body1" sx={{ color: COLORS.grey800, flexGrow: 1 }}>
+                <Typography variant="body1" sx={{ color: 'text.primary', flexGrow: 1, mb: 1 }}>
                   {t.shortDescription}
                 </Typography>
-                <Divider sx={{ mt: 1, mb: 1, borderColor: COLORS.dividerLight, opacity: 1, mx: -3 }} />
+                
                 <KeywordChips keywords={t.keywords} />
               </PromptCardContent>
             </RouterLink>
@@ -51,10 +52,10 @@ export const TipCardsGrid: React.FC<Props> = ({ maxItems, seeAllLink, seeAllLabe
         </Grid>
       ))}
       {seeAllLink && (
-        <Grid item xs={12} sm={6} md={3} lg={3} xl={3} key="see-all-tips">
-          <PromptCard sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 160 }}>
+        <Grid item xs={12} sm={6} md={4} lg={4} xl={4} key="see-all-tips">
+          <PromptCard sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 160, backgroundColor: COLORS.cardBgDark, boxShadow: 'none', border: 'none' }}>
             <RouterLink to={seeAllLink} style={{ display: 'flex', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', textDecoration: 'none', color: 'inherit' }} aria-label={seeAllLabel}>
-              <IconButton aria-hidden disableRipple sx={{ borderRadius: 0, '&:hover': { backgroundColor: 'transparent' } }}>
+              <IconButton aria-hidden disableRipple sx={{ borderRadius: 0, color: 'text.primary', '&:hover': { backgroundColor: 'transparent' } }}>
                 <ArrowForwardIcon />
               </IconButton>
             </RouterLink>

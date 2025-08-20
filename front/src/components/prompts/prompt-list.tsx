@@ -1,5 +1,6 @@
 import React from 'react';
 import { List, ListItemButton, ListItemText } from '@mui/material';
+import { COLORS } from '../../styles/colors';
 import { Link as RouterLink } from 'react-router-dom';
 import { promptsList } from './registry';
 
@@ -39,7 +40,7 @@ export const PromptList: React.FC<Props> = ({ selectedSlug, onNavigate, maxItems
               to={`/prompts/${p.slug}`}
               selected={selectedSlug === p.slug}
               onClick={onNavigate}
-              sx={{ mb: 0.5 }}
+              sx={{ mb: 0.5, '&:hover': { backgroundColor: COLORS.itemListHover } }}
             >
               <ListItemText primary={p.title} secondary={p.shortDescription} />
             </ListItemButton>

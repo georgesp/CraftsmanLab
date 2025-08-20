@@ -19,4 +19,5 @@ export const PromptCard = styled(Card)(() => ({
 }));
 export const PromptCardContent = styled(CardContent)(({ theme }) => ({
   padding: theme.spacing(3),
+  color: theme.palette.text.primary,
 }));

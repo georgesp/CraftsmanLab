@@ -137,8 +137,8 @@ export const ContactPage: React.FC = () => {
                           <img src="/malt.png" alt="Malt" style={{ width: 28, height: 28, borderRadius: '50%' }} />
                         }
                         sx={{
-                          color: COLORS.primaryRed,
-                          borderColor: COLORS.primaryRed,
+                          color: COLORS.maltRed,
+                          borderColor: COLORS.maltRed,
                           borderWidth: 2,
                           borderStyle: 'solid',
                           px: 2,
@@ -146,8 +146,9 @@ export const ContactPage: React.FC = () => {
                           fontWeight: 600,
                           textTransform: 'none',
                           '&:hover': {
-                            background: COLORS.lightRedBg,
-                            borderColor: COLORS.primaryRed,
+                            background: COLORS.maltlightRed,
+                            borderColor: COLORS.maltRed,
+                            color: COLORS.maltRed,
                           },
                         }}
                       >
@@ -162,8 +163,8 @@ export const ContactPage: React.FC = () => {
                           <img src="/linkedin.png" alt="LinkedIn" style={{ width: 28, height: 28, borderRadius: '50%' }} />
                         }
                         sx={{
-                          color: COLORS.primaryBlue,
-                          borderColor: COLORS.primaryBlue,
+                          color: COLORS.linkedInBlue,
+                          borderColor: COLORS.linkedInBlue,
                           borderWidth: 2,
                           borderStyle: 'solid',
                           px: 2,
@@ -171,8 +172,9 @@ export const ContactPage: React.FC = () => {
                           fontWeight: 600,
                           textTransform: 'none',
                           '&:hover': {
-                            background: COLORS.lightBlueBg,
-                            borderColor: COLORS.primaryBlue,
+                            background: COLORS.linkedInlightBlue,
+                            borderColor: COLORS.linkedInBlue,
+                            color: COLORS.linkedInBlue,
                           },
                         }}
                       >
@@ -189,7 +191,7 @@ export const ContactPage: React.FC = () => {
                     </InfoTitle>
                     <InfoSection>
                       <InfoItemHeader>
-                        <Email sx={{ mr: 2, color: COLORS.grey800, fontSize: 24 }} />
+                        <Email sx={{ mr: 2, color: COLORS.darkTheme.textOnDark, fontSize: 24 }} />
                         <Typography variant="h6" fontWeight="600">
                           Email
                         </Typography>
@@ -202,7 +204,7 @@ export const ContactPage: React.FC = () => {
                             textDecoration: 'none',
                             transition: 'color 0.2s',
                           }}
-                          onMouseOver={(e: any) => (e.currentTarget.style.color = COLORS.primaryBlue)}
+                          onMouseOver={(e: any) => (e.currentTarget.style.color = COLORS.white)}
                           onMouseOut={(e: any) => (e.currentTarget.style.color = 'inherit')}
                         >
                           {CONTACT_EMAIL}
@@ -240,6 +242,13 @@ export const ContactPage: React.FC = () => {
                           required
                           variant="outlined"
                           disabled={isLoading}
+                          sx={{
+                            '& .MuiOutlinedInput-root': {
+                              '& .MuiOutlinedInput-notchedOutline': { borderColor: COLORS.darkTheme.inputContactBorder },
+                              '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: COLORS.darkTheme.inputContactBorder },
+                              '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: COLORS.darkTheme.inputContactBorder, borderWidth: '2px' },
+                            },
+                          }}
                         />
                       </Grid>
                       <Grid item xs={12}>
@@ -253,6 +262,13 @@ export const ContactPage: React.FC = () => {
                           required
                           variant="outlined"
                           disabled={isLoading}
+                          sx={{
+                            '& .MuiOutlinedInput-root': {
+                              '& .MuiOutlinedInput-notchedOutline': { borderColor: COLORS.darkTheme.inputContactBorder },
+                              '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: COLORS.darkTheme.inputContactBorder },
+                              '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: COLORS.darkTheme.inputContactBorder, borderWidth: '2px' },
+                            },
+                          }}
                         />
                       </Grid>
                       <Grid item xs={12}>
@@ -265,6 +281,13 @@ export const ContactPage: React.FC = () => {
                           required
                           variant="outlined"
                           disabled={isLoading}
+                          sx={{
+                            '& .MuiOutlinedInput-root': {
+                              '& .MuiOutlinedInput-notchedOutline': { borderColor: COLORS.darkTheme.inputContactBorder },
+                              '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: COLORS.darkTheme.inputContactBorder },
+                              '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: COLORS.darkTheme.inputContactBorder, borderWidth: '2px' },
+                            },
+                          }}
                         />
                       </Grid>
                       <Grid item xs={12}>
@@ -279,6 +302,13 @@ export const ContactPage: React.FC = () => {
                           required
                           variant="outlined"
                           disabled={isLoading}
+                          sx={{
+                            '& .MuiOutlinedInput-root': {
+                              '& .MuiOutlinedInput-notchedOutline': { borderColor: COLORS.darkTheme.inputContactBorder },
+                              '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: COLORS.darkTheme.inputContactBorder },
+                              '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: COLORS.darkTheme.inputContactBorder, borderWidth: '2px' },
+                            },
+                          }}
                         />
                       </Grid>
                       <Grid item xs={12}>

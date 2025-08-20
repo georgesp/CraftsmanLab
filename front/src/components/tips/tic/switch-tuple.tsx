@@ -60,7 +60,7 @@ const SwitchTupleTip: React.FC = () => {
 
       <Box mt={4} pt={2} borderTop={theme => `1px solid ${theme.palette.divider}`} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
-          Exemple rapide — à utiliser quand ça simplifie la lecture
+          
         </Typography>
         <Typography variant="caption" component="div" sx={{ color: 'text.secondary' }}>
           Écrit le {meta.writtenOn}

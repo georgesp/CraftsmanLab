@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Chip } from '@mui/material';
+import { COLORS } from '../../../styles/colors';
 import type { Keyword } from '../../../utils/constants';
 
 type Props = {
@@ -18,7 +19,7 @@ export const KeywordChips: React.FC<Props> = ({
   return (
     <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: -1.5 }}>
       {keywords.map(keyword => (
-        <Chip
+    <Chip
           key={keyword}
           label={keyword}
           size={size}
@@ -26,6 +27,10 @@ export const KeywordChips: React.FC<Props> = ({
           sx={{
             fontSize: '0.75rem',
             height: 'auto',
+      color: 'text.primary',
+      background: `linear-gradient(180deg, ${COLORS.cardKeywordStart}, ${COLORS.cardKeywordEnd})`,
+      border: '0px solid transparent',
+      borderRadius: 2,
             '& .MuiChip-label': {
               px: 1,
               py: 0.25,

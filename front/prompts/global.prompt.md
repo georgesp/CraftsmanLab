@@ -1,7 +1,6 @@
 ## Couleurs UI
 
 - Utilisez les couleurs définies dans `src/utils/colors.ts` pour garantir la cohérence visuelle.
-- Pour les descriptions courtes de prompts, utilisez la couleur `grey800` (`#424242`).
 - Ajoutez toute nouvelle couleur dans ce fichier pour centraliser la palette du projet.
 
 # Développement d'un Site de Gestion de Prompts
