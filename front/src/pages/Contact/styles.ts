@@ -55,13 +55,13 @@ export const SectionDescription = styled(Typography)(({ theme }) => ({
 
 export const SubmitButton = styled(Button)(({ theme }) => ({
   padding: theme.spacing(1.5, 4),
-  background: `${COLORS.titleColor} !important`,
-  color: COLORS.white,
+  background: `${COLORS.submitBtnColor} !important`,
+  color: COLORS.darkTheme.textOnDark,
   fontWeight: 600,
   textTransform: 'none',
   transition: 'background-color 200ms ease, transform 120ms ease',
   '&:hover': {
-  background: `${COLORS.mediumDarkGrey} !important`,
+  background: `${COLORS.submitBtnColorHover} !important`,
   },
   // Ensure the start icon inside the button uses the defaultBg color
   '& .MuiButton-startIcon': {

@@ -17,12 +17,12 @@ export const telerikTheme = createTheme({
       contrastText: '#000000',
     },
     background: {
-      default: COLORS.defaultBg,
-      paper: '#F8FBFD',
+  default: COLORS.darkGreyBg,
+  paper: COLORS.darkGreyBg,
     },
     text: {
-      primary: '#2d3748',
-      secondary: '#4a5568',
+  primary: COLORS.textPrimary || '#E6EEF3',
+  secondary: '#9AA6AC',
     },
     grey: {
       50: '#f7fafc',
@@ -44,48 +44,48 @@ export const telerikTheme = createTheme({
       fontWeight: TYPOGRAPHY.fontWeights.bold,
       lineHeight: TYPOGRAPHY.lineHeights.tight,
       letterSpacing: TYPOGRAPHY.letterSpacing.tight,
-      color: '#2d3748',
+  color: COLORS.textPrimary || '#E6EEF3',
     },
     h2: {
       fontSize: TYPOGRAPHY.fontSizes.h2,
       fontWeight: TYPOGRAPHY.fontWeights.semiBold,
       lineHeight: TYPOGRAPHY.lineHeights.normal,
       letterSpacing: TYPOGRAPHY.letterSpacing.normal,
-      color: '#2d3748',
+  color: COLORS.textPrimary || '#E6EEF3',
     },
     h3: {
       fontSize: TYPOGRAPHY.fontSizes.h3,
       fontWeight: TYPOGRAPHY.fontWeights.semiBold,
       lineHeight: TYPOGRAPHY.lineHeights.normal,
-      color: '#2d3748',
+  color: COLORS.textPrimary || '#E6EEF3',
     },
     h4: {
       fontSize: TYPOGRAPHY.fontSizes.h4,
       fontWeight: TYPOGRAPHY.fontWeights.semiBold,
       lineHeight: TYPOGRAPHY.lineHeights.normal,
-      color: '#2d3748',
+  color: COLORS.textPrimary || '#E6EEF3',
     },
     h5: {
       fontSize: TYPOGRAPHY.fontSizes.h5,
       fontWeight: TYPOGRAPHY.fontWeights.medium,
       lineHeight: TYPOGRAPHY.lineHeights.relaxed,
-      color: '#4a5568',
+      color: '#9AA6AC',
     },
     h6: {
       fontSize: TYPOGRAPHY.fontSizes.h6,
       fontWeight: TYPOGRAPHY.fontWeights.medium,
       lineHeight: TYPOGRAPHY.lineHeights.relaxed,
-      color: '#4a5568',
+  color: '#E6EEF3',
     },
     body1: {
       fontSize: TYPOGRAPHY.fontSizes.body1,
       lineHeight: TYPOGRAPHY.lineHeights.relaxed,
-      color: '#4a5568',
+      color: COLORS.textPrimary || '#E6EEF3',
     },
     body2: {
       fontSize: TYPOGRAPHY.fontSizes.body2,
       lineHeight: TYPOGRAPHY.lineHeights.relaxed,
-      color: '#718096',
+      color: '#9AA6AC',
     },
     button: {
       textTransform: 'none',
@@ -124,16 +124,26 @@ export const telerikTheme = createTheme({
         },
       },
     },
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          backgroundColor: COLORS.darkGreyBg,
+          margin: 0,
+          padding: 0,
+        },
+      },
+    },
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
-          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-          border: '1px solid #e2e8f0',
+          borderRadius: 12,
+          boxShadow: 'none',
+          border: 'none',
+          background: 'transparent',
           '&:hover': {
-            boxShadow: '0 8px 30px rgba(0, 0, 0, 0.12)',
-            transform: 'translateY(-2px)',
-            transition: 'all 0.3s ease-in-out',
+            boxShadow: 'none',
+            transform: 'none',
+            transition: 'none',
           },
         },
       },
@@ -141,10 +151,10 @@ export const telerikTheme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: COLORS.defaultBg,
-          color: '#2d3748',
-          boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
-          borderBottom: '1px solid #e2e8f0',
+          backgroundColor: COLORS.darkGreyBg,
+          color: COLORS.white,
+          boxShadow: 'none',
+          borderBottom: 'none',
         },
       },
     },
@@ -153,11 +163,14 @@ export const telerikTheme = createTheme({
         root: {
           '& .MuiOutlinedInput-root': {
             borderRadius: 0,
+            '& .MuiOutlinedInput-notchedOutline': {
+              borderColor: COLORS.searchInputText,
+            },
             '&:hover .MuiOutlinedInput-notchedOutline': {
-              borderColor: '#1976d2',
+              borderColor: COLORS.searchInputText,
             },
             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-              borderColor: '#1976d2',
+              borderColor: COLORS.searchInputText,
               borderWidth: '2px',
             },
           },
@@ -182,7 +195,7 @@ export const telerikTheme = createTheme({
     },
   },
   shape: {
-  borderRadius: 0,
+  borderRadius: 8,
   },
   spacing: 8,
 });

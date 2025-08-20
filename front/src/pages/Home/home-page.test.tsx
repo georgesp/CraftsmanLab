@@ -38,7 +38,7 @@ describe('HomePage Component', () => {
 
   test('renders latest prompts preview section', () => {
     render(<HomePageWrapper />);
-    const previewText = screen.getByText(/Un aperçu des derniers prompts publiés/i);
+    const previewText = screen.getByText(/Derniers prompts publiés :/i);
     expect(previewText).toBeInTheDocument();
   });
 

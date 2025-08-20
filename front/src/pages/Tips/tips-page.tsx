@@ -13,42 +13,45 @@ export const TipsPage: React.FC = () => {
 		<ThemeProvider theme={telerikTheme}>
 			<CssBaseline />
 			<Header />
-			<Container maxWidth={false} disableGutters sx={{ px: 0, mx: 0, width: '100%' }}>
-				<PromptsPageContainer sx={{ px: 0, mx: 0, width: '100%', ml: 2 }}>
-					<Box sx={{ display: 'flex', alignItems: 'stretch', gap: { xs: 2, sm: 4 }, flexWrap: { xs: 'wrap', md: 'nowrap' } }}>
+			<Container maxWidth={false} disableGutters sx={{ px: 0, mx: 0, width: '100%', backgroundColor: COLORS.darkGreyBg, minHeight: '100vh' }}>
+				<PromptsPageContainer sx={{ px: 0, mx: 0, width: '100%', ml: 6, mb: 0 }}>
+					<Box sx={{ display: 'flex', alignItems: 'stretch', gap: { xs: 1, sm: 2 }, flexWrap: { xs: 'wrap', md: 'nowrap' } }}>
 						<Box
-								sx={{
-									flex: { xs: '1 1 100%', md: '0 0 200px' },
-									width: { xs: '100%', md: 200 },
-									maxWidth: { xs: '100%', md: 210 },
-									alignSelf: { xs: 'center', md: 'stretch' },
-									position: 'relative',
-									display: 'flex',
+							sx={{
+								flex: { xs: '1 1 100%', md: '0 0 160px' },
+								width: { xs: '100%', md: 160 },
+								maxWidth: { xs: '100%', md: 160 },
+								alignSelf: { xs: 'center', md: 'stretch' },
+								position: 'relative',
+								display: 'flex',
+								mr: { xs: 0, md: 1 },
+								mb: { xs: 2, md: 1 },
 							}}
 						>
 							<Box
 								component="img"
-								src="/image-memo.png"
+								src="/image-memo-white.png"
 								alt="Illustration tips"
 								sx={{
-									width: '100%',
-									height: '100%',
-									objectFit: 'cover',
+									width: 160,
+									height: 'auto',
+									objectFit: 'contain',
 									display: 'block',
 								}}
-							/>
-							</Box>
+							/
+							>
+						</Box>
 							<div style={{ position: 'relative', paddingLeft: '3rem' }}>
 								<span style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 10, background: COLORS.darkGreyBg }} />
-								<Typography variant="body1" sx={{ px: 0, mx: 0, width: '100%' }}>
+								<Typography variant="body1" sx={{ px: 0, mx: 0, width: '100%', color: 'text.primary' }}>
 									Une collection de fiches synthétiques sur des concepts fondamentaux de l'écosystème .NET et C#. Chaque tip vise à clarifier un point d'architecture, une interface clé ou une bonne pratique d'API. <br />
 									Ne soyez pas surpris : les contenus des fiches ont été générés avec l'aide de l'IA.
 								</Typography>
 							</div>
 						</Box>
 				</PromptsPageContainer>
-				<GridContainer>
-								<Card
+				<GridContainer sx={{ pt: 0 }}>
+				<Card
 									variant="outlined"
 									sx={{
 										backgroundColor: COLORS.darkGreyBg,
@@ -56,7 +59,7 @@ export const TipsPage: React.FC = () => {
 										boxShadow: 0,
 										borderLeft: 0,
 										borderRight: 0,
-										width: '100%'
+					width: '100%'
 									}}
 					>
 						<TipCardsGrid />

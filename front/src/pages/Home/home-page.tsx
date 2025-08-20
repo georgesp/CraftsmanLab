@@ -22,7 +22,7 @@ export const HomePage: React.FC = () => (
     <Container
       maxWidth={false}
       disableGutters
-      sx={{ px: 0, mx: 0, width: '100%' }}
+      sx={{ px: 0, mx: 0, width: '100%', backgroundColor: COLORS.darkGreyBg, minHeight: '100vh' }}
     >
       {/* Tips Section */}
       <Box sx={{ py: PAGE_SPACING.content.paddingY, width: '100%' }}>
@@ -38,21 +38,18 @@ export const HomePage: React.FC = () => (
           Et parce que même avec l'IA, il faut valider des pull requests et ne
           pas oublier les fondamentaux.
         </Typography> */}
-        <Box sx={{ px: 0, mx: 0, width: '100%' }}>
-          {/* Arrow card intégrée dans la grille via seeAllLink */}
-          <Box sx={{ px: { xs: 0, md: 1 }, marginLeft: 1, marginRight: 1 }}>
-            {(() => {
-              const isTest =
-                typeof globalThis.process !== 'undefined' &&
-                globalThis.process?.env?.NODE_ENV === 'test';
-              if (isTest) return null;
-              return (
-                <React.Suspense fallback={null}>
-                  <LazyTipCardsGrid maxItems={9} seeAllLink="/tips" />
-                </React.Suspense>
-              );
-            })()}
-          </Box>
+        <Box sx={{ px: { xs: 1, md: 2 }, mx: 0, width: '100%' }}>
+          {(() => {
+            const isTest =
+              typeof globalThis.process !== 'undefined' &&
+              globalThis.process?.env?.NODE_ENV === 'test';
+            if (isTest) return null;
+            return (
+              <React.Suspense fallback={null}>
+                <LazyTipCardsGrid maxItems={9} seeAllLink="/tips" />
+              </React.Suspense>
+            );
+          })()}
         </Box>
       </Box>
 
@@ -62,7 +59,7 @@ export const HomePage: React.FC = () => (
           variant="outlined"
           sx={{
             backgroundColor: COLORS.darkGreyBg,
-            mb: 6,
+            mb: 0,
             borderLeft: 0,
             borderRight: 0,
             width: '100%',
@@ -70,11 +67,11 @@ export const HomePage: React.FC = () => (
         >
           {/* Arrow card intégrée dans la grille via seeAllLink */}
           <Typography
-            variant="h6"
+            variant="h4"
             align="left"
-            sx={{ mt: 2, mb: 4, marginLeft: 3, color: COLORS.dividerLight }}
+            sx={{ mt: 2, mb: 4, marginLeft: 3}}
           >
-            Un aperçu des derniers prompts publiés
+            Derniers prompts publiés :
           </Typography>
           <Box
             sx={{

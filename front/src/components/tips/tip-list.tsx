@@ -1,5 +1,6 @@
 import React from 'react';
 import { List, ListItemButton, ListItemText } from '@mui/material';
+import { COLORS } from '../../styles/colors';
 import { Link as RouterLink } from 'react-router-dom';
 import { tipsList } from './registry';
 
@@ -26,7 +27,7 @@ export const TipList: React.FC<Props> = ({ selectedSlug, onNavigate, maxItems })
           to={`/tips/${t.slug}`}
           selected={selectedSlug === t.slug}
           onClick={onNavigate}
-          sx={{ mb: 0.5 }}
+          sx={{ mb: 0.5, '&:hover': { backgroundColor: COLORS.itemListHover } }}
         >
           <ListItemText primary={t.title} secondary={t.shortDescription} />
         </ListItemButton>

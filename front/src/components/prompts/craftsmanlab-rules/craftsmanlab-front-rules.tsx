@@ -3,6 +3,7 @@ import { Box, Typography, IconButton, Snackbar, Alert } from '@mui/material';
 import { ContentCopy } from '@mui/icons-material';
 import type { PromptModule } from '..';
 import { CodeBlock } from '../../ui/CodeBlock';
+import { COLORS } from 'styles/colors';
 
 // Import raw markdown content without duplication
 import rawGlobalPrompt from '../../../../prompts/global.prompt.md?raw';
@@ -54,8 +55,8 @@ const PromptBody: React.FC = () => {
             alignItems: 'center',
             justifyContent: 'center',
             transition: 'background 0.2s, color 0.2s',
-            color: 'inherit',
-            '&:hover': { backgroundColor: 'primary.main', color: '#fff' },
+            color: COLORS.copyBtnColor,
+            '&:hover': { color: COLORS.copyBtnColorHover },
           }}
           size="small"
           title="Copier le prompt"
