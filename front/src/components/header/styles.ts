@@ -10,6 +10,9 @@ export const StyledAppBar = styled(AppBar)({
 
 export const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   justifyContent: 'space-between',
+  // Allow items to wrap to new lines on small screens
+  flexWrap: 'wrap',
+  gap: theme.spacing(1),
   paddingTop: theme.spacing(1),
   paddingBottom: theme.spacing(1),
   minHeight: 56,
@@ -20,11 +23,19 @@ export const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 export const NavigationContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
   gap: theme.spacing(3),
+  alignItems: 'center',
   '& a': {
     color: '#FFFFFF',
     textDecoration: 'none',
     '&:hover': {
       color: theme.palette.primary.light,
     },
+  },
+  // On small screens put navigation on its own line and align to the right
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+    justifyContent: 'flex-end',
+    gap: theme.spacing(2),
+    order: 3,
   },
 }));
