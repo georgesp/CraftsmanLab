@@ -1,7 +1,7 @@
 import React from 'react';
 import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';
-import { CodeBlock } from '../../ui/CodeBlock';
+import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
 
 export const meta = {
   slug: 'xunit',
@@ -22,7 +22,7 @@ const XunitTip: React.FC = () => {
       </Typography>
 
       <Typography variant="h4" gutterBottom>Structure d’un test xUnit</Typography>
-      <CodeBlock
+      <CodeBlock language="csharp"
         code={`using Xunit;              // Attributs et assertions
 using System.Threading.Tasks;
 
@@ -68,7 +68,7 @@ public class CalculatriceTests
       </ul>
 
       <Typography variant="h6" gutterBottom>Exemple : Setup par constructeur</Typography>
-      <CodeBlock
+      <CodeBlock language="csharp"
         code={`public class CalculatriceTests
 {
     private readonly Calculatrice _calc;
@@ -88,7 +88,7 @@ public class CalculatriceTests
       />
 
       <Typography variant="h6" gutterBottom>Exemple : One‑TimeSetup avec IClassFixture&lt;T&gt;</Typography>
-      <CodeBlock
+      <CodeBlock language="csharp"
         code={`// Fixture partagé entre tous les tests de la classe
 public class DatabaseFixture : IDisposable
 {

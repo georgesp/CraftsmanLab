@@ -78,4 +78,30 @@ export const COLORS = {
 
 		inputContactBorder: '#E6EEF3', // same as darkGreyBg
 	},
+
+	// Source code syntax highlighting colors inspired by MSDN
+	sourceCode: {
+		// Light theme colors - Style MSDN
+		light: {
+			keyword: '#0000ff',      // Bleu classique MSDN pour les mots-clés (class, public, var, etc.)
+			string: '#a31515',       // Rouge foncé pour les chaînes de caractères
+			comment: '#008000',      // Vert pour les commentaires
+			attribute: '#2b91af',    // Bleu-gris pour les attributs C# [Facet, etc.]
+			type: '#2b91af',         // Bleu-gris pour les types (string, int, Person, etc.)
+			number: '#800080',       // Violet pour les nombres
+			operator: '#000000',     // Noir pour les opérateurs (=, +, etc.)
+			text: '#000000',         // Noir pour le texte de base
+		},
+		// Dark theme colors - Style MSDN sombre
+		dark: {
+			keyword: '#569cd6',      // Bleu clair MSDN pour les mots-clés
+			string: '#ce9178',       // Orange clair pour les chaînes
+			comment: '#6a9955',      // Vert pour les commentaires
+			attribute: '#4ec9b0',    // Turquoise pour les attributs
+			type: '#4ec9b0',         // Turquoise pour les types
+			number: '#b5cea8',       // Vert clair pour les nombres
+			operator: '#d4d4d4',     // Gris clair pour les opérateurs
+			text: '#d4d4d4',         // Gris clair pour le texte de base
+		},
+	},
 };
