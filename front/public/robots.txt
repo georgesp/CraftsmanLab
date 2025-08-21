@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://www.craftsmanlab.fr/sitemap.xml
-Host: www.craftsmanlab.fr
