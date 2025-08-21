@@ -19,7 +19,7 @@ const FacetTip: React.FC = () => {
       <Typography paragraph>
         Facet est un générateur de code qui crée automatiquement des vues spécialisées (projections ou DTOs) pour vos modèles de domaine lors de la compilation.
         <br />
-        Il produit le code complet (classes, records, structures, constructeurs, projections LINQ et mappings) sans ajouter de surcharge à l’exécution.
+        Il produit le code complet (classes, records, structures, constructeurs, projections LINQ et mappings) sans ajouter de surcharge à l’exécution. 
       </Typography>
 
       <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>Installation</Typography>
