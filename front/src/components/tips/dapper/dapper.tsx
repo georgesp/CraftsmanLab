@@ -1,7 +1,7 @@
 import React from 'react';
 import type { TipModule } from '..';
 import { Box, Typography, Link } from '@mui/material';
-import { CodeBlock } from '../../ui/CodeBlock';
+import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
 
 export const meta = {
   slug: 'dapper',
@@ -19,7 +19,7 @@ const DapperTip: React.FC = () => {
       </Typography>
 
       <Typography variant="h4" gutterBottom>Liste des méthodes de requête Dapper</Typography>
-  <CodeBlock
+  <CodeBlock language="csharp"
     ariaLabel="dapper-methods-overview"
     maxHeight={360}
     code={`Méthode                 | Signature (simplifiée)
@@ -38,9 +38,10 @@ Remarque: param peut être un objet anonyme ou un POCO. Dapper mappe les propri�
   />
 
   <Typography variant="h4" sx={{ mt: 4 }} gutterBottom>Exemple simple – Retourner un DTO existant</Typography>
-      <CodeBlock
-        ariaLabel="dapper-simple-dto"
-        code={`public class ProductDto
+  <CodeBlock
+    language="csharp"
+    ariaLabel="dapper-simple-dto"
+    code={`public class ProductDto
 {
     public int Id { get; set; }
     public string Name { get; set; }
@@ -71,7 +72,7 @@ using (var conn = new SqlConnection(connString))
       />
 
   <Typography variant="h4" sx={{ mt: 4 }} gutterBottom>Mapping sur un objet à structure différente</Typography>
-      <CodeBlock
+      <CodeBlock language="csharp"
         ariaLabel="dapper-alias-mapping"
         code={`public class OrderSummary
 {
@@ -111,7 +112,7 @@ using (var conn = new SqlConnection(connString))
       />
 
   <Typography variant="h4" sx={{ mt: 4 }} gutterBottom>Multi‑DTO – Mapping parent + lignes</Typography>
-      <CodeBlock
+      <CodeBlock language="csharp"
         ariaLabel="dapper-multi-mapping"
         code={`public class OrderDto
 {

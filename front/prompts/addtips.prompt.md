@@ -6,6 +6,7 @@
 - N’hésite pas à donner des exemples concrets, des “à utiliser quand…”, des “à éviter si…”.
 - Mets en avant les pièges classiques, les bonnes pratiques, les astuces terrain.
 - Tu peux t’inspirer du style des tips existants ou du texte d’intro de la home-page.
+- Ne pas mettre de numérotation mais jouer sur la taille de la police
 
 # Ajouter un nouveau tip C#/.NET
 

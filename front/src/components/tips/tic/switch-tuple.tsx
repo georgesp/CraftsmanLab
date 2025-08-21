@@ -1,7 +1,7 @@
 import React from 'react';
 import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';
-import CodeBlock from '../../ui/CodeBlock/CodeBlock';
+import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
 import type { Keyword } from '../../../utils/constants';
 
 export const meta = {
@@ -47,7 +47,7 @@ const SwitchTupleTip: React.FC = () => {
       </Typography>
 
       <Typography variant="h3">Exemple</Typography>
-      <CodeBlock code={exampleCode} />
+      <CodeBlock language="csharp" code={exampleCode} />
 
       <Typography variant="h3">Ce que j'en retire</Typography>
       <Typography paragraph component="div">

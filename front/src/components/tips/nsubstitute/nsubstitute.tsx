@@ -1,7 +1,7 @@
 import React from 'react';
 import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';
-import { CodeBlock } from '../../ui/CodeBlock';
+import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
 
 export const meta = {
   slug: 'nsubstitute',
@@ -28,45 +28,45 @@ const NSubstituteTip: React.FC = () => {
       <Typography variant="h6" gutterBottom>
         Substitution
       </Typography>
-      <CodeBlock code={`var mock = Substitute.For<IFoo>();`} />
+      <CodeBlock language="csharp" code={`var mock = Substitute.For<IFoo>();`} />
 
       <Typography variant="h6" gutterBottom>
         Retour simple
       </Typography>
-      <CodeBlock code={`mock.Bar().Returns(42);`} />
+      <CodeBlock language="csharp" code={`mock.Bar().Returns(42);`} />
 
       <Typography variant="h6" gutterBottom>
         Valeur calculée
       </Typography>
-      <CodeBlock
+      <CodeBlock language="csharp"
         code={`mock.Add(Arg.Any<int>(), Arg.Any<int>()).Returns(callInfo => callInfo.Arg<int>(0) + callInfo.Arg<int>(1));`}
       />
 
       <Typography variant="h6" gutterBottom>
         Exceptions
       </Typography>
-      <CodeBlock code={`mock.DoSomething().Throws(new InvalidOperationException());`} />
+      <CodeBlock language="csharp" code={`mock.DoSomething().Throws(new InvalidOperationException());`} />
 
       <Typography variant="h6" gutterBottom>
       Vérification d’appel
       </Typography>
-      <CodeBlock code={`mock.Received().Bar();
+      <CodeBlock language="csharp" code={`mock.Received().Bar();
 mock.DidNotReceive().Baz();`} />
 
       <Typography variant="h6" gutterBottom>
         Arguments spéciaux
       </Typography>
-      <CodeBlock code={`Arg.Is<string>(s => s.StartsWith("Hello"));`} />
+      <CodeBlock language="csharp" code={`Arg.Is<string>(s => s.StartsWith("Hello"));`} />
 
       <Typography variant="h6" gutterBottom>
         Partial mock
       </Typography>
-      <CodeBlock code={`var partial = Substitute.ForPartsOf<MyConcreteClass>();`} />
+      <CodeBlock language="csharp" code={`var partial = Substitute.ForPartsOf<MyConcreteClass>();`} />
 
       <Typography variant="h6" gutterBottom>
         Capturer les arguments
       </Typography>
-      <CodeBlock
+      <CodeBlock language="csharp"
         code={`int captured;
 // Variante simple (avec When/Do)
 mock.When(x => x.Do(Arg.Any<int>())).Do(call => captured = call.Arg<int>());
@@ -79,7 +79,7 @@ mock.When(x => x.Do(Arg.Any<int>())).Do(call => captured = call.Arg<int>());
       <Typography variant="h6" gutterBottom>
         Le code à tester
       </Typography>
-      <CodeBlock
+      <CodeBlock language="csharp"
         code={`public interface ICalculator
 {
     int Add(int a, int b);
@@ -107,7 +107,7 @@ public class MathService
       <Typography variant="h6" gutterBottom>
   Le test avec NSubstitute
       </Typography>
-      <CodeBlock
+      <CodeBlock language="csharp"
         code={`using Xunit;
 using NSubstitute;
 
@@ -157,7 +157,7 @@ public class MathServiceTests
       <Typography variant="h6" gutterBottom>
         Mock d’une méthode asynchrone
       </Typography>
-      <CodeBlock
+      <CodeBlock language="csharp"
         code={`public interface IAsyncService
 {
     Task<string> GetDataAsync(string key);
@@ -170,12 +170,12 @@ asyncMock.GetDataAsync("abc").Returns(Task.FromResult("mocked data"));`}
       <Typography variant="h6" gutterBottom>
         Mock d’une méthode qui lance une exception
       </Typography>
-      <CodeBlock code={`calc.DoSomething().Throws(new ArgumentException());`} />
+      <CodeBlock language="csharp" code={`calc.DoSomething().Throws(new ArgumentException());`} />
 
       <Typography variant="h6" gutterBottom>
         Vérifier le nombre d’appels
       </Typography>
-      <CodeBlock
+      <CodeBlock language="csharp"
         code={`// Au moins deux appels
 calc.Received(2).Log(Arg.Any<string>());
 
@@ -186,7 +186,7 @@ calc.DidNotReceive().Add(Arg.Any<int>(), Arg.Any<int>());`}
       <Typography variant="h6" gutterBottom>
         Utiliser When pour capturer l’argument passé
       </Typography>
-      <CodeBlock
+      <CodeBlock language="csharp"
         code={`int captured = -1;
 calc.Add(Arg.Any<int>(), Arg.Any<int>())
     .Returns(x => x.Arg<int>(0) + x.Arg<int>(1));
@@ -206,7 +206,7 @@ calc.When(call => call.Log(Arg.Any<string>()))
       <ul>
         <li>
           <b>Noms explicites</b> — exemple lisible comme un pseudo‑code :
-          <CodeBlock code={`calc.Add(Arg.Any<int>(), Arg.Any<int>()).Returns(call => ...)`} />
+          <CodeBlock language="csharp" code={`calc.Add(Arg.Any<int>(), Arg.Any<int>()).Returns(call => ...)`} />
         </li>
         <li>
           <b>Évite les mocks inutiles</b> — si tu n’interagis pas avec l’objet, ne le mocke pas.

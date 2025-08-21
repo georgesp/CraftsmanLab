@@ -32,29 +32,43 @@ const CentralPackageManagementTip: React.FC = () => {
       </Typography>
 
       <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>1. Créez votre solution (si ce n'est déjà fait)</Typography>
-      <CodeBlock ariaLabel="cpm-create-sln" code={`dotnet new sln -n MySolution`} />
+      <CodeBlock language="bash" ariaLabel="cpm-create-sln" code={`dotnet new sln -n MySolution`} />
 
       <Typography paragraph sx={{ mt: 2 }}>Ajoutez vos projets :</Typography>
-      <CodeBlock ariaLabel="cpm-add-projects" code={`dotnet new classlib -o src/LibA\ndotnet new console -o src/App\ndotnet sln add src/**/*.csproj`} />
+      <CodeBlock language="bash" ariaLabel="cpm-add-projects" code={`dotnet new classlib -o src/LibA
+dotnet new console -o src/App
+dotnet sln add src/**/*.csproj`} />
 
       <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>2. Activez CPM</Typography>
       <Typography paragraph>
         Dans la racine de votre solution, créez un fichier <code>Directory.Packages.props</code> :
       </Typography>
-      <CodeBlock ariaLabel="cpm-directory-packages" code={`<?xml version="1.0" encoding="utf-8"?>\n<Project>\n  <ItemGroup>\n    <!-- Centralized package versions -->\n    <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />\n    <PackageVersion Include="Serilog" Version="2.12.0" />\n  </ItemGroup>\n</Project>`} />
+      <CodeBlock language="xml" ariaLabel="cpm-directory-packages" code={`<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ItemGroup>
+    <!-- Centralized package versions -->
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageVersion Include="Serilog" Version="2.12.0" />
+  </ItemGroup>
+</Project>`} />
 
       <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>3. Modifiez les projets pour qu'ils utilisent CPM</Typography>
       <Typography paragraph>
         Dans chaque fichier .csproj :
       </Typography>
-      <CodeBlock ariaLabel="cpm-csproj-sample" code={`<Project Sdk="Microsoft.NET.Sdk">\n  <ItemGroup>\n    <PackageReference Include="Newtonsoft.Json" />\n    <PackageReference Include="Serilog" />\n  </ItemGroup>\n</Project>`} />
+      <CodeBlock language="xml" ariaLabel="cpm-csproj-sample" code={`<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="Serilog" />
+  </ItemGroup>
+</Project>`} />
 
       <Typography paragraph>
         <strong>Important :</strong> Si un projet avait déjà une version définie, supprimez-la. Le SDK se chargera de récupérer la valeur du fichier central.
       </Typography>
 
       <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>4. Vérifiez</Typography>
-      <CodeBlock ariaLabel="cpm-restore" code={`dotnet restore`} />
+      <CodeBlock language="bash" ariaLabel="cpm-restore" code={`dotnet restore`} />
       <Typography paragraph>
         Vous devriez voir que les packages sont récupérés à partir des versions déclarées dans Directory.Packages.props. Ouvrez un .csproj ; il n'y aura plus de <code>&lt;PackageReference ... Version="..."&gt;</code>.
       </Typography>

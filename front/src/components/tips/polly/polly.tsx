@@ -37,7 +37,7 @@ const PollyTip: React.FC = () => {
   <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>Installation</Typography>
       
   <Typography variant="h5" gutterBottom>NuGet</Typography>
-      <CodeBlock
+      <CodeBlock language="bash"
         code={`# Depuis la console du gestionnaire de packages
 Install-Package Polly
 
@@ -53,7 +53,7 @@ dotnet add package Polly`}
   <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>Le principe</Typography>
       
   <Typography variant="h5" gutterBottom>Un Policy = une règle de gestion d'erreur</Typography>
-      <CodeBlock
+      <CodeBlock language="csharp"
         code={`var retryPolicy = Policy
     .Handle<IOException>()          // on cible les IOException
     .WaitAndRetry(3, attempt => TimeSpan.FromSeconds(Math.Pow(2, attempt)));`}
@@ -67,7 +67,7 @@ dotnet add package Polly`}
       <Typography paragraph sx={{ mt: 2 }}>
         Une fois que vous avez un Policy, vous pouvez l'appliquer à une action :
       </Typography>
-      <CodeBlock
+      <CodeBlock language="csharp"
         code={`retryPolicy.Execute(() => File.ReadAllText("data.txt"));`}
       />
       
@@ -113,7 +113,7 @@ dotnet add package Polly`}
   <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>Exemples concrets</Typography>
       
   <Typography variant="h5" gutterBottom>Retry + Timeout sur un appel HTTP</Typography>
-      <CodeBlock
+      <CodeBlock language="csharp"
         code={`using Polly;
 using System.Net.Http;
 
@@ -146,7 +146,7 @@ Console.WriteLine($"Status : {response.StatusCode}");`}
       </Typography>
 
   <Typography variant="h5" gutterBottom sx={{ mt: 3 }}>Circuit Breaker + Fallback</Typography>
-      <CodeBlock
+      <CodeBlock language="csharp"
         code={`var circuitBreaker = Policy.Handle<Exception>()
                            .CircuitBreakerAsync(
                                exceptionsAllowedBeforeBreaking: 2,
@@ -177,7 +177,7 @@ Console.WriteLine(result);`}
       </Typography>
 
   <Typography variant="h5" gutterBottom sx={{ mt: 3 }}>Retry avec back‑off exponentiel</Typography>
-      <CodeBlock
+      <CodeBlock language="csharp"
         code={`var retryPolicy = Policy.Handle<Exception>()
     .WaitAndRetryAsync(
         retryCount: 5,
@@ -191,7 +191,7 @@ await retryPolicy.ExecuteAsync(async () =>
       />
 
   <Typography variant="h5" gutterBottom sx={{ mt: 3 }}>Intégration avec HttpClientFactory (ASP.NET Core)</Typography>
-      <CodeBlock
+      <CodeBlock language="csharp"
         code={`services.AddHttpClient("myclient")
         .AddPolicyHandler(HttpPolicyExtensions
             .HandleTransientHttpError()

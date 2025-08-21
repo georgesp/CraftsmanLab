@@ -1,7 +1,7 @@
 import React from 'react';
 import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';
-import CodeBlock from '../../ui/CodeBlock/CodeBlock';
+import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
 import type { Keyword } from '../../../utils/constants';
 
 export const meta = {
@@ -31,10 +31,10 @@ const AutomapperTip: React.FC = () => {
       <Typography paragraph>
         Dans <code>Startup.cs</code> ou la classe de configuration :
       </Typography>
-  <CodeBlock code={`services.AddAutoMapper(typeof(Program)); // scanne les profils dans l'assembly courant`} />
+  <CodeBlock language="csharp" code={`services.AddAutoMapper(typeof(Program)); // scanne les profils dans l'assembly courant`} />
 
       <Typography variant="h3">Configuration manuelle</Typography>
-    <CodeBlock code={`var mappingConfig = new MapperConfiguration(mc =>
+    <CodeBlock language="csharp" code={`var mappingConfig = new MapperConfiguration(mc =>
 {
   mc.AddProfile(new UserProfile());
 });
@@ -43,7 +43,7 @@ IMapper mapper = mappingConfig.CreateMapper();
 services.AddSingleton(mapper);`} />
 
       <Typography variant="h3">Un profil simple</Typography>
-    <CodeBlock code={`public class UserEntity
+    <CodeBlock language="csharp" code={`public class UserEntity
 {
   public int Id { get; set; }
   public string FirstName { get; set; }
@@ -58,7 +58,7 @@ public class UserDto
   public int Age { get; set; }           // calculé à partir de BirthDate
 }`} />
 
-    <CodeBlock code={`public class UserProfile : Profile
+    <CodeBlock language="csharp" code={`public class UserProfile : Profile
 {
   public UserProfile()
   {
@@ -71,7 +71,7 @@ public class UserDto
 }`} />
 
       <Typography variant="h3">Usage</Typography>
-  <CodeBlock code={`var userEntity = new UserEntity { Id = 1, FirstName = "Jean", LastName = "Dupont", BirthDate = new DateTime(1990,5,20) };
+  <CodeBlock language="csharp" code={`var userEntity = new UserEntity { Id = 1, FirstName = "Jean", LastName = "Dupont", BirthDate = new DateTime(1990,5,20) };
 UserDto dto = _mapper.Map<UserDto>(userEntity);
 
 // dto.FullName == "Jean Dupont"
@@ -79,7 +79,7 @@ UserDto dto = _mapper.Map<UserDto>(userEntity);
 // dto.Id      == 1`} />
 
       <Typography variant="h3">Mapping bidirectionnel</Typography>
-      <CodeBlock code={`CreateMap<UserDto, UserEntity>()
+      <CodeBlock language="csharp" code={`CreateMap<UserDto, UserEntity>()
     .ForMember(dest => dest.FirstName,
                opt  => opt.MapFrom(src => src.FullName.Split(' ')[0]))
     .ForMember(dest => dest.LastName,
@@ -94,7 +94,7 @@ UserDto dto = _mapper.Map<UserDto>(userEntity);
       <Typography paragraph>
         Tu peux mapper des listes sans boucle explicite :
       </Typography>
-  <CodeBlock code={`List<UserDto> dtos = _mapper.Map<List<UserDto>>(entities);`} />
+  <CodeBlock language="csharp" code={`List<UserDto> dtos = _mapper.Map<List<UserDto>>(entities);`} />
 
       <Box mt={4} pt={2} borderTop={theme => `1px solid ${theme.palette.divider}`} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
