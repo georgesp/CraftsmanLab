@@ -43,6 +43,12 @@ jobs:
           npm ci --prefix front
           npm run build --prefix front
 
+      - name: Upload build artifact for debug
+        uses: actions/upload-artifact@v4
+        with:
+          name: front-build-debug
+          path: front/build
+
       - name: Show frontend directory & build output (debug)
         run: |
           echo "PWD: $(pwd)"
