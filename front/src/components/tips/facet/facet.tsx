@@ -6,7 +6,7 @@ import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
 export const meta = {
   slug: 'facet',
   title: 'Facet',
-  shortDescription: 'Générateur compile-time de projections (DTO) pour C# et EF Core.',
+  shortDescription: 'Générateur de projections (DTO) et mappings pour C# et EF Core.',
   writtenOn: '2025-08-21',
   keywords: ['C#' as const],
 };
