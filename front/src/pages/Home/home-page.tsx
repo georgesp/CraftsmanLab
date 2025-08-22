@@ -1,5 +1,9 @@
 import * as React from 'react';
 import { Container, Typography, Box, Card } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { useTranslation } from 'react-i18next';
+import { telerikTheme } from '../../theme/theme';
 import { COLORS } from '../../styles/colors';
 import { PAGE_SPACING } from '../../styles/spacing';
 import { LazyTipCardsGrid } from '../../components/tips/tip-cards-grid-lazy';
@@ -11,7 +15,10 @@ const LazyPromptCardsGrid = React.lazy(() =>
   }))
 );
 
-export const HomePage: React.FC = () => (
+export const HomePage: React.FC = () => {
+  const { t } = useTranslation('pages');
+  
+  return (
   <PageLayout>
         <Container
           maxWidth={false}
@@ -65,7 +72,7 @@ export const HomePage: React.FC = () => (
             align="left"
             sx={{ mt: 2, mb: 4, marginLeft: 3}}
           >
-            Derniers prompts publiés :
+            {t('home.latestPrompts')}
           </Typography>
           <Box
             sx={{
@@ -96,5 +103,6 @@ export const HomePage: React.FC = () => (
     </Container>
   </PageLayout>
 );
+};
 
 HomePage.displayName = 'HomePage';

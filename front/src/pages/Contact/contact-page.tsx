@@ -32,6 +32,7 @@ import {
 } from './styles';
 
 export const ContactPage: React.FC = () => {
+  const { t } = useTranslation(['pages', 'common']);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -98,7 +99,7 @@ export const ContactPage: React.FC = () => {
             <ContactContainer>
           {showSuccess && (
             <SuccessAlert severity="success">
-              Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.
+              {t('contact.successMessage')}
             </SuccessAlert>
           )}
 
@@ -107,12 +108,10 @@ export const ContactPage: React.FC = () => {
             <Box sx={{ flex: { xs: '1 1 100%', md: '0 0 50%' }, maxWidth: { xs: '100%', md: '50%' } }}>
               <HeroSection>
                 <Typography variant="h2" gutterBottom sx={{ fontSize: TYPOGRAPHY.responsiveFontSizes.h2 }}>
-                  Développeur Freelance .NET & IA
+                  {t('contact.title')}
                 </Typography>
                 <HeroSubtitle variant="body1" gutterBottom align="left" color="text.secondary" sx={{ fontSize: TYPOGRAPHY.responsiveFontSizes.body1 }}>
-                  Vous cherchez un développeur .NET expérimenté, avec des compétences en Intelligence Artificielle ?<br />
-                  Ou vous aimeriez voir certaines choses ajoutées sur le site ?<br />
-                  N'hésitez pas à me contacter pour discuter de vos besoins ou de vos projets !
+                  <span dangerouslySetInnerHTML={{ __html: t('contact.subtitle') }} />
                 </HeroSubtitle>
               </HeroSection>
 
@@ -120,7 +119,7 @@ export const ContactPage: React.FC = () => {
                 <InfoCard>
                   <InfoCardContent>
                     <InfoTitle variant="h4" gutterBottom sx={{ mb: 3 }}>
-                      Mes réseaux sociaux
+                      {t('contact.socialNetworks')}
                     </InfoTitle>
                     <Box sx={{ display: 'flex', gap: 3 }}>
                       <Button
@@ -182,7 +181,7 @@ export const ContactPage: React.FC = () => {
                 <InfoCard>
                   <InfoCardContent>
                     <InfoTitle variant="h4" gutterBottom sx={{ mb: 3 }}>
-                      Mes coordonnées
+                      {t('contact.infoTitle')}
                     </InfoTitle>
                     <InfoSection>
                       <InfoItemHeader>
@@ -217,12 +216,12 @@ export const ContactPage: React.FC = () => {
                 <ContactCardContent>
                   <SectionHeader>
                     <Typography variant="h3">
-                      Envoyez-moi un message
+                      {t('contact.sendMessage')}
                     </Typography>
                   </SectionHeader>
 
                   <SectionDescription variant="body1" color="text.secondary">
-                    Remplissez le formulaire ci-dessous et je vous répondrai rapidement.
+                    {t('contact.formDescription')}
                   </SectionDescription>
 
                   <Box component="form" onSubmit={handleSubmit}>
@@ -230,7 +229,7 @@ export const ContactPage: React.FC = () => {
                       <Grid item xs={12}>
                         <TextField
                           fullWidth
-                          label="Nom complet"
+                          label={t('contact.form.fullName')}
                           name="name"
                           value={formData.name}
                           onChange={handleInputChange}
@@ -249,7 +248,7 @@ export const ContactPage: React.FC = () => {
                       <Grid item xs={12}>
                         <TextField
                           fullWidth
-                          label="Email"
+                          label={t('contact.form.email')}
                           name="email"
                           type="email"
                           value={formData.email}
@@ -269,7 +268,7 @@ export const ContactPage: React.FC = () => {
                       <Grid item xs={12}>
                         <TextField
                           fullWidth
-                          label="Sujet"
+                          label={t('contact.form.subject')}
                           name="subject"
                           value={formData.subject}
                           onChange={handleInputChange}
@@ -288,7 +287,7 @@ export const ContactPage: React.FC = () => {
                       <Grid item xs={12}>
                         <TextField
                           fullWidth
-                          label="Message"
+                          label={t('contact.form.message')}
                           name="message"
                           multiline
                           rows={6}
@@ -320,7 +319,7 @@ export const ContactPage: React.FC = () => {
                             )
                           }
                         >
-                          {isLoading ? 'Envoi en cours...' : 'Envoyer le message'}
+                          {isLoading ? t('common:buttons.send') + '...' : t('common:buttons.submit')}
                         </SubmitButton>
                       </Grid>
                     </Grid>

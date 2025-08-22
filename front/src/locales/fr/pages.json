@@ -1,0 +1,40 @@
+{
+  "home": {
+    "latestTips": "Derniers tips publiés :",
+    "latestPrompts": "Derniers prompts publiés :"
+  },
+  "tips": {
+    "title": "Tips et Mémos",
+    "description": "Une collection de fiches synthétiques sur des concepts fondamentaux de l'écosystème .NET et C#. Chaque tip vise à clarifier un point d'architecture, une interface clé ou une bonne pratique d'API.",
+    "aiNote": "Ne soyez pas surpris : les contenus des fiches ont été générés avec l'aide de l'IA."
+  },
+  "prompts": {
+    "title": "Prompts",
+    "description": "Collection de prompts système pour l'intelligence artificielle.",
+    "whatIsPrompt": "Qu'est-ce qu'un prompt ?",
+  "promptDefinition": "Un prompt système est le texte de base que l'on transmet à un modèle d'intelligence artificielle avant toute interaction. Il est en général stocké dans un fichier markdown (.md) à la racine du projet ; on peut en avoir plusieurs en fonction des besoins et des périmètres.",
+  "promptDefinitionFull": "Un prompt système est le texte de base que l'on transmet à un modèle d'intelligence artificielle avant toute interaction. Il est en général stocké dans un fichier markdown (.md) à la racine du projet ; on peut en avoir plusieurs en fonction des besoins et des périmètres.\n\nCe sont un peu les dix commandements qui seront pris en considération par l'agent IA lors de la génération de ses réponses et de son code.\n\nPour être sûr que ces règles soient bien prises en compte, il vaut mieux les préciser au début de la conversation avec l'IA.\n\nPar exemple :\n«En prenant en compte les règles du fichier rules.prompt.md, j'aimerais que tu ...»",
+  "whyPromptTitle": "Pourquoi un bon prompt est essentiel avec l'IA ?",
+  "whyPromptBody1": "Un prompt bien rédigé permet d'obtenir des réponses plus pertinentes, précises et adaptées à vos besoins. Il guide l'intelligence artificielle, réduit les malentendus et maximise la valeur des outils IA.",
+  "whyPromptBody2": "Il faut vraiment voir l'IA comme un collaborateur : si l'instruction est vague, elle risque de mal interpréter vos attentes et de fournir des réponses inappropriées ou hors sujet."
+  },
+  "contact": {
+    "title": "Développeur Freelance .NET & IA",
+    "subtitle": "Vous cherchez un développeur .NET expérimenté, avec des compétences en Intelligence Artificielle ?<br />Ou vous aimeriez voir certaines choses ajoutées sur le site ?<br />N'hésitez pas à me contacter pour discuter de vos besoins ou de vos projets !",
+    "socialNetworks": "Mes réseaux sociaux",
+    "sendMessage": "Envoyez-moi un message",
+    "formDescription": "Remplissez le formulaire ci-dessous et je vous répondrai rapidement.",
+    "form": {
+      "fullName": "Nom complet",
+      "email": "Email",
+      "subject": "Sujet",
+      "message": "Message"
+    },
+  "infoTitle": "Mes coordonnées",
+    "successMessage": "Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais."
+  }
+  ,
+  "footer": {
+    "copyright": "© 2025 CraftsmanLab. Tous droits réservés."
+  }
+}

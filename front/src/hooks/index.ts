@@ -1,0 +1,1 @@
+export { useHtmlLang } from './useHtmlLang';

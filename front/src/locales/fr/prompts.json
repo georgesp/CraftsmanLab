@@ -1,0 +1,36 @@
+{
+  "craftsmanlab-rules": {
+    "title": "Règles CraftsmanLab",
+    "shortDescription": "Règles et bonnes pratiques pour le développement sur CraftsmanLab. Conventions de code, architecture, et méthodologies.",
+    "description": "Ce prompt a été utilisé pour créer le socle du site internet CraftsmanLab ; je l'ai ensuite enrichi pour y ajouter certaines règles d'architecture au fur et à mesure des développements.\n\nVous pouvez l'utiliser comme base pour vos propres développements.",
+    "content": {
+      "copyButton": "Copier le prompt",
+      "copySuccess": "Prompt copié dans le presse-papiers !",
+      "writtenOn": "Écrit le"
+    }
+  },
+  "aspnet-core-guidances": {
+    "title": "ASP.NET Core Guidances",
+    "shortDescription": "Règles et bonnes pratiques ASP.NET Core.",
+    "description": "Collection de directives et bonnes pratiques pour développer des applications ASP.NET Core robustes et maintenables.",
+    "content": {
+      "introduction": "Ce document regroupe les règles obligatoires et les meilleures pratiques pour le développement d'applications ASP.NET Core. Il s'appuie sur l'AspNetCore Guidance de David Fowler et adapte les recommandations au contexte du workspace.",
+      "copyButton": "Copier le prompt",
+      "copySuccess": "Prompt copié dans le presse-papiers !",
+      "writtenOn": "Écrit le",
+      "sources": "Pour toute question, consulter la documentation officielle ASP.NET Core et le référentiel Guidance"
+    }
+  },
+  "dot-net-async-best-practices": {
+    "title": ".NET Async Best Practices",
+    "shortDescription": "Guide complet des bonnes pratiques asynchronisme .NET/ASP.NET Core avec exemples concrets.",
+    "description": "Bonnes pratiques et conseils pour implémenter correctement la programmation asynchrone en C#.",
+    "content": {
+      "introduction": "Guide complet des bonnes pratiques pour l'asynchronisme en .NET et ASP.NET Core. Ce document synthétise les règles essentielles pour éviter les pièges courants et garantir la performance des applications.",
+      "copyButton": "Copier le prompt",
+      "copySuccess": "Prompt copié dans le presse-papiers !",
+      "writtenOn": "Écrit le",
+      "sources": "Sources: Tiré de la page de"
+    }
+  }
+}

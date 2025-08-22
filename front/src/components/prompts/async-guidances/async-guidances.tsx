@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Typography, Link, IconButton, Snackbar, Alert } from '@mui/material';
 import { ContentCopy } from '@mui/icons-material';
+import { useTranslation } from 'react-i18next';
 import type { PromptModule } from '..';
 import { CodeBlock } from '../../ui/CodeBlock';
 import { COLORS } from 'styles/colors';
@@ -139,6 +140,7 @@ public async Task TestAsync()
 - Respecter ces règles pour garantir la robustesse et la performance du code`;
 
 const PromptBody: React.FC = () => {
+  const { t } = useTranslation('prompts');
   const [showCopySuccess, setShowCopySuccess] = useState(false);
   const writtenOn = meta.writtenOn
     ? new Date(meta.writtenOn).toLocaleDateString('fr-FR')
@@ -161,9 +163,7 @@ const PromptBody: React.FC = () => {
     <Box>
 
       <Typography variant="body1" sx={{ mb: 2 }}>
-        Guide complet des bonnes pratiques pour l'asynchronisme en .NET et ASP.NET Core. 
-        Ce document synthétise les règles essentielles pour éviter les pièges courants et 
-        garantir la performance des applications.
+        {t('dot-net-async-best-practices.content.introduction')}
       </Typography>
       <Box sx={{ borderTop: '1px solid', borderColor: 'grey.300', mb: 3 }} />
 
@@ -192,7 +192,7 @@ const PromptBody: React.FC = () => {
               },
             }}
             size="small"
-            title="Copier le prompt"
+            title={t('dot-net-async-best-practices.content.copyButton')}
           >
             <ContentCopy fontSize="small" />
           </IconButton>
@@ -206,14 +206,14 @@ const PromptBody: React.FC = () => {
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       >
         <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: '100%' }}>
-          Prompt copié dans le presse-papiers !
+          {t('dot-net-async-best-practices.content.copySuccess')}
         </Alert>
       </Snackbar>
 
       <Box sx={{ mt: 4, pt: 3, borderTop: '1px solid', borderColor: 'grey.300' }}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 2, flexWrap: 'wrap' }}>
           <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic' }}>
-            Sources: Tiré de la page de{' '}
+            {t('dot-net-async-best-practices.content.sources')}{' '}
             <Link
               href="https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AsyncGuidance.md"
               target="_blank"
@@ -223,7 +223,7 @@ const PromptBody: React.FC = () => {
             </Link>
           </Typography>
           <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic', textAlign: 'left' }}>
-            Écrit le {writtenOn}
+            {t('dot-net-async-best-practices.content.writtenOn')} {writtenOn}
           </Typography>
         </Box>
       </Box>

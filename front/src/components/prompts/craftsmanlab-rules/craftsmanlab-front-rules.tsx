@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Typography, IconButton, Snackbar, Alert } from '@mui/material';
 import { ContentCopy } from '@mui/icons-material';
+import { useTranslation } from 'react-i18next';
 import type { PromptModule } from '..';
 import { CodeBlock } from '../../ui/CodeBlock';
 import { COLORS } from 'styles/colors';
@@ -11,14 +12,11 @@ import rawGlobalPrompt from '../../../../prompts/global.prompt.md?raw';
 export const promptText = rawGlobalPrompt;
 
 const PromptBody: React.FC = () => {
+  const { t } = useTranslation('prompts');
   const [showCopySuccess, setShowCopySuccess] = useState(false);
   const writtenOn = meta.writtenOn ? new Date(meta.writtenOn).toLocaleDateString('fr-FR') : new Date().toLocaleDateString('fr-FR');
 
-  const description = `
-  Ce prompt a été utilisé pour créer le socle du site internet CraftsmanLab ; je l'ai ensuite enrichi pour y ajouter certaines règles d'architecture au fur et à mesure des développements.
-  
-  Vous pouvez l'utiliser comme base pour vos propres développements.
-  `;
+  const description = t('craftsmanlab-rules.description');
 
   const handleCopy = async () => {
     try {
@@ -59,7 +57,7 @@ const PromptBody: React.FC = () => {
             '&:hover': { color: COLORS.copyBtnColorHover },
           }}
           size="small"
-          title="Copier le prompt"
+          title={t('craftsmanlab-rules.content.copyButton')}
         >
           <ContentCopy fontSize="small" />
         </IconButton>
@@ -72,8 +70,8 @@ const PromptBody: React.FC = () => {
         onClose={() => setShowCopySuccess(false)}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       >
-        <Alert onClose={() => setShowCopySuccess(false)} severity="success" sx={{ width: '100%' }}>
-          Prompt copié dans le presse-papiers !
+                <Alert onClose={() => setShowCopySuccess(false)} severity="success" sx={{ width: '100%' }}>
+          {t('craftsmanlab-rules.content.copySuccess')}
         </Alert>
       </Snackbar>
 
@@ -83,7 +81,7 @@ const PromptBody: React.FC = () => {
             Source: Fichier global.prompt.md du projet
           </Typography>
           <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic', textAlign: 'left' }}>
-            Écrit le {writtenOn}
+            {t('craftsmanlab-rules.content.writtenOn')} {writtenOn}
           </Typography>
         </Box>
       </Box>

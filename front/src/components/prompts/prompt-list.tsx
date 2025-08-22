@@ -1,5 +1,6 @@
 import React from 'react';
 import { List, ListItemButton, ListItemText } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { COLORS } from '../../styles/colors';
 import { Link as RouterLink } from 'react-router-dom';
 import { promptsList } from './registry';
@@ -11,6 +12,15 @@ type Props = {
 };
 
 export const PromptList: React.FC<Props> = ({ selectedSlug, onNavigate, maxItems }) => {
+  const { t } = useTranslation('prompts');
+  
+  // Helper function to get translated text with fallback
+  const getTranslatedText = (promptSlug: string, key: string, fallback: string) => {
+    const translationKey = `${promptSlug}.${key}`;
+    const translated = t(translationKey, { defaultValue: '' });
+    return translated || fallback;
+  };
+
   const items = (() => {
     if (maxItems && maxItems > 0) {
       // Exclude placeholder "more" from the limited list
@@ -30,7 +40,10 @@ export const PromptList: React.FC<Props> = ({ selectedSlug, onNavigate, maxItems
               disableRipple
               tabIndex={-1}
             >
-              <ListItemText primary={p.title} secondary={p.shortDescription} />
+              <ListItemText 
+                primary={getTranslatedText(p.slug, 'title', p.title)} 
+                secondary={getTranslatedText(p.slug, 'shortDescription', p.shortDescription)} 
+              />
             </ListItemButton>
           )
           : (
@@ -42,7 +55,10 @@ export const PromptList: React.FC<Props> = ({ selectedSlug, onNavigate, maxItems
               onClick={onNavigate}
               sx={{ mb: 0.5, '&:hover': { backgroundColor: COLORS.itemListHover } }}
             >
-              <ListItemText primary={p.title} secondary={p.shortDescription} />
+              <ListItemText 
+                primary={getTranslatedText(p.slug, 'title', p.title)} 
+                secondary={getTranslatedText(p.slug, 'shortDescription', p.shortDescription)} 
+              />
             </ListItemButton>
           )
       ))}

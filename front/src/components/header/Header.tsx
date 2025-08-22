@@ -16,11 +16,14 @@ import {
 import SearchIcon from '@mui/icons-material/Search';
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
+import { useTranslation } from 'react-i18next';
 import { searchAll, type SearchHit } from '@/utils/search-client';
 import { COLORS } from '../../styles/colors';
 import { StyledAppBar, StyledToolbar, NavigationContainer } from './styles';
+import { LanguageSelector } from '../ui/LanguageSelector';
 
 export const Header: React.FC = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [query, setQuery] = useState('');
   const [open, setOpen] = useState(false);
@@ -129,8 +132,8 @@ export const Header: React.FC = () => {
                 }}
               >
                 <InputBase
-                  placeholder="Rechercher…"
-                  inputProps={{ 'aria-label': 'Rechercher' }}
+                  placeholder={t('search.placeholder')}
+                  inputProps={{ 'aria-label': t('search.placeholder') }}
                   value={query}
                   onChange={(e) => {
                     setQuery(e.target.value);
@@ -148,7 +151,7 @@ export const Header: React.FC = () => {
                 />
 
                 <IconButton
-                  aria-label="Lancer la recherche"
+                  aria-label={t('search.placeholder')}
                   type="button"
                   onClick={() => handleSubmit()}
                   size="small"
@@ -226,7 +229,7 @@ export const Header: React.FC = () => {
                   elevation={4}
                   sx={{ position: 'absolute', top: '44px', left: 0, right: 0, zIndex: 10, backgroundColor: COLORS.darkTheme.inputBackground }}
                 >
-                  <Box sx={{ p: 1.5, color: COLORS.darkTheme.inputText, fontSize: 14 }}>Aucun résultat</Box>
+                                    <Box sx={{ p: 1.5, color: COLORS.darkTheme.inputText, fontSize: 14 }}>{t('search.noResults')}</Box>
                 </Paper>
               )}
             </Box>
@@ -235,16 +238,18 @@ export const Header: React.FC = () => {
 
         <NavigationContainer>
           <MuiLink component={RouterLink} to="/tips" color="inherit" underline="none" sx={{ fontWeight: 500, fontSize: '1.05rem' }}>
-            Tips / Mémos
+            {t('navigation.tips')}
           </MuiLink>
 
           <MuiLink component={RouterLink} to="/prompts" color="inherit" underline="none" sx={{ fontWeight: 500, fontSize: '1.05rem' }}>
-            Prompts
+            {t('navigation.prompts')}
           </MuiLink>
 
           <MuiLink component={RouterLink} to="/contact" color="inherit" underline="none" sx={{ fontWeight: 500, fontSize: '1.05rem' }}>
-            Contact
+            {t('navigation.contact')}
           </MuiLink>
+
+          <LanguageSelector />
         </NavigationContainer>
       </StyledToolbar>
     </StyledAppBar>

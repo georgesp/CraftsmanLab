@@ -3,6 +3,7 @@ import { Container, Typography, Box, Alert, Grid, Paper, Snackbar } from '@mui/m
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { telerikTheme } from '../../theme/theme';
 import { PAGE_SPACING } from '../../styles/spacing';
 import { PageLayout, ScrollToTopButton } from '../../components';
@@ -12,11 +13,19 @@ import { PromptList } from '../../components/prompts/prompt-list';
 import { ViewAllTipsButton } from '../../components/ui';
 
 export const PromptDetailPage: React.FC = () => {
+  const { t } = useTranslation(['common', 'prompts']);
   const { slug } = useParams<{ slug: string }>();
   const entry = slug ? findPromptBySlug(slug) : undefined;
   const [copyOpen, setCopyOpen] = useState(false);
 
   const [LoadedComponent, setLoadedComponent] = useState<React.ComponentType | null>(null);
+
+  // Helper function to get translated text with fallback
+  const getTranslatedText = (promptSlug: string, key: string, fallback: string) => {
+    const translationKey = `${promptSlug}.${key}`;
+    const translated = t(`prompts:${translationKey}`, { defaultValue: '' });
+    return translated || fallback;
+  };
 
   useEffect(() => {
     let cancelled = false;
@@ -59,13 +68,13 @@ export const PromptDetailPage: React.FC = () => {
               </Grid>
               <Grid item xs={12} md={8} lg={9}>
                 <Typography variant="h1" component="h1" gutterBottom>
-                  {entry.title}
+                  {entry ? getTranslatedText(entry.slug, 'title', entry.title) : ''}
                 </Typography>
                 {/* La shortDescription n'est plus affichée sur la page de détail */}
                 {LoadedComponent ? (
                   <LoadedComponent />
                 ) : (
-                  <Typography>Chargement…</Typography>
+                  <Typography>{t('common.loading')}</Typography>
                 )}
               </Grid>
             </Grid>
@@ -78,7 +87,7 @@ export const PromptDetailPage: React.FC = () => {
         open={copyOpen}
         autoHideDuration={2000}
         onClose={() => setCopyOpen(false)}
-        message="Prompt copié dans le presse-papiers"
+        message={t('messages.promptCopied')}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       />
     </ThemeProvider>
