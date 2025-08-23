@@ -9,6 +9,7 @@ import { Header, Footer, ScrollToTopButton } from '../../components';
 import { COLORS } from '../../styles/colors';
 import { findPromptBySlug } from '../../components/prompts/registry';
 import { PromptList } from '../../components/prompts/prompt-list';
+import { ViewAllTipsButton } from '../../components/ui';
 
 export const PromptDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -52,7 +53,8 @@ export const PromptDetailPage: React.FC = () => {
               <Grid item xs={12} md={4} lg={3}>
                 <Paper variant="outlined" sx={{ p: 2, position: 'sticky', top: 24, borderColor: COLORS.itemListHover }}>
                   <Typography variant="h6" sx={{ mb: 2 }}>Prompts</Typography>
-                  <PromptList selectedSlug={entry.slug} />
+                  <PromptList selectedSlug={entry.slug} maxItems={7} />
+                  <ViewAllTipsButton to="/prompts" />
                 </Paper>
               </Grid>
               <Grid item xs={12} md={8} lg={9}>

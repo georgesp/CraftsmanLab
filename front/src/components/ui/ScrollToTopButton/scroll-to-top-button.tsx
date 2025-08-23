@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Fab, Zoom } from '@mui/material';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { COLORS } from '../../styles/colors';
+import { COLORS } from '../../../styles/colors';
 
-interface ScrollToTopButtonProps {
+export interface ScrollToTopButtonProps {
   /**
    * Nombre de pixels à partir duquel le bouton apparaît (par défaut: 300)
    */
@@ -18,6 +18,10 @@ interface ScrollToTopButtonProps {
   right?: number;
 }
 
+/**
+ * Bouton flottant permettant de remonter en haut de la page.
+ * Apparaît automatiquement après un certain nombre de pixels de scroll.
+ */
 export const ScrollToTopButton: React.FC<ScrollToTopButtonProps> = ({
   showAfterPixels = 300,
   bottom = 20,
@@ -79,4 +83,4 @@ export const ScrollToTopButton: React.FC<ScrollToTopButtonProps> = ({
   );
 };
 
-export default ScrollToTopButton;
+ScrollToTopButton.displayName = 'ScrollToTopButton';
