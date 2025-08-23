@@ -4,11 +4,12 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { telerikTheme } from '../../theme/theme';
 import { PAGE_SPACING } from '../../styles/spacing';
-import { Header } from '../../components';
+import { Header, ScrollToTopButton } from '../../components';
 import { COLORS } from '../../styles/colors';
 import { findTipBySlug } from '../../components/tips/registry';
 import { Container, Box, Grid, Paper, Typography, Alert } from '@mui/material';
 import { TipList } from '../../components/tips/tip-list';
+import { ViewAllTipsButton } from '../../components/ui';
 
 export const TipDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -47,7 +48,8 @@ export const TipDetailPage: React.FC = () => {
               <Grid item xs={12} md={4} lg={3}>
                 <Paper variant="outlined" sx={{ p: 2, position: 'sticky', top: 24, borderColor: COLORS.itemListHover }}>
                   <Typography variant="h6" sx={{ mb: 2 }}>Tips / Mémos</Typography>
-                  <TipList selectedSlug={entry.slug} />
+                  <TipList selectedSlug={entry.slug} maxItems={7} />
+                  <ViewAllTipsButton to="/tips" />
                 </Paper>
               </Grid>
               <Grid item xs={12} md={8} lg={9}>
@@ -60,6 +62,7 @@ export const TipDetailPage: React.FC = () => {
           )}
         </Box>
       </Container>
+      <ScrollToTopButton />
     </ThemeProvider>
   );
 };

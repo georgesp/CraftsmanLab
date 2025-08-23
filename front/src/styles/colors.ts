@@ -104,4 +104,11 @@ export const COLORS = {
 			text: '#d4d4d4',         // Gris clair pour le texte de base
 		},
 	},
+
+	// Couleurs pour le bouton ScrollToTop
+	scrollToTop: {
+		background: '#23272F', // Même couleur que darkGreyBg pour s'intégrer naturellement
+		hover: '#63a4ff',      // Bleu clair (primary.light) pour un accent vibrant au hover
+		border: '#374046',     // Même couleur que itemListHover pour une bordure subtile
+	},
 };

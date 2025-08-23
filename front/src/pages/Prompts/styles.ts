@@ -18,6 +18,6 @@ export const PromptCard = styled(Card)(() => ({
   overflow: 'hidden',
 }));
 export const PromptCardContent = styled(CardContent)(({ theme }) => ({
-  padding: theme.spacing(3),
+  padding: theme.spacing(1.5, 3, 3, 3), // Réduction de 50% du padding top (3 -> 1.5)
   color: theme.palette.text.primary,
 }));
