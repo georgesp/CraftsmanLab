@@ -9,6 +9,20 @@ export const meta = {
   shortDescription: 'Uniformiser les versions NuGet dans votre solution .NET avec CPM',
   writtenOn: '2025-08-16',
   keywords: ['C#' as const],
+  metadata: {
+    searchKeywords: {
+      fr: [
+        'cpm', 'central package management', 'nuget', 'packages', 'versions',
+        'directory.packages.props', 'centralpackageversions', 'gestion',
+        'uniforme', 'solution', 'projet', 'dépendances', 'mise à jour'
+      ],
+      en: [
+        'cpm', 'central package management', 'nuget', 'packages', 'versions',
+        'directory.packages.props', 'centralpackageversions', 'management',
+        'uniform', 'solution', 'project', 'dependencies', 'update'
+      ]
+    }
+  }
 };
 
 const CentralPackageManagementTip: React.FC = () => {

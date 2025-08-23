@@ -9,7 +9,21 @@ export const meta = {
   title: 'Switch + Tuple',
   shortDescription: 'Astuce pragmatique : switch sur un tuple en C# (pattern matching)',
   writtenOn: '2025-08-15',
-  keywords: ['C#'] as unknown as Keyword[]
+  keywords: ['C#'] as unknown as Keyword[],
+  metadata: {
+    searchKeywords: {
+      fr: [
+        'switch', 'tuple', 'pattern matching', 'correspondance', 'motifs',
+        'expressions', 'décomposition', 'destructuring', 'c# 8', 'c# 9',
+        'when', 'discard', 'underscore', 'décisionnel'
+      ],
+      en: [
+        'switch', 'tuple', 'pattern matching', 'patterns',
+        'expressions', 'decomposition', 'destructuring', 'c# 8', 'c# 9',
+        'when', 'discard', 'underscore', 'decision'
+      ]
+    }
+  }
 };
 
 const exampleCode = `using System;

@@ -10,7 +10,21 @@ export const meta = {
   shortDescription: "Mapping simple et efficace entre DTOs et entités avec AutoMapper",
   writtenOn: '2025-08-14',
   // TipMeta expects Keyword[] (mutable). Cast from literal to satisfy TS without changing runtime value.
-  keywords: ['C#'] as unknown as Keyword[]
+  keywords: ['C#'] as unknown as Keyword[],
+  metadata: {
+    searchKeywords: {
+      fr: [
+        'automapper', 'mapping', 'transformation', 'conversion', 'dto', 'entity', 'objet',
+        'profile', 'configuration', 'projection', 'flattening', 'copie',
+        'automatique', 'convention', 'règles', 'validation', 'mapFrom', 'ignore'
+      ],
+      en: [
+        'automapper', 'mapping', 'transformation', 'conversion', 'dto', 'entity', 'object',
+        'profile', 'configuration', 'projection', 'flattening', 'copy',
+        'automatic', 'convention', 'rules', 'validation', 'mapFrom', 'ignore'
+      ]
+    }
+  }
 };
 
 const AutomapperTip: React.FC = () => {

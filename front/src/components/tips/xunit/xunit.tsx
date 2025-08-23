@@ -9,6 +9,20 @@ export const meta = {
   shortDescription: 'Écrire des tests avec xUnit : bases, fixtures et bonnes pratiques.',
   writtenOn: '2025-08-12',
   keywords: ['C#' as const],
+  metadata: {
+    searchKeywords: {
+      fr: [
+        'xunit', 'tests', 'test unitaire', 'testing', 'assertion', 'fact', 'theory',
+        'fixture', 'setup', 'teardown', 'mock', 'arrange', 'act', 'assert',
+        'paramètres', 'async', 'parallèle', 'collection', 'attribut', 'inlineData'
+      ],
+      en: [
+        'xunit', 'tests', 'unit testing', 'testing', 'assertion', 'fact', 'theory',
+        'fixture', 'setup', 'teardown', 'mock', 'arrange', 'act', 'assert',
+        'parameters', 'async', 'parallel', 'collection', 'attribute', 'inlineData'
+      ]
+    }
+  }
 };
 
 // Code blocks rendered with shared CodeBlock component

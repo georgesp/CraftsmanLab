@@ -1,4 +1,38 @@
-## Style et phrasologie attendus
+## Style et phrasologiexport const meta = {
+  slug: 'slug-unique', // kebab## Règles de nommage et bonnes pratiques
+- Le `slug` doit être unique, en kebab-case, sans espace ni accent.
+- Le `title` doit être court et explicite.
+- Le `shortDescription` doit donner envie de cliquer, max 120 caractères.
+- La date `writtenOn` au format `YYYY-MM-DD`.
+- Les `keywords` doivent correspondre aux technologies utilisées (C#, TypeScript, etc.).
+- Les `metadata.searchKeywords` doivent inclure :
+  - **Le nom de l'outil/bibliothèque** principal (ex: "dapper", "automapper", "polly")
+  - **Les concepts clés** abordés dans le tip
+  - **Les cas d'usage** et problèmes résolus
+  - **Les mots-clés techniques** en français et anglais
+  - **Les termes alternatifs** que les utilisateurs pourraient chercher
+- Le composant principal doit être exporté par défaut.
+- Ajoute un pied de page en bas du tip :
+  - À gauche : la source, en italique, cliquable (lien vers la doc ou la ressource d'origine, style underline, color inherit)
+  - À droite : la date, label "Écrit le …", alignée à droite
+- Utilise un ton direct, synthétique, orienté dev (voir les exemples existants).lisé dans l'URL
+  title: 'Titre du tip',
+  shortDescription: 'Résumé court pour la vignette',
+  writtenOn: 'YYYY-MM-DD', // date de rédaction ou de dernière MAJ
+  keywords: ['C#' as const], // ou ['TypeScript' as const] selon le contexte
+  metadata: {
+    searchKeywords: {
+      fr: [
+        'nom-de-l-outil', 'concept-principal', 'mots-clés-français',
+        'fonctionnalité', 'cas-usage', 'problème-résolu'
+      ],
+      en: [
+        'tool-name', 'main-concept', 'english-keywords',
+        'feature', 'use-case', 'problem-solved'
+      ]
+    }
+  }
+};ndus
 
 - Privilégie un ton personnel, direct, comme si tu t’adressais à un collègue développeur.
 - Va à l’essentiel, évite le style encyclopédique ou académique.

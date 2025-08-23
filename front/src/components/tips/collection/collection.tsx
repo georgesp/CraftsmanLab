@@ -8,6 +8,20 @@ export const meta = {
   shortDescription: 'Différentes collections en C# (IEnumerable, ICollection, IList, IReadOnlyCollection, etc..)',
   writtenOn: '2025-08-11',
   keywords: ['C#' as const],
+  metadata: {
+    searchKeywords: {
+      fr: [
+        'collections', 'ienumerable', 'icollection', 'ilist', 'ireadonlycollection',
+        'list', 'array', 'tableau', 'énumération', 'itération', 'foreach',
+        'linq', 'count', 'add', 'remove', 'indexer', 'générique'
+      ],
+      en: [
+        'collections', 'ienumerable', 'icollection', 'ilist', 'ireadonlycollection',
+        'list', 'array', 'enumeration', 'iteration', 'foreach',
+        'linq', 'count', 'add', 'remove', 'indexer', 'generic'
+      ]
+    }
+  }
 };
 
 const CollectionTip: React.FC = () => {

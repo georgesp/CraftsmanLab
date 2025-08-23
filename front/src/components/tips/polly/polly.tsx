@@ -9,6 +9,20 @@ export const meta = {
   shortDescription: 'Ajouter de la résilience à vos appels : retry, circuit breaker, timeout et fallback.',
   writtenOn: '2025-08-20',
   keywords: ['C#' as const],
+  metadata: {
+    searchKeywords: {
+      fr: [
+        'polly', 'résilience', 'retry', 'tentative', 'circuit breaker', 'timeout', 'fallback',
+        'politique', 'échec', 'panne', 'robustesse', 'stabilité', 'récupération',
+        'bulkhead', 'rate limiting', 'fault tolerance', 'exception', 'waitAndRetry'
+      ],
+      en: [
+        'polly', 'resilience', 'retry', 'attempt', 'circuit breaker', 'timeout', 'fallback',
+        'policy', 'failure', 'fault', 'robustness', 'stability', 'recovery',
+        'bulkhead', 'rate limiting', 'fault tolerance', 'exception', 'waitAndRetry'
+      ]
+    }
+  }
 };
 
 const PollyTip: React.FC = () => {

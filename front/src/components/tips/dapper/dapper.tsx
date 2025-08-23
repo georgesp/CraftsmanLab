@@ -9,6 +9,22 @@ export const meta = {
   shortDescription: 'Utilisation de Dapper (DTO, alias, multi‑mapping).',
   writtenOn: '2025-08-12',
   keywords: ['C#' as const],
+  metadata: {
+    searchKeywords: {
+      fr: [
+        'dapper', 'orm', 'micro-orm', 'base de données', 'sql', 'requête', 'mapping', 
+        'dto', 'entity', 'performance', 'query', 'execute', 'paramètres',
+        'transaction', 'connection', 'stored procedure', 'procédure stockée',
+        'queryFirst', 'querySingle', 'queryMultiple'
+      ],
+      en: [
+        'dapper', 'orm', 'micro-orm', 'database', 'sql', 'query', 'mapping',
+        'dto', 'entity', 'performance', 'execute', 'parameters',
+        'transaction', 'connection', 'stored procedure',
+        'queryFirst', 'querySingle', 'queryMultiple'
+      ]
+    }
+  }
 };
 
 const DapperTip: React.FC = () => {

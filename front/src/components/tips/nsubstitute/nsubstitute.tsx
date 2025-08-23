@@ -9,6 +9,20 @@ export const meta = {
   shortDescription: 'Mocker avec NSubstitute : bases, exemples et bonnes pratiques.',
   writtenOn: '2025-08-12',
   keywords: ['C#' as const],
+  metadata: {
+    searchKeywords: {
+      fr: [
+        'nsubstitute', 'mock', 'mocking', 'substitute', 'double', 'fake', 'stub', 'spy',
+        'tests', 'isolation', 'dépendance', 'interface', 'simulation',
+        'vérification', 'arguments', 'retour', 'callback', 'received', 'returns'
+      ],
+      en: [
+        'nsubstitute', 'mock', 'mocking', 'substitute', 'double', 'fake', 'stub', 'spy',
+        'tests', 'isolation', 'dependency', 'interface', 'simulation',
+        'verification', 'arguments', 'return', 'callback', 'received', 'returns'
+      ]
+    }
+  }
 };
 
 // Code blocks rendered with shared CodeBlock component

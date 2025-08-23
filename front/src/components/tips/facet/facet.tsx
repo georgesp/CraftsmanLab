@@ -9,6 +9,20 @@ export const meta = {
   shortDescription: 'Générateur de projections (DTO) et mappings pour C# et EF Core.',
   writtenOn: '2025-08-21',
   keywords: ['C#' as const],
+  metadata: {
+    searchKeywords: {
+      fr: [
+        'facet', 'générateur', 'code generation', 'dto', 'projections', 'mapping',
+        'ef core', 'entity framework', 'select', 'compilation', 'attributs',
+        'performance', 'requêtes', 'optimisation', 'source generator'
+      ],
+      en: [
+        'facet', 'generator', 'code generation', 'dto', 'projections', 'mapping',
+        'ef core', 'entity framework', 'select', 'compilation', 'attributes',
+        'performance', 'queries', 'optimization', 'source generator'
+      ]
+    }
+  }
 };
 
 const FacetTip: React.FC = () => {
