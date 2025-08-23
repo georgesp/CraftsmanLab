@@ -52,6 +52,7 @@
       "<rootDir>/src/setupTests.ts"
     ],
     "moduleNameMapper": {
+      "^\\./search-client$": "<rootDir>/src/utils/search-client.jest.ts",
       "^@/utils/search-client$": "<rootDir>/src/utils/search-client.jest.ts",
       "^utils/search-client$": "<rootDir>/src/utils/search-client.jest.ts",
       "^@/utils/searchClient$": "<rootDir>/src/utils/search-client.jest.ts",

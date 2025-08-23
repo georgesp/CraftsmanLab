@@ -1,4 +1,4 @@
-import type { PromptMeta } from '.';
+import type { PromptMeta } from './prompt-types';
 
 // Eager import to get metadata immediately from all .tsx files in current directory and subdirectories
 // Excludes registry files and other infrastructure files
