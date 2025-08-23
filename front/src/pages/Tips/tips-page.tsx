@@ -3,7 +3,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Container, Card, Typography, Box } from '@mui/material';
 import { telerikTheme } from '../../theme/theme';
-import { Header, Footer } from '../../components';
+import { Header, Footer, ScrollToTopButton } from '../../components';
 import { TipCardsGrid } from '../../components/tips/tip-cards-grid';
 import { COLORS } from '../../styles/colors';
 import { GridContainer, PromptsPageContainer } from '../Prompts/styles';
@@ -66,6 +66,7 @@ export const TipsPage: React.FC = () => {
 					</Card>
 				</GridContainer>
 			</Container>
+			<ScrollToTopButton />
 		<Footer />
 		</ThemeProvider>
 	);

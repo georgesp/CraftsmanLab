@@ -3,7 +3,7 @@ import { Container, Typography, Card, Box } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { telerikTheme } from '../../theme/theme';
-import { Header, Footer } from '../../components';
+import { Header, Footer, ScrollToTopButton } from '../../components';
 import { PromptCardsGrid } from '../../components/prompts/prompt-cards-grid';
 import { COLORS } from '../../styles/colors';
 import {
@@ -90,6 +90,7 @@ export const PromptsPage: React.FC = () => {
           </Card>
         </GridContainer>
   </Container>
+  <ScrollToTopButton />
   <Footer />
     </ThemeProvider>
   );

@@ -5,7 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { useParams } from 'react-router-dom';
 import { telerikTheme } from '../../theme/theme';
 import { PAGE_SPACING } from '../../styles/spacing';
-import { Header, Footer } from '../../components';
+import { Header, Footer, ScrollToTopButton } from '../../components';
 import { COLORS } from '../../styles/colors';
 import { findPromptBySlug } from '../../components/prompts/registry';
 import { PromptList } from '../../components/prompts/prompt-list';
@@ -70,6 +70,7 @@ export const PromptDetailPage: React.FC = () => {
           )}
         </Box>
       </Container>
+  <ScrollToTopButton />
   <Footer />
   <Snackbar
         open={copyOpen}

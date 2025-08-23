@@ -4,7 +4,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { telerikTheme } from '../../theme/theme';
 import { PAGE_SPACING } from '../../styles/spacing';
-import { Header } from '../../components';
+import { Header, ScrollToTopButton } from '../../components';
 import { COLORS } from '../../styles/colors';
 import { findTipBySlug } from '../../components/tips/registry';
 import { Container, Box, Grid, Paper, Typography, Alert } from '@mui/material';
@@ -60,6 +60,7 @@ export const TipDetailPage: React.FC = () => {
           )}
         </Box>
       </Container>
+      <ScrollToTopButton />
     </ThemeProvider>
   );
 };
