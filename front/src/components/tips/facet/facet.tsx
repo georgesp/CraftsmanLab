@@ -26,15 +26,12 @@ const FacetTip: React.FC = () => {
       <CodeBlock
         language="bash"
         code={`# Package principal
-
 dotnet add package Facet
 
 # Helpers provider-agnostic
-
 dotnet add package Facet.Extensions
 
 # Extensions EF Core (EF Core 6+)
-
 dotnet add package Facet.Extensions.EFCore`}
       />
 
