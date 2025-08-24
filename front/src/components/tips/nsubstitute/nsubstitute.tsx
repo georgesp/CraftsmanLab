@@ -82,9 +82,9 @@ mock.DidNotReceive().Baz();`} />
       </Typography>
       <CodeBlock language="csharp"
         code={`int captured;
-// Variante simple (avec When/Do)
+// Simple variant (with When/Do)
 mock.When(x => x.Do(Arg.Any<int>())).Do(call => captured = call.Arg<int>());
-// (exécuter ensuite mock.Do(123); pour que captured = 123)`}
+// (then execute mock.Do(123); so that captured = 123)`}
       />
 
       <Typography variant="h4" gutterBottom sx={{ mt: 4 }}>
@@ -130,23 +130,23 @@ public class MathServiceTests
     [Fact]
     public void ComputeSumAndLog_ReturnsSum_LogsMessage()
     {
-        // Arrange : on crée un mock d’ICalculator
-        var calc = Substitute.For<ICalculator>();
+  // Arrange: create a mock of ICalculator
+  var calc = Substitute.For<ICalculator>();
 
-        // On force Add() à retourner 5 quand on passe 2 et 3
-        calc.Add(2, 3).Returns(5);
+  // Force Add() to return 5 when passed 2 and 3
+  calc.Add(2, 3).Returns(5);
 
-        // On prépare le service avec le mock
-        var sut = new MathService(calc);
+  // Prepare the service with the mock
+  var sut = new MathService(calc);
 
-        // Act : appel de la méthode testée
-        int result = sut.ComputeSumAndLog(2, 3);
+  // Act: call the tested method
+  int result = sut.ComputeSumAndLog(2, 3);
 
-        // Assert – résultat attendu
-        Assert.Equal(5, result);
+  // Assert: expected result
+  Assert.Equal(5, result);
 
-        // Assert – vérification que Log a bien été appelé avec le bon message
-        calc.Received().Log("Result is 5");
+  // Assert: verify Log was called with the expected message
+  calc.Received().Log("Result is 5");
     }
 }`}
       />
@@ -193,7 +193,7 @@ asyncMock.GetDataAsync("abc").Returns(Task.FromResult("mocked data"));`}
         code={`// Au moins deux appels
 calc.Received(2).Log(Arg.Any<string>());
 
-// Aucun appel
+// No calls
 calc.DidNotReceive().Add(Arg.Any<int>(), Arg.Any<int>());`}
       />
 
@@ -208,9 +208,9 @@ calc.Add(Arg.Any<int>(), Arg.Any<int>())
 calc.When(call => call.Log(Arg.Any<string>()))
     .Do(callInfo =>
     {
-        var msg = callInfo.GetArguments()[0] as string;
-        // extraire le nombre du message
-        captured = int.Parse(msg.Split(' ')[2]);
+  var msg = callInfo.GetArguments()[0] as string;
+  // extract the number from the message
+  captured = int.Parse(msg.Split(' ')[2]);
     });`}
       />
 

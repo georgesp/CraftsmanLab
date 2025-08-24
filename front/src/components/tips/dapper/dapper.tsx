@@ -75,16 +75,16 @@ using (var conn = new SqlConnection(connString))
                        sql,
                        new { ProductId = 42 });
 
-    if (product == null)
-    {
-        Console.WriteLine("Produit non trouvé.");
-    }
-    else
-    {
-        Console.WriteLine($"{product.Name} : {product.Price:C}");
-    }
+  if (product == null)
+  {
+    Console.WriteLine("Product not found.");
+  }
+  else
+  {
+    Console.WriteLine($"{product.Name} : {product.Price:C}");
+  }
 }
-// Avantage: mapping automatique via les noms de propriétés.`}
+// Advantage: automatic mapping via property names.`}
       />
 
   <Typography variant="h4" sx={{ mt: 4 }} gutterBottom>Mapping sur un objet à structure différente</Typography>
@@ -122,9 +122,9 @@ using (var conn = new SqlConnection(connString))
                        sql,
                        new { OrderId = 101 });
 
-    // summary.CustomerName est rempli via l’alias
+  // summary.CustomerName is populated via the alias
 }
-// Astuce: alias (AS) pour faire correspondre colonnes -> propriétés.`}
+// Tip: use alias (AS) to match columns -> properties.`}
       />
 
   <Typography variant="h4" sx={{ mt: 4 }} gutterBottom>Multi‑DTO – Mapping parent + lignes</Typography>
@@ -189,12 +189,12 @@ using (var conn = new SqlConnection(connString))
                        new { OrderId = 101 },
                        splitOn: "LineId")).FirstOrDefault();
 
-  // order est l’OrderDto unique avec toutes ses lignes
+  // order is the single OrderDto with all its lines
 }
 
-// Clés:
-// - splitOn: "LineId" indique où Dapper doit découper vers OrderLineDto.
-// - Le délégué est appelé par ligne; on regroupe via lookup pour consolider.`}
+// Keys:
+// - splitOn: "LineId" indicates where Dapper should split into OrderLineDto.
+// - The delegate is called per row; group via lookup to consolidate.`}
       />
 
       <Box

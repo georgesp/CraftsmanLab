@@ -45,7 +45,8 @@ const AutomapperTip: React.FC = () => {
       <Typography paragraph>
         Dans <code>Startup.cs</code> ou la classe de configuration :
       </Typography>
-  <CodeBlock language="csharp" code={`services.AddAutoMapper(typeof(Program)); // scanne les profils dans l'assembly courant`} />
+  <CodeBlock language="csharp" code={`// Scan profiles in the current assembly
+services.AddAutoMapper(typeof(Program));`} />
 
       <Typography variant="h3">Configuration manuelle</Typography>
     <CodeBlock language="csharp" code={`var mappingConfig = new MapperConfiguration(mc =>
@@ -68,8 +69,10 @@ services.AddSingleton(mapper);`} />
 public class UserDto
 {
   public int Id { get; set; }
-  public string FullName { get; set; }   // concaténation de First + Last
-  public int Age { get; set; }           // calculé à partir de BirthDate
+  // FullName: concatenation of FirstName + LastName
+  public string FullName { get; set; }
+  // Age: calculated from BirthDate
+  public int Age { get; set; }
 }`} />
 
     <CodeBlock language="csharp" code={`public class UserProfile : Profile

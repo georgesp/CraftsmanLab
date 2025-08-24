@@ -36,41 +36,44 @@ const XunitTip: React.FC = () => {
       </Typography>
 
       <Typography variant="h4" gutterBottom>Structure d’un test xUnit</Typography>
-      <CodeBlock language="csharp"
-        code={`using Xunit;              // Attributs et assertions
+    <CodeBlock language="csharp"
+    code={`// Attributes and assertions
+using Xunit;
 using System.Threading.Tasks;
 
-public class CalculatriceTests
+public class CalculatorTests
 {
-    [Fact]               // Test sans paramètres
-    public void Addition()
-    {
-        var calc = new Calculatrice();
-        Assert.Equal(5, calc.Add(2, 3));
-    }
+  // Test without parameters
+  [Fact]
+  public void Addition()
+  {
+    var calc = new Calculator();
+    Assert.Equal(5, calc.Add(2, 3));
+  }
 
-    [Theory]             // Test paramétré (tableau de valeurs)
-    [InlineData(1, 2, 3)]
-    [InlineData(-4, 6, 2)]
-    public void Addition_Values(int a, int b, int expected)
-    {
-        var calc = new Calculatrice();
-        Assert.Equal(expected, calc.Add(a, b));
-    }
+  // Parameterized test (value table)
+  [Theory]
+  [InlineData(1, 2, 3)]
+  [InlineData(-4, 6, 2)]
+  public void Addition_Values(int a, int b, int expected)
+  {
+    var calc = new Calculator();
+    Assert.Equal(expected, calc.Add(a, b));
+  }
 
-    // Test asynchrone
-    [Fact]
-    public async Task DivisionAsync()
-    {
-        var service = new OperateurService();
-        var result = await service.DivideAsync(10, 2);
-        Assert.Equal(5, result);
-    }
+  // Asynchronous test
+  [Fact]
+  public async Task DivisionAsync()
+  {
+    var service = new OperatorService();
+    var result = await service.DivideAsync(10, 2);
+    Assert.Equal(5, result);
+  }
 }
-// [Fact] : un test unique (sans paramètres).
-// [Theory] + [InlineData] : un test paramétré.
-// Assert.* : méthodes d’assertion (Equal, True, Throws…).`}
-      />
+// [Fact] : a single test (no parameters).
+// [Theory] + [InlineData] : a parameterized test.
+// Assert.* : assertion methods (Equal, True, Throws...).`}
+    />
 
   <Typography variant="h4" gutterBottom>Gestion du contexte – Setup & One‑TimeSetup</Typography>
       <Typography paragraph>
@@ -82,66 +85,67 @@ public class CalculatriceTests
       </ul>
 
       <Typography variant="h6" gutterBottom>Exemple : Setup par constructeur</Typography>
-      <CodeBlock language="csharp"
-        code={`public class CalculatriceTests
+    <CodeBlock language="csharp"
+    code={`public class CalculatorTests
 {
-    private readonly Calculatrice _calc;
+  private readonly Calculator _calc;
 
-    public CalculatriceTests()
-    {
-        // Ce bloc s’exécute **avant chaque test** de la classe
-        _calc = new Calculatrice();
-    }
+  public CalculatorTests()
+  {
+    // This block runs before each test in the class
+    _calc = new Calculator();
+  }
 
-    [Fact]
-    public void Addition()
-    {
-        Assert.Equal(5, _calc.Add(2, 3));
-    }
+  [Fact]
+  public void Addition()
+  {
+    Assert.Equal(5, _calc.Add(2, 3));
+  }
 }`}
-      />
+    />
 
       <Typography variant="h6" gutterBottom>Exemple : One‑TimeSetup avec IClassFixture&lt;T&gt;</Typography>
-      <CodeBlock language="csharp"
-        code={`// Fixture partagé entre tous les tests de la classe
+    <CodeBlock language="csharp"
+    code={`// Shared fixture for all tests in the class
 public class DatabaseFixture : IDisposable
 {
-    public SqlConnection Connection { get; }
+  public SqlConnection Connection { get; }
 
-    public DatabaseFixture()
-    {
-        // Se connecter à la DB (exécuté une seule fois)
-        Connection = new SqlConnection("Data Source=...;");
-        Connection.Open();
-    }
+  public DatabaseFixture()
+  {
+    // Connect to the DB (runs only once)
+    Connection = new SqlConnection("Data Source=...;");
+    Connection.Open();
+  }
 
-    public void Dispose()   // Nettoyage après tous les tests
-    {
-        Connection.Close();
-    }
+  // Cleanup after all tests
+  public void Dispose()
+  {
+    Connection.Close();
+  }
 }
 
 public class RepositoryTests : IClassFixture<DatabaseFixture>
 {
-    private readonly DatabaseFixture _fixture;
-    private readonly UserRepository _repo;
+  private readonly DatabaseFixture _fixture;
+  private readonly UserRepository _repo;
 
-    public RepositoryTests(DatabaseFixture fixture)
-    {
-        _fixture = fixture;
-        _repo = new UserRepository(_fixture.Connection);
-    }
+  public RepositoryTests(DatabaseFixture fixture)
+  {
+    _fixture = fixture;
+    _repo = new UserRepository(_fixture.Connection);
+  }
 
-    [Fact]
-    public void GetUser_ShouldReturnCorrectName()
-    {
-        var user = _repo.GetUser(42);
-        Assert.Equal("Alice", user.Name);
-    }
+  [Fact]
+  public void GetUser_ShouldReturnCorrectName()
+  {
+    var user = _repo.GetUser(42);
+    Assert.Equal("Alice", user.Name);
+  }
 }
-// IClassFixture<T> : xUnit crée une instance de T une seule fois pour toutes les méthodes de test.
-// Dispose est appelé automatiquement après la fin des tests.`}
-      />
+// IClassFixture<T>: xUnit creates a single instance of T for all test methods.
+// Dispose is called automatically after the tests finish.`}
+    />
 
   <Typography variant="h4" gutterBottom>Bonnes pratiques</Typography>
       <ul>

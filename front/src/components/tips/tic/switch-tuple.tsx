@@ -30,26 +30,26 @@ const exampleCode = `using System;
 
 class Program
 {
-    static void Main()
+  static void Main()
+  {
+    // Create a tuple (city, country)
+    var location = ("Paris", "France");
+
+    // Switch on the tuple using pattern matching
+    string description = location switch
     {
-        // On crée un tuple (ville, pays)
-        var localisation = ("Paris", "France");
-
-        // switch sur le tuple avec pattern matching
-        string description = localisation switch
-        {
-            // Cas où la ville est Paris et le pays est France
-            ("Paris", "France") => "Capitale européenne",
+      // Case where city is Paris and country is France
+      ("Paris", "France") => "European capital",
             
-            // Cas où la ville est Paris mais un autre pays (ex. Espagne)
-            ("Paris", _)       => "Paris, hors France",
+      // Case where city is Paris but another country (e.g. Spain)
+      ("Paris", _)       => "Paris, outside France",
             
-            // Cas générique : n’importe quel tuple
-            _                  => $"Ville inconnue dans {localisation.Item2}"
-        };
+      // Generic case: any tuple
+      _                  => $"Unknown city in {location.Item2}"
+    };
 
-        Console.WriteLine(description);   // Affiche : Capitale européenne
-    }
+    Console.WriteLine(description);   // Prints: European capital
+  }
 }`;
 
 const SwitchTupleTip: React.FC = () => {

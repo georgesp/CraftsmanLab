@@ -69,8 +69,9 @@ dotnet add package Polly`}
   <Typography variant="h5" gutterBottom>Un Policy = une règle de gestion d'erreur</Typography>
       <CodeBlock language="csharp"
         code={`var retryPolicy = Policy
-    .Handle<IOException>()          // on cible les IOException
-    .WaitAndRetry(3, attempt => TimeSpan.FromSeconds(Math.Pow(2, attempt)));`}
+  // Target IOException
+  .Handle<IOException>()
+  .WaitAndRetry(3, attempt => TimeSpan.FromSeconds(Math.Pow(2, attempt)));`}
       />
       
       <Typography component="ul" sx={{ ml: 2, mt: 2 }}>
@@ -130,25 +131,25 @@ dotnet add package Polly`}
       <CodeBlock language="csharp"
         code={`using Polly;
 using System.Net.Http;
-
-// 1) Créez un HttpClient (ou utilisez IHttpClientFactory)
+ 
+// 1) Create an HttpClient (or use IHttpClientFactory)
 var client = new HttpClient();
 
-// 2) Définissez les politiques
+// 2) Define the policies
 var timeoutPolicy = Policy.Timeout<HttpResponseMessage>(TimeSpan.FromSeconds(3));
 var retryPolicy = Policy.Handle<Exception>()
-                       .WaitAndRetryAsync(
-                           retryCount: 3,
-                           sleepDurationProvider: attempt => TimeSpan.FromMilliseconds(200 * attempt)
-                       );
+             .WaitAndRetryAsync(
+               retryCount: 3,
+               sleepDurationProvider: attempt => TimeSpan.FromMilliseconds(200 * attempt)
+             );
 
-// 3) Composez les deux politiques
+// 3) Compose the two policies
 var policyWrap = Policy.WrapAsync(retryPolicy, timeoutPolicy);
 
-// 4) Exécutez l'appel HTTP avec la politique
+// 4) Execute the HTTP call with the policy
 var response = await policyWrap.ExecuteAsync(async () =>
 {
-    return await client.GetAsync("https://example.com/api/data");
+  return await client.GetAsync("https://example.com/api/data");
 });
 
 Console.WriteLine($"Status : {response.StatusCode}");`}
@@ -175,8 +176,8 @@ var policyWrap = Policy.WrapAsync(fallback, circuitBreaker);
 
 string result = await policyWrap.ExecuteAsync(async () =>
 {
-    // Simulez un appel à un service qui peut échouer
-    return await SomeExternalService.GetDataAsync();
+  // Simulate a call to an external service that may fail
+  return await SomeExternalService.GetDataAsync();
 });
 
 Console.WriteLine(result);`}
