@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { telerikTheme } from '../../theme/theme';
@@ -13,6 +14,7 @@ import { ViewAllTipsButton } from '../../components/ui';
 
 export const TipDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
+  const { t } = useTranslation('pages');
   const entry = slug ? findTipBySlug(slug) : undefined;
   const [LoadedComponent, setLoadedComponent] = useState<React.ComponentType | null>(null);
 
@@ -41,13 +43,13 @@ export const TipDetailPage: React.FC = () => {
           <Container maxWidth="lg">
             <Box sx={{ py: PAGE_SPACING.detail.paddingY, my: PAGE_SPACING.detail.marginY }}>
           {!entry && (
-            <Alert severity="warning">Aucun tip trouvé pour « {slug} »</Alert>
+            <Alert severity="warning">{t('tipDetailPage.errors.notFound', { slug })}</Alert>
           )}
           {entry && (
             <Grid container spacing={4} key={entry.slug}>
               <Grid item xs={12} md={4} lg={3}>
                 <Paper variant="outlined" sx={{ p: 2, position: 'sticky', top: 24, borderColor: COLORS.itemListHover }}>
-                  <Typography variant="h6" sx={{ mb: 2 }}>Tips / Mémos</Typography>
+                  <Typography variant="h6" sx={{ mb: 2 }}>{t('tipDetailPage.sidebar.title')}</Typography>
                   <TipList selectedSlug={entry.slug} maxItems={7} />
                   <ViewAllTipsButton to="/tips" />
                 </Paper>
@@ -56,7 +58,7 @@ export const TipDetailPage: React.FC = () => {
                 <Typography variant="h1" component="h1" gutterBottom>
                   {entry.title}
                 </Typography>
-                {LoadedComponent ? <LoadedComponent /> : <Typography>Chargement…</Typography>}
+                {LoadedComponent ? <LoadedComponent /> : <Typography>{t('tipDetailPage.loading')}</Typography>}
               </Grid>
             </Grid>
           )}

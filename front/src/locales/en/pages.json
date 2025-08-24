@@ -8,6 +8,15 @@
     "description": "A collection of synthetic sheets on fundamental concepts of the .NET and C# ecosystem. Each tip aims to clarify an architectural point, a key interface or an API best practice.",
     "aiNote": "Don't be surprised: the content of the sheets was generated with the help of AI."
   },
+  "tipDetailPage": {
+    "loading": "Loading…",
+    "sidebar": {
+      "title": "Tips / Memos"
+    },
+    "errors": {
+      "notFound": "No tip found for « {{slug}} »"
+    }
+  },
   "prompts": {
     "title": "Prompts",
     "description": "Collection of system prompts for artificial intelligence.",

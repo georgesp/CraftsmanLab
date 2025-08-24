@@ -1,0 +1,71 @@
+{
+  "nsubstitute": {
+    "title": "NSubstitute",
+    "shortDescription": "Mocking with NSubstitute: fake objects, verification, and setup.",
+    "content": {
+      "mainTitle": "NSubstitute: mocking framework for .NET",
+      "intro": "NSubstitute makes it easy to create mock objects for your unit tests with a fluent syntax.",
+      "summary": "Simple and expressive mocking framework, ideal for isolating dependencies in your unit tests.",
+      "sections": {
+        "installation": {
+          "title": "Installation"
+        },
+        "basics": {
+          "title": "Basics"
+        },
+        "labels": {
+          "substitution": "Substitution",
+          "simpleReturn": "Simple return",
+          "computed": "Computed value",
+          "exceptions": "Exceptions",
+          "verifyCall": "Call verification",
+          "specialArgs": "Special arguments",
+          "partial": "Partial mock",
+          "captureArgs": "Capture arguments"
+        },
+        "basicMocking": {
+          "title": "Basic mocking",
+          "subtitle": "Creating a simple substitute"
+        },
+        "configuration": {
+          "title": "Configuring returns",
+          "subtitle": "Returns and exceptions"
+        },
+        "verification": {
+          "title": "Call verification",
+          "subtitle": "Received and DidNotReceive"
+        },
+        "arguments": {
+          "title": "Argument matching",
+          "subtitle": "Arg.Any, Arg.Is and patterns"
+        },
+        "properties": {
+          "title": "Properties and events"
+        },
+        "bestPractices": {
+          "title": "Best practices",
+          "tips": [
+            "Mock only external dependencies",
+            "Prefer interfaces over concrete classes",
+            "Configure the minimum necessary",
+            "Verify important interactions",
+            "Avoid mocking what you own"
+          ]
+        },
+        "exampleFull": {
+          "title": "Full example",
+          "codeToTest": "Code under test",
+          "testWith": "Test with NSubstitute"
+        },
+        "notes": {
+          "title": "Notes"
+        }
+      }
+      ,
+      "footer": {
+        "sourceLabel": "Source: NSubstitute (GitHub)",
+        "writtenOn": "Written on {{date}}"
+      }
+    }
+  }
+}

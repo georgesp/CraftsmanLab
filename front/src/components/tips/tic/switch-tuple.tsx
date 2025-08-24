@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';
 import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
@@ -6,8 +7,8 @@ import type { Keyword } from '../../../utils/constants';
 
 export const meta = {
   slug: 'switch-tuple',
-  title: 'Switch + Tuple',
-  shortDescription: 'Astuce pragmatique : switch sur un tuple en C# (pattern matching)',
+  title: '', // Utilisera les traductions
+  shortDescription: '', // Utilisera les traductions
   writtenOn: '2025-08-15',
   keywords: ['C#'] as unknown as Keyword[],
   metadata: {
@@ -26,44 +27,21 @@ export const meta = {
   }
 };
 
-const exampleCode = `using System;
-
-class Program
-{
-  static void Main()
-  {
-    // Create a tuple (city, country)
-    var location = ("Paris", "France");
-
-    // Switch on the tuple using pattern matching
-    string description = location switch
-    {
-      // Case where city is Paris and country is France
-      ("Paris", "France") => "European capital",
-            
-      // Case where city is Paris but another country (e.g. Spain)
-      ("Paris", _)       => "Paris, outside France",
-            
-      // Generic case: any tuple
-      _                  => $"Unknown city in {location.Item2}"
-    };
-
-    Console.WriteLine(description);   // Prints: European capital
-  }
-}`;
-
 const SwitchTupleTip: React.FC = () => {
+  const { t } = useTranslation('tips');
+  
   return (
     <Box>
+      <Typography variant="h3" gutterBottom>{t('switch-tuple.content.mainTitle')}</Typography>
+      
       <Typography paragraph>
-        Petit truc pratique : quand tu as deux valeurs liées (par ex. ville + pays), un switch sur un tuple
-        rend le code compact et lisible, pas besoin d'ifs imbriqués.
+        {t('switch-tuple.content.intro')}
       </Typography>
 
-      <Typography variant="h3">Exemple</Typography>
-      <CodeBlock language="csharp" code={exampleCode} />
+      <Typography variant="h4" gutterBottom>{t('switch-tuple.content.sections.example.title')}</Typography>
+      <CodeBlock language="csharp" code={t('switch-tuple.content.sections.example.codeBlock')} />
 
-      <Typography variant="h3">Ce que j'en retire</Typography>
+      <Typography variant="h4" gutterBottom>{t('switch-tuple.content.sections.summary.title')}</Typography>
       <Typography paragraph component="div">
         • Simple et lisible : compare plusieurs éléments en une seule expression, parfait pour des cas de dispatch.
         <br />

@@ -1,0 +1,118 @@
+{
+  "cpm": {
+    "title": "Central Package Management (CPM)",
+    "shortDescription": "Unify NuGet versions across your .NET solution with CPM",
+    "content": {
+      "mainTitle": "Central Package Management: centralized NuGet package management",
+      "subtitle": "Declare package versions once for the whole solution.",
+      "intro": "CPM allows you to centralize NuGet package version management in a single file for the entire solution.",
+      "summary": "Simplifies dependency maintenance by avoiding version conflicts and centralizing configuration.",
+      "sections": {
+        "why": {
+          "title": "Why CPM?",
+          "benefits": {
+            "uniformity": {
+              "title": "Uniformity",
+              "description": "A single source of truth for versions keeps projects consistent."
+            },
+            "maintenance": {
+              "title": "Maintenance",
+              "description": "Updating a version in one file propagates everywhere."
+            },
+            "audit": {
+              "title": "Audit",
+              "description": "Clear visibility for security reviews and compliance."
+            }
+          }
+        },
+        "setup": {
+          "title": "Initial setup",
+          "subtitle": "Enabling CPM",
+          "prerequisites": "Prerequisites: recent .NET SDK (6+)",
+          "steps": {
+            "createSolution": {
+              "title": "1. Create a solution"
+            },
+            "addProjects": { "title": "Add your projects:" },
+            "enable": { "title": "2. Enable CPM" }
+          }
+        },
+        "directoryPackages": {
+          "title": "Directory.Packages.props file",
+          "subtitle": "Centralized version definition",
+          "description": "At the solution root, create a Directory.Packages.props file:"
+        },
+        "projectFiles": {
+          "title": "Modifying project files",
+          "subtitle": "Removing versions from .csproj files",
+          "description": "In each .csproj file:",
+          "important": "Important: If a project already had a version specified, remove it. The SDK will use the central file's value."
+        },
+        "verify": {
+          "title": "4. Verify",
+          "description": "You should see packages being resolved from versions in Directory.Packages.props. Open a .csproj; there will no longer be any PackageReference with a Version attribute."
+        },
+        "howItWorks": {
+          "title": "What does CPM do under the hood?",
+          "items": {
+            "intercept": "The SDK intercepts each package reference.",
+            "read": "It reads versions from the central file (or parent files).",
+            "fail": "If no version is found, restore fails with a clear message."
+          }
+        },
+        "migration": {
+          "title": "Migrating an existing solution",
+          "subtitle": "Conversion steps"
+        },
+        "benefits": {
+          "title": "Benefits",
+          "points": [
+            "Consistent versions across the solution",
+            "Simplified package updates",
+            "Reduced dependency conflicts",
+            "Centralized version visibility",
+            "Facilitates security audits"
+          ]
+        },
+        "bestPractices": {
+          "title": "Best practices",
+          "tips": [
+            "Place Directory.Packages.props at solution root",
+            "Use variables for related versions",
+            "Group packages by functionality",
+            "Document reasons for specific versions",
+            "Automate updates with Dependabot"
+          ],
+          "tableHeaders": { "tip": "Tip", "why": "Why" },
+          "rows": {
+            "vcs": {
+              "title": "Version your Directory.Packages.props",
+              "why": "Tag releases in Git to ensure everyone shares the same base."
+            },
+            "outdated": {
+              "title": "Use dotnet list package --outdated",
+              "why": "Quickly see which dependencies are outdated compared to your central file."
+            },
+            "locked": {
+              "title": "Lock automatic updates (RestoreLockedMode=\"true\")",
+              "why": "Lock resolution to prevent unexpected minor updates from slipping in."
+            }
+          }
+        },
+        "quickSummary": {
+          "title": "Quick summary",
+          "items": {
+            "create": "Create a Directory.Packages.props at the root.",
+            "declare": "Declare packages and versions once.",
+            "remove": "Remove versions from each .csproj.",
+            "restore": "Run dotnet restore."
+          }
+  }
+      },
+      "footer": {
+        "sourceLabel": "Source: Microsoft Docs – Central Package Management",
+        "writtenOn": "Written on {{date}}"
+      }
+    }
+  }
+}

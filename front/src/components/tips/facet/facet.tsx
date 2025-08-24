@@ -1,12 +1,13 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';
-import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
+import CodeBlock from '../../ui/CodeBlock/CodeBlock';
 
 export const meta = {
   slug: 'facet',
-  title: 'Facet',
-  shortDescription: 'Générateur de projections (DTO) et mappings pour C# et EF Core.',
+  title: '', // Utilisera les traductions
+  shortDescription: '', // Utilisera les traductions
   writtenOn: '2025-08-21',
   keywords: ['C#' as const],
   metadata: {
@@ -26,196 +27,227 @@ export const meta = {
 };
 
 const FacetTip: React.FC = () => {
+  const { t } = useTranslation('tips');
+  
   return (
     <Box>
-      <Typography variant="h3" gutterBottom>Facet : générateur de projections (DTO) pour C#</Typography>
+      <Typography variant="h3" gutterBottom>{t('facet.content.mainTitle')}</Typography>
 
       <Typography paragraph>
-        Facet est un générateur de code qui crée automatiquement des vues spécialisées (projections ou DTOs) pour vos modèles de domaine lors de la compilation.
-        <br />
-        Il produit le code complet (classes, records, structures, constructeurs, projections LINQ et mappings) sans ajouter de surcharge à l’exécution.
+        {t('facet.content.intro')}
       </Typography>
 
-      <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>Installation</Typography>
-      <CodeBlock
-        language="bash"
-        code={`# Package principal
-dotnet add package Facet
+      <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>{t('facet.content.sections.installation.title')}</Typography>
+      <Typography paragraph>
+        {t('facet.content.sections.installation.description')}
+      </Typography>
 
-# Helpers provider-agnostic
-dotnet add package Facet.Extensions
+      <CodeBlock language="bash" code={`dotnet add package Facet --version 2.5.1`} />
 
-# Extensions EF Core (EF Core 6+)
-dotnet add package Facet.Extensions.EFCore`}
-      />
+      <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>{t('facet.content.sections.basicUsage.title')}</Typography>
+      <Typography paragraph>
+        {t('facet.content.sections.basicUsage.description')}
+      </Typography>
 
-      <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>Principales fonctionnalités</Typography>
-
-      <Typography variant="h5" gutterBottom>Étant donné un modèle métier</Typography>
-      <CodeBlock
-        language="csharp"
-        code={`public class User
+      <CodeBlock language="csharp" code={`public class User
 {
     public int Id { get; set; }
-    public string FirstName { get; set; } = string.Empty;
-    public string LastName { get; set; } = string.Empty;
-    public string Email { get; set; } = string.Empty;
-    public string Password { get; set; } = string.Empty;
-    public bool IsActive { get; set; }
+    public string Name { get; set; }
+    public string Email { get; set; }
     public DateTime CreatedAt { get; set; }
-    public DateTime? LastLoginDate { get; set; }
-}`}
-      />
-
-      <Typography variant="h5" gutterBottom sx={{ mt: 2 }}>Création d'une classe pour le DTO</Typography>
-      <CodeBlock
-        language="csharp"
-        code={`[Facet(typeof(User))]
-public partial class UserFacet { }`}
-      />
-
-      <Typography variant="h5" gutterBottom sx={{ mt: 2 }}>Déclaration simple d'une projection</Typography>
-      <CodeBlock
-        language="csharp"
-        code={`var user = new User
-{
-    Id = 1,
-    FirstName = "Jean",
-    LastName = "Dupont",
-    Email = "jean.dupont@example.com",
-    IsActive = true,
-    CreatedAt = DateTime.Now
-};
-var userDto = user.ToFacet<UserFacet>();
-
-// Example with List
-var users = new List<User>{user };
-var userDtos = users.SelectFacets<UserFacet>();
-`}      />
-
-      <Typography variant="h5" gutterBottom sx={{ mt: 2 }}>Exclusion / Inclusion de champs</Typography>
-      <CodeBlock
-        language="csharp"
-        code={`[Facet(typeof(User), exclude: ["Password", "Email"])]
-public partial class UserWithoutEmail { }
-
-[Facet(typeof(User), IncludeFields = true)]
-public partial class UserDto { }`}
-      />
-
-      <Typography variant="h5" gutterBottom sx={{ mt: 2 }}>Paramètres</Typography>
-      <Box sx={{ overflowX: 'auto', mt: 2 }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
-          <thead>
-            <tr style={{ borderBottom: '2px solid #e0e0e0' }}>
-              <th style={{ textAlign: 'left', padding: '12px 8px', fontWeight: 600 }}>Parameter</th>
-              <th style={{ textAlign: 'left', padding: '12px 8px', fontWeight: 600 }}>Type</th>
-              <th style={{ textAlign: 'left', padding: '12px 8px', fontWeight: 600 }}>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style={{ borderBottom: '1px solid #f0f0f0' }}>
-              <td style={{ padding: '8px', fontFamily: 'monospace' }}>sourceType</td>
-              <td style={{ padding: '8px', fontFamily: 'monospace', color: '#1976d2' }}>Type</td>
-              <td style={{ padding: '8px' }}>Le type à projeter depuis (requis).</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #f0f0f0' }}>
-              <td style={{ padding: '8px', fontFamily: 'monospace' }}>exclude</td>
-              <td style={{ padding: '8px', fontFamily: 'monospace', color: '#1976d2' }}>string[]</td>
-              <td style={{ padding: '8px' }}>Noms des propriétés/champs à exclure du type généré (optionnel).</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #f0f0f0' }}>
-              <td style={{ padding: '8px', fontFamily: 'monospace' }}>IncludeFields</td>
-              <td style={{ padding: '8px', fontFamily: 'monospace', color: '#1976d2' }}>bool</td>
-              <td style={{ padding: '8px' }}>Inclure les champs publics du type source (par défaut : false).</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #f0f0f0' }}>
-              <td style={{ padding: '8px', fontFamily: 'monospace' }}>GenerateConstructor</td>
-              <td style={{ padding: '8px', fontFamily: 'monospace', color: '#1976d2' }}>bool</td>
-              <td style={{ padding: '8px' }}>Générer un constructeur qui copie les valeurs depuis la source (par défaut : true).</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #f0f0f0' }}>
-              <td style={{ padding: '8px', fontFamily: 'monospace' }}>Configuration</td>
-              <td style={{ padding: '8px', fontFamily: 'monospace', color: '#1976d2' }}>Type?</td>
-              <td style={{ padding: '8px' }}>Type de configuration de mapping personnalisé (voir Mapping personnalisé).</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #f0f0f0' }}>
-              <td style={{ padding: '8px', fontFamily: 'monospace' }}>GenerateProjection</td>
-              <td style={{ padding: '8px', fontFamily: 'monospace', color: '#1976d2' }}>bool</td>
-              <td style={{ padding: '8px' }}>Générer une projection LINQ statique (par défaut : true).</td>
-            </tr>
-            <tr>
-              <td style={{ padding: '8px', fontFamily: 'monospace' }}>Kind</td>
-              <td style={{ padding: '8px', fontFamily: 'monospace', color: '#1976d2' }}>FacetKind</td>
-              <td style={{ padding: '8px' }}>Type de sortie : Class, Record, Struct, RecordStruct (par défaut : Class).</td>
-            </tr>
-          </tbody>
-        </table>
-      </Box>
-
-      <Typography variant="h5" gutterBottom sx={{ mt: 2 }}>Types générés (class / record / struct)</Typography>
-      <CodeBlock
-        language="csharp"
-        code={`[Facet(typeof(Product))]
-public partial record ProductDto;
-
-[Facet(typeof(Point))]
-public partial struct PointDto;`}
-      />
-
-      <Typography variant="h5" gutterBottom sx={{ mt: 2 }}>Mapping personnalisé (sync & async)</Typography>
-      <CodeBlock
-        language="csharp"
-        code={`public class UserMapper : IFacetMapConfiguration<User, UserDto>
-{
-    public static void Map(User source, UserDto target)
-    {
-        target.FullName = $"{source.FirstName} {source.LastName}";
-    }
+    public List<Order> Orders { get; set; }
 }
 
-[Facet(typeof(User), Configuration = typeof(UserMapper))]
-public partial class UserDto { }`}
-      />
+// Définition de la projection avec l'attribut [Facet]
+[Facet]
+public partial class UserDto
+{
+    // Propriétés définies manuellement
+    public int Id { get; set; }
+    public string Name { get; set; }
+    
+    // Propriétés générées automatiquement par Facet
+    // basées sur la classe User
+}`} />
 
-      <Typography variant="h5" gutterBottom sx={{ mt: 2 }}>Intégration EF Core & projections côté base</Typography>
-      <CodeBlock
-        language="csharp"
-        code={`var userDtos = await dbContext.Users
-    .Where(u => u.IsActive)
-    .ToFacetsAsync<UserDto>();
-
-var results = await dbContext.Products
-    .Where(p => p.IsAvailable)
-    .SelectFacet<ProductDto>()
-    .ToListAsync();`}
-      />
-
-      <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>Bonnes pratiques</Typography>
-      <Typography component="ul" sx={{ ml: 2 }}>
-        <li>Privilégiez les projections côté DB pour limiter le transfert mémoire.</li>
-        <li>Excluez explicitement les données sensibles.</li>
-        <li>Verrouillez la version du package pour éviter des régressions lors des mises à jour.</li>
-        <li>Testez les mappings personnalisés et les scénarios asynchrones (I/O).</li>
-      </Typography>
-
-      <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>Résumé</Typography>
+      <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>{t('facet.content.sections.generatedCode.title')}</Typography>
       <Typography paragraph>
-        Facet facilite la création de DTOs et de projections typées à la compilation, réduit le boilerplate et s'intègre bien avec EF Core. C'est un bon choix quand on veut garder un modèle de domaine riche tout en exposant des vues légères et performantes.
+        {t('facet.content.sections.generatedCode.description')}
       </Typography>
 
-      <Box mt={4} pt={2} borderTop={theme => `1px solid ${theme.palette.divider}`} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
-          Sources : <a href="https://github.com/Tim-Maes/Facet" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>Github officiel</a> • <a href="https://github.com/Tim-Maes/Facet/blob/master/docs/README.md" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>Guides</a>
-        </Typography>
-        <Typography variant="caption" component="div" sx={{ color: 'text.secondary' }}>
-          Écrit le {meta.writtenOn}
-        </Typography>
-      </Box>
+      <CodeBlock language="csharp" code={`// Code généré automatiquement par Facet
+partial class UserDto
+{
+    public string Email { get; set; }
+    public DateTime CreatedAt { get; set; }
+    
+    // Expression de projection générée
+    public static Expression<Func<User, UserDto>> Projection =>
+        user => new UserDto
+        {
+            Id = user.Id,
+            Name = user.Name,
+            Email = user.Email,
+            CreatedAt = user.CreatedAt
+        };
+    
+    // Méthode de projection
+    public static UserDto FromUser(User user) =>
+        new UserDto
+        {
+            Id = user.Id,
+            Name = user.Name,
+            Email = user.Email,
+            CreatedAt = user.CreatedAt
+        };
+}`} />
+
+      <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>{t('facet.content.sections.entityFramework.title')}</Typography>
+      <Typography paragraph>
+        {t('facet.content.sections.entityFramework.description')}
+      </Typography>
+
+      <CodeBlock language="csharp" code={`public class UserService
+{
+    private readonly ApplicationDbContext _context;
+    
+    public UserService(ApplicationDbContext context)
+    {
+        _context = context;
+    }
+    
+    // Utilisation avec Entity Framework
+    public async Task<List<UserDto>> GetUsersAsync()
+    {
+        return await _context.Users
+            .Select(UserDto.Projection)
+            .ToListAsync();
+    }
+    
+    // Plus efficace que :
+    // return await _context.Users
+    //     .ToListAsync()
+    //     .Select(user => new UserDto { ... });
+}`} />
+
+      <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>{t('facet.content.sections.complexProjections.title')}</Typography>
+      <Typography paragraph>
+        {t('facet.content.sections.complexProjections.description')}
+      </Typography>
+
+      <CodeBlock language="csharp" code={`[Facet]
+public partial class UserDetailDto
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    
+    // Propriété calculée personnalisée
+    public string DisplayName => $"{Name} ({Email})";
+    
+    // Navigation vers une autre projection
+    public List<OrderDto> RecentOrders { get; set; }
+    
+    // Propriété conditionnelle
+    [ConditionalProperty]
+    public bool IsActive => CreatedAt > DateTime.UtcNow.AddMonths(-6);
+}
+
+[Facet]
+public partial class OrderDto
+{
+    public int Id { get; set; }
+    public decimal Amount { get; set; }
+    public DateTime OrderDate { get; set; }
+}`} />
+
+      <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>{t('facet.content.sections.configuration.title')}</Typography>
+      <Typography paragraph>
+        {t('facet.content.sections.configuration.description')}
+      </Typography>
+
+      <CodeBlock language="csharp" code={`[Facet(
+    SourceType = typeof(User),
+    IncludeNavigationProperties = false,
+    GenerateMapper = true)]
+public partial class UserSummaryDto
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    
+    // Exclusion explicite d'une propriété
+    [FacetIgnore]
+    public string Email { get; set; }
+    
+    // Mapping personnalisé
+    [FacetProperty(SourceProperty = "Email")]
+    public string ContactEmail { get; set; }
+}`} />
+
+      <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>{t('facet.content.sections.performance.title')}</Typography>
+      <Typography paragraph>
+        {t('facet.content.sections.performance.description')}
+      </Typography>
+
+      <CodeBlock language="csharp" code={`// ❌ Inefficace - charge toutes les données en mémoire
+var users = await _context.Users
+    .Include(u => u.Orders)
+    .ToListAsync();
+var userDtos = users.Select(u => new UserDto 
+{ 
+    Id = u.Id, 
+    Name = u.Name 
+}).ToList();
+
+// ✅ Efficace - projection au niveau SQL
+var userDtos = await _context.Users
+    .Select(UserDto.Projection)
+    .ToListAsync();
+
+// SQL généré :
+// SELECT [u].[Id], [u].[Name] 
+// FROM [Users] AS [u]`} />
+
+      <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>{t('facet.content.sections.bestPractices.title')}</Typography>
+      <ul>
+        <li><Typography>{t('facet.content.sections.bestPractices.practices.naming')}</Typography></li>
+        <li><Typography>{t('facet.content.sections.bestPractices.practices.properties')}</Typography></li>
+        <li><Typography>{t('facet.content.sections.bestPractices.practices.single')}</Typography></li>
+        <li><Typography>{t('facet.content.sections.bestPractices.practices.build')}</Typography></li>
+        <li><Typography>{t('facet.content.sections.bestPractices.practices.documentation')}</Typography></li>
+      </ul>
+
+      <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>{t('facet.content.sections.alternatives.title')}</Typography>
+      <Typography paragraph>
+        {t('facet.content.sections.alternatives.description')}
+      </Typography>
+
+      <CodeBlock language="csharp" code={`// AutoMapper
+var config = new MapperConfiguration(cfg => {
+    cfg.CreateMap<User, UserDto>();
+});
+
+// Mapster
+var userDto = user.Adapt<UserDto>();
+
+// Projection manuelle avec Entity Framework
+var userDtos = await _context.Users
+    .Select(u => new UserDto
+    {
+        Id = u.Id,
+        Name = u.Name,
+        Email = u.Email
+    })
+    .ToListAsync();`} />
+
+      <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>{t('facet.content.sections.conclusion.title')}</Typography>
+      <Typography paragraph>
+        {t('facet.content.sections.conclusion.description')}
+      </Typography>
     </Box>
   );
 };
 
 const mod: TipModule = { default: FacetTip, meta };
+
 export default FacetTip;
 export { mod };

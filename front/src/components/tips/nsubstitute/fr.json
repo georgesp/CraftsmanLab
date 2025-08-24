@@ -1,0 +1,71 @@
+{
+  "nsubstitute": {
+    "title": "NSubstitute",
+    "shortDescription": "Mocker avec NSubstitute : bases, exemples et bonnes pratiques.",
+    "content": {
+      "mainTitle": "NSubstitute : framework de mocking pour .NET",
+      "intro": "NSubstitute permet de créer facilement des objets mock pour vos tests unitaires avec une syntaxe fluide.",
+      "summary": "Framework de mocking simple et expressif, idéal pour isoler les dépendances dans vos tests unitaires.",
+      "sections": {
+        "installation": {
+          "title": "Installation"
+        },
+        "basics": {
+          "title": "Notions de base"
+        },
+        "labels": {
+          "substitution": "Substitution",
+          "simpleReturn": "Retour simple",
+          "computed": "Valeur calculée",
+          "exceptions": "Exceptions",
+          "verifyCall": "Vérification d’appel",
+          "specialArgs": "Arguments spéciaux",
+          "partial": "Partial mock",
+          "captureArgs": "Capturer les arguments"
+        },
+        "basicMocking": {
+          "title": "Mocking de base",
+          "subtitle": "Créer un substitute simple"
+        },
+        "configuration": {
+          "title": "Configuration des retours",
+          "subtitle": "Returns et exceptions"
+        },
+        "verification": {
+          "title": "Vérification des appels",
+          "subtitle": "Received et DidNotReceive"
+        },
+        "arguments": {
+          "title": "Matching d'arguments",
+          "subtitle": "Arg.Any, Arg.Is et patterns"
+        },
+        "properties": {
+          "title": "Propriétés et événements"
+        },
+        "bestPractices": {
+          "title": "Bonnes pratiques",
+          "tips": [
+            "Mockez seulement les dépendances externes",
+            "Préférez les interfaces aux classes concrètes",
+            "Configurez le minimum nécessaire",
+            "Vérifiez les interactions importantes",
+            "Évitez de mocker ce que vous possédez"
+          ]
+        },
+        "exampleFull": {
+          "title": "Exemple complet",
+          "codeToTest": "Le code à tester",
+          "testWith": "Le test avec NSubstitute"
+        },
+        "notes": {
+          "title": "Remarques"
+        }
+      }
+      ,
+      "footer": {
+        "sourceLabel": "Source : NSubstitute (GitHub)",
+        "writtenOn": "Écrit le {{date}}"
+      }
+    }
+  }
+}

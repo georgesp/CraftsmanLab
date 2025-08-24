@@ -1,192 +1,232 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';
-import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
+import CodeBlock from '../../ui/CodeBlock/CodeBlock';
 
 export const meta = {
   slug: 'xunit',
-  title: 'xUnit',
-  shortDescription: 'Écrire des tests avec xUnit : bases, fixtures et bonnes pratiques.',
+  title: '', // Utilisera les traductions
+  shortDescription: '', // Utilisera les traductions
   writtenOn: '2025-08-12',
   keywords: ['C#' as const],
   metadata: {
     searchKeywords: {
       fr: [
         'xunit', 'tests', 'test unitaire', 'testing', 'assertion', 'fact', 'theory',
-        'fixture', 'setup', 'teardown', 'mock', 'arrange', 'act', 'assert',
-        'paramètres', 'async', 'parallèle', 'collection', 'attribut', 'inlineData'
+        'mstest', 'nunit', 'fixture', 'setup', 'teardown', 'mock', 'assert', 'async'
       ],
       en: [
         'xunit', 'tests', 'unit testing', 'testing', 'assertion', 'fact', 'theory',
-        'fixture', 'setup', 'teardown', 'mock', 'arrange', 'act', 'assert',
-        'parameters', 'async', 'parallel', 'collection', 'attribute', 'inlineData'
+        'mstest', 'nunit', 'fixture', 'setup', 'teardown', 'mock', 'assert', 'async'
       ]
     }
   }
 };
 
-// Code blocks rendered with shared CodeBlock component
-
 const XunitTip: React.FC = () => {
+  const { t } = useTranslation('tips');
+  
   return (
     <Box>
+      <Typography variant="h3" gutterBottom>{t('xunit.content.mainTitle')}</Typography>
+      
       <Typography paragraph>
-        L’essentiel pour toi : écrire des tests xUnit sans t’éparpiller. Structure de test, paramètres, async, setup/fixtures,
-        et les bonnes pratiques à garder sous la main.
+        {t('xunit.content.intro')}
       </Typography>
 
-      <Typography variant="h4" gutterBottom>Structure d’un test xUnit</Typography>
-    <CodeBlock language="csharp"
-    code={`// Attributes and assertions
-using Xunit;
-using System.Threading.Tasks;
+      <Typography variant="h4" gutterBottom>{t('xunit.content.sections.structure.title')}</Typography>
+      <Typography paragraph>
+        {t('xunit.content.sections.structure.description')}
+      </Typography>
+
+      <CodeBlock language="csharp" code={`using Xunit;
 
 public class CalculatorTests
 {
-  // Test without parameters
-  [Fact]
-  public void Addition()
-  {
-    var calc = new Calculator();
-    Assert.Equal(5, calc.Add(2, 3));
-  }
+    [Fact]
+    public void Add_TwoIntegers_ReturnsSum()
+    {
+        // Arrange
+        var calculator = new Calculator();
+        
+        // Act
+        var result = calculator.Add(2, 3);
+        
+        // Assert
+        Assert.Equal(5, result);
+    }
+}`} />
 
-  // Parameterized test (value table)
-  [Theory]
-  [InlineData(1, 2, 3)]
-  [InlineData(-4, 6, 2)]
-  public void Addition_Values(int a, int b, int expected)
-  {
-    var calc = new Calculator();
-    Assert.Equal(expected, calc.Add(a, b));
-  }
-
-  // Asynchronous test
-  [Fact]
-  public async Task DivisionAsync()
-  {
-    var service = new OperatorService();
-    var result = await service.DivideAsync(10, 2);
-    Assert.Equal(5, result);
-  }
-}
-// [Fact] : a single test (no parameters).
-// [Theory] + [InlineData] : a parameterized test.
-// Assert.* : assertion methods (Equal, True, Throws...).`}
-    />
-
-  <Typography variant="h4" gutterBottom>Gestion du contexte – Setup & One‑TimeSetup</Typography>
+      <Typography variant="h4" gutterBottom>{t('xunit.content.sections.theory.title')}</Typography>
       <Typography paragraph>
-        Pas de SetUp()/TearDown() comme NUnit. À la place, tu fais ainsi :
+        {t('xunit.content.sections.theory.description')}
       </Typography>
-      <ul>
-  <li><b>Initialiser avant chaque test</b> — utilise le <b>constructeur</b> de ta classe ou un <b>fixture</b> via IClassFixture&lt;T&gt;.</li>
-  <li><b>Initialiser une fois pour toute la classe</b> — crée un <b>fixture</b> et utilise <code>public class MyTest : IClassFixture&lt;MyFixture&gt;</code>.</li>
-      </ul>
 
-      <Typography variant="h6" gutterBottom>Exemple : Setup par constructeur</Typography>
-    <CodeBlock language="csharp"
-    code={`public class CalculatorTests
+      <CodeBlock language="csharp" code={`[Theory]
+[InlineData(2, 3, 5)]
+[InlineData(10, 20, 30)]
+[InlineData(-1, 1, 0)]
+public void Add_DifferentValues_ReturnsExpectedSum(int a, int b, int expected)
 {
-  private readonly Calculator _calc;
+    // Arrange
+    var calculator = new Calculator();
+    
+    // Act
+    var result = calculator.Add(a, b);
+    
+    // Assert
+    Assert.Equal(expected, result);
+}`} />
 
-  public CalculatorTests()
-  {
-    // This block runs before each test in the class
-    _calc = new Calculator();
-  }
+      <Typography variant="h4" gutterBottom>{t('xunit.content.sections.async.title')}</Typography>
+      <Typography paragraph>
+        {t('xunit.content.sections.async.description')}
+      </Typography>
 
-  [Fact]
-  public void Addition()
-  {
-    Assert.Equal(5, _calc.Add(2, 3));
-  }
-}`}
-    />
-
-      <Typography variant="h6" gutterBottom>Exemple : One‑TimeSetup avec IClassFixture&lt;T&gt;</Typography>
-    <CodeBlock language="csharp"
-    code={`// Shared fixture for all tests in the class
-public class DatabaseFixture : IDisposable
+      <CodeBlock language="csharp" code={`[Fact]
+public async Task ProcessDataAsync_ValidInput_ReturnsProcessedData()
 {
-  public SqlConnection Connection { get; }
+    // Arrange
+    var service = new DataService();
+    var inputData = "test";
+    
+    // Act
+    var result = await service.ProcessDataAsync(inputData);
+    
+    // Assert
+    Assert.NotNull(result);
+    Assert.Contains("processed", result);
+}`} />
 
-  public DatabaseFixture()
-  {
-    // Connect to the DB (runs only once)
-    Connection = new SqlConnection("Data Source=...;");
-    Connection.Open();
-  }
+      <Typography variant="h4" gutterBottom>{t('xunit.content.sections.fixtures.title')}</Typography>
+      <Typography paragraph>
+        {t('xunit.content.sections.fixtures.description')}
+      </Typography>
 
-  // Cleanup after all tests
-  public void Dispose()
-  {
-    Connection.Close();
-  }
+      <CodeBlock language="csharp" code={`public class DatabaseFixture : IDisposable
+{
+    public DatabaseFixture()
+    {
+        // Setup database connection
+        Database = new TestDatabase();
+        Database.Initialize();
+    }
+    
+    public TestDatabase Database { get; private set; }
+    
+    public void Dispose()
+    {
+        Database.Dispose();
+    }
 }
 
-public class RepositoryTests : IClassFixture<DatabaseFixture>
+public class DatabaseTests : IClassFixture<DatabaseFixture>
 {
-  private readonly DatabaseFixture _fixture;
-  private readonly UserRepository _repo;
+    private readonly DatabaseFixture _fixture;
+    
+    public DatabaseTests(DatabaseFixture fixture)
+    {
+        _fixture = fixture;
+    }
+    
+    [Fact]
+    public void CanConnectToDatabase()
+    {
+        Assert.True(_fixture.Database.IsConnected);
+    }
+}`} />
 
-  public RepositoryTests(DatabaseFixture fixture)
-  {
-    _fixture = fixture;
-    _repo = new UserRepository(_fixture.Connection);
-  }
+      <Typography variant="h4" gutterBottom>{t('xunit.content.sections.mocking.title')}</Typography>
+      <Typography paragraph>
+        {t('xunit.content.sections.mocking.description')}
+      </Typography>
 
-  [Fact]
-  public void GetUser_ShouldReturnCorrectName()
-  {
-    var user = _repo.GetUser(42);
-    Assert.Equal("Alice", user.Name);
-  }
+      <CodeBlock language="csharp" code={`public class UserServiceTests
+{
+    [Fact]
+    public void GetUser_ExistingId_ReturnsUser()
+    {
+        // Arrange
+        var mockRepository = new Mock<IUserRepository>();
+        var expectedUser = new User { Id = 1, Name = "John" };
+        mockRepository.Setup(x => x.GetById(1)).Returns(expectedUser);
+        
+        var service = new UserService(mockRepository.Object);
+        
+        // Act
+        var result = service.GetUser(1);
+        
+        // Assert
+        Assert.Equal(expectedUser, result);
+        mockRepository.Verify(x => x.GetById(1), Times.Once);
+    }
+}`} />
+
+      <Typography variant="h4" gutterBottom>{t('xunit.content.sections.collections.title')}</Typography>
+      <Typography paragraph>
+        {t('xunit.content.sections.collections.description')}
+      </Typography>
+
+      <CodeBlock language="csharp" code={`[Collection("Database collection")]
+public class IntegrationTest1
+{
+    // Tests qui partagent la même instance de base de données
 }
-// IClassFixture<T>: xUnit creates a single instance of T for all test methods.
-// Dispose is called automatically after the tests finish.`}
-    />
 
-  <Typography variant="h4" gutterBottom>Bonnes pratiques</Typography>
+[Collection("Database collection")]
+public class IntegrationTest2
+{
+    // Tests qui partagent la même instance de base de données
+}`} />
+
+      <Typography variant="h4" gutterBottom>{t('xunit.content.sections.output.title')}</Typography>
+      <Typography paragraph>
+        {t('xunit.content.sections.output.description')}
+      </Typography>
+
+      <CodeBlock language="csharp" code={`public class DebuggingTests
+{
+    private readonly ITestOutputHelper _output;
+    
+    public DebuggingTests(ITestOutputHelper output)
+    {
+        _output = output;
+    }
+    
+    [Fact]
+    public void ComplexTest_WithDebugging()
+    {
+        _output.WriteLine("Starting complex test");
+        
+        var data = GenerateTestData();
+        _output.WriteLine($"Generated {data.Count} items");
+        
+        var result = ProcessData(data);
+        _output.WriteLine($"Processing completed with result: {result}");
+        
+        Assert.True(result);
+    }
+}`} />
+
+      <Typography variant="h4" gutterBottom>{t('xunit.content.sections.bestPractices.title')}</Typography>
       <ul>
-        <li>
-          <b>Utilise [Fact] plutôt que [TestMethod] (MSTest)</b> — syntaxe plus concise et moderne.
-        </li>
-        <li>
-          <b>Favorise les fixtures pour les ressources lourdes</b> — évite de re‑créer la même connexion ou le même objet à chaque test.
-        </li>
-        <li>
-          <b>Évite les dépendances globales (static)</b> — facilite la parallélisation des tests.
-        </li>
-        <li>
-          <b>Utilise Assert.ThrowsAsync&lt;T&gt; pour tester les exceptions asynchrones</b>
-        </li>
+        <li><Typography>{t('xunit.content.sections.bestPractices.practices.naming')}</Typography></li>
+        <li><Typography>{t('xunit.content.sections.bestPractices.practices.arrange')}</Typography></li>
+        <li><Typography>{t('xunit.content.sections.bestPractices.practices.single')}</Typography></li>
+        <li><Typography>{t('xunit.content.sections.bestPractices.practices.independent')}</Typography></li>
+        <li><Typography>{t('xunit.content.sections.bestPractices.practices.fast')}</Typography></li>
       </ul>
 
-      <Box
-        mt={4}
-        pt={2}
-        borderTop={(theme) => `1px solid ${theme.palette.divider}`}
-        sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
-      >
-        <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
-          <a
-            href="https://xunit.net/"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: 'inherit', textDecoration: 'underline' }}
-          >
-            Source : xUnit (site officiel)
-          </a>
-        </Typography>
-        <Typography variant="caption" component="div" sx={{ color: 'text.secondary' }}>
-          Écrit le {meta.writtenOn}
-        </Typography>
-      </Box>
+      <Typography variant="h4" gutterBottom>{t('xunit.content.sections.conclusion.title')}</Typography>
+      <Typography paragraph>
+        {t('xunit.content.sections.conclusion.description')}
+      </Typography>
     </Box>
   );
 };
 
 const mod: TipModule = { default: XunitTip, meta };
+
 export default XunitTip;
 export { mod };

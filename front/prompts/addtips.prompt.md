@@ -121,3 +121,162 @@ FAQ rapide
 Si tu veux, je peux :
 - vérifier automatiquement un tip existant et corriger les CodeBlock selon ces règles, ou
 - préparer un script/checklist à lancer en local pour valider ces règles avant PR.
+
+## Système de traductions pour les tips (i18n)
+
+Depuis l'intégration du système i18n, chaque tip peut avoir des traductions pour permettre l'affichage en français et en anglais. Voici la procédure à suivre :
+
+### Structure des fichiers de traduction
+
+Pour chaque tip, créer deux fichiers JSON dans le répertoire du tip :
+- `fr.json` : traductions françaises
+- `en.json` : traductions anglaises
+
+**Exemple pour un tip "polly" :**
+```
+src/components/tips/polly/
+├── polly.tsx
+├── fr.json
+└── en.json
+```
+
+### Structure des fichiers JSON
+
+Chaque fichier de traduction doit suivre cette structure :
+
+**`fr.json` :**
+```json
+{
+  "slug-du-tip": {
+    "title": "Titre court pour la carte",
+    "shortDescription": "Description courte pour la carte (max 120 caractères)",
+    "content": {
+      "mainTitle": "Titre principal de la page du tip",
+      "intro": "Introduction du tip...",
+      "summary": "Résumé du tip...",
+      "sections": {
+        "installation": {
+          "title": "Installation",
+          "nuget": {
+            "title": "NuGet",
+            "description": "Description..."
+          }
+        },
+        "examples": {
+          "title": "Exemples",
+          // ... autres sections
+        }
+      }
+    }
+  }
+}
+```
+
+**`en.json` :**
+```json
+{
+  "slug-du-tip": {
+    "title": "Short title for the card",
+    "shortDescription": "Short description for the card (max 120 chars)",
+    "content": {
+      "mainTitle": "Main title of the tip page",
+      "intro": "Tip introduction...",
+      "summary": "Tip summary...",
+      "sections": {
+        "installation": {
+          "title": "Installation",
+          "nuget": {
+            "title": "NuGet",
+            "description": "Description..."
+          }
+        },
+        "examples": {
+          "title": "Examples",
+          // ... other sections
+        }
+      }
+    }
+  }
+}
+```
+
+### Modification du composant tip
+
+Dans le composant React du tip, utiliser `useTranslation` :
+
+```tsx
+import { useTranslation } from 'react-i18next';
+
+const MyTip: React.FC = () => {
+  const { t } = useTranslation('tips');
+  
+  return (
+    <Box>
+      <Typography variant="h3" gutterBottom>
+        {t('slug-du-tip.content.mainTitle')}
+      </Typography>
+      
+      <Typography paragraph>
+        {t('slug-du-tip.content.intro')}
+      </Typography>
+      
+      {/* Utiliser les clés de traduction pour tout le contenu UI */}
+    </Box>
+  );
+};
+```
+
+### Enregistrement dans i18n
+
+Ajouter les imports et références dans `/src/i18n/index.ts` :
+
+```typescript
+// Import des traductions per-component
+import slugDuTipFr from '../components/tips/slug-du-tip/fr.json';
+import slugDuTipEn from '../components/tips/slug-du-tip/en.json';
+
+const resources = {
+  fr: {
+    // ... autres namespaces
+    tips: {
+      ...tipsFr,
+      ...slugDuTipFr  // Fusion avec les traductions globales
+    },
+  },
+  en: {
+    // ... autres namespaces
+    tips: {
+      ...tipsEn,
+      ...slugDuTipEn  // Fusion avec les traductions globales
+    },
+  },
+};
+```
+
+### TipCardsGrid - Affichage des cartes
+
+Le composant `TipCardsGrid` utilise automatiquement la fonction `getTranslatedText` qui essaie plusieurs clés dans cet ordre :
+
+**Pour le titre :**
+1. `slug.title` (priorité - titre court pour carte)
+2. `slug.content.mainTitle` (fallback - titre de page)
+
+**Pour la description :**
+1. `slug.shortDescription` (priorité - description courte pour carte)
+2. `slug.content.summary` (fallback - résumé du contenu)
+
+### Checklist traductions
+
+Avant de soumettre un tip avec traductions :
+
+- [ ] Fichiers `fr.json` et `en.json` créés dans le répertoire du tip
+- [ ] Structure JSON respectée avec `slug.title`, `slug.shortDescription`, `slug.content.*`
+- [ ] Clés utilisées dans le composant React avec `useTranslation('tips')`
+- [ ] Imports ajoutés dans `/src/i18n/index.ts`
+- [ ] Fusion dans le namespace `tips` avec l'opérateur spread
+- [ ] Test que la carte s'affiche correctement en FR et EN
+- [ ] Validation JSON (pas d'erreurs de syntaxe)
+
+### Note importante
+
+Les `CodeBlock` restent en anglais (pas de traduction nécessaire) selon les règles existantes. Seuls les textes d'interface utilisateur (titres, paragraphes, listes) sont traduits via ce système.

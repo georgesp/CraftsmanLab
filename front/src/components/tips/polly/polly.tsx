@@ -1,12 +1,13 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
 
 export const meta = {
   slug: 'polly',
-  title: 'Polly',
-  shortDescription: 'Ajouter de la résilience à vos appels : retry, circuit breaker, timeout et fallback.',
+  title: '', // Utilisera les traductions
+  shortDescription: '', // Utilisera les traductions
   writtenOn: '2025-08-20',
   keywords: ['C#' as const],
   metadata: {
@@ -26,31 +27,44 @@ export const meta = {
 };
 
 const PollyTip: React.FC = () => {
+  const { t } = useTranslation('tips');
+  
+  const _useCasesRaw = t('polly.content.useCases.items', { returnObjects: true });
+  const useCases: string[] = Array.isArray(_useCasesRaw) ? _useCasesRaw : (typeof _useCasesRaw === 'string' ? [_useCasesRaw] : []);
+
+  const _commonPoliciesRowsRaw = t('polly.content.sections.principle.commonPolicies.table.rows', { returnObjects: true });
+  const commonPoliciesRows: Array<any> = Array.isArray(_commonPoliciesRowsRaw) ? _commonPoliciesRowsRaw : [];
+
+  const _bestPracticesRowsRaw = t('polly.content.sections.bestPractices.table.rows', { returnObjects: true });
+  const bestPracticesRows: Array<any> = Array.isArray(_bestPracticesRowsRaw) ? _bestPracticesRowsRaw : [];
+
+  const _circuitExplanationsRaw = t('polly.content.sections.examples.circuitBreakerFallback.explanations', { returnObjects: true });
+  const circuitExplanations: string[] = Array.isArray(_circuitExplanationsRaw) ? _circuitExplanationsRaw : (typeof _circuitExplanationsRaw === 'string' ? [_circuitExplanationsRaw] : []);
+
   return (
     <Box>
-      <Typography variant="h3" gutterBottom>Polly : la stratégie de résilience pour vos appels externes</Typography>
+      <Typography variant="h3" gutterBottom>{t('polly.content.mainTitle')}</Typography>
       
       <Typography paragraph>
-        Polly est une petite bibliothèque open‑source (NuGet) qui vous permet d'ajouter des stratégies de résilience à votre code, sans y passer tout votre temps.
+        {t('polly.content.intro')}
       </Typography>
       
       <Typography paragraph>
-        On l'utilise surtout pour :
+        {t('polly.content.useCases.title')}
       </Typography>
       <Typography component="ul" sx={{ ml: 2 }}>
-        <li>les requêtes HTTP qui échouent parfois,</li>
-        <li>les appels à des bases de données ou services externes,</li>
-        <li>n'importe quelle opération qui peut lancer une exception et que vous ne voulez pas laisser tomber sur le premier échec.</li>
+        {useCases.slice(0, 3).map((it, idx) => (
+          <li key={idx}>{it}</li>
+        ))}
       </Typography>
       
       <Typography paragraph>
-        En gros, Polly vous donne un gabarit (retry, circuit breaker, timeout, fallback…) que vous appliquez à votre logique métier. 
-        Pas de code répétitif, juste un objet Policy que vous composez.
+        {t('polly.content.summary')}
       </Typography>
 
-  <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>Installation</Typography>
+  <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>{t('polly.content.sections.installation.title')}</Typography>
       
-  <Typography variant="h5" gutterBottom>NuGet</Typography>
+  <Typography variant="h5" gutterBottom>{t('polly.content.sections.installation.nuget.title')}</Typography>
       <CodeBlock language="bash"
         code={`# Depuis la console du gestionnaire de packages
 Install-Package Polly
@@ -60,13 +74,12 @@ dotnet add package Polly`}
       />
       
       <Typography paragraph>
-        Polly ne dépend d'aucun framework particulier, donc vous pouvez l'utiliser dans un projet .NET Core, .NET 5/6/7 ou même Mono/Xamarin.
-        Si vous utilisez ASP.NET Core, il y a aussi <code>Microsoft.Extensions.Http.Polly</code> qui intègre Polly directement aux clients HttpClientFactory.
+        {t('polly.content.sections.installation.nuget.description')}
       </Typography>
 
-  <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>Le principe</Typography>
+  <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>{t('polly.content.sections.principle.title')}</Typography>
       
-  <Typography variant="h5" gutterBottom>Un Policy = une règle de gestion d'erreur</Typography>
+  <Typography variant="h5" gutterBottom>{t('polly.content.sections.principle.policyRule')}</Typography>
       <CodeBlock language="csharp"
         code={`var retryPolicy = Policy
   // Target IOException
@@ -75,59 +88,46 @@ dotnet add package Polly`}
       />
       
       <Typography component="ul" sx={{ ml: 2, mt: 2 }}>
-        <li><code>Handle&lt;TException&gt;()</code> : indique quelles exceptions la politique doit gérer.</li>
-        <li><code>WaitAndRetry(...)</code> : définit le nombre de tentatives et l'intervalle entre chaque essai.</li>
+        <li><code>Handle&lt;TException&gt;()</code> : {t('polly.content.sections.principle.policyRuleDetails.handleDescription')}</li>
+        <li><code>WaitAndRetry(...)</code> : {t('polly.content.sections.principle.policyRuleDetails.waitAndRetryDescription')}</li>
       </Typography>
       
       <Typography paragraph sx={{ mt: 2 }}>
-        Une fois que vous avez un Policy, vous pouvez l'appliquer à une action :
+        {t('polly.content.sections.principle.policyRuleDetails.applyDescription')}
       </Typography>
       <CodeBlock language="csharp"
         code={`retryPolicy.Execute(() => File.ReadAllText("data.txt"));`}
       />
       
       <Typography paragraph>
-        Polly se charge de réexécuter la lambda si une IOException est levée, jusqu'à ce que le nombre d'essais soit épuisé ou que l'opération réussisse.
+        {t('polly.content.sections.principle.policyRuleDetails.executionDescription')}
       </Typography>
 
-  <Typography variant="h5" gutterBottom sx={{ mt: 3 }}>Les types de politiques les plus courants</Typography>
+  <Typography variant="h5" gutterBottom sx={{ mt: 3 }}>{t('polly.content.sections.principle.commonPolicies.title')}</Typography>
       <TableContainer component={Paper} sx={{ mt: 2 }}>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell><strong>Type</strong></TableCell>
-              <TableCell><strong>Quand l'utiliser ?</strong></TableCell>
-              <TableCell><strong>Exemple rapide</strong></TableCell>
+              <TableCell><strong>{t('polly.content.sections.principle.commonPolicies.table.headers.0')}</strong></TableCell>
+              <TableCell><strong>{t('polly.content.sections.principle.commonPolicies.table.headers.1')}</strong></TableCell>
+              <TableCell><strong>{t('polly.content.sections.principle.commonPolicies.table.headers.2')}</strong></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableRow>
-              <TableCell>Retry</TableCell>
-              <TableCell>Échecs temporaires (timeout, 5xx)</TableCell>
-              <TableCell><code>{'Policy.Handle<Exception>().Retry(3)'}</code></TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Circuit Breaker</TableCell>
-              <TableCell>Besoin d'éviter de surcharger un service qui est déjà en panne</TableCell>
-              <TableCell><code>{'Policy.Handle<Exception>().CircuitBreaker(2, TimeSpan.FromSeconds(30))'}</code></TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Timeout</TableCell>
-              <TableCell>Limiter la durée d'une opération</TableCell>
-              <TableCell><code>Policy.Timeout(TimeSpan.FromSeconds(5))</code></TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Fallback</TableCell>
-              <TableCell>Retourner une valeur par défaut ou lancer une autre action quand tout échoue</TableCell>
-              <TableCell><code>{'Policy.Handle<Exception>().Fallback(() => "fallback")'}</code></TableCell>
-            </TableRow>
+            {commonPoliciesRows.map((r, i) => (
+              <TableRow key={i}>
+                <TableCell>{r.type}</TableCell>
+                <TableCell>{r.when}</TableCell>
+                <TableCell><code>{r.example}</code></TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </TableContainer>
 
-  <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>Exemples concrets</Typography>
+  <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>{t('polly.content.sections.examples.title')}</Typography>
       
-  <Typography variant="h5" gutterBottom>Retry + Timeout sur un appel HTTP</Typography>
+  <Typography variant="h5" gutterBottom>{t('polly.content.sections.examples.retryTimeout.title')}</Typography>
       <CodeBlock language="csharp"
         code={`using Polly;
 using System.Net.Http;
@@ -156,11 +156,10 @@ Console.WriteLine($"Status : {response.StatusCode}");`}
       />
       
       <Typography paragraph sx={{ mt: 2 }}>
-        <strong>Astuce :</strong> si vous utilisez ASP.NET Core, créez un HttpClient via IHttpClientFactory, puis enregistrez la politique dans le conteneur. 
-        Polly s'intègre automatiquement.
+        <strong>{t('polly.content.sections.examples.retryTimeout.astuce')}</strong>
       </Typography>
 
-  <Typography variant="h5" gutterBottom sx={{ mt: 3 }}>Circuit Breaker + Fallback</Typography>
+  <Typography variant="h5" gutterBottom sx={{ mt: 3 }}>{t('polly.content.sections.examples.circuitBreakerFallback.title')}</Typography>
       <CodeBlock language="csharp"
         code={`var circuitBreaker = Policy.Handle<Exception>()
                            .CircuitBreakerAsync(
@@ -184,14 +183,15 @@ Console.WriteLine(result);`}
       />
       
       <Typography paragraph sx={{ mt: 2 }}>
-        Dans cet exemple :
+        {t('polly.content.sections.examples.circuitBreakerFallback.description')}
       </Typography>
       <Typography component="ul" sx={{ ml: 2 }}>
-        <li>Si le service lève une exception deux fois de suite, Polly ouvre le circuit et bloque les appels pendant 10 s.</li>
-        <li>Pendant que le circuit est ouvert, la fallback renvoie immédiatement "service unavailable" sans appeler le service.</li>
+        {circuitExplanations.map((ex, idx) => (
+          <li key={idx}>{ex}</li>
+        ))}
       </Typography>
 
-  <Typography variant="h5" gutterBottom sx={{ mt: 3 }}>Retry avec back‑off exponentiel</Typography>
+  <Typography variant="h5" gutterBottom sx={{ mt: 3 }}>{t('polly.content.sections.examples.exponentialBackoff.title')}</Typography>
       <CodeBlock language="csharp"
         code={`var retryPolicy = Policy.Handle<Exception>()
     .WaitAndRetryAsync(
@@ -205,7 +205,7 @@ await retryPolicy.ExecuteAsync(async () =>
 });`}
       />
 
-  <Typography variant="h5" gutterBottom sx={{ mt: 3 }}>Intégration avec HttpClientFactory (ASP.NET Core)</Typography>
+  <Typography variant="h5" gutterBottom sx={{ mt: 3 }}>{t('polly.content.sections.examples.httpClientFactory.title')}</Typography>
       <CodeBlock language="csharp"
         code={`services.AddHttpClient("myclient")
         .AddPolicyHandler(HttpPolicyExtensions
@@ -217,53 +217,37 @@ await retryPolicy.ExecuteAsync(async () =>
       />
       
       <Typography paragraph sx={{ mt: 2 }}>
-        <code>HandleTransientHttpError()</code> est un raccourci qui cible les 408/500/502/503/504 et TimeoutException.
+        <code>HandleTransientHttpError()</code> {t('polly.content.sections.examples.httpClientFactory.description')}
       </Typography>
 
-  <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>Bonnes pratiques</Typography>
+  <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>{t('polly.content.sections.bestPractices.title')}</Typography>
       
       <TableContainer component={Paper} sx={{ mt: 2 }}>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell><strong>Règle</strong></TableCell>
-              <TableCell><strong>Pourquoi</strong></TableCell>
+              <TableCell><strong>{t('polly.content.sections.bestPractices.table.headers.0')}</strong></TableCell>
+              <TableCell><strong>{t('polly.content.sections.bestPractices.table.headers.1')}</strong></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableRow>
-              <TableCell>Ne retry que sur des erreurs transitoires</TableCell>
-              <TableCell>Un retry sur une erreur logique (404) n'a aucun sens.</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Limitez le nombre d'essais</TableCell>
-              <TableCell>Trop de tentatives peuvent retarder votre application inutilement.</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Combinez avec un circuit breaker</TableCell>
-              <TableCell>Si la cible est réellement hors service, éviter de saturer votre réseau.</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Ajoutez un fallback</TableCell>
-              <TableCell>Offrez une expérience utilisateur plus fluide plutôt que de tout planter.</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Testez vos politiques</TableCell>
-              <TableCell>Utilisez des tests unitaires (xUnit + Polly.Testing) pour valider le comportement en cas d'échec.</TableCell>
-            </TableRow>
+            {bestPracticesRows.map((r, i) => (
+              <TableRow key={i}>
+                <TableCell>{r.rule}</TableCell>
+                <TableCell>{r.reason}</TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </TableContainer>
 
-  <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>En résumé</Typography>
+  <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>{t('polly.content.sections.summary.title')}</Typography>
       <Typography paragraph>
-        Polly vous donne un framework léger mais puissant pour rendre vos appels externes plus robustes : retry, timeout, circuit breaker, fallback… 
-        Vous écrivez votre logique métier une seule fois et vous appliquez la politique en un appel Execute. 
-        C'est simple à mettre en place, très flexible, et ça s'intègre parfaitement dans l'écosystème .NET.
+        {t('polly.content.sections.summary.content')}
       </Typography>
       
       <Typography paragraph>
-        Prêt à rendre vos services plus résilients ? Lancez les commandes NuGet, créez votre première Policy et voyez la différence !
+        {t('polly.content.sections.summary.conclusion')}
       </Typography>
 
       <Box mt={4} pt={2} borderTop={theme => `1px solid ${theme.palette.divider}`}
@@ -276,7 +260,7 @@ await retryPolicy.ExecuteAsync(async () =>
           </a>
         </Typography>
         <Typography variant="caption" component="div" sx={{ color: 'text.secondary' }}>
-          Écrit le {meta.writtenOn}
+          {meta.writtenOn}
         </Typography>
       </Box>
     </Box>

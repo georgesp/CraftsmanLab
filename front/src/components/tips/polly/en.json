@@ -1,0 +1,34 @@
+{
+  "polly": {
+    "title": "Polly",
+    "shortDescription": "Adding resilience to your calls: retry, circuit breaker, timeout and fallback.",
+    "content": {
+      "mainTitle": "Polly: the resilience strategy for your external calls",
+      "intro": "Polly is a small open-source library (NuGet) that allows you to add resilience strategies to your code, without spending all your time on it.",
+      "useCases": {
+        "title": "We mainly use it for:",
+        "items": [
+          "HTTP requests that sometimes fail,",
+          "calls to databases or external services,",
+          "any operation that can throw an exception and that you don't want to give up on the first failure."
+        ]
+      },
+      "summary": "Basically, Polly gives you a template (retry, circuit breaker, timeout, fallback...) that you apply to your business logic. No repetitive code, just a Policy object that you compose.",
+      "sections": {
+        "installation": {
+          "title": "Installation",
+          "nuget": { "title": "NuGet", "description": "Polly doesn't depend on any particular framework, so you can use it in a .NET Core, .NET 5/6/7 or even Mono/Xamarin project. If you use ASP.NET Core, there's also Microsoft.Extensions.Http.Polly that integrates Polly directly with HttpClientFactory clients." }
+        },
+        "principle": {
+          "title": "The principle",
+          "policyRule": "Define a policy → Wrap your code → The policy handles failures",
+          "policyRuleDetails": { "handleDescription": "specifies which exceptions the policy should handle.", "waitAndRetryDescription": "defines the number of attempts and the interval between each try.", "applyDescription": "Once you have a Policy, you can apply it to an action:", "executionDescription": "Polly handles re-executing the lambda if an IOException is thrown, until the number of attempts is exhausted or the operation succeeds." },
+          "commonPolicies": { "title": "The most common types of policies", "table": { "headers": ["Type", "When to use?", "Quick example"], "rows": [ { "type": "Retry", "when": "Temporary failures (timeout, 5xx)", "example": "Policy.Handle<Exception>().Retry(3)" }, { "type": "Circuit Breaker", "when": "Need to avoid overloading a service that's already down", "example": "Policy.Handle<Exception>().CircuitBreaker(2, TimeSpan.FromSeconds(30))" }, { "type": "Timeout", "when": "Limit the duration of an operation", "example": "Policy.Timeout(TimeSpan.FromSeconds(5))" }, { "type": "Fallback", "when": "Return a default value or launch another action when everything fails", "example": "Policy.Handle<Exception>().Fallback(() => \"fallback\")" } ] } }
+        },
+        "examples": { "title": "Concrete examples", "retryTimeout": { "title": "Retry + Timeout on an HTTP call", "astuce": "Tip: if you use ASP.NET Core, create an HttpClient via IHttpClientFactory, then register the policy in the container. Polly integrates automatically." }, "circuitBreakerFallback": { "title": "Circuit Breaker + Fallback", "description": "In this example:", "explanations": [ "If the service throws an exception twice in a row, Polly opens the circuit and blocks calls for 10 seconds.", "While the circuit is open, the fallback immediately returns \"service unavailable\" without calling the service." ] }, "exponentialBackoff": { "title": "Retry with exponential back-off" }, "httpClientFactory": { "title": "Integration with HttpClientFactory (ASP.NET Core)", "description": "HandleTransientHttpError() is a shortcut that targets 408/500/502/503/504 and TimeoutException." } },
+  "bestPractices": { "title": "Best practices", "table": { "headers": ["Rule", "Why"], "rows": [ { "rule": "Only retry on transient errors", "reason": "A retry on a logical error (404) makes no sense." }, { "rule": "Limit the number of attempts", "reason": "Too many attempts can unnecessarily delay your application." }, { "rule": "Combine with a circuit breaker", "reason": "If the target is really down, avoid saturating your network." }, { "rule": "Add a fallback", "reason": "Provide a smoother user experience rather than crashing everything." }, { "rule": "Test your policies", "reason": "Use unit tests (xUnit + Polly.Testing) to validate behavior on failure." } ] } },
+        "summary": { "title": "Summary", "content": "Polly gives you a lightweight but powerful framework to make your external calls more robust: retry, timeout, circuit breaker, fallback... You write your business logic once and apply the policy in one Execute call. It's simple to set up, very flexible, and integrates perfectly into the .NET ecosystem.", "conclusion": "Ready to make your services more resilient? Run the NuGet commands, create your first Policy and see the difference!" }
+      }
+    }
+  }
+}

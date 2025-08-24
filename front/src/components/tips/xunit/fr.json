@@ -1,0 +1,67 @@
+{
+  "xunit": {
+    "title": "xUnit",
+    "shortDescription": "Écrire des tests avec xUnit : bases, fixtures et bonnes pratiques.",
+    "content": {
+      "mainTitle": "xUnit : framework de tests unitaires pour .NET",
+      "intro": "xUnit est le framework de tests de référence pour .NET, simple à utiliser et extensible.",
+      "summary": "Framework moderne avec des concepts clairs : Facts, Theories, fixtures et collections pour organiser vos tests efficacement.",
+      "sections": {
+        "installation": {
+          "title": "Installation"
+        },
+        "structure": {
+          "title": "Structure d'un test",
+          "description": "Un test xUnit suit souvent le pattern Arrange‑Act‑Assert. Utilisez [Fact] pour un cas fixe et [Theory] avec InlineData pour des cas paramétrés."
+        },
+        "theory": {
+          "title": "Theory et données",
+          "description": "Les Theories permettent d'exécuter le même test avec différentes données d'entrée via [InlineData] ou des providers."
+        },
+        "async": {
+          "title": "Tests asynchrones",
+          "description": "xUnit supporte nativement async/await. Évitez .Result/.Wait() pour prévenir les deadlocks."
+        },
+        "fixtures": {
+          "title": "Fixtures et partage de données",
+          "subtitle": "IClassFixture pour partager des ressources",
+          "description": "IClassFixture et CollectionFixture permettent de partager un contexte entre tests sans ordre d'exécution imposé."
+        },
+        "mocking": {
+          "title": "Mocking et isolation",
+          "description": "Utilisez des frameworks comme NSubstitute ou Moq pour isoler les dépendances et vérifier les interactions."
+        },
+        "collections": {
+          "title": "Collections de tests",
+          "subtitle": "Organiser les tests avec des collections",
+          "description": "Les collections regroupent des classes de tests qui partagent un même fixture, utile pour éviter des initialisations coûteuses répétées."
+        },
+        "output": {
+          "title": "Sortie de test (ITestOutputHelper)",
+          "description": "Injectez ITestOutputHelper pour tracer des informations de debug lorsqu'un test est exécuté."
+        },
+        "bestPractices": {
+          "title": "Bonnes pratiques",
+          "tips": [
+            "Un test = une responsabilité",
+            "Noms de tests descriptifs (Given_When_Then)",
+            "Arrange-Act-Assert pattern",
+            "Tests indépendants (pas d'ordre d'exécution)",
+            "Utilisez des fixtures pour les ressources coûteuses"
+          ],
+          "practices": {
+            "naming": "Nommez vos tests de manière descriptive",
+            "arrange": "Séparez clairement Arrange, Act et Assert",
+            "single": "Une seule assertion logique par test",
+            "independent": "Rendez les tests indépendants",
+            "fast": "Gardez des tests rapides"
+          }
+        },
+        "conclusion": {
+          "title": "Conclusion",
+          "description": "xUnit fournit une base solide pour des tests fiables et maintenables, avec un modèle extensible et moderne."
+        }
+      }
+    }
+  }
+}

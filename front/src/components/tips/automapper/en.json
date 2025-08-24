@@ -1,0 +1,66 @@
+{
+  "automapper": {
+    "title": "AutoMapper",
+    "shortDescription": "Object mapping with AutoMapper: automatic, custom configurations, and performance.",
+    "content": {
+      "mainTitle": "AutoMapper: automatic object mapping in .NET",
+      "intro": "AutoMapper simplifies object transformation by automatically handling mapping between similar classes.",
+      "summary": "Ideal for quickly converting entities to DTOs without repetitive code, with customizable mapping rules.",
+      "sections": {
+        "installation": {
+          "title": "Installation",
+          "command": "dotnet add package AutoMapper"
+        },
+        "basicMapping": {
+          "title": "Basic mapping",
+          "subtitle": "Simple configuration and usage"
+        },
+        "profile": {
+          "title": "Using with Profile",
+          "subtitle": "Organizing mapping rules"
+        },
+        "customMapping": {
+          "title": "Custom mapping",
+          "subtitle": "Specific rules with ForMember"
+        },
+        "configuration": {
+          "title": "Configuration",
+          "description": "Declare your profiles and register the mapper at startup for dependency injection usage.",
+          "codeBlock": "var config = new MapperConfiguration(cfg => {\n  cfg.AddProfile(new UserProfile());\n});\nIMapper mapper = config.CreateMapper();\nservices.AddSingleton(mapper);"
+        },
+        "projection": {
+          "title": "Projection with Entity Framework",
+          "subtitle": "Query optimization"
+        },
+        "validation": {
+          "title": "Configuration validation"
+        },
+        "bestPractices": {
+          "title": "Best practices",
+          "tips": [
+            "Configure AutoMapper at application startup",
+            "Use Profiles to organize your mappings",
+            "Validate your configuration with AssertConfigurationIsValid()",
+            "Prefer ProjectTo() for Entity Framework queries",
+            "Avoid bidirectional mapping when possible"
+          ]
+        },
+        "manualConfig": { "title": "Manual configuration" },
+        "simpleProfile": { "title": "A simple profile" },
+        "usage": { "title": "Usage" },
+        "bidirectional": {
+          "title": "Bidirectional mapping",
+          "note": "Note: if the FullName format changes, update the profiles or extract the logic into a shared method."
+        },
+        "mapCollections": {
+          "title": "Mapping collections",
+          "description": "You can map lists without an explicit loop:" 
+        }
+      },
+      "footer": {
+        "sourceLabel": "Source: Official documentation",
+        "writtenOn": "Written on {{date}}"
+      }
+    }
+  }
+}

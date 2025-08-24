@@ -1,11 +1,12 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Link } from '@mui/material';
 
 export const meta = {
   slug: 'key-value-collection',
-  title: 'Collections clé-valeur C#',
-  shortDescription: 'Différentes structures clé-valeur (IDictionary, IReadOnlyDictionary, etc..)',
+  title: '', // Utilisera les traductions
+  shortDescription: '', // Utilisera les traductions
   writtenOn: '2025-08-11',
   keywords: ['C#' as const],
   metadata: {
@@ -25,50 +26,61 @@ export const meta = {
 };
 
 const KeyValueCollectionTip: React.FC = () => {
+  const { t } = useTranslation('tips');
+  
   return (
     <Box>
+      <Typography variant="h3" gutterBottom>{t('keyValueCollection.content.mainTitle')}</Typography>
+      
       <Typography paragraph>
-        Dico, map, table de hachage… tu veux associer des clés à des valeurs ? Voici ce qu’il faut retenir pour ne pas te mélanger les pinceaux.
+        {t('keyValueCollection.content.intro')}
       </Typography>
-      <Typography variant="h5" gutterBottom>IDictionary&lt;TKey, TValue&gt;</Typography>
+      
+      <Typography variant="h5" gutterBottom>{t('keyValueCollection.content.sections.idictionary.title')}</Typography>
       <Typography paragraph>
-        C’est le “vrai” dictionnaire : tu peux <b>ajouter</b>, <b>supprimer</b>, <b>modifier</b> des paires clé/valeur. Utilise-le si tu veux vraiment manipuler la structure.
+        {t('keyValueCollection.content.sections.idictionary.description')}
       </Typography>
-      <Typography variant="h5" gutterBottom>IReadOnlyDictionary&lt;TKey, TValue&gt;</Typography>
+      
+      <Typography variant="h5" gutterBottom>{t('keyValueCollection.content.sections.ireadonlydictionary.title')}</Typography>
       <Typography paragraph>
-        Même idée, mais <b>en lecture seule</b> : tu exposes Count, Keys, Values, TryGetValue, mais tu ne laisses pas modifier. Parfait pour retourner une vue sans copie.
+        {t('keyValueCollection.content.sections.ireadonlydictionary.description')}
       </Typography>
-      <Typography variant="h5" gutterBottom>ConcurrentDictionary&lt;TKey, TValue&gt;</Typography>
+      
+      <Typography variant="h5" gutterBottom>{t('keyValueCollection.content.sections.concurrentdictionary.title')}</Typography>
       <Typography paragraph>
-        Pour les cas où tu as plusieurs threads qui écrivent/consultent en même temps. Prends ça plutôt que de bricoler des locks sur un Dictionary.
+        {t('keyValueCollection.content.sections.concurrentdictionary.description')}
       </Typography>
-      <Typography variant="h5" gutterBottom>ImmutableDictionary&lt;TKey, TValue&gt;</Typography>
+      
+      <Typography variant="h5" gutterBottom>{t('keyValueCollection.content.sections.immutabledictionary.title')}</Typography>
       <Typography paragraph>
-        Tu veux du thread-safe ET de l’immutabilité ? C’est la solution. Pratique pour les configs, les snapshots, ou si tu veux garantir qu’aucun code ne modifie la map.
+        {t('keyValueCollection.content.sections.immutabledictionary.description')}
       </Typography>
-      <Typography variant="h5" gutterBottom>En résumé, retiens :</Typography>
+      
+      <Typography variant="h5" gutterBottom>{t('keyValueCollection.content.sections.summary.title')}</Typography>
       <ul>
-        <li><code>IReadOnlyDictionary&lt;TKey,TValue&gt;</code> : à exposer par défaut si tu veux juste donner accès à la data.</li>
-        <li><code>IDictionary&lt;TKey,TValue&gt;</code> : si tu veux que l’appelant puisse modifier.</li>
-        <li><code>ConcurrentDictionary&lt;TKey,TValue&gt;</code> : pour la concurrence multi-thread.</li>
-        <li><code>ImmutableDictionary&lt;TKey,TValue&gt;</code> : pour la sécurité et l’immutabilité.</li>
+        <li><code>IDictionary&lt;TKey, TValue&gt;</code> : {t('keyValueCollection.content.sections.summary.items.idictionary')}</li>
+        <li><code>IReadOnlyDictionary&lt;TKey, TValue&gt;</code> : {t('keyValueCollection.content.sections.summary.items.ireadonlydictionary')}</li>
+        <li><code>ConcurrentDictionary&lt;TKey, TValue&gt;</code> : {t('keyValueCollection.content.sections.summary.items.concurrentdictionary')}</li>
+        <li><code>ImmutableDictionary&lt;TKey, TValue&gt;</code> : {t('keyValueCollection.content.sections.summary.items.immutabledictionary')}</li>
       </ul>
-      <Typography variant="h5" gutterBottom>Tips pratiques</Typography>
+      
+      <Typography variant="h5" gutterBottom>{t('keyValueCollection.content.sections.tips.title')}</Typography>
       <ul>
-        <li>Expose toujours IReadOnlyDictionary en sortie si tu n’as pas besoin de la modif.</li>
-        <li>Utilise TryGetValue, évite de catcher KeyNotFoundException.</li>
-        <li>Si tu veux juste tester l’existence d’une clé, HashSet&lt;TKey&gt; suffit.</li>
-        <li>En DI, injecte IReadOnlyDictionary si tu veux garantir la lecture seule.</li>
+        <li>{t('keyValueCollection.content.sections.tips.items.output')}</li>
+        <li>{t('keyValueCollection.content.sections.tips.items.input')}</li>
+        <li>{t('keyValueCollection.content.sections.tips.items.concurrent')}</li>
+        <li>{t('keyValueCollection.content.sections.tips.items.immutable')}</li>
       </ul>
+      
       <Box mt={4} pt={2} borderTop={theme => `1px solid ${theme.palette.divider}`}
         sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
-          <a href="https://learn.microsoft.com/fr-fr/dotnet/api/system.collections.generic.idictionary-2" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
-            Source : documentation .NET
-          </a>
+          <Link href="https://learn.microsoft.com/fr-fr/dotnet/api/system.collections.generic" target="_blank" rel="noopener noreferrer" underline="hover" color="inherit">
+            {t('keyValueCollection.content.footer.sourceLabel')}
+          </Link>
         </Typography>
         <Typography variant="caption" component="div" sx={{ color: 'text.secondary' }}>
-          Écrit le {meta.writtenOn}
+          {t('keyValueCollection.content.footer.writtenOn', { date: meta.writtenOn })}
         </Typography>
       </Box>
     </Box>
@@ -76,5 +88,5 @@ const KeyValueCollectionTip: React.FC = () => {
 };
 
 const mod: TipModule = { default: KeyValueCollectionTip, meta };
-export default KeyValueCollectionTip;
+
 export { mod };

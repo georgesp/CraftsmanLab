@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Menu, MenuItem, Box } from '@mui/material';
 import { Language as LanguageIcon, ExpandMore } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
@@ -10,7 +10,7 @@ const languages = [
 
 export const LanguageSelector: React.FC = () => {
   const { i18n } = useTranslation();
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {

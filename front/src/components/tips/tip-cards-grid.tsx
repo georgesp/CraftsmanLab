@@ -3,6 +3,7 @@ import { Grid, Typography, Box, IconButton } from '@mui/material';
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Link as RouterLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { tipsList } from './registry';
 import { COLORS } from '../../styles/colors';
 import { PromptCard, PromptCardContent } from '../../pages/Prompts/styles';
@@ -16,6 +17,43 @@ type Props = {
 };
 
 export const TipCardsGrid: React.FC<Props> = ({ maxItems, seeAllLink, seeAllLabel = 'Voir tous les tips' }) => {
+  const { t } = useTranslation('tips');
+  
+  // Helper function to get translated text with fallback for per-component translations
+  const getTranslatedText = (tipSlug: string, key: 'title' | 'shortDescription', fallback: string) => {
+    if (key === 'title') {
+      // Try direct title first (polly.title), then fallback to content.mainTitle
+      const directKey = `${tipSlug}.title`;
+      const contentKey = `${tipSlug}.content.mainTitle`;
+      
+      const directTranslated = t(directKey, { defaultValue: '' });
+      if (directTranslated && directTranslated !== directKey) {
+        return directTranslated;
+      }
+      
+      const contentTranslated = t(contentKey, { defaultValue: '' });
+      if (contentTranslated && contentTranslated !== contentKey) {
+        return contentTranslated;
+      }
+    } else {
+      // shortDescription - try direct shortDescription first, then fallback to content.summary
+      const directKey = `${tipSlug}.shortDescription`;
+      const contentKey = `${tipSlug}.content.summary`;
+      
+      const directTranslated = t(directKey, { defaultValue: '' });
+      if (directTranslated && directTranslated !== directKey) {
+        return directTranslated;
+      }
+      
+      const contentTranslated = t(contentKey, { defaultValue: '' });
+      if (contentTranslated && contentTranslated !== contentKey) {
+        return contentTranslated;
+      }
+    }
+    
+    return fallback;
+  };
+
   const items = React.useMemo(() => {
     let sliceCount = maxItems && maxItems > 0 ? maxItems : undefined;
     if (seeAllLink && sliceCount && sliceCount > 0) {
@@ -38,11 +76,11 @@ export const TipCardsGrid: React.FC<Props> = ({ maxItems, seeAllLink, seeAllLabe
                       <TipsAndUpdatesIcon fontSize="large" sx={{ color: COLORS.tipsIcon, fontSize: 20 }} />
                     </Box>
                   <Typography variant="h5" component="h3" sx={{ fontWeight: 700, mb: 0, color: 'text.primary' }}>
-                    {t.title}
+                    {getTranslatedText(t.slug, 'title', t.title)}
                   </Typography>
                 </Box>
                 <Typography variant="body1" sx={{ color: 'text.primary', flexGrow: 1, mb: 1 }}>
-                  {t.shortDescription}
+                  {getTranslatedText(t.slug, 'shortDescription', t.shortDescription)}
                 </Typography>
                 
                 <KeywordChips keywords={t.keywords} />

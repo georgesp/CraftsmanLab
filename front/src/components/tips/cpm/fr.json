@@ -1,0 +1,116 @@
+{
+  "cpm": {
+    "title": "Central Package Management (CPM)",
+    "shortDescription": "Uniformiser les versions NuGet dans votre solution .NET avec CPM",
+    "content": {
+      "mainTitle": "Central Package Management : gestion centralisée des packages NuGet",
+      "subtitle": "Déclarez les versions de packages une seule fois pour toute la solution.",
+      "intro": "CPM permet de centraliser la gestion des versions de packages NuGet dans un fichier unique pour toute la solution.",
+      "summary": "Simplifie la maintenance des dépendances en évitant les conflits de versions et en centralisant la configuration.",
+      "sections": {
+        "why": {
+          "title": "Pourquoi CPM ?",
+          "benefits": {
+            "uniformity": {
+              "title": "Uniformité",
+              "description": "Une seule source de vérité pour les versions assure la cohérence entre projets."
+            },
+            "maintenance": {
+              "title": "Maintenance",
+              "description": "Mettre à jour une version dans un fichier répercute le changement partout."
+            },
+            "audit": {
+              "title": "Audit",
+              "description": "Visibilité claire pour les revues de sécurité et la conformité."
+            }
+          }
+        },
+        "setup": {
+          "title": "Configuration initiale",
+          "subtitle": "Activation de CPM",
+          "prerequisites": "Prérequis : .NET SDK récent (6+)",
+          "steps": {
+            "createSolution": { "title": "1. Créez une solution" },
+            "addProjects": { "title": "Ajoutez vos projets :" },
+            "enable": { "title": "2. Activez CPM" }
+          }
+        },
+        "directoryPackages": {
+          "title": "Fichier Directory.Packages.props",
+          "subtitle": "Définition centralisée des versions",
+          "description": "Dans la racine de votre solution, créez un fichier Directory.Packages.props :"
+        },
+        "projectFiles": {
+          "title": "3. Modifiez les projets pour qu'ils utilisent CPM",
+          "subtitle": "Suppression des versions dans les .csproj",
+          "description": "Dans chaque fichier .csproj :",
+          "important": "Important : Si un projet avait déjà une version définie, supprimez-la. Le SDK utilisera la valeur du fichier central."
+        },
+        "verify": {
+          "title": "4. Vérifiez",
+          "description": "Vous devriez voir que les packages sont résolus à partir des versions de Directory.Packages.props. Ouvrez un .csproj ; il n'y aura plus de PackageReference avec un attribut Version."
+        },
+        "howItWorks": {
+          "title": "Que fait CPM en arrière-plan ?",
+          "items": {
+            "intercept": "Le SDK intercepte chaque référence de package.",
+            "read": "Il lit les versions dans le fichier central (ou fichiers parents).",
+            "fail": "Sans version trouvée, la restauration échoue avec un message clair."
+          }
+        },
+        "migration": {
+          "title": "Migration d'une solution existante",
+          "subtitle": "Étapes de conversion"
+        },
+        "benefits": {
+          "title": "Avantages",
+          "points": [
+            "Versions cohérentes dans toute la solution",
+            "Mise à jour simplifiée des packages",
+            "Réduction des conflits de dépendances",
+            "Visibilité centralisée des versions",
+            "Facilite les audits de sécurité"
+          ]
+        },
+        "bestPractices": {
+          "title": "Bonnes pratiques",
+          "tips": [
+            "Placez Directory.Packages.props à la racine de la solution",
+            "Utilisez des variables pour les versions liées",
+            "Groupez les packages par fonctionnalité",
+            "Documentez les raisons des versions spécifiques",
+            "Automatisez les mises à jour avec Dependabot"
+          ],
+          "tableHeaders": { "tip": "Astuce", "why": "Pourquoi" },
+          "rows": {
+            "vcs": {
+              "title": "Versionnez votre Directory.Packages.props",
+              "why": "Publiez‑le avec un tag pour garantir une base commune."
+            },
+            "outdated": {
+              "title": "Utilisez dotnet list package --outdated",
+              "why": "Pour visualiser rapidement les dépendances obsolètes."
+            },
+            "locked": {
+              "title": "Bloquez les mises à jour automatiques (RestoreLockedMode=\"true\")",
+              "why": "Verrouillez la résolution pour éviter des mises à jour involontaires."
+            }
+          }
+        },
+        "quickSummary": {
+          "title": "Résumé rapide",
+          "items": {
+            "create": "Créez Directory.Packages.props à la racine.",
+            "declare": "Déclarez les packages et versions une seule fois.",
+            "remove": "Retirez les versions dans chaque .csproj.",
+            "restore": "Exécutez dotnet restore."
+          }
+        }
+      },
+      "footer": {
+        "sourceLabel": "Source : Microsoft Docs – Central Package Management",
+        "writtenOn": "Écrit le {{date}}"
+      }
+    }
+  }
+}

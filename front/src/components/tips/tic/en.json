@@ -1,0 +1,52 @@
+{
+  "switch-tuple": {
+    "title": "Switch + Tuple",
+    "shortDescription": "Practical tip: switch on a tuple in C# (pattern matching)",
+    "content": {
+      "mainTitle": "Switch expressions with tuples in C#",
+      "intro": "Advanced technique to simplify complex conditional logic using pattern matching on tuples.",
+      "summary": "Effectively replaces nested if/else chains with readable and concise switch expressions.",
+      "sections": {
+        "basicSyntax": {
+          "title": "Basic syntax",
+          "subtitle": "Simple switch expression"
+        },
+        "tupleMatching": {
+          "title": "Pattern matching with tuples",
+          "subtitle": "Comparing multiple values"
+        },
+        "advancedPatterns": {
+          "title": "Advanced patterns",
+          "subtitle": "Guards and wildcard patterns"
+        },
+        "example": {
+          "title": "Example",
+          "codeBlock": "public static string GetAction((string role, string state) input) => input switch\n{\n    (\"Admin\", \"Active\")      => \"FullAccess\",\n    (\"User\",  \"Active\")      => \"LimitedAccess\",\n    (\"Guest\", _)              => \"ReadOnly\",\n    (_,          \"Suspended\")   => \"NoAccess\",\n    _                             => \"Unknown\"\n};"
+        },
+        "summary": {
+          "title": "Summary"
+        },
+        "benefits": {
+          "title": "Benefits",
+          "points": [
+            "More readable and expressive code",
+            "Reduced logical errors",
+            "Exhaustiveness checked by compiler",
+            "Optimized performance",
+            "Simplified maintenance"
+          ]
+        },
+        "bestPractices": {
+          "title": "Best practices",
+          "tips": [
+            "Prefer switch expressions over switch statements",
+            "Use expressive variable names in patterns",
+            "Cover all possible cases",
+            "Avoid overly complex tuples (max 3-4 elements)",
+            "Document the business logic behind patterns"
+          ]
+        }
+      }
+    }
+  }
+}

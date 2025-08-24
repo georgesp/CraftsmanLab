@@ -23,7 +23,7 @@ describe('HomePage Component', () => {
     render(<HomePageWrapper />);
     
   // Vérifier que le lien de navigation vers la page tips est présent
-  const tipsNav = screen.getByText(/Tips \/ Mémos/i);
+  const tipsNav = screen.getByRole('link', { name: 'Tips' });
   expect(tipsNav).toBeInTheDocument();
   });
 
@@ -46,12 +46,12 @@ describe('HomePage Component', () => {
     render(<HomePageWrapper />);
     
   // Vérifier que les liens de navigation vers tips et prompts sont présents
-  const tipsLink = screen.getByText('Tips / Mémos');
+  const tipsLink = screen.getByRole('link', { name: 'Tips' });
   expect(tipsLink).toBeInTheDocument();
-  expect(tipsLink.closest('a')).toHaveAttribute('href', '/tips');
+  expect(tipsLink).toHaveAttribute('href', '/tips');
 
-  const promptsLink = screen.getByText('Prompts');
+  const promptsLink = screen.getByRole('link', { name: 'Prompts' });
   expect(promptsLink).toBeInTheDocument();
-  expect(promptsLink.closest('a')).toHaveAttribute('href', '/prompts');
+  expect(promptsLink).toHaveAttribute('href', '/prompts');
   });
 });

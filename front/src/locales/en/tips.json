@@ -1,0 +1,39 @@
+{
+  "dapper": {
+    "title": "Using Dapper",
+    "shortDescription": "Using Dapper for data access (queries, parameters, stored procedures, DTO, alias, multi-mapping)."
+  },
+  "automapper": {
+    "title": "AutoMapper",
+    "shortDescription": "Object mapping with AutoMapper: automatic, custom configurations, and performance."
+  },
+  "xunit": {
+    "title": "xUnit",
+    "shortDescription": "Unit testing with xUnit: test structure, assertions, test data, and organization."
+  },
+  "nsubstitute": {
+    "title": "NSubstitute",
+    "shortDescription": "Mocking with NSubstitute: fake objects, verification, and setup."
+  },
+
+  "facet": {
+    "title": "Facet",
+    "shortDescription": "Projection (DTO) generator and mappings for C# and EF Core."
+  },
+  "switch-tuple": {
+    "title": "Switch + Tuple",
+    "shortDescription": "Practical tip: switch on a tuple in C# (pattern matching)"
+  },
+  "central-package-management": {
+    "title": "Central Package Management (CPM)",
+    "shortDescription": "Unify NuGet versions across your .NET solution with CPM"
+  },
+  "collection": {
+    "title": "C# Collections",
+    "shortDescription": "Different collections in C# (IEnumerable, ICollection, IList, IReadOnlyCollection, etc.)"
+  },
+  "key-value-collection": {
+    "title": "Key-value Collections in C#",
+    "shortDescription": "Different key-value structures (IDictionary, IReadOnlyDictionary, etc.)"
+  }
+}

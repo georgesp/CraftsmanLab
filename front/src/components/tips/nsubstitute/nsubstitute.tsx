@@ -1,12 +1,13 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';
 import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
 
 export const meta = {
   slug: 'nsubstitute',
-  title: 'NSubstitute',
-  shortDescription: 'Mocker avec NSubstitute : bases, exemples et bonnes pratiques.',
+  title: '', // Utilisera les traductions
+  shortDescription: '', // Utilisera les traductions
   writtenOn: '2025-08-12',
   keywords: ['C#' as const],
   metadata: {
@@ -28,57 +29,60 @@ export const meta = {
 // Code blocks rendered with shared CodeBlock component
 
 const NSubstituteTip: React.FC = () => {
+  const { t } = useTranslation('tips');
+  
   return (
     <Box>
+      <Typography variant="h3" gutterBottom>{t('nsubstitute.content.mainTitle')}</Typography>
+      
       <Typography paragraph>
-        Le pense‑bête pour toi: crée des doubles de test, force des retours, vérifie les appels et capture des arguments
-        avec NSubstitute, sans te perdre dans la doc.
+        {t('nsubstitute.content.intro')}
       </Typography>
 
       <Typography variant="h4" gutterBottom>
-        Concepts de base
+        {t('nsubstitute.content.sections.basics.title')}
       </Typography>
 
       <Typography variant="h6" gutterBottom>
-        Substitution
+        {t('nsubstitute.content.sections.labels.substitution')}
       </Typography>
       <CodeBlock language="csharp" code={`var mock = Substitute.For<IFoo>();`} />
 
       <Typography variant="h6" gutterBottom>
-        Retour simple
+        {t('nsubstitute.content.sections.labels.simpleReturn')}
       </Typography>
       <CodeBlock language="csharp" code={`mock.Bar().Returns(42);`} />
 
       <Typography variant="h6" gutterBottom>
-        Valeur calculée
+        {t('nsubstitute.content.sections.labels.computed')}
       </Typography>
       <CodeBlock language="csharp"
         code={`mock.Add(Arg.Any<int>(), Arg.Any<int>()).Returns(callInfo => callInfo.Arg<int>(0) + callInfo.Arg<int>(1));`}
       />
 
       <Typography variant="h6" gutterBottom>
-        Exceptions
+        {t('nsubstitute.content.sections.labels.exceptions')}
       </Typography>
       <CodeBlock language="csharp" code={`mock.DoSomething().Throws(new InvalidOperationException());`} />
 
       <Typography variant="h6" gutterBottom>
-      Vérification d’appel
+        {t('nsubstitute.content.sections.labels.verifyCall')}
       </Typography>
       <CodeBlock language="csharp" code={`mock.Received().Bar();
 mock.DidNotReceive().Baz();`} />
 
       <Typography variant="h6" gutterBottom>
-        Arguments spéciaux
+        {t('nsubstitute.content.sections.labels.specialArgs')}
       </Typography>
       <CodeBlock language="csharp" code={`Arg.Is<string>(s => s.StartsWith("Hello"));`} />
 
       <Typography variant="h6" gutterBottom>
-        Partial mock
+        {t('nsubstitute.content.sections.labels.partial')}
       </Typography>
       <CodeBlock language="csharp" code={`var partial = Substitute.ForPartsOf<MyConcreteClass>();`} />
 
       <Typography variant="h6" gutterBottom>
-        Capturer les arguments
+        {t('nsubstitute.content.sections.labels.captureArgs')}
       </Typography>
       <CodeBlock language="csharp"
         code={`int captured;
@@ -88,10 +92,10 @@ mock.When(x => x.Do(Arg.Any<int>())).Do(call => captured = call.Arg<int>());
       />
 
       <Typography variant="h4" gutterBottom sx={{ mt: 4 }}>
-        Exemple complet
+        {t('nsubstitute.content.sections.exampleFull.title')}
       </Typography>
       <Typography variant="h6" gutterBottom>
-        Le code à tester
+        {t('nsubstitute.content.sections.exampleFull.codeToTest')}
       </Typography>
       <CodeBlock language="csharp"
         code={`public interface ICalculator
@@ -119,7 +123,7 @@ public class MathService
       />
 
       <Typography variant="h6" gutterBottom>
-  Le test avec NSubstitute
+        {t('nsubstitute.content.sections.exampleFull.testWith')}
       </Typography>
       <CodeBlock language="csharp"
         code={`using Xunit;
@@ -152,7 +156,7 @@ public class MathServiceTests
       />
 
       <Typography variant="subtitle1" gutterBottom>
-        Remarques
+        {t('nsubstitute.content.sections.notes.title')}
       </Typography>
       <ul>
         <li>
@@ -241,17 +245,12 @@ calc.When(call => call.Log(Arg.Any<string>()))
         sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
       >
         <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
-          <a
-            href="https://github.com/nsubstitute/NSubstitute"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: 'inherit', textDecoration: 'underline' }}
-          >
-            Source : NSubstitute (GitHub)
+          <a href="https://github.com/nsubstitute/NSubstitute" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
+            {t('nsubstitute.content.footer.sourceLabel')}
           </a>
         </Typography>
         <Typography variant="caption" component="div" sx={{ color: 'text.secondary' }}>
-          Écrit le {meta.writtenOn}
+          {t('nsubstitute.content.footer.writtenOn', { date: meta.writtenOn })}
         </Typography>
       </Box>
     </Box>

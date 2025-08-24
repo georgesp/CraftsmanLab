@@ -1,0 +1,66 @@
+{
+  "automapper": {
+    "title": "AutoMapper",
+    "shortDescription": "Mapping simple et efficace entre DTOs et entités avec AutoMapper",
+    "content": {
+      "mainTitle": "AutoMapper : mapping automatique d'objets en .NET",
+      "intro": "AutoMapper simplifie la transformation d'objets en gérant automatiquement le mapping entre classes similaires.",
+      "summary": "Idéal pour convertir rapidement des entités en DTOs sans code répétitif, avec des règles de mapping personnalisables.",
+      "sections": {
+        "installation": {
+          "title": "Installation",
+          "command": "dotnet add package AutoMapper"
+        },
+        "basicMapping": {
+          "title": "Mapping de base",
+          "subtitle": "Configuration et utilisation simple"
+        },
+        "profile": {
+          "title": "Utilisation avec Profile",
+          "subtitle": "Organisation des règles de mapping"
+        },
+        "customMapping": {
+          "title": "Mapping personnalisé",
+          "subtitle": "Règles spécifiques avec ForMember"
+        },
+        "configuration": {
+          "title": "Configuration",
+          "description": "Déclarez vos profils et enregistrez le mapper au démarrage pour une utilisation via injection de dépendances.",
+          "codeBlock": "var config = new MapperConfiguration(cfg => {\n  cfg.AddProfile(new UserProfile());\n});\nIMapper mapper = config.CreateMapper();\nservices.AddSingleton(mapper);"
+        },
+        "projection": {
+          "title": "Projection avec Entity Framework",
+          "subtitle": "Optimisation des requêtes"
+        },
+        "validation": {
+          "title": "Validation de configuration"
+        },
+        "bestPractices": {
+          "title": "Bonnes pratiques",
+          "tips": [
+            "Configurez AutoMapper au démarrage de l'application",
+            "Utilisez des Profiles pour organiser vos mappings",
+            "Validez votre configuration avec AssertConfigurationIsValid()",
+            "Préférez ProjectTo() pour les requêtes Entity Framework",
+            "Évitez le mapping bidirectionnel quand possible"
+          ]
+        },
+        "manualConfig": { "title": "Configuration manuelle" },
+        "simpleProfile": { "title": "Un profil simple" },
+        "usage": { "title": "Usage" },
+        "bidirectional": {
+          "title": "Mapping bidirectionnel",
+          "note": "Note : si le format de FullName change, mets à jour les profils ou extrait la logique dans une méthode partagée."
+        },
+        "mapCollections": {
+          "title": "Mapper des collections",
+          "description": "Tu peux mapper des listes sans boucle explicite :"
+        }
+      },
+      "footer": {
+        "sourceLabel": "Source : Documentation officielle",
+        "writtenOn": "Écrit le {{date}}"
+      }
+    }
+  }
+}

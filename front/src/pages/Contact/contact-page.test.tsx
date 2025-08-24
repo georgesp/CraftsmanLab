@@ -64,7 +64,7 @@ describe('ContactPage', () => {
     fireEvent.change(messageInput, { target: { value: 'Test message content' } });
 
     // Soumettre le formulaire
-    fireEvent.click(screen.getByRole('button', { name: /envoyer le message/i }));
+    fireEvent.click(screen.getByRole('button', { name: /envoyer/i }));
 
     // Vérifier que fetch a été appelé avec les bonnes données
     await waitFor(() => {
@@ -91,9 +91,10 @@ describe('ContactPage', () => {
   test('navigation links are present', () => {
     render(<ContactPageWrapper />);
     
-    const contactLink = screen.getByText('Contact');
+    // Chercher spécifiquement le lien dans la navigation (avec href)
+    const contactLink = screen.getByRole('link', { name: 'Contact' });
     
     expect(contactLink).toBeInTheDocument();
-    expect(contactLink.closest('a')).toHaveAttribute('href', '/contact');
+    expect(contactLink).toHaveAttribute('href', '/contact');
   });
 });

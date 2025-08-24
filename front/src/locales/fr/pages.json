@@ -8,6 +8,15 @@
     "description": "Une collection de fiches synthétiques sur des concepts fondamentaux de l'écosystème .NET et C#. Chaque tip vise à clarifier un point d'architecture, une interface clé ou une bonne pratique d'API.",
     "aiNote": "Ne soyez pas surpris : les contenus des fiches ont été générés avec l'aide de l'IA."
   },
+  "tipDetailPage": {
+    "loading": "Chargement…",
+    "sidebar": {
+      "title": "Tips / Mémos"
+    },
+    "errors": {
+      "notFound": "Aucun tip trouvé pour « {{slug}} »"
+    }
+  },
   "prompts": {
     "title": "Prompts",
     "description": "Collection de prompts système pour l'intelligence artificielle.",

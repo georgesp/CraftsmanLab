@@ -13,6 +13,7 @@ export type SearchHit = {
 // Métadonnées fiables via les registres existants
 import { tipsList } from '../components/tips/registry';
 import { promptsList } from '../components/prompts/registry';
+import i18n from '../i18n';
 
 // Fonction pour obtenir la langue actuelle
 function getCurrentLanguage(): 'fr' | 'en' {
@@ -23,6 +24,20 @@ function getCurrentLanguage(): 'fr' | 'en' {
   // Fallback sur la langue du navigateur
   const browserLang = navigator.language.toLowerCase();
   return browserLang.startsWith('fr') ? 'fr' : 'en';
+}
+
+// Helper function to get translated text with fallback - tips
+function getTipTranslation(tipSlug: string, key: string, fallback: string): string {
+  const translationKey = `${tipSlug}.${key}`;
+  const translated = i18n.t(translationKey, { ns: 'tips', defaultValue: '' });
+  return translated || fallback;
+}
+
+// Helper function to get translated text with fallback - prompts
+function getPromptTranslation(promptSlug: string, key: string, fallback: string): string {
+  const translationKey = `${promptSlug}.${key}`;
+  const translated = i18n.t(translationKey, { ns: 'prompts', defaultValue: '' });
+  return translated || fallback;
 }
 
 type IndexedItem = {
@@ -45,8 +60,8 @@ function buildIndex(): IndexedItem[] {
     items.push({ 
       kind: 'tip', 
       slug: t.slug, 
-      title: t.title, 
-      shortDescription: t.shortDescription, 
+      title: getTipTranslation(t.slug, 'title', t.title), 
+      shortDescription: getTipTranslation(t.slug, 'shortDescription', t.shortDescription), 
       searchKeywords: t.metadata?.searchKeywords
     });
   }
@@ -56,8 +71,8 @@ function buildIndex(): IndexedItem[] {
     items.push({ 
       kind: 'prompt', 
       slug: p.slug, 
-      title: p.title, 
-      shortDescription: p.shortDescription, 
+      title: getPromptTranslation(p.slug, 'title', p.title), 
+      shortDescription: getPromptTranslation(p.slug, 'shortDescription', p.shortDescription), 
       searchKeywords: p.metadata?.searchKeywords
     });
   }
