@@ -19,20 +19,21 @@ export const PromptsPage: React.FC = () => {
       <Header />
 
             <Container maxWidth={false} disableGutters sx={{ px: 0, mx: 0, width: '100%', backgroundColor: COLORS.darkGreyBg, minHeight: '100vh' }}>
-              <PromptsPageContainer sx={{ px: 0, mx: 0, width: '100%', ml: 2 }}>
+              <PromptsPageContainer sx={{ px: 0, mx: 0, width: '100%', ml: { xs: 0, md: 2, lg: 6 } }}>
                 <Box sx={{ display: 'flex', alignItems: 'stretch', gap: { xs: 2, sm: 4 }, flexWrap: { xs: 'wrap', md: 'nowrap' } }}>
                   <Box
                     sx={{
-                      flex: { xs: '1 1 100%', md: '0 0 400px' },
-                      width: { xs: '100%', md: 400 },
-                      maxWidth: { xs: '100%', md: 420 },
+                      flex: { xs: '0 0 auto', md: '0 0 320px' },
+                      width: { xs: '90%', md: 320 },
+                      maxWidth: { xs: '90%', md: 320 },
                       alignSelf: { xs: 'center', md: 'stretch' },
-                      borderRadius: 1,
-                      boxShadow: 3,
-                      overflow: 'hidden',
+                      overflow: 'visible',
                       position: 'relative',
-                      backgroundColor: COLORS.darkGreyBg,
-                      display: 'flex',
+                      backgroundColor: 'transparent',
+                      display: 'block',
+                      mr: { xs: 0, md: 2 },
+                      mx: { xs: 'auto', md: 0 },
+                      mb: { xs: 2, md: 0 },
                     }}
                   >
                     <Box
@@ -41,18 +42,20 @@ export const PromptsPage: React.FC = () => {
                       alt="Illustration intelligence artificielle"
                       sx={{
                         width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
+                        height: 'auto',
+                        objectFit: 'contain',
                         display: 'block',
+                        borderRadius: 1,
+                        boxShadow: 3,
                       }}
                     />
                   </Box>
-                  <div style={{ position: 'relative', paddingLeft: '3rem', flex: 1, marginRight: '2rem' }}>
-                    <span style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 10, background: COLORS.darkGreyBg }} />
+      <Box sx={{ position: 'relative', pl: { xs: 0, md: '3rem' }, flex: 1, mr: { xs: 0, md: '2rem' }, width: { xs: '100%', md: 'auto' } }}>
+                    <Box component="span" sx={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 10, background: COLORS.darkGreyBg, display: { xs: 'none', md: 'block' } }} />
                     <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 600, px: 0, mx: 0, width: '100%', color: 'text.primary' }}>
                       Qu'est-ce qu'un prompt ?
                     </Typography>
-                    <Typography variant="body1" sx={{ px: 0, mx: 0, width: '100%', color: 'text.primary' }}>
+                    <Typography variant="body1" sx={{ px: 0, ml: 2, mr: 2, color: 'text.primary' }}>
                       Un prompt système est le texte de base que l’on transmet à un modèle d’intelligence artificielle avant toute interaction.
                       Il est en général stocké dans un fichier markdown (.md) à la racine du projet ; on peut en avoir plusieurs en fonction des besoins et des périmètres.
                       <br />
@@ -66,12 +69,12 @@ export const PromptsPage: React.FC = () => {
                     <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 600, marginTop: 2, px: 0, mx: 0, width: '100%', color: 'text.primary' }}>
                       Pourquoi un bon prompt est essentiel avec l'IA ?
                     </Typography>
-                    <Typography variant="body1" sx={{ px: 0, mx: 0, width: '100%', color: 'text.primary' }}>
+                    <Typography variant="body1" sx={{ px: 0, ml: 2, mr: 2, color: 'text.primary' }}>
                       Un prompt bien rédigé permet d'obtenir des réponses plus pertinentes, précises et adaptées à vos besoins. Il guide l'intelligence artificielle, réduit les malentendus et maximise la valeur des outils IA. Prendre le temps de formuler un prompt clair, structuré et contextuel est la clé pour exploiter tout le potentiel de l'IA, que ce soit pour générer du texte, analyser des données ou automatiser des tâches.
                       <br />
                       Il faut vraiment voir l'IA comme une personne à part entière dans le sens où si l'instruction est vague, elle risque de mal interpréter vos attentes et de fournir des réponses inappropriées ou hors sujet, on parle ici d'alignement avec l'IA.
                     </Typography>
-                  </div>
+                  </Box>
                 </Box>
               </PromptsPageContainer>
         <GridContainer>
