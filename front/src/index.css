@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #23272F; /* match COLORS.darkGreyBg */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -23,24 +23,22 @@ a:hover {
   color: #535bf2;
 }
 
+html, body, #root {
+  height: 100%;
+}
+
 body {
   margin: 0;
   min-width: 320px;
   overflow-x: hidden; /* Avoid unwanted horizontal scroll */
+  background-color: #23272F; /* enforce dark background on body */
 }
 
 #root {
   width: 100%;
   margin: 0;
   padding: 0;
+  background-color: #23272F; /* ensure root container matches dark bg */
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-  background-color: #F7FAFC;
-  }
-  a:hover {
-    color: #747bff;
-  }
-}
+/* Always use dark theme background to avoid white banding at page bottom */

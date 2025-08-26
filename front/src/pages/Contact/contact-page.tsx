@@ -8,14 +8,11 @@ import {
   Box,
   CircularProgress,
 } from '@mui/material';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
 import { Email, Send } from '@mui/icons-material';
-import { telerikTheme } from '../../theme/theme';
 import { COLORS } from '../../styles/colors';
 import { TYPOGRAPHY } from '../../styles/typography';
 import { CONTACT_EMAIL } from '../../utils/constants';
-import { Header, Footer } from '../../components';
+import { PageLayout } from '../../components';
 import {
   ContactContainer,
   HeroSection,
@@ -96,11 +93,9 @@ export const ContactPage: React.FC = () => {
   };
 
   return (
-    <ThemeProvider theme={telerikTheme}>
-      <CssBaseline />
-      <Header />
+  <PageLayout>
       <Container maxWidth={false} disableGutters sx={{ px: 0, mx: 0, width: '100%' }}>
-        <ContactContainer>
+            <ContactContainer>
           {showSuccess && (
             <SuccessAlert severity="success">
               Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.
@@ -334,9 +329,8 @@ export const ContactPage: React.FC = () => {
               </ContactCard>
             </Box>
           </Box>
-        </ContactContainer>
-      </Container>
-      <Footer />
-    </ThemeProvider>
+            </ContactContainer>
+          </Container>
+    </PageLayout>
   );
 };

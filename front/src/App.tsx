@@ -1,4 +1,4 @@
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HomePage } from './pages/Home/home-page';
@@ -7,14 +7,11 @@ import { PromptsPage } from './pages/Prompts/prompts-page';
 import { PromptDetailPage } from './pages/Prompts/prompt-detail-page';
 import { TipsPage } from './pages/Tips/tips-page';
 import { TipDetailPage } from './pages/Tips/tip-detail-page';
-
-const theme = createTheme({
-  palette: { primary: { main: '#1976d2' }, secondary: { main: '#dc004e' } },
-});
+import { telerikTheme } from './theme/theme';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+  <ThemeProvider theme={telerikTheme}>
       <CssBaseline />
       <Router>
         <Routes>

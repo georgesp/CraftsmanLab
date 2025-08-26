@@ -4,7 +4,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { telerikTheme } from '../../theme/theme';
 import { PAGE_SPACING } from '../../styles/spacing';
-import { Header, ScrollToTopButton } from '../../components';
+import { PageLayout, ScrollToTopButton } from '../../components';
 import { COLORS } from '../../styles/colors';
 import { findTipBySlug } from '../../components/tips/registry';
 import { Container, Box, Grid, Paper, Typography, Alert } from '@mui/material';
@@ -37,9 +37,9 @@ export const TipDetailPage: React.FC = () => {
   return (
     <ThemeProvider theme={telerikTheme}>
       <CssBaseline />
-      <Header />
-      <Container maxWidth="lg">
-        <Box sx={{ py: PAGE_SPACING.detail.paddingY, my: PAGE_SPACING.detail.marginY }}>
+      <PageLayout>
+          <Container maxWidth="lg">
+            <Box sx={{ py: PAGE_SPACING.detail.paddingY, my: PAGE_SPACING.detail.marginY }}>
           {!entry && (
             <Alert severity="warning">Aucun tip trouvé pour « {slug} »</Alert>
           )}
@@ -60,9 +60,10 @@ export const TipDetailPage: React.FC = () => {
               </Grid>
             </Grid>
           )}
-        </Box>
-      </Container>
-      <ScrollToTopButton />
+            </Box>
+          </Container>
+        <ScrollToTopButton />
+      </PageLayout>
     </ThemeProvider>
   );
 };

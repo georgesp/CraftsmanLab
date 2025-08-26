@@ -419,3 +419,4 @@ FodyWeavers.xsd
 
 # macOS system files
 **/.DS_Store
+front/.vscode/tasks.json
