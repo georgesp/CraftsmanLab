@@ -11,10 +11,19 @@
           "nugetCpu": "# .NET CLI\ndotnet add package KokoroSharp.CPU",
           "note": "For GPU acceleration, see RUNNING_ON_GPU.md in the GitHub repo. Official voices (Hexgrad Kokoro 82M v1.0) are included in the NuGet package."
         },
-        "gettingStarted": { "title": "Getting started" },
+        "gettingStarted": {
+          "title": "Getting started",
+          "codeBasic": "using KokoroSharp;\n\n// Load or download the model (~320MB for full precision)\nKokoroTTS tts = KokoroTTS.LoadModel();\n\n// Pick a voice (included in the nuget package)\nKokoroVoice heart = KokoroVoiceManager.GetVoice(\"af_heart\");\n\n// Speak a sentence (language detection is automatic based on the voice)\ntts.SpeakFast(\"Hello world\", heart);\n"
+        },
         "examples": {
-          "streaming": { "title": "Segment streaming" },
-          "voiceMixing": { "title": "Voice mixing" }
+          "streaming": {
+            "title": "Segment streaming",
+            "code": "using KokoroSharp;\nusing System.Threading.Channels;\n\nvar tts = KokoroTTS.LoadModel();\nvar voice = KokoroVoiceManager.GetVoice(\"af_alloy\");\n\n// Stream segments as they are synthesized\nawait foreach (var segment in tts.StreamSegmentsAsync(\"Long text to read\", voice))\n{\n    // segment.Audio contains PCM bytes you can enqueue to a player\n    Console.WriteLine($\"Received segment: {segment.Index}, {segment.DurationMs}ms\");\n}"
+          },
+          "voiceMixing": {
+            "title": "Voice mixing",
+            "code": "using KokoroSharp;\n\nvar tts = KokoroTTS.LoadModel();\nvar mix = new KokoroVoiceMix()\n    .Add(KokoroVoiceManager.GetVoice(\"af_heart\"), weight: 0.6f)\n    .Add(KokoroVoiceManager.GetVoice(\"af_alloy\"), weight: 0.4f);\n\ntts.SpeakFast(\"Real-time voice mixing\", mix);\n"
+          }
         },
         "features": {
           "title": "Key features",

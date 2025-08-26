@@ -11,10 +11,10 @@
   "tipDetailPage": {
     "loading": "Loading…",
     "sidebar": {
-      "title": "Tips / Memos"
+      "title": "Last tips / Memos"
     },
     "related": {
-      "title": "Related tips"
+      "title": "Related tips / Memos"
     },
     "errors": {
       "notFound": "No tip found for « {{slug}} »"

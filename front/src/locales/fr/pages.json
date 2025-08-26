@@ -11,10 +11,10 @@
   "tipDetailPage": {
     "loading": "Chargement…",
     "sidebar": {
-      "title": "Tips / Mémos"
+      "title": "Derniers tips / Mémos"
     },
     "related": {
-      "title": "Tips similaires"
+      "title": "Tips / Mémos similaires"
     },
     "errors": {
       "notFound": "Aucun tip trouvé pour « {{slug}} »"

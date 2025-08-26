@@ -1,6 +1,6 @@
 {
   "dapper": {
-    "title": "Using Dapper",
+    "title": "Dapper",
     "shortDescription": "Using Dapper for data access (queries, parameters, stored procedures, DTO, alias, multi-mapping).",
     "content": {
       "mainTitle": "Dapper: the high-performance micro-ORM for .NET",

@@ -1,6 +1,6 @@
 {
   "dapper": {
-    "title": "Utilisation de Dapper",
+    "title": "Dapper",
     "shortDescription": "Utilisation de Dapper (DTO, alias, multi‑mapping).",
     "content": {
       "mainTitle": "Dapper : le micro-ORM performant pour .NET",

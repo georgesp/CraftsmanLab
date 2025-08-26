@@ -32,13 +32,13 @@ export const LanguageSelector: React.FC = () => {
     <Box>
       <Button
         onClick={handleClick}
-        startIcon={<LanguageIcon />}
-        endIcon={<ExpandMore />}
+        startIcon={<LanguageIcon fontSize="small" />}
+        endIcon={<ExpandMore fontSize="small" />}
         sx={{
           color: 'inherit',
           textTransform: 'none',
           fontWeight: 500,
-          fontSize: '1.05rem',
+          fontSize: '0.95rem',
           '&:hover': {
             backgroundColor: 'rgba(255, 255, 255, 0.1)',
           },
@@ -64,6 +64,7 @@ export const LanguageSelector: React.FC = () => {
             key={language.code}
             onClick={() => handleLanguageChange(language.code)}
             selected={language.code === i18n.language}
+            sx={{ fontSize: '0.95rem' }}
           >
             {language.flag} {language.name}
           </MenuItem>

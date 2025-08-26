@@ -36,17 +36,7 @@ const KokoroSharpTip: React.FC = () => {
       <CodeBlock
         language="csharp"
         ariaLabel="kokoro-basic"
-        code={`using KokoroSharp;
-
-// Load or download the model (~320MB for full precision)
-KokoroTTS tts = KokoroTTS.LoadModel();
-
-// Pick a voice (included in the nuget package)
-KokoroVoice heart = KokoroVoiceManager.GetVoice("af_heart");
-
-// Speak a sentence (language detection is automatic based on the voice)
-tts.SpeakFast("Bonjour le monde", heart);
-`}
+  code={t('kokoro-sharp.content.sections.gettingStarted.codeBasic')}
       />
 
       <Typography variant="h5" gutterBottom sx={{ mt: 3 }}>
@@ -55,18 +45,7 @@ tts.SpeakFast("Bonjour le monde", heart);
       <CodeBlock
         language="csharp"
         ariaLabel="kokoro-streaming"
-        code={`using KokoroSharp;
-using System.Threading.Channels;
-
-var tts = KokoroTTS.LoadModel();
-var voice = KokoroVoiceManager.GetVoice("af_alloy");
-
-// Stream segments as they are synthesized
-await foreach (var segment in tts.StreamSegmentsAsync("Texte long à lire", voice))
-{
-    // segment.Audio contains PCM bytes you can enqueue to a player
-    Console.WriteLine($"Received segment: {segment.Index}, {segment.DurationMs}ms");
-}`}
+  code={t('kokoro-sharp.content.sections.examples.streaming.code')}
       />
 
       <Typography variant="h5" gutterBottom sx={{ mt: 3 }}>
@@ -75,15 +54,7 @@ await foreach (var segment in tts.StreamSegmentsAsync("Texte long à lire", voic
       <CodeBlock
         language="csharp"
         ariaLabel="kokoro-voice-mix"
-        code={`using KokoroSharp;
-
-var tts = KokoroTTS.LoadModel();
-var mix = new KokoroVoiceMix()
-    .Add(KokoroVoiceManager.GetVoice("af_heart"), weight: 0.6f)
-    .Add(KokoroVoiceManager.GetVoice("af_alloy"), weight: 0.4f);
-
-tts.SpeakFast("Mixage de voix en temps réel", mix);
-`}
+  code={t('kokoro-sharp.content.sections.examples.voiceMixing.code')}
       />
 
       <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>

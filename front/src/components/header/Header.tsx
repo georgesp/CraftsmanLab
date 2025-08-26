@@ -276,7 +276,7 @@ export const Header: React.FC = () => {
             to="/tips"
             color="inherit"
             underline="none"
-            sx={{ fontWeight: 500, fontSize: '1.05rem' }}
+            sx={{ fontWeight: 500 }}
           >
             {t('navigation.tips')}
           </MuiLink>
@@ -286,7 +286,7 @@ export const Header: React.FC = () => {
             to="/prompts"
             color="inherit"
             underline="none"
-            sx={{ fontWeight: 500, fontSize: '1.05rem' }}
+            sx={{ fontWeight: 500 }}
           >
             {t('navigation.prompts')}
           </MuiLink>
@@ -296,7 +296,7 @@ export const Header: React.FC = () => {
             to="/contact"
             color="inherit"
             underline="none"
-            sx={{ fontWeight: 500, fontSize: '1.05rem' }}
+            sx={{ fontWeight: 500 }}
           >
             {t('navigation.contact')}
           </MuiLink>
