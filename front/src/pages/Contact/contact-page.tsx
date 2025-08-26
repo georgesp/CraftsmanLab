@@ -30,6 +30,7 @@ import {
   InfoItemHeader,
   InfoItemDescription,
 } from './styles';
+import { useTranslation } from 'react-i18next';
 
 export const ContactPage: React.FC = () => {
   const { t } = useTranslation(['pages', 'common']);

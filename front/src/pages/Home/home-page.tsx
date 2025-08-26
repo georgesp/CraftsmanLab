@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { Container, Typography, Box, Card } from '@mui/material';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
 import { useTranslation } from 'react-i18next';
-import { telerikTheme } from '../../theme/theme';
 import { COLORS } from '../../styles/colors';
 import { PAGE_SPACING } from '../../styles/spacing';
 import { LazyTipCardsGrid } from '../../components/tips/tip-cards-grid-lazy';

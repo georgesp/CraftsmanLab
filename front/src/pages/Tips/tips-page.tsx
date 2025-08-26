@@ -1,8 +1,6 @@
 import React from 'react';
 import { Container, Card, Typography, Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { telerikTheme } from '../../theme/theme';
-import { Header, Footer, ScrollToTopButton } from '../../components';
 import { PageLayout, ScrollToTopButton } from '../../components';
 import { TipCardsGrid } from '../../components/tips/tip-cards-grid';
 import { COLORS } from '../../styles/colors';
