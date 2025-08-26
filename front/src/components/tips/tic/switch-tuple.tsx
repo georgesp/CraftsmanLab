@@ -3,13 +3,14 @@ import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';
 import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
+import TipContent from '../TipContent';
 import { meta } from './meta';
 
 const SwitchTupleTip: React.FC = () => {
   const { t } = useTranslation('tips');
 
   return (
-    <Box>
+    <TipContent>
       <Typography variant="h3" gutterBottom>
         {t('switch-tuple.content.mainTitle')}
       </Typography>
@@ -36,7 +37,7 @@ const SwitchTupleTip: React.FC = () => {
         )}
       </Box>
 
-      <Box
+  <Box
         mt={4}
         pt={2}
         borderTop={(theme) => `1px solid ${theme.palette.divider}`}
@@ -51,7 +52,7 @@ const SwitchTupleTip: React.FC = () => {
           {t('switch-tuple.content.footer.writtenOn', { date: meta.writtenOn })}
         </Typography>
       </Box>
-    </Box>
+  </TipContent>
   );
 };
 

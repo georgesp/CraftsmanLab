@@ -8,8 +8,8 @@ Résumé rapide pour un nouveau tip `<slug>`:
 - Dossier: `src/components/tips/<slug>/`
 - Fichiers: `meta.ts`, `<slug>.tsx`, `fr.json`, `en.json`
 - Manifest: ajouter les imports dans `src/components/content-manifest.ts` (metas + traductions) et une entrée `{ ...meta, load: () => import('./tips/<slug>/<slug>') }`
-## Style et phrasologiexport const meta = {
-  slug: 'slug-unique', // kebab## Règles de nommage et bonnes pratiques
+ 
+## Règles de nommage et bonnes pratiques
 - Le `slug` doit être unique, en kebab-case, sans espace ni accent.
 - Le `title` doit être court et explicite.
 - Le `shortDescription` doit donner envie de cliquer, max 120 caractères.
@@ -22,6 +22,22 @@ Résumé rapide pour un nouveau tip `<slug>`:
   - **Les mots-clés techniques** en français et anglais
   - **Les termes alternatifs** que les utilisateurs pourraient chercher
 - Le composant principal doit être exporté par défaut.
+
+## Mise à jour 2025-08 — Mise en forme uniforme des tips (TipContent)
+
+Pour garantir un rendu homogène des titres, paragraphes et listes, enveloppe le contenu du tip avec `TipContent` et respecte ces règles:
+
+- Utilise `TipContent` depuis `src/components/tips/TipContent` pour wrapper le JSX du tip.
+- Titres:
+  - Titre principal de page: `Typography variant="h3"` (aucune marge custom).
+  - Sections: `h4`.
+  - Sous-sections: `h5` puis `h6` si besoin.
+- Paragraphes: `Typography paragraph` (évite `sx={{ mt: ... }}` inutile, la marge est gérée par TipContent).
+- Listes: balises `<ul>`/`<li>` simples; le retrait/marges sont normalisés par TipContent.
+- Évite les overrides de marges (`sx={{ mt: ... }}`) sur les titres/paragraphes, sauf cas très particulier.
+- Footer: conserve le séparateur comme dans les exemples (Box avec `borderTop` + deux `Typography` en `caption`).
+
+Référence: `src/components/tips/TipContent.tsx`.
 ## Guide — ajouter un nouveau tip
 
 Ce document rassemble les règles et le template à utiliser pour ajouter un tip dans CraftmanLab (frontend React + TypeScript).
@@ -61,35 +77,43 @@ Règles spécifiques sur les exemples de code (IMPORTANT)
 
 Template minimal d’un module tip (i18n-ready + meta.ts)
 
-```tsx
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import type { TipModule } from '..';
-import { Box, Typography } from '@mui/material';
-import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
+```ts
+// src/components/tips/<slug>/meta.ts
+import type { TipMeta } from '..';
 
-export const meta = {
-  slug: 'slug-unique', // kebab-case, used in the URL
-  title: '', // use translations
-  shortDescription: '', // use translations
+export const meta: TipMeta = {
+  slug: 'slug-unique',
+  title: '', // laissé vide: la carte utilise les traductions
+  shortDescription: '', // idem
   writtenOn: 'YYYY-MM-DD',
   keywords: ['C#' as const],
   metadata: {
     searchKeywords: {
       fr: ['outil', 'concept-principal'],
-      en: ['tool', 'main-concept']
-    }
-  }
+      en: ['tool', 'main-concept'],
+    },
+  },
 };
+```
+
+```tsx
+// src/components/tips/<slug>/<slug>.tsx
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import type { TipModule } from '..';
+import { Box, Typography } from '@mui/material';
+import TipContent from '../TipContent';
+import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
+import { meta } from './meta';
 
 const MyTip: React.FC = () => {
   const { t } = useTranslation('tips');
   return (
-    <Box>
-      <Typography variant="h2" gutterBottom>{t('slug-unique.content.mainTitle')}</Typography>
+    <TipContent>
+      <Typography variant="h3" gutterBottom>{t('slug-unique.content.mainTitle')}</Typography>
       <Typography paragraph>{t('slug-unique.content.intro')}</Typography>
 
-      <Typography variant="h3">Example</Typography>
+      <Typography variant="h4">Example</Typography>
       <CodeBlock language="csharp" code={`// Example comment in English\nvar x = 1;`} />
 
       <Box mt={4} pt={2} borderTop={theme => `1px solid ${theme.palette.divider}`} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -102,7 +126,7 @@ const MyTip: React.FC = () => {
           {t('slug-unique.content.footer.writtenOn', { date: meta.writtenOn })}
         </Typography>
       </Box>
-    </Box>
+    </TipContent>
   );
 };
 
@@ -253,30 +277,7 @@ Ouvrez `src/components/content-manifest.ts` et ajoutez quatre choses pour `<slug
 - Dans `tipsTranslationsFr`: `...myTipFr`
 - Dans `tipsTranslationsEn`: `...myTipEn`
 
-Ajouter les imports et références dans `/src/i18n/index.ts` :
-
-```typescript
-// Import des traductions per-tip
-import slugDuTipFr from '../components/tips/slug-du-tip/fr.json';
-import slugDuTipEn from '../components/tips/slug-du-tip/en.json';
-
-const resources = {
-  fr: {
-    // ... autres namespaces
-    tips: {
-      // ... autres tips
-      ...slugDuTipFr,
-    },
-  },
-  en: {
-    // ... autres namespaces
-    tips: {
-      // ... autres tips
-      ...slugDuTipEn,
-    },
-  },
-};
-```
+Note: aucune modification n’est requise dans `src/i18n/index.ts` — les traductions tips sont déjà alimentées par les agrégats du manifest.
 
 ### TipCardsGrid - Affichage des cartes
 
@@ -290,6 +291,8 @@ Le composant `TipCardsGrid` utilise automatiquement la fonction `getTranslatedTe
 1. `slug.shortDescription` (priorité - description courte pour carte)
 2. `slug.content.summary` (fallback - résumé du contenu)
 
+Règle importante: la racine de vos fichiers `fr.json` et `en.json` doit être exactement le `slug` défini dans `meta.slug` (kebab-case). Cela garantit que `TipCardsGrid` trouve bien `slug.title` et `slug.shortDescription` sans alias.
+
 ### Checklist traductions
 
 Avant de soumettre un tip avec traductions :
@@ -297,11 +300,12 @@ Avant de soumettre un tip avec traductions :
 - [ ] Fichiers `fr.json` et `en.json` créés dans le répertoire du tip
 - [ ] Structure JSON respectée avec `slug.title`, `slug.shortDescription`, `slug.content.*`
 - [ ] Clés utilisées dans le composant React avec `useTranslation('tips')`
-- [ ] Imports ajoutés dans `/src/i18n/index.ts`
 - [ ] Fusion dans le namespace `tips` avec l'opérateur spread
 - [ ] Test que la carte s'affiche correctement en FR et EN
 - [ ] Validation JSON (pas d'erreurs de syntaxe)
  - [ ] `meta.title` et `meta.shortDescription` laissés vides (utiliser les traductions)
+ - [ ] Racine JSON = `meta.slug` (kebab-case), avec `title`, `shortDescription`, `content.mainTitle` et `content.summary`
+ - [ ] Composant enveloppé dans `TipContent` et titres conformes (h3 pour le titre principal, h4 pour sections)
  - [ ] Aucun texte FR en dur dans le TSX (test auto présent: no-hardcoded-french)
 
 ### Note importante

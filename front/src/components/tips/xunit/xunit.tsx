@@ -1,15 +1,16 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
-import { Box, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import CodeBlock from '../../ui/CodeBlock/CodeBlock';
+import TipContent from '../TipContent';
 import { meta } from './meta';
 
 const XunitTip: React.FC = () => {
   const { t } = useTranslation('tips');
 
   return (
-    <Box>
+    <TipContent>
       <Typography variant="h3" gutterBottom>
         {t('xunit.content.mainTitle')}
       </Typography>
@@ -236,7 +237,7 @@ public class IntegrationTest2
         {t('xunit.content.sections.conclusion.title')}
       </Typography>
       <Typography paragraph>{t('xunit.content.sections.conclusion.description')}</Typography>
-    </Box>
+  </TipContent>
   );
 };
 

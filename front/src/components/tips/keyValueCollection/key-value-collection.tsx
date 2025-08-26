@@ -3,12 +3,13 @@ import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography, Link } from '@mui/material';
 import { meta } from './meta';
+import TipContent from '../TipContent';
 
 const KeyValueCollectionTip: React.FC = () => {
   const { t } = useTranslation('tips');
 
   return (
-    <Box>
+    <TipContent>
       <Typography variant="h3" gutterBottom>
         {t('keyValueCollection.content.mainTitle')}
       </Typography>
@@ -75,7 +76,7 @@ const KeyValueCollectionTip: React.FC = () => {
         <li>{t('keyValueCollection.content.sections.tips.items.immutable')}</li>
       </ul>
 
-      <Box
+  <Box
         mt={4}
         pt={2}
         borderTop={(theme) => `1px solid ${theme.palette.divider}`}
@@ -100,7 +101,7 @@ const KeyValueCollectionTip: React.FC = () => {
           {t('keyValueCollection.content.footer.writtenOn', { date: meta.writtenOn })}
         </Typography>
       </Box>
-    </Box>
+  </TipContent>
   );
 };
 

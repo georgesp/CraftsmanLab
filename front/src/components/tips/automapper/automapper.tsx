@@ -3,13 +3,14 @@ import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';
 import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
+import TipContent from '../TipContent';
 import { meta } from './meta';
 
 const AutomapperTip: React.FC = () => {
   const { t } = useTranslation('tips');
 
   return (
-    <Box>
+    <TipContent>
       <Typography variant="h3" gutterBottom>
         {t('automapper.content.mainTitle')}
       </Typography>
@@ -34,7 +35,7 @@ const AutomapperTip: React.FC = () => {
         code={t('automapper.content.sections.configuration.codeBlock')}
       />
 
-      <Typography variant="h3">{t('automapper.content.sections.manualConfig.title')}</Typography>
+  <Typography variant="h4">{t('automapper.content.sections.manualConfig.title')}</Typography>
       <CodeBlock
         language="csharp"
         code={`var mappingConfig = new MapperConfiguration(mc =>
@@ -46,7 +47,7 @@ IMapper mapper = mappingConfig.CreateMapper();
 services.AddSingleton(mapper);`}
       />
 
-      <Typography variant="h3">{t('automapper.content.sections.simpleProfile.title')}</Typography>
+  <Typography variant="h4">{t('automapper.content.sections.simpleProfile.title')}</Typography>
       <CodeBlock
         language="csharp"
         code={`public class UserEntity
@@ -82,7 +83,7 @@ public class UserDto
 }`}
       />
 
-      <Typography variant="h3">{t('automapper.content.sections.usage.title')}</Typography>
+  <Typography variant="h4">{t('automapper.content.sections.usage.title')}</Typography>
       <CodeBlock
         language="csharp"
         code={`var userEntity = new UserEntity { Id = 1, FirstName = "Jean", LastName = "Dupont", BirthDate = new DateTime(1990,5,20) };
@@ -93,7 +94,7 @@ UserDto dto = _mapper.Map<UserDto>(userEntity);
 // dto.Id      == 1`}
       />
 
-      <Typography variant="h3">{t('automapper.content.sections.bidirectional.title')}</Typography>
+  <Typography variant="h4">{t('automapper.content.sections.bidirectional.title')}</Typography>
       <CodeBlock
         language="csharp"
         code={`CreateMap<UserDto, UserEntity>()
@@ -103,9 +104,9 @@ UserDto dto = _mapper.Map<UserDto>(userEntity);
                opt  => opt.MapFrom(src => src.FullName.Split(' ')[1]));`}
       />
 
-      <Typography paragraph>{t('automapper.content.sections.bidirectional.note')}</Typography>
+  <Typography paragraph>{t('automapper.content.sections.bidirectional.note')}</Typography>
 
-      <Typography variant="h3">{t('automapper.content.sections.mapCollections.title')}</Typography>
+  <Typography variant="h4">{t('automapper.content.sections.mapCollections.title')}</Typography>
       <Typography paragraph>
         {t('automapper.content.sections.mapCollections.description')}
       </Typography>
@@ -138,7 +139,7 @@ UserDto dto = _mapper.Map<UserDto>(userEntity);
           {t('automapper.content.footer.writtenOn', { date: meta.writtenOn })}
         </Typography>
       </Box>
-    </Box>
+  </TipContent>
   );
 };
 

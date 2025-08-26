@@ -4,12 +4,13 @@ import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';
 import { CodeBlock } from '../../ui/CodeBlock';
 import { meta } from './meta';
+import TipContent from '../TipContent';
 
 const CentralPackageManagementTip: React.FC = () => {
   const { t } = useTranslation('tips');
 
   return (
-    <Box>
+    <TipContent>
       <Typography variant="h3" gutterBottom>
         {t('cpm.content.mainTitle')}
       </Typography>
@@ -163,7 +164,7 @@ dotnet sln add src/**/*.csproj`}
         <li>{t('cpm.content.sections.quickSummary.items.restore')}</li>
       </ul>
 
-      <Box
+  <Box
         mt={4}
         pt={2}
         borderTop={(theme) => `1px solid ${theme.palette.divider}`}
@@ -187,7 +188,7 @@ dotnet sln add src/**/*.csproj`}
           {t('cpm.content.footer.writtenOn', { date: meta.writtenOn })}
         </Typography>
       </Box>
-    </Box>
+  </TipContent>
   );
 };
 

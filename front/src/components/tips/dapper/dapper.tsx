@@ -3,13 +3,14 @@ import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography, Link } from '@mui/material';
 import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
+import TipContent from '../TipContent';
 import { meta } from './meta';
 
 const DapperTip: React.FC = () => {
   const { t } = useTranslation('tips');
 
   return (
-    <Box>
+    <TipContent>
       <Typography variant="h3" gutterBottom>
         {t('dapper.content.mainTitle')}
       </Typography>
@@ -26,7 +27,7 @@ const DapperTip: React.FC = () => {
         code={t('dapper.content.sections.methods.codeBlock')}
       />
 
-      <Typography variant="h4" sx={{ mt: 4 }} gutterBottom>
+  <Typography variant="h4" gutterBottom>
         {t('dapper.content.sections.simpleExample.title')}
       </Typography>
       <CodeBlock
@@ -62,7 +63,7 @@ using (var conn = new SqlConnection(connString))
 // Advantage: automatic mapping via property names.`}
       />
 
-      <Typography variant="h4" sx={{ mt: 4 }} gutterBottom>
+  <Typography variant="h4" gutterBottom>
         {t('dapper.content.sections.aliasMapping.title')}
       </Typography>
       <CodeBlock
@@ -105,7 +106,7 @@ using (var conn = new SqlConnection(connString))
 // Tip: use alias (AS) to match columns -> properties.`}
       />
 
-      <Typography variant="h4" sx={{ mt: 4 }} gutterBottom>
+  <Typography variant="h4" gutterBottom>
         {t('dapper.content.sections.multiMapping.title')}
       </Typography>
       <CodeBlock
@@ -178,7 +179,7 @@ using (var conn = new SqlConnection(connString))
 // - The delegate is called per row; group via lookup to consolidate.`}
       />
 
-      <Box
+  <Box
         mt={4}
         pt={2}
         borderTop={(theme) => `1px solid ${theme.palette.divider}`}
@@ -203,7 +204,7 @@ using (var conn = new SqlConnection(connString))
           {t('dapper.content.footer.writtenOn', { date: meta.writtenOn })}
         </Typography>
       </Box>
-    </Box>
+  </TipContent>
   );
 };
 

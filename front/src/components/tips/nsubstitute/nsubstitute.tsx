@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';
 import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
+import TipContent from '../TipContent';
 import { meta } from './meta';
 
 // Code blocks rendered with shared CodeBlock component
@@ -11,7 +12,7 @@ const NSubstituteTip: React.FC = () => {
   const { t } = useTranslation('tips');
 
   return (
-    <Box>
+    <TipContent>
       <Typography variant="h3" gutterBottom>
         {t('nsubstitute.content.mainTitle')}
       </Typography>
@@ -81,7 +82,7 @@ mock.When(x => x.Do(Arg.Any<int>())).Do(call => captured = call.Arg<int>());
 // (then execute mock.Do(123); so that captured = 123)`}
       />
 
-      <Typography variant="h4" gutterBottom sx={{ mt: 4 }}>
+  <Typography variant="h4" gutterBottom>
         {t('nsubstitute.content.sections.exampleFull.title')}
       </Typography>
       <Typography variant="h6" gutterBottom>
@@ -165,7 +166,7 @@ public class MathServiceTests
         </li>
       </ul>
 
-      <Typography variant="h4" gutterBottom sx={{ mt: 4 }}>
+  <Typography variant="h4" gutterBottom>
         {t('nsubstitute.content.sections.additional.title')}
       </Typography>
 
@@ -214,7 +215,7 @@ calc.When(call => call.Log(Arg.Any<string>()))
     });`}
       />
 
-      <Typography variant="h4" gutterBottom sx={{ mt: 4 }}>
+  <Typography variant="h4" gutterBottom>
         {t('nsubstitute.content.sections.goodPractices.title')}
       </Typography>
       <ul>
@@ -264,7 +265,7 @@ calc.When(call => call.Log(Arg.Any<string>()))
           {t('nsubstitute.content.footer.writtenOn', { date: meta.writtenOn })}
         </Typography>
       </Box>
-    </Box>
+  </TipContent>
   );
 };
 
