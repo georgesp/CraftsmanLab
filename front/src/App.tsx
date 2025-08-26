@@ -15,7 +15,7 @@ function App() {
   useHtmlLang();
 
   return (
-  <ThemeProvider theme={telerikTheme}>
+    <ThemeProvider theme={telerikTheme}>
       <CssBaseline />
       <Router>
         <Routes>

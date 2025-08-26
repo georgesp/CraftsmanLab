@@ -17,12 +17,12 @@ export const telerikTheme = createTheme({
       contrastText: '#000000',
     },
     background: {
-  default: COLORS.darkGreyBg,
-  paper: COLORS.darkGreyBg,
+      default: COLORS.darkGreyBg,
+      paper: COLORS.darkGreyBg,
     },
     text: {
-  primary: COLORS.textPrimary || '#E6EEF3',
-  secondary: '#9AA6AC',
+      primary: COLORS.textPrimary || '#E6EEF3',
+      secondary: '#9AA6AC',
     },
     grey: {
       50: '#f7fafc',
@@ -44,26 +44,26 @@ export const telerikTheme = createTheme({
       fontWeight: TYPOGRAPHY.fontWeights.bold,
       lineHeight: TYPOGRAPHY.lineHeights.tight,
       letterSpacing: TYPOGRAPHY.letterSpacing.tight,
-  color: COLORS.textPrimary || '#E6EEF3',
+      color: COLORS.textPrimary || '#E6EEF3',
     },
     h2: {
       fontSize: TYPOGRAPHY.fontSizes.h2,
       fontWeight: TYPOGRAPHY.fontWeights.semiBold,
       lineHeight: TYPOGRAPHY.lineHeights.normal,
       letterSpacing: TYPOGRAPHY.letterSpacing.normal,
-  color: COLORS.textPrimary || '#E6EEF3',
+      color: COLORS.textPrimary || '#E6EEF3',
     },
     h3: {
       fontSize: TYPOGRAPHY.fontSizes.h3,
       fontWeight: TYPOGRAPHY.fontWeights.semiBold,
       lineHeight: TYPOGRAPHY.lineHeights.normal,
-  color: COLORS.textPrimary || '#E6EEF3',
+      color: COLORS.textPrimary || '#E6EEF3',
     },
     h4: {
       fontSize: TYPOGRAPHY.fontSizes.h4,
       fontWeight: TYPOGRAPHY.fontWeights.semiBold,
       lineHeight: TYPOGRAPHY.lineHeights.normal,
-  color: COLORS.textPrimary || '#E6EEF3',
+      color: COLORS.textPrimary || '#E6EEF3',
     },
     h5: {
       fontSize: TYPOGRAPHY.fontSizes.h5,
@@ -75,7 +75,7 @@ export const telerikTheme = createTheme({
       fontSize: TYPOGRAPHY.fontSizes.h6,
       fontWeight: TYPOGRAPHY.fontWeights.medium,
       lineHeight: TYPOGRAPHY.lineHeights.relaxed,
-  color: '#E6EEF3',
+      color: '#E6EEF3',
     },
     body1: {
       fontSize: TYPOGRAPHY.fontSizes.body1,
@@ -195,7 +195,7 @@ export const telerikTheme = createTheme({
     },
   },
   shape: {
-  borderRadius: 8,
+    borderRadius: 8,
   },
   spacing: 8,
 });

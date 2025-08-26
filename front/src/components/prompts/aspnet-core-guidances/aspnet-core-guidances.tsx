@@ -277,7 +277,9 @@ MyProject.Api/
 const PromptBody: React.FC = () => {
   const { t } = useTranslation('prompts');
   const [showCopySuccess, setShowCopySuccess] = useState(false);
-  const writtenOn = meta.writtenOn ? new Date(meta.writtenOn).toLocaleDateString('fr-FR') : new Date().toLocaleDateString('fr-FR');
+  const writtenOn = meta.writtenOn
+    ? new Date(meta.writtenOn).toLocaleDateString('fr-FR')
+    : new Date().toLocaleDateString('fr-FR');
 
   const description = t('aspnet-core-guidances.content.introduction');
 
@@ -330,7 +332,7 @@ const PromptBody: React.FC = () => {
         >
           <ContentCopy fontSize="small" />
         </IconButton>
-  <CodeBlock code={promptText} />
+        <CodeBlock code={promptText} />
       </Box>
 
       <Snackbar
@@ -345,7 +347,15 @@ const PromptBody: React.FC = () => {
       </Snackbar>
 
       <Box sx={{ mt: 4, pt: 3, borderTop: '1px solid', borderColor: 'grey.300' }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 2, flexWrap: 'wrap' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            gap: 2,
+            flexWrap: 'wrap',
+          }}
+        >
           <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic' }}>
             {t('aspnet-core-guidances.content.sources')}{' '}
             <Link
@@ -356,7 +366,11 @@ const PromptBody: React.FC = () => {
               David Fowler
             </Link>
           </Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic', textAlign: 'left' }}>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ fontStyle: 'italic', textAlign: 'left' }}
+          >
             {t('aspnet-core-guidances.content.writtenOn')} {writtenOn}
           </Typography>
         </Box>
@@ -368,15 +382,41 @@ const PromptBody: React.FC = () => {
 export const meta = {
   slug: 'aspnet-core-guidances',
   title: 'ASP.NET Core Guidances',
-  shortDescription: "Règles et bonnes pratiques ASP.NET Core.",
+  shortDescription: 'Règles et bonnes pratiques ASP.NET Core.',
   writtenOn: '2025-08-11',
   keywords: ['C#' as const],
   metadata: {
     searchKeywords: {
-      fr: ['aspnet', 'core', 'api', 'web', 'performance', 'architecture', 'guidelines', 'bonnes pratiques', 'asynchrone', 'async', 'controller', 'middleware'],
-      en: ['aspnet', 'core', 'api', 'web', 'performance', 'architecture', 'guidelines', 'best practices', 'async', 'asynchronous', 'controller', 'middleware']
-    }
-  }
+      fr: [
+        'aspnet',
+        'core',
+        'api',
+        'web',
+        'performance',
+        'architecture',
+        'guidelines',
+        'bonnes pratiques',
+        'asynchrone',
+        'async',
+        'controller',
+        'middleware',
+      ],
+      en: [
+        'aspnet',
+        'core',
+        'api',
+        'web',
+        'performance',
+        'architecture',
+        'guidelines',
+        'best practices',
+        'async',
+        'asynchronous',
+        'controller',
+        'middleware',
+      ],
+    },
+  },
 };
 
 const moduleExport: PromptModule = {

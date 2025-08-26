@@ -5,5 +5,7 @@ import React from 'react';
 const hasLazy = typeof (React as any)?.lazy === 'function';
 type TipGridProps = { maxItems?: number; seeAllLink?: string; seeAllLabel?: string };
 export const LazyTipCardsGrid = (hasLazy
-	? (React as any).lazy(() => import('./tip-cards-grid').then((m: any) => ({ default: m.TipCardsGrid })))
-	: ((_: TipGridProps) => null)) as unknown as React.ComponentType<TipGridProps>;
+  ? (React as any).lazy(() =>
+      import('./tip-cards-grid').then((m: any) => ({ default: m.TipCardsGrid })),
+    )
+  : (_: TipGridProps) => null) as unknown as React.ComponentType<TipGridProps>;

@@ -13,7 +13,7 @@ type Props = {
 
 export const TipList: React.FC<Props> = ({ selectedSlug, onNavigate, maxItems }) => {
   const { t } = useTranslation('tips');
-  
+
   // Helper function to get translated text with fallback
   const getTranslatedText = (tipSlug: string, key: string, fallback: string) => {
     const translationKey = `${tipSlug}.${key}`;
@@ -30,7 +30,7 @@ export const TipList: React.FC<Props> = ({ selectedSlug, onNavigate, maxItems })
 
   return (
     <List dense aria-label="tips disponibles">
-      {items.map(t => (
+      {items.map((t) => (
         <ListItemButton
           key={t.slug}
           component={RouterLink}
@@ -39,7 +39,10 @@ export const TipList: React.FC<Props> = ({ selectedSlug, onNavigate, maxItems })
           onClick={onNavigate}
           sx={{ mb: 0.5, '&:hover': { backgroundColor: COLORS.itemListHover } }}
         >
-          <ListItemText primary={getTranslatedText(t.slug, 'title', t.title)} secondary={getTranslatedText(t.slug, 'shortDescription', t.shortDescription)} />
+          <ListItemText
+            primary={getTranslatedText(t.slug, 'title', t.title)}
+            secondary={getTranslatedText(t.slug, 'shortDescription', t.shortDescription)}
+          />
         </ListItemButton>
       ))}
     </List>

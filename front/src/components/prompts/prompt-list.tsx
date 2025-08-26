@@ -13,7 +13,7 @@ type Props = {
 
 export const PromptList: React.FC<Props> = ({ selectedSlug, onNavigate, maxItems }) => {
   const { t } = useTranslation('prompts');
-  
+
   // Helper function to get translated text with fallback
   const getTranslatedText = (promptSlug: string, key: string, fallback: string) => {
     const translationKey = `${promptSlug}.${key}`;
@@ -24,44 +24,42 @@ export const PromptList: React.FC<Props> = ({ selectedSlug, onNavigate, maxItems
   const items = (() => {
     if (maxItems && maxItems > 0) {
       // Exclude placeholder "more" from the limited list
-      const filtered = promptsList.filter(p => p.slug !== 'more');
+      const filtered = promptsList.filter((p) => p.slug !== 'more');
       return filtered.slice(0, maxItems);
     }
     return promptsList;
   })();
   return (
     <List dense aria-label="prompts disponibles">
-      {items.map(p => (
-        p.slug === 'more'
-          ? (
-            <ListItemButton
-              key={p.slug}
-              sx={{ mb: 0.5, cursor: 'default' }}
-              disableRipple
-              tabIndex={-1}
-            >
-              <ListItemText 
-                primary={getTranslatedText(p.slug, 'title', p.title)} 
-                secondary={getTranslatedText(p.slug, 'shortDescription', p.shortDescription)} 
-              />
-            </ListItemButton>
-          )
-          : (
-            <ListItemButton
-              key={p.slug}
-              component={RouterLink}
-              to={`/prompts/${p.slug}`}
-              selected={selectedSlug === p.slug}
-              onClick={onNavigate}
-              sx={{ mb: 0.5, '&:hover': { backgroundColor: COLORS.itemListHover } }}
-            >
-              <ListItemText 
-                primary={getTranslatedText(p.slug, 'title', p.title)} 
-                secondary={getTranslatedText(p.slug, 'shortDescription', p.shortDescription)} 
-              />
-            </ListItemButton>
-          )
-      ))}
+      {items.map((p) =>
+        p.slug === 'more' ? (
+          <ListItemButton
+            key={p.slug}
+            sx={{ mb: 0.5, cursor: 'default' }}
+            disableRipple
+            tabIndex={-1}
+          >
+            <ListItemText
+              primary={getTranslatedText(p.slug, 'title', p.title)}
+              secondary={getTranslatedText(p.slug, 'shortDescription', p.shortDescription)}
+            />
+          </ListItemButton>
+        ) : (
+          <ListItemButton
+            key={p.slug}
+            component={RouterLink}
+            to={`/prompts/${p.slug}`}
+            selected={selectedSlug === p.slug}
+            onClick={onNavigate}
+            sx={{ mb: 0.5, '&:hover': { backgroundColor: COLORS.itemListHover } }}
+          >
+            <ListItemText
+              primary={getTranslatedText(p.slug, 'title', p.title)}
+              secondary={getTranslatedText(p.slug, 'shortDescription', p.shortDescription)}
+            />
+          </ListItemButton>
+        ),
+      )}
     </List>
   );
 };

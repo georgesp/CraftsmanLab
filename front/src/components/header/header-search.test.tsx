@@ -66,7 +66,7 @@ describe('Header search integration', () => {
         <BrowserRouter>
           <Header />
         </BrowserRouter>
-      </ThemeProvider>
+      </ThemeProvider>,
     );
 
     const input = screen.getByPlaceholderText(/Rechercher/i);
@@ -97,7 +97,7 @@ describe('Header search integration', () => {
         <BrowserRouter>
           <Header />
         </BrowserRouter>
-      </ThemeProvider>
+      </ThemeProvider>,
     );
 
     const input = screen.getByPlaceholderText(/Rechercher/i);
@@ -120,7 +120,7 @@ describe('Header search integration', () => {
         <BrowserRouter>
           <Header />
         </BrowserRouter>
-      </ThemeProvider>
+      </ThemeProvider>,
     );
 
     const input = screen.getByPlaceholderText(/Rechercher/i);
@@ -141,7 +141,7 @@ describe('Header search integration', () => {
         <BrowserRouter>
           <Header />
         </BrowserRouter>
-      </ThemeProvider>
+      </ThemeProvider>,
     );
 
     const input = screen.getByPlaceholderText(/Rechercher/i);

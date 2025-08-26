@@ -13,34 +13,62 @@ export const meta = {
   metadata: {
     searchKeywords: {
       fr: [
-        'xunit', 'tests', 'test unitaire', 'testing', 'assertion', 'fact', 'theory',
-        'mstest', 'nunit', 'fixture', 'setup', 'teardown', 'mock', 'assert', 'async'
+        'xunit',
+        'tests',
+        'test unitaire',
+        'testing',
+        'assertion',
+        'fact',
+        'theory',
+        'mstest',
+        'nunit',
+        'fixture',
+        'setup',
+        'teardown',
+        'mock',
+        'assert',
+        'async',
       ],
       en: [
-        'xunit', 'tests', 'unit testing', 'testing', 'assertion', 'fact', 'theory',
-        'mstest', 'nunit', 'fixture', 'setup', 'teardown', 'mock', 'assert', 'async'
-      ]
-    }
-  }
+        'xunit',
+        'tests',
+        'unit testing',
+        'testing',
+        'assertion',
+        'fact',
+        'theory',
+        'mstest',
+        'nunit',
+        'fixture',
+        'setup',
+        'teardown',
+        'mock',
+        'assert',
+        'async',
+      ],
+    },
+  },
 };
 
 const XunitTip: React.FC = () => {
   const { t } = useTranslation('tips');
-  
+
   return (
     <Box>
-      <Typography variant="h3" gutterBottom>{t('xunit.content.mainTitle')}</Typography>
-      
-      <Typography paragraph>
-        {t('xunit.content.intro')}
+      <Typography variant="h3" gutterBottom>
+        {t('xunit.content.mainTitle')}
       </Typography>
 
-      <Typography variant="h4" gutterBottom>{t('xunit.content.sections.structure.title')}</Typography>
-      <Typography paragraph>
-        {t('xunit.content.sections.structure.description')}
-      </Typography>
+      <Typography paragraph>{t('xunit.content.intro')}</Typography>
 
-      <CodeBlock language="csharp" code={`using Xunit;
+      <Typography variant="h4" gutterBottom>
+        {t('xunit.content.sections.structure.title')}
+      </Typography>
+      <Typography paragraph>{t('xunit.content.sections.structure.description')}</Typography>
+
+      <CodeBlock
+        language="csharp"
+        code={`using Xunit;
 
 public class CalculatorTests
 {
@@ -56,14 +84,17 @@ public class CalculatorTests
         // Assert
         Assert.Equal(5, result);
     }
-}`} />
+}`}
+      />
 
-      <Typography variant="h4" gutterBottom>{t('xunit.content.sections.theory.title')}</Typography>
-      <Typography paragraph>
-        {t('xunit.content.sections.theory.description')}
+      <Typography variant="h4" gutterBottom>
+        {t('xunit.content.sections.theory.title')}
       </Typography>
+      <Typography paragraph>{t('xunit.content.sections.theory.description')}</Typography>
 
-      <CodeBlock language="csharp" code={`[Theory]
+      <CodeBlock
+        language="csharp"
+        code={`[Theory]
 [InlineData(2, 3, 5)]
 [InlineData(10, 20, 30)]
 [InlineData(-1, 1, 0)]
@@ -77,14 +108,17 @@ public void Add_DifferentValues_ReturnsExpectedSum(int a, int b, int expected)
     
     // Assert
     Assert.Equal(expected, result);
-}`} />
+}`}
+      />
 
-      <Typography variant="h4" gutterBottom>{t('xunit.content.sections.async.title')}</Typography>
-      <Typography paragraph>
-        {t('xunit.content.sections.async.description')}
+      <Typography variant="h4" gutterBottom>
+        {t('xunit.content.sections.async.title')}
       </Typography>
+      <Typography paragraph>{t('xunit.content.sections.async.description')}</Typography>
 
-      <CodeBlock language="csharp" code={`[Fact]
+      <CodeBlock
+        language="csharp"
+        code={`[Fact]
 public async Task ProcessDataAsync_ValidInput_ReturnsProcessedData()
 {
     // Arrange
@@ -97,14 +131,17 @@ public async Task ProcessDataAsync_ValidInput_ReturnsProcessedData()
     // Assert
     Assert.NotNull(result);
     Assert.Contains("processed", result);
-}`} />
+}`}
+      />
 
-      <Typography variant="h4" gutterBottom>{t('xunit.content.sections.fixtures.title')}</Typography>
-      <Typography paragraph>
-        {t('xunit.content.sections.fixtures.description')}
+      <Typography variant="h4" gutterBottom>
+        {t('xunit.content.sections.fixtures.title')}
       </Typography>
+      <Typography paragraph>{t('xunit.content.sections.fixtures.description')}</Typography>
 
-      <CodeBlock language="csharp" code={`public class DatabaseFixture : IDisposable
+      <CodeBlock
+        language="csharp"
+        code={`public class DatabaseFixture : IDisposable
 {
     public DatabaseFixture()
     {
@@ -135,14 +172,17 @@ public class DatabaseTests : IClassFixture<DatabaseFixture>
     {
         Assert.True(_fixture.Database.IsConnected);
     }
-}`} />
+}`}
+      />
 
-      <Typography variant="h4" gutterBottom>{t('xunit.content.sections.mocking.title')}</Typography>
-      <Typography paragraph>
-        {t('xunit.content.sections.mocking.description')}
+      <Typography variant="h4" gutterBottom>
+        {t('xunit.content.sections.mocking.title')}
       </Typography>
+      <Typography paragraph>{t('xunit.content.sections.mocking.description')}</Typography>
 
-      <CodeBlock language="csharp" code={`public class UserServiceTests
+      <CodeBlock
+        language="csharp"
+        code={`public class UserServiceTests
 {
     [Fact]
     public void GetUser_ExistingId_ReturnsUser()
@@ -161,14 +201,17 @@ public class DatabaseTests : IClassFixture<DatabaseFixture>
         Assert.Equal(expectedUser, result);
         mockRepository.Verify(x => x.GetById(1), Times.Once);
     }
-}`} />
+}`}
+      />
 
-      <Typography variant="h4" gutterBottom>{t('xunit.content.sections.collections.title')}</Typography>
-      <Typography paragraph>
-        {t('xunit.content.sections.collections.description')}
+      <Typography variant="h4" gutterBottom>
+        {t('xunit.content.sections.collections.title')}
       </Typography>
+      <Typography paragraph>{t('xunit.content.sections.collections.description')}</Typography>
 
-      <CodeBlock language="csharp" code={`[Collection("Database collection")]
+      <CodeBlock
+        language="csharp"
+        code={`[Collection("Database collection")]
 public class IntegrationTest1
 {
     // Tests qui partagent la même instance de base de données
@@ -178,14 +221,17 @@ public class IntegrationTest1
 public class IntegrationTest2
 {
     // Tests qui partagent la même instance de base de données
-}`} />
+}`}
+      />
 
-      <Typography variant="h4" gutterBottom>{t('xunit.content.sections.output.title')}</Typography>
-      <Typography paragraph>
-        {t('xunit.content.sections.output.description')}
+      <Typography variant="h4" gutterBottom>
+        {t('xunit.content.sections.output.title')}
       </Typography>
+      <Typography paragraph>{t('xunit.content.sections.output.description')}</Typography>
 
-      <CodeBlock language="csharp" code={`public class DebuggingTests
+      <CodeBlock
+        language="csharp"
+        code={`public class DebuggingTests
 {
     private readonly ITestOutputHelper _output;
     
@@ -207,21 +253,34 @@ public class IntegrationTest2
         
         Assert.True(result);
     }
-}`} />
+}`}
+      />
 
-      <Typography variant="h4" gutterBottom>{t('xunit.content.sections.bestPractices.title')}</Typography>
+      <Typography variant="h4" gutterBottom>
+        {t('xunit.content.sections.bestPractices.title')}
+      </Typography>
       <ul>
-        <li><Typography>{t('xunit.content.sections.bestPractices.practices.naming')}</Typography></li>
-        <li><Typography>{t('xunit.content.sections.bestPractices.practices.arrange')}</Typography></li>
-        <li><Typography>{t('xunit.content.sections.bestPractices.practices.single')}</Typography></li>
-        <li><Typography>{t('xunit.content.sections.bestPractices.practices.independent')}</Typography></li>
-        <li><Typography>{t('xunit.content.sections.bestPractices.practices.fast')}</Typography></li>
+        <li>
+          <Typography>{t('xunit.content.sections.bestPractices.practices.naming')}</Typography>
+        </li>
+        <li>
+          <Typography>{t('xunit.content.sections.bestPractices.practices.arrange')}</Typography>
+        </li>
+        <li>
+          <Typography>{t('xunit.content.sections.bestPractices.practices.single')}</Typography>
+        </li>
+        <li>
+          <Typography>{t('xunit.content.sections.bestPractices.practices.independent')}</Typography>
+        </li>
+        <li>
+          <Typography>{t('xunit.content.sections.bestPractices.practices.fast')}</Typography>
+        </li>
       </ul>
 
-      <Typography variant="h4" gutterBottom>{t('xunit.content.sections.conclusion.title')}</Typography>
-      <Typography paragraph>
-        {t('xunit.content.sections.conclusion.description')}
+      <Typography variant="h4" gutterBottom>
+        {t('xunit.content.sections.conclusion.title')}
       </Typography>
+      <Typography paragraph>{t('xunit.content.sections.conclusion.description')}</Typography>
     </Box>
   );
 };

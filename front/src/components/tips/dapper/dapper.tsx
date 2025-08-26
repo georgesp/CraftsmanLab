@@ -13,44 +13,79 @@ export const meta = {
   metadata: {
     searchKeywords: {
       fr: [
-        'dapper', 'orm', 'micro-orm', 'base de données', 'sql', 'requête', 'mapping', 
-        'dto', 'entity', 'performance', 'query', 'execute', 'paramètres',
-        'transaction', 'connection', 'stored procedure', 'procédure stockée',
-        'queryFirst', 'querySingle', 'queryMultiple'
+        'dapper',
+        'orm',
+        'micro-orm',
+        'base de données',
+        'sql',
+        'requête',
+        'mapping',
+        'dto',
+        'entity',
+        'performance',
+        'query',
+        'execute',
+        'paramètres',
+        'transaction',
+        'connection',
+        'stored procedure',
+        'procédure stockée',
+        'queryFirst',
+        'querySingle',
+        'queryMultiple',
       ],
       en: [
-        'dapper', 'orm', 'micro-orm', 'database', 'sql', 'query', 'mapping',
-        'dto', 'entity', 'performance', 'execute', 'parameters',
-        'transaction', 'connection', 'stored procedure',
-        'queryFirst', 'querySingle', 'queryMultiple'
-      ]
-    }
-  }
+        'dapper',
+        'orm',
+        'micro-orm',
+        'database',
+        'sql',
+        'query',
+        'mapping',
+        'dto',
+        'entity',
+        'performance',
+        'execute',
+        'parameters',
+        'transaction',
+        'connection',
+        'stored procedure',
+        'queryFirst',
+        'querySingle',
+        'queryMultiple',
+      ],
+    },
+  },
 };
 
 const DapperTip: React.FC = () => {
   const { t } = useTranslation('tips');
-  
+
   return (
     <Box>
-      <Typography variant="h3" gutterBottom>{t('dapper.content.mainTitle')}</Typography>
-      
-      <Typography paragraph>
-        {t('dapper.content.intro')}
+      <Typography variant="h3" gutterBottom>
+        {t('dapper.content.mainTitle')}
       </Typography>
 
-      <Typography variant="h4" gutterBottom>{t('dapper.content.sections.methods.title')}</Typography>
-      <CodeBlock language="csharp"
+      <Typography paragraph>{t('dapper.content.intro')}</Typography>
+
+      <Typography variant="h4" gutterBottom>
+        {t('dapper.content.sections.methods.title')}
+      </Typography>
+      <CodeBlock
+        language="csharp"
         ariaLabel="dapper-methods-overview"
         maxHeight={360}
         code={t('dapper.content.sections.methods.codeBlock')}
       />
 
-      <Typography variant="h4" sx={{ mt: 4 }} gutterBottom>{t('dapper.content.sections.simpleExample.title')}</Typography>
+      <Typography variant="h4" sx={{ mt: 4 }} gutterBottom>
+        {t('dapper.content.sections.simpleExample.title')}
+      </Typography>
       <CodeBlock
-    language="csharp"
-    ariaLabel="dapper-simple-dto"
-    code={`public class ProductDto
+        language="csharp"
+        ariaLabel="dapper-simple-dto"
+        code={`public class ProductDto
 {
     public int Id { get; set; }
     public string Name { get; set; }
@@ -80,8 +115,11 @@ using (var conn = new SqlConnection(connString))
 // Advantage: automatic mapping via property names.`}
       />
 
-      <Typography variant="h4" sx={{ mt: 4 }} gutterBottom>{t('dapper.content.sections.aliasMapping.title')}</Typography>
-      <CodeBlock language="csharp"
+      <Typography variant="h4" sx={{ mt: 4 }} gutterBottom>
+        {t('dapper.content.sections.aliasMapping.title')}
+      </Typography>
+      <CodeBlock
+        language="csharp"
         ariaLabel="dapper-alias-mapping"
         code={`public class OrderSummary
 {
@@ -120,8 +158,11 @@ using (var conn = new SqlConnection(connString))
 // Tip: use alias (AS) to match columns -> properties.`}
       />
 
-      <Typography variant="h4" sx={{ mt: 4 }} gutterBottom>{t('dapper.content.sections.multiMapping.title')}</Typography>
-      <CodeBlock language="csharp"
+      <Typography variant="h4" sx={{ mt: 4 }} gutterBottom>
+        {t('dapper.content.sections.multiMapping.title')}
+      </Typography>
+      <CodeBlock
+        language="csharp"
         ariaLabel="dapper-multi-mapping"
         code={`public class OrderDto
 {
@@ -196,8 +237,18 @@ using (var conn = new SqlConnection(connString))
         borderTop={(theme) => `1px solid ${theme.palette.divider}`}
         sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
       >
-        <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
-          <Link href="https://github.com/DapperLib/Dapper" target="_blank" rel="noopener noreferrer" underline="hover" color="inherit">
+        <Typography
+          variant="caption"
+          component="div"
+          sx={{ fontStyle: 'italic', color: 'text.secondary' }}
+        >
+          <Link
+            href="https://github.com/DapperLib/Dapper"
+            target="_blank"
+            rel="noopener noreferrer"
+            underline="hover"
+            color="inherit"
+          >
             {t('dapper.content.footer.sourceLabel')}
           </Link>
         </Typography>

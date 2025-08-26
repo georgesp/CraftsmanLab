@@ -11,17 +11,17 @@ const mockLocalStorage = {
   removeItem: jest.fn(),
   clear: jest.fn(),
   length: 0,
-  key: jest.fn()
+  key: jest.fn(),
 };
 
 Object.defineProperty(window, 'localStorage', {
-  value: mockLocalStorage
+  value: mockLocalStorage,
 });
 
 // Mock de navigator.language
 Object.defineProperty(navigator, 'language', {
   value: 'fr-FR',
-  configurable: true
+  configurable: true,
 });
 
 describe('search-client functionality', () => {
@@ -45,19 +45,19 @@ describe('search-client functionality', () => {
   describe('tip search - find specific Dapper tip', () => {
     it('should find Dapper tip by exact tool name', () => {
       const results = searchAll('dapper');
-      
+
       expect(results).toHaveLength(1);
       expect(results[0]).toEqual({
         kind: 'tip',
         slug: 'dapper',
         title: 'Utilisation de Dapper',
-        shortDescription: 'Utilisation de Dapper (DTO, alias, multi‑mapping).'
+        shortDescription: 'Utilisation de Dapper (DTO, alias, multi‑mapping).',
       });
     });
 
     it('should find Dapper tip by French technical concept', () => {
       const results = searchAll('base de données');
-      
+
       expect(results).toHaveLength(1);
       expect(results[0].slug).toBe('dapper');
       expect(results[0].kind).toBe('tip');
@@ -65,9 +65,9 @@ describe('search-client functionality', () => {
 
     it('should find Dapper tip by English technical concept when language is EN', () => {
       mockLocalStorage.getItem.mockReturnValue('en');
-      
+
       const results = searchAll('database');
-      
+
       expect(results).toHaveLength(1);
       expect(results[0].slug).toBe('dapper');
       expect(results[0].kind).toBe('tip');
@@ -77,7 +77,7 @@ describe('search-client functionality', () => {
   describe('tip search - find specific Polly tip', () => {
     it('should find Polly tip by resilience concept', () => {
       const results = searchAll('résilience');
-      
+
       expect(results).toHaveLength(1);
       expect(results[0].slug).toBe('polly');
       expect(results[0].kind).toBe('tip');
@@ -86,7 +86,7 @@ describe('search-client functionality', () => {
 
     it('should find Polly tip by retry keyword', () => {
       const results = searchAll('retry');
-      
+
       expect(results).toHaveLength(1);
       expect(results[0].slug).toBe('polly');
       expect(results[0].kind).toBe('tip');
@@ -96,19 +96,19 @@ describe('search-client functionality', () => {
   describe('prompt search - find specific ASP.NET prompt', () => {
     it('should find ASP.NET prompt by framework name', () => {
       const results = searchAll('aspnet');
-      
+
       expect(results).toHaveLength(1);
       expect(results[0]).toEqual({
         kind: 'prompt',
         slug: 'aspnet-core-guidances',
         title: 'ASP.NET Core Guidances',
-        shortDescription: 'Guide des meilleures pratiques pour ASP.NET Core'
+        shortDescription: 'Guide des meilleures pratiques pour ASP.NET Core',
       });
     });
 
     it('should find ASP.NET prompt by French concept', () => {
       const results = searchAll('développement web');
-      
+
       expect(results).toHaveLength(1);
       expect(results[0].slug).toBe('aspnet-core-guidances');
       expect(results[0].kind).toBe('prompt');
@@ -118,7 +118,7 @@ describe('search-client functionality', () => {
   describe('prompt search - find specific Async prompt', () => {
     it('should find Async prompt by async keyword', () => {
       const results = searchAll('async');
-      
+
       expect(results).toHaveLength(1);
       expect(results[0].slug).toBe('async-guidances');
       expect(results[0].kind).toBe('prompt');
@@ -127,7 +127,7 @@ describe('search-client functionality', () => {
 
     it('should find Async prompt by await keyword', () => {
       const results = searchAll('await');
-      
+
       expect(results).toHaveLength(1);
       expect(results[0].slug).toBe('async-guidances');
       expect(results[0].kind).toBe('prompt');
@@ -138,11 +138,11 @@ describe('search-client functionality', () => {
     it('should prioritize tips over prompts in mixed results', () => {
       // Recherche un terme qui existe dans les tips et prompts
       const results = searchAll('async');
-      
+
       // Si on a des tips et prompts, tips doivent être en premier
       const tips = results.filter((r: SearchHit) => r.kind === 'tip');
       const prompts = results.filter((r: SearchHit) => r.kind === 'prompt');
-      
+
       if (tips.length > 0 && prompts.length > 0) {
         const firstTipIndex = results.findIndex((r: SearchHit) => r.kind === 'tip');
         const firstPromptIndex = results.findIndex((r: SearchHit) => r.kind === 'prompt');
@@ -153,7 +153,7 @@ describe('search-client functionality', () => {
     it('should handle case insensitive search', () => {
       const lowerResults = searchAll('dapper');
       const upperResults = searchAll('DAPPER');
-      
+
       expect(lowerResults).toEqual(upperResults);
     });
   });
@@ -161,7 +161,7 @@ describe('search-client functionality', () => {
   describe('language detection', () => {
     it('should use French keywords when localStorage is fr', () => {
       mockLocalStorage.getItem.mockReturnValue('fr');
-      
+
       const results = searchAll('base de données');
       expect(results).toHaveLength(1);
       expect(results[0].slug).toBe('dapper');
@@ -169,7 +169,7 @@ describe('search-client functionality', () => {
 
     it('should use English keywords when localStorage is en', () => {
       mockLocalStorage.getItem.mockReturnValue('en');
-      
+
       const results = searchAll('database');
       expect(results).toHaveLength(1);
       expect(results[0].slug).toBe('dapper');
@@ -177,7 +177,7 @@ describe('search-client functionality', () => {
 
     it('should fallback to browser language when localStorage is empty', () => {
       mockLocalStorage.getItem.mockReturnValue(null);
-      
+
       // navigator.language is 'fr-FR', should use French
       const results = searchAll('base de données');
       expect(results).toHaveLength(1);

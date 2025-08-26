@@ -49,7 +49,7 @@ const resources = {
       ...switchTupleFr,
       ...cpmFr,
       ...collectionFr,
-      ...keyValueCollectionFr
+      ...keyValueCollectionFr,
     },
   },
   en: {
@@ -67,7 +67,7 @@ const resources = {
       ...switchTupleEn,
       ...cpmEn,
       ...collectionEn,
-      ...keyValueCollectionEn
+      ...keyValueCollectionEn,
     },
   },
 };
@@ -79,7 +79,7 @@ i18n
     resources,
     fallbackLng: 'fr',
     defaultNS: 'common',
-    
+
     interpolation: {
       escapeValue: false, // React already escapes values
     },

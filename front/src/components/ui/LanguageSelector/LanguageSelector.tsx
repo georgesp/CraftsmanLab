@@ -26,7 +26,7 @@ export const LanguageSelector: React.FC = () => {
     handleClose();
   };
 
-  const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
+  const currentLanguage = languages.find((lang) => lang.code === i18n.language) || languages[0];
 
   return (
     <Box>

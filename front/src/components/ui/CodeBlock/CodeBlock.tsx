@@ -18,7 +18,12 @@ export type CodeBlockProps = {
  * - Uses COLORS for consistency per global prompt
  * - Avec coloration syntaxique
  */
-export const CodeBlock: React.FC<CodeBlockProps> = ({ code, ariaLabel, maxHeight, language = 'csharp' }) => {
+export const CodeBlock: React.FC<CodeBlockProps> = ({
+  code,
+  ariaLabel,
+  maxHeight,
+  language = 'csharp',
+}) => {
   return (
     <Box
       component="pre"
@@ -26,7 +31,8 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ code, ariaLabel, maxHeight
       sx={{
         p: 2,
         m: 0,
-        bgcolor: (t) => (t.palette.mode === 'dark' ? COLORS.codeBlockTextDark : COLORS.codeBlockTextLight),
+        bgcolor: (t) =>
+          t.palette.mode === 'dark' ? COLORS.codeBlockTextDark : COLORS.codeBlockTextLight,
         borderRadius: '8px',
         overflowX: 'auto',
         maxHeight,

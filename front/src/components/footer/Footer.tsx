@@ -4,21 +4,24 @@ import { useTranslation } from 'react-i18next';
 import { COLORS } from '../../styles/colors';
 
 export const Footer: React.FC = () => {
-  const { t } = useTranslation(['common','pages']);
+  const { t } = useTranslation(['common', 'pages']);
   return (
-    <Box component="footer" sx={{
-      mt: 0,
-      px: 3,
-      py: 2,
-      backgroundColor: COLORS.darkGreyBg,
-      borderTop: 'none',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'flex-start',
-      color: 'text.primary',
-      fontSize: '0.85rem'
-    }}>
-  <Typography variant="caption" sx={{ fontSize: '0.8rem', color: 'text.primary' }}>
+    <Box
+      component="footer"
+      sx={{
+        mt: 0,
+        px: 3,
+        py: 2,
+        backgroundColor: COLORS.darkGreyBg,
+        borderTop: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        color: 'text.primary',
+        fontSize: '0.85rem',
+      }}
+    >
+      <Typography variant="caption" sx={{ fontSize: '0.8rem', color: 'text.primary' }}>
         {t('pages:footer.copyright', '© 2025 CraftsmanLab. Tous droits réservés.')}
       </Typography>
     </Box>

@@ -14,7 +14,7 @@ global.alert = jest.fn();
 // Mock de window.matchMedia pour Material-UI
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
-  value: jest.fn().mockImplementation(query => ({
+  value: jest.fn().mockImplementation((query) => ({
     matches: false,
     media: query,
     onchange: null,
@@ -42,26 +42,26 @@ jest.mock('react-i18next', () => ({
         'contact.form.subject': 'Sujet',
         'contact.form.message': 'Message',
         'contact.successMessage': 'Votre message a été envoyé avec succès !',
-        
+
         // Navigation
         'navigation.tips': 'Tips',
         'navigation.prompts': 'Prompts',
         'navigation.contact': 'Contact',
-        
+
         // Search
         'search.placeholder': 'Rechercher...',
         'search.noResults': 'Aucun résultat',
-        
+
         // Home page
         'home.latestPrompts': 'Derniers prompts publiés :',
         'home.introduction.title': 'Bienvenue sur CraftsmanLab',
         'home.introduction.subtitle': 'Tips / Mémos',
         'home.cta.tips': 'Tips / Mémos',
         'home.cta.prompts': 'Prompts IA',
-        
+
         // Footer
         'pages:footer.copyright': '© 2024 CraftsmanLab. Tous droits réservés.',
-        
+
         // Common
         'common:buttons.submit': 'Envoyer',
       };

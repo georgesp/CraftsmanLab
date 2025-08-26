@@ -103,7 +103,13 @@ export const Header: React.FC = () => {
             component="img"
             src="/noBgColorWhite.png"
             alt="CraftsmanLab"
-            sx={{ height: 56, width: 'auto', objectFit: 'contain', display: 'block', flexShrink: 0 }}
+            sx={{
+              height: 56,
+              width: 'auto',
+              objectFit: 'contain',
+              display: 'block',
+              flexShrink: 0,
+            }}
           />
         </MuiLink>
 
@@ -119,7 +125,11 @@ export const Header: React.FC = () => {
           }}
         >
           <ClickAwayListener onClickAway={handleClickAway}>
-            <Box component="form" onSubmit={handleSubmit} sx={{ position: 'relative', width: '100%' }}>
+            <Box
+              component="form"
+              onSubmit={handleSubmit}
+              sx={{ position: 'relative', width: '100%' }}
+            >
               <Paper
                 variant="outlined"
                 sx={{
@@ -178,7 +188,10 @@ export const Header: React.FC = () => {
                   <List dense disablePadding>
                     {results.map((r: SearchHit, idx: number) => (
                       <ListItem key={`${r.kind}-${r.slug}`} disablePadding>
-                        <ListItemButton selected={idx === selectedIndex} onClick={() => handleSelect(r.kind, r.slug)}>
+                        <ListItemButton
+                          selected={idx === selectedIndex}
+                          onClick={() => handleSelect(r.kind, r.slug)}
+                        >
                           <ListItemIcon sx={{ minWidth: 44, mr: 1 }}>
                             {r.kind === 'tip' ? (
                               <Box
@@ -192,7 +205,10 @@ export const Header: React.FC = () => {
                                   borderRadius: 1,
                                 }}
                               >
-                                <TipsAndUpdatesIcon fontSize="large" sx={{ color: COLORS.searchResultIcon, fontSize: 20 }} />
+                                <TipsAndUpdatesIcon
+                                  fontSize="large"
+                                  sx={{ color: COLORS.searchResultIcon, fontSize: 20 }}
+                                />
                               </Box>
                             ) : (
                               <Box
@@ -206,7 +222,10 @@ export const Header: React.FC = () => {
                                   borderRadius: 1,
                                 }}
                               >
-                                <TextSnippetIcon fontSize="large" sx={{ color: COLORS.searchResultIcon, fontSize: 20 }} />
+                                <TextSnippetIcon
+                                  fontSize="large"
+                                  sx={{ color: COLORS.searchResultIcon, fontSize: 20 }}
+                                />
                               </Box>
                             )}
                           </ListItemIcon>
@@ -214,8 +233,14 @@ export const Header: React.FC = () => {
                           <ListItemText
                             primary={r.title}
                             secondary={r.shortDescription}
-                            primaryTypographyProps={{ noWrap: true, sx: { color: COLORS.darkTheme.inputText } }}
-                            secondaryTypographyProps={{ noWrap: true, sx: { color: COLORS.darkTheme.inputText } }}
+                            primaryTypographyProps={{
+                              noWrap: true,
+                              sx: { color: COLORS.darkTheme.inputText },
+                            }}
+                            secondaryTypographyProps={{
+                              noWrap: true,
+                              sx: { color: COLORS.darkTheme.inputText },
+                            }}
                           />
                         </ListItemButton>
                       </ListItem>
@@ -227,9 +252,18 @@ export const Header: React.FC = () => {
               {open && query.trim() && results.length === 0 && (
                 <Paper
                   elevation={4}
-                  sx={{ position: 'absolute', top: '44px', left: 0, right: 0, zIndex: 10, backgroundColor: COLORS.darkTheme.inputBackground }}
+                  sx={{
+                    position: 'absolute',
+                    top: '44px',
+                    left: 0,
+                    right: 0,
+                    zIndex: 10,
+                    backgroundColor: COLORS.darkTheme.inputBackground,
+                  }}
                 >
-                                    <Box sx={{ p: 1.5, color: COLORS.darkTheme.inputText, fontSize: 14 }}>{t('search.noResults')}</Box>
+                  <Box sx={{ p: 1.5, color: COLORS.darkTheme.inputText, fontSize: 14 }}>
+                    {t('search.noResults')}
+                  </Box>
                 </Paper>
               )}
             </Box>
@@ -237,15 +271,33 @@ export const Header: React.FC = () => {
         </Box>
 
         <NavigationContainer>
-          <MuiLink component={RouterLink} to="/tips" color="inherit" underline="none" sx={{ fontWeight: 500, fontSize: '1.05rem' }}>
+          <MuiLink
+            component={RouterLink}
+            to="/tips"
+            color="inherit"
+            underline="none"
+            sx={{ fontWeight: 500, fontSize: '1.05rem' }}
+          >
             {t('navigation.tips')}
           </MuiLink>
 
-          <MuiLink component={RouterLink} to="/prompts" color="inherit" underline="none" sx={{ fontWeight: 500, fontSize: '1.05rem' }}>
+          <MuiLink
+            component={RouterLink}
+            to="/prompts"
+            color="inherit"
+            underline="none"
+            sx={{ fontWeight: 500, fontSize: '1.05rem' }}
+          >
             {t('navigation.prompts')}
           </MuiLink>
 
-          <MuiLink component={RouterLink} to="/contact" color="inherit" underline="none" sx={{ fontWeight: 500, fontSize: '1.05rem' }}>
+          <MuiLink
+            component={RouterLink}
+            to="/contact"
+            color="inherit"
+            underline="none"
+            sx={{ fontWeight: 500, fontSize: '1.05rem' }}
+          >
             {t('navigation.contact')}
           </MuiLink>
 

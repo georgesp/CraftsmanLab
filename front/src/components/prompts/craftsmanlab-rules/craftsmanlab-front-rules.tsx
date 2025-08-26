@@ -14,7 +14,9 @@ export const promptText = rawGlobalPrompt;
 const PromptBody: React.FC = () => {
   const { t } = useTranslation('prompts');
   const [showCopySuccess, setShowCopySuccess] = useState(false);
-  const writtenOn = meta.writtenOn ? new Date(meta.writtenOn).toLocaleDateString('fr-FR') : new Date().toLocaleDateString('fr-FR');
+  const writtenOn = meta.writtenOn
+    ? new Date(meta.writtenOn).toLocaleDateString('fr-FR')
+    : new Date().toLocaleDateString('fr-FR');
 
   const description = t('craftsmanlab-rules.description');
 
@@ -61,7 +63,7 @@ const PromptBody: React.FC = () => {
         >
           <ContentCopy fontSize="small" />
         </IconButton>
-  <CodeBlock code={promptText} />
+        <CodeBlock code={promptText} />
       </Box>
 
       <Snackbar
@@ -70,17 +72,29 @@ const PromptBody: React.FC = () => {
         onClose={() => setShowCopySuccess(false)}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       >
-                <Alert onClose={() => setShowCopySuccess(false)} severity="success" sx={{ width: '100%' }}>
+        <Alert onClose={() => setShowCopySuccess(false)} severity="success" sx={{ width: '100%' }}>
           {t('craftsmanlab-rules.content.copySuccess')}
         </Alert>
       </Snackbar>
 
       <Box sx={{ mt: 4, pt: 3, borderTop: '1px solid', borderColor: 'grey.300' }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 2, flexWrap: 'wrap' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            gap: 2,
+            flexWrap: 'wrap',
+          }}
+        >
           <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic' }}>
             Source: Fichier global.prompt.md du projet
           </Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic', textAlign: 'left' }}>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ fontStyle: 'italic', textAlign: 'left' }}
+          >
             {t('craftsmanlab-rules.content.writtenOn')} {writtenOn}
           </Typography>
         </Box>
@@ -92,15 +106,41 @@ const PromptBody: React.FC = () => {
 export const meta = {
   slug: 'craftsmanlab-rules',
   title: 'My Global React Rules',
-  shortDescription: "Règles et conventions utilisées pour le développement du site.",
+  shortDescription: 'Règles et conventions utilisées pour le développement du site.',
   writtenOn: '2025-08-10',
   keywords: ['C#' as const],
   metadata: {
     searchKeywords: {
-      fr: ['react', 'typescript', 'frontend', 'règles', 'conventions', 'développement', 'ui', 'composants', 'hooks', 'material-ui', 'mui', 'craftsmanlab'],
-      en: ['react', 'typescript', 'frontend', 'rules', 'conventions', 'development', 'ui', 'components', 'hooks', 'material-ui', 'mui', 'craftsmanlab']
-    }
-  }
+      fr: [
+        'react',
+        'typescript',
+        'frontend',
+        'règles',
+        'conventions',
+        'développement',
+        'ui',
+        'composants',
+        'hooks',
+        'material-ui',
+        'mui',
+        'craftsmanlab',
+      ],
+      en: [
+        'react',
+        'typescript',
+        'frontend',
+        'rules',
+        'conventions',
+        'development',
+        'ui',
+        'components',
+        'hooks',
+        'material-ui',
+        'mui',
+        'craftsmanlab',
+      ],
+    },
+  },
 };
 
 const moduleExport: PromptModule = {

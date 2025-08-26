@@ -161,42 +161,41 @@ const PromptBody: React.FC = () => {
 
   return (
     <Box>
-
       <Typography variant="body1" sx={{ mb: 2 }}>
         {t('dot-net-async-best-practices.content.introduction')}
       </Typography>
       <Box sx={{ borderTop: '1px solid', borderColor: 'grey.300', mb: 3 }} />
 
       <Box sx={{ position: 'relative' }}>
-          <IconButton
-            onClick={handleCopy}
-            sx={{
-              position: 'absolute',
-              top: 8,
-              right: 8,
-              zIndex: 1,
-              backgroundColor: 'rgba(255, 255, 255, 0.9)',
-              borderRadius: 0,
-              border: '1px solid',
-              borderColor: 'grey.300',
-              width: 32,
-              height: 32,
-              padding: 0,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              transition: 'background 0.2s, color 0.2s',
-              color: COLORS.copyBtnColor,
-              '&:hover': {
-                color: COLORS.copyBtnColorHover,
-              },
-            }}
-            size="small"
-            title={t('dot-net-async-best-practices.content.copyButton')}
-          >
-            <ContentCopy fontSize="small" />
-          </IconButton>
-  <CodeBlock code={promptText} />
+        <IconButton
+          onClick={handleCopy}
+          sx={{
+            position: 'absolute',
+            top: 8,
+            right: 8,
+            zIndex: 1,
+            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+            borderRadius: 0,
+            border: '1px solid',
+            borderColor: 'grey.300',
+            width: 32,
+            height: 32,
+            padding: 0,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            transition: 'background 0.2s, color 0.2s',
+            color: COLORS.copyBtnColor,
+            '&:hover': {
+              color: COLORS.copyBtnColorHover,
+            },
+          }}
+          size="small"
+          title={t('dot-net-async-best-practices.content.copyButton')}
+        >
+          <ContentCopy fontSize="small" />
+        </IconButton>
+        <CodeBlock code={promptText} />
       </Box>
 
       <Snackbar
@@ -211,7 +210,15 @@ const PromptBody: React.FC = () => {
       </Snackbar>
 
       <Box sx={{ mt: 4, pt: 3, borderTop: '1px solid', borderColor: 'grey.300' }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 2, flexWrap: 'wrap' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            gap: 2,
+            flexWrap: 'wrap',
+          }}
+        >
           <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic' }}>
             {t('dot-net-async-best-practices.content.sources')}{' '}
             <Link
@@ -222,7 +229,11 @@ const PromptBody: React.FC = () => {
               David Fowler
             </Link>
           </Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic', textAlign: 'left' }}>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ fontStyle: 'italic', textAlign: 'left' }}
+          >
             {t('dot-net-async-best-practices.content.writtenOn')} {writtenOn}
           </Typography>
         </Box>
@@ -234,15 +245,42 @@ const PromptBody: React.FC = () => {
 export const meta = {
   slug: 'dot-net-async-best-practices',
   title: '.NET Async Best Practices',
-  shortDescription: "Guide complet des bonnes pratiques asynchronisme .NET/ASP.NET Core avec exemples concrets.",
+  shortDescription:
+    'Guide complet des bonnes pratiques asynchronisme .NET/ASP.NET Core avec exemples concrets.',
   writtenOn: '2025-08-11',
   keywords: ['C#' as const],
   metadata: {
     searchKeywords: {
-      fr: ['async', 'asynchrone', 'await', 'task', 'thread', 'parallélisme', 'concurrence', 'performance', 'deadlock', 'configureawait', 'dotnet', 'csharp'],
-      en: ['async', 'asynchronous', 'await', 'task', 'thread', 'parallelism', 'concurrency', 'performance', 'deadlock', 'configureawait', 'dotnet', 'csharp']
-    }
-  }
+      fr: [
+        'async',
+        'asynchrone',
+        'await',
+        'task',
+        'thread',
+        'parallélisme',
+        'concurrence',
+        'performance',
+        'deadlock',
+        'configureawait',
+        'dotnet',
+        'csharp',
+      ],
+      en: [
+        'async',
+        'asynchronous',
+        'await',
+        'task',
+        'thread',
+        'parallelism',
+        'concurrency',
+        'performance',
+        'deadlock',
+        'configureawait',
+        'dotnet',
+        'csharp',
+      ],
+    },
+  },
 };
 
 const moduleExport: PromptModule = {

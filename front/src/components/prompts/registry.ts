@@ -2,9 +2,26 @@ import type { PromptMeta } from './prompt-types';
 
 // Eager import to get metadata immediately from all .tsx files in current directory and subdirectories
 // Excludes registry files and other infrastructure files
-const metaModules = import.meta.glob(['./**/*.tsx', '!./registry.ts', '!./index.ts', '!./prompt-types.ts', '!./prompt-list.tsx', '!./styles.ts'], { eager: true });
+const metaModules = import.meta.glob(
+  [
+    './**/*.tsx',
+    '!./registry.ts',
+    '!./index.ts',
+    '!./prompt-types.ts',
+    '!./prompt-list.tsx',
+    '!./styles.ts',
+  ],
+  { eager: true },
+);
 // Lazy importers used for loading components and promptText on demand
-const loaders = import.meta.glob(['./**/*.tsx', '!./registry.ts', '!./index.ts', '!./prompt-types.ts', '!./prompt-list.tsx', '!./styles.ts']);
+const loaders = import.meta.glob([
+  './**/*.tsx',
+  '!./registry.ts',
+  '!./index.ts',
+  '!./prompt-types.ts',
+  '!./prompt-list.tsx',
+  '!./styles.ts',
+]);
 
 export type PromptEntry = PromptMeta & {
   load: () => Promise<any>;
@@ -27,5 +44,5 @@ entries.sort((a, b) => {
 export const promptsList: PromptEntry[] = entries;
 
 export function findPromptBySlug(slug: string): PromptEntry | undefined {
-  return promptsList.find(p => p.slug === slug);
+  return promptsList.find((p) => p.slug === slug);
 }

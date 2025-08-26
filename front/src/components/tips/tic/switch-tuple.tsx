@@ -14,46 +14,79 @@ export const meta = {
   metadata: {
     searchKeywords: {
       fr: [
-        'switch', 'tuple', 'pattern matching', 'correspondance', 'motifs',
-        'expressions', 'décomposition', 'destructuring', 'c# 8', 'c# 9',
-        'when', 'discard', 'underscore', 'décisionnel'
+        'switch',
+        'tuple',
+        'pattern matching',
+        'correspondance',
+        'motifs',
+        'expressions',
+        'décomposition',
+        'destructuring',
+        'c# 8',
+        'c# 9',
+        'when',
+        'discard',
+        'underscore',
+        'décisionnel',
       ],
       en: [
-        'switch', 'tuple', 'pattern matching', 'patterns',
-        'expressions', 'decomposition', 'destructuring', 'c# 8', 'c# 9',
-        'when', 'discard', 'underscore', 'decision'
-      ]
-    }
-  }
+        'switch',
+        'tuple',
+        'pattern matching',
+        'patterns',
+        'expressions',
+        'decomposition',
+        'destructuring',
+        'c# 8',
+        'c# 9',
+        'when',
+        'discard',
+        'underscore',
+        'decision',
+      ],
+    },
+  },
 };
 
 const SwitchTupleTip: React.FC = () => {
   const { t } = useTranslation('tips');
-  
+
   return (
     <Box>
-      <Typography variant="h3" gutterBottom>{t('switch-tuple.content.mainTitle')}</Typography>
-      
-      <Typography paragraph>
-        {t('switch-tuple.content.intro')}
+      <Typography variant="h3" gutterBottom>
+        {t('switch-tuple.content.mainTitle')}
       </Typography>
 
-      <Typography variant="h4" gutterBottom>{t('switch-tuple.content.sections.example.title')}</Typography>
+      <Typography paragraph>{t('switch-tuple.content.intro')}</Typography>
+
+      <Typography variant="h4" gutterBottom>
+        {t('switch-tuple.content.sections.example.title')}
+      </Typography>
       <CodeBlock language="csharp" code={t('switch-tuple.content.sections.example.codeBlock')} />
 
-      <Typography variant="h4" gutterBottom>{t('switch-tuple.content.sections.summary.title')}</Typography>
+      <Typography variant="h4" gutterBottom>
+        {t('switch-tuple.content.sections.summary.title')}
+      </Typography>
       <Typography paragraph component="div">
-        • Simple et lisible : compare plusieurs éléments en une seule expression, parfait pour des cas de dispatch.
+        • Simple et lisible : compare plusieurs éléments en une seule expression, parfait pour des
+        cas de dispatch.
         <br />
-  • Moins de code répétitif : on évite les if/else et l'extraction manuelle des champs.
-        <br />
-        • Flexible : tu peux mélanger tuples, enums ou classes dans les patterns pour couvrir la plupart des cas.
+        • Moins de code répétitif : on évite les if/else et l'extraction manuelle des champs.
+        <br />• Flexible : tu peux mélanger tuples, enums ou classes dans les patterns pour couvrir
+        la plupart des cas.
       </Typography>
 
-      <Box mt={4} pt={2} borderTop={theme => `1px solid ${theme.palette.divider}`} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
-          
-        </Typography>
+      <Box
+        mt={4}
+        pt={2}
+        borderTop={(theme) => `1px solid ${theme.palette.divider}`}
+        sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+      >
+        <Typography
+          variant="caption"
+          component="div"
+          sx={{ fontStyle: 'italic', color: 'text.secondary' }}
+        ></Typography>
         <Typography variant="caption" component="div" sx={{ color: 'text.secondary' }}>
           Écrit le {meta.writtenOn}
         </Typography>

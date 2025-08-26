@@ -17,7 +17,7 @@ describe('ContactPage', () => {
 
   test('renders contact page with form', () => {
     render(<ContactPageWrapper />);
-    
+
     expect(screen.getByText('Envoyez-moi un message')).toBeInTheDocument();
     // Vérifier que les champs du formulaire sont présents
     expect(screen.getByRole('textbox', { name: /nom complet/i })).toBeInTheDocument();
@@ -26,7 +26,7 @@ describe('ContactPage', () => {
 
   test('renders contact information', () => {
     render(<ContactPageWrapper />);
-    
+
     expect(screen.getByText('Mes réseaux sociaux')).toBeInTheDocument();
     expect(screen.getByText('Mes coordonnées')).toBeInTheDocument();
     expect(screen.getByText('contact@craftsmanlab.fr')).toBeInTheDocument();
@@ -35,29 +35,27 @@ describe('ContactPage', () => {
   test('form submission shows success message', async () => {
     // Mock fetch pour simuler un succès avec un objet Response complet
     const mockFetch = global.fetch as jest.Mock;
-    const mockHeaders = new Map([
-      ['content-type', 'application/json']
-    ]);
-    
+    const mockHeaders = new Map([['content-type', 'application/json']]);
+
     mockFetch.mockResolvedValueOnce({
       ok: true,
       status: 200,
       headers: {
         entries: () => mockHeaders.entries(),
         get: (key: string) => mockHeaders.get(key),
-        has: (key: string) => mockHeaders.has(key)
+        has: (key: string) => mockHeaders.has(key),
       },
-      json: async () => ({ success: true, message: 'Email envoyé avec succès' })
+      json: async () => ({ success: true, message: 'Email envoyé avec succès' }),
     });
 
     render(<ContactPageWrapper />);
-    
+
     // Remplir le formulaire en utilisant les rôles et noms
     const nameInput = screen.getByRole('textbox', { name: /nom complet/i });
     const emailInput = screen.getByRole('textbox', { name: /email/i });
     const subjectInput = screen.getByRole('textbox', { name: /sujet/i });
     const messageInput = screen.getByRole('textbox', { name: /message/i });
-    
+
     fireEvent.change(nameInput, { target: { value: 'John Doe' } });
     fireEvent.change(emailInput, { target: { value: 'john@example.com' } });
     fireEvent.change(subjectInput, { target: { value: 'Test Subject' } });
@@ -77,8 +75,8 @@ describe('ContactPage', () => {
           name: 'John Doe',
           email: 'john@example.com',
           subject: 'Test Subject',
-          message: 'Test message content'
-        })
+          message: 'Test message content',
+        }),
       });
     });
 
@@ -90,10 +88,10 @@ describe('ContactPage', () => {
 
   test('navigation links are present', () => {
     render(<ContactPageWrapper />);
-    
+
     // Chercher spécifiquement le lien dans la navigation (avec href)
     const contactLink = screen.getByRole('link', { name: 'Contact' });
-    
+
     expect(contactLink).toBeInTheDocument();
     expect(contactLink).toHaveAttribute('href', '/contact');
   });

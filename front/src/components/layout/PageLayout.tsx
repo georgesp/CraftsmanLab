@@ -17,7 +17,14 @@ export const PageLayout: React.FC<PageLayoutProps> = ({ children, showScrollToTo
   return (
     <ThemeProvider theme={telerikTheme}>
       <CssBaseline />
-      <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: COLORS.darkGreyBg }}>
+      <Box
+        sx={{
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          backgroundColor: COLORS.darkGreyBg,
+        }}
+      >
         <Header />
         <Box component="main" sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
           {children}

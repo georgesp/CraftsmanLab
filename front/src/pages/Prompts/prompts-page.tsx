@@ -4,20 +4,27 @@ import { useTranslation } from 'react-i18next';
 import { ScrollToTopButton, PageLayout } from '../../components';
 import { PromptCardsGrid } from '../../components/prompts/prompt-cards-grid';
 import { COLORS } from '../../styles/colors';
-import {
-  PromptsPageContainer,
-  GridContainer,
-} from './styles';
+import { PromptsPageContainer, GridContainer } from './styles';
 
 export const PromptsPage: React.FC = () => {
   const { t } = useTranslation('pages');
 
   return (
     <PageLayout>
-
-      <Container maxWidth={false} disableGutters sx={{ px: 0, mx: 0, width: '100%', backgroundColor: COLORS.darkGreyBg, minHeight: '100vh' }}>
+      <Container
+        maxWidth={false}
+        disableGutters
+        sx={{ px: 0, mx: 0, width: '100%', backgroundColor: COLORS.darkGreyBg, minHeight: '100vh' }}
+      >
         <PromptsPageContainer sx={{ px: 0, mx: 0, width: '100%', ml: 2 }}>
-          <Box sx={{ display: 'flex', alignItems: 'stretch', gap: { xs: 2, sm: 4 }, flexWrap: { xs: 'wrap', md: 'nowrap' } }}>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'stretch',
+              gap: { xs: 2, sm: 4 },
+              flexWrap: { xs: 'wrap', md: 'nowrap' },
+            }}
+          >
             <Box
               sx={{
                 flex: { xs: '1 1 100%', md: '0 0 400px' },
@@ -44,23 +51,59 @@ export const PromptsPage: React.FC = () => {
                 }}
               />
             </Box>
-            <div style={{ position: 'relative', paddingLeft: '3rem', flex: 1, marginRight: '2rem' }}>
-              <span style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 10, background: COLORS.darkGreyBg }} />
-              <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 600, px: 0, mx: 0, width: '100%', color: 'text.primary' }}>
+            <div
+              style={{ position: 'relative', paddingLeft: '3rem', flex: 1, marginRight: '2rem' }}
+            >
+              <span
+                style={{
+                  position: 'absolute',
+                  left: 0,
+                  top: 0,
+                  bottom: 0,
+                  width: 10,
+                  background: COLORS.darkGreyBg,
+                }}
+              />
+              <Typography
+                variant="h6"
+                component="h2"
+                gutterBottom
+                sx={{ fontWeight: 600, px: 0, mx: 0, width: '100%', color: 'text.primary' }}
+              >
                 {t('prompts.whatIsPrompt')}
               </Typography>
-              <Typography variant="body1" sx={{ px: 0, mx: 0, width: '100%', color: 'text.primary' }}>
-                {t('prompts.promptDefinitionFull').split('\n').map((line, idx) => (
-                  <React.Fragment key={idx}>
-                    {line}
-                    <br />
-                  </React.Fragment>
-                ))}
+              <Typography
+                variant="body1"
+                sx={{ px: 0, mx: 0, width: '100%', color: 'text.primary' }}
+              >
+                {t('prompts.promptDefinitionFull')
+                  .split('\n')
+                  .map((line, idx) => (
+                    <React.Fragment key={idx}>
+                      {line}
+                      <br />
+                    </React.Fragment>
+                  ))}
               </Typography>
-              <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 600, marginTop: 2, px: 0, mx: 0, width: '100%', color: 'text.primary' }}>
+              <Typography
+                variant="h6"
+                component="h2"
+                gutterBottom
+                sx={{
+                  fontWeight: 600,
+                  marginTop: 2,
+                  px: 0,
+                  mx: 0,
+                  width: '100%',
+                  color: 'text.primary',
+                }}
+              >
                 {t('prompts.whyPromptTitle')}
               </Typography>
-              <Typography variant="body1" sx={{ px: 0, mx: 0, width: '100%', color: 'text.primary' }}>
+              <Typography
+                variant="body1"
+                sx={{ px: 0, mx: 0, width: '100%', color: 'text.primary' }}
+              >
                 {t('prompts.whyPromptBody1')}
                 <br />
                 {t('prompts.whyPromptBody2')}
@@ -71,19 +114,19 @@ export const PromptsPage: React.FC = () => {
         <GridContainer>
           <Card
             variant="outlined"
-            sx={{ 
-              p: { xs: 2, md: 4 }, 
-              backgroundColor: COLORS.darkGreyBg, 
-              mb: 0, 
-              borderLeft: 0, 
-              borderRight: 0, 
-              width: '100%' 
+            sx={{
+              p: { xs: 2, md: 4 },
+              backgroundColor: COLORS.darkGreyBg,
+              mb: 0,
+              borderLeft: 0,
+              borderRight: 0,
+              width: '100%',
             }}
           >
             <PromptCardsGrid />
           </Card>
         </GridContainer>
-  </Container>
+      </Container>
       <ScrollToTopButton />
     </PageLayout>
   );

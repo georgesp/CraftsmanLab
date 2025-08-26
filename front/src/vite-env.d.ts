@@ -1,12 +1,12 @@
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
-  readonly BASE_URL: string
+  readonly BASE_URL: string;
   // add more env vars if needed
 }
 
 interface ImportMeta {
-  readonly env: ImportMetaEnv
+  readonly env: ImportMetaEnv;
 }
 
 // Allow importing Markdown files as raw strings

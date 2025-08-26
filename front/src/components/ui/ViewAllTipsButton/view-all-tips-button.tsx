@@ -20,10 +20,10 @@ export interface ViewAllTipsButtonProps {
 export const ViewAllTipsButton: React.FC<ViewAllTipsButtonProps> = ({
   label,
   to,
-  marginTop = 2
+  marginTop = 2,
 }) => {
   const { t } = useTranslation('common');
-  
+
   return (
     <Box sx={{ mt: marginTop }}>
       <Button
@@ -41,8 +41,8 @@ export const ViewAllTipsButton: React.FC<ViewAllTipsButtonProps> = ({
           '&:hover': {
             borderColor: COLORS.itemListHover,
             backgroundColor: 'rgba(255, 255, 255, 0.1)',
-            color: COLORS.darkTheme.textOnDark
-          }
+            color: COLORS.darkTheme.textOnDark,
+          },
         }}
       >
         {label || t('buttons.seeAll')}
