@@ -16,6 +16,8 @@ import { meta as cpmMeta } from './tips/cpm/meta';
 import { meta as collectionMeta } from './tips/collection/meta';
 import { meta as keyValueCollectionMeta } from './tips/keyValueCollection/meta';
 import { meta as csharp11Meta } from './tips/csharp-11/meta';
+import { meta as csharp12Meta } from './tips/csharp-12/meta';
+import { meta as kokoroSharpMeta } from './tips/kokoro-sharp/meta';
 
 export type TipEntry = TipMeta & { load: () => Promise<any> };
 
@@ -31,6 +33,8 @@ export const tipsEntries: TipEntry[] = [
   { ...collectionMeta, load: () => import('./tips/collection/collection') },
   { ...keyValueCollectionMeta, load: () => import('./tips/keyValueCollection/key-value-collection') },
   { ...csharp11Meta, load: () => import('./tips/csharp-11/csharp-11') },
+  { ...csharp12Meta, load: () => import('./tips/csharp-12/csharp-12') },
+  { ...kokoroSharpMeta, load: () => import('./tips/kokoro-sharp/kokoro-sharp') },
 ];
 
 // ----- Prompts: metas -----
@@ -69,6 +73,10 @@ import keyValueCollectionFr from './tips/keyValueCollection/fr.json';
 import keyValueCollectionEn from './tips/keyValueCollection/en.json';
 import csharp11Fr from './tips/csharp-11/fr.json';
 import csharp11En from './tips/csharp-11/en.json';
+import csharp12Fr from './tips/csharp-12/fr.json';
+import csharp12En from './tips/csharp-12/en.json';
+import kokoroSharpFr from './tips/kokoro-sharp/fr.json';
+import kokoroSharpEn from './tips/kokoro-sharp/en.json';
 
 export const tipsTranslationsFr = {
   ...pollyFr,
@@ -82,6 +90,8 @@ export const tipsTranslationsFr = {
   ...collectionFr,
   ...keyValueCollectionFr,
   ...csharp11Fr,
+  ...csharp12Fr,
+  ...kokoroSharpFr,
 };
 
 export const tipsTranslationsEn = {
@@ -96,6 +106,8 @@ export const tipsTranslationsEn = {
   ...collectionEn,
   ...keyValueCollectionEn,
   ...csharp11En,
+  ...csharp12En,
+  ...kokoroSharpEn,
 };
 
 // ----- Prompts: translations -----

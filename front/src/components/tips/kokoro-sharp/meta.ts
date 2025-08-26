@@ -1,0 +1,47 @@
+import type { TipMeta } from '..';
+
+export const meta: TipMeta = {
+  slug: 'kokoro-sharp',
+  title: '',
+  shortDescription: '',
+  writtenOn: '2025-08-26',
+  keywords: ['C#' as const],
+  metadata: {
+    searchKeywords: {
+      fr: [
+        'kokoro',
+        'kokoroshark',
+        'kokorosharp',
+        'tts',
+        'text-to-speech',
+        'synthèse vocale',
+        'onnx',
+        'local',
+        'hors ligne',
+        'offline',
+        'multilingue',
+        'voix',
+        'espeak',
+        'phonémisation',
+        'gpu',
+        'cpu',
+      ],
+      en: [
+        'kokoro',
+        'kokoroshark',
+        'kokorosharp',
+        'tts',
+        'text-to-speech',
+        'onnx',
+        'local',
+        'offline',
+        'multilingual',
+        'voices',
+        'espeak',
+        'phonemization',
+        'gpu',
+        'cpu',
+      ],
+    },
+  },
+};

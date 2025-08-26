@@ -1,0 +1,51 @@
+{
+  "kokoro-sharp": {
+    "title": "KokoroSharp",
+    "shortDescription": "Local C# TTS engine powered by ONNX: multi‑voice, multilingual, plug‑and‑play.",
+    "content": {
+      "mainTitle": "KokoroSharp: fast local, cross‑platform TTS",
+      "intro": "KokoroSharp is a C# inference engine for Kokoro TTS using ONNX Runtime. It synthesizes speech locally/offline with multiple voices and languages supported.",
+      "sections": {
+        "installation": {
+          "title": "Installation",
+          "nugetCpu": "# .NET CLI\ndotnet add package KokoroSharp.CPU",
+          "note": "For GPU acceleration, see RUNNING_ON_GPU.md in the GitHub repo. Official voices (Hexgrad Kokoro 82M v1.0) are included in the NuGet package."
+        },
+        "gettingStarted": { "title": "Getting started" },
+        "examples": {
+          "streaming": { "title": "Segment streaming" },
+          "voiceMixing": { "title": "Voice mixing" }
+        },
+        "features": {
+          "title": "Key features",
+          "table": { "headers": ["Feature", "Description"] }
+        },
+        "notes": {
+          "title": "Notes and best practices",
+          "items": [
+            "Language detection is automatic based on the loaded voice.",
+            "The 'voices' folder is copied automatically to the build output.",
+            "Integrated phonemization uses eSpeak NG depending on platform.",
+            "You may load a specific model via KokoroTTS.LoadModel(path).",
+            "Built‑in tokenization can be bypassed if you provide phonemes."
+          ]
+        }
+      },
+      "features": {
+        "rows": [
+          { "feature": "Plug & Play (NuGet)", "value": "Dependencies handled automatically" },
+          { "feature": "Bundled voices", "value": "Official Hexgrad Kokoro 82M v1.0 voices" },
+          { "feature": "High‑level interface", "value": "Simple API for all users" },
+          { "feature": "Segment streaming", "value": "Progressive synthesis for snappy UX" },
+          { "feature": "Voice mixing", "value": "Combine multiple voices with arbitrary weights" },
+          { "feature": "Linear scheduling", "value": "Job scheduling and audio queue" },
+          { "feature": "Multi‑platform playback", "value": "Optional playback integration" }
+        ]
+      },
+      "footer": {
+        "sourcesLabel": "Sources:",
+        "writtenOn": "Written on {{date}}"
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "csharp-12": {
+    "title": "C# 12 - Key features",
+    "shortDescription": "Primary constructors, collection expressions, defaulted lambda params…",
+    "content": {
+      "mainTitle": "C# 12 — everyday improvements",
+      "overview": "C# 12 boosts productivity with primary constructors for classes, concise collection expressions, and default parameter values in lambdas. You get cleaner code with less boilerplate while staying 100% compatible with existing code.",
+      "useCases": {
+        "title": "Use cases",
+        "case1": {
+          "title": "Primary constructors on classes",
+          "description": "Declare and initialize properties right in the class header. Great for data-centric types.",
+          "code": "// Primary constructor on a class\npublic class Customer(string id, string name)\n{\n    // Property initializers use parameters from the primary constructor\n    public string Id { get; } = id;\n    public string Name { get; private set; } = name;\n\n    // You can still add methods\n    public void Rename(string newName)\n    {\n        // Validation logic remains explicit\n        Name = string.IsNullOrWhiteSpace(newName) ? Name : newName;\n    }\n}\n\nvar c = new Customer(\"42\", \"Ada\");\nConsole.WriteLine($\"{c.Id} — {c.Name}\");"
+        },
+        "case2": {
+          "title": "Concise collection expressions",
+          "description": "Build collections without verbose constructors. Readable and fast to write.",
+          "code": "// Collection expressions\nint[] numbers = [1, 2, 3];\nList<string> names = [\"Ada\", \"Grace\"];\nHashSet<int> evens = [2, 4, 6];\n\n// Spread existing collections\nvar more = [..numbers, 4, 5];\n\n// With LINQ projections\nvar squares = [..Enumerable.Range(1, 5).Select(n => n * n)];"
+        },
+        "case3": {
+          "title": "Default values for lambda parameters",
+          "description": "Make utility functions more flexible without overloads. Great for composition.",
+          "code": "// Default values for lambda parameters\nvar format = (string s, int width = 8, char pad = '.') =>\n{\n    // Left pad to width using the pad character\n    return s.PadLeft(width, pad);\n};\n\nConsole.WriteLine(format(\"42\"));\nConsole.WriteLine(format(\"42\", 4, '0'));"
+        }
+      },
+      "summary": {
+        "title": "Summary",
+        "text": "Adopt C# 12 in new modules to reduce boilerplate and simplify data models. Progressive migration without breaking changes.",
+        "prosTitle": "Pros",
+        "consTitle": "Cons",
+        "pros": [
+          "Less boilerplate (constructors + properties)",
+          "Declarative, easy-to-read collections",
+          "More flexible utilities with lambdas"
+        ],
+        "cons": [
+          "Requires a recent .NET SDK",
+          "Use primary constructors sparingly on complex classes"
+        ]
+      },
+      "goodPractices": {
+        "title": "Best practices",
+        "items": [
+          "Prefer primary constructors for data-centric types",
+          "Document default values on lambdas clearly",
+          "Keep team-wide style consistency"
+        ]
+      },
+      "footer": {
+        "sourcesLabel": "Sources",
+        "sources": [
+          { "name": "What's new in C# 12 — Microsoft Docs", "url": "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-12" },
+          { "name": "Language design notes", "url": "https://github.com/dotnet/csharplang" }
+        ],
+        "writtenOn": "Written on {{date}}"
+      }
+    }
+  }
+}
