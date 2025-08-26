@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, ListItemButton, ListItemText } from '@mui/material';
+import { List, ListItemButton, ListItemText, type SxProps, type Theme } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { tipsList } from './registry';
@@ -8,9 +8,10 @@ import { COLORS } from '../../styles/colors';
 type Props = {
   currentSlug: string;
   maxItems?: number;
+  listSx?: SxProps<Theme>;
 };
 
-export const RelatedTipsList: React.FC<Props> = ({ currentSlug, maxItems = 7 }) => {
+export const RelatedTipsList: React.FC<Props> = ({ currentSlug, maxItems = 7, listSx }) => {
   const { t } = useTranslation('tips');
 
   const normalize = (arr?: string[]) => (arr ?? []).map((s) => s.toLowerCase().trim()).filter(Boolean);
@@ -55,7 +56,7 @@ export const RelatedTipsList: React.FC<Props> = ({ currentSlug, maxItems = 7 }) 
   if (items.length === 0) return null;
 
   return (
-    <List dense aria-label="tips similaires">
+    <List dense aria-label="tips similaires" sx={listSx}>
       {items.map((t) => (
         <ListItemButton
           key={t.slug}

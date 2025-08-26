@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, ListItemButton, ListItemText } from '@mui/material';
+import { List, ListItemButton, ListItemText, type SxProps, type Theme } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { COLORS } from '../../styles/colors';
 import { Link as RouterLink } from 'react-router-dom';
@@ -9,9 +9,10 @@ type Props = {
   selectedSlug?: string;
   onNavigate?: () => void;
   maxItems?: number;
+  listSx?: SxProps<Theme>;
 };
 
-export const TipList: React.FC<Props> = ({ selectedSlug, onNavigate, maxItems }) => {
+export const TipList: React.FC<Props> = ({ selectedSlug, onNavigate, maxItems, listSx }) => {
   const { t } = useTranslation('tips');
 
   // Helper function to get translated text with fallback
@@ -29,7 +30,8 @@ export const TipList: React.FC<Props> = ({ selectedSlug, onNavigate, maxItems })
   }, [maxItems]);
 
   return (
-    <List dense aria-label="tips disponibles">
+    <List dense aria-label="tips disponibles" sx={listSx}
+    >
       {items.map((t) => (
         <ListItemButton
           key={t.slug}
