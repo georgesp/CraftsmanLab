@@ -1,0 +1,64 @@
+{
+  "csharp-11": {
+    "title": "C# 11 – Nouveautés clés",
+    "shortDescription": "Tour d'horizon: Raw strings, required, list patterns, generic math…",
+    "content": {
+      "mainTitle": "C# 11 : fonctionnalités essentielles à connaître",
+      "overview": "C# 11 apporte des améliorations de productivité et de lisibilité. Ce tip couvre les points saillants avec exemples concis pour une adoption rapide.",
+      "useCases": {
+        "title": "Cas d’usage",
+        "case1": {
+          "title": "Raw string literals (chaînes brutes)",
+          "description": "Multiligne, pas d'échappement d'anti‑slash ou de guillemets — idéal pour JSON, regex, snippets.",
+          "language": "csharp",
+          "code": "// Raw strings: use triple quotes \"\"\" ... \"\"\"\nvar json = \"\"\"\n{\n  \"name\": \"Craftsman\",\n  \"tags\": [\\\"csharp\\\", \\\"tips\\\"]\n}\n\"\"\";\n\n// Interpolation enabled by doubling $ and quotes\nvar name = \"Dotnet\";\nvar s = $$\"\"\"\nHello {name}!\nPath: C:\\\\data\\\\file.txt\n\"\"\";"
+        },
+        "case2": {
+          "title": "Required members (membres requis)",
+          "description": "Forcent l'initialisation des propriétés lors de l'instanciation pour éviter les objets incomplets.",
+          "language": "csharp",
+          "code": "public class User\n{\n    public required string Name { get; init; }\n    public required string Email { get; init; }\n}\n\n// Compile-time error if Name/Email are missing\nvar u = new User { Name = \"Ada\", Email = \"ada@example.com\" };"
+        },
+        "case3": {
+          "title": "List patterns (patterns de liste)",
+          "description": "Exemple concret: router simple qui fait du matching sur les segments d'URL (préfixe, suffixe, capture du reste).",
+          "language": "csharp",
+          "code": "static string HandleRoute(string path)\n{\n    var segments = path.Trim('/').Split('/', StringSplitOptions.RemoveEmptyEntries);\n    return segments switch\n    {\n        [\"products\"] => \"ListProducts\",\n        [\"products\", \"new\"] => \"CreateProduct\",\n        [\"products\", var id] => $\"GetProduct({id})\",\n        [\"users\", \"me\"] => \"GetCurrentUser\",\n        [\"users\", var id, \"orders\", .. var rest] => $\"UserOrders({id})/{string.Join('/', rest)}\",\n        [] => \"Home\",\n        _ => \"NotFound\"\n    };\n}\n\n// Exemples\n// HandleRoute(\"/\") => Home\n// HandleRoute(\"/products\") => ListProducts\n// HandleRoute(\"/products/42\") => GetProduct(42)\n// HandleRoute(\"/users/me\") => GetCurrentUser\n// HandleRoute(\"/users/7/orders/history\") => UserOrders(7)/history"
+        }
+      },
+      "summary": {
+        "title": "Résumé",
+        "text": "Adoptez progressivement ces features là où elles simplifient le code et sécurisent l'API.",
+        "prosTitle": "Avantages",
+        "consTitle": "Inconvénients",
+        "pros": [
+          "Lisibilité accrue (raw strings, patterns)",
+          "API plus sûres (required)",
+          "Moins de bruit syntaxique"
+        ],
+        "cons": [
+          "Nécessite .NET SDK récent",
+          "Interop avec anciens analyzers/outils parfois à ajuster"
+        ]
+      },
+      "goodPractices": {
+        "title": "Bonnes pratiques",
+        "items": [
+          "Activez les analyzers et warnings as errors pour fiabiliser required",
+          "Préférez les raw strings pour JSON/regex plutôt que concaténations",
+          "Gardez les patterns lisibles (évitez les motifs trop denses)"
+        ]
+      },
+      "footer": {
+        "sourcesLabel": "Sources :",
+        "sources": [
+          {
+            "name": "Documentation officielle",
+            "url": "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-11"
+          }
+        ],
+        "writtenOn": "Écrit le {{date}}"
+      }
+    }
+  }
+}

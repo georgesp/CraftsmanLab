@@ -12,6 +12,7 @@ import {
   TableRow,
   Paper,
 } from '@mui/material';
+import Link from '@mui/material/Link';
 import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
 import { meta } from './meta';
 
@@ -310,23 +311,13 @@ await retryPolicy.ExecuteAsync(async () =>
       >
         <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
           {t('polly.content.footer.sourcesLabel')}{' '}
-          <a
-            href="https://github.com/App-vNext/Polly"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: 'inherit', textDecoration: 'underline' }}
-          >
+          <Link href="https://github.com/App-vNext/Polly" target="_blank" rel="noopener noreferrer" underline="always" color="inherit">
             {t('polly.content.footer.officialDocs')}
-          </a>{' '}
+          </Link>{' '}
           •{' '}
-          <a
-            href="https://github.com/App-vNext/Polly/blob/main/docs/polly.md"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: 'inherit', textDecoration: 'underline' }}
-          >
+          <Link href="https://github.com/App-vNext/Polly/blob/main/docs/polly.md" target="_blank" rel="noopener noreferrer" underline="always" color="inherit">
             {t('polly.content.footer.fullGuide')}
-          </a>
+          </Link>
         </Typography>
         <Typography variant="caption" component="div" sx={{ color: 'text.secondary' }}>
           {t('polly.content.footer.writtenOn', { date: meta.writtenOn })}

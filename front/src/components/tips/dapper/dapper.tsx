@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography, Link } from '@mui/material';
 import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
-import TipContent from '../TipContent';
+import { TipContent } from '../../ui';
 import { meta } from './meta';
 
 const DapperTip: React.FC = () => {
@@ -185,20 +185,18 @@ using (var conn = new SqlConnection(connString))
         borderTop={(theme) => `1px solid ${theme.palette.divider}`}
         sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
       >
-        <Typography
-          variant="caption"
-          component="div"
-          sx={{ fontStyle: 'italic', color: 'text.secondary' }}
-        >
-          <Link
-            href="https://github.com/DapperLib/Dapper"
-            target="_blank"
-            rel="noopener noreferrer"
-            underline="hover"
-            color="inherit"
-          >
-            {t('dapper.content.footer.sourceLabel')}
-          </Link>
+        <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
+          {t('dapper.content.footer.sourcesLabel')}{' '}
+          {(
+            t('dapper.content.footer.sources', { returnObjects: true }) as { name: string; url: string }[]
+          ).map((s, i, arr) => (
+            <span key={i}>
+              <Link href={s.url} target="_blank" rel="noopener noreferrer" underline="always" color="inherit">
+                {s.name}
+              </Link>
+              {i < arr.length - 1 ? ' • ' : ''}
+            </span>
+          ))}
         </Typography>
         <Typography variant="caption" component="div" sx={{ color: 'text.secondary' }}>
           {t('dapper.content.footer.writtenOn', { date: meta.writtenOn })}

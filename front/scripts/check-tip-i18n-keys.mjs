@@ -5,7 +5,7 @@ import path from 'path';
 const root = process.cwd();
 const tipsRoot = path.join(root, 'src', 'components', 'tips');
 
-/** Known tip files (exclude polly) */
+/** Known tip files*/
 const tipConfigs = [
   { name: 'dapper', tsx: 'dapper/dapper.tsx', jsonDir: 'dapper', keyPrefix: 'dapper' },
   { name: 'xunit', tsx: 'xunit/xunit.tsx', jsonDir: 'xunit', keyPrefix: 'xunit' },

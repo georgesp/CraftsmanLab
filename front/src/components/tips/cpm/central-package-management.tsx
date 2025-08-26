@@ -4,7 +4,7 @@ import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';
 import { CodeBlock } from '../../ui/CodeBlock';
 import { meta } from './meta';
-import TipContent from '../TipContent';
+import { TipContent } from '../../ui';
 
 const CentralPackageManagementTip: React.FC = () => {
   const { t } = useTranslation('tips');
@@ -170,19 +170,18 @@ dotnet sln add src/**/*.csproj`}
         borderTop={(theme) => `1px solid ${theme.palette.divider}`}
         sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
       >
-        <Typography
-          variant="caption"
-          component="div"
-          sx={{ fontStyle: 'italic', color: 'text.secondary' }}
-        >
-          <a
-            href="https://learn.microsoft.com/en-us/dotnet/core/packaging/central-package-management"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: 'inherit', textDecoration: 'underline' }}
-          >
-            {t('cpm.content.footer.sourceLabel')}
-          </a>
+        <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
+          {t('cpm.content.footer.sourcesLabel')}{' '}
+          {(
+            t('cpm.content.footer.sources', { returnObjects: true }) as { name: string; url: string }[]
+          ).map((s, i, arr) => (
+            <span key={i}>
+              <a href={s.url} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
+                {s.name}
+              </a>
+              {i < arr.length - 1 ? ' • ' : ''}
+            </span>
+          ))}
         </Typography>
         <Typography variant="caption" component="div" sx={{ color: 'text.secondary' }}>
           {t('cpm.content.footer.writtenOn', { date: meta.writtenOn })}

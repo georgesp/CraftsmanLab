@@ -96,7 +96,10 @@
       }
       ,
       "footer": {
-        "sourceLabel": "Source : NSubstitute (GitHub)",
+        "sourcesLabel": "Sources :",
+        "sources": [
+          { "name": "NSubstitute (GitHub)", "url": "https://github.com/nsubstitute/NSubstitute" }
+        ],
         "writtenOn": "Écrit le {{date}}"
       }
     }

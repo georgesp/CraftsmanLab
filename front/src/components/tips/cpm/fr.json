@@ -108,7 +108,13 @@
         }
       },
       "footer": {
-        "sourceLabel": "Source : Microsoft Docs – Central Package Management",
+        "sourcesLabel": "Sources :",
+        "sources": [
+          {
+            "name": "Microsoft Docs – Central Package Management",
+            "url": "https://learn.microsoft.com/fr-fr/dotnet/core/packaging/central-package-management"
+          }
+        ],
         "writtenOn": "Écrit le {{date}}"
       }
     }

@@ -58,7 +58,10 @@
         }
       },
       "footer": {
-        "sourceLabel": "Source: Official documentation",
+        "sourcesLabel": "Sources:",
+        "sources": [
+          { "name": "Official documentation", "url": "https://docs.automapper.org/" }
+        ],
         "writtenOn": "Written on {{date}}"
       }
     }

@@ -64,7 +64,10 @@
       }
       ,
       "footer": {
-        "sourceLabel": ".NET Docs – System.Collections",
+        "sourcesLabel": "Sources:",
+        "sources": [
+          { "name": ".NET Docs – System.Collections", "url": "https://learn.microsoft.com/dotnet/api/system.collections" }
+        ],
         "writtenOn": "Written on {{date}}"
       }
     }

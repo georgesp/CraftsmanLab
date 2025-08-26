@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Typography } from '@mui/material';
 import CodeBlock from '../../ui/CodeBlock/CodeBlock';
-import TipContent from '../TipContent';
+import { TipContent } from '../../ui';
 import { meta } from './meta';
 
 const FacetTip: React.FC = () => {

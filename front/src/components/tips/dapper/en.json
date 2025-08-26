@@ -52,7 +52,10 @@
         }
       },
       "footer": {
-        "sourceLabel": "Source: Dapper (GitHub)",
+        "sourcesLabel": "Sources:",
+        "sources": [
+          { "name": "Dapper (GitHub)", "url": "https://github.com/DapperLib/Dapper" }
+        ],
         "writtenOn": "Written on {{date}}"
       }
     }

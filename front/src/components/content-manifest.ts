@@ -15,6 +15,7 @@ import { meta as switchTupleMeta } from './tips/tic/meta';
 import { meta as cpmMeta } from './tips/cpm/meta';
 import { meta as collectionMeta } from './tips/collection/meta';
 import { meta as keyValueCollectionMeta } from './tips/keyValueCollection/meta';
+import { meta as csharp11Meta } from './tips/csharp-11/meta';
 
 export type TipEntry = TipMeta & { load: () => Promise<any> };
 
@@ -29,6 +30,7 @@ export const tipsEntries: TipEntry[] = [
   { ...cpmMeta, load: () => import('./tips/cpm/central-package-management') },
   { ...collectionMeta, load: () => import('./tips/collection/collection') },
   { ...keyValueCollectionMeta, load: () => import('./tips/keyValueCollection/key-value-collection') },
+  { ...csharp11Meta, load: () => import('./tips/csharp-11/csharp-11') },
 ];
 
 // ----- Prompts: metas -----
@@ -65,6 +67,8 @@ import collectionFr from './tips/collection/fr.json';
 import collectionEn from './tips/collection/en.json';
 import keyValueCollectionFr from './tips/keyValueCollection/fr.json';
 import keyValueCollectionEn from './tips/keyValueCollection/en.json';
+import csharp11Fr from './tips/csharp-11/fr.json';
+import csharp11En from './tips/csharp-11/en.json';
 
 export const tipsTranslationsFr = {
   ...pollyFr,
@@ -77,6 +81,7 @@ export const tipsTranslationsFr = {
   ...cpmFr,
   ...collectionFr,
   ...keyValueCollectionFr,
+  ...csharp11Fr,
 };
 
 export const tipsTranslationsEn = {
@@ -90,6 +95,7 @@ export const tipsTranslationsEn = {
   ...cpmEn,
   ...collectionEn,
   ...keyValueCollectionEn,
+  ...csharp11En,
 };
 
 // ----- Prompts: translations -----

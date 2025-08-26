@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography, Link } from '@mui/material';
 import { meta } from './meta';
-import TipContent from '../TipContent';
+import { TipContent } from '../../ui';
 
 const CollectionTip: React.FC = () => {
   const { t } = useTranslation('tips');
@@ -94,20 +94,18 @@ const CollectionTip: React.FC = () => {
         borderTop={(theme) => `1px solid ${theme.palette.divider}`}
         sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
       >
-        <Typography
-          variant="caption"
-          component="div"
-          sx={{ fontStyle: 'italic', color: 'text.secondary' }}
-        >
-          <Link
-            href="https://learn.microsoft.com/fr-fr/dotnet/api/system.collections"
-            target="_blank"
-            rel="noopener noreferrer"
-            underline="hover"
-            color="inherit"
-          >
-            {t('collection.content.footer.sourceLabel')}
-          </Link>
+        <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
+          {t('collection.content.footer.sourcesLabel')}{' '}
+          {(
+            t('collection.content.footer.sources', { returnObjects: true }) as { name: string; url: string }[]
+          ).map((s, i, arr) => (
+            <span key={i}>
+              <Link href={s.url} target="_blank" rel="noopener noreferrer" underline="always" color="inherit">
+                {s.name}
+              </Link>
+              {i < arr.length - 1 ? ' • ' : ''}
+            </span>
+          ))}
         </Typography>
         <Typography variant="caption" component="div" sx={{ color: 'text.secondary' }}>
           {t('collection.content.footer.writtenOn', { date: meta.writtenOn })}
