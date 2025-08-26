@@ -1,9 +1,6 @@
 import React from 'react';
 import { Container, Typography, Card, Box } from '@mui/material';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import { telerikTheme } from '../../theme/theme';
-import { Header, Footer, ScrollToTopButton } from '../../components';
+import { ScrollToTopButton, PageLayout } from '../../components';
 import { PromptCardsGrid } from '../../components/prompts/prompt-cards-grid';
 import { COLORS } from '../../styles/colors';
 import {
@@ -14,11 +11,8 @@ import {
 
 export const PromptsPage: React.FC = () => {
   return (
-    <ThemeProvider theme={telerikTheme}>
-      <CssBaseline />
-      <Header />
-
-            <Container maxWidth={false} disableGutters sx={{ px: 0, mx: 0, width: '100%', backgroundColor: COLORS.darkGreyBg, minHeight: '100vh' }}>
+    <PageLayout>
+            <Container maxWidth={false} disableGutters sx={{ px: 0, mx: 0, width: '100%', backgroundColor: COLORS.darkGreyBg }}>
               <PromptsPageContainer sx={{ px: 0, mx: 0, width: '100%', ml: { xs: 0, md: 2, lg: 6 } }}>
                 <Box sx={{ display: 'flex', alignItems: 'stretch', gap: { xs: 2, sm: 4 }, flexWrap: { xs: 'wrap', md: 'nowrap' } }}>
                   <Box
@@ -93,9 +87,8 @@ export const PromptsPage: React.FC = () => {
           </Card>
         </GridContainer>
   </Container>
-  <ScrollToTopButton />
-  <Footer />
-    </ThemeProvider>
+      <ScrollToTopButton />
+    </PageLayout>
   );
 };
 

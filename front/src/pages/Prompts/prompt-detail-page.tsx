@@ -5,7 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { useParams } from 'react-router-dom';
 import { telerikTheme } from '../../theme/theme';
 import { PAGE_SPACING } from '../../styles/spacing';
-import { Header, Footer, ScrollToTopButton } from '../../components';
+import { PageLayout, ScrollToTopButton } from '../../components';
 import { COLORS } from '../../styles/colors';
 import { findPromptBySlug } from '../../components/prompts/registry';
 import { PromptList } from '../../components/prompts/prompt-list';
@@ -41,7 +41,7 @@ export const PromptDetailPage: React.FC = () => {
   return (
     <ThemeProvider theme={telerikTheme}>
       <CssBaseline />
-      <Header />
+      <PageLayout>
       <Container maxWidth="lg">
         <Box sx={{ py: PAGE_SPACING.detail.paddingY, my: PAGE_SPACING.detail.marginY }}>
           {!entry && (
@@ -71,9 +71,9 @@ export const PromptDetailPage: React.FC = () => {
             </Grid>
           )}
         </Box>
-      </Container>
+  </Container>
   <ScrollToTopButton />
-  <Footer />
+  </PageLayout>
   <Snackbar
         open={copyOpen}
         autoHideDuration={2000}

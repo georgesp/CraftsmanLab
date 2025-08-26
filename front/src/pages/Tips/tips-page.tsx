@@ -1,19 +1,14 @@
 import React from 'react';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
 import { Container, Card, Typography, Box } from '@mui/material';
-import { telerikTheme } from '../../theme/theme';
-import { Header, Footer, ScrollToTopButton } from '../../components';
+import { PageLayout, ScrollToTopButton } from '../../components';
 import { TipCardsGrid } from '../../components/tips/tip-cards-grid';
 import { COLORS } from '../../styles/colors';
 import { GridContainer, PromptsPageContainer } from '../Prompts/styles';
 
 export const TipsPage: React.FC = () => {
 	return (
-		<ThemeProvider theme={telerikTheme}>
-			<CssBaseline />
-			<Header />
-			<Container maxWidth={false} disableGutters sx={{ px: 0, mx: 0, width: '100%', backgroundColor: COLORS.darkGreyBg, minHeight: '100vh' }}>
+		<PageLayout>
+					<Container maxWidth={false} disableGutters sx={{ px: 0, mx: 0, width: '100%', backgroundColor: COLORS.darkGreyBg }}>
 				<PromptsPageContainer sx={{ px: 0, mx: 0, width: '100%', ml: { xs: 0, md: 6 }, mb: 0 }}>
 					<Box sx={{ display: 'flex', alignItems: 'stretch', gap: { xs: 1, sm: 2 }, flexWrap: { xs: 'wrap', md: 'nowrap' } }}>
 						<Box
@@ -65,10 +60,9 @@ export const TipsPage: React.FC = () => {
 						<TipCardsGrid />
 					</Card>
 				</GridContainer>
-			</Container>
-			<ScrollToTopButton />
-		<Footer />
-		</ThemeProvider>
+					</Container>
+				<ScrollToTopButton />
+		</PageLayout>
 	);
 };
 

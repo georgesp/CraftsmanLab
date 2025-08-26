@@ -1,12 +1,9 @@
 import * as React from 'react';
 import { Container, Typography, Box, Card } from '@mui/material';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import { telerikTheme } from '../../theme/theme';
 import { COLORS } from '../../styles/colors';
 import { PAGE_SPACING } from '../../styles/spacing';
 import { LazyTipCardsGrid } from '../../components/tips/tip-cards-grid-lazy';
-import { Header, Footer } from '../../components';
+import { PageLayout } from '../../components';
 // Lazy-load the prompts grid to avoid importing import.meta-based registry in tests
 const LazyPromptCardsGrid = React.lazy(() =>
   import('../../components/prompts/prompt-cards-grid').then((m) => ({
@@ -15,15 +12,12 @@ const LazyPromptCardsGrid = React.lazy(() =>
 );
 
 export const HomePage: React.FC = () => (
-  <ThemeProvider theme={telerikTheme}>
-    <CssBaseline />
-    <Header />
-
-    <Container
-      maxWidth={false}
-      disableGutters
-      sx={{ px: 0, mx: 0, width: '100%', backgroundColor: COLORS.darkGreyBg, minHeight: '100vh' }}
-    >
+  <PageLayout>
+        <Container
+          maxWidth={false}
+          disableGutters
+          sx={{ px: 0, mx: 0, width: '100%', backgroundColor: COLORS.darkGreyBg }}
+        >
       {/* Tips Section */}
       <Box sx={{ py: PAGE_SPACING.content.paddingY, width: '100%' }}>
         {/* <Typography
@@ -98,10 +92,9 @@ export const HomePage: React.FC = () => (
             })()}
           </Box>
         </Card>
-      </Box>
+  </Box>
     </Container>
-    <Footer />
-  </ThemeProvider>
+  </PageLayout>
 );
 
 HomePage.displayName = 'HomePage';
