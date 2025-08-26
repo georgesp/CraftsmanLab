@@ -13,6 +13,9 @@
     "sidebar": {
       "title": "Tips / Memos"
     },
+    "related": {
+      "title": "Related tips"
+    },
     "errors": {
       "notFound": "No tip found for « {{slug}} »"
     }

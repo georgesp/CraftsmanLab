@@ -10,7 +10,7 @@ export const meta: TipMeta = {
     searchKeywords: {
       fr: [
         'c# 12',
-        'nouveautés c#',
+        'nouveautés',
         'primary constructors',
         'constructeurs primaires',
         'collection expressions',
@@ -25,7 +25,7 @@ export const meta: TipMeta = {
       ],
       en: [
         'c# 12',
-        'whats new c#',
+        'whats new',
         'primary constructors',
         'collection expressions',
         'default lambda parameters',

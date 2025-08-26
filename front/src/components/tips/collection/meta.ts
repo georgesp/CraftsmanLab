@@ -10,6 +10,7 @@ export const meta: TipMeta = {
     searchKeywords: {
       fr: [
         'collections',
+        'collection',
         'ienumerable',
         'icollection',
         'ilist',
@@ -29,6 +30,7 @@ export const meta: TipMeta = {
       ],
       en: [
         'collections',
+        'collection',
         'ienumerable',
         'icollection',
         'ilist',

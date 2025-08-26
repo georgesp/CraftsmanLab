@@ -24,6 +24,8 @@ export const meta: TipMeta = {
         'containskey',
         'keys',
         'values',
+        'collections',
+        'collection',
       ],
       en: [
         'dictionary',
@@ -38,6 +40,8 @@ export const meta: TipMeta = {
         'containskey',
         'keys',
         'values',
+        'collections',
+        'collection',
       ],
     },
   },

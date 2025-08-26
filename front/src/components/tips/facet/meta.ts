@@ -24,6 +24,7 @@ export const meta: TipMeta = {
         'requêtes',
         'optimisation',
         'source generator',
+        'mapper',
       ],
       en: [
         'facet',
@@ -41,6 +42,7 @@ export const meta: TipMeta = {
         'queries',
         'optimization',
         'source generator',
+        'mapper',
       ],
     },
   },

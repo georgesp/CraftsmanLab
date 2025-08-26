@@ -41,6 +41,7 @@ export const TipList: React.FC<Props> = ({ selectedSlug, onNavigate, maxItems })
         >
           <ListItemText
             primary={getTranslatedText(t.slug, 'title', t.title)}
+            primaryTypographyProps={{ sx: { color: COLORS.darkTheme.textPrimary } }}
             secondary={getTranslatedText(t.slug, 'shortDescription', t.shortDescription)}
           />
         </ListItemButton>
