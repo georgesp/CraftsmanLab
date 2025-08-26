@@ -1,0 +1,14 @@
+{
+  "aspnet-core-guidances": {
+    "title": "ASP.NET Core Guidances",
+    "shortDescription": "Règles et bonnes pratiques ASP.NET Core.",
+    "description": "Collection de directives et bonnes pratiques pour développer des applications ASP.NET Core robustes et maintenables.",
+    "content": {
+      "introduction": "Ce document regroupe les règles obligatoires et les meilleures pratiques pour le développement d'applications ASP.NET Core. Il s'appuie sur l'AspNetCore Guidance de David Fowler et adapte les recommandations au contexte du workspace.",
+      "copyButton": "Copier le prompt",
+      "copySuccess": "Prompt copié dans le presse-papiers !",
+      "writtenOn": "Écrit le",
+      "sources": "Pour toute question, consulter la documentation officielle ASP.NET Core et le référentiel Guidance"
+    }
+  }
+}

@@ -107,12 +107,21 @@
             "remove": "Remove versions from each .csproj.",
             "restore": "Run dotnet restore."
           }
-  }
+        }
       },
       "footer": {
         "sourceLabel": "Source: Microsoft Docs – Central Package Management",
         "writtenOn": "Written on {{date}}"
       }
+    }
+  }
+  ,
+  "central-package-management": {
+    "title": "Central Package Management (CPM)",
+    "shortDescription": "Unify NuGet versions across your .NET solution with CPM",
+    "content": {
+      "mainTitle": "Central Package Management: centralized NuGet package management",
+      "summary": "Simplifies dependency maintenance by avoiding version conflicts and centralizing configuration."
     }
   }
 }

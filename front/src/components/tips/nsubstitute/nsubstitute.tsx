@@ -3,60 +3,7 @@ import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';
 import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
-
-export const meta = {
-  slug: 'nsubstitute',
-  title: '', // Utilisera les traductions
-  shortDescription: '', // Utilisera les traductions
-  writtenOn: '2025-08-12',
-  keywords: ['C#' as const],
-  metadata: {
-    searchKeywords: {
-      fr: [
-        'nsubstitute',
-        'mock',
-        'mocking',
-        'substitute',
-        'double',
-        'fake',
-        'stub',
-        'spy',
-        'tests',
-        'isolation',
-        'dépendance',
-        'interface',
-        'simulation',
-        'vérification',
-        'arguments',
-        'retour',
-        'callback',
-        'received',
-        'returns',
-      ],
-      en: [
-        'nsubstitute',
-        'mock',
-        'mocking',
-        'substitute',
-        'double',
-        'fake',
-        'stub',
-        'spy',
-        'tests',
-        'isolation',
-        'dependency',
-        'interface',
-        'simulation',
-        'verification',
-        'arguments',
-        'return',
-        'callback',
-        'received',
-        'returns',
-      ],
-    },
-  },
-};
+import { meta } from './meta';
 
 // Code blocks rendered with shared CodeBlock component
 
@@ -205,22 +152,25 @@ public class MathServiceTests
       </Typography>
       <ul>
         <li>
-          <code>calc.Add(2,3).Returns(5)</code> force la valeur de retour uniquement pour ces
-          arguments.
+          {t('nsubstitute.content.sections.notes.points.0', {
+            defaultValue:
+              '<code>calc.Add(2,3).Returns(5)</code> sets the return value only for those arguments.',
+          }) as any}
         </li>
         <li>
-          Si tu ne précises pas de retour explicite, le mock renverra la valeur par défaut du type (
-          <code>0</code> pour
-          <code> int</code>, <code>null</code> pour les références, etc.).
+          {t('nsubstitute.content.sections.notes.points.1', {
+            defaultValue:
+              'If you don\'t specify an explicit return, the mock returns the type\'s default value (<code>0</code> for <code>int</code>, <code>null</code> for references, etc.).',
+          }) as any}
         </li>
       </ul>
 
       <Typography variant="h4" gutterBottom sx={{ mt: 4 }}>
-        Cas pratiques supplémentaires
+        {t('nsubstitute.content.sections.additional.title')}
       </Typography>
 
       <Typography variant="h6" gutterBottom>
-        Mock d’une méthode asynchrone
+        {t('nsubstitute.content.sections.additional.asyncMethod')}
       </Typography>
       <CodeBlock
         language="csharp"
@@ -234,24 +184,20 @@ asyncMock.GetDataAsync("abc").Returns(Task.FromResult("mocked data"));`}
       />
 
       <Typography variant="h6" gutterBottom>
-        Mock d’une méthode qui lance une exception
+        {t('nsubstitute.content.sections.additional.exceptionMethod')}
       </Typography>
       <CodeBlock language="csharp" code={`calc.DoSomething().Throws(new ArgumentException());`} />
 
       <Typography variant="h6" gutterBottom>
-        Vérifier le nombre d’appels
+        {t('nsubstitute.content.sections.additional.verifyCount')}
       </Typography>
       <CodeBlock
         language="csharp"
-        code={`// Au moins deux appels
-calc.Received(2).Log(Arg.Any<string>());
-
-// No calls
-calc.DidNotReceive().Add(Arg.Any<int>(), Arg.Any<int>());`}
+        code={t('nsubstitute.content.sections.additional.verifyCountCode')}
       />
 
       <Typography variant="h6" gutterBottom>
-        Utiliser When pour capturer l’argument passé
+        {t('nsubstitute.content.sections.additional.captureArg')}
       </Typography>
       <CodeBlock
         language="csharp"
@@ -269,26 +215,28 @@ calc.When(call => call.Log(Arg.Any<string>()))
       />
 
       <Typography variant="h4" gutterBottom sx={{ mt: 4 }}>
-        Bonnes pratiques
+        {t('nsubstitute.content.sections.goodPractices.title')}
       </Typography>
       <ul>
         <li>
-          <b>Noms explicites</b> — exemple lisible comme un pseudo‑code :
+          <b>{t('nsubstitute.content.sections.goodPractices.items.explicitNames.title')}</b> —{' '}
+          {t('nsubstitute.content.sections.goodPractices.items.explicitNames.desc')}
           <CodeBlock
             language="csharp"
             code={`calc.Add(Arg.Any<int>(), Arg.Any<int>()).Returns(call => ...)`}
           />
         </li>
         <li>
-          <b>Évite les mocks inutiles</b> — si tu n’interagis pas avec l’objet, ne le mocke pas.
+          <b>{t('nsubstitute.content.sections.goodPractices.items.avoidUselessMocks.title')}</b> —{' '}
+          {t('nsubstitute.content.sections.goodPractices.items.avoidUselessMocks.desc')}
         </li>
         <li>
-          <b>Utilise Substitute.ForPartsOf&lt;T&gt;()</b> pour tester une classe concrète
-          partiellement — tu gardes la logique interne et tu ne stubs que ce qui est nécessaire.
+          <b>{t('nsubstitute.content.sections.goodPractices.items.usePartialMock.title')}</b> —{' '}
+          {t('nsubstitute.content.sections.goodPractices.items.usePartialMock.desc')}
         </li>
         <li>
-          <b>Ne cache jamais un bug</b> — si tu stubbes tout, ton test peut passer même si le code
-          est incorrect.
+          <b>{t('nsubstitute.content.sections.goodPractices.items.neverHideBug.title')}</b> —{' '}
+          {t('nsubstitute.content.sections.goodPractices.items.neverHideBug.desc')}
         </li>
       </ul>
 

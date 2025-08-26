@@ -58,4 +58,13 @@
       }
     }
   }
+    ,
+    "key-value-collection": {
+      "title": "Key-value Collections in C#",
+      "shortDescription": "Different key-value structures (IDictionary, IReadOnlyDictionary, etc.)",
+      "content": {
+        "mainTitle": "Key-value collections in C#: dictionaries and alternatives",
+        "summary": "Master the differences between Dictionary, IDictionary, IReadOnlyDictionary and their alternatives for informed choices."
+      }
+    }
 }

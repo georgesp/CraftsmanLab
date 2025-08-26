@@ -24,7 +24,12 @@
           "codeBlock": "public static string GetAction((string role, string state) input) => input switch\n{\n    (\"Admin\", \"Active\")      => \"FullAccess\",\n    (\"User\",  \"Active\")      => \"LimitedAccess\",\n    (\"Guest\", _)              => \"ReadOnly\",\n    (_,          \"Suspended\")   => \"NoAccess\",\n    _                             => \"Unknown\"\n};"
         },
         "summary": {
-          "title": "Résumé"
+          "title": "Résumé",
+          "points": [
+            "Simple et lisible : compare plusieurs éléments en une seule expression, parfait pour des cas de dispatch.",
+            "Moins de code répétitif : on évite les if/else et l'extraction manuelle des champs.",
+            "Flexible : possibilité de combiner tuples, enums ou classes dans les patterns pour couvrir la plupart des cas."
+          ]
         },
         "benefits": {
           "title": "Avantages",
@@ -46,6 +51,9 @@
             "Documentez la logique métier derrière les patterns"
           ]
         }
+      },
+      "footer": {
+        "writtenOn": "Écrit le {{date}}"
       }
     }
   }

@@ -13,58 +13,7 @@ import {
   Paper,
 } from '@mui/material';
 import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
-
-export const meta = {
-  slug: 'polly',
-  title: '', // Utilisera les traductions
-  shortDescription: '', // Utilisera les traductions
-  writtenOn: '2025-08-20',
-  keywords: ['C#' as const],
-  metadata: {
-    searchKeywords: {
-      fr: [
-        'polly',
-        'résilience',
-        'retry',
-        'tentative',
-        'circuit breaker',
-        'timeout',
-        'fallback',
-        'politique',
-        'échec',
-        'panne',
-        'robustesse',
-        'stabilité',
-        'récupération',
-        'bulkhead',
-        'rate limiting',
-        'fault tolerance',
-        'exception',
-        'waitAndRetry',
-      ],
-      en: [
-        'polly',
-        'resilience',
-        'retry',
-        'attempt',
-        'circuit breaker',
-        'timeout',
-        'fallback',
-        'policy',
-        'failure',
-        'fault',
-        'robustness',
-        'stability',
-        'recovery',
-        'bulkhead',
-        'rate limiting',
-        'fault tolerance',
-        'exception',
-        'waitAndRetry',
-      ],
-    },
-  },
-};
+import { meta } from './meta';
 
 const PollyTip: React.FC = () => {
   const { t } = useTranslation('tips');
@@ -126,11 +75,7 @@ const PollyTip: React.FC = () => {
       </Typography>
       <CodeBlock
         language="bash"
-        code={`# Depuis la console du gestionnaire de packages
-Install-Package Polly
-
-# ou avec .NET CLI
-dotnet add package Polly`}
+  code={t('polly.content.sections.installation.nuget.code', { defaultValue: '# Install from Package Manager Console\nInstall-Package Polly\n\n# or with .NET CLI\ndotnet add package Polly' })}
       />
 
       <Typography paragraph>
@@ -363,19 +308,15 @@ await retryPolicy.ExecuteAsync(async () =>
         borderTop={(theme) => `1px solid ${theme.palette.divider}`}
         sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
       >
-        <Typography
-          variant="caption"
-          component="div"
-          sx={{ fontStyle: 'italic', color: 'text.secondary' }}
-        >
-          Sources :{' '}
+        <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
+          {t('polly.content.footer.sourcesLabel')}{' '}
           <a
             href="https://github.com/App-vNext/Polly"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: 'inherit', textDecoration: 'underline' }}
           >
-            Documentation officielle
+            {t('polly.content.footer.officialDocs')}
           </a>{' '}
           •{' '}
           <a
@@ -384,11 +325,11 @@ await retryPolicy.ExecuteAsync(async () =>
             rel="noopener noreferrer"
             style={{ color: 'inherit', textDecoration: 'underline' }}
           >
-            Guide complet
+            {t('polly.content.footer.fullGuide')}
           </a>
         </Typography>
         <Typography variant="caption" component="div" sx={{ color: 'text.secondary' }}>
-          {meta.writtenOn}
+          {t('polly.content.footer.writtenOn', { date: meta.writtenOn })}
         </Typography>
       </Box>
     </Box>

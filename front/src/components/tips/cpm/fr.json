@@ -113,4 +113,13 @@
       }
     }
   }
+    ,
+    "central-package-management": {
+      "title": "Central Package Management (CPM)",
+      "shortDescription": "Uniformiser les versions NuGet dans votre solution .NET avec CPM",
+      "content": {
+        "mainTitle": "Central Package Management : gestion centralisée des packages NuGet",
+        "summary": "Simplifie la maintenance des dépendances en évitant les conflits de versions et en centralisant la configuration."
+      }
+    }
 }

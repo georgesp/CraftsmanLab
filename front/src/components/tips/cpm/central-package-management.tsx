@@ -3,48 +3,7 @@ import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';
 import { CodeBlock } from '../../ui/CodeBlock';
-
-export const meta = {
-  slug: 'central-package-management',
-  title: '', // Utilisera les traductions
-  shortDescription: '', // Utilisera les traductions
-  writtenOn: '2025-08-16',
-  keywords: ['C#' as const],
-  metadata: {
-    searchKeywords: {
-      fr: [
-        'cpm',
-        'central package management',
-        'nuget',
-        'packages',
-        'versions',
-        'directory.packages.props',
-        'centralpackageversions',
-        'gestion',
-        'uniforme',
-        'solution',
-        'projet',
-        'dépendances',
-        'mise à jour',
-      ],
-      en: [
-        'cpm',
-        'central package management',
-        'nuget',
-        'packages',
-        'versions',
-        'directory.packages.props',
-        'centralpackageversions',
-        'management',
-        'uniform',
-        'solution',
-        'project',
-        'dependencies',
-        'update',
-      ],
-    },
-  },
-};
+import { meta } from './meta';
 
 const CentralPackageManagementTip: React.FC = () => {
   const { t } = useTranslation('tips');

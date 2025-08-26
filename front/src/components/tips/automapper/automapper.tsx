@@ -3,60 +3,7 @@ import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';
 import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
-import type { Keyword } from '../../../utils/constants';
-
-export const meta = {
-  slug: 'automapper',
-  title: '', // Utilisera les traductions
-  shortDescription: '', // Utilisera les traductions
-  writtenOn: '2025-08-14',
-  // TipMeta expects Keyword[] (mutable). Cast from literal to satisfy TS without changing runtime value.
-  keywords: ['C#'] as unknown as Keyword[],
-  metadata: {
-    searchKeywords: {
-      fr: [
-        'automapper',
-        'mapping',
-        'transformation',
-        'conversion',
-        'dto',
-        'entity',
-        'objet',
-        'profile',
-        'configuration',
-        'projection',
-        'flattening',
-        'copie',
-        'automatique',
-        'convention',
-        'règles',
-        'validation',
-        'mapFrom',
-        'ignore',
-      ],
-      en: [
-        'automapper',
-        'mapping',
-        'transformation',
-        'conversion',
-        'dto',
-        'entity',
-        'object',
-        'profile',
-        'configuration',
-        'projection',
-        'flattening',
-        'copy',
-        'automatic',
-        'convention',
-        'rules',
-        'validation',
-        'mapFrom',
-        'ignore',
-      ],
-    },
-  },
-};
+import { meta } from './meta';
 
 const AutomapperTip: React.FC = () => {
   const { t } = useTranslation('tips');

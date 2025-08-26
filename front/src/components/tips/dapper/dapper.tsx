@@ -3,60 +3,7 @@ import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography, Link } from '@mui/material';
 import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
-
-export const meta = {
-  slug: 'dapper',
-  title: '', // Utilisera les traductions
-  shortDescription: '', // Utilisera les traductions
-  writtenOn: '2025-08-12',
-  keywords: ['C#' as const],
-  metadata: {
-    searchKeywords: {
-      fr: [
-        'dapper',
-        'orm',
-        'micro-orm',
-        'base de données',
-        'sql',
-        'requête',
-        'mapping',
-        'dto',
-        'entity',
-        'performance',
-        'query',
-        'execute',
-        'paramètres',
-        'transaction',
-        'connection',
-        'stored procedure',
-        'procédure stockée',
-        'queryFirst',
-        'querySingle',
-        'queryMultiple',
-      ],
-      en: [
-        'dapper',
-        'orm',
-        'micro-orm',
-        'database',
-        'sql',
-        'query',
-        'mapping',
-        'dto',
-        'entity',
-        'performance',
-        'execute',
-        'parameters',
-        'transaction',
-        'connection',
-        'stored procedure',
-        'queryFirst',
-        'querySingle',
-        'queryMultiple',
-      ],
-    },
-  },
-};
+import { meta } from './meta';
 
 const DapperTip: React.FC = () => {
   const { t } = useTranslation('tips');

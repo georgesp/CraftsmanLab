@@ -2,55 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography, Link } from '@mui/material';
-
-export const meta = {
-  slug: 'collection',
-  title: '', // Utilisera les traductions
-  shortDescription: '', // Utilisera les traductions
-  writtenOn: '2025-08-11',
-  keywords: ['C#' as const],
-  metadata: {
-    searchKeywords: {
-      fr: [
-        'collections',
-        'ienumerable',
-        'icollection',
-        'ilist',
-        'ireadonlycollection',
-        'list',
-        'array',
-        'tableau',
-        'énumération',
-        'itération',
-        'foreach',
-        'linq',
-        'count',
-        'add',
-        'remove',
-        'indexer',
-        'générique',
-      ],
-      en: [
-        'collections',
-        'ienumerable',
-        'icollection',
-        'ilist',
-        'ireadonlycollection',
-        'list',
-        'array',
-        'enumeration',
-        'iteration',
-        'foreach',
-        'linq',
-        'count',
-        'add',
-        'remove',
-        'indexer',
-        'generic',
-      ],
-    },
-  },
-};
+import { meta } from './meta';
 
 const CollectionTip: React.FC = () => {
   const { t } = useTranslation('tips');
@@ -167,3 +119,4 @@ const CollectionTip: React.FC = () => {
 const mod: TipModule = { default: CollectionTip, meta };
 
 export { mod };
+export default CollectionTip;

@@ -19,7 +19,8 @@
           "title": "Installation",
           "nuget": {
             "title": "NuGet",
-            "description": "Polly ne dépend d'aucun framework particulier, donc vous pouvez l'utiliser dans un projet .NET Core, .NET 5/6/7 ou même Mono/Xamarin. Si vous utilisez ASP.NET Core, il y a aussi Microsoft.Extensions.Http.Polly qui intègre Polly directement aux clients HttpClientFactory."
+            "description": "Polly ne dépend d'aucun framework particulier, donc vous pouvez l'utiliser dans un projet .NET Core, .NET 5/6/7 ou même Mono/Xamarin. Si vous utilisez ASP.NET Core, il y a aussi Microsoft.Extensions.Http.Polly qui intègre Polly directement aux clients HttpClientFactory.",
+            "code": "# Depuis la console du gestionnaire de packages\nInstall-Package Polly\n\n# ou avec .NET CLI\ndotnet add package Polly"
           }
         },
         "principle": {
@@ -65,6 +66,13 @@
           }
         },
         "summary": { "title": "En résumé", "content": "Polly vous donne un framework léger mais puissant pour rendre vos appels externes plus robustes : retry, timeout, circuit breaker, fallback… Vous écrivez votre logique métier une seule fois et vous appliquez la politique en un appel Execute. C'est simple à mettre en place, très flexible, et ça s'intègre parfaitement dans l'écosystème .NET.", "conclusion": "Prêt à rendre vos services plus résilients ? Lancez les commandes NuGet, créez votre première Policy et voyez la différence !" }
+      }
+      ,
+      "footer": {
+        "sourcesLabel": "Sources:",
+        "officialDocs": "Documentation officielle",
+        "fullGuide": "Guide complet",
+        "writtenOn": "Écrit le {{date}}"
       }
     }
   }

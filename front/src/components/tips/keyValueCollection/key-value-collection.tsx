@@ -2,49 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography, Link } from '@mui/material';
-
-export const meta = {
-  slug: 'key-value-collection',
-  title: '', // Utilisera les traductions
-  shortDescription: '', // Utilisera les traductions
-  writtenOn: '2025-08-11',
-  keywords: ['C#' as const],
-  metadata: {
-    searchKeywords: {
-      fr: [
-        'dictionnaire',
-        'dictionary',
-        'idictionary',
-        'ireadonlydictionary',
-        'clé-valeur',
-        'key-value',
-        'hashtable',
-        'map',
-        'dico',
-        'hash',
-        'concurrentdictionary',
-        'trygetvalue',
-        'containskey',
-        'keys',
-        'values',
-      ],
-      en: [
-        'dictionary',
-        'idictionary',
-        'ireadonlydictionary',
-        'key-value',
-        'hashtable',
-        'map',
-        'hash',
-        'concurrentdictionary',
-        'trygetvalue',
-        'containskey',
-        'keys',
-        'values',
-      ],
-    },
-  },
-};
+import { meta } from './meta';
 
 const KeyValueCollectionTip: React.FC = () => {
   const { t } = useTranslation('tips');
@@ -149,3 +107,4 @@ const KeyValueCollectionTip: React.FC = () => {
 const mod: TipModule = { default: KeyValueCollectionTip, meta };
 
 export { mod };
+export default KeyValueCollectionTip;

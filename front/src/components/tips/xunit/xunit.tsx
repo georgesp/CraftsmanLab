@@ -3,52 +3,7 @@ import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';
 import CodeBlock from '../../ui/CodeBlock/CodeBlock';
-
-export const meta = {
-  slug: 'xunit',
-  title: '', // Utilisera les traductions
-  shortDescription: '', // Utilisera les traductions
-  writtenOn: '2025-08-12',
-  keywords: ['C#' as const],
-  metadata: {
-    searchKeywords: {
-      fr: [
-        'xunit',
-        'tests',
-        'test unitaire',
-        'testing',
-        'assertion',
-        'fact',
-        'theory',
-        'mstest',
-        'nunit',
-        'fixture',
-        'setup',
-        'teardown',
-        'mock',
-        'assert',
-        'async',
-      ],
-      en: [
-        'xunit',
-        'tests',
-        'unit testing',
-        'testing',
-        'assertion',
-        'fact',
-        'theory',
-        'mstest',
-        'nunit',
-        'fixture',
-        'setup',
-        'teardown',
-        'mock',
-        'assert',
-        'async',
-      ],
-    },
-  },
-};
+import { meta } from './meta';
 
 const XunitTip: React.FC = () => {
   const { t } = useTranslation('tips');

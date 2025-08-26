@@ -58,7 +58,40 @@
           "testWith": "Le test avec NSubstitute"
         },
         "notes": {
-          "title": "Remarques"
+          "title": "Remarques",
+          "points": [
+            "<code>calc.Add(2,3).Returns(5)</code> force la valeur de retour uniquement pour ces arguments.",
+            "Si vous ne précisez pas de retour explicite, le mock renverra la valeur par défaut du type (<code>0</code> pour <code>int</code>, <code>null</code> pour les références, etc.)."
+          ]
+        },
+        "additional": {
+          "title": "Cas pratiques supplémentaires",
+          "asyncMethod": "Mock d’une méthode asynchrone",
+          "exceptionMethod": "Mock d’une méthode qui lance une exception",
+          "verifyCount": "Vérifier le nombre d’appels",
+          "verifyCountCode": "// Au moins deux appels\ncalc.Received(2).Log(Arg.Any<string>());\n\n// Aucun appel\ncalc.DidNotReceive().Add(Arg.Any<int>(), Arg.Any<int>());",
+          "captureArg": "Utiliser When pour capturer l’argument passé"
+        },
+        "goodPractices": {
+          "title": "Bonnes pratiques",
+          "items": {
+            "explicitNames": {
+              "title": "Noms explicites",
+              "desc": "exemple lisible comme un pseudo‑code :"
+            },
+            "avoidUselessMocks": {
+              "title": "Évite les mocks inutiles",
+              "desc": "si vous n’interagissez pas avec l’objet, ne le mockez pas."
+            },
+            "usePartialMock": {
+              "title": "Utilise Substitute.ForPartsOf<T>()",
+              "desc": "pour tester une classe concrète partiellement — vous gardez la logique interne et vous ne stubb ez que le nécessaire."
+            },
+            "neverHideBug": {
+              "title": "Ne cache jamais un bug",
+              "desc": "si vous stubbez tout, un test peut passer même si le code est incorrect."
+            }
+          }
         }
       }
       ,

@@ -1,0 +1,12 @@
+{
+  "craftsmanlab-rules": {
+    "title": "CraftsmanLab Rules",
+    "shortDescription": "Rules and best practices for CraftsmanLab development. Code conventions, architecture, and methodologies.",
+    "description": "This prompt was used to create the foundation of the CraftsmanLab website; I then enriched it to add certain architectural rules as development progressed.\n\nYou can use it as a base for your own developments.",
+    "content": {
+      "copyButton": "Copy prompt",
+      "copySuccess": "Prompt copied to clipboard!",
+      "writtenOn": "Written on"
+    }
+  }
+}

@@ -3,52 +3,7 @@ import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';
 import CodeBlock from '../../ui/CodeBlock/CodeBlock';
-
-export const meta = {
-  slug: 'facet',
-  title: '', // Utilisera les traductions
-  shortDescription: '', // Utilisera les traductions
-  writtenOn: '2025-08-21',
-  keywords: ['C#' as const],
-  metadata: {
-    searchKeywords: {
-      fr: [
-        'facet',
-        'générateur',
-        'code generation',
-        'dto',
-        'projections',
-        'mapping',
-        'ef core',
-        'entity framework',
-        'select',
-        'compilation',
-        'attributs',
-        'performance',
-        'requêtes',
-        'optimisation',
-        'source generator',
-      ],
-      en: [
-        'facet',
-        'generator',
-        'code generation',
-        'dto',
-        'projections',
-        'mapping',
-        'ef core',
-        'entity framework',
-        'select',
-        'compilation',
-        'attributes',
-        'performance',
-        'queries',
-        'optimization',
-        'source generator',
-      ],
-    },
-  },
-};
+import { meta } from './meta';
 
 const FacetTip: React.FC = () => {
   const { t } = useTranslation('tips');

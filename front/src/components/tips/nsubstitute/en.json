@@ -58,7 +58,37 @@
           "testWith": "Test with NSubstitute"
         },
         "notes": {
-          "title": "Notes"
+          "title": "Notes",
+          "points": [
+            "<code>calc.Add(2,3).Returns(5)</code> sets the return value only for those arguments.",
+            "If you don't specify an explicit return, the mock returns the type's default value (<code>0</code> for <code>int</code>, <code>null</code> for references, etc.)."
+          ]
+        },
+        "additional": {
+          "title": "Additional practical cases",
+          "asyncMethod": "Mocking an asynchronous method",
+          "exceptionMethod": "Mocking a method that throws an exception",
+          "verifyCount": "Verify the number of calls",
+          "verifyCountCode": "// At least two calls\ncalc.Received(2).Log(Arg.Any<string>());\n\n// No calls\ncalc.DidNotReceive().Add(Arg.Any<int>(), Arg.Any<int>());",
+          "captureArg": "Use When to capture the passed argument"
+        },
+        "goodPractices": {
+          "title": "Good practices",
+          "items": {
+            "explicitNames": { "title": "Explicit names", "desc": "readable like pseudo‑code:" },
+            "avoidUselessMocks": {
+              "title": "Avoid useless mocks",
+              "desc": "if you don't interact with the object, don't mock it."
+            },
+            "usePartialMock": {
+              "title": "Use Substitute.ForPartsOf<T>()",
+              "desc": "to partially test a concrete class — keep internal logic and stub only what's necessary."
+            },
+            "neverHideBug": {
+              "title": "Never hide a bug",
+              "desc": "if you stub everything, a test can pass even if the code is wrong."
+            }
+          }
         }
       }
       ,

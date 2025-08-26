@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import type { PromptModule } from '..';
 import { CodeBlock } from '../../ui/CodeBlock';
 import { COLORS } from 'styles/colors';
+import { meta } from './meta';
 
 // Import raw markdown content without duplication
 import rawGlobalPrompt from '../../../../prompts/global.prompt.md?raw';
@@ -103,45 +104,7 @@ const PromptBody: React.FC = () => {
   );
 };
 
-export const meta = {
-  slug: 'craftsmanlab-rules',
-  title: 'My Global React Rules',
-  shortDescription: 'Règles et conventions utilisées pour le développement du site.',
-  writtenOn: '2025-08-10',
-  keywords: ['C#' as const],
-  metadata: {
-    searchKeywords: {
-      fr: [
-        'react',
-        'typescript',
-        'frontend',
-        'règles',
-        'conventions',
-        'développement',
-        'ui',
-        'composants',
-        'hooks',
-        'material-ui',
-        'mui',
-        'craftsmanlab',
-      ],
-      en: [
-        'react',
-        'typescript',
-        'frontend',
-        'rules',
-        'conventions',
-        'development',
-        'ui',
-        'components',
-        'hooks',
-        'material-ui',
-        'mui',
-        'craftsmanlab',
-      ],
-    },
-  },
-};
+// meta imported from ./meta
 
 const moduleExport: PromptModule = {
   default: PromptBody,

@@ -1,3 +1,13 @@
+````prompt
+
+## Mise à jour 2025-08 — metas séparées et manifest central
+
+Nous séparons désormais les métadonnées dans un fichier `meta.ts` et centralisons l’enregistrement via `src/components/content-manifest.ts`. Cela permet un meilleur code‑splitting (les TSX sont chargés dynamiquement) et un point d’entrée unique.
+
+Résumé rapide pour un nouveau tip `<slug>`:
+- Dossier: `src/components/tips/<slug>/`
+- Fichiers: `meta.ts`, `<slug>.tsx`, `fr.json`, `en.json`
+- Manifest: ajouter les imports dans `src/components/content-manifest.ts` (metas + traductions) et une entrée `{ ...meta, load: () => import('./tips/<slug>/<slug>') }`
 ## Style et phrasologiexport const meta = {
   slug: 'slug-unique', // kebab## Règles de nommage et bonnes pratiques
 - Le `slug` doit être unique, en kebab-case, sans espace ni accent.
@@ -49,18 +59,19 @@ Règles spécifiques sur les exemples de code (IMPORTANT)
 - Evite les commentaires de ligne en français à l'intérieur des `CodeBlock`.
 - Les identifiants et noms de classes peuvent rester en français si nécessaire, mais privilégie l'anglais pour la lisibilité des exemples partagés.
 
-Template minimal d’un module tip
+Template minimal d’un module tip (i18n-ready + meta.ts)
 
 ```tsx
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';
 import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
 
 export const meta = {
   slug: 'slug-unique', // kebab-case, used in the URL
-  title: 'Tip title',
-  shortDescription: 'Short summary used in card (max 120 chars)',
+  title: '', // use translations
+  shortDescription: '', // use translations
   writtenOn: 'YYYY-MM-DD',
   keywords: ['C#' as const],
   metadata: {
@@ -72,12 +83,11 @@ export const meta = {
 };
 
 const MyTip: React.FC = () => {
+  const { t } = useTranslation('tips');
   return (
     <Box>
-      <Typography variant="h2" gutterBottom>Tip title</Typography>
-      <Typography paragraph>
-        Short intro: be direct and concise. Show examples and quick wins.
-      </Typography>
+      <Typography variant="h2" gutterBottom>{t('slug-unique.content.mainTitle')}</Typography>
+      <Typography paragraph>{t('slug-unique.content.intro')}</Typography>
 
       <Typography variant="h3">Example</Typography>
       <CodeBlock language="csharp" code={`// Example comment in English\nvar x = 1;`} />
@@ -85,11 +95,11 @@ const MyTip: React.FC = () => {
       <Box mt={4} pt={2} borderTop={theme => `1px solid ${theme.palette.divider}`} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
           <a href="https://example.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
-            Source : documentation
+            {t('slug-unique.content.footer.sourceLabel')}
           </a>
         </Typography>
         <Typography variant="caption" component="div" sx={{ color: 'text.secondary' }}>
-          Écrit le {meta.writtenOn}
+          {t('slug-unique.content.footer.writtenOn', { date: meta.writtenOn })}
         </Typography>
       </Box>
     </Box>
@@ -226,12 +236,27 @@ const MyTip: React.FC = () => {
 };
 ```
 
-### Enregistrement dans i18n
+### Enregistrement dans le manifest central
+
+Ouvrez `src/components/content-manifest.ts` et ajoutez quatre choses pour `<slug>`:
+
+1) Import du meta et du loader TSX
+- `import { meta as myTipMeta } from './tips/<slug>/meta'`
+- Entrée dans `tipsEntries`:
+  - `{ ...myTipMeta, load: () => import('./tips/<slug>/<slug>') }`
+
+2) Import des traductions
+- `import myTipFr from './tips/<slug>/fr.json'`
+- `import myTipEn from './tips/<slug>/en.json'`
+
+3) Fusion dans les agrégats
+- Dans `tipsTranslationsFr`: `...myTipFr`
+- Dans `tipsTranslationsEn`: `...myTipEn`
 
 Ajouter les imports et références dans `/src/i18n/index.ts` :
 
 ```typescript
-// Import des traductions per-component
+// Import des traductions per-tip
 import slugDuTipFr from '../components/tips/slug-du-tip/fr.json';
 import slugDuTipEn from '../components/tips/slug-du-tip/en.json';
 
@@ -239,15 +264,15 @@ const resources = {
   fr: {
     // ... autres namespaces
     tips: {
-      ...tipsFr,
-      ...slugDuTipFr  // Fusion avec les traductions globales
+      // ... autres tips
+      ...slugDuTipFr,
     },
   },
   en: {
     // ... autres namespaces
     tips: {
-      ...tipsEn,
-      ...slugDuTipEn  // Fusion avec les traductions globales
+      // ... autres tips
+      ...slugDuTipEn,
     },
   },
 };
@@ -276,6 +301,8 @@ Avant de soumettre un tip avec traductions :
 - [ ] Fusion dans le namespace `tips` avec l'opérateur spread
 - [ ] Test que la carte s'affiche correctement en FR et EN
 - [ ] Validation JSON (pas d'erreurs de syntaxe)
+ - [ ] `meta.title` et `meta.shortDescription` laissés vides (utiliser les traductions)
+ - [ ] Aucun texte FR en dur dans le TSX (test auto présent: no-hardcoded-french)
 
 ### Note importante
 

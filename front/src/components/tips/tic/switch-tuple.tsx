@@ -3,50 +3,7 @@ import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';
 import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
-import type { Keyword } from '../../../utils/constants';
-
-export const meta = {
-  slug: 'switch-tuple',
-  title: '', // Utilisera les traductions
-  shortDescription: '', // Utilisera les traductions
-  writtenOn: '2025-08-15',
-  keywords: ['C#'] as unknown as Keyword[],
-  metadata: {
-    searchKeywords: {
-      fr: [
-        'switch',
-        'tuple',
-        'pattern matching',
-        'correspondance',
-        'motifs',
-        'expressions',
-        'décomposition',
-        'destructuring',
-        'c# 8',
-        'c# 9',
-        'when',
-        'discard',
-        'underscore',
-        'décisionnel',
-      ],
-      en: [
-        'switch',
-        'tuple',
-        'pattern matching',
-        'patterns',
-        'expressions',
-        'decomposition',
-        'destructuring',
-        'c# 8',
-        'c# 9',
-        'when',
-        'discard',
-        'underscore',
-        'decision',
-      ],
-    },
-  },
-};
+import { meta } from './meta';
 
 const SwitchTupleTip: React.FC = () => {
   const { t } = useTranslation('tips');
@@ -67,14 +24,17 @@ const SwitchTupleTip: React.FC = () => {
       <Typography variant="h4" gutterBottom>
         {t('switch-tuple.content.sections.summary.title')}
       </Typography>
-      <Typography paragraph component="div">
-        • Simple et lisible : compare plusieurs éléments en une seule expression, parfait pour des
-        cas de dispatch.
-        <br />
-        • Moins de code répétitif : on évite les if/else et l'extraction manuelle des champs.
-        <br />• Flexible : tu peux mélanger tuples, enums ou classes dans les patterns pour couvrir
-        la plupart des cas.
-      </Typography>
+      <Box component="ul" sx={{ pl: 3, mb: 2 }}>
+        {(t('switch-tuple.content.sections.summary.points', { returnObjects: true }) as string[]).map(
+          (line, idx) => (
+            <li key={idx}>
+              <Typography component="span" variant="body1">
+                {line}
+              </Typography>
+            </li>
+          ),
+        )}
+      </Box>
 
       <Box
         mt={4}
@@ -88,7 +48,7 @@ const SwitchTupleTip: React.FC = () => {
           sx={{ fontStyle: 'italic', color: 'text.secondary' }}
         ></Typography>
         <Typography variant="caption" component="div" sx={{ color: 'text.secondary' }}>
-          Écrit le {meta.writtenOn}
+          {t('switch-tuple.content.footer.writtenOn', { date: meta.writtenOn })}
         </Typography>
       </Box>
     </Box>
