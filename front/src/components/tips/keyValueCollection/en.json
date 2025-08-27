@@ -1,0 +1,73 @@
+{
+  "keyValueCollection": {
+    "title": "Key-value Collections in C#",
+    "shortDescription": "Different key-value structures (IDictionary, IReadOnlyDictionary, etc.)",
+    "content": {
+      "mainTitle": "Key-value collections in C#: dictionaries and alternatives",
+      "intro": "Guide to key-value data structures in C#: dictionaries, lookup tables and their optimal use cases.",
+      "summary": "Master the differences between Dictionary, IDictionary, IReadOnlyDictionary and their alternatives for informed choices.",
+      "sections": {
+        "idictionary": {
+          "title": "IDictionary<TKey, TValue>",
+          "description": "Mutable key-value contract with add, remove and key-based access. Useful when you expose write operations."
+        },
+        "ireadonlydictionary": {
+          "title": "IReadOnlyDictionary<TKey, TValue>",
+          "description": "Read-only view of a dictionary: exposes only reading (Keys, Values, ContainsKey, TryGetValue). Perfect for public APIs."
+        },
+        "concurrentdictionary": {
+          "title": "ConcurrentDictionary<TKey, TValue>",
+          "description": "Thread-safe dictionary for multi-thread scenarios. Provides AddOrUpdate, GetOrAdd without explicit locking."
+        },
+        "immutabledictionary": {
+          "title": "ImmutableDictionary<TKey, TValue>",
+          "description": "Immutable structure: each modification returns a new instance sharing most data. Great for functional code and concurrency."
+        },
+        "summary": {
+          "title": "Summary",
+          "items": {
+            "idictionary": "read/write, full operations",
+            "ireadonlydictionary": "read-only, safe to expose in APIs",
+            "concurrentdictionary": "thread-safe, atomic operations",
+            "immutabledictionary": "immutability, structural sharing"
+          }
+        },
+        "tips": {
+          "title": "Tips",
+          "items": {
+            "output": "Expose IReadOnlyDictionary for public output",
+            "input": "Accept IDictionary only if you modify the collection",
+            "concurrent": "Use ConcurrentDictionary in concurrent environments",
+            "immutable": "Prefer ImmutableDictionary when consistency matters"
+          }
+        },
+        "bestPractices": {
+          "title": "Best practices",
+          "tips": [
+            "Use IReadOnlyDictionary for APIs",
+            "Choose the right comparer for your keys",
+            "Prefer TryGetValue over ContainsKey + indexer",
+            "Consider ConcurrentDictionary in multi-threading",
+            "Use ILookup for one-to-many relationships"
+          ]
+        }
+      },
+      "footer": {
+        "sourcesLabel": "Sources:",
+        "sources": [
+          { "name": ".NET Docs – Collections", "url": "https://learn.microsoft.com/dotnet/api/system.collections.generic" }
+        ],
+        "writtenOn": "Written on {{date}}"
+      }
+    }
+  }
+    ,
+    "key-value-collection": {
+      "title": "Key-value Collections in C#",
+      "shortDescription": "Different key-value structures (IDictionary, IReadOnlyDictionary, etc.)",
+      "content": {
+        "mainTitle": "Key-value collections in C#: dictionaries and alternatives",
+        "summary": "Master the differences between Dictionary, IDictionary, IReadOnlyDictionary and their alternatives for informed choices."
+      }
+    }
+}

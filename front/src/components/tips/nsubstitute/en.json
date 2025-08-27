@@ -1,0 +1,104 @@
+{
+  "nsubstitute": {
+    "title": "NSubstitute",
+    "shortDescription": "Mocking with NSubstitute: fake objects, verification, and setup.",
+    "content": {
+      "mainTitle": "NSubstitute: mocking framework for .NET",
+      "intro": "NSubstitute makes it easy to create mock objects for your unit tests with a fluent syntax.",
+      "summary": "Simple and expressive mocking framework, ideal for isolating dependencies in your unit tests.",
+      "sections": {
+        "installation": {
+          "title": "Installation"
+        },
+        "basics": {
+          "title": "Basics"
+        },
+        "labels": {
+          "substitution": "Substitution",
+          "simpleReturn": "Simple return",
+          "computed": "Computed value",
+          "exceptions": "Exceptions",
+          "verifyCall": "Call verification",
+          "specialArgs": "Special arguments",
+          "partial": "Partial mock",
+          "captureArgs": "Capture arguments"
+        },
+        "basicMocking": {
+          "title": "Basic mocking",
+          "subtitle": "Creating a simple substitute"
+        },
+        "configuration": {
+          "title": "Configuring returns",
+          "subtitle": "Returns and exceptions"
+        },
+        "verification": {
+          "title": "Call verification",
+          "subtitle": "Received and DidNotReceive"
+        },
+        "arguments": {
+          "title": "Argument matching",
+          "subtitle": "Arg.Any, Arg.Is and patterns"
+        },
+        "properties": {
+          "title": "Properties and events"
+        },
+        "bestPractices": {
+          "title": "Best practices",
+          "tips": [
+            "Mock only external dependencies",
+            "Prefer interfaces over concrete classes",
+            "Configure the minimum necessary",
+            "Verify important interactions",
+            "Avoid mocking what you own"
+          ]
+        },
+        "exampleFull": {
+          "title": "Full example",
+          "codeToTest": "Code under test",
+          "testWith": "Test with NSubstitute"
+        },
+        "notes": {
+          "title": "Notes",
+          "points": [
+            "<code>calc.Add(2,3).Returns(5)</code> sets the return value only for those arguments.",
+            "If you don't specify an explicit return, the mock returns the type's default value (<code>0</code> for <code>int</code>, <code>null</code> for references, etc.)."
+          ]
+        },
+        "additional": {
+          "title": "Additional practical cases",
+          "asyncMethod": "Mocking an asynchronous method",
+          "exceptionMethod": "Mocking a method that throws an exception",
+          "verifyCount": "Verify the number of calls",
+          "verifyCountCode": "// At least two calls\ncalc.Received(2).Log(Arg.Any<string>());\n\n// No calls\ncalc.DidNotReceive().Add(Arg.Any<int>(), Arg.Any<int>());",
+          "captureArg": "Use When to capture the passed argument"
+        },
+        "goodPractices": {
+          "title": "Good practices",
+          "items": {
+            "explicitNames": { "title": "Explicit names", "desc": "readable like pseudo‑code:" },
+            "avoidUselessMocks": {
+              "title": "Avoid useless mocks",
+              "desc": "if you don't interact with the object, don't mock it."
+            },
+            "usePartialMock": {
+              "title": "Use Substitute.ForPartsOf<T>()",
+              "desc": "to partially test a concrete class — keep internal logic and stub only what's necessary."
+            },
+            "neverHideBug": {
+              "title": "Never hide a bug",
+              "desc": "if you stub everything, a test can pass even if the code is wrong."
+            }
+          }
+        }
+      }
+      ,
+      "footer": {
+        "sourcesLabel": "Sources:",
+        "sources": [
+          { "name": "NSubstitute (GitHub)", "url": "https://github.com/nsubstitute/NSubstitute" }
+        ],
+        "writtenOn": "Written on {{date}}"
+      }
+    }
+  }
+}

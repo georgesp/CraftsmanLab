@@ -1,0 +1,26 @@
+{
+  "navigation": {
+    "home": "Home",
+    "tips": "Tips / Memos",
+    "prompts": "Prompts",
+    "contact": "Contact"
+  },
+  "search": {
+    "placeholder": "Search...",
+    "noResults": "No results"
+  },
+  "buttons": {
+    "send": "Send",
+    "copy": "Copy",
+    "seeAll": "See all",
+    "submit": "Send message"
+  },
+  "messages": {
+    "promptCopied": "Prompt copied to clipboard"
+  },
+  "common": {
+    "loading": "Loading…",
+    "sources": "Sources",
+    "writtenOn": "Written on"
+  }
+}

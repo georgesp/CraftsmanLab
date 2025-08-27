@@ -1,0 +1,47 @@
+import type { TipMeta } from '..';
+
+export const meta: TipMeta = {
+  slug: 'xunit',
+  title: '',
+  shortDescription: '',
+  writtenOn: '2025-08-12',
+  keywords: ['C#' as const],
+  metadata: {
+    searchKeywords: {
+      fr: [
+        'xunit',
+        'tests',
+        'test unitaire',
+        'testing',
+        'assertion',
+        'fact',
+        'theory',
+        'mstest',
+        'nunit',
+        'fixture',
+        'setup',
+        'teardown',
+        'mock',
+        'assert',
+        'async',
+      ],
+      en: [
+        'xunit',
+        'tests',
+        'unit testing',
+        'testing',
+        'assertion',
+        'fact',
+        'theory',
+        'mstest',
+        'nunit',
+        'fixture',
+        'setup',
+        'teardown',
+        'mock',
+        'assert',
+        'async',
+      ],
+    },
+  },
+};

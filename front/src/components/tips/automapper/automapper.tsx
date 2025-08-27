@@ -1,49 +1,56 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';
 import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
-import type { Keyword } from '../../../utils/constants';
-
-export const meta = {
-  slug: 'automapper',
-  title: 'Automapper',
-  shortDescription: "Mapping simple et efficace entre DTOs et entités avec AutoMapper",
-  writtenOn: '2025-08-14',
-  // TipMeta expects Keyword[] (mutable). Cast from literal to satisfy TS without changing runtime value.
-  keywords: ['C#'] as unknown as Keyword[]
-};
+import { TipContent } from '../../ui';
+import { meta } from './meta';
 
 const AutomapperTip: React.FC = () => {
+  const { t } = useTranslation('tips');
+
   return (
-    <Box>
-
-      <Typography paragraph>
-        AutoMapper simplifie le transfert de données entre objets (DTO ↔ entité). Utile pour garder le code compact
-        et centraliser les règles de mapping.
+    <TipContent>
+      <Typography variant="h3" gutterBottom>
+        {t('automapper.content.mainTitle')}
       </Typography>
 
-      <Typography variant="h3">Installation rapide</Typography>
+      <Typography paragraph>{t('automapper.content.intro')}</Typography>
+
+      <Typography variant="h4" gutterBottom>
+        {t('automapper.content.sections.installation.title')}
+      </Typography>
       <Typography paragraph component="div">
-        <code>dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection</code>
+        <code>{t('automapper.content.sections.installation.command')}</code>
       </Typography>
 
-      <Typography variant="h3">Configuration (avec DI)</Typography>
+      <Typography variant="h4" gutterBottom>
+        {t('automapper.content.sections.configuration.title')}
+      </Typography>
       <Typography paragraph>
-        Dans <code>Startup.cs</code> ou la classe de configuration :
+        {t('automapper.content.sections.configuration.description')}
       </Typography>
-  <CodeBlock language="csharp" code={`services.AddAutoMapper(typeof(Program)); // scanne les profils dans l'assembly courant`} />
+      <CodeBlock
+        language="csharp"
+        code={t('automapper.content.sections.configuration.codeBlock')}
+      />
 
-      <Typography variant="h3">Configuration manuelle</Typography>
-    <CodeBlock language="csharp" code={`var mappingConfig = new MapperConfiguration(mc =>
+  <Typography variant="h4">{t('automapper.content.sections.manualConfig.title')}</Typography>
+      <CodeBlock
+        language="csharp"
+        code={`var mappingConfig = new MapperConfiguration(mc =>
 {
   mc.AddProfile(new UserProfile());
 });
 
 IMapper mapper = mappingConfig.CreateMapper();
-services.AddSingleton(mapper);`} />
+services.AddSingleton(mapper);`}
+      />
 
-      <Typography variant="h3">Un profil simple</Typography>
-    <CodeBlock language="csharp" code={`public class UserEntity
+  <Typography variant="h4">{t('automapper.content.sections.simpleProfile.title')}</Typography>
+      <CodeBlock
+        language="csharp"
+        code={`public class UserEntity
 {
   public int Id { get; set; }
   public string FirstName { get; set; }
@@ -54,11 +61,16 @@ services.AddSingleton(mapper);`} />
 public class UserDto
 {
   public int Id { get; set; }
-  public string FullName { get; set; }   // concaténation de First + Last
-  public int Age { get; set; }           // calculé à partir de BirthDate
-}`} />
+  // FullName: concatenation of FirstName + LastName
+  public string FullName { get; set; }
+  // Age: calculated from BirthDate
+  public int Age { get; set; }
+}`}
+      />
 
-    <CodeBlock language="csharp" code={`public class UserProfile : Profile
+      <CodeBlock
+        language="csharp"
+        code={`public class UserProfile : Profile
 {
   public UserProfile()
   {
@@ -68,45 +80,65 @@ public class UserDto
       .ForMember(dest => dest.Age,
              opt  => opt.MapFrom(src => DateTime.Today.Year - src.BirthDate.Year));
   }
-}`} />
+}`}
+      />
 
-      <Typography variant="h3">Usage</Typography>
-  <CodeBlock language="csharp" code={`var userEntity = new UserEntity { Id = 1, FirstName = "Jean", LastName = "Dupont", BirthDate = new DateTime(1990,5,20) };
+  <Typography variant="h4">{t('automapper.content.sections.usage.title')}</Typography>
+      <CodeBlock
+        language="csharp"
+        code={`var userEntity = new UserEntity { Id = 1, FirstName = "Jean", LastName = "Dupont", BirthDate = new DateTime(1990,5,20) };
 UserDto dto = _mapper.Map<UserDto>(userEntity);
 
 // dto.FullName == "Jean Dupont"
 // dto.Age     == (int)(...)
-// dto.Id      == 1`} />
+// dto.Id      == 1`}
+      />
 
-      <Typography variant="h3">Mapping bidirectionnel</Typography>
-      <CodeBlock language="csharp" code={`CreateMap<UserDto, UserEntity>()
+  <Typography variant="h4">{t('automapper.content.sections.bidirectional.title')}</Typography>
+      <CodeBlock
+        language="csharp"
+        code={`CreateMap<UserDto, UserEntity>()
     .ForMember(dest => dest.FirstName,
                opt  => opt.MapFrom(src => src.FullName.Split(' ')[0]))
     .ForMember(dest => dest.LastName,
-               opt  => opt.MapFrom(src => src.FullName.Split(' ')[1]));`} />
+               opt  => opt.MapFrom(src => src.FullName.Split(' ')[1]));`}
+      />
 
+  <Typography paragraph>{t('automapper.content.sections.bidirectional.note')}</Typography>
+
+  <Typography variant="h4">{t('automapper.content.sections.mapCollections.title')}</Typography>
       <Typography paragraph>
-        Note : si le format de <code>FullName</code> change, mets à jour les profils ou extrait la logique
-        dans une méthode partagée.
+        {t('automapper.content.sections.mapCollections.description')}
       </Typography>
+      <CodeBlock
+        language="csharp"
+        code={`List<UserDto> dtos = _mapper.Map<List<UserDto>>(entities);`}
+      />
 
-      <Typography variant="h3">Mapper des collections</Typography>
-      <Typography paragraph>
-        Tu peux mapper des listes sans boucle explicite :
-      </Typography>
-  <CodeBlock language="csharp" code={`List<UserDto> dtos = _mapper.Map<List<UserDto>>(entities);`} />
-
-      <Box mt={4} pt={2} borderTop={theme => `1px solid ${theme.palette.divider}`} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <Box
+        mt={4}
+        pt={2}
+        borderTop={(theme) => `1px solid ${theme.palette.divider}`}
+        sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+      >
         <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
-          <a href="https://automapper.org/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
-            Source : Documentation officielle
-          </a>
+          {t('automapper.content.footer.sourcesLabel')}{' '}
+          {(
+            t('automapper.content.footer.sources', { returnObjects: true }) as { name: string; url: string }[]
+          ).map((s, i, arr) => (
+            <span key={i}>
+              <a href={s.url} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
+                {s.name}
+              </a>
+              {i < arr.length - 1 ? ' • ' : ''}
+            </span>
+          ))}
         </Typography>
         <Typography variant="caption" component="div" sx={{ color: 'text.secondary' }}>
-          Écrit le {meta.writtenOn}
+          {t('automapper.content.footer.writtenOn', { date: meta.writtenOn })}
         </Typography>
       </Box>
-    </Box>
+  </TipContent>
   );
 };
 

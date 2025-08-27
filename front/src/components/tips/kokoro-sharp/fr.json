@@ -1,0 +1,62 @@
+{
+  "kokoro-sharp": {
+    "title": "KokoroSharp",
+    "shortDescription": "Moteur TTS local en C# basé sur ONNX : multi-voix, multilingue, plug-and-play.",
+    "content": {
+      "mainTitle": "KokoroSharp : TTS local, rapide et multi‑plateforme",
+      "intro": "KokoroSharp est un moteur d'inférence pour Kokoro TTS, écrit en C# et propulsé par ONNX Runtime. Il permet de synthétiser de la voix localement, hors ligne, avec prise en charge de multiples voix et langues.",
+      "sections": {
+        "installation": {
+          "title": "Installation",
+          "nugetCpu": "# .NET CLI\ndotnet add package KokoroSharp.CPU",
+          "note": "Pour l'accélération GPU, consultez RUNNING_ON_GPU.md sur le dépôt GitHub. Les voix officielles (Hexgrad Kokoro 82M v1.0) sont incluses dans le package NuGet."
+        },
+        "gettingStarted": {
+          "title": "Démarrage rapide",
+          "codeBasic": "using KokoroSharp;\n\n// Charger ou télécharger le modèle (~320 Mo en précision complète)\nKokoroTTS tts = KokoroTTS.LoadModel();\n\n// Choisir une voix (incluse dans le package NuGet)\nKokoroVoice heart = KokoroVoiceManager.GetVoice(\"af_heart\");\n\n// Parler une phrase (détection de langue automatique selon la voix)\ntts.SpeakFast(\"Bonjour le monde\", heart);\n"
+        },
+        "examples": {
+          "streaming": {
+            "title": "Streaming par segments",
+            "code": "using KokoroSharp;\nusing System.Threading.Channels;\n\nvar tts = KokoroTTS.LoadModel();\nvar voice = KokoroVoiceManager.GetVoice(\"af_alloy\");\n\n// Diffuser les segments au fil de la synthèse\nawait foreach (var segment in tts.StreamSegmentsAsync(\"Texte long à lire\", voice))\n{\n    // segment.Audio contient des octets PCM que vous pouvez mettre en file d'attente dans un lecteur\n    Console.WriteLine($\"Segment reçu: {segment.Index}, {segment.DurationMs}ms\");\n}"
+          },
+          "voiceMixing": {
+            "title": "Mixage de voix",
+            "code": "using KokoroSharp;\n\nvar tts = KokoroTTS.LoadModel();\nvar mix = new KokoroVoiceMix()\n    .Add(KokoroVoiceManager.GetVoice(\"af_heart\"), weight: 0.6f)\n    .Add(KokoroVoiceManager.GetVoice(\"af_alloy\"), weight: 0.4f);\n\ntts.SpeakFast(\"Mixage de voix en temps réel\", mix);\n"
+          }
+        },
+        "features": {
+          "title": "Fonctionnalités clés",
+          "table": {
+            "headers": ["Fonctionnalité", "Description"]
+          }
+        },
+        "notes": {
+          "title": "Notes et bonnes pratiques",
+          "items": [
+            "La détection de langue est automatique selon la voix chargée.",
+            "Le répertoire 'voices' est copié automatiquement dans le dossier de build.",
+            "La phonémisation intégrée repose sur eSpeak NG selon la plateforme.",
+            "Vous pouvez charger un modèle spécifique avec KokoroTTS.LoadModel(path).",
+            "Le tokeniseur intégré peut être contourné si vous fournissez des phonèmes."
+          ]
+        }
+      },
+      "features": {
+        "rows": [
+          { "feature": "Plug & Play (NuGet)", "value": "Dépendances gérées automatiquement" },
+          { "feature": "Voix incluses", "value": "Voix officielles Hexgrad Kokoro 82M v1.0" },
+          { "feature": "Interface haut-niveau", "value": "API simple pour tous les profils" },
+          { "feature": "Streaming de segments", "value": "Synthèse progressive pour une latence perçue faible" },
+          { "feature": "Mixage de voix", "value": "Combiner plusieurs voix avec des poids libres" },
+          { "feature": "Programmation linéaire", "value": "Planification des jobs et file d'attente audio" },
+          { "feature": "Lecture multi‑plateforme", "value": "Prise en charge optionnelle des sorties audio" }
+        ]
+      },
+      "footer": {
+        "sourcesLabel": "Sources:",
+        "writtenOn": "Écrit le {{date}}"
+      }
+    }
+  }
+}

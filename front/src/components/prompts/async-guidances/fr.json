@@ -1,0 +1,14 @@
+{
+  "dot-net-async-best-practices": {
+    "title": ".NET Async Best Practices",
+    "shortDescription": "Guide complet des bonnes pratiques asynchronisme .NET/ASP.NET Core avec exemples concrets.",
+    "description": "Bonnes pratiques et conseils pour implémenter correctement la programmation asynchrone en C#.",
+    "content": {
+      "introduction": "Guide complet des bonnes pratiques pour l'asynchronisme en .NET et ASP.NET Core. Ce document synthétise les règles essentielles pour éviter les pièges courants et garantir la performance des applications.",
+      "copyButton": "Copier le prompt",
+      "copySuccess": "Prompt copié dans le presse-papiers !",
+      "writtenOn": "Écrit le",
+      "sources": "Sources: Tiré de la page de"
+    }
+  }
+}

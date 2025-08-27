@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Box } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { COLORS } from '../../../styles/colors';
 
 export interface ViewAllTipsButtonProps {
@@ -17,10 +18,12 @@ export interface ViewAllTipsButtonProps {
  * Conçu pour être utilisé dans les sidebars ou listes tronquées.
  */
 export const ViewAllTipsButton: React.FC<ViewAllTipsButtonProps> = ({
-  label = 'Voir tous',
+  label,
   to,
-  marginTop = 2
+  marginTop = 2,
 }) => {
+  const { t } = useTranslation('common');
+
   return (
     <Box sx={{ mt: marginTop }}>
       <Button
@@ -38,11 +41,11 @@ export const ViewAllTipsButton: React.FC<ViewAllTipsButtonProps> = ({
           '&:hover': {
             borderColor: COLORS.itemListHover,
             backgroundColor: 'rgba(255, 255, 255, 0.1)',
-            color: COLORS.darkTheme.textOnDark
-          }
+            color: COLORS.darkTheme.textOnDark,
+          },
         }}
       >
-        {label}
+        {label || t('buttons.seeAll')}
       </Button>
     </Box>
   );

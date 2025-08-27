@@ -1,0 +1,63 @@
+{
+  "dapper": {
+    "title": "Dapper",
+    "shortDescription": "Using Dapper for data access (queries, parameters, stored procedures, DTO, alias, multi-mapping).",
+    "content": {
+      "mainTitle": "Dapper: the high-performance micro-ORM for .NET",
+      "intro": "Overview of query methods, parameters, and examples of simple and advanced mapping.",
+      "summary": "Dapper combines the simplicity of raw SQL with the power of object mapping, ideal for applications requiring performance and control.",
+      "sections": {
+        "methods": {
+          "title": "List of Dapper query methods",
+          "codeBlock": "// Read\nconn.Query<T>(sql, params);\nconn.QueryFirst<T>(sql, params);\nconn.QueryFirstOrDefault<T>(sql, params);\nconn.QuerySingle<T>(sql, params);\nconn.QuerySingleOrDefault<T>(sql, params);\n\n// Multi‑type read (multi‑mapping)\nconn.Query<TFirst, TSecond, TReturn>(sql, map, splitOn: \"Id\");\n\n// Multiple result sets\nusing var grid = conn.QueryMultiple(sql, params);\nvar a = grid.Read<A>();\nvar b = grid.Read<B>();\n\n// Write\nconn.Execute(sql, params, transaction);\n\n// Parameters\nvar p = new DynamicParameters();\np.Add(\"@Id\", 42);\n\n// Stored procedures\nconn.Query<T>(\"spGetItems\", p, commandType: CommandType.StoredProcedure);"
+        },
+        "simpleExample": {
+          "title": "Simple example: DTO + QueryFirstOrDefault"
+        },
+        "aliasMapping": {
+          "title": "Mapping via SQL aliases"
+        },
+        "basicUsage": {
+          "title": "Basic usage",
+          "subtitle": "Simple query with Query<T>"
+        },
+        "parameters": {
+          "title": "Query parameters",
+          "subtitle": "Anonymous parameters",
+          "namedParametersTitle": "Named parameters with DynamicParameters"
+        },
+        "dto": {
+          "title": "DTO and column aliases",
+          "subtitle": "Mapping with SQL aliases"
+        },
+        "multiMapping": {
+          "title": "Multi-mapping (relationships)",
+          "subtitle": "Example with related entities"
+        },
+        "storedProcedures": {
+          "title": "Stored procedures"
+        },
+        "transactions": {
+          "title": "Transactions"
+        },
+        "performance": {
+          "title": "Performance tips",
+          "tips": [
+            "Use prepared queries with DynamicParameters for repeated queries",
+            "Prefer QueryFirst/QuerySingle when expecting a single result",
+            "Use buffered: false for very large datasets (streaming)",
+            "Reuse connections when possible (pooling)",
+            "Test your SQL queries separately before integrating them"
+          ]
+        }
+      },
+      "footer": {
+        "sourcesLabel": "Sources:",
+        "sources": [
+          { "name": "Dapper (GitHub)", "url": "https://github.com/DapperLib/Dapper" }
+        ],
+        "writtenOn": "Written on {{date}}"
+      }
+    }
+  }
+}

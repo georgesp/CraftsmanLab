@@ -14,9 +14,9 @@ describe('Header', () => {
   test('renders logo image', () => {
     render(<HeaderWrapper />);
     const logo = screen.getByAltText('CraftsmanLab');
-  expect(logo).toBeInTheDocument();
-  // The header uses the white-background logo in the current implementation
-  expect(logo).toHaveAttribute('src', '/noBgColorWhite.png');
+    expect(logo).toBeInTheDocument();
+    // The header uses the white-background logo in the current implementation
+    expect(logo).toHaveAttribute('src', '/noBgColorWhite.png');
   });
 
   test('renders navigation links', () => {
@@ -37,8 +37,8 @@ describe('Header', () => {
 
   test('renders search input', () => {
     render(<HeaderWrapper />);
-    const searchInput = screen.getByPlaceholderText('Rechercher…');
+    const searchInput = screen.getByPlaceholderText('Rechercher...');
     expect(searchInput).toBeInTheDocument();
-    expect(searchInput).toHaveAttribute('aria-label', 'Rechercher');
+    expect(searchInput).toHaveAttribute('aria-label', 'Rechercher...');
   });
 });

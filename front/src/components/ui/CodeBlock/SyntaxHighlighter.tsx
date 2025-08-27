@@ -12,9 +12,9 @@ export type SyntaxHighlighterProps = {
  * - Applique une coloration syntaxique simple basée sur des expressions régulières
  * - Reproduit les couleurs style GitHub pour C#
  */
-export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({ 
-  code, 
-  language = 'csharp' 
+export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
+  code,
+  language = 'csharp',
 }) => {
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
@@ -36,22 +36,29 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
         // typeof(), nameof()
         { regex: /\b(typeof|nameof)\s*\(/g, color: colors.keyword },
         // Noms de types/classes spécifiques (Facet, FacetKind, etc.)
-        { regex: /\b(Facet|FacetKind|Person|User|Product|Entity|Point|Order|Customer|Record|Class|Struct)\b/g, color: colors.type },
-        // Noms de types génériques 
+        {
+          regex:
+            /\b(Facet|FacetKind|Person|User|Product|Entity|Point|Order|Customer|Record|Class|Struct)\b/g,
+          color: colors.type,
+        },
+        // Noms de types génériques
         { regex: /\b[A-Z][a-zA-Z0-9]*(?:\.[A-Z][a-zA-Z0-9]*)*\b/g, color: colors.type },
         // Propriétés et champs (avec point)
         { regex: /\b[A-Z][a-zA-Z0-9]*\.[A-Z][a-zA-Z0-9]*\b/g, color: colors.text },
         // Chaînes de caractères
         { regex: /"([^"\\]|\\.)*"/g, color: colors.string },
         // Mots-clés et valeurs spéciales
-        { regex: /\b(exclude|include|new|true|false|null|Email|Password)\b/g, color: colors.keyword },
+        {
+          regex: /\b(exclude|include|new|true|false|null|Email|Password)\b/g,
+          color: colors.keyword,
+        },
         // Parenthèses, virgules et opérateurs
         { regex: /[(),.:=]/g, color: colors.operator },
       ];
 
       const attrMatches: Array<{ start: number; end: number; color: string; text: string }> = [];
 
-      attrPatterns.forEach(pattern => {
+      attrPatterns.forEach((pattern) => {
         let match;
         const regex = new RegExp(pattern.regex.source, pattern.regex.flags);
         while ((match = regex.exec(content)) !== null) {
@@ -59,7 +66,7 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
             start: match.index,
             end: match.index + match[0].length,
             color: pattern.color,
-            text: match[0]
+            text: match[0],
           });
         }
       });
@@ -68,8 +75,8 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
       attrMatches.sort((a, b) => a.start - b.start || b.end - a.end);
       const nonOverlappingAttr: typeof attrMatches = [];
       for (const match of attrMatches) {
-        const hasOverlap = nonOverlappingAttr.some(existing => 
-          (match.start < existing.end && match.end > existing.start)
+        const hasOverlap = nonOverlappingAttr.some(
+          (existing) => match.start < existing.end && match.end > existing.start,
         );
         if (!hasOverlap) {
           nonOverlappingAttr.push(match);
@@ -83,14 +90,14 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
           attributeTokens.push(
             <span key={`attr-text-${attrIndex}`} style={{ color: colors.attribute }}>
               {content.slice(attrIndex, match.start)}
-            </span>
+            </span>,
           );
         }
 
         attributeTokens.push(
           <span key={`attr-match-${index}`} style={{ color: match.color }}>
             {match.text}
-          </span>
+          </span>,
         );
 
         attrIndex = match.end;
@@ -100,7 +107,7 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
         attributeTokens.push(
           <span key={`attr-text-end`} style={{ color: colors.attribute }}>
             {content.slice(attrIndex)}
-          </span>
+          </span>,
         );
       }
 
@@ -120,14 +127,16 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
       // Attributs (traitement spécial)
       { regex: /\[[^\]]*\]/g, color: colors.attribute, special: 'attribute' },
       // Mots-clés C#
-      { 
-        regex: /\b(abstract|as|base|bool|break|byte|case|catch|char|checked|class|const|continue|decimal|default|delegate|do|double|else|enum|event|explicit|extern|false|finally|fixed|float|for|foreach|goto|if|implicit|in|int|interface|internal|is|lock|long|namespace|new|null|object|operator|out|override|params|private|protected|public|readonly|ref|return|sbyte|sealed|short|sizeof|stackalloc|static|string|struct|switch|this|throw|true|try|typeof|uint|ulong|unchecked|unsafe|ushort|using|virtual|void|volatile|while|add|alias|ascending|async|await|by|descending|dynamic|equals|from|get|global|group|into|join|let|nameof|on|orderby|partial|remove|select|set|value|var|when|where|with|yield|record)\b/g, 
-        color: colors.keyword 
+      {
+        regex:
+          /\b(abstract|as|base|bool|break|byte|case|catch|char|checked|class|const|continue|decimal|default|delegate|do|double|else|enum|event|explicit|extern|false|finally|fixed|float|for|foreach|goto|if|implicit|in|int|interface|internal|is|lock|long|namespace|new|null|object|operator|out|override|params|private|protected|public|readonly|ref|return|sbyte|sealed|short|sizeof|stackalloc|static|string|struct|switch|this|throw|true|try|typeof|uint|ulong|unchecked|unsafe|ushort|using|virtual|void|volatile|while|add|alias|ascending|async|await|by|descending|dynamic|equals|from|get|global|group|into|join|let|nameof|on|orderby|partial|remove|select|set|value|var|when|where|with|yield|record)\b/g,
+        color: colors.keyword,
       },
       // Types système
-      { 
-        regex: /\b(System|IEnumerable|ICollection|IList|List|Dictionary|Task|Action|Func|Exception|DateTime|TimeSpan|Guid|StringBuilder|IFacetMapConfiguration)\b/g, 
-        color: colors.type 
+      {
+        regex:
+          /\b(System|IEnumerable|ICollection|IList|List|Dictionary|Task|Action|Func|Exception|DateTime|TimeSpan|Guid|StringBuilder|IFacetMapConfiguration)\b/g,
+        color: colors.type,
       },
       // Nombres
       { regex: /\b\d+\.?\d*[fFdDmM]?\b/g, color: colors.number },
@@ -135,10 +144,16 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
       { regex: /[+\-*/%=<>!&|^~?:;,.(){}]/g, color: colors.operator },
     ];
 
-    const allMatches: Array<{ start: number; end: number; color: string; text: string; special?: string }> = [];
+    const allMatches: Array<{
+      start: number;
+      end: number;
+      color: string;
+      text: string;
+      special?: string;
+    }> = [];
 
     // Trouver toutes les correspondances
-    patterns.forEach(pattern => {
+    patterns.forEach((pattern) => {
       let match;
       const regex = new RegExp(pattern.regex.source, pattern.regex.flags);
       while ((match = regex.exec(code)) !== null) {
@@ -147,7 +162,7 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
           end: match.index + match[0].length,
           color: pattern.color,
           text: match[0],
-          special: (pattern as any).special
+          special: (pattern as any).special,
         });
       }
     });
@@ -158,8 +173,8 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
     // Éliminer les chevauchements (garder le plus long ou le premier)
     const nonOverlapping: typeof allMatches = [];
     for (const match of allMatches) {
-      const hasOverlap = nonOverlapping.some(existing => 
-        (match.start < existing.end && match.end > existing.start)
+      const hasOverlap = nonOverlapping.some(
+        (existing) => match.start < existing.end && match.end > existing.start,
       );
       if (!hasOverlap) {
         nonOverlapping.push(match);
@@ -168,14 +183,14 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
 
     // Construire les éléments JSX
     nonOverlapping.sort((a, b) => a.start - b.start);
-    
+
     nonOverlapping.forEach((match, index) => {
       // Ajouter le texte avant la correspondance
       if (match.start > currentIndex) {
         tokens.push(
           <span key={`text-${currentIndex}`} style={{ color: colors.text }}>
             {code.slice(currentIndex, match.start)}
-          </span>
+          </span>,
         );
       }
 
@@ -186,28 +201,24 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
         tokens.push(
           <span key={`attr-bracket-open-${index}`} style={{ color: colors.attribute }}>
             [
-          </span>
+          </span>,
         );
         // Parser le contenu avec coloration spécialisée
         const attributeTokens = parseAttributeContent(attributeContent);
         attributeTokens.forEach((token, tokenIndex) => {
-          tokens.push(
-            <span key={`attr-content-${index}-${tokenIndex}`}>
-              {token}
-            </span>
-          );
+          tokens.push(<span key={`attr-content-${index}-${tokenIndex}`}>{token}</span>);
         });
         tokens.push(
           <span key={`attr-bracket-close-${index}`} style={{ color: colors.attribute }}>
             ]
-          </span>
+          </span>,
         );
       } else {
         // Ajouter la correspondance colorée normalement
         tokens.push(
           <span key={`match-${index}`} style={{ color: match.color }}>
             {match.text}
-          </span>
+          </span>,
         );
       }
 
@@ -219,7 +230,7 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
       tokens.push(
         <span key={`text-end`} style={{ color: colors.text }}>
           {code.slice(currentIndex)}
-        </span>
+        </span>,
       );
     }
 
@@ -246,7 +257,7 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
     const allMatches: Array<{ start: number; end: number; color: string; text: string }> = [];
 
     // Trouver toutes les correspondances
-    patterns.forEach(pattern => {
+    patterns.forEach((pattern) => {
       let match;
       const regex = new RegExp(pattern.regex.source, pattern.regex.flags);
       while ((match = regex.exec(code)) !== null) {
@@ -254,7 +265,7 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
           start: match.index,
           end: match.index + match[0].length,
           color: pattern.color,
-          text: match[0]
+          text: match[0],
         });
       }
     });
@@ -263,8 +274,8 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
     allMatches.sort((a, b) => a.start - b.start || b.end - a.end);
     const nonOverlapping: typeof allMatches = [];
     for (const match of allMatches) {
-      const hasOverlap = nonOverlapping.some(existing => 
-        (match.start < existing.end && match.end > existing.start)
+      const hasOverlap = nonOverlapping.some(
+        (existing) => match.start < existing.end && match.end > existing.start,
       );
       if (!hasOverlap) {
         nonOverlapping.push(match);
@@ -273,20 +284,20 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
 
     // Construire les éléments JSX
     nonOverlapping.sort((a, b) => a.start - b.start);
-    
+
     nonOverlapping.forEach((match, index) => {
       if (match.start > currentIndex) {
         tokens.push(
           <span key={`text-${currentIndex}`} style={{ color: colors.text }}>
             {code.slice(currentIndex, match.start)}
-          </span>
+          </span>,
         );
       }
 
       tokens.push(
         <span key={`match-${index}`} style={{ color: match.color }}>
           {match.text}
-        </span>
+        </span>,
       );
 
       currentIndex = match.end;
@@ -296,7 +307,7 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
       tokens.push(
         <span key={`text-end`} style={{ color: colors.text }}>
           {code.slice(currentIndex)}
-        </span>
+        </span>,
       );
     }
 
@@ -325,7 +336,7 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
     const allMatches: Array<{ start: number; end: number; color: string; text: string }> = [];
 
     // Trouver toutes les correspondances
-    patterns.forEach(pattern => {
+    patterns.forEach((pattern) => {
       let match;
       const regex = new RegExp(pattern.regex.source, pattern.regex.flags);
       while ((match = regex.exec(code)) !== null) {
@@ -333,7 +344,7 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
           start: match.index,
           end: match.index + match[0].length,
           color: pattern.color,
-          text: match[0]
+          text: match[0],
         });
       }
     });
@@ -342,8 +353,8 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
     allMatches.sort((a, b) => a.start - b.start || b.end - a.end);
     const nonOverlapping: typeof allMatches = [];
     for (const match of allMatches) {
-      const hasOverlap = nonOverlapping.some(existing => 
-        (match.start < existing.end && match.end > existing.start)
+      const hasOverlap = nonOverlapping.some(
+        (existing) => match.start < existing.end && match.end > existing.start,
       );
       if (!hasOverlap) {
         nonOverlapping.push(match);
@@ -352,20 +363,20 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
 
     // Construire les éléments JSX
     nonOverlapping.sort((a, b) => a.start - b.start);
-    
+
     nonOverlapping.forEach((match, index) => {
       if (match.start > currentIndex) {
         tokens.push(
           <span key={`text-${currentIndex}`} style={{ color: colors.text }}>
             {code.slice(currentIndex, match.start)}
-          </span>
+          </span>,
         );
       }
 
       tokens.push(
         <span key={`match-${index}`} style={{ color: match.color }}>
           {match.text}
-        </span>
+        </span>,
       );
 
       currentIndex = match.end;
@@ -375,7 +386,7 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
       tokens.push(
         <span key={`text-end`} style={{ color: colors.text }}>
           {code.slice(currentIndex)}
-        </span>
+        </span>,
       );
     }
 
@@ -392,7 +403,11 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
         return highlightXml(code);
       default:
         // Pour les autres langages, retourner le code sans coloration pour l'instant
-        return [<span key="plain" style={{ color: colors.text }}>{code}</span>];
+        return [
+          <span key="plain" style={{ color: colors.text }}>
+            {code}
+          </span>,
+        ];
     }
   };
 

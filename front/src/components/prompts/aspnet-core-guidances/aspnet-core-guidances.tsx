@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Box, Typography, Link, IconButton, Snackbar, Alert } from '@mui/material';
 import { ContentCopy } from '@mui/icons-material';
+import { useTranslation } from 'react-i18next';
 import type { PromptModule } from '..';
 import { CodeBlock } from '../../ui/CodeBlock';
 import { COLORS } from 'styles/colors';
+import { meta } from './meta';
 
 export const promptText = `# Guide et Règles ASP.NET Core
 
@@ -274,10 +276,13 @@ MyProject.Api/
 - Pour toute question, consulter la documentation officielle ASP.NET Core et le référentiel Guidance`;
 
 const PromptBody: React.FC = () => {
+  const { t } = useTranslation('prompts');
   const [showCopySuccess, setShowCopySuccess] = useState(false);
-  const writtenOn = meta.writtenOn ? new Date(meta.writtenOn).toLocaleDateString('fr-FR') : new Date().toLocaleDateString('fr-FR');
+  const writtenOn = meta.writtenOn
+    ? new Date(meta.writtenOn).toLocaleDateString('fr-FR')
+    : new Date().toLocaleDateString('fr-FR');
 
-  const description = `Ce document regroupe les règles obligatoires et les meilleures pratiques pour le développement d'applications ASP.NET Core. Il s'appuie sur l'AspNetCore Guidance de David Fowler et adapte les recommandations au contexte du workspace.`;
+  const description = t('aspnet-core-guidances.content.introduction');
 
   const handleCopy = async () => {
     try {
@@ -324,11 +329,11 @@ const PromptBody: React.FC = () => {
             },
           }}
           size="small"
-          title="Copier le prompt"
+          title={t('aspnet-core-guidances.content.copyButton')}
         >
           <ContentCopy fontSize="small" />
         </IconButton>
-  <CodeBlock code={promptText} />
+        <CodeBlock code={promptText} />
       </Box>
 
       <Snackbar
@@ -338,14 +343,22 @@ const PromptBody: React.FC = () => {
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       >
         <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: '100%' }}>
-          Prompt copié dans le presse-papiers !
+          {t('aspnet-core-guidances.content.copySuccess')}
         </Alert>
       </Snackbar>
 
       <Box sx={{ mt: 4, pt: 3, borderTop: '1px solid', borderColor: 'grey.300' }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 2, flexWrap: 'wrap' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            gap: 2,
+            flexWrap: 'wrap',
+          }}
+        >
           <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic' }}>
-            Sources: Tiré de la page de{' '}
+            {t('aspnet-core-guidances.content.sources')}{' '}
             <Link
               href="https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AspNetCoreGuidance.md"
               target="_blank"
@@ -354,8 +367,12 @@ const PromptBody: React.FC = () => {
               David Fowler
             </Link>
           </Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic', textAlign: 'left' }}>
-            Écrit le {writtenOn}
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ fontStyle: 'italic', textAlign: 'left' }}
+          >
+            {t('aspnet-core-guidances.content.writtenOn')} {writtenOn}
           </Typography>
         </Box>
       </Box>
@@ -363,13 +380,7 @@ const PromptBody: React.FC = () => {
   );
 };
 
-export const meta = {
-  slug: 'aspnet-core-guidances',
-  title: 'ASP.NET Core Guidances',
-  shortDescription: "Règles et bonnes pratiques ASP.NET Core.",
-  writtenOn: '2025-08-11',
-  keywords: ['C#' as const],
-};
+// meta imported from ./meta
 
 const moduleExport: PromptModule = {
   default: PromptBody,

@@ -1,0 +1,60 @@
+{
+  "switch-tuple": {
+    "title": "Switch + Tuple",
+    "shortDescription": "Astuce pragmatique : switch sur un tuple en C# (pattern matching)",
+    "content": {
+      "mainTitle": "Switch expressions avec tuples en C#",
+      "intro": "Technique avancée pour simplifier la logique conditionnelle complexe en utilisant le pattern matching sur des tuples.",
+      "summary": "Remplace efficacement les chaînes if/else imbriquées par des expressions switch lisibles et concises.",
+      "sections": {
+        "basicSyntax": {
+          "title": "Syntaxe de base",
+          "subtitle": "Switch expression simple"
+        },
+        "tupleMatching": {
+          "title": "Pattern matching avec tuples",
+          "subtitle": "Comparaison de plusieurs valeurs"
+        },
+        "advancedPatterns": {
+          "title": "Patterns avancés",
+          "subtitle": "Guards et wildcard patterns"
+        },
+        "example": {
+          "title": "Exemple",
+          "codeBlock": "public static string GetAction((string role, string state) input) => input switch\n{\n    (\"Admin\", \"Active\")      => \"FullAccess\",\n    (\"User\",  \"Active\")      => \"LimitedAccess\",\n    (\"Guest\", _)              => \"ReadOnly\",\n    (_,          \"Suspended\")   => \"NoAccess\",\n    _                             => \"Unknown\"\n};"
+        },
+        "summary": {
+          "title": "Résumé",
+          "points": [
+            "Simple et lisible : compare plusieurs éléments en une seule expression, parfait pour des cas de dispatch.",
+            "Moins de code répétitif : on évite les if/else et l'extraction manuelle des champs.",
+            "Flexible : possibilité de combiner tuples, enums ou classes dans les patterns pour couvrir la plupart des cas."
+          ]
+        },
+        "benefits": {
+          "title": "Avantages",
+          "points": [
+            "Code plus lisible et expressif",
+            "Réduction des erreurs logiques",
+            "Exhaustivité vérifiée par le compilateur",
+            "Performance optimisée",
+            "Maintenance simplifiée"
+          ]
+        },
+        "bestPractices": {
+          "title": "Bonnes pratiques",
+          "tips": [
+            "Préférez les switch expressions aux switch statements",
+            "Utilisez des noms de variables expressifs dans les patterns",
+            "Couvrez tous les cas possibles",
+            "Évitez les tuples trop complexes (max 3-4 éléments)",
+            "Documentez la logique métier derrière les patterns"
+          ]
+        }
+      },
+      "footer": {
+        "writtenOn": "Écrit le {{date}}"
+      }
+    }
+  }
+}

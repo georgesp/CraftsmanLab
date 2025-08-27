@@ -1,0 +1,53 @@
+{
+  "home": {
+    "latestTips": "Latest published tips:",
+    "latestPrompts": "Latest published prompts:"
+  },
+  "tips": {
+    "title": "Tips and Memos",
+    "description": "A collection of synthetic sheets on fundamental concepts of the .NET and C# ecosystem. Each tip aims to clarify an architectural point, a key interface or an API best practice.",
+    "aiNote": "Don't be surprised: the content of the sheets was generated with the help of AI."
+  },
+  "tipDetailPage": {
+    "loading": "Loading…",
+    "sidebar": {
+      "title": "Last tips / Memos"
+    },
+    "related": {
+      "title": "Related tips / Memos"
+    },
+    "errors": {
+      "notFound": "No tip found for « {{slug}} »"
+    }
+  },
+  "prompts": {
+    "title": "Prompts",
+    "description": "Collection of system prompts for artificial intelligence.",
+    "whatIsPrompt": "What is a prompt?",
+  "promptDefinition": "A system prompt is the base text that is transmitted to an artificial intelligence model before any interaction. It is generally stored in a markdown file (.md) at the root of the project; you can have several depending on needs and scopes.",
+  "promptDefinitionFull": "A system prompt is the base text that is transmitted to an artificial intelligence model before any interaction. It is generally stored in a markdown file (.md) at the root of the project; you can have several depending on needs and scopes.\n\nThey act somewhat like the ten commandments that the AI agent will consider when generating its answers and code.\n\nTo ensure these rules are properly considered, it's best to specify them at the start of the conversation with the AI.\n\nFor example:\n«Considering the rules from the rules.prompt.md file, I'd like you to ...»",
+  "whyPromptTitle": "Why is a good prompt essential with AI?",
+  "whyPromptBody1": "A well-written prompt yields more relevant, precise, and tailored responses. It guides the AI, reduces misunderstandings, and maximizes the value of AI tools.",
+  "whyPromptBody2": "Think of the AI as a full-fledged collaborator: if the instruction is vague, it may misinterpret your expectations and provide inappropriate or off-topic responses."
+  },
+  "contact": {
+    "title": ".NET & AI Freelance Developer",
+    "subtitle": "Are you looking for an experienced .NET developer with Artificial Intelligence skills?<br />Or would you like to see certain things added to the site?<br />Don't hesitate to contact me to discuss your needs or projects!",
+    "socialNetworks": "My social networks",
+  "sendMessage": "Send me a message",
+    "formDescription": "Fill out the form below and I will respond quickly.",
+    "form": {
+      "fullName": "Full name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message"
+    },
+  "infoTitle": "Contact details",
+    "successMessage": "Your message has been sent successfully! We will respond to you as soon as possible."
+  }
+  ,
+  "footer": {
+    "copyright": "© 2025 CraftsmanLab. All rights reserved."
+  }
+
+}

@@ -1,0 +1,75 @@
+{
+  "collection": {
+    "title": "C# Collections",
+    "shortDescription": "Different collections in C# (IEnumerable, ICollection, IList, IReadOnlyCollection, etc.)",
+    "content": {
+      "mainTitle": "C# Collections: guide to interfaces and implementations",
+      "intro": "Overview of C# collections: interfaces, implementations and use cases to choose the right data structure.",
+      "summary": "Understand the differences between IEnumerable, ICollection, IList and their variants to optimize your architecture choices.",
+      "sections": {
+        "ienumerable": {
+          "title": "IEnumerable<T>",
+          "description": "Minimal read-only iteration contract. Ideal to expose a sequence without mutation operations."
+        },
+        "icollection": {
+          "title": "ICollection<T>",
+          "description": "Extends IEnumerable with Count, Add, Remove, Contains, Clear. Use when writes are needed."
+        },
+        "ireadonlycollection": {
+          "title": "IReadOnlyCollection<T>",
+          "description": "Exposes the number of items (Count) without allowing modification. Great for API returns."
+        },
+        "ilist": {
+          "title": "IList<T>",
+          "description": "Indexed collection (this[int index]). Add/remove by index. Useful when order matters."
+        },
+        "ireadonlylist": {
+          "title": "IReadOnlyList<T>",
+          "description": "Read-only list with indexed access. Perfect to expose an ordered list without mutation."
+        },
+        "iset": {
+          "title": "ISet<T>",
+          "description": "Set of unique elements. Set operations (Union, Intersect). Ideal for uniqueness."
+        },
+        "summary": {
+          "title": "Summary",
+          "items": {
+            "ienumerable": "read-only, simple iteration",
+            "ireadonlycollection": "read-only + Count",
+            "ireadonlylist": "read-only + index",
+            "icollection": "read/write + operations",
+            "ilist": "indexed, order matters",
+            "iset": "uniqueness, set operations"
+          }
+        },
+        "tips": {
+          "title": "Tips",
+          "items": {
+            "restrictive": "Expose the most restrictive type possible",
+            "output": "Favor IReadOnly* for outputs",
+            "input": "Accept IEnumerable as input if sufficient",
+            "never": "Do not expose raw List<T> in a public API"
+          }
+        },
+        "bestPractices": {
+          "title": "Best practices",
+          "tips": [
+            "Expose the most restrictive type possible",
+            "Prefer IEnumerable for parameters",
+            "Use IReadOnly* for public APIs",
+            "Choose implementation based on usage",
+            "Avoid unnecessary casting"
+          ]
+        }
+      }
+      ,
+      "footer": {
+        "sourcesLabel": "Sources:",
+        "sources": [
+          { "name": ".NET Docs – System.Collections", "url": "https://learn.microsoft.com/dotnet/api/system.collections" }
+        ],
+        "writtenOn": "Written on {{date}}"
+      }
+    }
+  }
+}

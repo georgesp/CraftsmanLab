@@ -1,72 +1,58 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';
 import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
-import type { Keyword } from '../../../utils/constants';
-
-export const meta = {
-  slug: 'switch-tuple',
-  title: 'Switch + Tuple',
-  shortDescription: 'Astuce pragmatique : switch sur un tuple en C# (pattern matching)',
-  writtenOn: '2025-08-15',
-  keywords: ['C#'] as unknown as Keyword[]
-};
-
-const exampleCode = `using System;
-
-class Program
-{
-    static void Main()
-    {
-        // On crée un tuple (ville, pays)
-        var localisation = ("Paris", "France");
-
-        // switch sur le tuple avec pattern matching
-        string description = localisation switch
-        {
-            // Cas où la ville est Paris et le pays est France
-            ("Paris", "France") => "Capitale européenne",
-            
-            // Cas où la ville est Paris mais un autre pays (ex. Espagne)
-            ("Paris", _)       => "Paris, hors France",
-            
-            // Cas générique : n’importe quel tuple
-            _                  => $"Ville inconnue dans {localisation.Item2}"
-        };
-
-        Console.WriteLine(description);   // Affiche : Capitale européenne
-    }
-}`;
+import { TipContent } from '../../ui';
+import { meta } from './meta';
 
 const SwitchTupleTip: React.FC = () => {
+  const { t } = useTranslation('tips');
+
   return (
-    <Box>
-      <Typography paragraph>
-        Petit truc pratique : quand tu as deux valeurs liées (par ex. ville + pays), un switch sur un tuple
-        rend le code compact et lisible, pas besoin d'ifs imbriqués.
+    <TipContent>
+      <Typography variant="h3" gutterBottom>
+        {t('switch-tuple.content.mainTitle')}
       </Typography>
 
-      <Typography variant="h3">Exemple</Typography>
-      <CodeBlock language="csharp" code={exampleCode} />
+      <Typography paragraph>{t('switch-tuple.content.intro')}</Typography>
 
-      <Typography variant="h3">Ce que j'en retire</Typography>
-      <Typography paragraph component="div">
-        • Simple et lisible : compare plusieurs éléments en une seule expression, parfait pour des cas de dispatch.
-        <br />
-  • Moins de code répétitif : on évite les if/else et l'extraction manuelle des champs.
-        <br />
-        • Flexible : tu peux mélanger tuples, enums ou classes dans les patterns pour couvrir la plupart des cas.
+      <Typography variant="h4" gutterBottom>
+        {t('switch-tuple.content.sections.example.title')}
       </Typography>
+      <CodeBlock language="csharp" code={t('switch-tuple.content.sections.example.codeBlock')} />
 
-      <Box mt={4} pt={2} borderTop={theme => `1px solid ${theme.palette.divider}`} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
-          
-        </Typography>
+      <Typography variant="h4" gutterBottom>
+        {t('switch-tuple.content.sections.summary.title')}
+      </Typography>
+      <Box component="ul" sx={{ pl: 3, mb: 2 }}>
+        {(t('switch-tuple.content.sections.summary.points', { returnObjects: true }) as string[]).map(
+          (line, idx) => (
+            <li key={idx}>
+              <Typography component="span" variant="body1">
+                {line}
+              </Typography>
+            </li>
+          ),
+        )}
+      </Box>
+
+  <Box
+        mt={4}
+        pt={2}
+        borderTop={(theme) => `1px solid ${theme.palette.divider}`}
+        sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+      >
+        <Typography
+          variant="caption"
+          component="div"
+          sx={{ fontStyle: 'italic', color: 'text.secondary' }}
+        ></Typography>
         <Typography variant="caption" component="div" sx={{ color: 'text.secondary' }}>
-          Écrit le {meta.writtenOn}
+          {t('switch-tuple.content.footer.writtenOn', { date: meta.writtenOn })}
         </Typography>
       </Box>
-    </Box>
+  </TipContent>
   );
 };
 

@@ -1,0 +1,79 @@
+{
+  "facet": {
+    "title": "Facet",
+    "shortDescription": "Projection (DTO) generator and mappings for C# and EF Core.",
+    "content": {
+      "mainTitle": "Facet: projection generator for Entity Framework",
+      "intro": "Facet automates the creation of DTOs and mappings for your Entity Framework entities, reducing repetitive code.",
+      "summary": "Code generation tool that automatically creates typed and performant projections for Entity Framework Core.",
+      "sections": {
+        "installation": {
+          "title": "Installation",
+          "description": "Install the Facet NuGet package and reference it in your project to enable the source generator."
+        },
+        "basicUsage": {
+          "title": "Basic usage",
+          "subtitle": "Generating simple projections",
+          "description": "Add the [Facet] attribute to a partial class to automatically generate properties and the projection."
+        },
+        "generatedCode": {
+          "title": "Generated code",
+          "description": "Facet automatically generates missing properties and a projection expression to efficiently map your entities."
+        },
+        "performance": {
+          "title": "Performance",
+          "description": "Generated projections execute on the database side via LINQ to Entities, reducing transferred data."
+        },
+        "configuration": {
+          "title": "Advanced configuration",
+          "subtitle": "Customizing mappings",
+          "description": "Fine‑tune generation via attributes (Ignore, Property, IncludeNavigationProperties, etc.)."
+        },
+        "entityFramework": {
+          "title": "Entity Framework integration",
+          "subtitle": "Query optimization",
+          "description": "Use generated projection expressions directly in your LINQ queries to translate into optimal SQL."
+        },
+        "complexProjections": {
+          "title": "Complex projections",
+          "description": "Compose advanced DTOs, add computed properties and navigate between projections for rich views."
+        },
+        "benefits": {
+          "title": "Benefits",
+          "points": [
+            "Automatic typed code generation",
+            "SQL query optimization",
+            "Reduced boilerplate code",
+            "Support for complex relationships",
+            "Simplified maintenance"
+          ]
+        },
+        "bestPractices": {
+          "title": "Best practices",
+          "tips": [
+            "Define your projections close to the need",
+            "Use Facet attributes for customization",
+            "Regenerate after model changes",
+            "Test generated queries in SQL",
+            "Document your custom configurations"
+          ],
+          "practices": {
+            "naming": "Clearly name your DTOs (Dto/ReadModel suffix)",
+            "properties": "Expose only useful properties",
+            "single": "One projection per use case",
+            "build": "Integrate generation in CI build",
+            "documentation": "Document computed fields"
+          }
+        },
+        "alternatives": {
+          "title": "Alternatives",
+          "description": "AutoMapper, Mapster or manual projection via LINQ are options if you don't want code generation."
+        },
+        "conclusion": {
+          "title": "Conclusion",
+          "description": "Facet speeds up building performant and maintainable DTOs. It fits naturally with EF Core via strongly typed projections."
+        }
+      }
+    }
+  }
+}

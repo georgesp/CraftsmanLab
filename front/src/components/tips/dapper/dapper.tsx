@@ -1,47 +1,39 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography, Link } from '@mui/material';
 import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
-
-export const meta = {
-  slug: 'dapper',
-  title: 'Utilisation de Dapper',
-  shortDescription: 'Utilisation de Dapper (DTO, alias, multi‑mapping).',
-  writtenOn: '2025-08-12',
-  keywords: ['C#' as const],
-};
+import { TipContent } from '../../ui';
+import { meta } from './meta';
 
 const DapperTip: React.FC = () => {
+  const { t } = useTranslation('tips');
+
   return (
-    <Box>
-      <Typography paragraph>
-        Aperçu des méthodes de requête, paramètres, et exemples de mapping simples et avancés.
+    <TipContent>
+      <Typography variant="h3" gutterBottom>
+        {t('dapper.content.mainTitle')}
       </Typography>
 
-      <Typography variant="h4" gutterBottom>Liste des méthodes de requête Dapper</Typography>
-  <CodeBlock language="csharp"
-    ariaLabel="dapper-methods-overview"
-    maxHeight={360}
-    code={`Méthode                 | Signature (simplifiée)
-------------------------|------------------------------------------------------------
-Query<T>                | IEnumerable<T> Query<T>(sql, param = null, tx = null, buffered = true, timeout = null)
-QueryFirst<T>           | T QueryFirst<T>(sql, param = null, tx = null)
-QueryFirstOrDefault<T>  | T QueryFirstOrDefault<T>(sql, param = null, tx = null)
-QuerySingle<T>          | T QuerySingle<T>(sql, param = null, tx = null)
-QuerySingleOrDefault<T> | T QuerySingleOrDefault<T>(sql, param = null, tx = null)
-Execute                 | int Execute(sql, param = null, tx = null, timeout = null)
-ExecuteScalar<T>        | T ExecuteScalar<T>(sql, param = null, tx = null)
-QueryMultiple           | GridReader QueryMultiple(sql, param = null, tx = null)
-QueryAsync<T>           | Task<IEnumerable<T>> QueryAsync<T>(sql, param = null, tx = null)
+      <Typography paragraph>{t('dapper.content.intro')}</Typography>
 
-Remarque: param peut être un objet anonyme ou un POCO. Dapper mappe les propriétés vers les @Param SQL.`}
-  />
+      <Typography variant="h4" gutterBottom>
+        {t('dapper.content.sections.methods.title')}
+      </Typography>
+      <CodeBlock
+        language="csharp"
+        ariaLabel="dapper-methods-overview"
+        maxHeight={360}
+        code={t('dapper.content.sections.methods.codeBlock')}
+      />
 
-  <Typography variant="h4" sx={{ mt: 4 }} gutterBottom>Exemple simple – Retourner un DTO existant</Typography>
-  <CodeBlock
-    language="csharp"
-    ariaLabel="dapper-simple-dto"
-    code={`public class ProductDto
+  <Typography variant="h4" gutterBottom>
+        {t('dapper.content.sections.simpleExample.title')}
+      </Typography>
+      <CodeBlock
+        language="csharp"
+        ariaLabel="dapper-simple-dto"
+        code={`public class ProductDto
 {
     public int Id { get; set; }
     public string Name { get; set; }
@@ -59,20 +51,23 @@ using (var conn = new SqlConnection(connString))
                        sql,
                        new { ProductId = 42 });
 
-    if (product == null)
-    {
-        Console.WriteLine("Produit non trouvé.");
-    }
-    else
-    {
-        Console.WriteLine($"{product.Name} : {product.Price:C}");
-    }
+  if (product == null)
+  {
+    Console.WriteLine("Product not found.");
+  }
+  else
+  {
+    Console.WriteLine($"{product.Name} : {product.Price:C}");
+  }
 }
-// Avantage: mapping automatique via les noms de propriétés.`}
+// Advantage: automatic mapping via property names.`}
       />
 
-  <Typography variant="h4" sx={{ mt: 4 }} gutterBottom>Mapping sur un objet à structure différente</Typography>
-      <CodeBlock language="csharp"
+  <Typography variant="h4" gutterBottom>
+        {t('dapper.content.sections.aliasMapping.title')}
+      </Typography>
+      <CodeBlock
+        language="csharp"
         ariaLabel="dapper-alias-mapping"
         code={`public class OrderSummary
 {
@@ -106,13 +101,16 @@ using (var conn = new SqlConnection(connString))
                        sql,
                        new { OrderId = 101 });
 
-    // summary.CustomerName est rempli via l’alias
+  // summary.CustomerName is populated via the alias
 }
-// Astuce: alias (AS) pour faire correspondre colonnes -> propriétés.`}
+// Tip: use alias (AS) to match columns -> properties.`}
       />
 
-  <Typography variant="h4" sx={{ mt: 4 }} gutterBottom>Multi‑DTO – Mapping parent + lignes</Typography>
-      <CodeBlock language="csharp"
+  <Typography variant="h4" gutterBottom>
+        {t('dapper.content.sections.multiMapping.title')}
+      </Typography>
+      <CodeBlock
+        language="csharp"
         ariaLabel="dapper-multi-mapping"
         code={`public class OrderDto
 {
@@ -173,30 +171,38 @@ using (var conn = new SqlConnection(connString))
                        new { OrderId = 101 },
                        splitOn: "LineId")).FirstOrDefault();
 
-  // order est l’OrderDto unique avec toutes ses lignes
+  // order is the single OrderDto with all its lines
 }
 
-// Clés:
-// - splitOn: "LineId" indique où Dapper doit découper vers OrderLineDto.
-// - Le délégué est appelé par ligne; on regroupe via lookup pour consolider.`}
+// Keys:
+// - splitOn: "LineId" indicates where Dapper should split into OrderLineDto.
+// - The delegate is called per row; group via lookup to consolidate.`}
       />
 
-      <Box
+  <Box
         mt={4}
         pt={2}
         borderTop={(theme) => `1px solid ${theme.palette.divider}`}
         sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
       >
         <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
-          <Link href="https://github.com/DapperLib/Dapper" target="_blank" rel="noopener noreferrer" underline="hover" color="inherit">
-            Source : Documentation de Dapper
-          </Link>
+          {t('dapper.content.footer.sourcesLabel')}{' '}
+          {(
+            t('dapper.content.footer.sources', { returnObjects: true }) as { name: string; url: string }[]
+          ).map((s, i, arr) => (
+            <span key={i}>
+              <Link href={s.url} target="_blank" rel="noopener noreferrer" underline="always" color="inherit">
+                {s.name}
+              </Link>
+              {i < arr.length - 1 ? ' • ' : ''}
+            </span>
+          ))}
         </Typography>
         <Typography variant="caption" component="div" sx={{ color: 'text.secondary' }}>
-          Écrit le {meta.writtenOn}
+          {t('dapper.content.footer.writtenOn', { date: meta.writtenOn })}
         </Typography>
       </Box>
-    </Box>
+  </TipContent>
   );
 };
 

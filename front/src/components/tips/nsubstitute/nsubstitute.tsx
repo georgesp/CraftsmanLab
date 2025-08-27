@@ -1,85 +1,95 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';
 import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
-
-export const meta = {
-  slug: 'nsubstitute',
-  title: 'NSubstitute',
-  shortDescription: 'Mocker avec NSubstitute : bases, exemples et bonnes pratiques.',
-  writtenOn: '2025-08-12',
-  keywords: ['C#' as const],
-};
+import { TipContent } from '../../ui';
+import { meta } from './meta';
 
 // Code blocks rendered with shared CodeBlock component
 
 const NSubstituteTip: React.FC = () => {
+  const { t } = useTranslation('tips');
+
   return (
-    <Box>
-      <Typography paragraph>
-        Le pense‑bête pour toi: crée des doubles de test, force des retours, vérifie les appels et capture des arguments
-        avec NSubstitute, sans te perdre dans la doc.
+    <TipContent>
+      <Typography variant="h3" gutterBottom>
+        {t('nsubstitute.content.mainTitle')}
       </Typography>
 
+      <Typography paragraph>{t('nsubstitute.content.intro')}</Typography>
+
       <Typography variant="h4" gutterBottom>
-        Concepts de base
+        {t('nsubstitute.content.sections.basics.title')}
       </Typography>
 
       <Typography variant="h6" gutterBottom>
-        Substitution
+        {t('nsubstitute.content.sections.labels.substitution')}
       </Typography>
       <CodeBlock language="csharp" code={`var mock = Substitute.For<IFoo>();`} />
 
       <Typography variant="h6" gutterBottom>
-        Retour simple
+        {t('nsubstitute.content.sections.labels.simpleReturn')}
       </Typography>
       <CodeBlock language="csharp" code={`mock.Bar().Returns(42);`} />
 
       <Typography variant="h6" gutterBottom>
-        Valeur calculée
+        {t('nsubstitute.content.sections.labels.computed')}
       </Typography>
-      <CodeBlock language="csharp"
+      <CodeBlock
+        language="csharp"
         code={`mock.Add(Arg.Any<int>(), Arg.Any<int>()).Returns(callInfo => callInfo.Arg<int>(0) + callInfo.Arg<int>(1));`}
       />
 
       <Typography variant="h6" gutterBottom>
-        Exceptions
+        {t('nsubstitute.content.sections.labels.exceptions')}
       </Typography>
-      <CodeBlock language="csharp" code={`mock.DoSomething().Throws(new InvalidOperationException());`} />
+      <CodeBlock
+        language="csharp"
+        code={`mock.DoSomething().Throws(new InvalidOperationException());`}
+      />
 
       <Typography variant="h6" gutterBottom>
-      Vérification d’appel
+        {t('nsubstitute.content.sections.labels.verifyCall')}
       </Typography>
-      <CodeBlock language="csharp" code={`mock.Received().Bar();
-mock.DidNotReceive().Baz();`} />
+      <CodeBlock
+        language="csharp"
+        code={`mock.Received().Bar();
+mock.DidNotReceive().Baz();`}
+      />
 
       <Typography variant="h6" gutterBottom>
-        Arguments spéciaux
+        {t('nsubstitute.content.sections.labels.specialArgs')}
       </Typography>
       <CodeBlock language="csharp" code={`Arg.Is<string>(s => s.StartsWith("Hello"));`} />
 
       <Typography variant="h6" gutterBottom>
-        Partial mock
+        {t('nsubstitute.content.sections.labels.partial')}
       </Typography>
-      <CodeBlock language="csharp" code={`var partial = Substitute.ForPartsOf<MyConcreteClass>();`} />
-
-      <Typography variant="h6" gutterBottom>
-        Capturer les arguments
-      </Typography>
-      <CodeBlock language="csharp"
-        code={`int captured;
-// Variante simple (avec When/Do)
-mock.When(x => x.Do(Arg.Any<int>())).Do(call => captured = call.Arg<int>());
-// (exécuter ensuite mock.Do(123); pour que captured = 123)`}
+      <CodeBlock
+        language="csharp"
+        code={`var partial = Substitute.ForPartsOf<MyConcreteClass>();`}
       />
 
-      <Typography variant="h4" gutterBottom sx={{ mt: 4 }}>
-        Exemple complet
+      <Typography variant="h6" gutterBottom>
+        {t('nsubstitute.content.sections.labels.captureArgs')}
+      </Typography>
+      <CodeBlock
+        language="csharp"
+        code={`int captured;
+// Simple variant (with When/Do)
+mock.When(x => x.Do(Arg.Any<int>())).Do(call => captured = call.Arg<int>());
+// (then execute mock.Do(123); so that captured = 123)`}
+      />
+
+  <Typography variant="h4" gutterBottom>
+        {t('nsubstitute.content.sections.exampleFull.title')}
       </Typography>
       <Typography variant="h6" gutterBottom>
-        Le code à tester
+        {t('nsubstitute.content.sections.exampleFull.codeToTest')}
       </Typography>
-      <CodeBlock language="csharp"
+      <CodeBlock
+        language="csharp"
         code={`public interface ICalculator
 {
     int Add(int a, int b);
@@ -105,9 +115,10 @@ public class MathService
       />
 
       <Typography variant="h6" gutterBottom>
-  Le test avec NSubstitute
+        {t('nsubstitute.content.sections.exampleFull.testWith')}
       </Typography>
-      <CodeBlock language="csharp"
+      <CodeBlock
+        language="csharp"
         code={`using Xunit;
 using NSubstitute;
 
@@ -116,48 +127,54 @@ public class MathServiceTests
     [Fact]
     public void ComputeSumAndLog_ReturnsSum_LogsMessage()
     {
-        // Arrange : on crée un mock d’ICalculator
-        var calc = Substitute.For<ICalculator>();
+  // Arrange: create a mock of ICalculator
+  var calc = Substitute.For<ICalculator>();
 
-        // On force Add() à retourner 5 quand on passe 2 et 3
-        calc.Add(2, 3).Returns(5);
+  // Force Add() to return 5 when passed 2 and 3
+  calc.Add(2, 3).Returns(5);
 
-        // On prépare le service avec le mock
-        var sut = new MathService(calc);
+  // Prepare the service with the mock
+  var sut = new MathService(calc);
 
-        // Act : appel de la méthode testée
-        int result = sut.ComputeSumAndLog(2, 3);
+  // Act: call the tested method
+  int result = sut.ComputeSumAndLog(2, 3);
 
-        // Assert – résultat attendu
-        Assert.Equal(5, result);
+  // Assert: expected result
+  Assert.Equal(5, result);
 
-        // Assert – vérification que Log a bien été appelé avec le bon message
-        calc.Received().Log("Result is 5");
+  // Assert: verify Log was called with the expected message
+  calc.Received().Log("Result is 5");
     }
 }`}
       />
 
       <Typography variant="subtitle1" gutterBottom>
-        Remarques
+        {t('nsubstitute.content.sections.notes.title')}
       </Typography>
       <ul>
         <li>
-          <code>calc.Add(2,3).Returns(5)</code> force la valeur de retour uniquement pour ces arguments.
+          {t('nsubstitute.content.sections.notes.points.0', {
+            defaultValue:
+              '<code>calc.Add(2,3).Returns(5)</code> sets the return value only for those arguments.',
+          }) as any}
         </li>
         <li>
-          Si tu ne précises pas de retour explicite, le mock renverra la valeur par défaut du type (<code>0</code> pour
-          <code> int</code>, <code>null</code> pour les références, etc.).
+          {t('nsubstitute.content.sections.notes.points.1', {
+            defaultValue:
+              'If you don\'t specify an explicit return, the mock returns the type\'s default value (<code>0</code> for <code>int</code>, <code>null</code> for references, etc.).',
+          }) as any}
         </li>
       </ul>
 
-      <Typography variant="h4" gutterBottom sx={{ mt: 4 }}>
-        Cas pratiques supplémentaires
+  <Typography variant="h4" gutterBottom>
+        {t('nsubstitute.content.sections.additional.title')}
       </Typography>
 
       <Typography variant="h6" gutterBottom>
-        Mock d’une méthode asynchrone
+        {t('nsubstitute.content.sections.additional.asyncMethod')}
       </Typography>
-      <CodeBlock language="csharp"
+      <CodeBlock
+        language="csharp"
         code={`public interface IAsyncService
 {
     Task<string> GetDataAsync(string key);
@@ -168,25 +185,23 @@ asyncMock.GetDataAsync("abc").Returns(Task.FromResult("mocked data"));`}
       />
 
       <Typography variant="h6" gutterBottom>
-        Mock d’une méthode qui lance une exception
+        {t('nsubstitute.content.sections.additional.exceptionMethod')}
       </Typography>
       <CodeBlock language="csharp" code={`calc.DoSomething().Throws(new ArgumentException());`} />
 
       <Typography variant="h6" gutterBottom>
-        Vérifier le nombre d’appels
+        {t('nsubstitute.content.sections.additional.verifyCount')}
       </Typography>
-      <CodeBlock language="csharp"
-        code={`// Au moins deux appels
-calc.Received(2).Log(Arg.Any<string>());
-
-// Aucun appel
-calc.DidNotReceive().Add(Arg.Any<int>(), Arg.Any<int>());`}
+      <CodeBlock
+        language="csharp"
+        code={t('nsubstitute.content.sections.additional.verifyCountCode')}
       />
 
       <Typography variant="h6" gutterBottom>
-        Utiliser When pour capturer l’argument passé
+        {t('nsubstitute.content.sections.additional.captureArg')}
       </Typography>
-      <CodeBlock language="csharp"
+      <CodeBlock
+        language="csharp"
         code={`int captured = -1;
 calc.Add(Arg.Any<int>(), Arg.Any<int>())
     .Returns(x => x.Arg<int>(0) + x.Arg<int>(1));
@@ -194,29 +209,35 @@ calc.Add(Arg.Any<int>(), Arg.Any<int>())
 calc.When(call => call.Log(Arg.Any<string>()))
     .Do(callInfo =>
     {
-        var msg = callInfo.GetArguments()[0] as string;
-        // extraire le nombre du message
-        captured = int.Parse(msg.Split(' ')[2]);
+  var msg = callInfo.GetArguments()[0] as string;
+  // extract the number from the message
+  captured = int.Parse(msg.Split(' ')[2]);
     });`}
       />
 
-      <Typography variant="h4" gutterBottom sx={{ mt: 4 }}>
-        Bonnes pratiques
+  <Typography variant="h4" gutterBottom>
+        {t('nsubstitute.content.sections.goodPractices.title')}
       </Typography>
       <ul>
         <li>
-          <b>Noms explicites</b> — exemple lisible comme un pseudo‑code :
-          <CodeBlock language="csharp" code={`calc.Add(Arg.Any<int>(), Arg.Any<int>()).Returns(call => ...)`} />
+          <b>{t('nsubstitute.content.sections.goodPractices.items.explicitNames.title')}</b> —{' '}
+          {t('nsubstitute.content.sections.goodPractices.items.explicitNames.desc')}
+          <CodeBlock
+            language="csharp"
+            code={`calc.Add(Arg.Any<int>(), Arg.Any<int>()).Returns(call => ...)`}
+          />
         </li>
         <li>
-          <b>Évite les mocks inutiles</b> — si tu n’interagis pas avec l’objet, ne le mocke pas.
+          <b>{t('nsubstitute.content.sections.goodPractices.items.avoidUselessMocks.title')}</b> —{' '}
+          {t('nsubstitute.content.sections.goodPractices.items.avoidUselessMocks.desc')}
         </li>
         <li>
-          <b>Utilise Substitute.ForPartsOf&lt;T&gt;()</b> pour tester une classe concrète partiellement — tu gardes la logique
-          interne et tu ne stubs que ce qui est nécessaire.
+          <b>{t('nsubstitute.content.sections.goodPractices.items.usePartialMock.title')}</b> —{' '}
+          {t('nsubstitute.content.sections.goodPractices.items.usePartialMock.desc')}
         </li>
         <li>
-          <b>Ne cache jamais un bug</b> — si tu stubbes tout, ton test peut passer même si le code est incorrect.
+          <b>{t('nsubstitute.content.sections.goodPractices.items.neverHideBug.title')}</b> —{' '}
+          {t('nsubstitute.content.sections.goodPractices.items.neverHideBug.desc')}
         </li>
       </ul>
 
@@ -227,20 +248,23 @@ calc.When(call => call.Log(Arg.Any<string>()))
         sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
       >
         <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
-          <a
-            href="https://github.com/nsubstitute/NSubstitute"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: 'inherit', textDecoration: 'underline' }}
-          >
-            Source : NSubstitute (GitHub)
-          </a>
+          {t('nsubstitute.content.footer.sourcesLabel')}{' '}
+          {(
+            t('nsubstitute.content.footer.sources', { returnObjects: true }) as { name: string; url: string }[]
+          ).map((s, i, arr) => (
+            <span key={i}>
+              <a href={s.url} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
+                {s.name}
+              </a>
+              {i < arr.length - 1 ? ' • ' : ''}
+            </span>
+          ))}
         </Typography>
         <Typography variant="caption" component="div" sx={{ color: 'text.secondary' }}>
-          Écrit le {meta.writtenOn}
+          {t('nsubstitute.content.footer.writtenOn', { date: meta.writtenOn })}
         </Typography>
       </Box>
-    </Box>
+  </TipContent>
   );
 };
 

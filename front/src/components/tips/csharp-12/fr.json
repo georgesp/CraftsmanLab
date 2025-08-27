@@ -1,0 +1,88 @@
+{
+  "csharp-12": {
+    "title": "C# 12 – Nouveautés clés",
+    "shortDescription": "Primary constructors, collection expressions, lambdas avec valeurs par défaut…",
+    "content": {
+      "mainTitle": "C# 12 — les nouveautés qui changent le quotidien",
+      "overview": "C# 12 affine la productivité avec des primary constructors pour les classes, des collection expressions plus concises, et des paramètres par défaut pour les lambdas. Tu gagnes en lisibilité et en boilerplate en moins, tout en restant 100% compatible avec l’existant.",
+      "features": {
+        "title": "Fonctionnalités introduites",
+        "items": [
+          "Primary constructors sur les classes",
+          "Collection expressions avec spread (..)",
+          "Paramètres par défaut pour les lambdas",
+          "Type alias (alias any type)",
+          "InlineArray pour la performance (cas avancés)",
+          "Améliorations diverses de pattern matching"
+        ]
+      },
+      "useCases": {
+        "title": "Cas d’usage",
+        "case1": {
+          "title": "Primary constructors pour les classes",
+          "description": "Déclare et initialise tes propriétés à même la signature de classe. Idéal pour les types orientés données.",
+          "code": "// Primary constructor on a class\npublic class Customer(string id, string name)\n{\n    // Property initializers use parameters from the primary constructor\n    public string Id { get; } = id;\n    public string Name { get; private set; } = name;\n\n    // You can still add methods\n    public void Rename(string newName)\n    {\n        // Validation logic remains explicit\n        Name = string.IsNullOrWhiteSpace(newName) ? Name : newName;\n    }\n}\n\nvar c = new Customer(\"42\", \"Ada\");\nConsole.WriteLine($\"{c.Id} — {c.Name}\");"
+        },
+        "case2": {
+          "title": "Collection expressions plus concises",
+          "description": "Construis des collections sans new/constructeurs verbeux. Lisible et rapide à écrire.",
+          "code": "// Collection expressions\nint[] numbers = [1, 2, 3];\nList<string> names = [\"Ada\", \"Grace\"];\nHashSet<int> evens = [2, 4, 6];\n\n// Spread existing collections\nvar more = [..numbers, 4, 5];\n\n// With LINQ projections\nvar squares = [..Enumerable.Range(1, 5).Select(n => n * n)];"
+        },
+        "case3": {
+          "title": "Valeurs par défaut pour les lambdas",
+          "description": "Rends tes fonctions utilitaires plus souples sans surcharger. Parfait pour la composition.",
+          "code": "// Default values for lambda parameters\nvar format = (string s, int width = 8, char pad = '.') =>\n{\n    // Left pad to width using the pad character\n    return s.PadLeft(width, pad);\n};\n\nConsole.WriteLine(format(\"42\"));\nConsole.WriteLine(format(\"42\", 4, '0'));"
+        }
+      },
+      "summary": {
+        "title": "Résumé",
+        "text": "Adopte C# 12 sur les nouveaux modules pour réduire le bruit syntaxique et simplifier tes modèles de données. Migration progressive sans casse.",
+        "prosTitle": "Avantages",
+        "consTitle": "Inconvénients",
+        "pros": [
+          "Moins de boilerplate (constructeurs + propriétés)",
+          "Collections déclaratives faciles à lire",
+          "APIs utilitaires plus flexibles avec lambdas"
+        ],
+        "cons": [
+          "Nécessite un SDK .NET récent",
+          "Primary constructors à utiliser avec parcimonie sur les grosses classes"
+        ]
+      },
+      "goodPractices": {
+        "title": "Bonnes pratiques",
+        "items": [
+          "Réserve les primary constructors aux types centrés données",
+          "Documente clairement les valeurs par défaut des lambdas",
+          "Préserve la cohérence de style avec l’équipe"
+        ]
+      },
+      "extras": {
+        "title": "Autres fonctionnalités",
+        "typeAlias": {
+          "title": "Alias de type (alias any type)",
+          "description": "Donne un nom explicite à un type complexe et simplifie les signatures d'API.",
+          "code": "// Type alias\nusing StringMap = System.Collections.Generic.Dictionary<string, string>;\n\nStringMap headers = new() { [\"Accept\"] = \"application/json\" };"
+        },
+        "inlineArray": {
+          "title": "InlineArray (performance avancée)",
+          "description": "Stocke un petit buffer dans une structure pour réduire les allocations (cas ciblés).",
+          "code": "using System.Runtime.CompilerServices;\n\n[InlineArray(16)]\npublic struct SmallBuffer\n{\n    private int _element0;\n}\n\nvar buf = new SmallBuffer();"
+        },
+        "patterns": {
+          "title": "Raffinements de pattern matching",
+          "description": "Des petits plus qui améliorent la lisibilité et les matchs sur types/constantes.",
+          "code": "// Example placeholder\nobject x = 5;\nvar text = x switch { int i => $\"int:{i}\", _ => \"other\" };"
+        }
+      },
+      "footer": {
+        "sourcesLabel": "Sources",
+        "sources": [
+          { "name": "What's new in C# 12 — Microsoft Docs", "url": "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-12" },
+          { "name": "Language design notes", "url": "https://github.com/dotnet/csharplang" }
+        ],
+        "writtenOn": "Écrit le {{date}}"
+      }
+    }
+  }
+}

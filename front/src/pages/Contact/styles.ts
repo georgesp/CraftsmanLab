@@ -5,15 +5,30 @@ import { TYPOGRAPHY } from '../../styles/typography';
 import { PAGE_SPACING } from '../../styles/spacing';
 
 export const ContactContainer = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(PAGE_SPACING.container.paddingTop, 0, PAGE_SPACING.container.paddingBottom, 0),
+  padding: theme.spacing(
+    PAGE_SPACING.container.paddingTop,
+    0,
+    PAGE_SPACING.container.paddingBottom,
+    0,
+  ),
 }));
 
 export const HeroSection = styled(Box)(({ theme }) => ({
   textAlign: 'left',
-  padding: theme.spacing(PAGE_SPACING.hero.paddingTop.xs, PAGE_SPACING.hero.paddingX.xs, PAGE_SPACING.hero.paddingBottom.xs, PAGE_SPACING.hero.paddingX.xs),
+  padding: theme.spacing(
+    PAGE_SPACING.hero.paddingTop.xs,
+    PAGE_SPACING.hero.paddingX.xs,
+    PAGE_SPACING.hero.paddingBottom.xs,
+    PAGE_SPACING.hero.paddingX.xs,
+  ),
   margin: theme.spacing(PAGE_SPACING.hero.marginTop, 0, PAGE_SPACING.hero.marginBottom, 0),
   [theme.breakpoints.up('md')]: {
-    padding: theme.spacing(PAGE_SPACING.hero.paddingTop.md, PAGE_SPACING.hero.paddingX.md, PAGE_SPACING.hero.paddingBottom.md, PAGE_SPACING.hero.paddingX.md),
+    padding: theme.spacing(
+      PAGE_SPACING.hero.paddingTop.md,
+      PAGE_SPACING.hero.paddingX.md,
+      PAGE_SPACING.hero.paddingBottom.md,
+      PAGE_SPACING.hero.paddingX.md,
+    ),
   },
 }));
 
@@ -61,7 +76,7 @@ export const SubmitButton = styled(Button)(({ theme }) => ({
   textTransform: 'none',
   transition: 'background-color 200ms ease, transform 120ms ease',
   '&:hover': {
-  background: `${COLORS.submitBtnColorHover} !important`,
+    background: `${COLORS.submitBtnColorHover} !important`,
   },
   // Ensure the start icon inside the button uses the defaultBg color
   '& .MuiButton-startIcon': {
@@ -73,8 +88,7 @@ export const SubmitButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-export const InfoCard = styled(Card)(() => ({
-}));
+export const InfoCard = styled(Card)(() => ({}));
 
 export const InfoCardContent = styled(CardContent)(({ theme }) => ({
   padding: theme.spacing(4),
@@ -97,5 +111,3 @@ export const InfoItemHeader = styled(Box)(({ theme }) => ({
 export const InfoItemDescription = styled(Typography)(({ theme }) => ({
   marginLeft: theme.spacing(4),
 }));
-
-

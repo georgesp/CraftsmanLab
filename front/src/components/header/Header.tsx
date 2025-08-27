@@ -16,11 +16,14 @@ import {
 import SearchIcon from '@mui/icons-material/Search';
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
+import { useTranslation } from 'react-i18next';
 import { searchAll, type SearchHit } from '@/utils/search-client';
 import { COLORS } from '../../styles/colors';
 import { StyledAppBar, StyledToolbar, NavigationContainer } from './styles';
+import { LanguageSelector } from '../ui/LanguageSelector';
 
 export const Header: React.FC = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [query, setQuery] = useState('');
   const [open, setOpen] = useState(false);
@@ -100,7 +103,13 @@ export const Header: React.FC = () => {
             component="img"
             src="/noBgColorWhite.png"
             alt="CraftsmanLab"
-            sx={{ height: 56, width: 'auto', objectFit: 'contain', display: 'block', flexShrink: 0 }}
+            sx={{
+              height: 56,
+              width: 'auto',
+              objectFit: 'contain',
+              display: 'block',
+              flexShrink: 0,
+            }}
           />
         </MuiLink>
 
@@ -116,7 +125,11 @@ export const Header: React.FC = () => {
           }}
         >
           <ClickAwayListener onClickAway={handleClickAway}>
-            <Box component="form" onSubmit={handleSubmit} sx={{ position: 'relative', width: '100%' }}>
+            <Box
+              component="form"
+              onSubmit={handleSubmit}
+              sx={{ position: 'relative', width: '100%' }}
+            >
               <Paper
                 variant="outlined"
                 sx={{
@@ -129,8 +142,8 @@ export const Header: React.FC = () => {
                 }}
               >
                 <InputBase
-                  placeholder="Rechercher…"
-                  inputProps={{ 'aria-label': 'Rechercher' }}
+                  placeholder={t('search.placeholder')}
+                  inputProps={{ 'aria-label': t('search.placeholder') }}
                   value={query}
                   onChange={(e) => {
                     setQuery(e.target.value);
@@ -148,7 +161,7 @@ export const Header: React.FC = () => {
                 />
 
                 <IconButton
-                  aria-label="Lancer la recherche"
+                  aria-label={t('search.placeholder')}
                   type="button"
                   onClick={() => handleSubmit()}
                   size="small"
@@ -175,7 +188,10 @@ export const Header: React.FC = () => {
                   <List dense disablePadding>
                     {results.map((r: SearchHit, idx: number) => (
                       <ListItem key={`${r.kind}-${r.slug}`} disablePadding>
-                        <ListItemButton selected={idx === selectedIndex} onClick={() => handleSelect(r.kind, r.slug)}>
+                        <ListItemButton
+                          selected={idx === selectedIndex}
+                          onClick={() => handleSelect(r.kind, r.slug)}
+                        >
                           <ListItemIcon sx={{ minWidth: 44, mr: 1 }}>
                             {r.kind === 'tip' ? (
                               <Box
@@ -189,7 +205,10 @@ export const Header: React.FC = () => {
                                   borderRadius: 1,
                                 }}
                               >
-                                <TipsAndUpdatesIcon fontSize="large" sx={{ color: COLORS.searchResultIcon, fontSize: 20 }} />
+                                <TipsAndUpdatesIcon
+                                  fontSize="large"
+                                  sx={{ color: COLORS.searchResultIcon, fontSize: 20 }}
+                                />
                               </Box>
                             ) : (
                               <Box
@@ -203,7 +222,10 @@ export const Header: React.FC = () => {
                                   borderRadius: 1,
                                 }}
                               >
-                                <TextSnippetIcon fontSize="large" sx={{ color: COLORS.searchResultIcon, fontSize: 20 }} />
+                                <TextSnippetIcon
+                                  fontSize="large"
+                                  sx={{ color: COLORS.searchResultIcon, fontSize: 20 }}
+                                />
                               </Box>
                             )}
                           </ListItemIcon>
@@ -211,8 +233,14 @@ export const Header: React.FC = () => {
                           <ListItemText
                             primary={r.title}
                             secondary={r.shortDescription}
-                            primaryTypographyProps={{ noWrap: true, sx: { color: COLORS.darkTheme.inputText } }}
-                            secondaryTypographyProps={{ noWrap: true, sx: { color: COLORS.darkTheme.inputText } }}
+                            primaryTypographyProps={{
+                              noWrap: true,
+                              sx: { color: COLORS.darkTheme.inputText },
+                            }}
+                            secondaryTypographyProps={{
+                              noWrap: true,
+                              sx: { color: COLORS.darkTheme.inputText },
+                            }}
                           />
                         </ListItemButton>
                       </ListItem>
@@ -224,9 +252,18 @@ export const Header: React.FC = () => {
               {open && query.trim() && results.length === 0 && (
                 <Paper
                   elevation={4}
-                  sx={{ position: 'absolute', top: '44px', left: 0, right: 0, zIndex: 10, backgroundColor: COLORS.darkTheme.inputBackground }}
+                  sx={{
+                    position: 'absolute',
+                    top: '44px',
+                    left: 0,
+                    right: 0,
+                    zIndex: 10,
+                    backgroundColor: COLORS.darkTheme.inputBackground,
+                  }}
                 >
-                  <Box sx={{ p: 1.5, color: COLORS.darkTheme.inputText, fontSize: 14 }}>Aucun résultat</Box>
+                  <Box sx={{ p: 1.5, color: COLORS.darkTheme.inputText, fontSize: 14 }}>
+                    {t('search.noResults')}
+                  </Box>
                 </Paper>
               )}
             </Box>
@@ -234,17 +271,37 @@ export const Header: React.FC = () => {
         </Box>
 
         <NavigationContainer>
-          <MuiLink component={RouterLink} to="/tips" color="inherit" underline="none" sx={{ fontWeight: 500, fontSize: '1.05rem' }}>
-            Tips / Mémos
+          <MuiLink
+            component={RouterLink}
+            to="/tips"
+            color="inherit"
+            underline="none"
+            sx={{ fontWeight: 500 }}
+          >
+            {t('navigation.tips')}
           </MuiLink>
 
-          <MuiLink component={RouterLink} to="/prompts" color="inherit" underline="none" sx={{ fontWeight: 500, fontSize: '1.05rem' }}>
-            Prompts
+          <MuiLink
+            component={RouterLink}
+            to="/prompts"
+            color="inherit"
+            underline="none"
+            sx={{ fontWeight: 500 }}
+          >
+            {t('navigation.prompts')}
           </MuiLink>
 
-          <MuiLink component={RouterLink} to="/contact" color="inherit" underline="none" sx={{ fontWeight: 500, fontSize: '1.05rem' }}>
-            Contact
+          <MuiLink
+            component={RouterLink}
+            to="/contact"
+            color="inherit"
+            underline="none"
+            sx={{ fontWeight: 500 }}
+          >
+            {t('navigation.contact')}
           </MuiLink>
+
+          <LanguageSelector />
         </NavigationContainer>
       </StyledToolbar>
     </StyledAppBar>

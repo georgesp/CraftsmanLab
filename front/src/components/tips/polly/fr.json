@@ -1,0 +1,79 @@
+{
+  "polly": {
+    "title": "Polly",
+    "shortDescription": "Ajouter de la résilience à vos appels : retry, circuit breaker, timeout et fallback.",
+    "content": {
+      "mainTitle": "Polly : la stratégie de résilience pour vos appels externes",
+      "intro": "Polly est une petite bibliothèque open‑source (NuGet) qui vous permet d'ajouter des stratégies de résilience à votre code, sans y passer tout votre temps.",
+      "useCases": {
+        "title": "On l'utilise surtout pour :",
+        "items": [
+          "les requêtes HTTP qui échouent parfois,",
+          "les appels à des bases de données ou services externes,",
+          "n'importe quelle opération qui peut lancer une exception et que vous ne voulez pas laisser tomber sur le premier échec."
+        ]
+      },
+      "summary": "En gros, Polly vous donne un gabarit (retry, circuit breaker, timeout, fallback…) que vous appliquez à votre logique métier. Pas de code répétitif, juste un objet Policy que vous composez.",
+      "sections": {
+        "installation": {
+          "title": "Installation",
+          "nuget": {
+            "title": "NuGet",
+            "description": "Polly ne dépend d'aucun framework particulier, donc vous pouvez l'utiliser dans un projet .NET Core, .NET 5/6/7 ou même Mono/Xamarin. Si vous utilisez ASP.NET Core, il y a aussi Microsoft.Extensions.Http.Polly qui intègre Polly directement aux clients HttpClientFactory.",
+            "code": "# Depuis la console du gestionnaire de packages\nInstall-Package Polly\n\n# ou avec .NET CLI\ndotnet add package Polly"
+          }
+        },
+        "principle": {
+          "title": "Principe de fonctionnement",
+          "policyRule": "Définir une politique → Envelopper votre code → La politique gère les échecs",
+          "policyRuleDetails": {
+            "handleDescription": "spécifie le type d'exception à intercepter",
+            "waitAndRetryDescription": "définit le nombre de tentatives et le délai entre chaque essai",
+            "applyDescription": "Pour appliquer cette politique :",
+            "executionDescription": "Si File.ReadAllText lève une IOException, Polly va automatiquement la retry 3 fois avec un délai croissant (2s, 4s, 8s)."
+          },
+          "commonPolicies": {
+            "title": "Les types de politiques les plus courants",
+            "table": {
+              "headers": ["Type", "Quand l'utiliser ?", "Exemple rapide"],
+              "rows": [
+                { "type": "Retry", "when": "Échecs temporaires (timeout, 5xx)", "example": "Policy.Handle<Exception>().Retry(3)" },
+                { "type": "Circuit Breaker", "when": "Besoin d'éviter de surcharger un service qui est déjà en panne", "example": "Policy.Handle<Exception>().CircuitBreaker(2, TimeSpan.FromSeconds(30))" },
+                { "type": "Timeout", "when": "Limiter la durée d'une opération", "example": "Policy.Timeout(TimeSpan.FromSeconds(5))" },
+                { "type": "Fallback", "when": "Retourner une valeur par défaut ou lancer une autre action quand tout échoue", "example": "Policy.Handle<Exception>().Fallback(() => \"fallback\")" }
+              ]
+            }
+          }
+        },
+        "examples": {
+          "title": "Exemples concrets",
+          "retryTimeout": { "title": "Retry + Timeout sur un appel HTTP", "astuce": "si vous utilisez ASP.NET Core, créez un HttpClient via IHttpClientFactory, puis enregistrez la politique dans le conteneur. Polly s'intègre automatiquement." },
+          "circuitBreakerFallback": { "title": "Circuit Breaker + Fallback", "description": "Dans cet exemple :", "explanations": ["Si le service lève une exception deux fois de suite, Polly ouvre le circuit et bloque les appels pendant 10 s.", "Pendant que le circuit est ouvert, la fallback renvoie immédiatement \"service unavailable\" sans appeler le service."] },
+          "exponentialBackoff": { "title": "Retry avec back‑off exponentiel" },
+          "httpClientFactory": { "title": "Intégration avec HttpClientFactory (ASP.NET Core)", "description": "HandleTransientHttpError() est un raccourci qui cible les 408/500/502/503/504 et TimeoutException." }
+        },
+        "bestPractices": {
+          "title": "Bonnes pratiques",
+          "table": {
+            "headers": ["Règle", "Pourquoi"],
+            "rows": [
+              { "rule": "Ne retry que sur des erreurs transitoires", "reason": "Un retry sur une erreur logique (404) n'a aucun sens." },
+              { "rule": "Limitez le nombre d'essais", "reason": "Trop de tentatives peuvent retarder votre application inutilement." },
+              { "rule": "Combinez avec un circuit breaker", "reason": "Si la cible est réellement hors service, éviter de saturer votre réseau." },
+              { "rule": "Ajoutez un fallback", "reason": "Offrez une expérience utilisateur plus fluide plutôt que de tout planter." },
+              { "rule": "Testez vos politiques", "reason": "Utilisez des tests unitaires (xUnit + Polly.Testing) pour valider le comportement en cas d'échec." }
+            ]
+          }
+        },
+        "summary": { "title": "En résumé", "content": "Polly vous donne un framework léger mais puissant pour rendre vos appels externes plus robustes : retry, timeout, circuit breaker, fallback… Vous écrivez votre logique métier une seule fois et vous appliquez la politique en un appel Execute. C'est simple à mettre en place, très flexible, et ça s'intègre parfaitement dans l'écosystème .NET.", "conclusion": "Prêt à rendre vos services plus résilients ? Lancez les commandes NuGet, créez votre première Policy et voyez la différence !" }
+      }
+      ,
+      "footer": {
+        "sourcesLabel": "Sources:",
+        "officialDocs": "Documentation officielle",
+        "fullGuide": "Guide complet",
+        "writtenOn": "Écrit le {{date}}"
+      }
+    }
+  }
+}

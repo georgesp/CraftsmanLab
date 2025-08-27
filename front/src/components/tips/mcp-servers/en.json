@@ -1,0 +1,71 @@
+{
+  "mcp-servers": {
+    "title": "MCP Servers in VS Code",
+    "shortDescription": "Supercharge your workflow with GitHub, Docs, and Figma MCP servers",
+    "content": {
+      "mainTitle": "MCP servers: plug tools into your AI inside VS Code",
+      "intro": "MCP (Model Context Protocol) lets an AI agent use external tools safely. Here are three ready-to-use servers with the official VS Code extension.",
+      "config": {
+        "title": "Quick configuration",
+        "text": "In VS Code, open the command palette and run \"MCP: Open user configuration\" to edit the MCP user config. Add/adjust servers and credentials, save, then start or restart the server from the MCP view.",
+        "steps": [
+          "Open the palette (Cmd ⇧ P) and type: MCP: Open user configuration",
+          "Edit the config (enable GitHub, Microsoft Docs, Figma, Azure DevOps; add tokens/credentials)",
+          "From the MCP view, click Start/Restart to launch the server"
+        ]
+      },
+      "github": {
+        "title": "GitHub MCP server",
+        "description": "Work on issues and PRs without leaving the editor.",
+        "useCasesTitle": "Use cases",
+        "useCases": [
+          "List open issues by label and summarize priorities",
+          "Create or comment an issue from code context",
+          "Summarize a Pull Request and generate a review checklist"
+        ],
+  "codeExamples": "# Paste these prompts in Copilot Chat with the GitHub MCP server enabled\nList open issues in owner/repo with label bug and summarize priorities.\nSummarize PR #123 in owner/repo and propose a review checklist.\nCreate an issue in owner/repo titled Refactor auth and include a step-by-step plan."
+      },
+      "msdocs": {
+        "title": "Microsoft Docs MCP server",
+        "description": "Search and condense official docs while you code.",
+        "useCasesTitle": "Use cases",
+        "useCases": [
+          "Find the most relevant section for a .NET API and summarize",
+          "Compare two doc pages and extract breaking changes",
+          "Generate an implementation checklist from an official guide"
+        ],
+  "codeExamples": "# Paste these prompts in Copilot Chat with the Microsoft Docs server\nFind the most relevant section about ASP.NET Core authentication schemes and summarize in 5 bullets.\nSummarize this page: https://learn.microsoft.com/aspnet/core/security/authentication/identity\nCompare these pages and list the major breaking changes: https://learn.microsoft.com/dotnet/core/whats-new and https://learn.microsoft.com/dotnet/core/compatibility"
+      },
+      "figma": {
+        "title": "Figma MCP server",
+        "description": "Connect design to code: fetch styles, frames and specs from VS Code.",
+        "useCasesTitle": "Use cases",
+        "useCases": [
+          "List frames of a page to generate a component tree",
+          "Extract design variables (colors, typography) and propose an MUI theme",
+          "Compare a mockup with HTML/CSS output to flag visual diffs"
+        ],
+  "codeExamples": "# Paste these prompts in Copilot Chat with the Figma server\nList frames of the UI Kit page in file ABC123 and generate a component tree.\nExtract design variables (colors, typography) from file ABC123 and propose an MUI theme.\nCompare node 456 in file ABC123 with this screenshot ./build/home.png and flag visual diffs."
+      },
+      "azureDevOps": {
+        "title": "Azure DevOps MCP server",
+        "description": "Drive ADO work items, PRs, and pipelines right from the editor.",
+        "useCasesTitle": "Use cases",
+        "useCases": [
+          "List my assigned work items for this week and suggest priorities",
+          "Create a bug with area, iteration, and tags linked to a commit or PR",
+          "Re-run a failed pipeline and summarize the failure logs"
+        ],
+        "codeExamples": "# Paste these prompts in Copilot Chat with the Azure DevOps server\nList my assigned work items for the current week in organization org and project proj, then suggest a priority order.\nCreate a bug in org/proj titled Crash on login, assign it to me, set iteration Sprint 42, and add tags auth, regression.\nRe-run the build-ci pipeline (latest failed run) in org/proj and produce a summary of key errors."
+      },
+      "summary": {
+        "title": "Summary",
+  "text": "Enable only the MCP servers you need, review permissions, and use them via Copilot/MCP UI to speed up issues, docs, and design work. More MCP servers are available on the marketplace — see the link at the end."
+      },
+      "footer": {
+        "sourceLabel": "MCP extension for VS Code",
+        "writtenOn": "Written on {{date}}"
+      }
+    }
+  }
+}

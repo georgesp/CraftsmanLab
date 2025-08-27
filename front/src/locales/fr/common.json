@@ -1,0 +1,26 @@
+{
+  "navigation": {
+    "home": "Accueil",
+    "tips": "Tips / Mémos",
+    "prompts": "Prompts",
+    "contact": "Contact"
+  },
+  "search": {
+    "placeholder": "Rechercher...",
+    "noResults": "Aucun résultat"
+  },
+  "buttons": {
+    "send": "Envoyer",
+    "copy": "Copier",
+    "seeAll": "Voir tout",
+    "submit": "Envoyer le message"
+  },
+  "messages": {
+    "promptCopied": "Prompt copié dans le presse-papiers"
+  },
+  "common": {
+    "loading": "Chargement…",
+    "sources": "Sources",
+    "writtenOn": "Écrit le"
+  }
+}

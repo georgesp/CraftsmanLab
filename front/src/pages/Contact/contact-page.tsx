@@ -30,20 +30,22 @@ import {
   InfoItemHeader,
   InfoItemDescription,
 } from './styles';
+import { useTranslation } from 'react-i18next';
 
 export const ContactPage: React.FC = () => {
+  const { t } = useTranslation(['pages', 'common']);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
   });
   const [showSuccess, setShowSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -51,11 +53,11 @@ export const ContactPage: React.FC = () => {
     (async () => {
       try {
         setIsLoading(true);
-        
+
         // Configuration pour l'envoi du mail
         // Utiliser l'endpoint Azure Functions
         const apiUrl = '/api/send-email';
-        
+
         const res = await fetch(apiUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -85,7 +87,7 @@ export const ContactPage: React.FC = () => {
         // eslint-disable-next-line no-console
         console.error('Erreur envoi formulaire:', error);
         // eslint-disable-next-line no-alert
-        alert('Impossible de contacter le serveur d\'envoi.');
+        alert("Impossible de contacter le serveur d'envoi.");
       } finally {
         setIsLoading(false);
       }
@@ -93,26 +95,43 @@ export const ContactPage: React.FC = () => {
   };
 
   return (
-  <PageLayout>
+    <PageLayout>
       <Container maxWidth={false} disableGutters sx={{ px: 0, mx: 0, width: '100%' }}>
-            <ContactContainer>
+        <ContactContainer>
           {showSuccess && (
-            <SuccessAlert severity="success">
-              Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.
-            </SuccessAlert>
+            <SuccessAlert severity="success">{t('contact.successMessage')}</SuccessAlert>
           )}
 
-          <Box sx={{ display: 'flex', gap: { xs: 0, md: 3 }, flexWrap: { xs: 'wrap', md: 'nowrap' }, alignItems: 'stretch', mb: 2, px: { xs: 2, md: 4 } }}>
+          <Box
+            sx={{
+              display: 'flex',
+              gap: { xs: 0, md: 3 },
+              flexWrap: { xs: 'wrap', md: 'nowrap' },
+              alignItems: 'stretch',
+              mb: 2,
+              px: { xs: 2, md: 4 },
+            }}
+          >
             {/* Left column: Hero + Info cards */}
-            <Box sx={{ flex: { xs: '1 1 100%', md: '0 0 50%' }, maxWidth: { xs: '100%', md: '50%' } }}>
+            <Box
+              sx={{ flex: { xs: '1 1 100%', md: '0 0 50%' }, maxWidth: { xs: '100%', md: '50%' } }}
+            >
               <HeroSection>
-                <Typography variant="h2" gutterBottom sx={{ fontSize: TYPOGRAPHY.responsiveFontSizes.h2 }}>
-                  Développeur Freelance .NET & IA
+                <Typography
+                  variant="h2"
+                  gutterBottom
+                  sx={{ fontSize: TYPOGRAPHY.responsiveFontSizes.h2 }}
+                >
+                  {t('contact.title')}
                 </Typography>
-                <HeroSubtitle variant="body1" gutterBottom align="left" color="text.secondary" sx={{ fontSize: TYPOGRAPHY.responsiveFontSizes.body1 }}>
-                  Vous cherchez un développeur .NET expérimenté, avec des compétences en Intelligence Artificielle ?<br />
-                  Ou vous aimeriez voir certaines choses ajoutées sur le site ?<br />
-                  N'hésitez pas à me contacter pour discuter de vos besoins ou de vos projets !
+                <HeroSubtitle
+                  variant="body1"
+                  gutterBottom
+                  align="left"
+                  color="text.secondary"
+                  sx={{ fontSize: TYPOGRAPHY.responsiveFontSizes.body1 }}
+                >
+                  <span dangerouslySetInnerHTML={{ __html: t('contact.subtitle') }} />
                 </HeroSubtitle>
               </HeroSection>
 
@@ -120,7 +139,7 @@ export const ContactPage: React.FC = () => {
                 <InfoCard>
                   <InfoCardContent>
                     <InfoTitle variant="h4" gutterBottom sx={{ mb: 3 }}>
-                      Mes réseaux sociaux
+                      {t('contact.socialNetworks')}
                     </InfoTitle>
                     <Box sx={{ display: 'flex', gap: 3 }}>
                       <Button
@@ -129,7 +148,11 @@ export const ContactPage: React.FC = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         startIcon={
-                          <img src="/malt.png" alt="Malt" style={{ width: 28, height: 28, borderRadius: '50%' }} />
+                          <img
+                            src="/malt.png"
+                            alt="Malt"
+                            style={{ width: 28, height: 28, borderRadius: '50%' }}
+                          />
                         }
                         sx={{
                           color: COLORS.maltRed,
@@ -155,7 +178,11 @@ export const ContactPage: React.FC = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         startIcon={
-                          <img src="/linkedin.png" alt="LinkedIn" style={{ width: 28, height: 28, borderRadius: '50%' }} />
+                          <img
+                            src="/linkedin.png"
+                            alt="LinkedIn"
+                            style={{ width: 28, height: 28, borderRadius: '50%' }}
+                          />
                         }
                         sx={{
                           color: COLORS.linkedInBlue,
@@ -182,7 +209,7 @@ export const ContactPage: React.FC = () => {
                 <InfoCard>
                   <InfoCardContent>
                     <InfoTitle variant="h4" gutterBottom sx={{ mb: 3 }}>
-                      Mes coordonnées
+                      {t('contact.infoTitle')}
                     </InfoTitle>
                     <InfoSection>
                       <InfoItemHeader>
@@ -212,17 +239,21 @@ export const ContactPage: React.FC = () => {
             </Box>
 
             {/* Right column: Contact form */}
-            <Box sx={{ flex: { xs: '1 1 100%', md: "0 0 calc(50%)" }, maxWidth: { xs: '100%', md: 'calc(50%)' }, display: 'flex' }}>
+            <Box
+              sx={{
+                flex: { xs: '1 1 100%', md: '0 0 calc(50%)' },
+                maxWidth: { xs: '100%', md: 'calc(50%)' },
+                display: 'flex',
+              }}
+            >
               <ContactCard sx={{ width: '100%', maxWidth: 'none' }}>
                 <ContactCardContent>
                   <SectionHeader>
-                    <Typography variant="h3">
-                      Envoyez-moi un message
-                    </Typography>
+                    <Typography variant="h3">{t('contact.sendMessage')}</Typography>
                   </SectionHeader>
 
                   <SectionDescription variant="body1" color="text.secondary">
-                    Remplissez le formulaire ci-dessous et je vous répondrai rapidement.
+                    {t('contact.formDescription')}
                   </SectionDescription>
 
                   <Box component="form" onSubmit={handleSubmit}>
@@ -230,7 +261,7 @@ export const ContactPage: React.FC = () => {
                       <Grid item xs={12}>
                         <TextField
                           fullWidth
-                          label="Nom complet"
+                          label={t('contact.form.fullName')}
                           name="name"
                           value={formData.name}
                           onChange={handleInputChange}
@@ -239,9 +270,16 @@ export const ContactPage: React.FC = () => {
                           disabled={isLoading}
                           sx={{
                             '& .MuiOutlinedInput-root': {
-                              '& .MuiOutlinedInput-notchedOutline': { borderColor: COLORS.darkTheme.inputContactBorder },
-                              '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: COLORS.darkTheme.inputContactBorder },
-                              '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: COLORS.darkTheme.inputContactBorder, borderWidth: '2px' },
+                              '& .MuiOutlinedInput-notchedOutline': {
+                                borderColor: COLORS.darkTheme.inputContactBorder,
+                              },
+                              '&:hover .MuiOutlinedInput-notchedOutline': {
+                                borderColor: COLORS.darkTheme.inputContactBorder,
+                              },
+                              '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                                borderColor: COLORS.darkTheme.inputContactBorder,
+                                borderWidth: '2px',
+                              },
                             },
                           }}
                         />
@@ -249,7 +287,7 @@ export const ContactPage: React.FC = () => {
                       <Grid item xs={12}>
                         <TextField
                           fullWidth
-                          label="Email"
+                          label={t('contact.form.email')}
                           name="email"
                           type="email"
                           value={formData.email}
@@ -259,9 +297,16 @@ export const ContactPage: React.FC = () => {
                           disabled={isLoading}
                           sx={{
                             '& .MuiOutlinedInput-root': {
-                              '& .MuiOutlinedInput-notchedOutline': { borderColor: COLORS.darkTheme.inputContactBorder },
-                              '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: COLORS.darkTheme.inputContactBorder },
-                              '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: COLORS.darkTheme.inputContactBorder, borderWidth: '2px' },
+                              '& .MuiOutlinedInput-notchedOutline': {
+                                borderColor: COLORS.darkTheme.inputContactBorder,
+                              },
+                              '&:hover .MuiOutlinedInput-notchedOutline': {
+                                borderColor: COLORS.darkTheme.inputContactBorder,
+                              },
+                              '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                                borderColor: COLORS.darkTheme.inputContactBorder,
+                                borderWidth: '2px',
+                              },
                             },
                           }}
                         />
@@ -269,7 +314,7 @@ export const ContactPage: React.FC = () => {
                       <Grid item xs={12}>
                         <TextField
                           fullWidth
-                          label="Sujet"
+                          label={t('contact.form.subject')}
                           name="subject"
                           value={formData.subject}
                           onChange={handleInputChange}
@@ -278,9 +323,16 @@ export const ContactPage: React.FC = () => {
                           disabled={isLoading}
                           sx={{
                             '& .MuiOutlinedInput-root': {
-                              '& .MuiOutlinedInput-notchedOutline': { borderColor: COLORS.darkTheme.inputContactBorder },
-                              '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: COLORS.darkTheme.inputContactBorder },
-                              '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: COLORS.darkTheme.inputContactBorder, borderWidth: '2px' },
+                              '& .MuiOutlinedInput-notchedOutline': {
+                                borderColor: COLORS.darkTheme.inputContactBorder,
+                              },
+                              '&:hover .MuiOutlinedInput-notchedOutline': {
+                                borderColor: COLORS.darkTheme.inputContactBorder,
+                              },
+                              '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                                borderColor: COLORS.darkTheme.inputContactBorder,
+                                borderWidth: '2px',
+                              },
                             },
                           }}
                         />
@@ -288,7 +340,7 @@ export const ContactPage: React.FC = () => {
                       <Grid item xs={12}>
                         <TextField
                           fullWidth
-                          label="Message"
+                          label={t('contact.form.message')}
                           name="message"
                           multiline
                           rows={6}
@@ -299,9 +351,16 @@ export const ContactPage: React.FC = () => {
                           disabled={isLoading}
                           sx={{
                             '& .MuiOutlinedInput-root': {
-                              '& .MuiOutlinedInput-notchedOutline': { borderColor: COLORS.darkTheme.inputContactBorder },
-                              '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: COLORS.darkTheme.inputContactBorder },
-                              '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: COLORS.darkTheme.inputContactBorder, borderWidth: '2px' },
+                              '& .MuiOutlinedInput-notchedOutline': {
+                                borderColor: COLORS.darkTheme.inputContactBorder,
+                              },
+                              '&:hover .MuiOutlinedInput-notchedOutline': {
+                                borderColor: COLORS.darkTheme.inputContactBorder,
+                              },
+                              '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                                borderColor: COLORS.darkTheme.inputContactBorder,
+                                borderWidth: '2px',
+                              },
                             },
                           }}
                         />
@@ -320,7 +379,9 @@ export const ContactPage: React.FC = () => {
                             )
                           }
                         >
-                          {isLoading ? 'Envoi en cours...' : 'Envoyer le message'}
+                          {isLoading
+                            ? t('common:buttons.send') + '...'
+                            : t('common:buttons.submit')}
                         </SubmitButton>
                       </Grid>
                     </Grid>
@@ -329,8 +390,8 @@ export const ContactPage: React.FC = () => {
               </ContactCard>
             </Box>
           </Box>
-            </ContactContainer>
-          </Container>
+        </ContactContainer>
+      </Container>
     </PageLayout>
   );
 };

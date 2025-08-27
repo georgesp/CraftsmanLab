@@ -1,0 +1,75 @@
+{
+  "collection": {
+    "title": "Collections C#",
+    "shortDescription": "Différentes collections en C# (IEnumerable, ICollection, IList, IReadOnlyCollection, etc..)",
+    "content": {
+      "mainTitle": "Collections C# : guide des interfaces et implémentations",
+      "intro": "Panorama des collections en C# : interfaces, implémentations et cas d'usage pour choisir la bonne structure de données.",
+      "summary": "Comprenez les différences entre IEnumerable, ICollection, IList et leurs variantes pour optimiser vos choix d'architecture.",
+      "sections": {
+        "ienumerable": {
+          "title": "IEnumerable<T>",
+          "description": "Contrat minimal d'itération en lecture. Idéal pour exposer un flux d'éléments sans opérations de modification."
+        },
+        "icollection": {
+          "title": "ICollection<T>",
+          "description": "Étend IEnumerable avec Count, Add, Remove, Contains, Clear. À utiliser quand l'écriture est nécessaire."
+        },
+        "ireadonlycollection": {
+          "title": "IReadOnlyCollection<T>",
+          "description": "Expose le nombre d'éléments (Count) sans autoriser la modification. Convient pour le retour d'APIs."
+        },
+        "ilist": {
+          "title": "IList<T>",
+          "description": "Collection indexée (this[int index]). Ajout/suppression par index. Utile quand l'ordre compte."
+        },
+        "ireadonlylist": {
+          "title": "IReadOnlyList<T>",
+          "description": "Liste en lecture seule avec accès indexé. Parfaite pour exposer une liste ordonnée sans modification."
+        },
+        "iset": {
+          "title": "ISet<T>",
+          "description": "Ensemble d'éléments uniques. Opérations ensemblistes (Union, Intersect). Idéal pour l'unicité."
+        },
+        "summary": {
+          "title": "Résumé",
+          "items": {
+            "ienumerable": "lecture seule, itération simple",
+            "ireadonlycollection": "lecture seule + Count",
+            "ireadonlylist": "lecture seule + index",
+            "icollection": "lecture/écriture + opérations",
+            "ilist": "indexé, ordre important",
+            "iset": "unicité, opérations ensemblistes"
+          }
+        },
+        "tips": {
+          "title": "Astuces",
+          "items": {
+            "restrictive": "Exposez le type le plus restrictif possible",
+            "output": "Privilégiez IReadOnly* en sortie",
+            "input": "Acceptez IEnumerable en entrée si suffisant",
+            "never": "N'exposez pas List<T> brute dans une API publique"
+          }
+        },
+        "bestPractices": {
+          "title": "Bonnes pratiques",
+          "tips": [
+            "Exposez le type le plus restrictif possible",
+            "Préférez IEnumerable pour les paramètres",
+            "Utilisez IReadOnly* pour les APIs publiques",
+            "Choisissez l'implémentation selon l'usage",
+            "Évitez de caster inutilement"
+          ]
+        }
+      }
+      ,
+      "footer": {
+        "sourcesLabel": "Sources :",
+        "sources": [
+          { "name": "Documentation .NET – System.Collections", "url": "https://learn.microsoft.com/fr-fr/dotnet/api/system.collections" }
+        ],
+        "writtenOn": "Écrit le {{date}}"
+      }
+    }
+  }
+}
