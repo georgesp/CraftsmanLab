@@ -26,7 +26,8 @@ export const LanguageSelector: React.FC = () => {
     handleClose();
   };
 
-  const currentLanguage = languages.find((lang) => lang.code === i18n.language) || languages[0];
+  const currentLanguage =
+    languages.find((lang) => lang.code === (i18n.resolvedLanguage || i18n.language)) || languages[0];
 
   return (
     <Box>
@@ -63,7 +64,7 @@ export const LanguageSelector: React.FC = () => {
           <MenuItem
             key={language.code}
             onClick={() => handleLanguageChange(language.code)}
-            selected={language.code === i18n.language}
+            selected={language.code === (i18n.resolvedLanguage || i18n.language)}
             sx={{ fontSize: '0.95rem' }}
           >
             {language.flag} {language.name}

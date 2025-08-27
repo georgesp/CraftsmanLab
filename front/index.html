@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/symbol.svg" />
@@ -21,6 +21,18 @@
     <!-- No Twitter account associated; Twitter meta tags intentionally omitted -->
     <!-- Mobile / PWA hints -->
     <meta name="theme-color" content="#23272F" />
+
+    <!-- Set initial lang based on browser (FR if French, else EN) before React mounts -->
+    <script>
+      try {
+        const navLang = (navigator.languages && navigator.languages[0]) || navigator.language || '';
+        const lang = /^fr(\-|$)/i.test(navLang) ? 'fr' : 'en';
+        document.documentElement.setAttribute('lang', lang);
+        if (!localStorage.getItem('i18nextLng')) localStorage.setItem('i18nextLng', lang);
+      } catch (e) {
+        /* no-op */
+      }
+    </script>
 
     <!-- Import Inter Tight font from Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap" rel="stylesheet" />

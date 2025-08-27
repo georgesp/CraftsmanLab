@@ -32,8 +32,13 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: 'fr',
+  // If user's browser is French, use FR; otherwise default to EN
+  fallbackLng: 'en',
     defaultNS: 'common',
+  // Only support FR and EN and collapse locales like fr-FR/en-US to base code
+  supportedLngs: ['fr', 'en'],
+  nonExplicitSupportedLngs: true,
+  load: 'languageOnly',
 
     interpolation: {
       escapeValue: false, // React already escapes values
