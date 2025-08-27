@@ -5,6 +5,17 @@
     "content": {
       "mainTitle": "C# 12 — les nouveautés qui changent le quotidien",
       "overview": "C# 12 affine la productivité avec des primary constructors pour les classes, des collection expressions plus concises, et des paramètres par défaut pour les lambdas. Tu gagnes en lisibilité et en boilerplate en moins, tout en restant 100% compatible avec l’existant.",
+      "features": {
+        "title": "Fonctionnalités introduites",
+        "items": [
+          "Primary constructors sur les classes",
+          "Collection expressions avec spread (..)",
+          "Paramètres par défaut pour les lambdas",
+          "Type alias (alias any type)",
+          "InlineArray pour la performance (cas avancés)",
+          "Améliorations diverses de pattern matching"
+        ]
+      },
       "useCases": {
         "title": "Cas d’usage",
         "case1": {
@@ -45,6 +56,24 @@
           "Documente clairement les valeurs par défaut des lambdas",
           "Préserve la cohérence de style avec l’équipe"
         ]
+      },
+      "extras": {
+        "title": "Autres fonctionnalités",
+        "typeAlias": {
+          "title": "Alias de type (alias any type)",
+          "description": "Donne un nom explicite à un type complexe et simplifie les signatures d'API.",
+          "code": "// Type alias\nusing StringMap = System.Collections.Generic.Dictionary<string, string>;\n\nStringMap headers = new() { [\"Accept\"] = \"application/json\" };"
+        },
+        "inlineArray": {
+          "title": "InlineArray (performance avancée)",
+          "description": "Stocke un petit buffer dans une structure pour réduire les allocations (cas ciblés).",
+          "code": "using System.Runtime.CompilerServices;\n\n[InlineArray(16)]\npublic struct SmallBuffer\n{\n    private int _element0;\n}\n\nvar buf = new SmallBuffer();"
+        },
+        "patterns": {
+          "title": "Raffinements de pattern matching",
+          "description": "Des petits plus qui améliorent la lisibilité et les matchs sur types/constantes.",
+          "code": "// Example placeholder\nobject x = 5;\nvar text = x switch { int i => $\"int:{i}\", _ => \"other\" };"
+        }
       },
       "footer": {
         "sourcesLabel": "Sources",

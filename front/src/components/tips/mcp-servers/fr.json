@@ -1,0 +1,72 @@
+{
+  "mcp-servers": {
+    "title": "MCP Servers dans VS Code",
+    "shortDescription": "Active des super-pouvoirs avec les serveurs MCP (GitHub, Docs, Figma)",
+    "content": {
+      "mainTitle": "Serveurs MCP : brancher des outils à ton IA dans VS Code",
+  "intro": "Les serveurs MCP (Model Context Protocol) permettent à un agent IA d'utiliser des outils externes de façon sécurisée. Voici trois cas d'usage prêts à l'emploi avec l'extension officielle VS Code.",
+      "config": {
+        "title": "Configuration rapide",
+        "text": "Dans VS Code, ouvre la palette de commandes et lance \"MCP: Open user configuration\" pour modifier la configuration MCP utilisateur. Ajoute/ajuste les serveurs et les identifiants, enregistre, puis démarre ou relance le serveur depuis le panneau MCP.",
+        "steps": [
+          "Depuis l’onglet MCP, installe/active les serveurs : ils s’ajoutent automatiquement à la configuration utilisateur",
+          "Ouvre la palette (Cmd ⇧ P) et tape : MCP: Open user configuration",
+          "Édite la config (ajout de serveurs GitHub, Microsoft Docs, Figma, Azure DevOps ; tokens/identifiants)",
+          "Dans l’onglet MCP, clique Start/Restart pour lancer le serveur"
+        ]
+      },
+      "github": {
+        "title": "Serveur MCP GitHub",
+        "description": "Idéal pour travailler sur issues et PR sans quitter l'éditeur.",
+        "useCasesTitle": "Cas d'usage",
+        "useCases": [
+          "Lister les issues ouvertes avec un label précis et résumer la priorité",
+          "Créer ou commenter une issue depuis le contexte du code",
+          "Résumer une Pull Request et demander la checklist des points à vérifier"
+        ],
+  "codeExamples": "# Colle ces prompts dans Copilot Chat lorsque le serveur MCP GitHub est activé\nListe les issues ouvertes du repo owner/repo avec le label bug et fais un résumé des priorités.\nRésume la PR #123 du repo owner/repo et propose une checklist de revue.\nCrée une issue dans owner/repo intitulée Refactor auth et ajoute un plan des étapes."
+      },
+      "msdocs": {
+        "title": "Serveur MCP Microsoft Docs",
+        "description": "Parfait pour chercher et condenser la doc officielle pendant que tu codes.",
+        "useCasesTitle": "Cas d'usage",
+        "useCases": [
+          "Rechercher la section la plus pertinente pour une API .NET et faire un résumé",
+          "Comparer deux pages de doc et extraire les breaking changes",
+          "Générer une checklist d'implémentation à partir d'un guide officiel"
+        ],
+  "codeExamples": "# Colle ces prompts dans Copilot Chat avec le serveur Microsoft Docs\nTrouve la section la plus pertinente sur les schémas d’authentification ASP.NET Core et résume-la en 5 points.\nRésume cette page: https://learn.microsoft.com/aspnet/core/security/authentication/identity\nCompare ces deux pages et liste les breaking changes majeurs: https://learn.microsoft.com/dotnet/core/whats-new et https://learn.microsoft.com/dotnet/core/compatibility"
+      },
+      "figma": {
+        "title": "Serveur MCP Figma",
+        "description": "Relie le design à ton code: récupère styles, frames et specs sans quitter VS Code.",
+        "useCasesTitle": "Cas d'usage",
+        "useCases": [
+          "Lister les frames d'une page pour générer un arbre de composants",
+          "Extraire les variables de design (couleurs, typos) et proposer un thème MUI",
+          "Comparer une maquette et le rendu HTML/CSS pour signaler les écarts"
+        ],
+  "codeExamples": "# Colle ces prompts dans Copilot Chat avec le serveur Figma\nListe les frames de la page UI Kit du fichier ABC123 et génère un arbre de composants.\nExtrait les variables de design (couleurs, typographies) du fichier ABC123 et propose un thème MUI.\nCompare le node 456 du fichier ABC123 avec cette capture ./build/home.png et signale les écarts visuels."
+      },
+      "azureDevOps": {
+        "title": "Serveur MCP Azure DevOps",
+        "description": "Pilote tes work items, PR et pipelines ADO directement depuis l’éditeur.",
+        "useCasesTitle": "Cas d'usage",
+        "useCases": [
+          "Lister les work items assignés pour cette semaine et proposer des priorités",
+          "Créer un bug avec zone, itération et tags, lié à un commit ou une PR",
+          "Relancer un pipeline échoué et résumer les logs d’échec"
+        ],
+        "codeExamples": "# Colle ces prompts dans Copilot Chat avec le serveur Azure DevOps\nListe mes work items assignés pour la semaine en cours dans l’organisation org et le projet proj, puis suggère un ordre de priorité.\nCrée un bug dans org/proj avec le titre \"Crash on login\", assigne-le à moi, set l’itération Sprint 42 et ajoute les tags auth, regression.\nRelance le pipeline build-ci (dernier run échoué) dans org/proj et produis un résumé des erreurs clés."
+      },
+      "summary": {
+        "title": "Résumé",
+  "text": "Active uniquement les serveurs MCP utiles à ton workflow, garde un œil sur les permissions, et exploite-les via l'UI Copilot/MCP pour accélérer issues, doc et design. D’autres serveurs MCP sont disponibles sur la marketplace — vois le lien en fin de page."
+      },
+      "footer": {
+        "sourceLabel": "Extension MCP pour VS Code",
+        "writtenOn": "Écrit le {{date}}"
+      }
+    }
+  }
+}

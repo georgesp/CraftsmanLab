@@ -57,6 +57,11 @@
             "fast": "Gardez des tests rapides"
           }
         },
+        "skip": {
+          "title": "Ignorer / mettre en attente un test",
+          "description": "Utilisez l'attribut Skip sur [Fact] ou [Theory] pour désactiver temporairement un test. Renseignez toujours une raison explicite pour faciliter le suivi.",
+          "notes": "Préférez corriger ou isoler un test instable. N'utilisez Skip que temporairement (ex: fonctionnalité désactivée, données externes indisponibles)."
+        },
         "conclusion": {
           "title": "Conclusion",
           "description": "xUnit fournit une base solide pour des tests fiables et maintenables, avec un modèle extensible et moderne."

@@ -213,6 +213,37 @@ public class IntegrationTest2
       />
 
       <Typography variant="h4" gutterBottom>
+        {t('xunit.content.sections.skip.title')}
+      </Typography>
+      <Typography paragraph>
+        {t('xunit.content.sections.skip.description')}
+      </Typography>
+      <CodeBlock
+        language="csharp"
+        code={`using Xunit;
+
+public class SkippingExamples
+{
+    [Fact(Skip = "Feature temporarily disabled")]
+    public void This_test_is_skipped()
+    {
+        // Not executed
+    }
+
+    [Theory(Skip = "Unstable on CI for now")]
+    [InlineData(1)]
+    [InlineData(2)]
+    public void Skipped_theory(int value)
+    {
+        // Not executed
+    }
+}`}
+      />
+      <Typography paragraph>
+        {t('xunit.content.sections.skip.notes')}
+      </Typography>
+
+      <Typography variant="h4" gutterBottom>
         {t('xunit.content.sections.bestPractices.title')}
       </Typography>
       <ul>

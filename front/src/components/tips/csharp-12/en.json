@@ -5,6 +5,17 @@
     "content": {
       "mainTitle": "C# 12 — everyday improvements",
       "overview": "C# 12 boosts productivity with primary constructors for classes, concise collection expressions, and default parameter values in lambdas. You get cleaner code with less boilerplate while staying 100% compatible with existing code.",
+      "features": {
+        "title": "Introduced features",
+        "items": [
+          "Primary constructors on classes",
+          "Collection expressions with spread (..)",
+          "Default parameter values for lambdas",
+          "Type alias (alias any type)",
+          "InlineArray for performance (advanced)",
+          "Pattern matching refinements"
+        ]
+      },
       "useCases": {
         "title": "Use cases",
         "case1": {
@@ -45,6 +56,24 @@
           "Document default values on lambdas clearly",
           "Keep team-wide style consistency"
         ]
+      },
+      "extras": {
+        "title": "Other features",
+        "typeAlias": {
+          "title": "Type alias (alias any type)",
+          "description": "Give a meaningful name to a complex type and simplify API signatures.",
+          "code": "// Type alias\nusing StringMap = System.Collections.Generic.Dictionary<string, string>;\n\nStringMap headers = new() { [\"Accept\"] = \"application/json\" };"
+        },
+        "inlineArray": {
+          "title": "InlineArray (advanced performance)",
+          "description": "Keep a small buffer inside a struct to reduce allocations (targeted scenarios).",
+          "code": "using System.Runtime.CompilerServices;\n\n[InlineArray(16)]\npublic struct SmallBuffer\n{\n    private int _element0;\n}\n\nvar buf = new SmallBuffer();"
+        },
+        "patterns": {
+          "title": "Pattern matching refinements",
+          "description": "Small improvements that boost readability and matching over types/constants.",
+          "code": "// Example placeholder\nobject x = 5;\nvar text = x switch { int i => $\"int:{i}\", _ => \"other\" };"
+        }
       },
       "footer": {
         "sourcesLabel": "Sources",

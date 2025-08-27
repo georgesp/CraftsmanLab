@@ -5,6 +5,17 @@
     "content": {
       "mainTitle": "C# 11 : fonctionnalités essentielles à connaître",
       "overview": "C# 11 apporte des améliorations de productivité et de lisibilité. Ce tip couvre les points saillants avec exemples concis pour une adoption rapide.",
+      "features": {
+        "title": "Fonctionnalités introduites",
+        "items": [
+          "Raw string literals (chaînes brutes) pour JSON/regex",
+          "Required members pour forcer l'initialisation",
+          "List patterns et pattern matching enrichi",
+          "Generic math via membres statiques abstraits dans les interfaces",
+          "UTF-8 string literals (u8) pour la perf sur les octets",
+          "Types locaux au fichier (file-scoped types)"
+        ]
+      },
       "useCases": {
         "title": "Cas d’usage",
         "case1": {
@@ -48,6 +59,24 @@
           "Préférez les raw strings pour JSON/regex plutôt que concaténations",
           "Gardez les patterns lisibles (évitez les motifs trop denses)"
         ]
+      },
+      "extras": {
+        "title": "Autres fonctionnalités",
+        "genericMath": {
+          "title": "Generic math (interfaces avec membres statiques abstraits)",
+          "description": "Écrivez des fonctions numériques génériques sans surcharge: une seule implémentation pour int, double, decimal…",
+          "code": "using System.Numerics;\n\n// Generic add using INumber<T>\nstatic T Add<T>(T a, T b) where T : INumber<T>\n{\n    return a + b;\n}\n\nvar i = Add(1, 2);\nvar d = Add(1.5, 2.5);"
+        },
+        "utf8": {
+          "title": "Littéraux UTF-8 (u8)",
+          "description": "Construisez rapidement des spans d'octets pour l'I/O réseau et les parsers.",
+          "code": "// UTF-8 string literal\nReadOnlySpan<byte> payload = \"Hello, UTF-8!\"u8;\n\n// Use with I/O APIs expecting spans\nConsole.WriteLine(System.Text.Encoding.UTF8.GetString(payload));"
+        },
+        "fileScopedTypes": {
+          "title": "Types à portée fichier (file)",
+          "description": "Limitez la visibilité d'un type au fichier courant pour éviter les collisions de noms.",
+          "code": "// File-scoped type\nfile class HiddenHelper\n{\n    public static string Value => \"Only in this file\";\n}\n\npublic class VisibleType { }"
+        }
       },
       "footer": {
         "sourcesLabel": "Sources :",

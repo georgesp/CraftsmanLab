@@ -25,6 +25,7 @@ export const meta: TipMeta = {
         'phonémisation',
         'gpu',
         'cpu',
+        'ia'
       ],
       en: [
         'kokoro',
@@ -41,6 +42,7 @@ export const meta: TipMeta = {
         'phonemization',
         'gpu',
         'cpu',
+        'ai',
       ],
     },
   },

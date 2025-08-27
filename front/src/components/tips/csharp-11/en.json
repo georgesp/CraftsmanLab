@@ -5,6 +5,17 @@
     "content": {
       "mainTitle": "C# 11: essential features to know",
       "overview": "C# 11 focuses on readability and productivity. This tip highlights the most useful parts with concise examples for quick adoption.",
+      "features": {
+        "title": "Introduced features",
+        "items": [
+          "Raw string literals for JSON/regex",
+          "Required members to enforce initialization",
+          "List patterns and richer pattern matching",
+          "Generic math via static abstract members in interfaces",
+          "UTF-8 string literals (u8) for byte-level perf",
+          "File-scoped types"
+        ]
+      },
       "useCases": {
         "title": "Use cases",
         "case1": {
@@ -48,6 +59,24 @@
           "Prefer raw strings for JSON/regex instead of concatenations",
           "Keep patterns readable (avoid overly dense motifs)"
         ]
+      },
+      "extras": {
+        "title": "Other features",
+        "genericMath": {
+          "title": "Generic math (static abstract members in interfaces)",
+          "description": "Write generic numeric functions without overloads: one implementation for int, double, decimal…",
+          "code": "using System.Numerics;\n\n// Generic add using INumber<T>\nstatic T Add<T>(T a, T b) where T : INumber<T>\n{\n    return a + b;\n}\n\nvar i = Add(1, 2);\nvar d = Add(1.5, 2.5);"
+        },
+        "utf8": {
+          "title": "UTF-8 string literals (u8)",
+          "description": "Quickly build byte spans for network I/O and parsers.",
+          "code": "// UTF-8 string literal\nReadOnlySpan<byte> payload = \"Hello, UTF-8!\"u8;\n\n// Use with I/O APIs expecting spans\nConsole.WriteLine(System.Text.Encoding.UTF8.GetString(payload));"
+        },
+        "fileScopedTypes": {
+          "title": "File-scoped types",
+          "description": "Limit a type visibility to the current file to avoid name collisions.",
+          "code": "// File-scoped type\nfile class HiddenHelper\n{\n    public static string Value => \"Only in this file\";\n}\n\npublic class VisibleType { }"
+        }
       },
       "footer": {
         "sourcesLabel": "Sources:",

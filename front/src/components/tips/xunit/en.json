@@ -57,6 +57,11 @@
             "fast": "Keep tests fast"
           }
         },
+        "skip": {
+          "title": "Skipping / ignoring a test",
+          "description": "Use the Skip attribute on [Fact] or [Theory] to temporarily disable a test. Always provide a clear reason to ease tracking.",
+          "notes": "Prefer fixing or isolating flaky tests. Use Skip only temporarily (e.g., feature disabled, external data unavailable)."
+        },
         "conclusion": {
           "title": "Conclusion",
           "description": "xUnit provides a solid foundation for reliable and maintainable tests with a modern, extensible model."
