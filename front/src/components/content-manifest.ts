@@ -21,6 +21,7 @@ import { meta as kokoroSharpMeta } from './tips/kokoro-sharp/meta';
 import { meta as mcpServersMeta } from './tips/mcp-servers/meta';
 import { meta as tsqlApplyMeta } from './tips/tsql-apply/meta';
 import { meta as openjsonMeta } from './tips/tsql-openjson/meta';
+import { meta as csharpPatternMatchingMeta } from './tips/csharp-pattern-matching/meta';
 
 export type TipEntry = TipMeta & { load: () => Promise<any> };
 
@@ -41,6 +42,7 @@ export const tipsEntries: TipEntry[] = [
   { ...mcpServersMeta, load: () => import('./tips/mcp-servers/mcp-servers') },
   { ...tsqlApplyMeta, load: () => import('./tips/tsql-apply/tsql-apply') },
   { ...openjsonMeta, load: () => import('./tips/tsql-openjson/tsql-openjson') },
+  { ...csharpPatternMatchingMeta, load: () => import('./tips/csharp-pattern-matching/csharp-pattern-matching') },
 ];
 
 // ----- Prompts: metas -----
@@ -89,6 +91,8 @@ import tsqlApplyFr from './tips/tsql-apply/fr.json';
 import tsqlApplyEn from './tips/tsql-apply/en.json';
 import openjsonFr from './tips/tsql-openjson/fr.json';
 import openjsonEn from './tips/tsql-openjson/en.json';
+import csharpPatternMatchingFr from './tips/csharp-pattern-matching/fr.json';
+import csharpPatternMatchingEn from './tips/csharp-pattern-matching/en.json';
 
 export const tipsTranslationsFr = {
   ...pollyFr,
@@ -107,6 +111,7 @@ export const tipsTranslationsFr = {
   ...mcpServersFr,
   ...tsqlApplyFr,
   ...openjsonFr,
+  ...csharpPatternMatchingFr,
 };
 
 export const tipsTranslationsEn = {
@@ -126,6 +131,7 @@ export const tipsTranslationsEn = {
   ...mcpServersEn,
   ...tsqlApplyEn,
   ...openjsonEn,
+  ...csharpPatternMatchingEn,
 };
 
 // ----- Prompts: translations -----

@@ -1,0 +1,102 @@
+{
+  "csharp-pattern-matching": {
+    "title": "C# Pattern Matching",
+    "shortDescription": "Master C# patterns (type, property, list…) for cleaner switch logic.",
+    "content": {
+  "mainTitle": "C# pattern matching: write intent, not plumbing",
+  "overview": "Introduced in C# 7.0 and extended in later releases (property, positional and list patterns, switch expressions), pattern matching lets you express conditions by shape rather than nested ifs. Here are the key pattern types you’ll use daily, each with a practical snippet.",
+      "typesIndex": {
+        "title": "Pattern types",
+        "items": [
+          "Type pattern",
+          "Constant pattern",
+          "Relational pattern",
+          "Logical patterns",
+          "Property pattern",
+          "Positional pattern",
+          "List patterns",
+          "var / discard",
+          "Switch expression"
+        ]
+      },
+      "useCases": {
+        "title": "Use cases",
+        "typePattern": {
+          "title": "Type pattern",
+          "description": "Narrow the type on the fly to access specific members.",
+          "code": "// Handle animals differently by type\nvoid Greet(Animal a)\n{\n    if (a is Dog d)\n    {\n        // Access Dog-specific members\n        Console.WriteLine(\"Woof from \" + d.Name);\n    }\n    else if (a is Cat c)\n    {\n        Console.WriteLine(\"Meow from \" + c.Name);\n    }\n}"
+        },
+        "constantPattern": {
+          "title": "Constant pattern",
+          "description": "Compare a value to a constant (including null).",
+          "code": "// Compare with constants\nstring? state = GetState();\nif (state is null)\n{\n    // Handle missing state\n    return;\n}\nif (state is \"Ready\")\n{\n    // Ready branch\n}"
+        },
+        "relationalPattern": {
+          "title": "Relational pattern",
+          "description": "Use <, <=, >, >= directly in the pattern.",
+          "code": "// Classify by range\nstring Classify(int score) => score switch\n{\n    < 0 => \"invalid\",\n    < 50 => \"low\",\n    < 80 => \"medium\",\n    <= 100 => \"high\",\n    _ => \"invalid\"\n};"
+        },
+        "logicalPatterns": {
+          "title": "Logical patterns",
+          "description": "Combine patterns with and, or, not.",
+          "code": "// Combine relational patterns\nbool IsTeenager(int age) => age is >= 13 and <= 19;\n\n// Guard invalid values\nbool IsValid(int x) => x is not < 0;"
+        },
+        "propertyPattern": {
+          "title": "Property pattern",
+          "description": "Match an object on properties and values.",
+          "code": "// Match on properties\nbool IsAdmin(User u) => u is { Role: \"Admin\", Active: true };\n\n// Nested properties\nbool IsWorkingInParis(Employee e) => e is { Address.City: \"Paris\" };"
+        },
+        "positionalPattern": {
+          "title": "Positional pattern",
+          "description": "Deconstruct and validate a shape via Deconstruct().",
+          "code": "// Match by position (uses record positional members)\npublic readonly record struct Point(int X, int Y);\n\nstring Quadrant(Point p) => p switch\n{\n    Point(0, 0) => \"origin\",\n    Point(> 0, > 0) => \"Q1\",\n    Point(< 0, > 0) => \"Q2\",\n    Point(< 0, < 0) => \"Q3\",\n    Point(> 0, < 0) => \"Q4\",\n    _ => \"axis\"\n};"
+        },
+        "listPatterns": {
+          "title": "List patterns",
+          "description": "Match sequences (prefix, suffix, elements).",
+          "code": "// Match list shapes\nstring Describe(int[] data) => data switch\n{\n    [] => \"empty\",\n    [var single] => $\"single {single}\",\n    [0, .. var rest] => $\"starts with zero, count={rest.Length}\",\n    [.., 42] => \"ends with 42\",\n    _ => \"other\"\n};"
+        },
+        "varDiscard": {
+          "title": "var / discard",
+          "description": "Capture a value or ignore it within a pattern.",
+          "code": "// Capture or discard\nif (GetValue() is var value and > 0)\n{\n    // Use captured value\n    Console.WriteLine(value);\n}\n\nif (GetValue() is _)\n{\n    // Matches anything (discard)\n}"
+        },
+        "switchExpression": {
+          "title": "Switch expression",
+          "description": "Express logic by shape, concise and readable.",
+          "code": "// Price by product shape\ndecimal PriceOf(Product p) => p switch\n{\n    Book { Pages: > 500 } => 29.90m,\n    Book => 19.90m,\n    Subscription { Tier: \"Pro\" } => 49m,\n    Subscription { Tier: \"Basic\" } => 9m,\n    _ => 0m\n};"
+        }
+      },
+      "summary": {
+        "title": "Summary",
+        "text": "Use patterns to encode simple business rules without nested ifs. Great for classification, routing, and validation.",
+        "prosTitle": "Pros",
+        "consTitle": "Cons",
+        "pros": [
+          "Clearer than if/else cascades.",
+          "Fewer bugs: explicit shapes and exhaustiveness via _.",
+          "Pairs well with switch expressions."
+        ],
+        "cons": [
+          "Can get dense if logic is too complex.",
+          "Requires recent C#/.NET for all features."
+        ]
+      },
+      "goodPractices": {
+        "title": "Best practices",
+        "items": [
+          "Prefer switch expressions for readability when possible.",
+          "Be explicit: name the properties you match on.",
+          "Add a default _ case and log unexpected input."
+        ]
+      },
+      "footer": {
+        "sourcesLabel": "Sources",
+        "sources": [
+          { "name": "Microsoft Docs — Pattern matching", "url": "https://learn.microsoft.com/dotnet/csharp/pattern-matching" }
+        ],
+        "writtenOn": "Written on {{date}}"
+      }
+    }
+  }
+}
