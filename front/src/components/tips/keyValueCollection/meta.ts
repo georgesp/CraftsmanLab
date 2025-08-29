@@ -26,5 +26,6 @@ export const meta: TipMeta = {
       'collections',
       'collection',
     ],
+  tags: ['dictionary', 'collections']
   },
 };

@@ -25,5 +25,6 @@ export const meta: TipMeta = {
       'assert',
       'async',
     ],
+  tags: ['xunit', 'testing']
   },
 };

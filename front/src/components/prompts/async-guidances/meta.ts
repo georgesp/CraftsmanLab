@@ -26,7 +26,8 @@ export const meta: PromptMeta = {
       'csharp',
       'guidances',
       'bonnes pratiques',
-      
+
     ],
+  tags: ['async', 'c#', 'dotnet']
   },
 };

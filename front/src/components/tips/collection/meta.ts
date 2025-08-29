@@ -30,5 +30,6 @@ export const meta: TipMeta = {
       'générique',
       'generic',
     ],
+  tags: ['collections', 'linq']
   },
 };

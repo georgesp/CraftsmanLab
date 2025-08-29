@@ -29,5 +29,6 @@ export const meta: TipMeta = {
       'source generator',
       'mapper',
     ],
+  tags: ['facet', 'source-generator']
   },
 };

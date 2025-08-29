@@ -16,6 +16,7 @@ export const meta: PromptMeta = {
       'performance',
       'architecture',
       'guidelines',
+      'guidances',
       'bonnes pratiques',
       'best practices',
       'async',
@@ -24,5 +25,6 @@ export const meta: PromptMeta = {
       'controller',
       'middleware',
     ],
+  tags: ['aspnet-core', 'web', 'best-practices']
   },
 };

@@ -19,5 +19,6 @@ export const meta: TipMeta = {
       'table-valued function',
       'WITH',
     ],
+  tags: ['tsql', 'openjson']
   },
 };

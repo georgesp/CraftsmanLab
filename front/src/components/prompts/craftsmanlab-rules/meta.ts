@@ -24,5 +24,6 @@ export const meta: PromptMeta = {
       'mui',
       'craftsmanlab',
     ],
+  tags: ['react', 'typescript', 'rules']
   },
 };

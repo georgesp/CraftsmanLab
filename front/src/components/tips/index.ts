@@ -3,6 +3,8 @@ import type { Keyword } from '../../utils/constants';
 
 export type TipMetadata = {
   searchKeywords: string[];
+  // Narrow, high-signal labels for filtering or display
+  tags?: string[];
 };
 
 export type TipMeta = {

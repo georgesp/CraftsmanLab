@@ -4,6 +4,8 @@ import type { Keyword } from '../../utils/constants';
 export type PromptMetadata = {
   // Unified keywords list (FR/EN mixed). Keep it short and relevant.
   searchKeywords: string[];
+  // Narrow, high-signal labels for filtering or display
+  tags?: string[];
 };
 
 export type PromptMeta = {

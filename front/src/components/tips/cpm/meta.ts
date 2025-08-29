@@ -27,5 +27,6 @@ export const meta: TipMeta = {
       'mise à jour',
       'update',
     ],
+  tags: ['cpm', 'nuget']
   },
 };

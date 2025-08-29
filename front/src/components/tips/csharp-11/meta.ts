@@ -21,5 +21,6 @@ export const meta: TipMeta = {
       'pattern matching',
       'generic math',
     ],
+  tags: ['c#11', 'language']
   },
 };
