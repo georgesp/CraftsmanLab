@@ -1,0 +1,119 @@
+{
+  "tsql-apply": {
+    "title": "CROSS APPLY and OUTER APPLY (T‑SQL)",
+    "shortDescription": "Lateral joins to call per-row table expressions; filter (CROSS) or keep (OUTER).",
+    "content": {
+      "mainTitle": "CROSS APPLY and OUTER APPLY in T‑SQL",
+      "overview": "APPLY is a lateral join: for each left row, execute a table-returning expression (table-valued function, OPENJSON, STRING_SPLIT, correlated subquery). CROSS APPLY behaves like an inner join (filters rows with no result), while OUTER APPLY preserves the left row even if the expression returns nothing.",
+      "useCases": {
+        "title": "Use cases",
+        "case1": {
+          "title": "Unpivot a per-row CSV with STRING_SPLIT using CROSS APPLY",
+          "description": "When the function returns 0 rows (NULL/empty), the left row disappears — handy to filter empty inputs.",
+          "inputTitle": "Input dataset",
+          "outputTitle": "Expected result"
+        },
+        "case2": {
+          "title": "Pick the TOP 1 per group via OUTER APPLY",
+          "description": "Compute an ordered correlated subquery per row (e.g., most ordered item) while keeping rows with no details.",
+          "inputTitle": "Input dataset",
+          "outputTitle": "Expected result"
+        },
+        "case3": {
+          "title": "Parse JSON per row with OPENJSON",
+          "description": "Explode a JSON payload stored in a column into (key, value) while keeping malformed records (OUTER APPLY).",
+          "inputTitle": "Input dataset",
+          "outputTitle": "Expected result"
+        }
+      },
+      "alternatives": {
+        "title": "Alternatives",
+        "windowFunctions": {
+          "title": "Window functions (OVER / PARTITION BY)",
+          "description": "For TOP 1 per group, use ROW_NUMBER() over a CTE (or derived table) partitioned by the key and filter WHERE rn = 1.",
+          "prosTitle": "Pros",
+          "consTitle": "Cons",
+          "pros": [
+            "Often very fast and readable for per-group ranking",
+            "Precise control with ROW_NUMBER(), RANK(), FIRST_VALUE(), etc."
+          ],
+          "cons": [
+            "Requires an extra step (CTE/derived table) and a final filter",
+            "Less natural when you need a per-row table expansion (e.g., OPENJSON/STRING_SPLIT)"
+          ]
+        },
+        "cte": {
+          "title": "CTEs / derived tables",
+          "description": "Encapsulate correlated subqueries or intermediate computations in a CTE and JOIN them.",
+          "prosTitle": "Pros",
+          "consTitle": "Cons",
+          "pros": [
+            "Clear structure for multi-step transformations",
+            "Easy to test and comment per block"
+          ],
+          "cons": [
+            "Can be more verbose than APPLY for per-row expansion",
+            "Readability drops when stacking many CTEs"
+          ]
+        },
+        "joins": {
+          "title": "JOINs with aggregates/subqueries",
+          "description": "To fetch one row per group, a JOIN to an aggregated subquery (or a derived table with ROW_NUMBER()) is a classic alternative.",
+          "prosTitle": "Pros",
+          "consTitle": "Cons",
+          "pros": [
+            "Standard approach, easy to optimize with indexes",
+            "Works without TVFs or OPENJSON"
+          ],
+          "cons": [
+            "Less flexible than APPLY for per-row expansion (unpivot)",
+            "Handling scalar columns from aggregates can be less straightforward"
+          ]
+        }
+      },
+      "summary": {
+        "title": "Summary",
+  "text": "Use APPLY when you need to derive rows/columns per source row via a correlated table expression (inline table‑valued function (TVF), OPENJSON, STRING_SPLIT). Choose CROSS vs OUTER depending on whether to filter empty results.",
+        "prosTitle": "Pros",
+        "consTitle": "Cons",
+        "pros": [
+          "Expressive for per-row expansions (unpivot, parsing, top N per group)",
+          "Combines with ORDER BY/TOP to select per-row scalar picks",
+          "Often a simpler alternative to complex CTEs"
+        ],
+        "cons": [
+          "Beware multi-statement table‑valued functions (TVFs) — less optimized than inline TVFs",
+          "May hurt performance if the expression is heavy (inspect the plan)",
+          "Features like OPENJSON require SQL Server 2016+"
+        ]
+      },
+      "goodPractices": {
+        "title": "Best practices",
+        "items": [
+          "Prefer inline table‑valued functions (TVFs) — single SELECT — to help the optimizer",
+          "Push filters as early as possible (WHERE inside the APPLY expression)",
+          "Add helpful indexes on correlated columns",
+          "Measure the execution plan and compare with JOIN/CTE alternatives"
+        ]
+      },
+      "footer": {
+        "sourcesLabel": "Sources",
+        "sources": [
+          {
+            "name": "MS Docs — FROM (Transact‑SQL): APPLY",
+            "url": "https://learn.microsoft.com/sql/t-sql/queries/from-transact-sql#apply"
+          },
+          {
+            "name": "MS Docs — OPENJSON (Transact‑SQL)",
+            "url": "https://learn.microsoft.com/sql/t-sql/functions/openjson-transact-sql"
+          },
+          {
+            "name": "MS Docs — STRING_SPLIT (Transact‑SQL)",
+            "url": "https://learn.microsoft.com/sql/t-sql/functions/string-split-transact-sql"
+          }
+        ],
+        "writtenOn": "Written on {{date}}"
+      }
+    }
+  }
+}

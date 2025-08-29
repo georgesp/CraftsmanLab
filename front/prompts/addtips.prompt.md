@@ -11,6 +11,7 @@ Résumé rapide pour un nouveau tip `<slug>`:
  
 ## Règles de nommage et bonnes pratiques
 - Le `slug` doit être unique, en kebab-case, sans espace ni accent.
+  - Si le tip concerne du T‑SQL, préfixe le dossier et le fichier TSX avec `tsql-` (ex: `tsql-apply/tsql-apply.tsx`, `tsql-openjson/tsql-openjson.tsx`).
 - Le `title` doit être court et explicite.
 - Le `shortDescription` doit donner envie de cliquer, max 120 caractères.
 - La date `writtenOn` au format `YYYY-MM-DD`.

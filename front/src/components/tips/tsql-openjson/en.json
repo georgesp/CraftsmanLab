@@ -1,0 +1,70 @@
+{
+  "openjson": {
+    "title": "OPENJSON (T‑SQL)",
+    "shortDescription": "Traverse and project JSON into rows/columns with explicit mapping (WITH).",
+    "content": {
+      "mainTitle": "OPENJSON in T‑SQL",
+      "overview": "OPENJSON is a table-valued function that reads a JSON document (or a specific path) and returns a table of (key, value, type). With the WITH clause, you can project typed columns mapped to JSON paths.",
+      "useCases": {
+        "title": "Use cases",
+        "case1": {
+          "title": "Typed projection with WITH",
+          "description": "Extract scalar fields from JSON without manual parsing.",
+          "inputTitle": "Input dataset",
+          "outputTitle": "Expected result"
+        },
+        "case2": {
+          "title": "Iterate over a JSON array (CROSS APPLY)",
+          "description": "Read each array element and project its properties.",
+          "inputTitle": "Input dataset",
+          "outputTitle": "Expected result"
+        },
+        "case3": {
+          "title": "Per-row parsing with OUTER APPLY",
+          "description": "Apply OPENJSON to a JSON column per record while preserving NULL rows.",
+          "inputTitle": "Input dataset",
+          "outputTitle": "Expected result"
+        }
+      },
+      "summary": {
+        "title": "Summary",
+        "text": "Use OPENJSON to turn JSON into SQL rows/columns, with WITH for a typed schema. Combine with CROSS/OUTER APPLY for per-row parsing.",
+        "prosTitle": "Pros",
+        "consTitle": "Cons",
+        "pros": [
+          "Typed, explicit mapping via WITH",
+          "Reads arrays and nested objects",
+          "Integrates naturally with APPLY"
+        ],
+        "cons": [
+          "Requires SQL Server 2016+",
+          "May need indexes/optimizations at scale",
+          "Careful with paths and NULL values"
+        ]
+      },
+      "goodPractices": {
+        "title": "Best practices",
+        "items": [
+          "Validate JSON structure in the app when possible",
+          "Prefer WITH for typed columns (clarity/optimization)",
+          "Limit the size of stored JSON documents",
+          "Index correlated columns when joining the result"
+        ]
+      },
+      "footer": {
+        "sourcesLabel": "Sources",
+        "sources": [
+          {
+            "name": "MS Docs — OPENJSON (Transact‑SQL)",
+            "url": "https://learn.microsoft.com/sql/t-sql/functions/openjson-transact-sql"
+          },
+          {
+            "name": "MS Docs — JSON (SQL Server)",
+            "url": "https://learn.microsoft.com/sql/relational-databases/json/json-data-sql-server"
+          }
+        ],
+        "writtenOn": "Written on {{date}}"
+      }
+    }
+  }
+}
