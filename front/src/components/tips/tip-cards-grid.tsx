@@ -1,4 +1,4 @@
-import React from 'react';
+import { useMemo } from 'react';
 import { Grid, Typography, Box, IconButton } from '@mui/material';
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -13,12 +13,14 @@ type Props = {
   maxItems?: number; // total slots y compris la card "voir tout" si seeAllLink est défini
   seeAllLink?: string; // si fourni, ajoute une card flèche occupant un slot
   seeAllLabel?: string; // label accessible
+  items?: typeof tipsList; // facultatif: liste déjà filtrée/ordonnée à afficher
 };
 
 export const TipCardsGrid: React.FC<Props> = ({
   maxItems,
   seeAllLink,
   seeAllLabel = 'Voir tous les tips',
+  items: externalItems,
 }) => {
   const { t } = useTranslation('tips');
 
@@ -61,15 +63,16 @@ export const TipCardsGrid: React.FC<Props> = ({
     return fallback;
   };
 
-  const items = React.useMemo(() => {
+  const items = useMemo(() => {
     let sliceCount = maxItems && maxItems > 0 ? maxItems : undefined;
     if (seeAllLink && sliceCount && sliceCount > 0) {
       // réserver une place pour la card flèche
       sliceCount = sliceCount - 1;
     }
-    const base = sliceCount ? tipsList.slice(0, sliceCount) : tipsList;
+    const source = externalItems ?? tipsList;
+    const base = sliceCount ? source.slice(0, sliceCount) : source;
     return base;
-  }, [maxItems, seeAllLink]);
+  }, [maxItems, seeAllLink, externalItems]);
 
   return (
     <Grid container spacing={4}>

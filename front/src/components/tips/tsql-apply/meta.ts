@@ -19,6 +19,6 @@ export const meta: TipMeta = {
       'join',
       'server',
     ],
-  tags: ['tsql', 'apply']
+  tags: ['sql']
   },
 };

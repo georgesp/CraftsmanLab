@@ -26,6 +26,6 @@ export const meta: TipMeta = {
       'querySingle',
       'queryMultiple',
     ],
-  tags: ['dapper', 'sql', 'orm']
+  tags: ['orm', 'mapping', 'c#', 'sql']
   },
 };

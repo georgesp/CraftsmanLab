@@ -1,13 +1,37 @@
-import React from 'react';
+import { useMemo, useState } from 'react';
 import { Container, Card, Typography, Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { PageLayout, ScrollToTopButton } from '../../components';
 import { TipCardsGrid } from '../../components/tips/tip-cards-grid';
 import { COLORS } from '../../styles/colors';
 import { GridContainer, PromptsPageContainer } from '../Prompts/styles';
+import { TagChipsFilter } from '../../components/ui';
+import { tipsList } from '../../components/tips/registry';
 
 export const TipsPage: React.FC = () => {
   const { t } = useTranslation('pages');
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+
+  // Collect all tags from tips metadata, normalized & unique
+  const allTags = useMemo(() => {
+    const tags = tipsList.flatMap((tip) => tip.metadata?.tags ?? []);
+    const norm = tags.map((s) => s.trim()).filter(Boolean);
+    return Array.from(new Set(norm)).sort((a, b) => a.localeCompare(b));
+  }, []);
+
+  const toggleTag = (tag: string) => {
+    setSelectedTags((prev) => (prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]));
+  };
+
+  const filtered = useMemo(() => {
+    if (selectedTags.length === 0) return tipsList;
+    const selectedSet = new Set(selectedTags.map((s) => s.toLowerCase()));
+    return tipsList.filter((tip) => {
+      const tags = (tip.metadata?.tags ?? []).map((s) => s.toLowerCase());
+      // match si l'élément possède tous les tags sélectionnés
+      return Array.from(selectedSet).every((t) => tags.includes(t));
+    });
+  }, [selectedTags]);
 
   return (
     <PageLayout>
@@ -93,7 +117,11 @@ export const TipsPage: React.FC = () => {
               width: '100%',
             }}
           >
-            <TipCardsGrid />
+            {/* Tag filter row */}
+            <Box sx={{ mb: 2 }}>
+              <TagChipsFilter tags={allTags} selected={selectedTags} onToggle={toggleTag} />
+            </Box>
+            <TipCardsGrid items={filtered} />
           </Card>
         </GridContainer>
       </Container>

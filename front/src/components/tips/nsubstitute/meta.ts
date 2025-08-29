@@ -31,6 +31,6 @@ export const meta: TipMeta = {
       'received',
       'returns',
     ],
-  tags: ['nsubstitute', 'mocking']
+  tags: ['tests', 'mocking', 'c#']
   },
 };

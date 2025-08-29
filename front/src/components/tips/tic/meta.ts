@@ -27,6 +27,6 @@ export const meta: TipMeta = {
       'décisionnel',
       'decision',
     ],
-  tags: ['switch', 'pattern-matching']
+  tags: ['c#']
   },
 };

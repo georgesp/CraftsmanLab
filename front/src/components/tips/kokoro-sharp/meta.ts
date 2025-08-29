@@ -30,6 +30,6 @@ export const meta: TipMeta = {
       'ia',
       'ai',
     ],
-  tags: ['tts', 'onnx', 'local']
+  tags: ['ai', 'c#']
   },
 };
