@@ -2,10 +2,7 @@ import type { ComponentType } from 'react';
 import type { Keyword } from '../../utils/constants';
 
 export type TipMetadata = {
-  searchKeywords: {
-    fr: string[];
-    en: string[];
-  };
+  searchKeywords: string[];
 };
 
 export type TipMeta = {

@@ -63,11 +63,8 @@ describe('search-client functionality', () => {
       expect(results[0].kind).toBe('tip');
     });
 
-    it('should find Dapper tip by English technical concept when language is EN', () => {
-      mockLocalStorage.getItem.mockReturnValue('en');
-
+    it('should find Dapper tip by English technical concept', () => {
       const results = searchAll('database');
-
       expect(results).toHaveLength(1);
       expect(results[0].slug).toBe('dapper');
       expect(results[0].kind).toBe('tip');
@@ -158,30 +155,5 @@ describe('search-client functionality', () => {
     });
   });
 
-  describe('language detection', () => {
-    it('should use French keywords when localStorage is fr', () => {
-      mockLocalStorage.getItem.mockReturnValue('fr');
-
-      const results = searchAll('base de données');
-      expect(results).toHaveLength(1);
-      expect(results[0].slug).toBe('dapper');
-    });
-
-    it('should use English keywords when localStorage is en', () => {
-      mockLocalStorage.getItem.mockReturnValue('en');
-
-      const results = searchAll('database');
-      expect(results).toHaveLength(1);
-      expect(results[0].slug).toBe('dapper');
-    });
-
-    it('should fallback to browser language when localStorage is empty', () => {
-      mockLocalStorage.getItem.mockReturnValue(null);
-
-      // navigator.language is 'fr-FR', should use French
-      const results = searchAll('base de données');
-      expect(results).toHaveLength(1);
-      expect(results[0].slug).toBe('dapper');
-    });
-  });
+  // Language detection tests are no longer needed since keywords are unified FR/EN
 });

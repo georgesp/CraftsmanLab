@@ -15,16 +15,7 @@ import { tipsList } from '../components/tips/registry';
 import { promptsList } from '../components/prompts/registry';
 import i18n from '../i18n';
 
-// Fonction pour obtenir la langue actuelle
-function getCurrentLanguage(): 'fr' | 'en' {
-  // Récupérer la langue depuis localStorage ou navigateur
-  const stored = localStorage.getItem('i18nextLng');
-  if (stored && (stored === 'fr' || stored === 'en')) return stored;
-
-  // Fallback sur la langue du navigateur
-  const browserLang = navigator.language.toLowerCase();
-  return browserLang.startsWith('fr') ? 'fr' : 'en';
-}
+// Note: keywords are unified across languages; no need to detect language here.
 
 // Helper function to get translated text with fallback - tips
 function getTipTranslation(tipSlug: string, key: string, fallback: string): string {
@@ -45,10 +36,7 @@ type IndexedItem = {
   slug: string;
   title: string;
   shortDescription: string;
-  searchKeywords?: {
-    fr: string[];
-    en: string[];
-  };
+  searchKeywords?: string[];
 };
 
 function buildIndex(): IndexedItem[] {
@@ -62,7 +50,7 @@ function buildIndex(): IndexedItem[] {
       slug: t.slug,
       title: getTipTranslation(t.slug, 'title', t.title),
       shortDescription: getTipTranslation(t.slug, 'shortDescription', t.shortDescription),
-      searchKeywords: t.metadata?.searchKeywords,
+  searchKeywords: t.metadata?.searchKeywords,
     });
   }
 
@@ -73,7 +61,7 @@ function buildIndex(): IndexedItem[] {
       slug: p.slug,
       title: getPromptTranslation(p.slug, 'title', p.title),
       shortDescription: getPromptTranslation(p.slug, 'shortDescription', p.shortDescription),
-      searchKeywords: p.metadata?.searchKeywords,
+  searchKeywords: p.metadata?.searchKeywords,
     });
   }
 
@@ -85,8 +73,6 @@ const INDEX: IndexedItem[] = buildIndex();
 export function searchAll(query: string): SearchHit[] {
   const q = query.trim().toLowerCase();
   if (!q) return [];
-
-  const currentLang = getCurrentLanguage();
 
   const matched = INDEX.filter((item) => {
     // 1. Recherche dans le titre (priorité haute)
@@ -100,11 +86,8 @@ export function searchAll(query: string): SearchHit[] {
     }
 
     // 3. Recherche dans les métadonnées searchKeywords (priorité haute)
-    if (item.searchKeywords) {
-      const keywords = item.searchKeywords[currentLang] || [];
-      if (keywords.some((keyword) => keyword.toLowerCase().includes(q))) {
-        return true;
-      }
+    if (item.searchKeywords && item.searchKeywords.some((k) => k.toLowerCase().includes(q))) {
+      return true;
     }
 
     return false;
@@ -125,10 +108,8 @@ export function searchAll(query: string): SearchHit[] {
     }
 
     // Ensuite, priorité aux correspondances dans les métadonnées
-    const aInKeywords =
-      a.searchKeywords?.[currentLang]?.some((k) => k.toLowerCase().includes(q)) || false;
-    const bInKeywords =
-      b.searchKeywords?.[currentLang]?.some((k) => k.toLowerCase().includes(q)) || false;
+  const aInKeywords = a.searchKeywords?.some((k) => k.toLowerCase().includes(q)) || false;
+  const bInKeywords = b.searchKeywords?.some((k) => k.toLowerCase().includes(q)) || false;
     if (aInKeywords !== bInKeywords) {
       return aInKeywords ? -1 : 1;
     }

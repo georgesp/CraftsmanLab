@@ -1,12 +1,12 @@
 export type SearchKind = 'tip' | 'prompt';
 export type SearchHit = { kind: SearchKind; slug: string; title: string; shortDescription: string };
 
-// Mock intelligent pour les tests - retourne des données prévisibles
+// Mock de recherche aligné avec l'implémentation: keywords unifiés FR/EN dans un seul tableau
 export function searchAll(query: string): SearchHit[] {
   const q = query.trim().toLowerCase();
   if (!q) return [];
 
-  // Données de test simulant les vrais tips et prompts avec métadonnées
+  // Données de test simulant les vrais tips et prompts avec métadonnées unifiées
   const mockData = [
     // Tips
     {
@@ -14,10 +14,14 @@ export function searchAll(query: string): SearchHit[] {
       slug: 'dapper',
       title: 'Utilisation de Dapper',
       shortDescription: 'Utilisation de Dapper (DTO, alias, multi‑mapping).',
-      keywords: {
-        fr: ['dapper', 'orm', 'micro-orm', 'base de données', 'sql'],
-        en: ['dapper', 'orm', 'micro-orm', 'database', 'sql'],
-      },
+      searchKeywords: [
+        'dapper',
+        'orm',
+        'micro-orm',
+        'base de données',
+        'database',
+        'sql',
+      ],
     },
     {
       kind: 'tip' as SearchKind,
@@ -25,10 +29,7 @@ export function searchAll(query: string): SearchHit[] {
       title: 'Polly',
       shortDescription:
         'Ajouter de la résilience à vos appels : retry, circuit breaker, timeout et fallback.',
-      keywords: {
-        fr: ['polly', 'résilience', 'retry', 'circuit breaker'],
-        en: ['polly', 'resilience', 'retry', 'circuit breaker'],
-      },
+      searchKeywords: ['polly', 'résilience', 'resilience', 'retry', 'circuit breaker'],
     },
     // Prompts
     {
@@ -36,33 +37,16 @@ export function searchAll(query: string): SearchHit[] {
       slug: 'aspnet-core-guidances',
       title: 'ASP.NET Core Guidances',
       shortDescription: 'Guide des meilleures pratiques pour ASP.NET Core',
-      keywords: {
-        fr: ['aspnet', 'asp.net', 'core', 'web api', 'développement web'],
-        en: ['aspnet', 'asp.net', 'core', 'web api', 'web development'],
-      },
+      searchKeywords: ['aspnet', 'asp.net', 'core', 'web api', 'développement web', 'web development'],
     },
     {
       kind: 'prompt' as SearchKind,
       slug: 'async-guidances',
       title: 'Async Guidances',
       shortDescription: 'Meilleures pratiques pour la programmation asynchrone',
-      keywords: {
-        fr: ['async', 'await', 'asynchrone', 'tâche'],
-        en: ['async', 'await', 'asynchronous', 'task'],
-      },
+      searchKeywords: ['async', 'await', 'asynchrone', 'asynchronous', 'tâche', 'task'],
     },
   ];
-
-  // Détection de langue simplifiée pour les tests
-  const getCurrentLanguage = (): 'fr' | 'en' => {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      const stored = localStorage.getItem('i18nextLng');
-      if (stored && (stored === 'fr' || stored === 'en')) return stored;
-    }
-    return 'fr'; // default pour les tests
-  };
-
-  const currentLang = getCurrentLanguage();
 
   // Filtrer les résultats
   const matched = mockData.filter((item) => {
@@ -72,8 +56,8 @@ export function searchAll(query: string): SearchHit[] {
     // Recherche dans la description
     if (item.shortDescription.toLowerCase().includes(q)) return true;
 
-    // Recherche dans les mots-clés
-    if (item.keywords[currentLang]?.some((keyword) => keyword.toLowerCase().includes(q))) {
+    // Recherche dans les mots-clés unifiés
+    if (item.searchKeywords?.some((keyword) => keyword.toLowerCase().includes(q))) {
       return true;
     }
 

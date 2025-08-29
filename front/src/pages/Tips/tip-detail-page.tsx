@@ -25,9 +25,8 @@ export const TipDetailPage: React.FC = () => {
     const uniq = (arr: string[]) => Array.from(new Set(arr));
     const allSearchKeywords = (slug: string) => {
       const tip = tipsList.find((x) => x.slug === slug);
-      const fr = tip?.metadata?.searchKeywords?.fr ?? [];
-      const en = tip?.metadata?.searchKeywords?.en ?? [];
-      return uniq(normalize([...fr, ...en]));
+      const all = tip?.metadata?.searchKeywords ?? [];
+      return uniq(normalize(all));
     };
     const current = new Set(allSearchKeywords(entry.slug));
     const count = tipsList

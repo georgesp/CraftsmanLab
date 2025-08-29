@@ -18,9 +18,8 @@ export const RelatedTipsList: React.FC<Props> = ({ currentSlug, maxItems = 7, li
   const uniq = (arr: string[]) => Array.from(new Set(arr));
   const allSearchKeywords = (tipSlug: string) => {
     const tip = tipsList.find((x) => x.slug === tipSlug);
-    const fr = tip?.metadata?.searchKeywords?.fr ?? [];
-    const en = tip?.metadata?.searchKeywords?.en ?? [];
-    return uniq(normalize([...fr, ...en]));
+    const all = tip?.metadata?.searchKeywords ?? [];
+    return uniq(normalize(all));
   };
 
   const courant = React.useMemo(() => new Set(allSearchKeywords(currentSlug)), [currentSlug]);

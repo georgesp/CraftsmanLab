@@ -48,7 +48,8 @@ export const meta: TipMeta = {
   shortDescription: '',
   writtenOn: '<YYYY-MM-DD>',
   keywords: [/* 'C#' as const */],
-  metadata: { searchKeywords: { fr: [], en: [] } },
+  // Liste unique FR/EN (mots‑clés techniques, concepts, cas d'usage)
+  metadata: { searchKeywords: [] },
 };
 ```
 

@@ -8,25 +8,16 @@ export const meta: TipMeta = {
   writtenOn: '2025-08-27',
   keywords: ['SQL'] as unknown as Keyword[],
   metadata: {
-    searchKeywords: {
-      fr: [
-        'openjson',
-        'json',
-        'sql',
-        'sql server',
-        'parser json',
-        'fonction table',
-        'WITH',
-      ],
-      en: [
-        'openjson',
-        'json',
-        'sql',
-        'sql server',
-        'parse json',
-        'table-valued function',
-        'WITH',
-      ],
-    },
+    searchKeywords: [
+      'openjson',
+      'json',
+      'sql',
+      'sql server',
+      'parser json',
+      'parse json',
+      'fonction table',
+      'table-valued function',
+      'WITH',
+    ],
   },
 };
