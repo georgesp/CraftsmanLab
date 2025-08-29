@@ -50,7 +50,7 @@ function buildIndex(): IndexedItem[] {
       slug: t.slug,
       title: getTipTranslation(t.slug, 'title', t.title),
       shortDescription: getTipTranslation(t.slug, 'shortDescription', t.shortDescription),
-  searchKeywords: t.metadata?.searchKeywords,
+      searchKeywords: t.metadata?.searchKeywords,
     });
   }
 
@@ -61,7 +61,7 @@ function buildIndex(): IndexedItem[] {
       slug: p.slug,
       title: getPromptTranslation(p.slug, 'title', p.title),
       shortDescription: getPromptTranslation(p.slug, 'shortDescription', p.shortDescription),
-  searchKeywords: p.metadata?.searchKeywords,
+      searchKeywords: p.metadata?.searchKeywords,
     });
   }
 
@@ -108,8 +108,8 @@ export function searchAll(query: string): SearchHit[] {
     }
 
     // Ensuite, priorité aux correspondances dans les métadonnées
-  const aInKeywords = a.searchKeywords?.some((k) => k.toLowerCase().includes(q)) || false;
-  const bInKeywords = b.searchKeywords?.some((k) => k.toLowerCase().includes(q)) || false;
+    const aInKeywords = a.searchKeywords?.some((k) => k.toLowerCase().includes(q)) || false;
+    const bInKeywords = b.searchKeywords?.some((k) => k.toLowerCase().includes(q)) || false;
     if (aInKeywords !== bInKeywords) {
       return aInKeywords ? -1 : 1;
     }

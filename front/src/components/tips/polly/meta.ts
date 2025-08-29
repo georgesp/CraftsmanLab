@@ -35,6 +35,6 @@ export const meta: TipMeta = {
       'exception',
       'waitAndRetry',
     ],
-  tags: ['resilience', 'retry', 'c#']
+    tags: ['resilience', 'retry', 'c#'],
   },
 };

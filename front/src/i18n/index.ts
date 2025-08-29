@@ -16,14 +16,14 @@ const resources = {
   fr: {
     common: commonFr,
     pages: pagesFr,
-  prompts: promptsTranslationsFr,
-  tips: tipsTranslationsFr,
+    prompts: promptsTranslationsFr,
+    tips: tipsTranslationsFr,
   },
   en: {
     common: commonEn,
     pages: pagesEn,
-  prompts: promptsTranslationsEn,
-  tips: tipsTranslationsEn,
+    prompts: promptsTranslationsEn,
+    tips: tipsTranslationsEn,
   },
 };
 
@@ -32,13 +32,13 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-  // If user's browser is French, use FR; otherwise default to EN
-  fallbackLng: 'en',
+    // If user's browser is French, use FR; otherwise default to EN
+    fallbackLng: 'en',
     defaultNS: 'common',
-  // Only support FR and EN and collapse locales like fr-FR/en-US to base code
-  supportedLngs: ['fr', 'en'],
-  nonExplicitSupportedLngs: true,
-  load: 'languageOnly',
+    // Only support FR and EN and collapse locales like fr-FR/en-US to base code
+    supportedLngs: ['fr', 'en'],
+    nonExplicitSupportedLngs: true,
+    load: 'languageOnly',
 
     interpolation: {
       escapeValue: false, // React already escapes values

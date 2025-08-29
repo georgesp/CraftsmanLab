@@ -23,6 +23,6 @@ export const meta: TipMeta = {
       'copy',
       'mapFrom',
     ],
-  tags: ['mapping', 'c#']
+    tags: ['mapping', 'c#'],
   },
 };

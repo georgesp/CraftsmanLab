@@ -25,6 +25,6 @@ export const meta: TipMeta = {
       'assert',
       'async',
     ],
-  tags: ['tests', 'c#']
+    tags: ['tests', 'c#'],
   },
 };

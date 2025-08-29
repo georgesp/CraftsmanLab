@@ -26,6 +26,6 @@ export const meta: TipMeta = {
       'collections',
       'collection',
     ],
-  tags: ['collections', 'c#']
+    tags: ['collections', 'c#'],
   },
 };

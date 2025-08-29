@@ -83,15 +83,19 @@ describe('No hardcoded French text in tip TSX files', () => {
 
     for (const file of files) {
       const src = fs.readFileSync(file, 'utf8');
-  const noComments = stripComments(src);
-  const noMeta = removeMetadataBlocks(noComments);
-  const preprocessed = removeI18nCalls(noMeta);
+      const noComments = stripComments(src);
+      const noMeta = removeMetadataBlocks(noComments);
+      const preprocessed = removeI18nCalls(noMeta);
 
       // 1) Scan string literals
       for (const lit of extractStringLiterals(preprocessed)) {
         // Whitelist common non-copy strings (languages, file paths, code, props)
         if (/^\s*$/.test(lit)) continue;
-        if (/^([a-zA-Z0-9_\-\.\/:{}\[\]<>#`~!@\$%\^&\*\(\)\?=,+;\s]|\\n|\\t|\\r)+$/.test(lit) && !looksFrench(lit)) continue;
+        if (
+          /^([a-zA-Z0-9_\-\.\/:{}\[\]<>#`~!@\$%\^&\*\(\)\?=,+;\s]|\\n|\\t|\\r)+$/.test(lit) &&
+          !looksFrench(lit)
+        )
+          continue;
         if (looksFrench(lit)) violations.push({ file, snippet: lit.slice(0, 160), kind: 'string' });
       }
 
@@ -102,9 +106,7 @@ describe('No hardcoded French text in tip TSX files', () => {
       }
     }
 
-    const message = violations
-      .map((v) => `- ${v.file} [${v.kind}] -> ${v.snippet}`)
-      .join('\n');
+    const message = violations.map((v) => `- ${v.file} [${v.kind}] -> ${v.snippet}`).join('\n');
 
     expect({ count: violations.length, details: message }).toEqual({ count: 0, details: '' });
   });

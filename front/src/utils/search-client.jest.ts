@@ -14,14 +14,7 @@ export function searchAll(query: string): SearchHit[] {
       slug: 'dapper',
       title: 'Utilisation de Dapper',
       shortDescription: 'Utilisation de Dapper (DTO, alias, multi‑mapping).',
-      searchKeywords: [
-        'dapper',
-        'orm',
-        'micro-orm',
-        'base de données',
-        'database',
-        'sql',
-      ],
+      searchKeywords: ['dapper', 'orm', 'micro-orm', 'base de données', 'database', 'sql'],
     },
     {
       kind: 'tip' as SearchKind,
@@ -37,7 +30,14 @@ export function searchAll(query: string): SearchHit[] {
       slug: 'aspnet-core-guidances',
       title: 'ASP.NET Core Guidances',
       shortDescription: 'Guide des meilleures pratiques pour ASP.NET Core',
-      searchKeywords: ['aspnet', 'asp.net', 'core', 'web api', 'développement web', 'web development'],
+      searchKeywords: [
+        'aspnet',
+        'asp.net',
+        'core',
+        'web api',
+        'développement web',
+        'web development',
+      ],
     },
     {
       kind: 'prompt' as SearchKind,

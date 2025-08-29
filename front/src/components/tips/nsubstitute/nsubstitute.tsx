@@ -82,7 +82,7 @@ mock.When(x => x.Do(Arg.Any<int>())).Do(call => captured = call.Arg<int>());
 // (then execute mock.Do(123); so that captured = 123)`}
       />
 
-  <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom>
         {t('nsubstitute.content.sections.exampleFull.title')}
       </Typography>
       <Typography variant="h6" gutterBottom>
@@ -153,20 +153,24 @@ public class MathServiceTests
       </Typography>
       <ul>
         <li>
-          {t('nsubstitute.content.sections.notes.points.0', {
-            defaultValue:
-              '<code>calc.Add(2,3).Returns(5)</code> sets the return value only for those arguments.',
-          }) as any}
+          {
+            t('nsubstitute.content.sections.notes.points.0', {
+              defaultValue:
+                '<code>calc.Add(2,3).Returns(5)</code> sets the return value only for those arguments.',
+            }) as any
+          }
         </li>
         <li>
-          {t('nsubstitute.content.sections.notes.points.1', {
-            defaultValue:
-              'If you don\'t specify an explicit return, the mock returns the type\'s default value (<code>0</code> for <code>int</code>, <code>null</code> for references, etc.).',
-          }) as any}
+          {
+            t('nsubstitute.content.sections.notes.points.1', {
+              defaultValue:
+                "If you don't specify an explicit return, the mock returns the type's default value (<code>0</code> for <code>int</code>, <code>null</code> for references, etc.).",
+            }) as any
+          }
         </li>
       </ul>
 
-  <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom>
         {t('nsubstitute.content.sections.additional.title')}
       </Typography>
 
@@ -215,7 +219,7 @@ calc.When(call => call.Log(Arg.Any<string>()))
     });`}
       />
 
-  <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom>
         {t('nsubstitute.content.sections.goodPractices.title')}
       </Typography>
       <ul>
@@ -247,13 +251,25 @@ calc.When(call => call.Log(Arg.Any<string>()))
         borderTop={(theme) => `1px solid ${theme.palette.divider}`}
         sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
       >
-        <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
+        <Typography
+          variant="caption"
+          component="div"
+          sx={{ fontStyle: 'italic', color: 'text.secondary' }}
+        >
           {t('nsubstitute.content.footer.sourcesLabel')}{' '}
           {(
-            t('nsubstitute.content.footer.sources', { returnObjects: true }) as { name: string; url: string }[]
+            t('nsubstitute.content.footer.sources', { returnObjects: true }) as {
+              name: string;
+              url: string;
+            }[]
           ).map((s, i, arr) => (
             <span key={i}>
-              <a href={s.url} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
+              <a
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: 'inherit', textDecoration: 'underline' }}
+              >
                 {s.name}
               </a>
               {i < arr.length - 1 ? ' • ' : ''}
@@ -264,7 +280,7 @@ calc.When(call => call.Log(Arg.Any<string>()))
           {t('nsubstitute.content.footer.writtenOn', { date: meta.writtenOn })}
         </Typography>
       </Box>
-  </TipContent>
+    </TipContent>
   );
 };
 

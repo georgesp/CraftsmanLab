@@ -9,9 +9,33 @@ describe('TipsPage - tag filtering', () => {
   beforeEach(() => {
     // Mock a tiny tipsList
     (tipsRegistry as any).tipsList = [
-      { slug: 'a', title: 'A', shortDescription: '', writtenOn: '2025-01-01', keywords: ['C#'], metadata: { tags: ['x', 'y'] }, load: async () => ({ default: () => null }) },
-      { slug: 'b', title: 'B', shortDescription: '', writtenOn: '2025-01-02', keywords: ['C#'], metadata: { tags: ['y'] }, load: async () => ({ default: () => null }) },
-      { slug: 'c', title: 'C', shortDescription: '', writtenOn: '2025-01-03', keywords: ['C#'], metadata: { tags: ['z'] }, load: async () => ({ default: () => null }) },
+      {
+        slug: 'a',
+        title: 'A',
+        shortDescription: '',
+        writtenOn: '2025-01-01',
+        keywords: ['C#'],
+        metadata: { tags: ['x', 'y'] },
+        load: async () => ({ default: () => null }),
+      },
+      {
+        slug: 'b',
+        title: 'B',
+        shortDescription: '',
+        writtenOn: '2025-01-02',
+        keywords: ['C#'],
+        metadata: { tags: ['y'] },
+        load: async () => ({ default: () => null }),
+      },
+      {
+        slug: 'c',
+        title: 'C',
+        shortDescription: '',
+        writtenOn: '2025-01-03',
+        keywords: ['C#'],
+        metadata: { tags: ['z'] },
+        load: async () => ({ default: () => null }),
+      },
     ];
   });
 
@@ -24,7 +48,7 @@ describe('TipsPage - tag filtering', () => {
     render(
       <BrowserRouter>
         <TipsPage />
-      </BrowserRouter>
+      </BrowserRouter>,
     );
     // All 3 titles present initially
     expect(screen.getByText('A')).toBeInTheDocument();

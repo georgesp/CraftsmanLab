@@ -88,19 +88,32 @@ const CollectionTip: React.FC = () => {
         <li>{t('collection.content.sections.tips.items.never')}</li>
       </ul>
 
-  <Box
+      <Box
         mt={4}
         pt={2}
         borderTop={(theme) => `1px solid ${theme.palette.divider}`}
         sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
       >
-        <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
+        <Typography
+          variant="caption"
+          component="div"
+          sx={{ fontStyle: 'italic', color: 'text.secondary' }}
+        >
           {t('collection.content.footer.sourcesLabel')}{' '}
           {(
-            t('collection.content.footer.sources', { returnObjects: true }) as { name: string; url: string }[]
+            t('collection.content.footer.sources', { returnObjects: true }) as {
+              name: string;
+              url: string;
+            }[]
           ).map((s, i, arr) => (
             <span key={i}>
-              <Link href={s.url} target="_blank" rel="noopener noreferrer" underline="always" color="inherit">
+              <Link
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                underline="always"
+                color="inherit"
+              >
                 {s.name}
               </Link>
               {i < arr.length - 1 ? ' • ' : ''}
@@ -111,7 +124,7 @@ const CollectionTip: React.FC = () => {
           {t('collection.content.footer.writtenOn', { date: meta.writtenOn })}
         </Typography>
       </Box>
-  </TipContent>
+    </TipContent>
   );
 };
 

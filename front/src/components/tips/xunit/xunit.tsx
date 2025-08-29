@@ -215,9 +215,7 @@ public class IntegrationTest2
       <Typography variant="h4" gutterBottom>
         {t('xunit.content.sections.skip.title')}
       </Typography>
-      <Typography paragraph>
-        {t('xunit.content.sections.skip.description')}
-      </Typography>
+      <Typography paragraph>{t('xunit.content.sections.skip.description')}</Typography>
       <CodeBlock
         language="csharp"
         code={`using Xunit;
@@ -239,9 +237,7 @@ public class SkippingExamples
     }
 }`}
       />
-      <Typography paragraph>
-        {t('xunit.content.sections.skip.notes')}
-      </Typography>
+      <Typography paragraph>{t('xunit.content.sections.skip.notes')}</Typography>
 
       <Typography variant="h4" gutterBottom>
         {t('xunit.content.sections.bestPractices.title')}
@@ -268,7 +264,7 @@ public class SkippingExamples
         {t('xunit.content.sections.conclusion.title')}
       </Typography>
       <Typography paragraph>{t('xunit.content.sections.conclusion.description')}</Typography>
-  </TipContent>
+    </TipContent>
   );
 };
 

@@ -32,6 +32,6 @@ export const meta: TipMeta = {
       'design',
       'workflow',
     ],
-  tags: ['mcp', 'ai']
+    tags: ['mcp', 'ai'],
   },
 };

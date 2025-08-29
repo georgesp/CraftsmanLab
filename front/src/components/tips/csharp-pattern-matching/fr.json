@@ -1,6 +1,6 @@
 {
   "csharp-pattern-matching": {
-    "title": "C# Pattern Matching",
+    "title": "Pattern Matching",
     "shortDescription": "Dompte les patterns C# (type, propriété, liste…) pour des switches plus lisibles.",
     "content": {
   "mainTitle": "Pattern matching en C# : aller droit au but",

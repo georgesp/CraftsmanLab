@@ -168,15 +168,27 @@ OUTER APPLY OPENJSON(T.Payload) AS J;`}
       <Typography paragraph>
         {t('tsql-apply.content.alternatives.windowFunctions.description')}
       </Typography>
-      <Typography variant="h6">{t('tsql-apply.content.alternatives.windowFunctions.prosTitle')}</Typography>
+      <Typography variant="h6">
+        {t('tsql-apply.content.alternatives.windowFunctions.prosTitle')}
+      </Typography>
       <ul>
-        {(t('tsql-apply.content.alternatives.windowFunctions.pros', { returnObjects: true }) as string[]).map((p, i) => (
+        {(
+          t('tsql-apply.content.alternatives.windowFunctions.pros', {
+            returnObjects: true,
+          }) as string[]
+        ).map((p, i) => (
           <li key={`wf-pro-${i}`}>{p}</li>
         ))}
       </ul>
-      <Typography variant="h6">{t('tsql-apply.content.alternatives.windowFunctions.consTitle')}</Typography>
+      <Typography variant="h6">
+        {t('tsql-apply.content.alternatives.windowFunctions.consTitle')}
+      </Typography>
       <ul>
-        {(t('tsql-apply.content.alternatives.windowFunctions.cons', { returnObjects: true }) as string[]).map((c, i) => (
+        {(
+          t('tsql-apply.content.alternatives.windowFunctions.cons', {
+            returnObjects: true,
+          }) as string[]
+        ).map((c, i) => (
           <li key={`wf-con-${i}`}>{c}</li>
         ))}
       </ul>
@@ -184,39 +196,43 @@ OUTER APPLY OPENJSON(T.Payload) AS J;`}
       <Typography variant="h5" gutterBottom>
         {t('tsql-apply.content.alternatives.cte.title')}
       </Typography>
-      <Typography paragraph>
-        {t('tsql-apply.content.alternatives.cte.description')}
-      </Typography>
+      <Typography paragraph>{t('tsql-apply.content.alternatives.cte.description')}</Typography>
       <Typography variant="h6">{t('tsql-apply.content.alternatives.cte.prosTitle')}</Typography>
       <ul>
-        {(t('tsql-apply.content.alternatives.cte.pros', { returnObjects: true }) as string[]).map((p, i) => (
-          <li key={`cte-pro-${i}`}>{p}</li>
-        ))}
+        {(t('tsql-apply.content.alternatives.cte.pros', { returnObjects: true }) as string[]).map(
+          (p, i) => (
+            <li key={`cte-pro-${i}`}>{p}</li>
+          ),
+        )}
       </ul>
       <Typography variant="h6">{t('tsql-apply.content.alternatives.cte.consTitle')}</Typography>
       <ul>
-        {(t('tsql-apply.content.alternatives.cte.cons', { returnObjects: true }) as string[]).map((c, i) => (
-          <li key={`cte-con-${i}`}>{c}</li>
-        ))}
+        {(t('tsql-apply.content.alternatives.cte.cons', { returnObjects: true }) as string[]).map(
+          (c, i) => (
+            <li key={`cte-con-${i}`}>{c}</li>
+          ),
+        )}
       </ul>
 
       <Typography variant="h5" gutterBottom>
         {t('tsql-apply.content.alternatives.joins.title')}
       </Typography>
-      <Typography paragraph>
-        {t('tsql-apply.content.alternatives.joins.description')}
-      </Typography>
+      <Typography paragraph>{t('tsql-apply.content.alternatives.joins.description')}</Typography>
       <Typography variant="h6">{t('tsql-apply.content.alternatives.joins.prosTitle')}</Typography>
       <ul>
-        {(t('tsql-apply.content.alternatives.joins.pros', { returnObjects: true }) as string[]).map((p, i) => (
-          <li key={`jn-pro-${i}`}>{p}</li>
-        ))}
+        {(t('tsql-apply.content.alternatives.joins.pros', { returnObjects: true }) as string[]).map(
+          (p, i) => (
+            <li key={`jn-pro-${i}`}>{p}</li>
+          ),
+        )}
       </ul>
       <Typography variant="h6">{t('tsql-apply.content.alternatives.joins.consTitle')}</Typography>
       <ul>
-        {(t('tsql-apply.content.alternatives.joins.cons', { returnObjects: true }) as string[]).map((c, i) => (
-          <li key={`jn-con-${i}`}>{c}</li>
-        ))}
+        {(t('tsql-apply.content.alternatives.joins.cons', { returnObjects: true }) as string[]).map(
+          (c, i) => (
+            <li key={`jn-con-${i}`}>{c}</li>
+          ),
+        )}
       </ul>
 
       <Typography variant="h4" gutterBottom>
@@ -240,9 +256,11 @@ OUTER APPLY OPENJSON(T.Payload) AS J;`}
         {t('tsql-apply.content.goodPractices.title')}
       </Typography>
       <ul>
-        {(t('tsql-apply.content.goodPractices.items', { returnObjects: true }) as string[]).map((g, i) => (
-          <li key={i}>{g}</li>
-        ))}
+        {(t('tsql-apply.content.goodPractices.items', { returnObjects: true }) as string[]).map(
+          (g, i) => (
+            <li key={i}>{g}</li>
+          ),
+        )}
       </ul>
 
       <Box
@@ -251,13 +269,26 @@ OUTER APPLY OPENJSON(T.Payload) AS J;`}
         borderTop={(theme) => `1px solid ${theme.palette.divider}`}
         sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
       >
-        <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
+        <Typography
+          variant="caption"
+          component="div"
+          sx={{ fontStyle: 'italic', color: 'text.secondary' }}
+        >
           {t('tsql-apply.content.footer.sourcesLabel')}{' '}
           {(
-            t('tsql-apply.content.footer.sources', { returnObjects: true }) as { name: string; url: string }[]
+            t('tsql-apply.content.footer.sources', { returnObjects: true }) as {
+              name: string;
+              url: string;
+            }[]
           ).map((s, i, arr) => (
             <span key={i}>
-              <Link href={s.url} target="_blank" rel="noopener noreferrer" underline="always" color="inherit">
+              <Link
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                underline="always"
+                color="inherit"
+              >
                 {s.name}
               </Link>
               {i < arr.length - 1 ? ' • ' : ''}

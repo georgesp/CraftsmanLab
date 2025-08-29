@@ -9,7 +9,12 @@ import { meta } from './meta';
 const CSharpPatternMatchingTip: React.FC = () => {
   const { t } = useTranslation('tips');
 
-  const sections: { key: string; anchor: string; aria: string; lang?: 'csharp' | 'bash' | 'xml' }[] = [
+  const sections: {
+    key: string;
+    anchor: string;
+    aria: string;
+    lang?: 'csharp' | 'bash' | 'xml';
+  }[] = [
     { key: 'typePattern', anchor: 'type-pattern', aria: 'pm-type-pattern' },
     { key: 'constantPattern', anchor: 'constant-pattern', aria: 'pm-constant-pattern' },
     { key: 'relationalPattern', anchor: 'relational-pattern', aria: 'pm-relational-pattern' },
@@ -59,28 +64,32 @@ const CSharpPatternMatchingTip: React.FC = () => {
       <Typography paragraph>{t('csharp-pattern-matching.content.summary.text')}</Typography>
       <Typography variant="h5">{t('csharp-pattern-matching.content.summary.prosTitle')}</Typography>
       <Box component="ul">
-        {(t('csharp-pattern-matching.content.summary.pros', { returnObjects: true }) as string[]).map(
-          (p, i) => (
-            <li key={i}>{p}</li>
-          ),
-        )}
+        {(
+          t('csharp-pattern-matching.content.summary.pros', { returnObjects: true }) as string[]
+        ).map((p, i) => (
+          <li key={i}>{p}</li>
+        ))}
       </Box>
       <Typography variant="h5">{t('csharp-pattern-matching.content.summary.consTitle')}</Typography>
       <Box component="ul">
-        {(t('csharp-pattern-matching.content.summary.cons', { returnObjects: true }) as string[]).map(
-          (c, i) => (
-            <li key={i}>{c}</li>
-          ),
-        )}
+        {(
+          t('csharp-pattern-matching.content.summary.cons', { returnObjects: true }) as string[]
+        ).map((c, i) => (
+          <li key={i}>{c}</li>
+        ))}
       </Box>
 
-      <Typography variant="h4">{t('csharp-pattern-matching.content.goodPractices.title')}</Typography>
+      <Typography variant="h4">
+        {t('csharp-pattern-matching.content.goodPractices.title')}
+      </Typography>
       <Box component="ul">
-        {(t('csharp-pattern-matching.content.goodPractices.items', { returnObjects: true }) as string[]).map(
-          (g, i) => (
-            <li key={i}>{g}</li>
-          ),
-        )}
+        {(
+          t('csharp-pattern-matching.content.goodPractices.items', {
+            returnObjects: true,
+          }) as string[]
+        ).map((g, i) => (
+          <li key={i}>{g}</li>
+        ))}
       </Box>
 
       <Box
@@ -89,7 +98,11 @@ const CSharpPatternMatchingTip: React.FC = () => {
         borderTop={(theme) => `1px solid ${theme.palette.divider}`}
         sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
       >
-        <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
+        <Typography
+          variant="caption"
+          component="div"
+          sx={{ fontStyle: 'italic', color: 'text.secondary' }}
+        >
           {t('csharp-pattern-matching.content.footer.sourcesLabel')}{' '}
           {(
             t('csharp-pattern-matching.content.footer.sources', { returnObjects: true }) as {
@@ -98,7 +111,13 @@ const CSharpPatternMatchingTip: React.FC = () => {
             }[]
           ).map((s, i, arr) => (
             <span key={i}>
-              <Link href={s.url} target="_blank" rel="noopener noreferrer" underline="always" color="inherit">
+              <Link
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                underline="always"
+                color="inherit"
+              >
                 {s.name}
               </Link>
               {i < arr.length - 1 ? ' • ' : ''}

@@ -30,8 +30,7 @@ export const TipList: React.FC<Props> = ({ selectedSlug, onNavigate, maxItems, l
   }, [maxItems]);
 
   return (
-    <List dense aria-label="tips disponibles" sx={listSx}
-    >
+    <List dense aria-label="tips disponibles" sx={listSx}>
       {items.map((t) => (
         <ListItemButton
           key={t.slug}

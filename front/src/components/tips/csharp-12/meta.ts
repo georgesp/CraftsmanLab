@@ -27,6 +27,6 @@ export const meta: TipMeta = {
       'language features',
       'syntaxe',
     ],
-  tags: ['c# 12', 'c#']
+    tags: ['c# 12', 'c#'],
   },
 };

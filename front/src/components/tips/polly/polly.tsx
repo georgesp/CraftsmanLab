@@ -76,7 +76,10 @@ const PollyTip: React.FC = () => {
       </Typography>
       <CodeBlock
         language="bash"
-  code={t('polly.content.sections.installation.nuget.code', { defaultValue: '# Install from Package Manager Console\nInstall-Package Polly\n\n# or with .NET CLI\ndotnet add package Polly' })}
+        code={t('polly.content.sections.installation.nuget.code', {
+          defaultValue:
+            '# Install from Package Manager Console\nInstall-Package Polly\n\n# or with .NET CLI\ndotnet add package Polly',
+        })}
       />
 
       <Typography paragraph>
@@ -309,13 +312,29 @@ await retryPolicy.ExecuteAsync(async () =>
         borderTop={(theme) => `1px solid ${theme.palette.divider}`}
         sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
       >
-        <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
+        <Typography
+          variant="caption"
+          component="div"
+          sx={{ fontStyle: 'italic', color: 'text.secondary' }}
+        >
           {t('polly.content.footer.sourcesLabel')}{' '}
-          <Link href="https://github.com/App-vNext/Polly" target="_blank" rel="noopener noreferrer" underline="always" color="inherit">
+          <Link
+            href="https://github.com/App-vNext/Polly"
+            target="_blank"
+            rel="noopener noreferrer"
+            underline="always"
+            color="inherit"
+          >
             {t('polly.content.footer.officialDocs')}
           </Link>{' '}
           •{' '}
-          <Link href="https://github.com/App-vNext/Polly/blob/main/docs/polly.md" target="_blank" rel="noopener noreferrer" underline="always" color="inherit">
+          <Link
+            href="https://github.com/App-vNext/Polly/blob/main/docs/polly.md"
+            target="_blank"
+            rel="noopener noreferrer"
+            underline="always"
+            color="inherit"
+          >
             {t('polly.content.footer.fullGuide')}
           </Link>
         </Typography>

@@ -1,9 +1,9 @@
 {
   "csharp-pattern-matching": {
-    "title": "C# Pattern Matching",
+    "title": "Pattern Matching",
     "shortDescription": "Master C# patterns (type, property, list…) for cleaner switch logic.",
     "content": {
-  "mainTitle": "C# pattern matching: write intent, not plumbing",
+  "mainTitle": "Pattern matching: write intent, not plumbing",
   "overview": "Introduced in C# 7.0 and extended in later releases (property, positional and list patterns, switch expressions), pattern matching lets you express conditions by shape rather than nested ifs. Here are the key pattern types you’ll use daily, each with a practical snippet.",
       "typesIndex": {
         "title": "Pattern types",

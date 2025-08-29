@@ -26,7 +26,7 @@ export const NavigationContainer = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   '& a': {
     color: '#FFFFFF',
-  fontSize: '0.95rem',
+    fontSize: '0.95rem',
     textDecoration: 'none',
     '&:hover': {
       color: theme.palette.primary.light,

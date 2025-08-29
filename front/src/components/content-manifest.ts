@@ -35,14 +35,20 @@ export const tipsEntries: TipEntry[] = [
   { ...switchTupleMeta, load: () => import('./tips/tic/switch-tuple') },
   { ...cpmMeta, load: () => import('./tips/cpm/central-package-management') },
   { ...collectionMeta, load: () => import('./tips/collection/collection') },
-  { ...keyValueCollectionMeta, load: () => import('./tips/keyValueCollection/key-value-collection') },
+  {
+    ...keyValueCollectionMeta,
+    load: () => import('./tips/keyValueCollection/key-value-collection'),
+  },
   { ...csharp11Meta, load: () => import('./tips/csharp-11/csharp-11') },
   { ...csharp12Meta, load: () => import('./tips/csharp-12/csharp-12') },
   { ...kokoroSharpMeta, load: () => import('./tips/kokoro-sharp/kokoro-sharp') },
   { ...mcpServersMeta, load: () => import('./tips/mcp-servers/mcp-servers') },
   { ...tsqlApplyMeta, load: () => import('./tips/tsql-apply/tsql-apply') },
   { ...openjsonMeta, load: () => import('./tips/tsql-openjson/tsql-openjson') },
-  { ...csharpPatternMatchingMeta, load: () => import('./tips/csharp-pattern-matching/csharp-pattern-matching') },
+  {
+    ...csharpPatternMatchingMeta,
+    load: () => import('./tips/csharp-pattern-matching/csharp-pattern-matching'),
+  },
 ];
 
 // ----- Prompts: metas -----
@@ -53,8 +59,14 @@ import { meta as asyncGuidancesMeta } from './prompts/async-guidances/meta';
 export type PromptEntry = PromptMeta & { load: () => Promise<any> };
 
 export const promptsEntries: PromptEntry[] = [
-  { ...craftsmanlabRulesMeta, load: () => import('./prompts/craftsmanlab-rules/craftsmanlab-front-rules') },
-  { ...aspnetGuidancesMeta, load: () => import('./prompts/aspnet-core-guidances/aspnet-core-guidances') },
+  {
+    ...craftsmanlabRulesMeta,
+    load: () => import('./prompts/craftsmanlab-rules/craftsmanlab-front-rules'),
+  },
+  {
+    ...aspnetGuidancesMeta,
+    load: () => import('./prompts/aspnet-core-guidances/aspnet-core-guidances'),
+  },
   { ...asyncGuidancesMeta, load: () => import('./prompts/async-guidances/async-guidances') },
 ];
 

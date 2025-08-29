@@ -8,7 +8,16 @@ export type CodeBlockProps = {
   code: string;
   ariaLabel?: string;
   maxHeight?: number | string;
-  language?: 'csharp' | 'javascript' | 'typescript' | 'json' | 'xml' | 'html' | 'css' | 'bash' | 'sql';
+  language?:
+    | 'csharp'
+    | 'javascript'
+    | 'typescript'
+    | 'json'
+    | 'xml'
+    | 'html'
+    | 'css'
+    | 'bash'
+    | 'sql';
 };
 
 /**

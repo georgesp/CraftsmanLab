@@ -14,7 +14,8 @@ type Props = {
 export const RelatedTipsList: React.FC<Props> = ({ currentSlug, maxItems = 7, listSx }) => {
   const { t } = useTranslation('tips');
 
-  const normalize = (arr?: string[]) => (arr ?? []).map((s) => s.toLowerCase().trim()).filter(Boolean);
+  const normalize = (arr?: string[]) =>
+    (arr ?? []).map((s) => s.toLowerCase().trim()).filter(Boolean);
   const uniq = (arr: string[]) => Array.from(new Set(arr));
   const allSearchKeywords = (tipSlug: string) => {
     const tip = tipsList.find((x) => x.slug === tipSlug);
@@ -25,11 +26,11 @@ export const RelatedTipsList: React.FC<Props> = ({ currentSlug, maxItems = 7, li
   const courant = React.useMemo(() => new Set(allSearchKeywords(currentSlug)), [currentSlug]);
 
   const items = React.useMemo(() => {
-  const scored = tipsList
+    const scored = tipsList
       .filter((tip) => tip.slug !== currentSlug)
       .map((tip) => {
-    const autres = allSearchKeywords(tip.slug);
-    const communs = autres.filter((k) => courant.has(k));
+        const autres = allSearchKeywords(tip.slug);
+        const communs = autres.filter((k) => courant.has(k));
         return { tip, score: communs.length };
       })
       .filter((x) => x.score > 0)

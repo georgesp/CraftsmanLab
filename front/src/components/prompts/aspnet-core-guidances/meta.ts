@@ -25,6 +25,6 @@ export const meta: PromptMeta = {
       'controller',
       'middleware',
     ],
-  tags: ['aspnet-core', 'web', 'best-practices']
+    tags: ['aspnet-core', 'web', 'best-practices'],
   },
 };

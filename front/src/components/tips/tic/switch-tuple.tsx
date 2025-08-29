@@ -26,18 +26,18 @@ const SwitchTupleTip: React.FC = () => {
         {t('switch-tuple.content.sections.summary.title')}
       </Typography>
       <Box component="ul" sx={{ pl: 3, mb: 2 }}>
-        {(t('switch-tuple.content.sections.summary.points', { returnObjects: true }) as string[]).map(
-          (line, idx) => (
-            <li key={idx}>
-              <Typography component="span" variant="body1">
-                {line}
-              </Typography>
-            </li>
-          ),
-        )}
+        {(
+          t('switch-tuple.content.sections.summary.points', { returnObjects: true }) as string[]
+        ).map((line, idx) => (
+          <li key={idx}>
+            <Typography component="span" variant="body1">
+              {line}
+            </Typography>
+          </li>
+        ))}
       </Box>
 
-  <Box
+      <Box
         mt={4}
         pt={2}
         borderTop={(theme) => `1px solid ${theme.palette.divider}`}
@@ -52,7 +52,7 @@ const SwitchTupleTip: React.FC = () => {
           {t('switch-tuple.content.footer.writtenOn', { date: meta.writtenOn })}
         </Typography>
       </Box>
-  </TipContent>
+    </TipContent>
   );
 };
 

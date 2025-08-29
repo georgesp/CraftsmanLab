@@ -4,7 +4,16 @@ import { COLORS } from '../../../styles/colors';
 
 export type SyntaxHighlighterProps = {
   code: string;
-  language?: 'csharp' | 'javascript' | 'typescript' | 'json' | 'xml' | 'html' | 'css' | 'bash' | 'sql';
+  language?:
+    | 'csharp'
+    | 'javascript'
+    | 'typescript'
+    | 'json'
+    | 'xml'
+    | 'html'
+    | 'css'
+    | 'bash'
+    | 'sql';
 };
 
 /**
@@ -420,7 +429,12 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
           let m;
           const r = new RegExp(p.regex.source, p.regex.flags);
           while ((m = r.exec(code)) !== null) {
-            allMatches.push({ start: m.index, end: m.index + m[0].length, color: p.color, text: m[0] });
+            allMatches.push({
+              start: m.index,
+              end: m.index + m[0].length,
+              color: p.color,
+              text: m[0],
+            });
           }
         });
         allMatches.sort((a, b) => a.start - b.start || b.end - a.end);

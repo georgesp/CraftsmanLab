@@ -27,7 +27,7 @@ const DapperTip: React.FC = () => {
         code={t('dapper.content.sections.methods.codeBlock')}
       />
 
-  <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom>
         {t('dapper.content.sections.simpleExample.title')}
       </Typography>
       <CodeBlock
@@ -63,7 +63,7 @@ using (var conn = new SqlConnection(connString))
 // Advantage: automatic mapping via property names.`}
       />
 
-  <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom>
         {t('dapper.content.sections.aliasMapping.title')}
       </Typography>
       <CodeBlock
@@ -106,7 +106,7 @@ using (var conn = new SqlConnection(connString))
 // Tip: use alias (AS) to match columns -> properties.`}
       />
 
-  <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom>
         {t('dapper.content.sections.multiMapping.title')}
       </Typography>
       <CodeBlock
@@ -179,19 +179,32 @@ using (var conn = new SqlConnection(connString))
 // - The delegate is called per row; group via lookup to consolidate.`}
       />
 
-  <Box
+      <Box
         mt={4}
         pt={2}
         borderTop={(theme) => `1px solid ${theme.palette.divider}`}
         sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
       >
-        <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
+        <Typography
+          variant="caption"
+          component="div"
+          sx={{ fontStyle: 'italic', color: 'text.secondary' }}
+        >
           {t('dapper.content.footer.sourcesLabel')}{' '}
           {(
-            t('dapper.content.footer.sources', { returnObjects: true }) as { name: string; url: string }[]
+            t('dapper.content.footer.sources', { returnObjects: true }) as {
+              name: string;
+              url: string;
+            }[]
           ).map((s, i, arr) => (
             <span key={i}>
-              <Link href={s.url} target="_blank" rel="noopener noreferrer" underline="always" color="inherit">
+              <Link
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                underline="always"
+                color="inherit"
+              >
                 {s.name}
               </Link>
               {i < arr.length - 1 ? ' • ' : ''}
@@ -202,7 +215,7 @@ using (var conn = new SqlConnection(connString))
           {t('dapper.content.footer.writtenOn', { date: meta.writtenOn })}
         </Typography>
       </Box>
-  </TipContent>
+    </TipContent>
   );
 };
 

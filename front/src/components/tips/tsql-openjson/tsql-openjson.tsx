@@ -28,7 +28,7 @@ const OpenJsonTip: React.FC = () => {
       <CodeBlock
         language="sql"
         ariaLabel="openjson-case1"
-  code={`-- Sample data
+        code={`-- Sample data
 DECLARE @payload NVARCHAR(MAX) = N'{"id":1,"name":"Alice","tags":["vip","tech"]}';
 
 -- Project properties using WITH mapping and paths
@@ -59,7 +59,7 @@ WITH (
       <CodeBlock
         language="sql"
         ariaLabel="openjson-case2"
-  code={`-- Sample data
+        code={`-- Sample data
 DECLARE @payload NVARCHAR(MAX) = N'{"items":[{"sku":"KB","qty":1},{"sku":"MS","qty":3}]}';
 
 -- Read array elements with CROSS APPLY
@@ -133,9 +133,11 @@ OUTER APPLY OPENJSON(E.Payload) AS J;`}
         {t('openjson.content.goodPractices.title')}
       </Typography>
       <ul>
-        {(t('openjson.content.goodPractices.items', { returnObjects: true }) as string[]).map((g, i) => (
-          <li key={i}>{g}</li>
-        ))}
+        {(t('openjson.content.goodPractices.items', { returnObjects: true }) as string[]).map(
+          (g, i) => (
+            <li key={i}>{g}</li>
+          ),
+        )}
       </ul>
 
       <Box
@@ -144,13 +146,26 @@ OUTER APPLY OPENJSON(E.Payload) AS J;`}
         borderTop={(theme) => `1px solid ${theme.palette.divider}`}
         sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
       >
-        <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
+        <Typography
+          variant="caption"
+          component="div"
+          sx={{ fontStyle: 'italic', color: 'text.secondary' }}
+        >
           {t('openjson.content.footer.sourcesLabel')}{' '}
           {(
-            t('openjson.content.footer.sources', { returnObjects: true }) as { name: string; url: string }[]
+            t('openjson.content.footer.sources', { returnObjects: true }) as {
+              name: string;
+              url: string;
+            }[]
           ).map((s, i, arr) => (
             <span key={i}>
-              <Link href={s.url} target="_blank" rel="noopener noreferrer" underline="always" color="inherit">
+              <Link
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                underline="always"
+                color="inherit"
+              >
                 {s.name}
               </Link>
               {i < arr.length - 1 ? ' • ' : ''}

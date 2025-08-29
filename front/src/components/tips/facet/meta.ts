@@ -29,6 +29,6 @@ export const meta: TipMeta = {
       'source generator',
       'mapper',
     ],
-  tags: ['mapping', 'projection', 'c#']
+    tags: ['mapping', 'projection', 'c#'],
   },
 };
