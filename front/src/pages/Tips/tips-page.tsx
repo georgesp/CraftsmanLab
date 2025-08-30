@@ -20,7 +20,9 @@ export const TipsPage: React.FC = () => {
   }, []);
 
   const toggleTag = (tag: string) => {
-    setSelectedTags((prev) => (prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]));
+    setSelectedTags((prev) =>
+      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
+    );
   };
 
   const filtered = useMemo(() => {
@@ -40,24 +42,34 @@ export const TipsPage: React.FC = () => {
         disableGutters
         sx={{ px: 0, mx: 0, width: '100%', backgroundColor: COLORS.darkGreyBg }}
       >
-        <PromptsPageContainer sx={{ px: 0, mx: 0, width: '100%', ml: { xs: 0, md: 6 }, mb: 0 }}>
+        <PromptsPageContainer
+          sx={{
+            // add small horizontal padding on xs/sm so text isn't flush against viewport edges
+            px: { xs: 2, sm: 3, md: 0 },
+            mx: 0,
+            width: '100%',
+            ml: { xs: 0, md: 6 },
+            mb: 0,
+          }}
+        >
           <Box
             sx={{
               display: 'flex',
               alignItems: 'stretch',
-              gap: { xs: 1, sm: 2 },
+              // reduce the gap on md+ so text sits a bit closer to the image
+              gap: { xs: 1, sm: 2, md: 2 },
               flexWrap: { xs: 'wrap', md: 'nowrap' },
             }}
           >
             <Box
               sx={{
-                flex: { xs: '1 1 100%', md: '0 0 160px' },
-                width: { xs: '100%', md: 160 },
-                maxWidth: { xs: '100%', md: 160 },
+                flex: { xs: '1 1 100%', md: '0 0 auto' },
+                width: { xs: '100%', md: 'auto' },
+                maxWidth: { xs: '100%', md: 'none' },
                 alignSelf: { xs: 'center', md: 'stretch' },
                 position: 'relative',
                 display: 'flex',
-                mr: 2,
+                mr: { xs: 2, md: 0 },
                 mb: { xs: 2, md: 1 },
               }}
             >
@@ -66,7 +78,7 @@ export const TipsPage: React.FC = () => {
                 src="/image-memo-white.png"
                 alt="Illustration tips"
                 sx={{
-                  width: 160,
+                  width: 80,
                   height: 'auto',
                   objectFit: 'contain',
                   display: 'block',
@@ -76,11 +88,12 @@ export const TipsPage: React.FC = () => {
             <Box
               sx={{
                 position: 'relative',
-                pl: { xs: 0, md: '3rem' },
+                // keep a small left padding on md+ so text is closer but not glued
+                pl: { xs: 0, md: '0.75rem' },
                 pr: 0,
                 flex: 1,
                 width: { xs: '100%', md: 'auto' },
-                mr: { xs: 0, md: 0 },
+                mr: { xs: 0, md: 3 },
               }}
             >
               <Box
@@ -90,9 +103,9 @@ export const TipsPage: React.FC = () => {
                   left: 0,
                   top: 0,
                   bottom: 0,
-                  width: 10,
+                  width: 0,
                   background: COLORS.darkGreyBg,
-                  display: { xs: 'none', md: 'block' },
+                  display: 'none',
                 }}
               />
               <Typography
