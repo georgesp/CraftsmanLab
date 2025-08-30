@@ -16,10 +16,24 @@ export const PromptsPage: React.FC = () => {
         disableGutters
         sx={{ px: 0, mx: 0, width: '100%', backgroundColor: COLORS.darkGreyBg, minHeight: '100vh' }}
       >
-        <PromptsPageContainer sx={{ px: 0, mx: 0, width: '100%', ml: 2 }}>
+        <PromptsPageContainer
+          sx={{
+            // add small horizontal padding on xs/sm so text isn't flush against viewport edges
+            px: { xs: 2, sm: 3, md: 0 },
+            mx: 0,
+            width: '100%',
+            // align with Tips page spacing on md+
+            ml: { xs: 0, md: 6 },
+            mr: { xs: 0, md: 6 },
+            // ensure inner right padding on large screens so text doesn't feel truncated
+            pr: { md: 6 },
+          }}
+        >
           <Box
             sx={{
               display: 'flex',
+              // ensure stacking on small screens and row layout on larger ones
+              flexDirection: { xs: 'column', md: 'row' },
               alignItems: 'stretch',
               gap: { xs: 2, sm: 4 },
               flexWrap: { xs: 'wrap', md: 'nowrap' },
@@ -27,9 +41,12 @@ export const PromptsPage: React.FC = () => {
           >
             <Box
               sx={{
-                flex: { xs: '1 1 100%', md: '0 0 400px' },
-                width: { xs: '100%', md: 400 },
-                maxWidth: { xs: '100%', md: 420 },
+                // smaller on md+, centered and capped on small screens
+                flex: { xs: '1 1 100%', md: '0 0 280px' },
+                width: { xs: '100%', md: 280 },
+                // cap the max width globally so it never grows too large on narrow viewports
+                maxWidth: 320,
+                mx: { xs: 'auto', md: 0 },
                 alignSelf: { xs: 'center', md: 'stretch' },
                 borderRadius: 1,
                 boxShadow: 3,
@@ -39,28 +56,30 @@ export const PromptsPage: React.FC = () => {
                 display: 'flex',
               }}
             >
+                <Box
+                  component="img"
+                  src="/image-ia.png"
+                  alt="Illustration intelligence artificielle"
+                  sx={{
+                    width: '100%',
+                    // fill the container on md+ so rounded border doesn't show empty area
+                    height: { xs: 'auto', md: '100%' },
+                    objectFit: { xs: 'contain', md: 'cover' },
+                    display: 'block',
+                  }}
+                />
+              </Box>
               <Box
-                component="img"
-                src="/image-ia.png"
-                alt="Illustration intelligence artificielle"
-                sx={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  display: 'block',
-                }}
-              />
-            </Box>
-            <div
-              style={{ position: 'relative', paddingLeft: '3rem', flex: 1, marginRight: '2rem' }}
-            >
+                sx={{ position: 'relative', pl: { xs: 0, md: '0.75rem' }, flex: 1, mr: { xs: 0, md: 3 } }}
+              >
               <span
                 style={{
                   position: 'absolute',
                   left: 0,
                   top: 0,
                   bottom: 0,
-                  width: 10,
+                  width: 0,
+                  display: 'none',
                   background: COLORS.darkGreyBg,
                 }}
               />
@@ -108,7 +127,7 @@ export const PromptsPage: React.FC = () => {
                 <br />
                 {t('prompts.whyPromptBody2')}
               </Typography>
-            </div>
+            </Box>
           </Box>
         </PromptsPageContainer>
         <GridContainer>
