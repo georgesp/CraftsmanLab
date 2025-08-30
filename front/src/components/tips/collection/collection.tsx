@@ -59,7 +59,7 @@ const CollectionTip: React.FC = () => {
       <Typography paragraph>{t('collection.content.sections.ienumerable.description')}</Typography>
       {Array.isArray(ienumerablePros) && ienumerablePros.length > 0 && (
         <Box sx={{ mt: 1 }}>
-          <Typography variant="subtitle2">{t('collection.prosTitle', 'Avantages')}</Typography>
+          <Typography variant="subtitle2">{t('collection.prosTitle')}</Typography>
           <ul>
             {ienumerablePros.map((p, i) => (
               <li key={i}>
@@ -71,7 +71,7 @@ const CollectionTip: React.FC = () => {
       )}
       {Array.isArray(ienumerableCons) && ienumerableCons.length > 0 && (
         <Box sx={{ mt: 1 }}>
-          <Typography variant="subtitle2">{t('collection.consTitle', 'Inconvénients')}</Typography>
+          <Typography variant="subtitle2">{t('collection.consTitle')}</Typography>
           <ul>
             {ienumerableCons.map((c, i) => (
               <li key={i}>
@@ -88,7 +88,7 @@ const CollectionTip: React.FC = () => {
       <Typography paragraph>{t('collection.content.sections.icollection.description')}</Typography>
       {Array.isArray(icollectionPros) && icollectionPros.length > 0 && (
         <Box sx={{ mt: 1 }}>
-          <Typography variant="subtitle2">{t('collection.prosTitle', 'Avantages')}</Typography>
+          <Typography variant="subtitle2">{t('collection.prosTitle')}</Typography>
           <ul>
             {icollectionPros.map((p, i) => (
               <li key={i}>
@@ -100,7 +100,7 @@ const CollectionTip: React.FC = () => {
       )}
       {Array.isArray(icollectionCons) && icollectionCons.length > 0 && (
         <Box sx={{ mt: 1 }}>
-          <Typography variant="subtitle2">{t('collection.consTitle', 'Inconvénients')}</Typography>
+          <Typography variant="subtitle2">{t('collection.consTitle')}</Typography>
           <ul>
             {icollectionCons.map((c, i) => (
               <li key={i}>
@@ -119,7 +119,7 @@ const CollectionTip: React.FC = () => {
       </Typography>
       {Array.isArray(ireadOnlyCollectionPros) && ireadOnlyCollectionPros.length > 0 && (
         <Box sx={{ mt: 1 }}>
-          <Typography variant="subtitle2">{t('collection.prosTitle', 'Avantages')}</Typography>
+          <Typography variant="subtitle2">{t('collection.prosTitle')}</Typography>
           <ul>
             {ireadOnlyCollectionPros.map((p, i) => (
               <li key={i}>
@@ -131,7 +131,7 @@ const CollectionTip: React.FC = () => {
       )}
       {Array.isArray(ireadOnlyCollectionCons) && ireadOnlyCollectionCons.length > 0 && (
         <Box sx={{ mt: 1 }}>
-          <Typography variant="subtitle2">{t('collection.consTitle', 'Inconvénients')}</Typography>
+          <Typography variant="subtitle2">{t('collection.consTitle')}</Typography>
           <ul>
             {ireadOnlyCollectionCons.map((c, i) => (
               <li key={i}>
@@ -148,7 +148,7 @@ const CollectionTip: React.FC = () => {
       <Typography paragraph>{t('collection.content.sections.ilist.description')}</Typography>
       {Array.isArray(ilistPros) && ilistPros.length > 0 && (
         <Box sx={{ mt: 1 }}>
-          <Typography variant="subtitle2">{t('collection.prosTitle', 'Avantages')}</Typography>
+          <Typography variant="subtitle2">{t('collection.prosTitle')}</Typography>
           <ul>
             {ilistPros.map((p, i) => (
               <li key={i}>
@@ -160,7 +160,7 @@ const CollectionTip: React.FC = () => {
       )}
       {Array.isArray(ilistCons) && ilistCons.length > 0 && (
         <Box sx={{ mt: 1 }}>
-          <Typography variant="subtitle2">{t('collection.consTitle', 'Inconvénients')}</Typography>
+          <Typography variant="subtitle2">{t('collection.consTitle')}</Typography>
           <ul>
             {ilistCons.map((c, i) => (
               <li key={i}>
@@ -179,7 +179,7 @@ const CollectionTip: React.FC = () => {
       </Typography>
       {Array.isArray(ireadOnlyListPros) && ireadOnlyListPros.length > 0 && (
         <Box sx={{ mt: 1 }}>
-          <Typography variant="subtitle2">{t('collection.prosTitle', 'Avantages')}</Typography>
+          <Typography variant="subtitle2">{t('collection.prosTitle')}</Typography>
           <ul>
             {ireadOnlyListPros.map((p, i) => (
               <li key={i}>
@@ -191,7 +191,7 @@ const CollectionTip: React.FC = () => {
       )}
       {Array.isArray(ireadOnlyListCons) && ireadOnlyListCons.length > 0 && (
         <Box sx={{ mt: 1 }}>
-          <Typography variant="subtitle2">{t('collection.consTitle', 'Inconvénients')}</Typography>
+          <Typography variant="subtitle2">{t('collection.consTitle')}</Typography>
           <ul>
             {ireadOnlyListCons.map((c, i) => (
               <li key={i}>
@@ -208,7 +208,7 @@ const CollectionTip: React.FC = () => {
       <Typography paragraph>{t('collection.content.sections.iset.description')}</Typography>
       {Array.isArray(isetPros) && isetPros.length > 0 && (
         <Box sx={{ mt: 1 }}>
-          <Typography variant="subtitle2">{t('collection.prosTitle', 'Avantages')}</Typography>
+          <Typography variant="subtitle2">{t('collection.prosTitle')}</Typography>
           <ul>
             {isetPros.map((p, i) => (
               <li key={i}>
@@ -220,7 +220,7 @@ const CollectionTip: React.FC = () => {
       )}
       {Array.isArray(isetCons) && isetCons.length > 0 && (
         <Box sx={{ mt: 1 }}>
-          <Typography variant="subtitle2">{t('collection.consTitle', 'Inconvénients')}</Typography>
+          <Typography variant="subtitle2">{t('collection.consTitle')}</Typography>
           <ul>
             {isetCons.map((c, i) => (
               <li key={i}>
