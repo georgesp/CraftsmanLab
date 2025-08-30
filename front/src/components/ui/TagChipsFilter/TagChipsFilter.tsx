@@ -55,6 +55,27 @@ export const TagChipsFilter: React.FC<TagChipsFilterProps> = ({
     <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 2 }}>
       {tags.map((tag) => {
         const isSelected = selected.includes(tag);
+
+        const handleClick = () => {
+          if (isSelected) {
+            // clicking the already selected tag -> toggle off
+            onToggle(tag);
+            return;
+          }
+
+          // If there are other selected tags, clear them first so we end up with a single selection.
+          // We call the parent's onToggle for each previously selected tag (they should toggle off).
+          if (selected && selected.length > 0) {
+            selected.forEach((prev) => {
+              // only toggle previous ones (skip current but current isn't selected here)
+              onToggle(prev);
+            });
+          }
+
+          // Then toggle the new tag on.
+          onToggle(tag);
+        };
+
         return (
           <Chip
             key={tag}
@@ -62,7 +83,7 @@ export const TagChipsFilter: React.FC<TagChipsFilterProps> = ({
             aria-label={tag}
             size={size}
             clickable
-            onClick={() => onToggle(tag)}
+            onClick={handleClick}
             aria-pressed={isSelected}
             data-selected={isSelected ? 'true' : 'false'}
             sx={{
