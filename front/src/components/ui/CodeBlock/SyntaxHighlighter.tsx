@@ -4,7 +4,16 @@ import { COLORS } from '../../../styles/colors';
 
 export type SyntaxHighlighterProps = {
   code: string;
-  language?: 'csharp' | 'javascript' | 'typescript' | 'json' | 'xml' | 'html' | 'css' | 'bash';
+  language?:
+    | 'csharp'
+    | 'javascript'
+    | 'typescript'
+    | 'json'
+    | 'xml'
+    | 'html'
+    | 'css'
+    | 'bash'
+    | 'sql';
 };
 
 /**
@@ -401,6 +410,64 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
         return highlightBash(code);
       case 'xml':
         return highlightXml(code);
+      case 'sql': {
+        // Minimal SQL highlighting: comments, strings, keywords, numbers
+        const tokens: JSX.Element[] = [];
+        let currentIndex = 0;
+        const sqlKeywords =
+          /(SELECT|FROM|WHERE|JOIN|INNER|LEFT|RIGHT|FULL|OUTER|CROSS|APPLY|TOP|ORDER BY|GROUP BY|HAVING|ON|AS|AND|OR|NOT|NULL|IS|IN|EXISTS|CASE|WHEN|THEN|ELSE|END|INSERT|INTO|VALUES|UPDATE|SET|DELETE|CREATE|TABLE|VIEW|FUNCTION|RETURNS|RETURN|WITH|NOLOCK)\b/gi;
+        const patterns = [
+          { regex: /--.*$/gm, color: colors.comment },
+          { regex: /\/\*[\s\S]*?\*\//g, color: colors.comment },
+          { regex: /'([^'\\]|\\.)*'/g, color: colors.string },
+          { regex: sqlKeywords, color: colors.keyword },
+          { regex: /\b\d+\b/g, color: colors.number },
+          { regex: /[(),.*=<>+-]/g, color: colors.operator },
+        ];
+        const allMatches: Array<{ start: number; end: number; color: string; text: string }> = [];
+        patterns.forEach((p) => {
+          let m;
+          const r = new RegExp(p.regex.source, p.regex.flags);
+          while ((m = r.exec(code)) !== null) {
+            allMatches.push({
+              start: m.index,
+              end: m.index + m[0].length,
+              color: p.color,
+              text: m[0],
+            });
+          }
+        });
+        allMatches.sort((a, b) => a.start - b.start || b.end - a.end);
+        const nonOverlap: typeof allMatches = [];
+        for (const m of allMatches) {
+          const overlap = nonOverlap.some((e) => m.start < e.end && m.end > e.start);
+          if (!overlap) nonOverlap.push(m);
+        }
+        nonOverlap.sort((a, b) => a.start - b.start);
+        for (const [i, m] of nonOverlap.entries()) {
+          if (m.start > currentIndex) {
+            tokens.push(
+              <span key={`sql-text-${currentIndex}`} style={{ color: colors.text }}>
+                {code.slice(currentIndex, m.start)}
+              </span>,
+            );
+          }
+          tokens.push(
+            <span key={`sql-match-${i}`} style={{ color: m.color }}>
+              {m.text}
+            </span>,
+          );
+          currentIndex = m.end;
+        }
+        if (currentIndex < code.length) {
+          tokens.push(
+            <span key={`sql-end`} style={{ color: colors.text }}>
+              {code.slice(currentIndex)}
+            </span>,
+          );
+        }
+        return tokens;
+      }
       default:
         // Pour les autres langages, retourner le code sans coloration pour l'instant
         return [

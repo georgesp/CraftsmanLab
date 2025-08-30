@@ -14,23 +14,13 @@ const mockTipsList = [
     slug: 'dapper',
     title: 'Utilisation de Dapper',
     shortDescription: 'Utilisation de Dapper (DTO, alias, multi‑mapping).',
-    metadata: {
-      searchKeywords: {
-        fr: ['dapper', 'orm', 'micro-orm', 'base de données', 'sql'],
-        en: ['dapper', 'orm', 'micro-orm', 'database', 'sql']
-      }
-    }
+  metadata: { searchKeywords: ['dapper', 'orm', 'micro-orm', 'base de données', 'database', 'sql'] }
   },
   {
     slug: 'polly',
     title: 'Polly',
     shortDescription: 'Ajouter de la résilience à vos appels : retry, circuit breaker, timeout et fallback.',
-    metadata: {
-      searchKeywords: {
-        fr: ['polly', 'résilience', 'retry', 'circuit breaker', 'timeout'],
-        en: ['polly', 'resilience', 'retry', 'circuit breaker', 'timeout']
-      }
-    }
+  metadata: { searchKeywords: ['polly', 'résilience', 'resilience', 'retry', 'circuit breaker', 'timeout'] }
   }
 ];
 
@@ -39,12 +29,7 @@ const mockPromptsList = [
     slug: 'aspnet-core-guidances',
     title: 'ASP.NET Core Guidances',
     shortDescription: 'Guide des meilleures pratiques pour ASP.NET Core',
-    metadata: {
-      searchKeywords: {
-        fr: ['aspnet', 'asp.net', 'core', 'web api', 'mvc', 'développement web'],
-        en: ['aspnet', 'asp.net', 'core', 'web api', 'mvc', 'web development']
-      }
-    }
+  metadata: { searchKeywords: ['aspnet', 'asp.net', 'core', 'web api', 'mvc', 'développement web', 'web development'] }
   }
 ];
 
@@ -71,7 +56,7 @@ function testSearch(query, lang = 'fr') {
     
     // 3. Recherche dans les métadonnées
     if (item.metadata?.searchKeywords) {
-      const keywords = item.metadata.searchKeywords[lang] || [];
+      const keywords = item.metadata.searchKeywords || [];
       if (keywords.some(keyword => keyword.toLowerCase().includes(q))) {
         return true;
       }

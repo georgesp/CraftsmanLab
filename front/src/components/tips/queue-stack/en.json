@@ -1,0 +1,60 @@
+{
+  "queue-stack": {
+    "title": "Queue<T> and Stack<T>",
+    "shortDescription": "FIFO and LIFO structures with key APIs and examples.",
+    "content": {
+      "mainTitle": "Queue<T> (FIFO) and Stack<T> (LIFO)",
+      "overview": "Queue<T> processes items in arrival order (FIFO), great for job queues. Stack<T> processes last-in-first-out (LIFO), perfect for history and undo.",
+      "useCases": {
+        "title": "Use cases",
+        "queue": {
+          "title": "Queue<T> — FIFO queue",
+          "description": "Use Enqueue, Dequeue, and Peek to manage a queue. Ideal for sequential processing pipelines."
+        },
+        "stack": {
+          "title": "Stack<T> — LIFO stack",
+          "description": "Use Push, Pop, and Peek to manage a stack. Great for back navigation, undo/redo, expression evaluation."
+        },
+        "concurrentQueue": {
+          "title": "ConcurrentQueue<T> — thread-safe async",
+          "description": "Use ConcurrentQueue<T> with TryDequeue and primitives (SemaphoreSlim, Channel) for producer/consumer without busy-wait."
+        },
+        "concurrentStack": {
+          "title": "ConcurrentStack<T> — thread-safe parallel",
+          "description": "Use ConcurrentStack<T> with TryPop and Parallel.For to safely consume a stack in parallel."
+        }
+      },
+      "summary": {
+        "title": "Summary",
+        "text": "Pick Queue<T> for FIFO flows, Stack<T> for LIFO scenarios. These structures are simple, fast (amortized O(1)), and safe in single-threaded use.",
+        "prosTitle": "Pros",
+        "consTitle": "Cons",
+        "pros": [
+          "Minimal, explicit API (Enqueue/Dequeue, Push/Pop)",
+          "Amortized O(1) operations, good memory behavior",
+          "Great fit for simple flow modeling"
+        ],
+        "cons": [
+          "No random access or indexing",
+          "Not thread-safe by default (see ConcurrentQueue/Stack)",
+          "Limited features vs List<T>"
+        ]
+      },
+      "goodPractices": {
+        "title": "Best practices",
+        "items": [
+          "Expose IEnumerable<T> for reads; keep Queue/Stack internal",
+          "Use TryDequeue/TryPeek (ConcurrentQueue) in multithreaded code",
+          "Call TrimExcess after heavy removals",
+          "Avoid Contains in tight loops (O(n))"
+        ]
+      },
+      "footer": {
+        "sourceLabel": "Source:",
+        "sourceName": ".NET Collections",
+        "sourceUrl": "https://learn.microsoft.com/dotnet/api/system.collections.generic",
+        "writtenOn": "Written on {{date}}"
+      }
+    }
+  }
+}

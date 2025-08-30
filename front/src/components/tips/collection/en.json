@@ -1,35 +1,94 @@
 {
   "collection": {
+    "prosTitle": "Advantages",
+    "consTitle": "Disadvantages",
     "title": "C# Collections",
     "shortDescription": "Different collections in C# (IEnumerable, ICollection, IList, IReadOnlyCollection, etc.)",
     "content": {
       "mainTitle": "C# Collections: guide to interfaces and implementations",
-      "intro": "Overview of C# collections: interfaces, implementations and use cases to choose the right data structure.",
+  "intro": "Overview of C# collections: interfaces, implementations and use cases to choose the right data structure.",
+  "tocTitle": "Contents",
       "summary": "Understand the differences between IEnumerable, ICollection, IList and their variants to optimize your architecture choices.",
       "sections": {
         "ienumerable": {
           "title": "IEnumerable<T>",
-          "description": "Minimal read-only iteration contract. Ideal to expose a sequence without mutation operations."
+          "description": "Minimal read-only iteration contract. Ideal to expose a sequence without mutation operations. Usage: streaming and deferred execution (LINQ). Pros: low memory footprint, simple and universal. Cons: no Count/Index, no random access, often single-pass unless materialized."
+          ,
+          "pros": [
+            "Low memory footprint",
+            "Simple and universal",
+            "Supports deferred execution"
+          ],
+          "cons": [
+            "No Count or indexing",
+            "No random access",
+            "Often single-pass unless materialized"
+          ]
         },
         "icollection": {
           "title": "ICollection<T>",
-          "description": "Extends IEnumerable with Count, Add, Remove, Contains, Clear. Use when writes are needed."
+          "description": "Extends IEnumerable with Count, Add, Remove, Contains, Clear. Use when writes are needed. Usage: mutable collections exposed or internal. Pros: standard write API, Count available. Cons: no indexing, performance depends on implementation (List vs LinkedList)."
+          ,
+          "pros": [
+            "Standard write API (Add/Remove)",
+            "Access to Count"
+          ],
+          "cons": [
+            "No guaranteed indexing",
+            "Performance depends on the implementation"
+          ]
         },
         "ireadonlycollection": {
           "title": "IReadOnlyCollection<T>",
-          "description": "Exposes the number of items (Count) without allowing modification. Great for API returns."
+          "description": "Exposes the number of items (Count) without allowing modification. Great for API returns. Usage: API outputs where you want to guarantee read-only intent. Pros: communicates intent clearly, easy to implement. Cons: does not prevent underlying instance mutation if shared."
+          ,
+          "pros": [
+            "Clearly communicates read-only intent",
+            "Easy to expose from existing collections"
+          ],
+          "cons": [
+            "Doesn't protect the underlying instance from mutation",
+            "Limited to read operations"
+          ]
         },
         "ilist": {
           "title": "IList<T>",
-          "description": "Indexed collection (this[int index]). Add/remove by index. Useful when order matters."
+          "description": "Indexed collection (this[int index]). Add/remove by index. Useful when order matters. Usage: random access and index-based operations. Pros: O(1) index access on List<T>, insert/remove by position. Cons: some implementations (LinkedList) lack O(1) access, exposes mutability."
+          ,
+          "pros": [
+            "O(1) index access on List<T>",
+            "Insert/remove by position"
+          ],
+          "cons": [
+            "Exposes mutability",
+            "Some implementations lack O(1) index access"
+          ]
         },
         "ireadonlylist": {
           "title": "IReadOnlyList<T>",
-          "description": "Read-only list with indexed access. Perfect to expose an ordered list without mutation."
+          "description": "Read-only list with indexed access. Perfect to expose an ordered list without mutation. Usage: return arrays/lists where order and indexed access matter. Pros: guaranteed indexed read, clear intent. Cons: underlying collection may still be mutable."
+          ,
+          "pros": [
+            "Indexed read access",
+            "Clear API intent"
+          ],
+          "cons": [
+            "Underlying collection may remain mutable",
+            "No write operations"
+          ]
         },
         "iset": {
           "title": "ISet<T>",
-          "description": "Set of unique elements. Set operations (Union, Intersect). Ideal for uniqueness."
+          "description": "Set of unique elements. Set operations (Union, Intersect). Ideal for uniqueness. Usage: deduplication, fast membership checks. Pros: fast lookups, guarantees uniqueness. Cons: no guaranteed order, relies on comparer/equality, insert cost can be higher than List in some scenarios."
+          ,
+          "pros": [
+            "Fast lookups",
+            "Guarantees element uniqueness"
+          ],
+          "cons": [
+            "No guaranteed order",
+            "Behaviour depends on comparer/equality"
+          ]
         },
         "summary": {
           "title": "Summary",

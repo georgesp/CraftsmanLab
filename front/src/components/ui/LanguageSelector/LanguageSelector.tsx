@@ -27,7 +27,8 @@ export const LanguageSelector: React.FC = () => {
   };
 
   const currentLanguage =
-    languages.find((lang) => lang.code === (i18n.resolvedLanguage || i18n.language)) || languages[0];
+    languages.find((lang) => lang.code === (i18n.resolvedLanguage || i18n.language)) ||
+    languages[0];
 
   return (
     <Box>

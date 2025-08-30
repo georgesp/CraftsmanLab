@@ -164,19 +164,31 @@ dotnet sln add src/**/*.csproj`}
         <li>{t('cpm.content.sections.quickSummary.items.restore')}</li>
       </ul>
 
-  <Box
+      <Box
         mt={4}
         pt={2}
         borderTop={(theme) => `1px solid ${theme.palette.divider}`}
         sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
       >
-        <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
+        <Typography
+          variant="caption"
+          component="div"
+          sx={{ fontStyle: 'italic', color: 'text.secondary' }}
+        >
           {t('cpm.content.footer.sourcesLabel')}{' '}
           {(
-            t('cpm.content.footer.sources', { returnObjects: true }) as { name: string; url: string }[]
+            t('cpm.content.footer.sources', { returnObjects: true }) as {
+              name: string;
+              url: string;
+            }[]
           ).map((s, i, arr) => (
             <span key={i}>
-              <a href={s.url} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
+              <a
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: 'inherit', textDecoration: 'underline' }}
+              >
                 {s.name}
               </a>
               {i < arr.length - 1 ? ' • ' : ''}
@@ -187,7 +199,7 @@ dotnet sln add src/**/*.csproj`}
           {t('cpm.content.footer.writtenOn', { date: meta.writtenOn })}
         </Typography>
       </Box>
-  </TipContent>
+    </TipContent>
   );
 };
 

@@ -2,10 +2,10 @@ import type { ComponentType } from 'react';
 import type { Keyword } from '../../utils/constants';
 
 export type PromptMetadata = {
-  searchKeywords: {
-    fr: string[];
-    en: string[];
-  };
+  // Unified keywords list (FR/EN mixed). Keep it short and relevant.
+  searchKeywords: string[];
+  // Narrow, high-signal labels for filtering or display
+  tags?: string[];
 };
 
 export type PromptMeta = {

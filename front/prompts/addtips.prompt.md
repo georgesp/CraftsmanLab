@@ -11,6 +11,7 @@ Résumé rapide pour un nouveau tip `<slug>`:
  
 ## Règles de nommage et bonnes pratiques
 - Le `slug` doit être unique, en kebab-case, sans espace ni accent.
+  - Si le tip concerne du T‑SQL, préfixe le dossier et le fichier TSX avec `tsql-` (ex: `tsql-apply/tsql-apply.tsx`, `tsql-openjson/tsql-openjson.tsx`).
 - Le `title` doit être court et explicite.
 - Le `shortDescription` doit donner envie de cliquer, max 120 caractères.
 - La date `writtenOn` au format `YYYY-MM-DD`.
@@ -44,7 +45,7 @@ Ce document rassemble les règles et le template à utiliser pour ajouter un tip
 
 Objectifs rapides
 - Fournir un exemple réutilisable et cohérent pour chaque tip.
-- Assurer une indexation correcte via `meta.metadata.searchKeywords` (FR/EN).
+- Assurer une indexation correcte via `meta.metadata.searchKeywords` (liste unique de mots‑clés FR/EN).
 - Garantir que les exemples de code sont clairs et utilisables.
 
 Règles importantes (résumé)
@@ -88,10 +89,8 @@ export const meta: TipMeta = {
   writtenOn: 'YYYY-MM-DD',
   keywords: ['C#' as const],
   metadata: {
-    searchKeywords: {
-      fr: ['outil', 'concept-principal'],
-      en: ['tool', 'main-concept'],
-    },
+  // Liste unique de mots‑clés; mélange FR/EN autorisé (ex: outil, concepts, cas d'usage)
+  searchKeywords: ['outil', 'concept-principal', 'tool', 'main-concept'],
   },
 };
 ```
@@ -136,7 +135,7 @@ export { mod };
 ```
 
 Checklist rapide avant PR
-- Meta complet (slug, title, shortDescription, writtenOn, keywords, metadata.searchKeywords FR+EN).
+- Meta complet (slug, title, shortDescription, writtenOn, keywords, metadata.searchKeywords liste unique FR/EN).
 - CodeBlock : content in English, comments on the previous line.
 - Export default present.
 - Footer (source link + date) present.

@@ -35,7 +35,7 @@ const AutomapperTip: React.FC = () => {
         code={t('automapper.content.sections.configuration.codeBlock')}
       />
 
-  <Typography variant="h4">{t('automapper.content.sections.manualConfig.title')}</Typography>
+      <Typography variant="h4">{t('automapper.content.sections.manualConfig.title')}</Typography>
       <CodeBlock
         language="csharp"
         code={`var mappingConfig = new MapperConfiguration(mc =>
@@ -47,7 +47,7 @@ IMapper mapper = mappingConfig.CreateMapper();
 services.AddSingleton(mapper);`}
       />
 
-  <Typography variant="h4">{t('automapper.content.sections.simpleProfile.title')}</Typography>
+      <Typography variant="h4">{t('automapper.content.sections.simpleProfile.title')}</Typography>
       <CodeBlock
         language="csharp"
         code={`public class UserEntity
@@ -83,7 +83,7 @@ public class UserDto
 }`}
       />
 
-  <Typography variant="h4">{t('automapper.content.sections.usage.title')}</Typography>
+      <Typography variant="h4">{t('automapper.content.sections.usage.title')}</Typography>
       <CodeBlock
         language="csharp"
         code={`var userEntity = new UserEntity { Id = 1, FirstName = "Jean", LastName = "Dupont", BirthDate = new DateTime(1990,5,20) };
@@ -94,7 +94,7 @@ UserDto dto = _mapper.Map<UserDto>(userEntity);
 // dto.Id      == 1`}
       />
 
-  <Typography variant="h4">{t('automapper.content.sections.bidirectional.title')}</Typography>
+      <Typography variant="h4">{t('automapper.content.sections.bidirectional.title')}</Typography>
       <CodeBlock
         language="csharp"
         code={`CreateMap<UserDto, UserEntity>()
@@ -104,9 +104,9 @@ UserDto dto = _mapper.Map<UserDto>(userEntity);
                opt  => opt.MapFrom(src => src.FullName.Split(' ')[1]));`}
       />
 
-  <Typography paragraph>{t('automapper.content.sections.bidirectional.note')}</Typography>
+      <Typography paragraph>{t('automapper.content.sections.bidirectional.note')}</Typography>
 
-  <Typography variant="h4">{t('automapper.content.sections.mapCollections.title')}</Typography>
+      <Typography variant="h4">{t('automapper.content.sections.mapCollections.title')}</Typography>
       <Typography paragraph>
         {t('automapper.content.sections.mapCollections.description')}
       </Typography>
@@ -121,13 +121,25 @@ UserDto dto = _mapper.Map<UserDto>(userEntity);
         borderTop={(theme) => `1px solid ${theme.palette.divider}`}
         sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
       >
-        <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
+        <Typography
+          variant="caption"
+          component="div"
+          sx={{ fontStyle: 'italic', color: 'text.secondary' }}
+        >
           {t('automapper.content.footer.sourcesLabel')}{' '}
           {(
-            t('automapper.content.footer.sources', { returnObjects: true }) as { name: string; url: string }[]
+            t('automapper.content.footer.sources', { returnObjects: true }) as {
+              name: string;
+              url: string;
+            }[]
           ).map((s, i, arr) => (
             <span key={i}>
-              <a href={s.url} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
+              <a
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: 'inherit', textDecoration: 'underline' }}
+              >
                 {s.name}
               </a>
               {i < arr.length - 1 ? ' • ' : ''}
@@ -138,7 +150,7 @@ UserDto dto = _mapper.Map<UserDto>(userEntity);
           {t('automapper.content.footer.writtenOn', { date: meta.writtenOn })}
         </Typography>
       </Box>
-  </TipContent>
+    </TipContent>
   );
 };
 

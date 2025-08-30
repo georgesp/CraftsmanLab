@@ -17,14 +17,14 @@ const FacetTip: React.FC = () => {
 
       <Typography paragraph>{t('facet.content.intro')}</Typography>
 
-  <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom>
         {t('facet.content.sections.installation.title')}
       </Typography>
       <Typography paragraph>{t('facet.content.sections.installation.description')}</Typography>
 
       <CodeBlock language="bash" code={`dotnet add package Facet --version 2.5.1`} />
 
-  <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom>
         {t('facet.content.sections.basicUsage.title')}
       </Typography>
       <Typography paragraph>{t('facet.content.sections.basicUsage.description')}</Typography>
@@ -53,7 +53,7 @@ public partial class UserDto
 }`}
       />
 
-  <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom>
         {t('facet.content.sections.generatedCode.title')}
       </Typography>
       <Typography paragraph>{t('facet.content.sections.generatedCode.description')}</Typography>
@@ -88,7 +88,7 @@ partial class UserDto
 }`}
       />
 
-  <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom>
         {t('facet.content.sections.entityFramework.title')}
       </Typography>
       <Typography paragraph>{t('facet.content.sections.entityFramework.description')}</Typography>
@@ -119,7 +119,7 @@ partial class UserDto
 }`}
       />
 
-  <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom>
         {t('facet.content.sections.complexProjections.title')}
       </Typography>
       <Typography paragraph>
@@ -154,7 +154,7 @@ public partial class OrderDto
 }`}
       />
 
-  <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom>
         {t('facet.content.sections.configuration.title')}
       </Typography>
       <Typography paragraph>{t('facet.content.sections.configuration.description')}</Typography>
@@ -180,7 +180,7 @@ public partial class UserSummaryDto
 }`}
       />
 
-  <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom>
         {t('facet.content.sections.performance.title')}
       </Typography>
       <Typography paragraph>{t('facet.content.sections.performance.description')}</Typography>
@@ -207,7 +207,7 @@ var userDtos = await _context.Users
 // FROM [Users] AS [u]`}
       />
 
-  <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom>
         {t('facet.content.sections.bestPractices.title')}
       </Typography>
       <ul>
@@ -230,7 +230,7 @@ var userDtos = await _context.Users
         </li>
       </ul>
 
-  <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom>
         {t('facet.content.sections.alternatives.title')}
       </Typography>
       <Typography paragraph>{t('facet.content.sections.alternatives.description')}</Typography>
@@ -260,7 +260,7 @@ var userDtos = await _context.Users
         {t('facet.content.sections.conclusion.title')}
       </Typography>
       <Typography paragraph>{t('facet.content.sections.conclusion.description')}</Typography>
-  </TipContent>
+    </TipContent>
   );
 };
 

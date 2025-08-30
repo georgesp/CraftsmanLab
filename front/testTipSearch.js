@@ -9,12 +9,7 @@ const mockTips = [
     shortDescription: 'Utilisation de Dapper (DTO, alias, multi‑mapping).',
     writtenOn: '2025-08-12',
     keywords: ['C#'],
-    metadata: {
-      searchKeywords: {
-        fr: ['dapper', 'orm', 'micro-orm', 'base de données', 'sql', 'requête', 'mapping', 'dto'],
-        en: ['dapper', 'orm', 'micro-orm', 'database', 'sql', 'query', 'mapping', 'dto']
-      }
-    }
+  metadata: { searchKeywords: ['dapper', 'orm', 'micro-orm', 'base de données', 'database', 'sql', 'requête', 'query', 'mapping', 'dto'] }
   },
   {
     slug: 'automapper',
@@ -22,12 +17,7 @@ const mockTips = [
     shortDescription: 'Mapping simple et efficace entre DTOs et entités avec AutoMapper',
     writtenOn: '2025-08-14',
     keywords: ['C#'],
-    metadata: {
-      searchKeywords: {
-        fr: ['automapper', 'mapping', 'transformation', 'conversion', 'dto', 'entity', 'objet'],
-        en: ['automapper', 'mapping', 'transformation', 'conversion', 'dto', 'entity', 'object']
-      }
-    }
+  metadata: { searchKeywords: ['automapper', 'mapping', 'transformation', 'conversion', 'dto', 'entity', 'objet', 'object'] }
   },
   {
     slug: 'xunit',
@@ -35,12 +25,7 @@ const mockTips = [
     shortDescription: 'Écrire des tests avec xUnit : bases, fixtures et bonnes pratiques.',
     writtenOn: '2025-08-12',
     keywords: ['C#'],
-    metadata: {
-      searchKeywords: {
-        fr: ['xunit', 'tests', 'test unitaire', 'testing', 'assertion', 'fact', 'theory'],
-        en: ['xunit', 'tests', 'unit testing', 'testing', 'assertion', 'fact', 'theory']
-      }
-    }
+  metadata: { searchKeywords: ['xunit', 'tests', 'test unitaire', 'unit testing', 'testing', 'assertion', 'fact', 'theory'] }
   },
   {
     slug: 'nsubstitute',
@@ -48,12 +33,7 @@ const mockTips = [
     shortDescription: 'Mocker avec NSubstitute : bases, exemples et bonnes pratiques.',
     writtenOn: '2025-08-12',
     keywords: ['C#'],
-    metadata: {
-      searchKeywords: {
-        fr: ['nsubstitute', 'mock', 'mocking', 'substitute', 'double', 'fake', 'tests'],
-        en: ['nsubstitute', 'mock', 'mocking', 'substitute', 'double', 'fake', 'tests']
-      }
-    }
+  metadata: { searchKeywords: ['nsubstitute', 'mock', 'mocking', 'substitute', 'double', 'fake', 'tests'] }
   },
   {
     slug: 'polly',
@@ -61,12 +41,7 @@ const mockTips = [
     shortDescription: 'Ajouter de la résilience à vos appels : retry, circuit breaker, timeout et fallback.',
     writtenOn: '2025-08-20',
     keywords: ['C#'],
-    metadata: {
-      searchKeywords: {
-        fr: ['polly', 'résilience', 'retry', 'circuit breaker', 'timeout', 'fallback'],
-        en: ['polly', 'resilience', 'retry', 'circuit breaker', 'timeout', 'fallback']
-      }
-    }
+  metadata: { searchKeywords: ['polly', 'résilience', 'resilience', 'retry', 'circuit breaker', 'timeout', 'fallback'] }
   },
   {
     slug: 'collection',
@@ -74,12 +49,7 @@ const mockTips = [
     shortDescription: 'Différentes collections en C# (IEnumerable, ICollection, IList, IReadOnlyCollection, etc..)',
     writtenOn: '2025-08-11',
     keywords: ['C#'],
-    metadata: {
-      searchKeywords: {
-        fr: ['collections', 'ienumerable', 'icollection', 'ilist', 'ireadonlycollection'],
-        en: ['collections', 'ienumerable', 'icollection', 'ilist', 'ireadonlycollection']
-      }
-    }
+  metadata: { searchKeywords: ['collections', 'ienumerable', 'icollection', 'ilist', 'ireadonlycollection'] }
   },
   {
     slug: 'facet',
@@ -87,17 +57,12 @@ const mockTips = [
     shortDescription: 'Générateur de projections (DTO) et mappings pour C# et EF Core.',
     writtenOn: '2025-08-21',
     keywords: ['C#'],
-    metadata: {
-      searchKeywords: {
-        fr: ['facet', 'générateur', 'code generation', 'dto', 'projections', 'mapping'],
-        en: ['facet', 'generator', 'code generation', 'dto', 'projections', 'mapping']
-      }
-    }
+  metadata: { searchKeywords: ['facet', 'générateur', 'generator', 'code generation', 'dto', 'projections', 'mapping'] }
   }
 ];
 
 // Fonction de recherche simplifiée
-function searchTips(tips, query, language = 'fr') {
+function searchTips(tips, query) {
   if (!query.trim()) return tips;
 
   const searchTerm = query.toLowerCase().trim();
@@ -122,7 +87,7 @@ function searchTips(tips, query, language = 'fr') {
     
     // Recherche dans les métadonnées si elles existent
     if (tip.metadata?.searchKeywords) {
-      const keywords = tip.metadata.searchKeywords[language] || [];
+      const keywords = tip.metadata.searchKeywords || [];
       if (keywords.some(keyword => 
         keyword.toLowerCase().includes(searchTerm)
       )) {
@@ -139,41 +104,41 @@ console.log('🔍 Tests de recherche des Tips (avec noms d\'outils)\n');
 
 const testCases = [
   // Tests des noms d'outils spécifiquement
-  { query: 'dapper', lang: 'fr', expected: ['dapper'] },
-  { query: 'automapper', lang: 'fr', expected: ['automapper'] },
-  { query: 'xunit', lang: 'fr', expected: ['xunit'] },
-  { query: 'nsubstitute', lang: 'fr', expected: ['nsubstitute'] },
-  { query: 'polly', lang: 'fr', expected: ['polly'] },
-  { query: 'facet', lang: 'fr', expected: ['facet'] },
+  { query: 'dapper', expected: ['dapper'] },
+  { query: 'automapper', expected: ['automapper'] },
+  { query: 'xunit', expected: ['xunit'] },
+  { query: 'nsubstitute', expected: ['nsubstitute'] },
+  { query: 'polly', expected: ['polly'] },
+  { query: 'facet', expected: ['facet'] },
   
   // Tests en français
-  { query: 'base de données', lang: 'fr', expected: ['dapper'] },
-  { query: 'transformation', lang: 'fr', expected: ['automapper'] },
-  { query: 'tests', lang: 'fr', expected: ['xunit', 'nsubstitute'] },
-  { query: 'mock', lang: 'fr', expected: ['nsubstitute'] },
-  { query: 'collections', lang: 'fr', expected: ['collection'] },
+  { query: 'base de données', expected: ['dapper'] },
+  { query: 'transformation', expected: ['automapper'] },
+  { query: 'tests', expected: ['xunit', 'nsubstitute'] },
+  { query: 'mock', expected: ['nsubstitute'] },
+  { query: 'collections', expected: ['collection'] },
   
   // Tests en anglais
-  { query: 'database', lang: 'en', expected: ['dapper'] },
-  { query: 'mapping', lang: 'en', expected: ['dapper', 'automapper', 'facet'] },
-  { query: 'testing', lang: 'en', expected: ['xunit'] },
-  { query: 'resilience', lang: 'en', expected: ['polly'] },
-  { query: 'generator', lang: 'en', expected: ['facet'] },
+  { query: 'database', expected: ['dapper'] },
+  { query: 'mapping', expected: ['dapper', 'automapper', 'facet'] },
+  { query: 'testing', expected: ['xunit'] },
+  { query: 'resilience', expected: ['polly'] },
+  { query: 'generator', expected: ['facet'] },
   
   // Tests par titre/description
-  { query: 'fixtures', lang: 'fr', expected: ['xunit'] },
-  { query: 'ef core', lang: 'fr', expected: ['facet'] },
+  { query: 'fixtures', expected: ['xunit'] },
+  { query: 'ef core', expected: ['facet'] },
   
   // Tests vides
-  { query: '', lang: 'fr', expected: mockTips.map(t => t.slug) },
-  { query: '   ', lang: 'fr', expected: mockTips.map(t => t.slug) }
+  { query: '', expected: mockTips.map(t => t.slug) },
+  { query: '   ', expected: mockTips.map(t => t.slug) }
 ];
 
 let passedTests = 0;
 let totalTests = testCases.length;
 
 testCases.forEach((testCase, index) => {
-  const results = searchTips(mockTips, testCase.query, testCase.lang);
+  const results = searchTips(mockTips, testCase.query);
   const resultSlugs = results.map(r => r.slug);
   
   const passed = testCase.expected.every(expected => resultSlugs.includes(expected));

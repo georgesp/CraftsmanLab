@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Container, Typography, Box, Card } from '@mui/material';
+import { alpha } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
 import { COLORS } from '../../styles/colors';
 import { PAGE_SPACING } from '../../styles/spacing';
@@ -17,6 +18,23 @@ export const HomePage: React.FC = () => {
 
   return (
     <PageLayout>
+      {/* Decorative hatched band between header and content */}
+      <Box
+        aria-hidden
+        sx={{
+          mt: 2,
+          height: 60,
+          width: '100%',
+          flex: '0 0 auto',
+          // Motif hachuré: cardBg très léger en surimpression
+          backgroundImage: `repeating-linear-gradient(45deg,
+            ${alpha(COLORS.darkTheme.background, 1)} 0px,
+            ${alpha(COLORS.darkTheme.background, 1)} 12px,
+            ${alpha(COLORS.cardBgDark, 1)} 12px,
+            ${alpha(COLORS.cardBgDark, 1)} 24px
+          )`,
+        }}
+      />
       <Container
         maxWidth={false}
         disableGutters

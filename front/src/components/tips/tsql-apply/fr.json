@@ -1,0 +1,119 @@
+{
+  "tsql-apply": {
+    "title": "CROSS APPLY et OUTER APPLY (T‑SQL)",
+    "shortDescription": "Joins latéraux pour appeler des fonctions table par ligne, filtrer (CROSS) ou conserver (OUTER).",
+    "content": {
+      "mainTitle": "CROSS APPLY et OUTER APPLY en T‑SQL",
+  "overview": "APPLY est un join latéral : pour chaque ligne de la table de gauche, on exécute une expression qui renvoie une table (fonction table, OPENJSON, STRING_SPLIT, sous‑requête corrélée). CROSS APPLY se comporte comme un inner join (exclut les lignes sans résultat), tandis qu’OUTER APPLY conserve la ligne de gauche même si l’expression ne renvoie rien.",
+      "useCases": {
+        "title": "Cas d’usage",
+        "case1": {
+          "title": "Dépivoter un CSV par ligne (STRING_SPLIT) avec CROSS APPLY",
+          "description": "Quand la fonction renvoie 0 ligne (NULL/chaîne vide), la ligne de gauche disparaît — pratique pour filtrer les entrées vides.",
+          "inputTitle": "Jeu de données d’entrée",
+          "outputTitle": "Résultat attendu"
+        },
+        "case2": {
+          "title": "Sélectionner le TOP 1 par groupe via OUTER APPLY",
+          "description": "Calculer par ligne une sous‑requête ordonnée (ex: l’article le plus commandé) tout en conservant les lignes sans détails.",
+          "inputTitle": "Jeu de données d’entrée",
+          "outputTitle": "Résultat attendu"
+        },
+        "case3": {
+          "title": "Parser du JSON par ligne avec OPENJSON",
+          "description": "Analyser un payload JSON stocké en colonne et l’exploser en (clé, valeur) sans perdre les enregistrements mal formés (OUTER APPLY).",
+          "inputTitle": "Jeu de données d’entrée",
+          "outputTitle": "Résultat attendu"
+        }
+      },
+      "alternatives": {
+        "title": "Alternatives",
+        "windowFunctions": {
+          "title": "Fonctions de fenêtre (OVER / PARTITION BY)",
+          "description": "Pour le TOP 1 par groupe, on peut utiliser ROW_NUMBER() sur une CTE (ou table dérivée) partitionnée par la clé et filtrer WHERE rn = 1.",
+          "prosTitle": "Avantages",
+          "consTitle": "Inconvénients",
+          "pros": [
+            "Souvent très performantes et lisibles pour les classements par groupe",
+            "Contrôle précis avec ROW_NUMBER(), RANK(), FIRST_VALUE(), etc."
+          ],
+          "cons": [
+            "Nécessite une étape supplémentaire (CTE/table dérivée) puis un filtrage",
+            "Moins naturel pour appeler une fonction table dépendante de chaque ligne (ex. OPENJSON/STRING_SPLIT)"
+          ]
+        },
+        "cte": {
+          "title": "CTE / tables dérivées",
+          "description": "On peut encapsuler des sous‑requêtes corrélées ou des calculs intermédiaires dans une CTE et les rejoindre.",
+          "prosTitle": "Avantages",
+          "consTitle": "Inconvénients",
+          "pros": [
+            "Structure claire pour des transformations multi‑étapes",
+            "Facile à tester et à commenter par bloc"
+          ],
+          "cons": [
+            "Peut être plus verbeux que APPLY quand on a besoin d’une expansion par ligne",
+            "La lisibilité baisse si plusieurs CTE s’empilent"
+          ]
+        },
+        "joins": {
+          "title": "JOINs avec agrégations / sous‑requêtes",
+          "description": "Pour récupérer une ligne par groupe, un JOIN sur une sous‑requête agrégée (ou une table dérivée munie d’un ROW_NUMBER()) est une alternative classique.",
+          "prosTitle": "Avantages",
+          "consTitle": "Inconvénients",
+          "pros": [
+            "Approche standard, facile à optimiser avec des index",
+            "Fonctionne sans fonctions table ni OPENJSON"
+          ],
+          "cons": [
+            "Moins flexible pour les expansions par ligne (unpivot) qu’avec APPLY",
+            "Manipuler les jeux de colonnes scalaires issus d’agrégations peut être moins direct"
+          ]
+        }
+      },
+      "summary": {
+        "title": "Résumé",
+  "text": "Utilisez APPLY quand vous devez dériver des lignes/colonnes par ligne source via une expression tabulaire corrélée (fonction table inline, OPENJSON, STRING_SPLIT). Choisir CROSS vs OUTER selon le besoin de filtrer ou non les résultats vides.",
+        "prosTitle": "Avantages",
+        "consTitle": "Inconvénients",
+        "pros": [
+          "Expressif pour les expansions par ligne (dépivotage, parsing, top N par groupe)",
+          "Combinable avec ORDER BY/TOP pour des sélections scalaires par ligne",
+          "Alternative performante aux CTE complexes selon le cas"
+        ],
+        "cons": [
+          "Attention aux fonctions table multi‑instructions (moins optimisées que les fonctions table inline)",
+          "Peut dégrader les perfs si l’expression est lourde (évaluer le plan)",
+          "Fonctionnalités comme OPENJSON nécessitent SQL Server 2016+"
+        ]
+      },
+      "goodPractices": {
+        "title": "Bonnes pratiques",
+        "items": [
+          "Privilégiez les fonctions table inline (une seule SELECT) pour aider l’optimiseur",
+          "Filtrez le plus tôt possible (WHERE dans l’expression APPLY)",
+          "Ajoutez les index utiles sur les colonnes corrélées",
+          "Mesurez le plan d’exécution et comparez à des alternatives (JOIN, CTE)"
+        ]
+      },
+      "footer": {
+        "sourcesLabel": "Sources",
+        "sources": [
+          {
+            "name": "MS Docs — FROM (Transact‑SQL): APPLY",
+            "url": "https://learn.microsoft.com/sql/t-sql/queries/from-transact-sql#apply"
+          },
+          {
+            "name": "MS Docs — OPENJSON (Transact‑SQL)",
+            "url": "https://learn.microsoft.com/sql/t-sql/functions/openjson-transact-sql"
+          },
+          {
+            "name": "MS Docs — STRING_SPLIT (Transact‑SQL)",
+            "url": "https://learn.microsoft.com/sql/t-sql/functions/string-split-transact-sql"
+          }
+        ],
+        "writtenOn": "Écrit le {{date}}"
+      }
+    }
+  }
+}

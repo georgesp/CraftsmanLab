@@ -1,7 +1,18 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
-import { Box, Typography, Link, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import {
+  Box,
+  Typography,
+  Link,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from '@mui/material';
 import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
 import { TipContent } from '../../ui';
 import { meta } from './meta';
@@ -10,8 +21,9 @@ const KokoroSharpTip: React.FC = () => {
   const { t } = useTranslation('tips');
 
   const _featuresRaw = t('kokoro-sharp.content.features.rows', { returnObjects: true });
-  const features: Array<{ feature: string; value: string }>
-    = Array.isArray(_featuresRaw) ? _featuresRaw as any : [];
+  const features: Array<{ feature: string; value: string }> = Array.isArray(_featuresRaw)
+    ? (_featuresRaw as any)
+    : [];
 
   return (
     <TipContent>
@@ -26,7 +38,9 @@ const KokoroSharpTip: React.FC = () => {
       </Typography>
       <CodeBlock
         language="bash"
-        code={t('kokoro-sharp.content.sections.installation.nugetCpu', { defaultValue: 'dotnet add package KokoroSharp.CPU' })}
+        code={t('kokoro-sharp.content.sections.installation.nugetCpu', {
+          defaultValue: 'dotnet add package KokoroSharp.CPU',
+        })}
       />
       <Typography paragraph>{t('kokoro-sharp.content.sections.installation.note')}</Typography>
 
@@ -36,7 +50,7 @@ const KokoroSharpTip: React.FC = () => {
       <CodeBlock
         language="csharp"
         ariaLabel="kokoro-basic"
-  code={t('kokoro-sharp.content.sections.gettingStarted.codeBasic')}
+        code={t('kokoro-sharp.content.sections.gettingStarted.codeBasic')}
       />
 
       <Typography variant="h5" gutterBottom sx={{ mt: 3 }}>
@@ -45,7 +59,7 @@ const KokoroSharpTip: React.FC = () => {
       <CodeBlock
         language="csharp"
         ariaLabel="kokoro-streaming"
-  code={t('kokoro-sharp.content.sections.examples.streaming.code')}
+        code={t('kokoro-sharp.content.sections.examples.streaming.code')}
       />
 
       <Typography variant="h5" gutterBottom sx={{ mt: 3 }}>
@@ -54,7 +68,7 @@ const KokoroSharpTip: React.FC = () => {
       <CodeBlock
         language="csharp"
         ariaLabel="kokoro-voice-mix"
-  code={t('kokoro-sharp.content.sections.examples.voiceMixing.code')}
+        code={t('kokoro-sharp.content.sections.examples.voiceMixing.code')}
       />
 
       <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>
@@ -87,9 +101,11 @@ const KokoroSharpTip: React.FC = () => {
         {t('kokoro-sharp.content.sections.notes.title')}
       </Typography>
       <Typography component="ul" sx={{ ml: 2 }}>
-        {(t('kokoro-sharp.content.sections.notes.items', { returnObjects: true }) as string[]).map((it, idx) => (
-          <li key={idx}>{it}</li>
-        ))}
+        {(t('kokoro-sharp.content.sections.notes.items', { returnObjects: true }) as string[]).map(
+          (it, idx) => (
+            <li key={idx}>{it}</li>
+          ),
+        )}
       </Typography>
 
       <Box
@@ -98,9 +114,19 @@ const KokoroSharpTip: React.FC = () => {
         borderTop={(theme) => `1px solid ${theme.palette.divider}`}
         sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
       >
-        <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
+        <Typography
+          variant="caption"
+          component="div"
+          sx={{ fontStyle: 'italic', color: 'text.secondary' }}
+        >
           {t('kokoro-sharp.content.footer.sourcesLabel')}{' '}
-          <Link href="https://github.com/Lyrcaxis/KokoroSharp" target="_blank" rel="noopener noreferrer" underline="always" color="inherit">
+          <Link
+            href="https://github.com/Lyrcaxis/KokoroSharp"
+            target="_blank"
+            rel="noopener noreferrer"
+            underline="always"
+            color="inherit"
+          >
             GitHub (KokoroSharp)
           </Link>
         </Typography>

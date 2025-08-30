@@ -19,6 +19,10 @@ import { meta as csharp11Meta } from './tips/csharp-11/meta';
 import { meta as csharp12Meta } from './tips/csharp-12/meta';
 import { meta as kokoroSharpMeta } from './tips/kokoro-sharp/meta';
 import { meta as mcpServersMeta } from './tips/mcp-servers/meta';
+import { meta as tsqlApplyMeta } from './tips/tsql-apply/meta';
+import { meta as openjsonMeta } from './tips/tsql-openjson/meta';
+import { meta as csharpPatternMatchingMeta } from './tips/csharp-pattern-matching/meta';
+import { meta as queueStackMeta } from './tips/queue-stack/meta';
 
 export type TipEntry = TipMeta & { load: () => Promise<any> };
 
@@ -32,11 +36,21 @@ export const tipsEntries: TipEntry[] = [
   { ...switchTupleMeta, load: () => import('./tips/tic/switch-tuple') },
   { ...cpmMeta, load: () => import('./tips/cpm/central-package-management') },
   { ...collectionMeta, load: () => import('./tips/collection/collection') },
-  { ...keyValueCollectionMeta, load: () => import('./tips/keyValueCollection/key-value-collection') },
+  {
+    ...keyValueCollectionMeta,
+    load: () => import('./tips/keyValueCollection/key-value-collection'),
+  },
   { ...csharp11Meta, load: () => import('./tips/csharp-11/csharp-11') },
   { ...csharp12Meta, load: () => import('./tips/csharp-12/csharp-12') },
   { ...kokoroSharpMeta, load: () => import('./tips/kokoro-sharp/kokoro-sharp') },
   { ...mcpServersMeta, load: () => import('./tips/mcp-servers/mcp-servers') },
+  { ...tsqlApplyMeta, load: () => import('./tips/tsql-apply/tsql-apply') },
+  { ...openjsonMeta, load: () => import('./tips/tsql-openjson/tsql-openjson') },
+  {
+    ...csharpPatternMatchingMeta,
+    load: () => import('./tips/csharp-pattern-matching/csharp-pattern-matching'),
+  },
+  { ...queueStackMeta, load: () => import('./tips/queue-stack/queue-stack') },
 ];
 
 // ----- Prompts: metas -----
@@ -47,8 +61,14 @@ import { meta as asyncGuidancesMeta } from './prompts/async-guidances/meta';
 export type PromptEntry = PromptMeta & { load: () => Promise<any> };
 
 export const promptsEntries: PromptEntry[] = [
-  { ...craftsmanlabRulesMeta, load: () => import('./prompts/craftsmanlab-rules/craftsmanlab-front-rules') },
-  { ...aspnetGuidancesMeta, load: () => import('./prompts/aspnet-core-guidances/aspnet-core-guidances') },
+  {
+    ...craftsmanlabRulesMeta,
+    load: () => import('./prompts/craftsmanlab-rules/craftsmanlab-front-rules'),
+  },
+  {
+    ...aspnetGuidancesMeta,
+    load: () => import('./prompts/aspnet-core-guidances/aspnet-core-guidances'),
+  },
   { ...asyncGuidancesMeta, load: () => import('./prompts/async-guidances/async-guidances') },
 ];
 
@@ -81,6 +101,14 @@ import kokoroSharpFr from './tips/kokoro-sharp/fr.json';
 import kokoroSharpEn from './tips/kokoro-sharp/en.json';
 import mcpServersFr from './tips/mcp-servers/fr.json';
 import mcpServersEn from './tips/mcp-servers/en.json';
+import tsqlApplyFr from './tips/tsql-apply/fr.json';
+import tsqlApplyEn from './tips/tsql-apply/en.json';
+import openjsonFr from './tips/tsql-openjson/fr.json';
+import openjsonEn from './tips/tsql-openjson/en.json';
+import csharpPatternMatchingFr from './tips/csharp-pattern-matching/fr.json';
+import csharpPatternMatchingEn from './tips/csharp-pattern-matching/en.json';
+import queueStackFr from './tips/queue-stack/fr.json';
+import queueStackEn from './tips/queue-stack/en.json';
 
 export const tipsTranslationsFr = {
   ...pollyFr,
@@ -97,6 +125,10 @@ export const tipsTranslationsFr = {
   ...csharp12Fr,
   ...kokoroSharpFr,
   ...mcpServersFr,
+  ...tsqlApplyFr,
+  ...openjsonFr,
+  ...csharpPatternMatchingFr,
+  ...queueStackFr,
 };
 
 export const tipsTranslationsEn = {
@@ -114,6 +146,10 @@ export const tipsTranslationsEn = {
   ...csharp12En,
   ...kokoroSharpEn,
   ...mcpServersEn,
+  ...tsqlApplyEn,
+  ...openjsonEn,
+  ...csharpPatternMatchingEn,
+  ...queueStackEn,
 };
 
 // ----- Prompts: translations -----

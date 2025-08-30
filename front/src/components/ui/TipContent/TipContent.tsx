@@ -23,11 +23,14 @@ export const TipContent: React.FC<PropsWithChildren> = ({ children }) => {
           fontWeight: 700,
         },
         // Subsection titles
-        '& .MuiTypography-h5': {
+        '& .MuiTypography-h5': (theme) => ({
           marginTop: 2.5,
           marginBottom: 1,
           fontWeight: 700,
-        },
+          color: theme.palette.text.primary,
+          paddingLeft: theme.spacing(1),
+          borderLeft: `3px solid ${theme.palette.primary.light}`,
+        }),
         '& .MuiTypography-h6': {
           marginTop: 2,
           marginBottom: 1,
