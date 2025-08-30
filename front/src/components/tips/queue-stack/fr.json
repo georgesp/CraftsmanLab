@@ -1,0 +1,60 @@
+{
+  "queue-stack": {
+    "title": "Queue<T> et Stack<T>",
+    "shortDescription": "Structures FIFO et LIFO avec API clés et exemples.",
+    "content": {
+      "mainTitle": "Queue<T> (FIFO) et Stack<T> (LIFO)",
+      "overview": "Queue<T> traite les éléments dans l'ordre d'arrivée (FIFO), idéale pour des files de jobs. Stack<T> traite en dernier entré, premier sorti (LIFO), pratique pour l'historique et l'annulation.",
+      "useCases": {
+        "title": "Cas d’usage",
+        "queue": {
+          "title": "Queue<T> — file d’attente FIFO",
+          "description": "Utilisez Enqueue, Dequeue et Peek pour gérer une file d’attente. Parfaite pour planifier des traitements séquentiels."
+        },
+        "stack": {
+          "title": "Stack<T> — pile LIFO",
+          "description": "Utilisez Push, Pop et Peek pour gérer une pile. Idéale pour la navigation arrière, l’undo/redo, l’évaluation d’expressions."
+        },
+        "concurrentQueue": {
+          "title": "ConcurrentQueue<T> — thread-safe en async",
+          "description": "Utilisez ConcurrentQueue<T> avec TryDequeue et des primitives (SemaphoreSlim, Channel) pour gérer des producteurs/consommateurs sans busy-wait."
+        },
+        "concurrentStack": {
+          "title": "ConcurrentStack<T> — thread-safe en parallèle",
+          "description": "Utilisez ConcurrentStack<T> avec TryPop et Parallel.For pour consommer une pile en parallèle en toute sécurité."
+        }
+      },
+      "summary": {
+        "title": "Résumé",
+        "text": "Choisissez Queue<T> pour des flux FIFO, Stack<T> pour des scénarios LIFO. Ces structures sont simples, rapides (O(1) amorti) et sûres pour un usage monothread.",
+        "prosTitle": "Avantages",
+        "consTitle": "Inconvénients",
+        "pros": [
+          "API minimale et explicite (Enqueue/Dequeue, Push/Pop)",
+          "Opérations O(1) amorties, bonnes perfs mémoire",
+          "Idéales pour la modélisation de flux simples"
+        ],
+        "cons": [
+          "Pas d’accès aléatoire ni d’indexation",
+          "Non thread-safe par défaut (voir ConcurrentQueue/Stack)",
+          "Fonctionnalités limitées vs List<T>"
+        ]
+      },
+      "goodPractices": {
+        "title": "Bonnes pratiques",
+        "items": [
+          "Exposez IEnumerable<T> en lecture, gardez Queue/Stack internes",
+          "Utilisez TryDequeue/TryPeek (ConcurrentQueue) en multi‑thread",
+          "Appelez TrimExcess après des suppressions massives",
+          "Évitez Contains dans les boucles serrées (O(n))"
+        ]
+      },
+      "footer": {
+        "sourceLabel": "Source :",
+        "sourceName": ".NET Collections",
+        "sourceUrl": "https://learn.microsoft.com/dotnet/api/system.collections.generic",
+        "writtenOn": "Écrit le {{date}}"
+      }
+    }
+  }
+}

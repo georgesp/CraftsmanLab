@@ -22,6 +22,7 @@ import { meta as mcpServersMeta } from './tips/mcp-servers/meta';
 import { meta as tsqlApplyMeta } from './tips/tsql-apply/meta';
 import { meta as openjsonMeta } from './tips/tsql-openjson/meta';
 import { meta as csharpPatternMatchingMeta } from './tips/csharp-pattern-matching/meta';
+import { meta as queueStackMeta } from './tips/queue-stack/meta';
 
 export type TipEntry = TipMeta & { load: () => Promise<any> };
 
@@ -49,6 +50,7 @@ export const tipsEntries: TipEntry[] = [
     ...csharpPatternMatchingMeta,
     load: () => import('./tips/csharp-pattern-matching/csharp-pattern-matching'),
   },
+  { ...queueStackMeta, load: () => import('./tips/queue-stack/queue-stack') },
 ];
 
 // ----- Prompts: metas -----
@@ -105,6 +107,8 @@ import openjsonFr from './tips/tsql-openjson/fr.json';
 import openjsonEn from './tips/tsql-openjson/en.json';
 import csharpPatternMatchingFr from './tips/csharp-pattern-matching/fr.json';
 import csharpPatternMatchingEn from './tips/csharp-pattern-matching/en.json';
+import queueStackFr from './tips/queue-stack/fr.json';
+import queueStackEn from './tips/queue-stack/en.json';
 
 export const tipsTranslationsFr = {
   ...pollyFr,
@@ -124,6 +128,7 @@ export const tipsTranslationsFr = {
   ...tsqlApplyFr,
   ...openjsonFr,
   ...csharpPatternMatchingFr,
+  ...queueStackFr,
 };
 
 export const tipsTranslationsEn = {
@@ -144,6 +149,7 @@ export const tipsTranslationsEn = {
   ...tsqlApplyEn,
   ...openjsonEn,
   ...csharpPatternMatchingEn,
+  ...queueStackEn,
 };
 
 // ----- Prompts: translations -----
