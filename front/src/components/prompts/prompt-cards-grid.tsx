@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography, Box, IconButton } from '@mui/material';
+import { Grid, Typography, Box, IconButton, useMediaQuery, useTheme } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import { Link as RouterLink } from 'react-router-dom';
@@ -10,19 +10,23 @@ import { PromptCard, PromptCardContent } from '../../pages/Prompts/styles';
 import { KeywordChips } from '../ui/KeywordChips';
 
 type Props = {
-  maxItems?: number; // total slots y compris la card voir tout
+  rows?: number; // nombre de lignes à afficher
   showMore?: boolean; // controls whether the 'more' entry is shown
   seeAllLink?: string;
   seeAllLabel?: string;
 };
 
 export const PromptCardsGrid: React.FC<Props> = ({
-  maxItems,
+  rows,
   showMore = true,
   seeAllLink,
   seeAllLabel = 'Voir tous les prompts',
 }) => {
   const { t } = useTranslation(['prompts', 'common']);
+  const theme = useTheme();
+  const isLgUp = useMediaQuery(theme.breakpoints.up('lg'));
+  const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
+  const isSmUp = useMediaQuery(theme.breakpoints.up('sm'));
 
   // Helper function to get translated text with fallback
   const getTranslatedText = (promptSlug: string, key: string, fallback: string) => {
@@ -36,16 +40,17 @@ export const PromptCardsGrid: React.FC<Props> = ({
     if (!showMore) {
       list = list.filter((p) => p.slug !== 'more');
     }
-    let sliceCount = maxItems && maxItems > 0 ? maxItems : undefined;
-    if (seeAllLink && sliceCount && sliceCount > 0) sliceCount = sliceCount - 1;
-    if (sliceCount) return list.slice(0, sliceCount);
-    return list;
-  }, [maxItems, showMore, seeAllLink]);
+    const columns = isLgUp ? 4 : isMdUp ? 3 : isSmUp ? 2 : 1;
+    if (!rows || rows <= 0) return list;
+    let visibleSlots = rows * columns;
+    if (seeAllLink && visibleSlots > 0) visibleSlots -= 1;
+    return list.slice(0, Math.max(0, visibleSlots));
+  }, [rows, showMore, seeAllLink, isLgUp, isMdUp, isSmUp]);
 
   return (
     <Grid container spacing={4}>
       {items.map((p) => (
-        <Grid item xs={12} sm={6} md={4} lg={4} xl={4} key={p.slug}>
+        <Grid item xs={12} sm={6} md={4} lg={3} xl={3} key={p.slug}>
           <PromptCard
             sx={{ backgroundColor: COLORS.cardBgDark, boxShadow: 'none', border: 'none' }}
           >
@@ -89,7 +94,7 @@ export const PromptCardsGrid: React.FC<Props> = ({
         </Grid>
       ))}
       {seeAllLink && (
-        <Grid item xs={12} sm={6} md={4} lg={4} xl={4} key="see-all-prompts">
+        <Grid item xs={12} sm={6} md={4} lg={3} xl={3} key="see-all-prompts">
           <PromptCard
             sx={{
               display: 'flex',

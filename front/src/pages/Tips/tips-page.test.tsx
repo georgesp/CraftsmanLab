@@ -61,16 +61,16 @@ describe('TipsPage - tag filtering', () => {
     expect(screen.getByText('B')).toBeInTheDocument();
     expect(screen.queryByText('C')).not.toBeInTheDocument();
 
-    // Click tag 'x' as well -> AND logic => only A matches (x & y)
-    fireEvent.click(screen.getByRole('button', { name: 'x' }));
-    expect(screen.getByText('A')).toBeInTheDocument();
-    expect(screen.queryByText('B')).not.toBeInTheDocument();
-    expect(screen.queryByText('C')).not.toBeInTheDocument();
+  // Click tag 'x' -> new single-selection UX clears 'y' then selects 'x' => only A matches
+  fireEvent.click(screen.getByRole('button', { name: 'x' }));
+  expect(screen.getByText('A')).toBeInTheDocument();
+  expect(screen.queryByText('B')).not.toBeInTheDocument();
+  expect(screen.queryByText('C')).not.toBeInTheDocument();
 
-    // Unselect 'y' -> filter by x only => A
-    fireEvent.click(screen.getByRole('button', { name: 'y' }));
-    expect(screen.getByText('A')).toBeInTheDocument();
-    expect(screen.queryByText('B')).not.toBeInTheDocument();
-    expect(screen.queryByText('C')).not.toBeInTheDocument();
+  // Click 'y' again -> clears 'x' and selects 'y' => A and B
+  fireEvent.click(screen.getByRole('button', { name: 'y' }));
+  expect(screen.getByText('A')).toBeInTheDocument();
+  expect(screen.getByText('B')).toBeInTheDocument();
+  expect(screen.queryByText('C')).not.toBeInTheDocument();
   });
 });

@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Grid, Typography, Box, IconButton } from '@mui/material';
+import { Grid, Typography, Box, IconButton, useMediaQuery, useTheme } from '@mui/material';
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Link as RouterLink } from 'react-router-dom';
@@ -10,19 +10,23 @@ import { PromptCard, PromptCardContent } from '../../pages/Prompts/styles';
 import { KeywordChips } from '../ui/KeywordChips';
 
 type Props = {
-  maxItems?: number; // total slots y compris la card "voir tout" si seeAllLink est défini
+  rows?: number; // nombre de lignes à afficher (au lieu du nombre d'éléments)
   seeAllLink?: string; // si fourni, ajoute une card flèche occupant un slot
   seeAllLabel?: string; // label accessible
   items?: typeof tipsList; // facultatif: liste déjà filtrée/ordonnée à afficher
 };
 
 export const TipCardsGrid: React.FC<Props> = ({
-  maxItems,
+  rows,
   seeAllLink,
   seeAllLabel = 'Voir tous les tips',
   items: externalItems,
 }) => {
   const { t } = useTranslation('tips');
+  const theme = useTheme();
+  const isLgUp = useMediaQuery(theme.breakpoints.up('lg'));
+  const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
+  const isSmUp = useMediaQuery(theme.breakpoints.up('sm'));
 
   // Helper function to get translated text with fallback for per-component translations
   const getTranslatedText = (
@@ -64,20 +68,21 @@ export const TipCardsGrid: React.FC<Props> = ({
   };
 
   const items = useMemo(() => {
-    let sliceCount = maxItems && maxItems > 0 ? maxItems : undefined;
-    if (seeAllLink && sliceCount && sliceCount > 0) {
-      // réserver une place pour la card flèche
-      sliceCount = sliceCount - 1;
-    }
     const source = externalItems ?? tipsList;
-    const base = sliceCount ? source.slice(0, sliceCount) : source;
-    return base;
-  }, [maxItems, seeAllLink, externalItems]);
+    // Nombre de colonnes en fonction du viewport; les cartes s'élargissent jusqu'au palier suivant
+    const columns = isLgUp ? 4 : isMdUp ? 3 : isSmUp ? 2 : 1;
+    if (!rows || rows <= 0) return source; // pas de limite -> tout afficher
+
+    // Nombre total d'emplacements visibles (on réserve 1 si on affiche la flèche "voir tout")
+    let visibleSlots = rows * columns;
+    if (seeAllLink && visibleSlots > 0) visibleSlots -= 1;
+    return source.slice(0, Math.max(0, visibleSlots));
+  }, [externalItems, rows, seeAllLink, isLgUp, isMdUp, isSmUp]);
 
   return (
     <Grid container spacing={4}>
       {items.map((t) => (
-        <Grid item xs={12} sm={6} md={4} lg={4} xl={4} key={t.slug}>
+        <Grid item xs={12} sm={6} md={4} lg={3} xl={3} key={t.slug}>
           <PromptCard
             sx={{ backgroundColor: COLORS.cardBgDark, boxShadow: 'none', border: 'none' }}
           >
@@ -122,7 +127,7 @@ export const TipCardsGrid: React.FC<Props> = ({
         </Grid>
       ))}
       {seeAllLink && (
-        <Grid item xs={12} sm={6} md={4} lg={4} xl={4} key="see-all-tips">
+        <Grid item xs={12} sm={6} md={4} lg={3} xl={3} key="see-all-tips">
           <PromptCard
             sx={{
               display: 'flex',
