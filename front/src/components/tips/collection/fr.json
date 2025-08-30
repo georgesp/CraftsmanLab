@@ -1,35 +1,88 @@
 {
   "collection": {
+    "prosTitle": "Avantages",
+    "consTitle": "Inconvénients",
     "title": "Collections C#",
     "shortDescription": "Différentes collections en C# (IEnumerable, ICollection, IList, IReadOnlyCollection, etc..)",
     "content": {
       "mainTitle": "Collections C# : guide des interfaces et implémentations",
-      "intro": "Panorama des collections en C# : interfaces, implémentations et cas d'usage pour choisir la bonne structure de données.",
+  "intro": "Panorama des collections en C# : interfaces, implémentations et cas d'usage pour choisir la bonne structure de données.",
+  "tocTitle": "Sommaire",
       "summary": "Comprenez les différences entre IEnumerable, ICollection, IList et leurs variantes pour optimiser vos choix d'architecture.",
       "sections": {
         "ienumerable": {
           "title": "IEnumerable<T>",
-          "description": "Contrat minimal d'itération en lecture. Idéal pour exposer un flux d'éléments sans opérations de modification."
+          "description": "Contrat minimal d'itération en lecture. Idéal pour exposer un flux d'éléments et l'exécution différée (LINQ).",
+          "pros": [
+            "Faible empreinte mémoire",
+            "Simple et universel",
+            "Supporte l'exécution différée"
+          ],
+          "cons": [
+            "Pas de Count ni d'index",
+            "Pas d'accès aléatoire",
+            "Souvent single-pass sauf matérialisation"
+          ]
         },
         "icollection": {
           "title": "ICollection<T>",
-          "description": "Étend IEnumerable avec Count, Add, Remove, Contains, Clear. À utiliser quand l'écriture est nécessaire."
+          "description": "Étend IEnumerable avec Count, Add, Remove, Contains, Clear. Usage : collections modifiables exposées ou internes.",
+          "pros": [
+            "API d'écriture standard (Add/Remove)",
+            "Accès au Count"
+          ],
+          "cons": [
+            "Pas d'indexation garantie",
+            "Performances dépendant de l'implémentation"
+          ]
         },
         "ireadonlycollection": {
           "title": "IReadOnlyCollection<T>",
-          "description": "Expose le nombre d'éléments (Count) sans autoriser la modification. Convient pour le retour d'APIs."
+          "description": "Expose le nombre d'éléments (Count) sans autoriser la modification. Usage : sorties d'API.",
+          "pros": [
+            "Communique clairement l'intention de lecture seule",
+            "Facile à exposer depuis des collections existantes"
+          ],
+          "cons": [
+            "Ne protège pas l'instance sous-jacente d'éventuelles mutations",
+            "Limité aux opérations de lecture"
+          ]
         },
         "ilist": {
           "title": "IList<T>",
-          "description": "Collection indexée (this[int index]). Ajout/suppression par index. Utile quand l'ordre compte."
+          "description": "Collection indexée (this[int index]). Usage : accès aléatoire et opérations par index.",
+          "pros": [
+            "Accès O(1) par index sur List<T>",
+            "Insertion/suppression par position"
+          ],
+          "cons": [
+            "Exposition de la mutabilité",
+            "Certaines implémentations n'ont pas d'accès O(1)"
+          ]
         },
         "ireadonlylist": {
           "title": "IReadOnlyList<T>",
-          "description": "Liste en lecture seule avec accès indexé. Parfaite pour exposer une liste ordonnée sans modification."
+          "description": "Liste en lecture seule avec accès indexé. Usage : exposer une liste ordonnée sans modification.",
+          "pros": [
+            "Accès indexé garanti en lecture",
+            "Intention claire pour les API"
+          ],
+          "cons": [
+            "La collection sous-jacente peut rester modifiable",
+            "Pas d'opérations d'écriture"
+          ]
         },
         "iset": {
           "title": "ISet<T>",
-          "description": "Ensemble d'éléments uniques. Opérations ensemblistes (Union, Intersect). Idéal pour l'unicité."
+          "description": "Ensemble d'éléments uniques. Usage : déduplication et vérification d'appartenance.",
+          "pros": [
+            "Lookup rapide",
+            "Garantit l'unicité des éléments"
+          ],
+          "cons": [
+            "Ordre non garanti",
+            "Dépend du comparer/égalité pour le comportement"
+          ]
         },
         "summary": {
           "title": "Résumé",
