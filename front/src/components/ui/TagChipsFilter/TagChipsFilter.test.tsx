@@ -23,4 +23,16 @@ describe('TagChipsFilter', () => {
     const selected = screen.getByRole('button', { name: 'blue' });
     expect(selected).toHaveAttribute('aria-pressed', 'true');
   });
+
+  test('selecting a new tag clears previous selection and toggles the new tag', () => {
+    const onToggle = jest.fn();
+    render(<TagChipsFilter tags={['blue', 'grey']} selected={['blue']} onToggle={onToggle} />);
+
+    // Click a different tag: previous selection should be toggled off first, then the new tag toggled on
+    fireEvent.click(screen.getByRole('button', { name: 'grey' }));
+
+    expect(onToggle).toHaveBeenCalledTimes(2);
+    expect(onToggle).toHaveBeenNthCalledWith(1, 'blue'); // toggled off
+    expect(onToggle).toHaveBeenNthCalledWith(2, 'grey'); // toggled on
+  });
 });
