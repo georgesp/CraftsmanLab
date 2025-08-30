@@ -62,7 +62,7 @@ export const HomePage: React.FC = () => {
               if (isTest) return null;
               return (
                 <React.Suspense fallback={null}>
-                  <LazyTipCardsGrid maxItems={9} seeAllLink="/tips" />
+                  <LazyTipCardsGrid rows={3} seeAllLink="/tips" />
                 </React.Suspense>
               );
             })()}
@@ -100,7 +100,7 @@ export const HomePage: React.FC = () => {
                 if (isTest) return null;
                 return (
                   <React.Suspense fallback={null}>
-                    <LazyPromptCardsGrid maxItems={6} showMore={false} seeAllLink="/prompts" />
+                    <LazyPromptCardsGrid rows={2} showMore={false} seeAllLink="/prompts" />
                   </React.Suspense>
                 );
               })()}
