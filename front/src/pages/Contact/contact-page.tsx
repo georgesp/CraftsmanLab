@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   Typography,
@@ -40,11 +40,23 @@ export const ContactPage: React.FC = () => {
     subject: '',
     message: '',
   });
+  // honeypot to detect basic bots (hidden field named 'website')
+  const [honeypot, setHoneypot] = useState('');
+  // simple client-side cooldown to avoid repeated submissions (in seconds)
+  const COOLDOWN_SECONDS = 30;
+  const [lastSentAt, setLastSentAt] = useState<number | null>(null);
+  const [cooldownRemaining, setCooldownRemaining] = useState(0);
   const [showSuccess, setShowSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
+    // if the hidden honeypot field is touched, update honeypot state
+    if (name === 'website') {
+      setHoneypot(value);
+      return;
+    }
+
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -52,6 +64,24 @@ export const ContactPage: React.FC = () => {
     e.preventDefault();
     (async () => {
       try {
+        // Basic client-side protections
+        // 1) Honeypot: if filled, probably a bot -> abort silently
+        if (honeypot && honeypot.trim() !== '') {
+          // eslint-disable-next-line no-console
+          console.warn('Honeypot filled - possible bot submission, ignoring.');
+          return;
+        }
+
+        // 2) Cooldown: avoid repeated submissions
+        if (lastSentAt && Date.now() - lastSentAt < COOLDOWN_SECONDS * 1000) {
+          const remaining = Math.ceil(
+            (COOLDOWN_SECONDS * 1000 - (Date.now() - lastSentAt)) / 1000,
+          );
+          // eslint-disable-next-line no-alert
+          alert(`Veuillez patienter ${remaining} secondes avant d'envoyer un autre message.`);
+          return;
+        }
+
         setIsLoading(true);
 
         // Configuration pour l'envoi du mail
@@ -80,9 +110,11 @@ export const ContactPage: React.FC = () => {
 
         await res.json();
 
-        setShowSuccess(true);
-        setFormData({ name: '', email: '', subject: '', message: '' });
-        setTimeout(() => setShowSuccess(false), 5000);
+  // mark last sent time for cooldown
+  setLastSentAt(Date.now());
+  setShowSuccess(true);
+  setFormData({ name: '', email: '', subject: '', message: '' });
+  setTimeout(() => setShowSuccess(false), 5000);
       } catch (error) {
         // eslint-disable-next-line no-console
         console.error('Erreur envoi formulaire:', error);
@@ -93,6 +125,29 @@ export const ContactPage: React.FC = () => {
       }
     })();
   };
+
+  // useEffect to manage cooldown countdown
+  useEffect(() => {
+    if (!lastSentAt) {
+      setCooldownRemaining(0);
+      return undefined;
+    }
+
+    const tick = () => {
+      const elapsed = Math.floor((Date.now() - lastSentAt) / 1000);
+      const remaining = Math.max(0, COOLDOWN_SECONDS - elapsed);
+      setCooldownRemaining(remaining);
+      if (remaining <= 0) {
+        // cooldown over
+        setLastSentAt(null);
+      }
+    };
+
+    // initialize and start interval
+    tick();
+    const id = window.setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, [lastSentAt]);
 
   return (
     <PageLayout>
@@ -257,6 +312,16 @@ export const ContactPage: React.FC = () => {
                   </SectionDescription>
 
                   <Box component="form" onSubmit={handleSubmit}>
+                    {/* Honeypot field - hidden from users but visible to simple bots */}
+                    <input
+                      type="text"
+                      name="website"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                      style={{ display: 'none' }}
+                      autoComplete="off"
+                      tabIndex={-1}
+                    />
                     <Grid container spacing={3}>
                       <Grid item xs={12}>
                         <TextField
@@ -366,23 +431,31 @@ export const ContactPage: React.FC = () => {
                         />
                       </Grid>
                       <Grid item xs={12}>
-                        <SubmitButton
-                          type="submit"
-                          variant="contained"
-                          size="large"
-                          disabled={isLoading}
-                          startIcon={
-                            isLoading ? (
-                              <CircularProgress size={20} sx={{ color: COLORS.defaultBg }} />
-                            ) : (
-                              <Send sx={{ color: COLORS.defaultBg }} />
-                            )
-                          }
-                        >
-                          {isLoading
-                            ? t('common:buttons.send') + '...'
-                            : t('common:buttons.submit')}
-                        </SubmitButton>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                          <SubmitButton
+                            type="submit"
+                            variant="contained"
+                            size="large"
+                            disabled={isLoading || cooldownRemaining > 0}
+                            startIcon={
+                              isLoading ? (
+                                <CircularProgress size={20} sx={{ color: COLORS.defaultBg }} />
+                              ) : (
+                                <Send sx={{ color: COLORS.defaultBg }} />
+                              )
+                            }
+                          >
+                            {isLoading
+                              ? t('common:buttons.send') + '...'
+                              : t('common:buttons.submit')}
+                          </SubmitButton>
+
+                          {cooldownRemaining > 0 && (
+                            <Typography variant="body2" color="text.secondary">
+                              {`Veuillez patienter ${cooldownRemaining}s`}
+                            </Typography>
+                          )}
+                        </Box>
                       </Grid>
                     </Grid>
                   </Box>
