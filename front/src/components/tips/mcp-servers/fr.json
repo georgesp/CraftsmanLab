@@ -13,7 +13,54 @@
           "Ouvre la palette (Cmd ⇧ P) et tape : MCP: Open user configuration",
           "Édite la config (ajout de serveurs GitHub, Microsoft Docs, Figma, Azure DevOps ; tokens/identifiants)",
           "Dans l’onglet MCP, clique Start/Restart pour lancer le serveur"
-        ]
+        ],
+        "addServer": {
+          "text": "Voici comment ajouter rapidement un nouveau serveur MCP : ajoutez une entrée dans votre fichier de configuration (p. ex. mcp-servers.json ou vos settings applicatifs) avec au minimum les champs \"id\", \"name\", \"baseUrl\" et \"apiKey\", puis redémarrez ou rechargez la configuration.",
+          "codeExample": "{\n  \"id\": \"mon-mcp\",\n  \"name\": \"Mon MCP\",\n  \"baseUrl\": \"https://mcp.example.com\",\n  \"apiKey\": \"XXXXXXXX-XXXX-XXXX\"\n}"
+        },
+        "openMarketplace": "Ouvrir le Marketplace"
+      },
+      "installation": {
+        "title": "Autres moyens d'installation",
+        "intro": "Selon votre contexte, vous pouvez installer ou déployer un serveur MCP de plusieurs façons :",
+        "methods": {
+          "marketplace": {
+            "title": "Marketplace (recommandé pour les utilisateurs)",
+            "description": "Installer depuis le Marketplace VS Code pour une expérience simple en un clic.",
+            "link": "https://marketplace.visualstudio.com/search?term=MCP&target=VSCode",
+            "details": {
+              "descriptionLong": "Le Marketplace est le moyen le plus simple pour les utilisateurs finaux: recherche 'MCP' dans la marketplace VS Code, clique sur installer et suis les invites. Idéal pour postes de travail et environnements gérés."
+            }
+          },
+          "vsix": {
+            "title": "Fichier VSIX (offline)",
+            "description": "Installer via un package VSIX pour les environnements hors-ligne ou pour distribuer une version précise.",
+            "details": {
+              "descriptionLong": "Téléchargez l'artefact .vsix depuis votre pipeline de release, puis installez-le localement. Utile pour CI, installations hors-ligne ou déploiements contrôlés."
+            }
+          },
+          "docker": {
+            "title": "Docker / Conteneur",
+            "description": "Exécuter le serveur en conteneur pour des déploiements reproductibles ; recommandé en production.",
+            "details": {
+              "descriptionLong": "Exécutez le serveur MCP comme conteneur Docker pour simplifier le déploiement et la montée en charge. Exposez les ports nécessaires et montez la configuration via des secrets ou volumes."
+            }
+          },
+          "cloud": {
+            "title": "Cloud (Azure / AWS / GCP)",
+            "description": "Déployer comme service managé ou via IaC (ARM, Terraform) pour l'hébergement scalable.",
+            "details": {
+              "descriptionLong": "Déployez le serveur dans votre cloud en utilisant des conteneurs, serverless ou offres PaaS. Utilisez l'IaC (Terraform, ARM) pour gérer la configuration et les paramètres d'échelle."
+            }
+          },
+          "manual": {
+            "title": "Installation manuelle",
+            "description": "Télécharger les binaires, ajouter la configuration et enregistrer comme service système pour un contrôle maximal.",
+            "details": {
+              "descriptionLong": "Pour un contrôle maximal, téléchargez le binaire du serveur, placez-le sur l'hôte, créez le fichier de configuration et enregistrez un service système (systemd) pour le lancer. Utile pour du bare-metal ou environnements spécifiques."
+            }
+          }
+        }
       },
       "github": {
         "title": "Serveur MCP GitHub",

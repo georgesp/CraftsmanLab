@@ -23,6 +23,7 @@ import { meta as tsqlApplyMeta } from './tips/tsql-apply/meta';
 import { meta as openjsonMeta } from './tips/tsql-openjson/meta';
 import { meta as csharpPatternMatchingMeta } from './tips/csharp-pattern-matching/meta';
 import { meta as queueStackMeta } from './tips/queue-stack/meta';
+import { meta as csharpSolidPrinciplesMeta } from './tips/csharp-solid-principles/meta';
 
 export type TipEntry = TipMeta & { load: () => Promise<any> };
 
@@ -51,6 +52,7 @@ export const tipsEntries: TipEntry[] = [
     load: () => import('./tips/csharp-pattern-matching/csharp-pattern-matching'),
   },
   { ...queueStackMeta, load: () => import('./tips/queue-stack/queue-stack') },
+  { ...csharpSolidPrinciplesMeta, load: () => import('./tips/csharp-solid-principles/csharp-solid-principles') },
 ];
 
 // ----- Prompts: metas -----
@@ -109,6 +111,8 @@ import csharpPatternMatchingFr from './tips/csharp-pattern-matching/fr.json';
 import csharpPatternMatchingEn from './tips/csharp-pattern-matching/en.json';
 import queueStackFr from './tips/queue-stack/fr.json';
 import queueStackEn from './tips/queue-stack/en.json';
+import solidPrinciplesCsharpFr from './tips/csharp-solid-principles/fr.json';
+import solidPrinciplesCsharpEn from './tips/csharp-solid-principles/en.json';
 
 export const tipsTranslationsFr = {
   ...pollyFr,
@@ -129,6 +133,7 @@ export const tipsTranslationsFr = {
   ...openjsonFr,
   ...csharpPatternMatchingFr,
   ...queueStackFr,
+  ...solidPrinciplesCsharpFr,
 };
 
 export const tipsTranslationsEn = {
@@ -150,6 +155,7 @@ export const tipsTranslationsEn = {
   ...openjsonEn,
   ...csharpPatternMatchingEn,
   ...queueStackEn,
+  ...solidPrinciplesCsharpEn,
 };
 
 // ----- Prompts: translations -----
