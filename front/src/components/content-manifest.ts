@@ -7,6 +7,7 @@ import type { PromptMeta } from './prompts/prompt-types';
 // ----- Tips: metas (named imports) -----
 import { meta as pollyMeta } from './tips/polly/meta';
 import { meta as dapperMeta } from './tips/dapper/meta';
+import { meta as tickerqMeta } from './tips/tickerq/meta';
 import { meta as automapperMeta } from './tips/automapper/meta';
 import { meta as xunitMeta } from './tips/xunit/meta';
 import { meta as nsubstituteMeta } from './tips/nsubstitute/meta';
@@ -30,6 +31,7 @@ export type TipEntry = TipMeta & { load: () => Promise<any> };
 export const tipsEntries: TipEntry[] = [
   { ...pollyMeta, load: () => import('./tips/polly/polly') },
   { ...dapperMeta, load: () => import('./tips/dapper/dapper') },
+  { ...tickerqMeta, load: () => import('./tips/tickerq/tickerq') },
   { ...automapperMeta, load: () => import('./tips/automapper/automapper') },
   { ...xunitMeta, load: () => import('./tips/xunit/xunit') },
   { ...nsubstituteMeta, load: () => import('./tips/nsubstitute/nsubstitute') },
@@ -79,6 +81,8 @@ import pollyFr from './tips/polly/fr.json';
 import pollyEn from './tips/polly/en.json';
 import dapperFr from './tips/dapper/fr.json';
 import dapperEn from './tips/dapper/en.json';
+import tickerqFr from './tips/tickerq/fr.json';
+import tickerqEn from './tips/tickerq/en.json';
 import automapperFr from './tips/automapper/fr.json';
 import automapperEn from './tips/automapper/en.json';
 import xunitFr from './tips/xunit/fr.json';
@@ -117,6 +121,7 @@ import solidPrinciplesCsharpEn from './tips/csharp-solid-principles/en.json';
 export const tipsTranslationsFr = {
   ...pollyFr,
   ...dapperFr,
+  ...tickerqFr,
   ...automapperFr,
   ...xunitFr,
   ...nsubstituteFr,
@@ -139,6 +144,7 @@ export const tipsTranslationsFr = {
 export const tipsTranslationsEn = {
   ...pollyEn,
   ...dapperEn,
+  ...tickerqEn,
   ...automapperEn,
   ...xunitEn,
   ...nsubstituteEn,

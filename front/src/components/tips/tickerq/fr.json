@@ -1,0 +1,80 @@
+{
+  "tickerq": {
+    "title": "TickerQ",
+    "shortDescription": "Planification de tâches (cron & temps) avec dashboard temps réel et EF Core.",
+    "content": {
+      "mainTitle": "TickerQ : Scheduler de tâches haute performance pour .NET",
+      "intro": "TickerQ fournit une planification de jobs basée sur le temps ou des expressions cron, un cœur stateless optimisé via source generators, une persistance EF Core optionnelle et un dashboard temps réel pour suivre l'exécution.",
+      "presentation": {
+        "title": "Présentation",
+        "text": "Librairie open‑source orientée performance et observabilité : pas de réflexion à l'exécution, coordination multi‑nœuds, politiques de retry et throttling intégrées, dashboard embarqué."
+      },
+      "installation": {
+        "title": "Installation",
+        "commands": "# Core\ndotnet add package TickerQ\n\n# EF Core (optionnel)\ndotnet add package TickerQ.EntityFrameworkCore\n\n# UI Dashboard (optionnel)\ndotnet add package TickerQ.Dashboard",
+        "note": "Tous les packages doivent être alignés sur la même version (depuis >= v2.2.0)."
+      },
+      "features": {
+        "title": "Fonctionnalités clés",
+        "items": [
+          "Planification Cron et temporelle (one‑shot)",
+          "Cœur stateless + source generator (pas de réflexion runtime)",
+          "Persistance EF Core optionnelle",
+          "Dashboard temps réel (suivi, inspection, statut)",
+          "Retries configurables + intervalles progressifs",
+          "Throttling via contrôle de concurrence global",
+          "Injection de dépendances native",
+          "Coordination distribuée multi‑nœuds"
+        ]
+      },
+      "sections": {
+        "setup": {
+          "title": "Configuration de base",
+          "text": "Enregistrement des services et activation du pipeline d'exécution. Le dashboard peut être monté sous un chemin dédié avec authentification basique."
+        },
+        "jobs": {
+          "title": "Définition & planification de jobs",
+          "text": "Un job récurrent se définit via l'attribut [TickerFunction]; les occurrences sont planifiées soit par temps absolu (TimeTicker) soit via une expression cron (CronTicker)."
+        },
+        "persistence": {
+          "title": "Persistance EF Core",
+          "text": "Utilisez UseModelCustomizerForMigrations pour intégrer proprement la configuration. Sans cela appliquez manuellement les configurations dans OnModelCreating."
+        },
+        "retryThrottling": {
+          "title": "Retries & Throttling",
+          "text": "Les propriétés Retries + RetryIntervals gèrent les relances. Le throttling global s'obtient via SetMaxConcurrency ; combinez avec une granularité fonction par design."
+        },
+        "dashboard": {
+          "title": "Dashboard temps réel",
+          "text": "Surveille exécutions, états, erreurs et facilite le diagnostic en production. Authentifiez l'accès et limitez le chemin d'exposition."
+        }
+      },
+      "bestPractices": {
+        "title": "Bonnes pratiques",
+        "items": [
+          { "rule": "Isoler le domaine", "reason": "Gardez les handlers de jobs fins, déléguez la logique métier à des services testables." },
+          { "rule": "Nommer les functions clairement", "reason": "Facilite la corrélation entre planification et implémentation." },
+          { "rule": "Limiter la concurrence globale", "reason": "Évite la saturation CPU/IO sur charges importantes." },
+          { "rule": "Renseigner les RetryIntervals", "reason": "Contrôle la pression sur les dépendances externes." },
+          { "rule": "Centraliser la configuration EF", "reason": "Réduit le risque de divergence lors des migrations." },
+          { "rule": "Sécuriser le dashboard", "reason": "Protège les métadonnées d'exécution et l'observabilité." }
+        ]
+      },
+      "summary": {
+        "title": "Résumé",
+        "text": "TickerQ est adapté lorsque vous avez besoin d'un scheduler .NET extensible, observable et sans overhead de réflexion, avec prise en charge native des scénarios distribués et une intégration EF Core rapide."
+      },
+      "sources": {
+        "title": "Sources :",
+        "list": [
+          { "name": "GitHub", "url": "https://github.com/Arcenox-co/TickerQ" },
+          { "name": "Documentation", "url": "https://tickerq.net" },
+          { "name": "NuGet", "url": "https://www.nuget.org/packages/tickerq" }
+        ]
+      },
+      "footer": {
+        "writtenOn": "Écrit le {{date}}"
+      }
+    }
+  }
+}

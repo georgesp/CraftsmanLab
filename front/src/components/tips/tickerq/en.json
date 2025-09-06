@@ -1,0 +1,80 @@
+{
+  "tickerq": {
+    "title": "TickerQ",
+    "shortDescription": "Task scheduling (cron & time) with real-time dashboard and EF Core.",
+    "content": {
+      "mainTitle": "TickerQ: High-performance task scheduler for .NET",
+      "intro": "TickerQ provides time and cron based job scheduling, a reflection-free stateless core (source generators), optional EF Core persistence and a real-time dashboard for observability.",
+      "presentation": {
+        "title": "Overview",
+        "text": "Open-source library focused on performance & observability: no runtime reflection, distributed multi-node coordination, retry & throttling capabilities, embedded dashboard."
+      },
+      "installation": {
+        "title": "Installation",
+        "commands": "# Core\ndotnet add package TickerQ\n\n# EF Core (optional)\ndotnet add package TickerQ.EntityFrameworkCore\n\n# UI Dashboard (optional)\ndotnet add package TickerQ.Dashboard",
+        "note": "All packages share the same version (since >= v2.2.0) — always upgrade them together."
+      },
+      "features": {
+        "title": "Key Features",
+        "items": [
+          "Cron & one-shot time scheduling",
+          "Stateless core + source generator (no runtime reflection)",
+          "Optional EF Core persistence",
+          "Real-time dashboard (status, inspection)",
+          "Configurable retries + progressive intervals",
+          "Throttling via global concurrency control",
+          "Native dependency injection support",
+          "Distributed multi-node coordination"
+        ]
+      },
+      "sections": {
+        "setup": {
+          "title": "Basic Setup",
+          "text": "Service registration and pipeline activation. Dashboard can be mounted on a custom path with basic auth."
+        },
+        "jobs": {
+          "title": "Job Definition & Scheduling",
+          "text": "A recurring job is declared using [TickerFunction]; executions are scheduled via absolute time (TimeTicker) or a cron expression (CronTicker)."
+        },
+        "persistence": {
+          "title": "EF Core Persistence",
+          "text": "Use UseModelCustomizerForMigrations to integrate cleanly. Otherwise manually apply configurations in OnModelCreating."
+        },
+        "retryThrottling": {
+          "title": "Retries & Throttling",
+          "text": "Retries and RetryIntervals control re-execution. Throttling is enforced globally with SetMaxConcurrency—combine with functional scoping by design." 
+        },
+        "dashboard": {
+          "title": "Real-time Dashboard",
+          "text": "Monitors executions, states, failures and speeds up production diagnostics. Secure the route and restrict exposure." 
+        }
+      },
+      "bestPractices": {
+        "title": "Best Practices",
+        "items": [
+          { "rule": "Keep handlers thin", "reason": "Delegate domain logic to testable services." },
+          { "rule": "Consistent function names", "reason": "Easier correlation between schedule & handler." },
+          { "rule": "Limit global concurrency", "reason": "Prevents CPU/IO saturation under load." },
+          { "rule": "Specify RetryIntervals", "reason": "Controls pressure on external dependencies." },
+          { "rule": "Centralize EF configuration", "reason": "Reduces divergence risk during migrations." },
+          { "rule": "Secure the dashboard", "reason": "Protects execution metadata and observability surface." }
+        ]
+      },
+      "summary": {
+        "title": "Summary",
+        "text": "Choose TickerQ when you need an extensible, observable & reflection-free .NET scheduler with built-in distributed support and quick EF Core integration." 
+      },
+      "sources": {
+        "title": "Sources:",
+        "list": [
+          { "name": "GitHub", "url": "https://github.com/Arcenox-co/TickerQ" },
+          { "name": "Documentation", "url": "https://tickerq.net" },
+          { "name": "NuGet", "url": "https://www.nuget.org/packages/tickerq" }
+        ]
+      },
+      "footer": {
+        "writtenOn": "Written on {{date}}"
+      }
+    }
+  }
+}
