@@ -6,6 +6,7 @@ import type { PromptMeta } from './prompts/prompt-types';
 
 // ----- Tips: metas (named imports) -----
 import { meta as pollyMeta } from './tips/polly/meta';
+import { meta as msResilienceMeta } from './tips/microsoft-extensions-resilience/meta';
 import { meta as dapperMeta } from './tips/dapper/meta';
 import { meta as tickerqMeta } from './tips/tickerq/meta';
 import { meta as automapperMeta } from './tips/automapper/meta';
@@ -18,6 +19,7 @@ import { meta as collectionMeta } from './tips/collection/meta';
 import { meta as keyValueCollectionMeta } from './tips/keyValueCollection/meta';
 import { meta as csharp11Meta } from './tips/csharp-11/meta';
 import { meta as csharp12Meta } from './tips/csharp-12/meta';
+import { meta as csharpDefaultInterfaceMethodsMeta } from './tips/csharp-default-interface-methods/meta';
 import { meta as kokoroSharpMeta } from './tips/kokoro-sharp/meta';
 import { meta as mcpServersMeta } from './tips/mcp-servers/meta';
 import { meta as tsqlApplyMeta } from './tips/tsql-apply/meta';
@@ -25,11 +27,17 @@ import { meta as openjsonMeta } from './tips/tsql-openjson/meta';
 import { meta as csharpPatternMatchingMeta } from './tips/csharp-pattern-matching/meta';
 import { meta as queueStackMeta } from './tips/queue-stack/meta';
 import { meta as csharpSolidPrinciplesMeta } from './tips/csharp-solid-principles/meta';
+import { meta as diffplexMeta } from './tips/diffplex/meta';
 
 export type TipEntry = TipMeta & { load: () => Promise<any> };
 
 export const tipsEntries: TipEntry[] = [
   { ...pollyMeta, load: () => import('./tips/polly/polly') },
+  {
+    ...msResilienceMeta,
+    load: () =>
+      import('./tips/microsoft-extensions-resilience/microsoft-extensions-resilience'),
+  },
   { ...dapperMeta, load: () => import('./tips/dapper/dapper') },
   { ...tickerqMeta, load: () => import('./tips/tickerq/tickerq') },
   { ...automapperMeta, load: () => import('./tips/automapper/automapper') },
@@ -45,6 +53,7 @@ export const tipsEntries: TipEntry[] = [
   },
   { ...csharp11Meta, load: () => import('./tips/csharp-11/csharp-11') },
   { ...csharp12Meta, load: () => import('./tips/csharp-12/csharp-12') },
+  { ...csharpDefaultInterfaceMethodsMeta, load: () => import('./tips/csharp-default-interface-methods/csharp-default-interface-methods') },
   { ...kokoroSharpMeta, load: () => import('./tips/kokoro-sharp/kokoro-sharp') },
   { ...mcpServersMeta, load: () => import('./tips/mcp-servers/mcp-servers') },
   { ...tsqlApplyMeta, load: () => import('./tips/tsql-apply/tsql-apply') },
@@ -55,6 +64,7 @@ export const tipsEntries: TipEntry[] = [
   },
   { ...queueStackMeta, load: () => import('./tips/queue-stack/queue-stack') },
   { ...csharpSolidPrinciplesMeta, load: () => import('./tips/csharp-solid-principles/csharp-solid-principles') },
+  { ...diffplexMeta, load: () => import('./tips/diffplex/diffplex') },
 ];
 
 // ----- Prompts: metas -----
@@ -79,6 +89,8 @@ export const promptsEntries: PromptEntry[] = [
 // ----- Tips: translations -----
 import pollyFr from './tips/polly/fr.json';
 import pollyEn from './tips/polly/en.json';
+import msResilienceFr from './tips/microsoft-extensions-resilience/fr.json';
+import msResilienceEn from './tips/microsoft-extensions-resilience/en.json';
 import dapperFr from './tips/dapper/fr.json';
 import dapperEn from './tips/dapper/en.json';
 import tickerqFr from './tips/tickerq/fr.json';
@@ -103,6 +115,8 @@ import csharp11Fr from './tips/csharp-11/fr.json';
 import csharp11En from './tips/csharp-11/en.json';
 import csharp12Fr from './tips/csharp-12/fr.json';
 import csharp12En from './tips/csharp-12/en.json';
+import csharpDefaultInterfaceMethodsFr from './tips/csharp-default-interface-methods/fr.json';
+import csharpDefaultInterfaceMethodsEn from './tips/csharp-default-interface-methods/en.json';
 import kokoroSharpFr from './tips/kokoro-sharp/fr.json';
 import kokoroSharpEn from './tips/kokoro-sharp/en.json';
 import mcpServersFr from './tips/mcp-servers/fr.json';
@@ -117,9 +131,12 @@ import queueStackFr from './tips/queue-stack/fr.json';
 import queueStackEn from './tips/queue-stack/en.json';
 import solidPrinciplesCsharpFr from './tips/csharp-solid-principles/fr.json';
 import solidPrinciplesCsharpEn from './tips/csharp-solid-principles/en.json';
+import diffplexFr from './tips/diffplex/fr.json';
+import diffplexEn from './tips/diffplex/en.json';
 
 export const tipsTranslationsFr = {
   ...pollyFr,
+  ...msResilienceFr,
   ...dapperFr,
   ...tickerqFr,
   ...automapperFr,
@@ -132,6 +149,7 @@ export const tipsTranslationsFr = {
   ...keyValueCollectionFr,
   ...csharp11Fr,
   ...csharp12Fr,
+  ...csharpDefaultInterfaceMethodsFr,
   ...kokoroSharpFr,
   ...mcpServersFr,
   ...tsqlApplyFr,
@@ -139,10 +157,12 @@ export const tipsTranslationsFr = {
   ...csharpPatternMatchingFr,
   ...queueStackFr,
   ...solidPrinciplesCsharpFr,
+  ...diffplexFr,
 };
 
 export const tipsTranslationsEn = {
   ...pollyEn,
+  ...msResilienceEn,
   ...dapperEn,
   ...tickerqEn,
   ...automapperEn,
@@ -155,6 +175,7 @@ export const tipsTranslationsEn = {
   ...keyValueCollectionEn,
   ...csharp11En,
   ...csharp12En,
+  ...csharpDefaultInterfaceMethodsEn,
   ...kokoroSharpEn,
   ...mcpServersEn,
   ...tsqlApplyEn,
@@ -162,6 +183,7 @@ export const tipsTranslationsEn = {
   ...csharpPatternMatchingEn,
   ...queueStackEn,
   ...solidPrinciplesCsharpEn,
+  ...diffplexEn,
 };
 
 // ----- Prompts: translations -----

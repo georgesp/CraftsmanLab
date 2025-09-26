@@ -1,0 +1,50 @@
+{
+  "csharp-default-interface-methods": {
+  "title": "Interfaces : méthodes par défaut (C# 8)",
+    "shortDescription": "Permet d'ajouter des implémentations par défaut dans les interfaces (C# 8+).",
+    "content": {
+  "mainTitle": "Interfaces : méthodes par défaut",
+      "overview": "Depuis C# 8, les interfaces peuvent contenir des implémentations par défaut pour des membres. Cela permet d'évoluer une interface sans casser les implémenteurs existants.",
+      "useCases": {
+        "title": "Cas d’usage",
+        "case1": {
+          "title": "Faire évoluer une interface sans casser les consommateurs",
+          "description": "Ajouter une méthode nouvelle avec une implémentation par défaut pour éviter de forcer la mise à jour des implémenteurs existants.",
+          "code": "public interface ILogger\n{\n    void Log(string message);\n\n    // nouvelle API avec implémentation par défaut\n    void LogDebug(string message) => Log($\"DEBUG: {message}\");\n}\n\npublic class ConsoleLogger : ILogger\n{\n    public void Log(string message) => Console.WriteLine(message);\n}\n\n// ConsoleLogger hérite automatiquement du comportement de LogDebug."
+        },
+        "case2": {
+          "title": "Fournir une logique utilitaire partagée",
+          "description": "Implémenter de petits helpers réutilisables au plus près du contrat tout en gardant les implémentations concrètes simples.",
+          "code": "public interface ISerializer\n{\n    string Serialize(object o);\n\n    // helper utilisant la méthode principale\n    string SerializePretty(object o) => JsonSerializer.Serialize(o, new JsonSerializerOptions { WriteIndented = true });\n}\n\npublic class MySerializer : ISerializer\n{\n    public string Serialize(object o) => JsonSerializer.Serialize(o);\n}\n\n// MySerializer bénéficie de SerializePretty gratuitement."
+        }
+      },
+      "summary": {
+        "title": "Résumé",
+        "text": "Les implémentations par défaut (DIM) aident à faire évoluer les API et à partager de petits helpers. À utiliser avec parcimonie pour ne pas complexifier la polymorphie.",
+        "prosTitle": "Avantages",
+        "consTitle": "Inconvénients",
+        "pros": [
+          "Permet l'évolution non‑cassante des API",
+          "Partage de petits détails d'implémentation entre types"
+        ],
+        "cons": [
+          "Peut créer des ambiguïtés dans des scénarios d'héritage complexes",
+          "Peut cacher du comportement loin des types concrets (surprise pour les implémenteurs)"
+        ]
+      },
+      "goodPractices": {
+        "title": "Bonnes pratiques",
+        "items": [
+          "Privilégier des implémentations par défaut courtes et stables; éviter la logique lourde.",
+          "Documenter quand une méthode par défaut dépend d'autres membres de l'interface.",
+          "Préférer les méthodes d'extension ou les classes abstraites si l'implémentation devient volumineuse ou avec état."
+        ]
+      },
+      "footer": {
+        "sourceLabel": "Source",
+        "sourceUrl": "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-8#default-interface-methods",
+        "writtenOn": "Écrit le {{date}}"
+      }
+    }
+  }
+}

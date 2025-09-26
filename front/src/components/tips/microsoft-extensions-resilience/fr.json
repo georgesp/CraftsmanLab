@@ -1,0 +1,49 @@
+{
+  "microsoft-extensions-resilience": {
+    "title": "Microsoft.Extensions.Resilience",
+    "shortDescription": "Pipelines de résilience unifiés : retry, timeout, circuit breaker, hedging, etc.",
+    "content": {
+      "mainTitle": "Microsoft.Extensions.Resilience : pipelines de résilience intégrés à .NET",
+      "intro": "Ce package fournit un modèle standardisé pour définir, composer et observer des stratégies de résilience (basées sur Polly) directement via l'injection de dépendances .NET.",
+  "summary": "L'objectif est de réduire le code infrastructure répétitif et d'offrir une configuration centralisée, observable et testable pour vos appels externes et internes.",
+      "sections": {
+        "installation": { "title": "Installation", "code": "# Paquets principaux\ndotnet add package Microsoft.Extensions.Resilience\n\n# Intégration HttpClient\ndotnet add package Microsoft.Extensions.Http.Resilience", "description": "Le premier paquet expose le modèle de pipeline; le second ajoute des helpers spécifiques à HttpClientFactory (AddResilienceHandler)." },
+        "coreConcepts": {
+          "title": "Concepts clés",
+          "pipeline": "Un pipeline est une séquence ordonnée de stratégies. On l'enregistre avec AddResiliencePipeline<TContext>(). On l'exécute via IResiliencePipelineProvider. Chaque stratégie (retry, timeout, circuit breaker, hedging...) est modulaire."
+        },
+        "strategies": {
+          "title": "Stratégies intégrées",
+          "headers": ["Stratégie", "Quand l'utiliser ?", "Exemple"],
+          "rows": [
+            { "name": "Retry", "when": "Erreurs transitoires (5xx, IOException)", "example": "AddRetry(...)" },
+            { "name": "Timeout", "when": "Limiter la durée totale d'une opération", "example": "AddTimeout(5s)" },
+            { "name": "CircuitBreaker", "when": "Empêcher l'avalanche quand la cible tombe", "example": "AddCircuitBreaker(...)" },
+            { "name": "Hedging", "when": "Réduire la latence p95/p99 via appels parallèles contrôlés", "example": "AddHedging(...)" },
+            { "name": "Fallback", "when": "Fournir une réponse de secours", "example": "AddFallback(...)" },
+            { "name": "RateLimiter / Bulkhead", "when": "Limiter concurrence ou débit", "example": "AddConcurrencyLimiter(...)" },
+            { "name": "Chaos", "when": "Tests de robustesse (fault injection)", "example": "AddChaosLatency(...)" }
+          ]
+        },
+        "httpIntegration": { "title": "Intégration HttpClient", "description": "AddResilienceHandler enchaîne les stratégies côté pipeline HTTP. Les stratégies s'appliquent avant l'envoi effectif (SocketsHttpHandler)." },
+        "hedging": { "title": "Hedging (latence optimisée)", "description": "La stratégie lance des requêtes alternatives si la première tarde ou échoue selon un prédicat. À manier avec parcimonie pour ne pas surcharger la cible." },
+        "partitioning": { "title": "Partitionnement (context key)", "description": "Vous pouvez passer un 'context' lors de ExecuteAsync pour différencier instrumentation, quotas ou limites par client/locataire." },
+  "observability": { "title": "Observabilité", "description": "Les pipelines exposent des événements (logs, métriques) exploitables par OpenTelemetry. Chaque tentative, ouverture/fermeture de circuit, timeout ou hedging peut être tracé." },
+  "nonHttpDb": { "title": "Un autre exemple concret sans HTTP", "description": "Création d'un pipeline autonome dans une classe utilitaire, puis utilisation dans un repository pour entourer un appel SQL. Remplacez ADO.NET par EF Core ou Dapper si vous préférez." },
+        "configuration": { "title": "Configuration via appsettings", "description": "Les options peuvent être bindées depuis la configuration. Vous pouvez créer un binder custom ou un wrapper pour charger dynamiquement des options par environnement.", "loading": "Dans Program.cs : récupérez IConfiguration et appliquez les valeurs lors du build des pipelines." },
+        "bestPractices": { "title": "Bonnes pratiques", "items": ["Ne pas multiplier les retries empilés (éviter cascades).", "Isoler les stratégies par type d'appel (lecture, écriture).", "Définir des timeouts explicites (pas uniquement default).", "Surveiller métriques (taux d'échec, ouvertures de circuits).", "Limiter Hedging et Chaos aux environnements de test ou à quelques endpoints.", "Utiliser partitioning pour différencier clients sensibles.", "Documenter les paramètres (durées, seuils) dans le repo." ] },
+        "summary": { "title": "En résumé", "content": "Microsoft.Extensions.Resilience fournit une surcouche native .NET pour construire des pipelines de résilience cohérents, testables et observables.", "conclusion": "Il standardise l'usage des stratégies Polly et simplifie la maintenance à grande échelle dans des architectures distribuées." }
+      },
+      "footer": {
+        "sourcesLabel": "Sources :",
+        "sources": [
+          { "name": "Guide résilience .NET", "url": "https://learn.microsoft.com/en-us/dotnet/core/resilience/?tabs=dotnet-cli" },
+          { "name": "Pipelines (overview)", "url": "https://learn.microsoft.com/en-us/dotnet/core/resilience/pipelines" },
+            { "name": "Hedging", "url": "https://learn.microsoft.com/en-us/dotnet/core/resilience/hedging" },
+          { "name": "Circuit breaker", "url": "https://learn.microsoft.com/en-us/dotnet/core/resilience/circuit-breaker" }
+        ],
+        "writtenOn": "Écrit le {{date}}"
+      }
+    }
+  }
+}

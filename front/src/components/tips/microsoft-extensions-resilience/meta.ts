@@ -1,0 +1,36 @@
+import type { TipMeta } from '..';
+
+export const meta: TipMeta = {
+  slug: 'microsoft-extensions-resilience',
+  title: '',
+  shortDescription: '',
+  writtenOn: '2025-09-06',
+  keywords: ['C#' as const],
+  metadata: {
+    searchKeywords: [
+      'microsoft',
+      'extensions',
+      'resilience',
+      'pipeline',
+      'retry',
+      'hedging',
+      'circuit',
+      'breaker',
+      'timeout',
+      'fallback',
+      'bulkhead',
+      'fault injection',
+      'résilience',
+      'stratégies',
+      'strategy',
+      'httpclient',
+      'builder',
+      'AddResiliencePipeline',
+      'AddResilienceHandler',
+      'IResiliencePipelineProvider',
+      'observability',
+      'metrics',
+    ],
+    tags: ['resilience', 'c#'],
+  },
+};
