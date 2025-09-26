@@ -1,0 +1,25 @@
+{
+  "microsoft-extensions-resilience": {
+    "title": "Microsoft.Extensions.Resilience",
+    "shortDescription": "Unified resilience pipelines: retry, timeout, circuit breaker, hedging, etc.",
+    "content": {
+      "mainTitle": "Microsoft.Extensions.Resilience: .NET integrated resilience pipelines",
+      "intro": "This package provides a standardized model to define, compose and observe resilience strategies (Polly-based) directly through .NET dependency injection.",
+      "summary": "Its goal is to reduce repetitive infrastructure code and offer centralized, observable and testable configuration for external and internal calls.",
+      "sections": {
+        "installation": { "title": "Installation", "code": "# Core packages\ndotnet add package Microsoft.Extensions.Resilience\n\n# HttpClient integration\ndotnet add package Microsoft.Extensions.Http.Resilience", "description": "The first package exposes the pipeline model; the second adds HttpClientFactory helpers (AddResilienceHandler)." },
+        "coreConcepts": { "title": "Core concepts", "pipeline": "A pipeline is an ordered sequence of strategies. Register it with AddResiliencePipeline<TContext>(). Execute it via IResiliencePipelineProvider. Each strategy (retry, timeout, circuit breaker, hedging...) is modular." },
+        "strategies": { "title": "Built-in strategies", "headers": ["Strategy", "When to use", "Example"], "rows": [ { "name": "Retry", "when": "Transient failures (5xx, IOException)", "example": "AddRetry(...)" }, { "name": "Timeout", "when": "Limit operation total time", "example": "AddTimeout(5s)" }, { "name": "CircuitBreaker", "when": "Stop avalanche when target is down", "example": "AddCircuitBreaker(...)" }, { "name": "Hedging", "when": "Reduce p95/p99 latency via controlled parallel attempts", "example": "AddHedging(...)" }, { "name": "Fallback", "when": "Provide a safe default response", "example": "AddFallback(...)" }, { "name": "RateLimiter / Bulkhead", "when": "Limit concurrency or throughput", "example": "AddConcurrencyLimiter(...)" }, { "name": "Chaos", "when": "Fault injection for robustness tests", "example": "AddChaosLatency(...)" } ] },
+        "httpIntegration": { "title": "HttpClient integration", "description": "AddResilienceHandler wires strategies on the HTTP pipeline before the underlying SocketsHttpHandler sends the request." },
+        "hedging": { "title": "Hedging (latency optimization)", "description": "The strategy dispatches alternative attempts if the first is slow or fails according to a predicate. Use carefully to avoid overloading targets." },
+        "partitioning": { "title": "Partitioning (context key)", "description": "You can provide a 'context' with ExecuteAsync to differentiate instrumentation, quotas or limits per client/tenant." },
+  "observability": { "title": "Observability", "description": "Pipelines emit events (logs, metrics) consumable by OpenTelemetry. Each attempt, circuit state change, timeout or hedging can be traced." },
+  "nonHttpDb": { "title": "Non-HTTP example (database access)", "description": "Build a standalone pipeline inside a helper class and use it in a repository to wrap a SQL call. Replace ADO.NET with EF Core or Dapper if preferred." },
+        "configuration": { "title": "Configuration via appsettings", "description": "Options can be bound from configuration. You can build a custom binder or wrapper to dynamically load per-environment values.", "loading": "In Program.cs: grab IConfiguration and apply values while building pipelines." },
+        "bestPractices": { "title": "Best practices", "items": ["Avoid stacking nested retries (prevent retry storms).", "Separate strategies per call type (read vs write).", "Define explicit timeouts (don't rely on defaults).", "Monitor metrics (failure rate, circuit openings).", "Limit Hedging and Chaos to test or a few critical endpoints.", "Use partitioning to differentiate premium customers.", "Document parameters (durations, thresholds) in the repo."] },
+        "summary": { "title": "Summary", "content": "Microsoft.Extensions.Resilience gives a native .NET layer to build coherent, testable and observable resilience pipelines.", "conclusion": "It standardizes Polly strategy usage and simplifies large scale maintenance in distributed architectures." }
+      },
+      "footer": { "sourcesLabel": "Sources:", "sources": [ { "name": ".NET resilience guide", "url": "https://learn.microsoft.com/en-us/dotnet/core/resilience/?tabs=dotnet-cli" }, { "name": "Pipelines (overview)", "url": "https://learn.microsoft.com/en-us/dotnet/core/resilience/pipelines" }, { "name": "Hedging", "url": "https://learn.microsoft.com/en-us/dotnet/core/resilience/hedging" }, { "name": "Circuit breaker", "url": "https://learn.microsoft.com/en-us/dotnet/core/resilience/circuit-breaker" } ], "writtenOn": "Written on {{date}}" }
+    }
+  }
+}

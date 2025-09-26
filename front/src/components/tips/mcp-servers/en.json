@@ -12,7 +12,59 @@
           "Open the palette (Cmd ⇧ P) and type: MCP: Open user configuration",
           "Edit the config (enable GitHub, Microsoft Docs, Figma, Azure DevOps; add tokens/credentials)",
           "From the MCP view, click Start/Restart to launch the server"
-        ]
+        ],
+        "addServer": {
+          "text": "Quickly add a new MCP server by adding an entry to your configuration file (e.g. mcp-servers.json or your app settings) with at least the fields \"id\", \"name\", \"baseUrl\" and \"apiKey\", then restart or reload the configuration.",
+          "codeExample": "{\n  \"id\": \"my-mcp\",\n  \"name\": \"My MCP\",\n  \"baseUrl\": \"https://mcp.example.com\",\n  \"apiKey\": \"XXXXXXXX-XXXX-XXXX\"\n}"
+        },
+        "openMarketplace": "Open marketplace"
+      },
+      "installation": {
+        "title": "Other installation methods",
+        "intro": "Depending on your context, you can install or deploy an MCP server in several ways:",
+        "methods": {
+          "marketplace": {
+            "title": "Marketplace (recommended for users)",
+            "description": "Install from the VS Code Marketplace for a one-click experience.",
+            "link": "https://marketplace.visualstudio.com/search?term=MCP&target=VSCode",
+            "details": {
+              "descriptionLong": "The Marketplace is the easiest way for end users to get started: search for 'MCP' in the VS Code marketplace, click install and follow the extension prompts. Good for desktop users and managed environments.",
+              "codeExample": "# Open the Marketplace in VS Code's UI and search for 'MCP'\n# Alternatively, open the web Marketplace:\nhttps://marketplace.visualstudio.com/search?term=MCP&target=VSCode"
+            }
+          },
+          "vsix": {
+            "title": "VSIX package (offline)",
+            "description": "Install via a VSIX package for air-gapped environments or to distribute a specific release.",
+            "details": {
+              "descriptionLong": "Download the .vsix artifact from your release pipeline or build, then install it locally. Useful for CI, offline installs, or controlled rollouts.",
+              "codeExample": "# Install a VSIX file locally\ncode --install-extension ./path/to/extension.vsix"
+            }
+          },
+          "docker": {
+            "title": "Docker / Container",
+            "description": "Run the server in a container for reproducible deployments; recommended for production.",
+            "details": {
+              "descriptionLong": "Run the MCP server as a Docker container to simplify deployment and scaling. Expose the required ports and mount configuration as secrets or volumes.",
+              "codeExample": "# Quick Docker run example\ndocker run -d --name mcp -p 8080:8080 \"mcp/image:latest\"\n# For production, run behind a reverse proxy and use secrets management"
+            }
+          },
+          "cloud": {
+            "title": "Cloud (Azure / AWS / GCP)",
+            "description": "Deploy as a managed service or via IaC (ARM, Terraform) for scalable hosting.",
+            "details": {
+              "descriptionLong": "Deploy the server into your cloud provider using containers, serverless or PaaS offerings. Use IaC (Terraform, ARM templates) to manage configuration and scale settings.",
+              "codeExample": "# Example Terraform snippet (very minimal)\nresource \"docker_container\" \"mcp\" {\n  image = \"mcp/image:latest\"\n  name  = \"mcp\"\n  ports = [\"8080:8080\"]\n}"
+            }
+          },
+          "manual": {
+            "title": "Manual installation",
+            "description": "Download the binaries, add the configuration and register as a system service for full control.",
+            "details": {
+              "descriptionLong": "For maximum control, download the server binary, place it on a host, create the configuration file and register a system service (systemd) to run it. Useful for bare-metal or custom environments.",
+              "codeExample": "# Example (systemd)\n[Unit]\nDescription=MCP Server\n\n[Service]\nExecStart=/usr/local/bin/mcp --config /etc/mcp/config.json\nRestart=on-failure\n\n[Install]\nWantedBy=multi-user.target\n# sudo systemctl enable --now mcp.service"
+            }
+          }
+        }
       },
       "github": {
         "title": "GitHub MCP server",

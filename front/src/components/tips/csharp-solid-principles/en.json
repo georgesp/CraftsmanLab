@@ -1,0 +1,62 @@
+{
+  "csharp-solid-principles": {
+    "title": "SOLID Principles (C#)",
+    "shortDescription": "Practical rules for maintainable, testable C# code.",
+    "content": {
+      "mainTitle": "SOLID principles in C#",
+  "overview": "Because it's often asked in interviews, it's useful to have a quick reminder.\nSOLID is a set of 5 design principles that improve maintainability: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion.",
+      "useCases": {
+        "title": "Use cases",
+        "case1": {
+          "title": "Separate responsibilities & inject dependencies",
+          "description": "Keep business logic separate from infrastructure (logging, persistence) and inject via interfaces to ease testing and evolution. Example in C#."
+        }
+      },
+      "principles": {
+        "title": "SOLID Principles",
+        "s": {
+          "title": "S — Single Responsibility",
+          "description": "A class should have only one reason to change. Separating responsibilities reduces coupling.",
+          "code": "// SRP: OrderService handles order logic, ILogger handles logging\\npublic interface ILogger\\n{\\n  void Log(string message);\\n}\\n\\npublic class FileLogger : ILogger\\n{\\n  public void Log(string message)\\n  {\\n    // ...\\n  }\\n}\\n\\npublic class OrderService\\n{\\n  private readonly ILogger _logger;\\n  public OrderService(ILogger logger)\\n  {\\n    _logger = logger;\\n  }\\n\\n  public void PlaceOrder(Order order)\\n  {\\n    // business logic\\n    _logger.Log(\"Order placed\");\\n  }\\n}"
+        },
+        "o": {
+          "title": "O — Open/Closed",
+          "description": "Entities should be open for extension but closed for modification. Use inheritance or composition to extend behavior.",
+          "code": "// OCP: extend behavior via inheritance or new implementations\\npublic interface IDiscount\\n{\\n  decimal Apply(decimal amount);\\n}\\n\\npublic class NoDiscount : IDiscount\\n{\\n  public decimal Apply(decimal amount) => amount;\\n}\\n\\npublic class SeasonalDiscount : IDiscount\\n{\\n  public decimal Apply(decimal amount) => amount * 0.9m;\\n}"
+        },
+        "l": {
+          "title": "L — Liskov Substitution",
+          "description": "Subtypes must be substitutable for their base types without altering expected behavior.",
+          "code": "// LSP: a Square should be usable where a Rectangle is expected\\npublic class Rectangle\\n{\\n  public virtual int Width { get; set; }\\n  public virtual int Height { get; set; }\\n  public int Area() => Width * Height;\\n}\\n\\npublic class Square : Rectangle\\n{\\n  public override int Width\\n  {\\n    set\\n    {\\n      base.Width = base.Height = value;\\n    }\\n  }\\n\\n  public override int Height\\n  {\\n    set\\n    {\\n      base.Width = base.Height = value;\\n    }\\n  }\\n}"
+        },
+        "i": {
+          "title": "I — Interface Segregation",
+          "description": "Prefer many small, specific interfaces over a single large one. Clients should only depend on the methods they use.",
+          "code": "// ISP: small, focused interfaces\\npublic interface IPrinter\\n{\\n  void Print(Document d);\\n}\\n\\npublic interface IScanner\\n{\\n  void Scan(Document d);\\n}\\n\\npublic class MultiFunctionPrinter : IPrinter, IScanner\\n{\\n  public void Print(Document d)\\n  {\\n  }\\n  public void Scan(Document d)\\n  {\\n  }\\n}"
+        },
+        "d": {
+          "title": "D — Dependency Inversion",
+          "description": "Depend on abstractions, not concretions. Inject high-level module dependencies through interfaces.",
+          "code": "// DIP: high-level modules depend on abstractions\\npublic interface IRepository<T>\\n{\\n  void Add(T item);\\n}\\n\\npublic class SqlRepository<T> : IRepository<T>\\n{\\n  public void Add(T item)\\n  {\\n    // persist\\n  }\\n}\\n\\npublic class Service\\n{\\n  private readonly IRepository<Order> _repo;\\n  public Service(IRepository<Order> repo)\\n  {\\n    _repo = repo;\\n  }\\n\\n  public void Save(Order o)\\n  {\\n    _repo.Add(o);\\n  }\\n}"
+        }
+      },
+      "summary": {
+        "title": "Summary",
+        "text": "Applying SOLID improves testability and maintainability but requires discipline and can increase the number of types.",
+        "prosTitle": "Pros",
+        "consTitle": "Cons",
+        "pros": ["Improved testability and separation of concerns"],
+        "cons": ["More classes/interfaces to manage; risk of over-engineering if misapplied"]
+      },
+      "goodPractices": {
+        "title": "Best practices",
+        "items": ["Prefer small explicit interfaces; use dependency injection; avoid god-objects."]
+      },
+      "footer": {
+        "sourceLabel": "Sources",
+        "sourceUrl": "https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)",
+        "writtenOn": "Written on {{date}}"
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "csharp-default-interface-methods": {
+    "title": "Default interface methods (C# 8)",
+    "shortDescription": "Provide default implementations in interfaces (C# 8+).",
+    "content": {
+      "mainTitle": "Default interface methods",
+      "overview": "Since C# 8, interfaces can contain default implementations for members. This lets you evolve interfaces without breaking existing implementations.",
+      "useCases": {
+        "title": "Use cases",
+        "case1": {
+          "title": "Evolve an interface without breaking consumers",
+          "description": "Add a new method with a default implementation so existing implementers don't need immediate changes.",
+          "code": "public interface ILogger\n{\n    void Log(string message);\n\n    // new API with default implementation\n    void LogDebug(string message) => Log($\"DEBUG: {message}\");\n}\n\npublic class ConsoleLogger : ILogger\n{\n    public void Log(string message) => Console.WriteLine(message);\n}\n\n// Existing ConsoleLogger automatically inherits LogDebug behavior."
+        },
+        "case2": {
+          "title": "Provide shared helper logic in the interface",
+          "description": "Implement small reusable helpers close to the contract while keeping implementations focused.",
+          "code": "public interface ISerializer\n{\n    string Serialize(object o);\n\n    // helper using the primary method\n    string SerializePretty(object o) => JsonSerializer.Serialize(o, new JsonSerializerOptions { WriteIndented = true });\n}\n\npublic class MySerializer : ISerializer\n{\n    public string Serialize(object o) => JsonSerializer.Serialize(o);\n}\n\n// MySerializer gets SerializePretty for free."
+        }
+      },
+      "summary": {
+        "title": "Summary",
+        "text": "Default interface methods (DIM) are useful to evolve APIs and share small helpers. Use them sparingly to avoid complicating polymorphism.",
+        "prosTitle": "Pros",
+        "consTitle": "Cons",
+        "pros": [
+          "Allow non-breaking API evolution",
+          "Share small implementation details across types"
+        ],
+        "cons": [
+          "Can cause ambiguity in complex inheritance scenarios",
+          "May hide behavior away from concrete types (surprise for implementers)"
+        ]
+      },
+      "goodPractices": {
+        "title": "Best practices",
+        "items": [
+          "Prefer small, stable default implementations; avoid heavy logic.",
+          "Document when a default method relies on other interface members.",
+          "Prefer extension methods or abstract base classes if default implementations become large or stateful."
+        ]
+      },
+      "footer": {
+        "sourceLabel": "Source",
+        "sourceUrl": "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-8#default-interface-methods",
+        "writtenOn": "Written on {{date}}"
+      }
+    }
+  }
+}

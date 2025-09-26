@@ -1,0 +1,45 @@
+{
+  "diffplex": {
+    "title": "DiffPlex",
+    "shortDescription": "Generate textual diffs (inline, side-by-side, unified).",
+    "content": {
+      "mainTitle": "DiffPlex: textual diff generation for .NET",
+      "intro": ".NET library to compare texts and produce diffs in inline, side-by-side or unified (unidiff) modes.",
+      "sections": {
+        "quickStart": {
+          "title": "Quick start (inline)",
+          "code": "using DiffPlex.DiffBuilder;\nusing DiffPlex.DiffBuilder.Model;\n\nvar diff = InlineDiffBuilder.Diff(before, after);\nforeach (var line in diff.Lines)\n{\n    switch (line.Type)\n    {\n        case ChangeType.Inserted:\n            Console.Write(\"+ \" );\n            break;\n        case ChangeType.Deleted:\n            Console.Write(\"- \" );\n            break;\n        default:\n            Console.Write(\"  \" );\n            break;\n    }\n    Console.WriteLine(line.Text);\n}"
+        },
+        "sideBySide": {
+          "title": "Side-by-side view",
+          "code": "using DiffPlex;\nusing DiffPlex.DiffBuilder;\nusing DiffPlex.DiffBuilder.Model;\n\nvar differ = new SideBySideDiffBuilder(new Differ());\nSideBySideDiffModel model = differ.BuildDiffModel(oldText, newText);\n\n// model.OldText.Lines / model.NewText.Lines contain aligned lines\n// Each line has a ChangeType (Unchanged, Inserted, Deleted, Imaginary, Modified)"
+        },
+        "unidiff": {
+          "title": "Unified diff (Unidiff)",
+          "code": "using DiffPlex;\nusing DiffPlex.DiffBuilder;\nusing DiffPlex.DiffBuilder.Model;\nusing DiffPlex.Chunkers;\nusing DiffPlex.Unidiff;\n\nstring text1 = oldText;\nstring text2 = newText;\n\n// simple\nstring uni = UnidiffRenderer.GenerateUnidiff(text1, text2, \"before.txt\", \"after.txt\");\n\n// with options (context lines, ignore case/whitespace, chunker)\nvar renderer = new UnidiffRenderer(contextLines: 3);\nstring uni2 = renderer.Generate(text1, text2, \"before.txt\", \"after.txt\");"
+        },
+        "threeWay": {
+          "title": "Three-way diff/merge",
+          "code": "using DiffPlex;\nusing DiffPlex.Chunkers;\n\nvar threeWay = new ThreeWayDiffer();\nvar diff = threeWay.CreateDiffs(baseText, oldText, newText,\n    ignoreWhiteSpace: false, ignoreCase: false, new LineChunker());\n\nvar merge = threeWay.CreateMerge(baseText, oldText, newText,\n    ignoreWhiteSpace: false, ignoreCase: false, new LineChunker());\n\nif (merge.HasConflicts)\n{\n    Console.WriteLine($\"Conflicts: {merge.ConflictBlocks.Count}\");\n}\nelse\n{\n    Console.WriteLine(merge.MergedText);\n}"
+        },
+        "options": {
+          "title": "Useful options",
+          "items": [
+            "ignoreWhitespace / ignoreWhiteSpace: ignore spaces",
+            "ignoreCase: case-insensitive comparison",
+            "Chunkers (LineChunker, WordChunker, CharacterChunker): granularity",
+            "Models: DiffPaneModel (inline), SideBySideDiffModel (split)"
+          ]
+        }
+      },
+      "footer": {
+        "sourcesLabel": "Sources:",
+        "sources": [
+          { "name": "DiffPlex (GitHub)", "url": "https://github.com/mmanela/diffplex" },
+          { "name": "NuGet DiffPlex", "url": "https://www.nuget.org/packages/DiffPlex/" }
+        ],
+        "writtenOn": "Written on {{date}}"
+      }
+    }
+  }
+}

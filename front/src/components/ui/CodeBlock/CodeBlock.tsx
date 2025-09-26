@@ -52,7 +52,11 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
       }}
     >
       <code>
-        <SyntaxHighlighter code={code} language={language} />
+        {
+          // Normalize escaped newlines ("\\n") to actual newlines so strings
+          // coming from JSON translations render correctly in the code block.
+        }
+        <SyntaxHighlighter code={code.replace(/\\n/g, '\n')} language={language} />
       </code>
     </Box>
   );
