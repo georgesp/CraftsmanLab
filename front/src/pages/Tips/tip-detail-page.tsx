@@ -13,6 +13,7 @@ import { TipList } from '../../components/tips/tip-list';
 import { ViewAllTipsButton } from '../../components/ui';
 import { RelatedTipsList } from '../../components/tips/related-tips-list';
 import { tipsList } from '../../components/tips/registry';
+import { useCanonical } from '@/utils/useCanonical';
 
 export const TipDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -126,6 +127,11 @@ export const TipDetailPage: React.FC = () => {
       cancelled = true;
     };
   }, [entry?.slug]);
+
+  // Set canonical for tip detail pages to non-www preferred host
+  if (entry) {
+    useCanonical(`/tips/${entry.slug}`);
+  }
 
   return (
     <ThemeProvider theme={telerikTheme}>

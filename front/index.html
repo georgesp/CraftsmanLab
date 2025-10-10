@@ -8,15 +8,15 @@
     <!-- SEO: basic meta tags -->
     <title>CraftsmanLab</title>
     <meta name="description" content="CraftsmanLab — Outils et prompts pour améliorer la productivité des développeurs C#." />
-    <link rel="canonical" href="https://www.craftsmanlab.fr/" />
+  <link rel="canonical" href="https://craftsmanlab.fr/" />
     <meta name="robots" content="index,follow" />
 
     <!-- Open Graph (social sharing) -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="CraftsmanLab — Outils et prompts pour développeurs C#" />
     <meta property="og:description" content="Outils, prompts et ressources pour accélérer les workflows des développeurs C#." />
-    <meta property="og:url" content="https://www.craftsmanlab.fr/" />
-    <meta property="og:image" content="https://www.craftsmanlab.fr/og-image.png" />
+  <meta property="og:url" content="https://craftsmanlab.fr/" />
+  <meta property="og:image" content="https://craftsmanlab.fr/og-image.png" />
 
     <!-- No Twitter account associated; Twitter meta tags intentionally omitted -->
     <!-- Mobile / PWA hints -->
@@ -31,6 +31,24 @@
         if (!localStorage.getItem('i18nextLng')) localStorage.setItem('i18nextLng', lang);
       } catch (e) {
         /* no-op */
+      }
+    </script>
+
+    <!-- Client-side redirect: force www -> non-www for Azure Static Web Apps (executes before React mounts) -->
+    <script>
+      try {
+        // Run only on the browser
+        if (typeof window !== 'undefined') {
+          const host = window.location.hostname;
+          if (host && host.toLowerCase() === 'www.craftsmanlab.fr') {
+            const newHost = 'craftsmanlab.fr';
+            const newUrl = window.location.protocol + '//' + newHost + window.location.pathname + window.location.search + window.location.hash;
+            // Use replace() to avoid creating an extra history entry
+            window.location.replace(newUrl);
+          }
+        }
+      } catch (e) {
+        // no-op
       }
     </script>
 

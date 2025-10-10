@@ -3,7 +3,7 @@ import path from 'path';
 
 const PUBLIC_DIR = path.resolve(process.cwd(), 'public');
 const SRC_DIR = path.resolve(process.cwd(), 'src');
-const DOMAIN = 'https://www.craftsmanlab.fr';
+const DOMAIN = 'https://craftsmanlab.fr';
 
 async function collectSlugs(dir, pattern = /slug:\s*'([a-z0-9-]+)'/ig) {
   const files = await fs.readdir(dir, { withFileTypes: true });
