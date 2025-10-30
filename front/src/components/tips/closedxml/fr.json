@@ -1,0 +1,38 @@
+{
+  "closedxml": {
+    "title": "ClosedXML",
+    "shortDescription": "Créez, lisez et modifiez des fichiers Excel (.xlsx) en .NET sans avoir besoin d'installer Microsoft Excel",
+    "content": {
+      "mainTitle": "ClosedXML - Manipulation de fichiers Excel en .NET",
+      "intro": "ClosedXML est une bibliothèque .NET puissante qui permet de créer, lire et manipuler des fichiers Excel (.xlsx, .xlsm) sans nécessiter l'installation de Microsoft Excel. Elle offre une API intuitive basée sur OpenXML, idéale pour générer des rapports Excel côté serveur ou traiter des données en masse.",
+      "createTable": {
+        "title": "Création de tableau",
+        "description": "Voici comment créer un fichier Excel à partir d'une liste d'objets. On définit d'abord un modèle Product et des données d'exemple :"
+      },
+      "addStyle": {
+        "title": "Ajouter du style",
+        "description": "Vous pouvez améliorer la présentation du fichier en ajoutant une mise en forme à l'en-tête (couleur de fond, texte gras) :"
+      },
+      "fromTemplate": {
+        "title": "À partir d'un template",
+        "description": "Vous pouvez également charger un template existant (Template.xlsx) et y injecter les données. Les colonnes du template correspondent au nom des champs du modèle :"
+      },
+      "advantages": {
+        "title": "Avantages",
+        "noExcel": "Pas besoin d'installer Microsoft Excel sur le serveur",
+        "intuitive": "API intuitive et facile à utiliser",
+        "performance": "Bonnes performances même avec de gros fichiers",
+        "crossPlatform": "Fonctionne sur Windows, Linux et macOS",
+        "openSource": "Open source avec une communauté active"
+      },
+      "installation": {
+        "title": "Installation",
+        "description": "Installez le package NuGet ClosedXML dans votre projet :"
+      },
+      "footer": {
+        "sourceLabel": "Documentation ClosedXML sur GitHub",
+        "writtenOn": "Rédigé le {{date}}"
+      }
+    }
+  }
+}

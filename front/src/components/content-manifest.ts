@@ -28,6 +28,7 @@ import { meta as csharpPatternMatchingMeta } from './tips/csharp-pattern-matchin
 import { meta as queueStackMeta } from './tips/queue-stack/meta';
 import { meta as csharpSolidPrinciplesMeta } from './tips/csharp-solid-principles/meta';
 import { meta as diffplexMeta } from './tips/diffplex/meta';
+import { meta as closedxmlMeta } from './tips/closedxml/meta';
 
 export type TipEntry = TipMeta & { load: () => Promise<any> };
 
@@ -65,6 +66,7 @@ export const tipsEntries: TipEntry[] = [
   { ...queueStackMeta, load: () => import('./tips/queue-stack/queue-stack') },
   { ...csharpSolidPrinciplesMeta, load: () => import('./tips/csharp-solid-principles/csharp-solid-principles') },
   { ...diffplexMeta, load: () => import('./tips/diffplex/diffplex') },
+  { ...closedxmlMeta, load: () => import('./tips/closedxml/closedxml') },
 ];
 
 // ----- Prompts: metas -----
@@ -133,6 +135,8 @@ import solidPrinciplesCsharpFr from './tips/csharp-solid-principles/fr.json';
 import solidPrinciplesCsharpEn from './tips/csharp-solid-principles/en.json';
 import diffplexFr from './tips/diffplex/fr.json';
 import diffplexEn from './tips/diffplex/en.json';
+import closedxmlFr from './tips/closedxml/fr.json';
+import closedxmlEn from './tips/closedxml/en.json';
 
 export const tipsTranslationsFr = {
   ...pollyFr,
@@ -158,6 +162,7 @@ export const tipsTranslationsFr = {
   ...queueStackFr,
   ...solidPrinciplesCsharpFr,
   ...diffplexFr,
+  ...closedxmlFr,
 };
 
 export const tipsTranslationsEn = {
@@ -184,6 +189,7 @@ export const tipsTranslationsEn = {
   ...queueStackEn,
   ...solidPrinciplesCsharpEn,
   ...diffplexEn,
+  ...closedxmlEn,
 };
 
 // ----- Prompts: translations -----
