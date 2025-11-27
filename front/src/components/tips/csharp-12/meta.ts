@@ -8,10 +8,9 @@ export const meta: TipMeta = {
   keywords: ['C#' as const],
   metadata: {
     searchKeywords: [
-      'c# 12',
+      'C#',
+      'C# 12',
       'nouveautés',
-      "what's new",
-      'whats new',
       'primary constructors',
       'constructeurs primaires',
       'collection expressions',

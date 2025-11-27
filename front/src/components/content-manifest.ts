@@ -19,11 +19,13 @@ import { meta as collectionMeta } from './tips/collection/meta';
 import { meta as keyValueCollectionMeta } from './tips/keyValueCollection/meta';
 import { meta as csharp11Meta } from './tips/csharp-11/meta';
 import { meta as csharp12Meta } from './tips/csharp-12/meta';
+import { meta as csharp14Meta } from './tips/csharp-14/meta';
 import { meta as csharpDefaultInterfaceMethodsMeta } from './tips/csharp-default-interface-methods/meta';
 import { meta as kokoroSharpMeta } from './tips/kokoro-sharp/meta';
 import { meta as mcpServersMeta } from './tips/mcp-servers/meta';
 import { meta as tsqlApplyMeta } from './tips/tsql-apply/meta';
 import { meta as openjsonMeta } from './tips/tsql-openjson/meta';
+import { meta as tsqlSchemaOnlyMeta } from './tips/tsql-schema-only/meta';
 import { meta as csharpPatternMatchingMeta } from './tips/csharp-pattern-matching/meta';
 import { meta as queueStackMeta } from './tips/queue-stack/meta';
 import { meta as csharpSolidPrinciplesMeta } from './tips/csharp-solid-principles/meta';
@@ -54,11 +56,13 @@ export const tipsEntries: TipEntry[] = [
   },
   { ...csharp11Meta, load: () => import('./tips/csharp-11/csharp-11') },
   { ...csharp12Meta, load: () => import('./tips/csharp-12/csharp-12') },
+  { ...csharp14Meta, load: () => import('./tips/csharp-14/csharp-14') },
   { ...csharpDefaultInterfaceMethodsMeta, load: () => import('./tips/csharp-default-interface-methods/csharp-default-interface-methods') },
   { ...kokoroSharpMeta, load: () => import('./tips/kokoro-sharp/kokoro-sharp') },
   { ...mcpServersMeta, load: () => import('./tips/mcp-servers/mcp-servers') },
   { ...tsqlApplyMeta, load: () => import('./tips/tsql-apply/tsql-apply') },
   { ...openjsonMeta, load: () => import('./tips/tsql-openjson/tsql-openjson') },
+  { ...tsqlSchemaOnlyMeta, load: () => import('./tips/tsql-schema-only/tsql-schema-only') },
   {
     ...csharpPatternMatchingMeta,
     load: () => import('./tips/csharp-pattern-matching/csharp-pattern-matching'),
@@ -117,6 +121,8 @@ import csharp11Fr from './tips/csharp-11/fr.json';
 import csharp11En from './tips/csharp-11/en.json';
 import csharp12Fr from './tips/csharp-12/fr.json';
 import csharp12En from './tips/csharp-12/en.json';
+import csharp14Fr from './tips/csharp-14/fr.json';
+import csharp14En from './tips/csharp-14/en.json';
 import csharpDefaultInterfaceMethodsFr from './tips/csharp-default-interface-methods/fr.json';
 import csharpDefaultInterfaceMethodsEn from './tips/csharp-default-interface-methods/en.json';
 import kokoroSharpFr from './tips/kokoro-sharp/fr.json';
@@ -127,6 +133,8 @@ import tsqlApplyFr from './tips/tsql-apply/fr.json';
 import tsqlApplyEn from './tips/tsql-apply/en.json';
 import openjsonFr from './tips/tsql-openjson/fr.json';
 import openjsonEn from './tips/tsql-openjson/en.json';
+import tsqlSchemaOnlyFr from './tips/tsql-schema-only/fr.json';
+import tsqlSchemaOnlyEn from './tips/tsql-schema-only/en.json';
 import csharpPatternMatchingFr from './tips/csharp-pattern-matching/fr.json';
 import csharpPatternMatchingEn from './tips/csharp-pattern-matching/en.json';
 import queueStackFr from './tips/queue-stack/fr.json';
@@ -153,11 +161,13 @@ export const tipsTranslationsFr = {
   ...keyValueCollectionFr,
   ...csharp11Fr,
   ...csharp12Fr,
+  ...csharp14Fr,
   ...csharpDefaultInterfaceMethodsFr,
   ...kokoroSharpFr,
   ...mcpServersFr,
   ...tsqlApplyFr,
   ...openjsonFr,
+  ...tsqlSchemaOnlyFr,
   ...csharpPatternMatchingFr,
   ...queueStackFr,
   ...solidPrinciplesCsharpFr,
@@ -180,11 +190,13 @@ export const tipsTranslationsEn = {
   ...keyValueCollectionEn,
   ...csharp11En,
   ...csharp12En,
+  ...csharp14En,
   ...csharpDefaultInterfaceMethodsEn,
   ...kokoroSharpEn,
   ...mcpServersEn,
   ...tsqlApplyEn,
   ...openjsonEn,
+  ...tsqlSchemaOnlyEn,
   ...csharpPatternMatchingEn,
   ...queueStackEn,
   ...solidPrinciplesCsharpEn,

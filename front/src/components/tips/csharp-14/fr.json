@@ -1,0 +1,91 @@
+{
+  "csharp-14": {
+    "title": "Nouveautés C# 14",
+    "shortDescription": "Les dernières fonctionnalités de C# 14 : extension members, field keyword, null-conditional assignment et plus encore.",
+    "content": {
+      "mainTitle": "C# 14 — Dernières nouveautés",
+      "overview": "C# 14 arrive avec .NET 10 et Visual Studio 2026, apportant des améliorations majeures : propriétés d'extension, le mot-clé field pour les backing fields automatiques, l'assignation conditionnelle null, les conversions implicites pour Span<T>, et bien d'autres fonctionnalités qui simplifient le code et améliorent la productivité.",
+      "features": {
+        "title": "Nouveautés C# 14",
+        "items": [
+          "Extension members (propriétés et membres statiques)",
+          "Mot-clé field (backing fields automatiques)",
+          "Assignation conditionnelle null (?. et ?[])",
+          "nameof avec types génériques non liés",
+          "Conversions implicites pour Span<T> et ReadOnlySpan<T>",
+          "Modificateurs sur les paramètres lambda simples",
+          "Constructeurs et événements partiels",
+          "Opérateurs d'assignation composée définis par l'utilisateur"
+        ]
+      },
+      "useCases": {
+        "title": "Cas d'usage",
+        "extensionMembers": {
+          "title": "Extension members (propriétés et membres statiques)",
+          "description": "Les blocs d'extension permettent désormais de déclarer des propriétés d'extension, des méthodes statiques d'extension, et même des opérateurs définis par l'utilisateur. Tu peux étendre un type avec des membres d'instance ou statiques."
+        },
+        "fieldKeyword": {
+          "title": "Mot-clé field (backing fields automatiques)",
+          "description": "Le mot-clé field te permet d'accéder au backing field généré automatiquement dans les accesseurs de propriétés, sans avoir à déclarer un champ explicite. Idéal pour ajouter de la validation ou de la logique personnalisée."
+        },
+        "nullConditionalAssignment": {
+          "title": "Assignation conditionnelle null (?. et ?[])",
+          "description": "Les opérateurs ?. et ?[] peuvent maintenant être utilisés côté gauche d'une assignation ou d'une assignation composée. Si la cible est null, l'assignation est simplement ignorée et le côté droit n'est pas évalué."
+        },
+        "nameofUnboundGenerics": {
+          "title": "nameof avec types génériques non liés",
+          "description": "Tu peux maintenant utiliser nameof avec des types génériques non liés comme List<> ou Dictionary<,>. Utile pour le logging, les messages d'erreur et la réflexion sans avoir à spécifier les arguments de type."
+        },
+        "implicitSpanConversions": {
+          "title": "Conversions implicites pour Span<T> et ReadOnlySpan<T>",
+          "description": "C# 14 introduit un support de première classe pour Span<T> et ReadOnlySpan<T> avec de nouvelles conversions implicites. Les tableaux peuvent être convertis automatiquement en Span, facilitant l'utilisation de ces types pour la performance."
+        },
+        "lambdaModifiers": {
+          "title": "Modificateurs sur les paramètres lambda simples",
+          "description": "Tu peux ajouter des modificateurs comme ref, in, out, scoped, ou ref readonly aux paramètres lambda sans avoir à spécifier explicitement leurs types. Simplifie la déclaration de lambdas complexes."
+        },
+        "partialMembers": {
+          "title": "Constructeurs et événements partiels",
+          "description": "Les constructeurs d'instance et les événements peuvent maintenant être déclarés comme membres partiels, avec une déclaration de définition et une déclaration d'implémentation. Très utile avec les source generators."
+        },
+        "compoundAssignment": {
+          "title": "Opérateurs d'assignation composée définis par l'utilisateur",
+          "description": "Si tu définis un opérateur binaire (+, -, *, etc.), l'opérateur d'assignation composée correspondant (+=, -=, *=) fonctionne automatiquement. Inclut aussi les opérateurs ++ et -- personnalisés."
+        }
+      },
+      "summary": {
+        "title": "Résumé",
+        "text": "C# 14 continue d'améliorer la productivité et la lisibilité du code avec des fonctionnalités ciblées. Adopte ces nouveautés progressivement sur tes projets .NET 10 pour réduire le boilerplate et améliorer les performances.",
+        "prosTitle": "Avantages",
+        "consTitle": "Inconvénients",
+        "pros": [
+          "Moins de code boilerplate avec field et extension members",
+          "Code plus sûr avec l'assignation conditionnelle null",
+          "Meilleures performances avec les conversions implicites Span",
+          "Lambdas plus expressives avec modificateurs sans types",
+          "Meilleure intégration avec les source generators (partial members)"
+        ],
+        "cons": [
+          "Nécessite .NET 10 SDK et Visual Studio 2026",
+          "Courbe d'apprentissage pour les nouvelles syntaxes",
+          "Risque de confusion avec le mot-clé field si tu as déjà un membre nommé 'field'"
+        ]
+      },
+      "goodPractices": {
+        "title": "Bonnes pratiques",
+        "items": [
+          "Utilise field pour simplifier les propriétés avec validation personnalisée",
+          "Préfère l'assignation conditionnelle null (?.=) aux vérifications if explicites",
+          "Utilise nameof avec types génériques non liés pour les messages d'erreur et le logging",
+          "Adopte les conversions implicites Span pour améliorer les performances sans sacrifier la lisibilité",
+          "Documente les extension members clairement pour éviter la confusion avec les membres natifs"
+        ]
+      },
+      "footer": {
+        "sourceLabel": "Sources",
+        "sourceUrl": "https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-14",
+        "writtenOn": "Écrit le {{date}}"
+      }
+    }
+  }
+}

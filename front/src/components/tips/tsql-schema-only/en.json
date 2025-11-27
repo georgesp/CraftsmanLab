@@ -1,0 +1,57 @@
+{
+  "tsql-schema-only": {
+    "title": "SQL Server Tables with DURABILITY: SCHEMA_ONLY",
+    "shortDescription": "Use ultra-fast in-memory temporary tables without logging for ephemeral data.",
+    "content": {
+      "mainTitle": "SQL Server Tables with DURABILITY: SCHEMA_ONLY",
+      "overview": "SQL Server allows creating memory-optimized tables with the DURABILITY = SCHEMA_ONLY option. These tables retain only their structure after a restart or failover, while data is lost. This feature eliminates transaction logging and provides exceptional performance for temporary or intermediate data that doesn't need to be persisted.",
+      "useCases": {
+        "title": "Use cases",
+        "case1": {
+          "title": "Intermediate calculation tables",
+          "description": "Ideal for storing temporary calculation results that don't need to persist beyond the session. The absence of logging dramatically speeds up inserts and updates."
+        },
+        "case2": {
+          "title": "Staging tables for ETL",
+          "description": "Perfect for extract, transform, and load (ETL) processes. Data is loaded into memory at high speed, transformed, then transferred to persistent tables. Staging doesn't require durability."
+        },
+        "case3": {
+          "title": "User session management",
+          "description": "Excellent for tracking user session state in real-time. Sessions are inherently ephemeral: if the server restarts, users simply reconnect. Ultra-fast performance improves user experience."
+        }
+      },
+      "summary": {
+        "title": "Summary",
+        "text": "Use DURABILITY = SCHEMA_ONLY when you need maximum performance for temporary data that doesn't need to survive a server restart. This option is particularly effective for staging tables, application caches, intermediate calculations, and session management.",
+        "prosTitle": "Pros",
+        "pros": [
+          "Exceptional performance: no transaction logging, all in-memory",
+          "Drastically reduces disk usage and I/O",
+          "Perfect for ephemeral or temporary data (staging, cache, sessions)",
+          "Table structure persists, facilitating automatic data recreation"
+        ],
+        "consTitle": "Cons",
+        "cons": [
+          "Complete data loss on restart or failover",
+          "Requires SQL Server 2014+ with In-Memory OLTP option enabled",
+          "Consumes RAM (must be sized appropriately)"
+        ]
+      },
+      "goodPractices": {
+        "title": "Best practices",
+        "items": [
+          "Reserve this option only for data that can be easily recreated or is temporary",
+          "Clearly document that data is not durable to avoid confusion",
+          "Properly size available memory to avoid resource issues",
+          "Use HASH indexes with an appropriate BUCKET_COUNT to optimize performance",
+          "Combine with DURABILITY = SCHEMA_AND_DATA for tables requiring persistence"
+        ]
+      },
+      "footer": {
+        "sourceLabel": "Microsoft Documentation",
+        "sourceUrl": "https://learn.microsoft.com/en-us/sql/relational-databases/in-memory-oltp/defining-durability-for-memory-optimized-objects",
+        "writtenOn": "Written on {{date}}"
+      }
+    }
+  }
+}
