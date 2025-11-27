@@ -25,6 +25,7 @@ import { meta as kokoroSharpMeta } from './tips/kokoro-sharp/meta';
 import { meta as mcpServersMeta } from './tips/mcp-servers/meta';
 import { meta as tsqlApplyMeta } from './tips/tsql-apply/meta';
 import { meta as openjsonMeta } from './tips/tsql-openjson/meta';
+import { meta as tsqlSchemaOnlyMeta } from './tips/tsql-schema-only/meta';
 import { meta as csharpPatternMatchingMeta } from './tips/csharp-pattern-matching/meta';
 import { meta as queueStackMeta } from './tips/queue-stack/meta';
 import { meta as csharpSolidPrinciplesMeta } from './tips/csharp-solid-principles/meta';
@@ -61,6 +62,7 @@ export const tipsEntries: TipEntry[] = [
   { ...mcpServersMeta, load: () => import('./tips/mcp-servers/mcp-servers') },
   { ...tsqlApplyMeta, load: () => import('./tips/tsql-apply/tsql-apply') },
   { ...openjsonMeta, load: () => import('./tips/tsql-openjson/tsql-openjson') },
+  { ...tsqlSchemaOnlyMeta, load: () => import('./tips/tsql-schema-only/tsql-schema-only') },
   {
     ...csharpPatternMatchingMeta,
     load: () => import('./tips/csharp-pattern-matching/csharp-pattern-matching'),
@@ -131,6 +133,8 @@ import tsqlApplyFr from './tips/tsql-apply/fr.json';
 import tsqlApplyEn from './tips/tsql-apply/en.json';
 import openjsonFr from './tips/tsql-openjson/fr.json';
 import openjsonEn from './tips/tsql-openjson/en.json';
+import tsqlSchemaOnlyFr from './tips/tsql-schema-only/fr.json';
+import tsqlSchemaOnlyEn from './tips/tsql-schema-only/en.json';
 import csharpPatternMatchingFr from './tips/csharp-pattern-matching/fr.json';
 import csharpPatternMatchingEn from './tips/csharp-pattern-matching/en.json';
 import queueStackFr from './tips/queue-stack/fr.json';
@@ -163,6 +167,7 @@ export const tipsTranslationsFr = {
   ...mcpServersFr,
   ...tsqlApplyFr,
   ...openjsonFr,
+  ...tsqlSchemaOnlyFr,
   ...csharpPatternMatchingFr,
   ...queueStackFr,
   ...solidPrinciplesCsharpFr,
@@ -191,6 +196,7 @@ export const tipsTranslationsEn = {
   ...mcpServersEn,
   ...tsqlApplyEn,
   ...openjsonEn,
+  ...tsqlSchemaOnlyEn,
   ...csharpPatternMatchingEn,
   ...queueStackEn,
   ...solidPrinciplesCsharpEn,

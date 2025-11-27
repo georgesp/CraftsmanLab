@@ -1,0 +1,57 @@
+{
+  "tsql-schema-only": {
+    "title": "Tables SQL Server avec DURABILITY : SCHEMA_ONLY",
+    "shortDescription": "Utiliser des tables temporaires ultra-rapides en mémoire sans journalisation pour les données éphémères.",
+    "content": {
+      "mainTitle": "Tables SQL Server avec DURABILITY : SCHEMA_ONLY",
+      "overview": "SQL Server permet de créer des tables optimisées en mémoire (memory-optimized) avec l'option DURABILITY = SCHEMA_ONLY. Ces tables conservent uniquement leur structure après un redémarrage ou un basculement, tandis que les données sont perdues. Cette fonctionnalité élimine la journalisation des transactions et offre des performances exceptionnelles pour les données temporaires ou intermédiaires qui n'ont pas besoin d'être persistées.",
+      "useCases": {
+        "title": "Cas d'usage",
+        "case1": {
+          "title": "Tables de calculs intermédiaires",
+          "description": "Idéal pour stocker des résultats de calculs temporaires qui n'ont pas besoin d'être conservés au-delà de la session. L'absence de journalisation accélère considérablement les insertions et mises à jour."
+        },
+        "case2": {
+          "title": "Tables de staging pour ETL",
+          "description": "Parfait pour les processus d'extraction, transformation et chargement (ETL). Les données sont chargées en mémoire à grande vitesse, transformées, puis transférées vers les tables persistantes. Le staging ne nécessite pas de durabilité."
+        },
+        "case3": {
+          "title": "Gestion de sessions utilisateur",
+          "description": "Excellent pour suivre l'état des sessions utilisateur en temps réel. Les sessions sont par nature éphémères : si le serveur redémarre, les utilisateurs doivent simplement se reconnecter. Les performances ultra-rapides améliorent l'expérience utilisateur."
+        }
+      },
+      "summary": {
+        "title": "Résumé",
+        "text": "Utilisez DURABILITY = SCHEMA_ONLY lorsque vous avez besoin de performances maximales pour des données temporaires qui n'ont pas besoin de survivre à un redémarrage du serveur. Cette option est particulièrement efficace pour les tables de staging, les caches applicatifs, les calculs intermédiaires et la gestion de sessions.",
+        "prosTitle": "Avantages",
+        "pros": [
+          "Performances exceptionnelles : aucune journalisation des transactions, tout en mémoire",
+          "Réduit drastiquement l'utilisation du disque et les I/O",
+          "Parfait pour les données éphémères ou temporaires (staging, cache, sessions)",
+          "La structure de la table persiste, facilitant la récréation automatique des données"
+        ],
+        "consTitle": "Inconvénients",
+        "cons": [
+          "Perte totale des données en cas de redémarrage ou basculement",
+          "Nécessite SQL Server 2014+ avec l'option In-Memory OLTP activée",
+          "Consomme de la mémoire RAM (à dimensionner correctement)"
+        ]
+      },
+      "goodPractices": {
+        "title": "Bonnes pratiques",
+        "items": [
+          "Réservez cette option uniquement aux données qui peuvent être recréées facilement ou qui sont temporaires",
+          "Documentez clairement que les données ne sont pas durables pour éviter toute confusion",
+          "Dimensionnez correctement la mémoire disponible pour éviter les problèmes de ressources",
+          "Utilisez des index HASH avec un BUCKET_COUNT approprié pour optimiser les performances",
+          "Combinez avec DURABILITY = SCHEMA_AND_DATA pour les tables qui nécessitent la persistance"
+        ]
+      },
+      "footer": {
+        "sourceLabel": "Documentation Microsoft",
+        "sourceUrl": "https://learn.microsoft.com/en-us/sql/relational-databases/in-memory-oltp/defining-durability-for-memory-optimized-objects",
+        "writtenOn": "Écrit le {{date}}"
+      }
+    }
+  }
+}
