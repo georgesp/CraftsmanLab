@@ -19,6 +19,7 @@ import { meta as collectionMeta } from './tips/collection/meta';
 import { meta as keyValueCollectionMeta } from './tips/keyValueCollection/meta';
 import { meta as csharp11Meta } from './tips/csharp-11/meta';
 import { meta as csharp12Meta } from './tips/csharp-12/meta';
+import { meta as csharp14Meta } from './tips/csharp-14/meta';
 import { meta as csharpDefaultInterfaceMethodsMeta } from './tips/csharp-default-interface-methods/meta';
 import { meta as kokoroSharpMeta } from './tips/kokoro-sharp/meta';
 import { meta as mcpServersMeta } from './tips/mcp-servers/meta';
@@ -54,6 +55,7 @@ export const tipsEntries: TipEntry[] = [
   },
   { ...csharp11Meta, load: () => import('./tips/csharp-11/csharp-11') },
   { ...csharp12Meta, load: () => import('./tips/csharp-12/csharp-12') },
+  { ...csharp14Meta, load: () => import('./tips/csharp-14/csharp-14') },
   { ...csharpDefaultInterfaceMethodsMeta, load: () => import('./tips/csharp-default-interface-methods/csharp-default-interface-methods') },
   { ...kokoroSharpMeta, load: () => import('./tips/kokoro-sharp/kokoro-sharp') },
   { ...mcpServersMeta, load: () => import('./tips/mcp-servers/mcp-servers') },
@@ -117,6 +119,8 @@ import csharp11Fr from './tips/csharp-11/fr.json';
 import csharp11En from './tips/csharp-11/en.json';
 import csharp12Fr from './tips/csharp-12/fr.json';
 import csharp12En from './tips/csharp-12/en.json';
+import csharp14Fr from './tips/csharp-14/fr.json';
+import csharp14En from './tips/csharp-14/en.json';
 import csharpDefaultInterfaceMethodsFr from './tips/csharp-default-interface-methods/fr.json';
 import csharpDefaultInterfaceMethodsEn from './tips/csharp-default-interface-methods/en.json';
 import kokoroSharpFr from './tips/kokoro-sharp/fr.json';
@@ -153,6 +157,7 @@ export const tipsTranslationsFr = {
   ...keyValueCollectionFr,
   ...csharp11Fr,
   ...csharp12Fr,
+  ...csharp14Fr,
   ...csharpDefaultInterfaceMethodsFr,
   ...kokoroSharpFr,
   ...mcpServersFr,
@@ -180,6 +185,7 @@ export const tipsTranslationsEn = {
   ...keyValueCollectionEn,
   ...csharp11En,
   ...csharp12En,
+  ...csharp14En,
   ...csharpDefaultInterfaceMethodsEn,
   ...kokoroSharpEn,
   ...mcpServersEn,

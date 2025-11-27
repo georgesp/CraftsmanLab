@@ -1,0 +1,91 @@
+{
+  "csharp-14": {
+    "title": "C# 14 What's New",
+    "shortDescription": "Latest C# 14 features: extension members, field keyword, null-conditional assignment and more.",
+    "content": {
+      "mainTitle": "C# 14 — What's New",
+      "overview": "C# 14 ships with .NET 10 and Visual Studio 2026, bringing major improvements: extension properties, the field keyword for automatic backing fields, null-conditional assignment, implicit conversions for Span<T>, and many other features that simplify code and boost productivity.",
+      "features": {
+        "title": "C# 14 Features",
+        "items": [
+          "Extension members (properties and static members)",
+          "field keyword (automatic backing fields)",
+          "Null-conditional assignment (?. and ?[])",
+          "nameof with unbound generic types",
+          "Implicit conversions for Span<T> and ReadOnlySpan<T>",
+          "Modifiers on simple lambda parameters",
+          "Partial constructors and events",
+          "User-defined compound assignment operators"
+        ]
+      },
+      "useCases": {
+        "title": "Use cases",
+        "extensionMembers": {
+          "title": "Extension members (properties and static members)",
+          "description": "Extension blocks now allow you to declare extension properties, static extension methods, and even user-defined operators. You can extend a type with instance or static members."
+        },
+        "fieldKeyword": {
+          "title": "field keyword (automatic backing fields)",
+          "description": "The field keyword lets you access the auto-generated backing field in property accessors without declaring an explicit field. Ideal for adding validation or custom logic."
+        },
+        "nullConditionalAssignment": {
+          "title": "Null-conditional assignment (?. and ?[])",
+          "description": "The ?. and ?[] operators can now be used on the left side of an assignment or compound assignment. If the target is null, the assignment is simply skipped and the right side is not evaluated."
+        },
+        "nameofUnboundGenerics": {
+          "title": "nameof with unbound generic types",
+          "description": "You can now use nameof with unbound generic types like List<> or Dictionary<,>. Useful for logging, error messages, and reflection without having to specify type arguments."
+        },
+        "implicitSpanConversions": {
+          "title": "Implicit conversions for Span<T> and ReadOnlySpan<T>",
+          "description": "C# 14 introduces first-class support for Span<T> and ReadOnlySpan<T> with new implicit conversions. Arrays can be automatically converted to Span, making it easier to use these types for performance."
+        },
+        "lambdaModifiers": {
+          "title": "Modifiers on simple lambda parameters",
+          "description": "You can add modifiers like ref, in, out, scoped, or ref readonly to lambda parameters without explicitly specifying their types. Simplifies complex lambda declarations."
+        },
+        "partialMembers": {
+          "title": "Partial constructors and events",
+          "description": "Instance constructors and events can now be declared as partial members, with a defining declaration and an implementing declaration. Very useful with source generators."
+        },
+        "compoundAssignment": {
+          "title": "User-defined compound assignment operators",
+          "description": "If you define a binary operator (+, -, *, etc.), the corresponding compound assignment operator (+=, -=, *=) works automatically. Also includes custom ++ and -- operators."
+        }
+      },
+      "summary": {
+        "title": "Summary",
+        "text": "C# 14 continues to improve productivity and code readability with targeted features. Adopt these improvements gradually in your .NET 10 projects to reduce boilerplate and improve performance.",
+        "prosTitle": "Pros",
+        "consTitle": "Cons",
+        "pros": [
+          "Less boilerplate code with field and extension members",
+          "Safer code with null-conditional assignment",
+          "Better performance with implicit Span conversions",
+          "More expressive lambdas with modifiers without types",
+          "Better integration with source generators (partial members)"
+        ],
+        "cons": [
+          "Requires .NET 10 SDK and Visual Studio 2026",
+          "Learning curve for new syntaxes",
+          "Risk of confusion with field keyword if you already have a member named 'field'"
+        ]
+      },
+      "goodPractices": {
+        "title": "Best practices",
+        "items": [
+          "Use field to simplify properties with custom validation",
+          "Prefer null-conditional assignment (?.=) over explicit if checks",
+          "Use nameof with unbound generic types for error messages and logging",
+          "Adopt implicit Span conversions to improve performance without sacrificing readability",
+          "Document extension members clearly to avoid confusion with native members"
+        ]
+      },
+      "footer": {
+        "sourceLabel": "Sources",
+        "sourceUrl": "https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-14",
+        "writtenOn": "Written on {{date}}"
+      }
+    }
+  }
+}
