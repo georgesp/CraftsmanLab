@@ -5,7 +5,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { tipsList } from './registry';
-import { COLORS } from '../../styles/colors';
+import { COLORS, TYPOGRAPHY } from '../../styles';
 import { PromptCard, PromptCardContent } from '../../pages/Prompts/styles';
 import { KeywordChips } from '../ui/KeywordChips';
 
@@ -111,7 +111,7 @@ export const TipCardsGrid: React.FC<Props> = ({
                   <Typography
                     variant="h5"
                     component="h3"
-                    sx={{ fontWeight: 700, mb: 0, color: 'text.primary' }}
+                    sx={{ fontWeight: TYPOGRAPHY.fontWeights.bold, mb: 0, color: 'text.primary' }}
                   >
                     {getTranslatedText(t.slug, 'title', t.title)}
                   </Typography>
