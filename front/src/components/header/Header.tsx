@@ -18,7 +18,7 @@ import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import { useTranslation } from 'react-i18next';
 import { searchAll, type SearchHit } from '@/utils/search-client';
-import { COLORS } from '../../styles/colors';
+import { COLORS, TYPOGRAPHY } from '../../styles';
 import { StyledAppBar, StyledToolbar, NavigationContainer } from './styles';
 import { LanguageSelector } from '../ui/LanguageSelector';
 
@@ -276,7 +276,7 @@ export const Header: React.FC = () => {
             to="/tips"
             color="inherit"
             underline="none"
-            sx={{ fontWeight: 500 }}
+            sx={{ fontWeight: TYPOGRAPHY.fontWeights.medium }}
           >
             {t('navigation.tips')}
           </MuiLink>
@@ -286,7 +286,7 @@ export const Header: React.FC = () => {
             to="/prompts"
             color="inherit"
             underline="none"
-            sx={{ fontWeight: 500 }}
+            sx={{ fontWeight: TYPOGRAPHY.fontWeights.medium }}
           >
             {t('navigation.prompts')}
           </MuiLink>
@@ -296,7 +296,7 @@ export const Header: React.FC = () => {
             to="/contact"
             color="inherit"
             underline="none"
-            sx={{ fontWeight: 500 }}
+            sx={{ fontWeight: TYPOGRAPHY.fontWeights.medium }}
           >
             {t('navigation.contact')}
           </MuiLink>

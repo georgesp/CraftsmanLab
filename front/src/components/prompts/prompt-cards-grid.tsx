@@ -5,7 +5,7 @@ import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { promptsList } from './registry';
-import { COLORS } from '../../styles/colors';
+import { COLORS, TYPOGRAPHY } from '../../styles';
 import { PromptCard, PromptCardContent } from '../../pages/Prompts/styles';
 import { KeywordChips } from '../ui/KeywordChips';
 
@@ -79,7 +79,7 @@ export const PromptCardsGrid: React.FC<Props> = ({
                   <Typography
                     variant="h5"
                     component="h3"
-                    sx={{ fontWeight: 700, mb: 0, color: 'text.primary' }}
+                    sx={{ fontWeight: TYPOGRAPHY.fontWeights.bold, mb: 0, color: 'text.primary' }}
                   >
                     {getTranslatedText(p.slug, 'title', p.title)}
                   </Typography>

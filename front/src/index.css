@@ -4,6 +4,7 @@
   font-weight: 400;
 
   color-scheme: light dark;
+  /* Color tokens from COLORS.overlay.textLightSemi and COLORS.darkGreyBg */
   color: rgba(255, 255, 255, 0.87);
   background-color: #23272F; /* match COLORS.darkGreyBg */
 
@@ -16,6 +17,7 @@
 
 a {
   font-weight: 500;
+  /* Color tokens from COLORS.link.default and COLORS.link.hover */
   color: #646cff;
   text-decoration: inherit;
 }

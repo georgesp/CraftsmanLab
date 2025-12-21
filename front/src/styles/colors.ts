@@ -108,4 +108,51 @@ export const COLORS = {
     hover: '#63a4ff', // Bleu clair (primary.light) pour un accent vibrant au hover
     border: '#374046', // Même couleur que itemListHover pour une bordure subtile
   },
+
+  // Palette secondaire (Turquoise Telerik) déplacée depuis theme.ts
+  secondary: {
+    main: '#40e0d0',
+    light: '#70f0e0',
+    dark: '#2aa0a0',
+    contrastText: '#000000',
+    contrastTextAlt: '#ffffff',
+  },
+
+  // Palette de gris Material-UI déplacée depuis theme.ts
+  grey: {
+    50: '#f7fafc',
+    100: '#edf2f7',
+    200: '#e2e8f0',
+    300: '#cbd5e0',
+    400: '#a0aec0',
+    500: '#718096',
+    600: '#4a5568',
+    700: '#2d3748',
+    800: '#1a202c',
+    900: '#171923',
+  },
+
+  // Couleur de texte secondaire (utilisée dans theme.ts)
+  textSecondary: '#9AA6AC',
+
+  // Fond de la description box sur la page d'accueil
+  homeDescriptionBg: '#f3f7ff',
+
+  // Overlays avec transparence
+  overlay: {
+    light10: 'rgba(255, 255, 255, 0.1)', // Fond hover léger
+    lightSemi: 'rgba(255, 255, 255, 0.9)', // Fond bouton copie (presque opaque)
+    textLightSemi: 'rgba(255, 255, 255, 0.87)', // Texte avec légère transparence
+  },
+
+  // Couleurs des liens (index.css)
+  link: {
+    default: '#646cff',
+    hover: '#535bf2',
+  },
+
+  // Couleurs pour les tableaux
+  table: {
+    border: '#ddd', // Bordure grise claire
+  },
 };
