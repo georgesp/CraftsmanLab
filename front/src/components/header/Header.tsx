@@ -293,6 +293,16 @@ export const Header: React.FC = () => {
 
           <MuiLink
             component={RouterLink}
+            to="/news"
+            color="inherit"
+            underline="none"
+            sx={{ fontWeight: TYPOGRAPHY.fontWeights.medium }}
+          >
+            {t('navigation.news')}
+          </MuiLink>
+
+          <MuiLink
+            component={RouterLink}
             to="/contact"
             color="inherit"
             underline="none"

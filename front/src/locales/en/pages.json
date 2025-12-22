@@ -44,8 +44,15 @@
     },
   "infoTitle": "Contact details",
     "successMessage": "Your message has been sent successfully! We will respond to you as soon as possible."
-  }
-  ,
+  },
+  "news": {
+    "title": ".NET News",
+    "lastUpdated": "Last updated: {{date}}",
+    "readArticle": "Read article",
+    "noItems": "No articles available at the moment.",
+    "error": "Unable to load news feed.",
+    "partialError": "Some feeds could not be loaded."
+  },
   "footer": {
     "copyright": "© 2025 CraftsmanLab. All rights reserved."
   }

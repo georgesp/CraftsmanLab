@@ -19,6 +19,9 @@ yarn-error.log*
 # TypeScript
 *.tsbuildinfo
 
+# RSS generated data
+src/components/news/*/data.json
+
 # Optional: env files
 .env
 .env.*
