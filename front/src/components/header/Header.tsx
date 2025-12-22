@@ -16,6 +16,7 @@ import {
 import SearchIcon from '@mui/icons-material/Search';
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
+import NewspaperIcon from '@mui/icons-material/Newspaper';
 import { useTranslation } from 'react-i18next';
 import { searchAll, type SearchHit } from '@/utils/search-client';
 import { COLORS, TYPOGRAPHY } from '../../styles';
@@ -51,12 +52,27 @@ export const Header: React.FC = () => {
     // Navigue vers l'élément sélectionné (ou le premier si aucun sélectionné)
     const index = selectedIndex >= 0 ? selectedIndex : 0;
     const target = results[index];
-    navigate(target.kind === 'tip' ? `/tips/${target.slug}` : `/prompts/${target.slug}`);
+    
+    if (target.kind === 'news') {
+      // For news articles, open the external link in a new tab
+      if (target.link) {
+        window.open(target.link, '_blank', 'noopener,noreferrer');
+      }
+    } else {
+      navigate(target.kind === 'tip' ? `/tips/${target.slug}` : `/prompts/${target.slug}`);
+    }
     setOpen(false);
   };
 
-  const handleSelect = (kind: 'tip' | 'prompt', slug: string) => {
-    navigate(kind === 'tip' ? `/tips/${slug}` : `/prompts/${slug}`);
+  const handleSelect = (kind: 'tip' | 'prompt' | 'news', slug: string, link?: string) => {
+    if (kind === 'news') {
+      // For news articles, open the external link in a new tab
+      if (link) {
+        window.open(link, '_blank', 'noopener,noreferrer');
+      }
+    } else {
+      navigate(kind === 'tip' ? `/tips/${slug}` : `/prompts/${slug}`);
+    }
     setOpen(false);
   };
 
@@ -190,7 +206,7 @@ export const Header: React.FC = () => {
                       <ListItem key={`${r.kind}-${r.slug}`} disablePadding>
                         <ListItemButton
                           selected={idx === selectedIndex}
-                          onClick={() => handleSelect(r.kind, r.slug)}
+                          onClick={() => handleSelect(r.kind, r.slug, r.link)}
                         >
                           <ListItemIcon sx={{ minWidth: 44, mr: 1 }}>
                             {r.kind === 'tip' ? (
@@ -210,7 +226,7 @@ export const Header: React.FC = () => {
                                   sx={{ color: COLORS.searchResultIcon, fontSize: 20 }}
                                 />
                               </Box>
-                            ) : (
+                            ) : r.kind === 'prompt' ? (
                               <Box
                                 sx={{
                                   display: 'inline-flex',
@@ -223,6 +239,23 @@ export const Header: React.FC = () => {
                                 }}
                               >
                                 <TextSnippetIcon
+                                  fontSize="large"
+                                  sx={{ color: COLORS.searchResultIcon, fontSize: 20 }}
+                                />
+                              </Box>
+                            ) : (
+                              <Box
+                                sx={{
+                                  display: 'inline-flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  width: 36,
+                                  height: 36,
+                                  border: `1px solid ${COLORS.searchResultIcon}`,
+                                  borderRadius: 1,
+                                }}
+                              >
+                                <NewspaperIcon
                                   fontSize="large"
                                   sx={{ color: COLORS.searchResultIcon, fontSize: 20 }}
                                 />
@@ -273,6 +306,16 @@ export const Header: React.FC = () => {
         <NavigationContainer>
           <MuiLink
             component={RouterLink}
+            to="/news"
+            color="inherit"
+            underline="none"
+            sx={{ fontWeight: TYPOGRAPHY.fontWeights.medium }}
+          >
+            {t('navigation.news')}
+          </MuiLink>
+
+          <MuiLink
+            component={RouterLink}
             to="/tips"
             color="inherit"
             underline="none"
@@ -289,16 +332,6 @@ export const Header: React.FC = () => {
             sx={{ fontWeight: TYPOGRAPHY.fontWeights.medium }}
           >
             {t('navigation.prompts')}
-          </MuiLink>
-
-          <MuiLink
-            component={RouterLink}
-            to="/news"
-            color="inherit"
-            underline="none"
-            sx={{ fontWeight: TYPOGRAPHY.fontWeights.medium }}
-          >
-            {t('navigation.news')}
           </MuiLink>
 
           <MuiLink
