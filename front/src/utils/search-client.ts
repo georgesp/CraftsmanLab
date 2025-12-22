@@ -1,18 +1,20 @@
 // Version simplifiée du moteur de recherche basée sur les métadonnées
 // Utilise uniquement les registres avec searchKeywords pour une recherche optimisée
 
-export type SearchKind = 'tip' | 'prompt';
+export type SearchKind = 'tip' | 'prompt' | 'news';
 
 export type SearchHit = {
   kind: SearchKind;
   slug: string;
   title: string;
   shortDescription: string;
+  link?: string; // For news articles that link externally
 };
 
 // Métadonnées fiables via les registres existants
 import { tipsList } from '../components/tips/registry';
 import { promptsList } from '../components/prompts/registry';
+import { rssSources } from '../components/news/registry';
 import i18n from '../i18n';
 
 // Note: keywords are unified across languages; no need to detect language here.
@@ -31,12 +33,22 @@ function getPromptTranslation(promptSlug: string, key: string, fallback: string)
   return translated || fallback;
 }
 
+// Helper function to get translated text with fallback - news sources
+function getNewsSourceTranslation(sourceSlug: string, key: string, fallback: string): string {
+  const lang = i18n.language as 'fr' | 'en';
+  const source = rssSources.find((s) => s.meta.slug === sourceSlug);
+  if (!source) return fallback;
+  const translations = source.translations[lang];
+  return (translations as any)[key] || fallback;
+}
+
 type IndexedItem = {
   kind: SearchKind;
   slug: string;
   title: string;
   shortDescription: string;
   searchKeywords?: string[];
+  link?: string;
 };
 
 function buildIndex(): IndexedItem[] {
@@ -63,6 +75,28 @@ function buildIndex(): IndexedItem[] {
       shortDescription: getPromptTranslation(p.slug, 'shortDescription', p.shortDescription),
       searchKeywords: p.metadata?.searchKeywords,
     });
+  }
+
+  // Indexer les articles de news
+  for (const source of rssSources) {
+    const sourceKeywords = source.meta.searchKeywords || [];
+    
+    for (const article of source.data.items || []) {
+      // Combine source keywords + article categories as search keywords
+      const articleKeywords = [
+        ...sourceKeywords,
+        ...(article.categories || []).map((c) => c.toLowerCase()),
+      ];
+
+      items.push({
+        kind: 'news',
+        slug: article.guid, // Use guid as unique identifier
+        title: article.title,
+        shortDescription: article.contentSnippet || '',
+        searchKeywords: articleKeywords,
+        link: article.link,
+      });
+    }
   }
 
   return items;
@@ -93,11 +127,12 @@ export function searchAll(query: string): SearchHit[] {
     return false;
   });
 
-  // Tri par pertinence : tips d'abord, puis par titre
+  // Tri par pertinence : tips d'abord, puis prompts, puis news
   matched.sort((a, b) => {
-    // Priorité aux tips
+    // Priorité : tips > prompts > news
     if (a.kind !== b.kind) {
-      return a.kind === 'tip' ? -1 : 1;
+      const order = { tip: 1, prompt: 2, news: 3 };
+      return order[a.kind] - order[b.kind];
     }
 
     // Ensuite, priorité aux correspondances exactes dans le titre
@@ -124,5 +159,6 @@ export function searchAll(query: string): SearchHit[] {
     slug: item.slug,
     title: item.title,
     shortDescription: item.shortDescription,
+    link: item.link,
   }));
 }

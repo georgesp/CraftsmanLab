@@ -4,6 +4,7 @@ export interface RssSourceMeta {
   icon?: string;
   color?: string;
   maxItems?: number;
+  searchKeywords?: string[];
 }
 
 export const microsoftDevBlogsMeta: RssSourceMeta = {
@@ -12,4 +13,18 @@ export const microsoftDevBlogsMeta: RssSourceMeta = {
   icon: '/microsoft-icon.png',
   color: '#0078D4',
   maxItems: 20,
+  searchKeywords: [
+    '.net',
+    'dotnet',
+    'c#',
+    'csharp',
+    'asp.net',
+    'aspnet',
+    'microsoft',
+    'actualités',
+    'news',
+    'blog',
+    'devblog',
+    'articles',
+  ],
 };
