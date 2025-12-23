@@ -15,8 +15,9 @@ Le script de rafraîchissement préserve automatiquement les catégories (`categ
 - ✅ Éviter que les modifications manuelles soient écrasées lors du rafraîchissement
 
 **Comportement du script :**
-- Pour les **nouveaux articles** : utilise les catégories du flux RSS
+- Pour les **nouveaux articles** : utilise les catégories du flux RSS, ou génère des catégories intelligentes si le flux RSS n'en fournit pas
 - Pour les **articles existants** (même `guid`) : conserve les catégories du fichier `data.json` existant
+- Pour les **articles avec catégories vides** : génère automatiquement des catégories pertinentes basées sur le titre et le contenu de l'article
 - Les autres champs (titre, description, date) sont toujours mis à jour depuis le flux RSS
 
 ## Quand rafraîchir les flux ?
@@ -317,6 +318,148 @@ const items = feed.items.map(item => {
 ```
 
 **Identifiant utilisé :** Le champ `guid` (ou `link` en fallback) sert d'identifiant unique pour matcher les articles existants.
+
+## Génération Intelligente de Catégories
+
+Lorsqu'un article n'a pas de catégories (tableau vide ou non fourni par le flux RSS), le script peut générer automatiquement des catégories pertinentes en analysant :
+- Le **titre** de l'article
+- Le **contentSnippet** (extrait du contenu)
+
+### Comment ajouter la génération automatique de catégories
+
+Si vous souhaitez enrichir automatiquement les catégories vides, modifiez le script `fetch-rss.mjs` :
+
+```javascript
+// Fonction pour collecter toutes les catégories existantes dans tous les articles
+function getAllExistingCategories(allData) {
+  const categories = new Set();
+  allData.forEach(data => {
+    data.items?.forEach(item => {
+      item.categories?.forEach(cat => categories.add(cat));
+    });
+  });
+  return Array.from(categories);
+}
+
+// Fonction pour trouver une catégorie existante proche
+function findSimilarCategory(newCategory, existingCategories) {
+  const newLower = newCategory.toLowerCase();
+  
+  // Recherche exacte (insensible à la casse)
+  const exactMatch = existingCategories.find(cat => 
+    cat.toLowerCase() === newLower
+  );
+  if (exactMatch) return exactMatch;
+  
+  // Recherche de similarité
+  for (const existing of existingCategories) {
+    const existingLower = existing.toLowerCase();
+    // Si l'une contient l'autre
+    if (newLower.includes(existingLower) || existingLower.includes(newLower)) {
+      return existing;
+    }
+    // Variantes courantes
+    if ((newLower === 'ai' && existingLower === 'ia') || 
+        (newLower === 'ia' && existingLower === 'ai')) {
+      return existing;
+    }
+  }
+  
+  return newCategory; // Pas de match, retourner la nouvelle
+}
+
+// Fonction pour générer des catégories basées sur le contenu
+function generateCategories(title, contentSnippet, existingCategories) {
+  const text = `${title} ${contentSnippet || ''}`.toLowerCase();
+  const rawCategories = [];
+  
+  // Détection des technologies
+  if (text.match(/\bc#\b|csharp|c-sharp/i)) rawCategories.push('C#');
+  if (text.match(/\.net\s*\d+/i)) {
+    const match = text.match(/\.net\s*(\d+)/i);
+    if (match) rawCategories.push(`.NET ${match[1]}`);
+  }
+  if (text.match(/\baspnet|asp\.net/i)) rawCategories.push('ASP.NET Core');
+  if (text.match(/\bblazor\b/i)) rawCategories.push('Blazor');
+  if (text.match(/\bvisual studio\s*(\d+)?/i)) {
+    const match = text.match(/visual studio\s*(\d+)/i);
+    rawCategories.push(match ? `Visual Studio ${match[1]}` : 'Visual Studio');
+  }
+  if (text.match(/\bentity framework|ef core/i)) rawCategories.push('Entity Framework Core');
+  if (text.match(/\bazure\b/i)) rawCategories.push('Azure');
+  if (text.match(/\bia\b|intelligence artificielle|copilot|gpt/i)) rawCategories.push('IA');
+  if (text.match(/\bperformance\b/i)) rawCategories.push('Performance');
+  if (text.match(/\bsecurity|sécurité/i)) rawCategories.push('Security');
+  if (text.match(/\btesting|tests|unit test/i)) rawCategories.push('Testing');
+  
+  // Réutiliser les catégories existantes quand c'est possible
+  return rawCategories.map(cat => findSimilarCategory(cat, existingCategories));
+}
+
+// Au début du script, charger toutes les catégories existantes
+const allExistingData = [];
+for (const source of RSS_SOURCES) {
+  const data = await loadExistingData(source.slug);
+  if (data) allExistingData.push(data);
+}
+const existingCategories = getAllExistingCategories(allExistingData);
+
+// Dans la boucle de traitement des articles
+const items = feed.items.map(item => {
+  const guid = item.guid || item.link;
+  const existingItem = existingItemsMap.get(guid);
+  
+  // Si l'article existe, on garde ses catégories
+  let categories = existingItem?.categories;
+  
+  // Si pas de catégories existantes, essayer le flux RSS
+  if (!categories || categories.length === 0) {
+    categories = item.categories || [];
+  }
+  
+  // Si toujours vide, générer automatiquement en réutilisant les catégories existantes
+  if (categories.length === 0) {
+    categories = generateCategories(item.title, item.contentSnippet, existingCategories);
+  }
+  
+  return {
+    title: item.title,
+    link: item.link,
+    pubDate: item.pubDate,
+    contentSnippet: item.contentSnippet,
+    creator: item.creator || '',
+    categories: categories,
+    guid: guid,
+  };
+});
+```
+
+### Règles de Génération Suggérées
+
+Voici quelques patterns courants à détecter :
+
+| Pattern | Catégories Suggérées |
+|---------|---------------------|
+| `C# 14`, `C# 10` | `C#`, `C# 14`, `.NET 10` |
+| `.NET 10`, `.NET 6` | `.NET 10` ou `.NET 6` |
+| `ASP.NET Core` | `ASP.NET Core` |
+| `Entity Framework Core` | `Entity Framework Core` |
+| `Visual Studio 2022` | `Visual Studio 2022`, `IDE` |
+| `Azure`, `Cosmos DB` | `Azure`, `Cosmos DB`, `Database` |
+| `IA`, `Copilot`, `GPT` | `IA`, `Copilot` |
+| `Performance`, `JIT`, `NativeAOT` | `Performance`, `Runtime` |
+| `GitHub Actions` | `CI/CD`, `DevOps` |
+| `JSON`, `Serialization` | `JSON`, `Serialization` |
+
+### Bonnes Pratiques pour la Génération
+
+1. **Être conservateur** : Il vaut mieux ne pas ajouter de catégorie que d'en ajouter une incorrecte
+2. **Normaliser** : Toujours utiliser la même casse (ex: "C#", pas "c#" ou "csharp")
+3. **Limiter le nombre** : 3-5 catégories max par article pour garder la pertinence
+4. **Vérifier manuellement** : Après la première génération, vérifier et ajuster si nécessaire
+5. **Les catégories manuelles priment** : Une fois ajustées manuellement, elles sont préservées
+6. **Réutiliser les catégories existantes** : Avant de créer une nouvelle catégorie, vérifier si une similaire existe déjà (ex: "IA" vs "AI", "Visual Studio 2022" vs "Visual Studio")
+7. **Maintenir la cohérence** : Utiliser les mêmes noms de catégories à travers toutes les sources pour faciliter le filtrage
 
 ## Ressources
 
