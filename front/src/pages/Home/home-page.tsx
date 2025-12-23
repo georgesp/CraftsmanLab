@@ -72,7 +72,7 @@ export const HomePage: React.FC = () => {
             </Typography>
             <Grid container spacing={3}>
               {latestNews.map((item) => (
-                <Grid item xs={12} sm={6} md={4} key={item.guid}>
+                <Grid item xs={12} sm={12} md={12} key={item.guid}>
                   <MuiLink
                     href={item.link}
                     target="_blank"

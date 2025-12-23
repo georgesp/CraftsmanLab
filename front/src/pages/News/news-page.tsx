@@ -8,10 +8,12 @@ import { PromptCard, PromptCardContent } from '../Prompts/styles';
 import type { NewsItem } from './types';
 import { rssSources } from '../../components/news/registry';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
+import { TagChipsFilter } from '../../components/ui';
 
 export const NewsPage: React.FC = () => {
   const { t, i18n } = useTranslation('pages');
   const [selectedSource, setSelectedSource] = useState<string | null>(null);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
   const formatDate = (dateString: string) => {
     try {
@@ -35,6 +37,21 @@ export const NewsPage: React.FC = () => {
     return source.translations[lang];
   };
 
+  // Collect all unique categories from all items
+  const allCategories = useMemo(() => {
+    const categories = rssSources.flatMap(source =>
+      source.data.items.flatMap(item => item.categories || [])
+    );
+    const normalized = categories.map(c => c.trim()).filter(Boolean);
+    return Array.from(new Set(normalized)).sort((a, b) => a.localeCompare(b));
+  }, []);
+
+  const toggleCategory = (category: string) => {
+    setSelectedCategories((prev) =>
+      prev.includes(category) ? prev.filter((c) => c !== category) : [...prev, category],
+    );
+  };
+
   // Combiner tous les items de tous les feeds et les trier par date
   const allItems = useMemo(() => {
     const items = rssSources
@@ -46,9 +63,17 @@ export const NewsPage: React.FC = () => {
           sourceInfo: getSourceInfo(source.meta.slug),
         }))
       )
+      .filter(item => {
+        // Filter by categories if any selected
+        if (selectedCategories.length === 0) return true;
+        const itemCategories = (item.categories || []).map(c => c.toLowerCase());
+        const selectedSet = new Set(selectedCategories.map(c => c.toLowerCase()));
+        // match if item has all selected categories
+        return Array.from(selectedSet).every(cat => itemCategories.includes(cat));
+      })
       .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
     return items;
-  }, [i18n.language, selectedSource]);
+  }, [i18n.language, selectedSource, selectedCategories]);
 
   // Vérifier s'il y a des erreurs
   const hasErrors = rssSources.some(s => s.data.error !== undefined);
@@ -141,10 +166,20 @@ export const NewsPage: React.FC = () => {
               )}
             </Box>
 
+            {/* Category filters */}
+            <Box sx={{ mb: 2 }}>
+              <TagChipsFilter
+                tags={allCategories}
+                selected={selectedCategories}
+                onToggle={toggleCategory}
+                formatLabels={false}
+              />
+            </Box>
+
             {allItems.length > 0 && (
               <>                <Grid container spacing={4}>
                   {allItems.map((item) => (
-                    <Grid item xs={12} sm={6} md={6} key={item.guid}>
+                    <Grid item xs={12} sm={12} md={12} key={item.guid}>
                       <MuiLink
                         href={item.link}
                         target="_blank"

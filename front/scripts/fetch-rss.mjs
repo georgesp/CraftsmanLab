@@ -17,11 +17,45 @@ const RSS_SOURCES = [
     feedUrl: 'https://dotnet.developpez.com/index/rss',
     maxItems: 15,
   },
+  {
+    slug: 'jon-skeet-blog',
+    feedUrl: 'https://codeblog.jonskeet.uk/feed/',
+    maxItems: 15,
+  },
+  {
+    slug: 'thomas-levesque-blog',
+    feedUrl: 'https://thomaslevesque.com/index.xml',
+    maxItems: 15,
+  },
+  {
+    slug: 'dotnettips-blog',
+    feedUrl: 'https://dotnettips.wordpress.com/feed/',
+    maxItems: 15,
+  },
+  {
+    slug: 'jetbrains-dotnet-blog',
+    feedUrl: 'https://blog.jetbrains.com/dotnet/feed/',
+    maxItems: 15,
+  },
   // Add more RSS sources here as needed
 ];
 
 /**
+ * Charge le fichier data.json existant s'il existe
+ */
+async function loadExistingData(slug) {
+  try {
+    const outputFile = path.join(SOURCES_DIR, slug, 'data.json');
+    const content = await fs.readFile(outputFile, 'utf-8');
+    return JSON.parse(content);
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Récupère un flux RSS et retourne les items formatés
+ * Préserve les catégories des articles existants
  */
 async function fetchSingleRSS(slug, feedUrl, maxItems) {
   try {
@@ -29,16 +63,35 @@ async function fetchSingleRSS(slug, feedUrl, maxItems) {
     const parser = new Parser();
     const feed = await parser.parseURL(feedUrl);
     
+    // Charger les données existantes
+    const existingData = await loadExistingData(slug);
+    const existingItemsMap = new Map();
+    
+    if (existingData && existingData.items) {
+      // Créer une map des articles existants par guid
+      existingData.items.forEach(item => {
+        if (item.guid) {
+          existingItemsMap.set(item.guid, item);
+        }
+      });
+    }
+    
     // Extraire uniquement les données nécessaires
-    const items = feed.items.slice(0, maxItems).map(item => ({
-      title: item.title || '',
-      link: item.link || '',
-      pubDate: item.pubDate || item.isoDate || '',
-      contentSnippet: item.contentSnippet?.substring(0, 250) || '',
-      creator: item.creator || item.author || '',
-      categories: item.categories || [],
-      guid: item.guid || item.link || '',
-    }));
+    const items = feed.items.slice(0, maxItems).map(item => {
+      const guid = item.guid || item.link || '';
+      const existingItem = existingItemsMap.get(guid);
+      
+      return {
+        title: item.title || '',
+        link: item.link || '',
+        pubDate: item.pubDate || item.isoDate || '',
+        contentSnippet: item.contentSnippet?.substring(0, 250) || '',
+        creator: item.creator || item.author || '',
+        // Préserver les catégories existantes si l'article existe déjà
+        categories: existingItem?.categories || item.categories || [],
+        guid: guid,
+      };
+    });
 
     return {
       source: slug,
