@@ -48,6 +48,7 @@
   },
   "news": {
     "title": ".NET News",
+    "allSources": "All sources",
     "lastUpdated": "Last updated: {{date}}",
     "readArticle": "Read article",
     "noItems": "No articles available at the moment.",

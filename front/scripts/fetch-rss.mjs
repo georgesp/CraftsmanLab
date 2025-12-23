@@ -12,6 +12,11 @@ const RSS_SOURCES = [
     feedUrl: 'https://devblogs.microsoft.com/dotnet/feed/',
     maxItems: 20,
   },
+  {
+    slug: 'developpez-dotnet',
+    feedUrl: 'https://dotnet.developpez.com/index/rss',
+    maxItems: 15,
+  },
   // Add more RSS sources here as needed
 ];
 

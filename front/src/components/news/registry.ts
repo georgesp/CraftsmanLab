@@ -2,6 +2,10 @@ import { microsoftDevBlogsMeta, type RssSourceMeta } from './microsoft-devblogs/
 import microsoftDevBlogsFr from './microsoft-devblogs/fr.json';
 import microsoftDevBlogsEn from './microsoft-devblogs/en.json';
 import microsoftDevBlogsData from './microsoft-devblogs/data.json';
+import { developpezDotnetMeta } from './developpez-dotnet/meta';
+import developpezDotnetFr from './developpez-dotnet/fr.json';
+import developpezDotnetEn from './developpez-dotnet/en.json';
+import developpezDotnetData from './developpez-dotnet/data.json';
 import type { RssFeedData } from '../../pages/News/types';
 
 export interface RssSource {
@@ -32,6 +36,14 @@ export const rssSources: RssSource[] = [
       en: microsoftDevBlogsEn,
     },
     data: microsoftDevBlogsData as RssFeedData,
+  },
+  {
+    meta: developpezDotnetMeta,
+    translations: {
+      fr: developpezDotnetFr,
+      en: developpezDotnetEn,
+    },
+    data: developpezDotnetData as RssFeedData,
   },
 ];
 

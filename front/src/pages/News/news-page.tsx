@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { Container, Card, Typography, Box, Grid, Alert, Link as MuiLink, Chip } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { PageLayout, ScrollToTopButton } from '../../components';
@@ -11,6 +11,7 @@ import NewspaperIcon from '@mui/icons-material/Newspaper';
 
 export const NewsPage: React.FC = () => {
   const { t, i18n } = useTranslation('pages');
+  const [selectedSource, setSelectedSource] = useState<string | null>(null);
 
   const formatDate = (dateString: string) => {
     try {
@@ -36,7 +37,8 @@ export const NewsPage: React.FC = () => {
 
   // Combiner tous les items de tous les feeds et les trier par date
   const allItems = useMemo(() => {
-    return rssSources
+    const items = rssSources
+      .filter(source => !selectedSource || source.meta.slug === selectedSource)
       .flatMap(source => 
         source.data.items.map(item => ({
           ...item,
@@ -45,7 +47,8 @@ export const NewsPage: React.FC = () => {
         }))
       )
       .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
-  }, [i18n.language]);
+    return items;
+  }, [i18n.language, selectedSource]);
 
   // Vérifier s'il y a des erreurs
   const hasErrors = rssSources.some(s => s.data.error !== undefined);
@@ -76,28 +79,72 @@ export const NewsPage: React.FC = () => {
               </Alert>
             )}
 
-            {allItems.length > 0 && (
-              <>
-                {lastUpdated && (
-                  <Typography
-                    variant="caption"
-                    sx={{
-                      display: 'block',
-                      mb: 3,
-                      color: 'text.secondary',
-                      textAlign: 'right',
-                    }}
-                  >
-                    {t('news.lastUpdated', {
-                      defaultValue: 'Dernière mise à jour : {{date}}',
-                      date: formatDate(lastUpdated),
-                    })}
-                  </Typography>
-                )}
+            {/* Source filters and last updated */}
+            <Box sx={{ mb: 3, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 2 }}>
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                <Chip
+                  label={t('news.allSources', { defaultValue: 'Toutes les sources' })}
+                  onClick={() => setSelectedSource(null)}
+                  sx={{
+                    height: 24,
+                    fontSize: '0.875rem',
+                    backgroundColor: !selectedSource ? 'primary.main' : 'transparent',
+                    color: !selectedSource ? 'white' : 'primary.main',
+                    borderColor: 'primary.main',
+                    border: '1px solid',
+                    cursor: 'pointer',
+                    '&:hover': {
+                      backgroundColor: !selectedSource ? 'primary.dark' : 'rgba(25, 118, 210, 0.08)',
+                    },
+                  }}
+                />
+                {rssSources.map((source) => {
+                  const lang = i18n.language === 'fr' ? 'fr' : 'en';
+                  const sourceTitle = source.translations[lang].title;
+                  const isActive = selectedSource === source.meta.slug;
+                  
+                  return (
+                    <Chip
+                      key={source.meta.slug}
+                      label={sourceTitle}
+                      onClick={() => setSelectedSource(source.meta.slug)}
+                      sx={{
+                        height: 24,
+                        fontSize: '0.875rem',
+                        backgroundColor: isActive ? 'primary.main' : 'transparent',
+                        color: isActive ? 'white' : 'primary.main',
+                        borderColor: 'primary.main',
+                        border: '1px solid',
+                        cursor: 'pointer',
+                        '&:hover': {
+                          backgroundColor: isActive ? 'primary.dark' : 'rgba(25, 118, 210, 0.08)',
+                        },
+                      }}
+                    />
+                  );
+                })}
+              </Box>
 
-                <Grid container spacing={4}>
+              {lastUpdated && (
+                <Typography
+                  variant="caption"
+                  sx={{
+                    color: 'text.secondary',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {t('news.lastUpdated', {
+                    defaultValue: 'Dernière mise à jour : {{date}}',
+                    date: formatDate(lastUpdated),
+                  })}
+                </Typography>
+              )}
+            </Box>
+
+            {allItems.length > 0 && (
+              <>                <Grid container spacing={4}>
                   {allItems.map((item) => (
-                    <Grid item xs={12} sm={6} md={4} key={item.guid}>
+                    <Grid item xs={12} sm={6} md={6} key={item.guid}>
                       <MuiLink
                         href={item.link}
                         target="_blank"
