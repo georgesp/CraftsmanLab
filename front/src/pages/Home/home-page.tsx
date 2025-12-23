@@ -117,30 +117,33 @@ export const HomePage: React.FC = () => {
 
                         <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, mb: 1 }}>
                           <NewspaperIcon sx={{ color: 'primary.main', fontSize: 20, mt: 0.5 }} />
-                          <Typography
-                            variant="h6"
-                            component="h3"
-                            sx={{
-                              flex: 1,
-                              fontSize: '1.1rem',
-                              lineHeight: 1.3,
-                              fontWeight: 600,
-                            }}
-                          >
-                            {item.title}
-                          </Typography>
+                          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flex: 1, gap: 2 }}>
+                            <Typography
+                              variant="h6"
+                              component="h3"
+                              sx={{
+                                fontSize: '1.1rem',
+                                lineHeight: 1.3,
+                                fontWeight: 600,
+                              }}
+                            >
+                              {item.title}
+                            </Typography>
+                            <Typography
+                              variant="body2"
+                              color="text.secondary"
+                              sx={{ 
+                                fontSize: '0.8rem',
+                                whiteSpace: 'nowrap',
+                              }}
+                            >
+                              {formatDate(item.pubDate)}
+                            </Typography>
+                          </Box>
                         </Box>
 
                         <Typography
-                          variant="body2"
-                          color="text.secondary"
-                          sx={{ mb: 1.5, fontSize: '0.875rem' }}
-                        >
-                          {formatDate(item.pubDate)}
-                        </Typography>
-
-                        <Typography
-                          variant="body2"
+                          variant="body1"
                           sx={{
                             mb: 2,
                             flex: 1,
