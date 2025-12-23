@@ -1,0 +1,164 @@
+{
+  "source": "jetbrains-dotnet-blog",
+  "items": [
+    {
+      "title": "ReSharper and Rider 2025.3.1 Released: Next Edit Suggestions and Other Important Updates",
+      "link": "https://blog.jetbrains.com/dotnet/2025/12/18/resharper-and-rider-2025-3-1/",
+      "pubDate": "Thu, 18 Dec 2025 17:47:54 +0000",
+      "contentSnippet": "Since the 2025.3 release, we’ve published several rapid-response updates (2025.3.0.1–2025.3.0.4) for ReSharper and Rider to address the most urgent issues as quickly as possible. The 2025.3.1 update brings all of those fixes together and includes add",
+      "creator": "Sasha Ivanova",
+      "categories": [
+        "Jetbrains-AI",
+        "ReSharper",
+        "Rider",
+        "Next-Edit-Suggestion"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=669532"
+    },
+    {
+      "title": "Rider and ReSharper 2025.3.0.4: Important Updates Released",
+      "link": "https://blog.jetbrains.com/dotnet/2025/12/11/rider-and-resharper-2025-3-0-4/",
+      "pubDate": "Thu, 11 Dec 2025 11:13:45 +0000",
+      "contentSnippet": "Another set of updates for the 2025.3 versions of ReSharper and Rider has just been released. This release contains important bug-fixes as well as feature updates. Let’s take a look at what’s been improved. Rider 2025.3.0.4 Multi-agent experience in ",
+      "creator": "Sasha Ivanova",
+      "categories": [
+        "ReSharper",
+        "Rider",
+        "Anthropic",
+        "Junie"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=667888"
+    },
+    {
+      "title": "Meet the Islands Theme – The New Default Look for JetBrains IDEs",
+      "link": "https://blog.jetbrains.com/platform/2025/12/meet-the-islands-theme-the-new-default-look-for-jetbrains-ides/",
+      "pubDate": "Mon, 08 Dec 2025 09:53:16 +0000",
+      "contentSnippet": "The Islands theme is now the default look across JetBrains IDEs starting with version 2025.3.This update is more than a visual refresh. It’s our commitment to creating a soft, balanced environment designed to support focus and comfort throughout your",
+      "creator": "Olga Berdnikova",
+      "categories": [
+        "Intellij",
+        "Jetbrains-IDEs",
+        "UI"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=platform&p=664735"
+    },
+    {
+      "title": "5 Stories Of Developers Using JetBrains Rider to Create, Collaborate, and Have Fun",
+      "link": "https://blog.jetbrains.com/dotnet/2025/12/03/5-stories-of-developers-using-jetbrains-rider/",
+      "pubDate": "Wed, 03 Dec 2025 09:33:13 +0000",
+      "contentSnippet": "A year ago, we introduced a free non-commercial use license option for JetBrains Rider, hoping to remove barriers for developers who code with no financial objective in mind for their projects. Recently, we put out a call for your stories – curious t",
+      "creator": "Sasha Ivanova",
+      "categories": [
+        "Rider",
+        "User-Stories"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=663642"
+    },
+    {
+      "title": "dotInsights | December 2025",
+      "link": "https://blog.jetbrains.com/dotnet/2025/12/02/dotinsights-december-2025/",
+      "pubDate": "Tue, 02 Dec 2025 13:38:29 +0000",
+      "contentSnippet": "Did you know? Calling GC.Collect() explicitly forces the garbage collector to run and reclaim memory from unreachable objects. However, it’s generally discouraged to use this method in most applications because the garbage collector is highly optimiz",
+      "creator": "Rachel Appel",
+      "categories": [
+        "Net-Tools"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=661395"
+    },
+    {
+      "title": "ReSharper and Rider 2025.3.0.3: A Fresh Set of Updates Released",
+      "link": "https://blog.jetbrains.com/dotnet/2025/11/27/resharper-and-rider-2025-3-0-3/",
+      "pubDate": "Thu, 27 Nov 2025 13:40:26 +0000",
+      "contentSnippet": "Another set of updates for the 2025.3 versions of ReSharper and Rider has just been released.  Let’s take a look at what’s been improved. ReSharper 2025.3.0.3 The most notable fix of this build is that extension methods from source-only NuGet package",
+      "creator": "Sasha Ivanova",
+      "categories": [
+        "Net-Tools",
+        "ReSharper",
+        "Rider"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=662570"
+    },
+    {
+      "title": "More Updates and Fixes for ReSharper and Rider 2025.3",
+      "link": "https://blog.jetbrains.com/dotnet/2025/11/20/resharper-rider-2025-3-0-2/",
+      "pubDate": "Thu, 20 Nov 2025 16:04:23 +0000",
+      "contentSnippet": "A second set of updates and bug fixes for the 2025.3 release of ReSharper and Rider has just been made public.  Let’s take a look at what’s been improved. ReSharper 2025.3.0.2  For the full list of issues resolved in this build, please refer to our i",
+      "creator": "Sasha Ivanova",
+      "categories": [
+        "Net-Tools",
+        "ReSharper",
+        "Rider",
+        "Junie"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=660447"
+    },
+    {
+      "title": "Database Features in Rider",
+      "link": "https://blog.jetbrains.com/dotnet/2025/11/17/database-features-in-rider/",
+      "pubDate": "Mon, 17 Nov 2025 14:08:01 +0000",
+      "contentSnippet": "Rider provides robust support for working with databases directly within the IDE – powered by DataGrip! Rider and DataGrip smooth development workflows by allowing you to manage and interact with a variety of database systems. This integration enhanc",
+      "creator": "Rachel Appel",
+      "categories": [
+        "Net-Tools",
+        "Data",
+        "Database",
+        "NoSQL",
+        "Rider",
+        "SQL"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=653393"
+    },
+    {
+      "title": "JetBrains Is Heading to VSLive! Orlando",
+      "link": "https://blog.jetbrains.com/dotnet/2025/11/15/jetbrains-is-heading-to-vslive-orlando/",
+      "pubDate": "Sat, 15 Nov 2025 01:33:47 +0000",
+      "contentSnippet": "Next week we’ll be in Orlando, Florida for Visual Studio Live!, and if you work with .NET, we’d like to meet you. You’ll find the JetBrains booth (#118) in the conference expo area throughout the week. Stop by to: We’ll also have special offers avail",
+      "creator": "Mehul Harry",
+      "categories": [
+        "Net-Tools",
+        "Events"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=659521"
+    },
+    {
+      "title": "C# 14 Language Features in ReSharper and Rider 2025.3",
+      "link": "https://blog.jetbrains.com/dotnet/2025/11/11/csharp-14-language-features-in-resharper-and-rider-2025-3/",
+      "pubDate": "Tue, 11 Nov 2025 15:49:55 +0000",
+      "contentSnippet": "Last year marked the first time we shipped ReSharper and Rider side by side with the official .NET SDK release – and we’re happy to announce that we’ve done it again with the 2025.3 release! Download Rider 2025.3 Download ReSharper 2025.3 With .NET 1",
+      "creator": "Matthias Koch",
+      "categories": [
+        "Net-Tools",
+        "How-Tos",
+        "Inspections",
+        "ReSharper",
+        "Rider"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=658258"
+    },
+    {
+      "title": "What’s Been Fixed in Rider 2025.3",
+      "link": "https://blog.jetbrains.com/dotnet/2025/11/11/what-s-been-fixed-in-rider-2025-3/",
+      "pubDate": "Tue, 11 Nov 2025 15:49:14 +0000",
+      "contentSnippet": "Each release of JetBrains Rider is shaped by an ongoing conversation between our team and our users. Your feedback, bug reports, and upvotes complement our internal QA processes and performance tracking, helping us understand how issues manifest acro",
+      "creator": "Sasha Ivanova",
+      "categories": [
+        "Net-Tools",
+        "Rider"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=658299"
+    },
+    {
+      "title": "ReSharper C++ 2025.3: C++26 Language Support, Faster Unreal Engine Startup, and Visual Studio 2026 Compatibility",
+      "link": "https://blog.jetbrains.com/rscpp/2025/11/11/resharper-cpp-2025-3/",
+      "pubDate": "Tue, 11 Nov 2025 15:48:50 +0000",
+      "contentSnippet": "We’re excited to announce that ReSharper C++ 2025.3 is here, bringing major language updates, performance improvements, and a refined UI in the upcoming Microsoft Visual Studio 2026 release. This version advances C++26 support with new language featu",
+      "creator": "Sasha Ivanova",
+      "categories": [
+        "Unreal-Engine"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=rscpp&p=658125"
+    }
+  ],
+  "lastUpdated": "2025-12-23T15:46:51.497Z",
+  "feedTitle": ".NET Tools : Essential productivity kit for .NET and game developers | The JetBrains Blog"
+}
