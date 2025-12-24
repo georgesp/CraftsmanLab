@@ -37,6 +37,11 @@ const RSS_SOURCES = [
     feedUrl: 'https://blog.jetbrains.com/dotnet/feed/',
     maxItems: 15,
   },
+  {
+    slug: 'anthony-giretti-blog',
+    feedUrl: 'https://anthonygiretti.com/feed/',
+    maxItems: 15,
+  },
   // Add more RSS sources here as needed
 ];
 

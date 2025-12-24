@@ -33,15 +33,6 @@ function getPromptTranslation(promptSlug: string, key: string, fallback: string)
   return translated || fallback;
 }
 
-// Helper function to get translated text with fallback - news sources
-function getNewsSourceTranslation(sourceSlug: string, key: string, fallback: string): string {
-  const lang = i18n.language as 'fr' | 'en';
-  const source = rssSources.find((s) => s.meta.slug === sourceSlug);
-  if (!source) return fallback;
-  const translations = source.translations[lang];
-  return (translations as any)[key] || fallback;
-}
-
 type IndexedItem = {
   kind: SearchKind;
   slug: string;

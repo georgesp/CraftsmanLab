@@ -7,7 +7,11 @@
       "pubDate": "Tue, 07 Oct 2025 00:00:00 +0000",
       "contentSnippet": "With the release of .NET 10 just around the corner (next month!), it’s time to take a look at the new features we can expect for C# 14.\nNote: the goal of this post is not to be an exhaustive list of all new features. I will only cover the ones that s",
       "creator": "",
-      "categories": ["C#", "C# 14", ".NET 10"],
+      "categories": [
+        "C#",
+        "C# 14",
+        ".NET 10"
+      ],
       "guid": "https://thomaslevesque.com/2025/10/07/interesting-new-csharp-14-features-coming-with-net-10/"
     },
     {
@@ -16,7 +20,11 @@
       "pubDate": "Thu, 25 Apr 2024 00:00:00 +0000",
       "contentSnippet": "Writing this mostly for future me in case I need it again. Hopefully it can help someone else too!\nSometimes you need to run a GitHub Actions workflow, but it’s not on the default branch yet, because it’s still a work in progress and hasn’t been merg",
       "creator": "",
-      "categories": ["GitHub Actions", "CI/CD", "DevOps"],
+      "categories": [
+        "GitHub Actions",
+        "CI/CD",
+        "DevOps"
+      ],
       "guid": "https://thomaslevesque.com/2024/04/25/running-a-github-actions-workflow-that-doesnt-exist-yet-on-the-default-branch/"
     },
     {
@@ -25,7 +33,11 @@
       "pubDate": "Tue, 01 Nov 2022 00:00:00 +0000",
       "contentSnippet": "Cloudflare Workers Cloudflare Workers is a serverless environment that runs Javascript. Basically, you just write code that handle HTTP requests, similarly to Node.js. The code is deployed globally across the Cloudflare network, which means it’s alwa",
       "creator": "",
-      "categories": ["Cloudflare", "JavaScript", "Serverless"],
+      "categories": [
+        "Cloudflare",
+        "JavaScript",
+        "Serverless"
+      ],
       "guid": "https://thomaslevesque.com/2022/11/01/building-a-url-shortener-in-12-lines-of-code-using-cloudflare-workers/"
     },
     {
@@ -34,7 +46,11 @@
       "pubDate": "Mon, 19 Sep 2022 00:00:00 +0000",
       "contentSnippet": "My blog has been a bit quiet in the last 18 months or so, because, well, life happened… In that time span I became a father, changed jobs twice, and relocated to Canada with my family, so free time has been scarce. Anyway, I recently ran into a probl",
       "creator": "",
-      "categories": ["ASP.NET Core", "JSON", "Serialization"],
+      "categories": [
+        "ASP.NET Core",
+        "JSON",
+        "Serialization"
+      ],
       "guid": "https://thomaslevesque.com/2022/09/19/using-multiple-json-serialization-settings-in-aspnet-core/"
     },
     {
@@ -43,7 +59,11 @@
       "pubDate": "Fri, 12 Nov 2021 00:00:00 +0000",
       "contentSnippet": "I maintain a few libraries that still target .NET Framework 4.5 (among others). .NET 4.5 has long been out of support, but I try to keep supporting older frameworks in my libraries as long as it’s not a major inconvenience, because many people mainta",
       "creator": "",
-      "categories": [".NET Framework", "Visual Studio 2022", "Build"],
+      "categories": [
+        ".NET Framework",
+        "Visual Studio 2022",
+        "Build"
+      ],
       "guid": "https://thomaslevesque.com/2021/11/12/building-a-project-that-target-net-45-in-visual-studio-2022/"
     },
     {
@@ -52,7 +72,11 @@
       "pubDate": "Thu, 04 Nov 2021 00:00:00 +0000",
       "contentSnippet": ".NET 6.0 and C# 10 are just around the corner, so now is a good time to review some of the most interesting new language features!\nRecord structs 📄 Proposal\nRecords were introduced in C# 9 as a simple way to define data types with value equality sem",
       "creator": "",
-      "categories": ["C#", "C# 10", ".NET 6"],
+      "categories": [
+        "C#",
+        "C# 10",
+        ".NET 6"
+      ],
       "guid": "https://thomaslevesque.com/2021/11/04/a-quick-review-of-csharp-10-new-language-features/"
     },
     {
@@ -61,7 +85,12 @@
       "pubDate": "Fri, 19 Mar 2021 00:00:00 +0000",
       "contentSnippet": "We’re reaching the end of this series on records as strongly-typed ids. Sorry for the long delay since the last post… life happened! So far we’ve covered ASP.NET Core model binding, JSON serialization, and EF Core integration. Almost everything is wo",
       "creator": "",
-      "categories": ["C#", "C# 9", "Records", "Strongly-typed IDs"],
+      "categories": [
+        "C#",
+        "C# 9",
+        "Records",
+        "Strongly-typed IDs"
+      ],
       "guid": "https://thomaslevesque.com/2021/03/19/csharp-9-records-as-strongly-typed-ids-part-5-final-bits-and-conclusion/"
     },
     {
@@ -70,7 +99,12 @@
       "pubDate": "Wed, 23 Dec 2020 00:00:00 +0000",
       "contentSnippet": "So far in this series, I showed how to use C# 9 records to declare strongly-typed ids as easily as this:\npublic record ProductId(int Value) : StronglyTypedId<int>(Value); I also explained how to make them work correctly with ASP.NET Core model bindin",
       "creator": "",
-      "categories": ["C#", "C# 9", "Records", "Entity Framework Core"],
+      "categories": [
+        "C#",
+        "C# 9",
+        "Records",
+        "Entity Framework Core"
+      ],
       "guid": "https://thomaslevesque.com/2020/12/23/csharp-9-records-as-strongly-typed-ids-part-4-entity-framework-core-integration/"
     },
     {
@@ -79,7 +113,12 @@
       "pubDate": "Mon, 07 Dec 2020 00:00:00 +0000",
       "contentSnippet": "In the previous post in this series, we noticed that the strongly-typed id was serialized to JSON in an unexpected way:\n{ \"id\": { \"value\": 1 }, \"name\": \"Apple\", \"unitPrice\": 0.8 } When you think about it, it’s not really unexpected: the strongly-type",
       "creator": "",
-      "categories": ["C#", "C# 9", "Records", "JSON"],
+      "categories": [
+        "C#",
+        "C# 9",
+        "Records",
+        "JSON"
+      ],
       "guid": "https://thomaslevesque.com/2020/12/07/csharp-9-records-as-strongly-typed-ids-part-3-json-serialization/"
     },
     {
@@ -88,7 +127,12 @@
       "pubDate": "Mon, 23 Nov 2020 00:00:00 +0000",
       "contentSnippet": "Last time, I explained how easy it is to use C# 9 record types as strongly-typed ids:\npublic record ProductId(int Value); But unfortunately, we’re not quite done yet: there are a few issues to fix before our strongly-typed ids are really usable. For ",
       "creator": "",
-      "categories": ["C#", "C# 9", "Records", "ASP.NET Core"],
+      "categories": [
+        "C#",
+        "C# 9",
+        "Records",
+        "ASP.NET Core"
+      ],
       "guid": "https://thomaslevesque.com/2020/11/23/csharp-9-records-as-strongly-typed-ids-part-2-aspnet-core-route-and-query-parameters/"
     },
     {
@@ -97,7 +141,12 @@
       "pubDate": "Fri, 30 Oct 2020 00:00:00 +0000",
       "contentSnippet": "Strongly-typed ids Entities typically have integer, GUID or string ids, because those types are supported directly by databases. However, if all your entities have ids of the same type, it becomes pretty easy to mix them up, and use the id of a Produ",
       "creator": "",
-      "categories": ["C#", "C# 9", "Records", "Strongly-typed IDs"],
+      "categories": [
+        "C#",
+        "C# 9",
+        "Records",
+        "Strongly-typed IDs"
+      ],
       "guid": "https://thomaslevesque.com/2020/10/30/using-csharp-9-records-as-strongly-typed-ids/"
     },
     {
@@ -106,7 +155,11 @@
       "pubDate": "Sun, 27 Sep 2020 00:00:00 +0000",
       "contentSnippet": "Dependency injection: the good and the bad Dependency injection (DI) is a great pattern, which can really help make your code cleaner, more decoupled and more testable. There are many DI libraries, like Autofac, Lamar (StructureMap’s successor), Cast",
       "creator": "",
-      "categories": ["Dependency Injection", "Castle", ".NET"],
+      "categories": [
+        "Dependency Injection",
+        "Castle",
+        ".NET"
+      ],
       "guid": "https://thomaslevesque.com/2020/09/27/automatic-factory-with-microsoft-extensions-dependencyinjection-and-castle-dynamicproxy/"
     },
     {
@@ -115,7 +168,11 @@
       "pubDate": "Thu, 17 Sep 2020 00:00:00 +0000",
       "contentSnippet": "I’ve been using Azure Cosmos DB on a fairly regular basis for the last 2 years or so. It’s a pretty good database, but one thing has always bothered me: the lack of a proper tool to query and modify data in the database. Basically, here are the curre",
       "creator": "",
-      "categories": ["Azure", "Cosmos DB", "Database"],
+      "categories": [
+        "Azure",
+        "Cosmos DB",
+        "Database"
+      ],
       "guid": "https://thomaslevesque.com/2020/09/17/introducing-cosmos-db-studio/"
     },
     {
@@ -124,7 +181,11 @@
       "pubDate": "Mon, 31 Aug 2020 00:00:00 +0000",
       "contentSnippet": "Most JSON converters are fairly simple, and typically self-contained. But once in a while, you need to do something a little more complex in a converter, and you end up needing to call a service. However, there’s no built-in dependency injection in S",
       "creator": "",
-      "categories": ["JSON", "Serialization", ".NET"],
+      "categories": [
+        "JSON",
+        "Serialization",
+        ".NET"
+      ],
       "guid": "https://thomaslevesque.com/2020/08/31/inject-service-into-system-text-json-converter/"
     },
     {
@@ -133,10 +194,14 @@
       "pubDate": "Thu, 23 Jul 2020 00:00:00 +0000",
       "contentSnippet": "HTTP headers are key/value pairs sent at the beginning of a request or response. According to the grammar in RFC 7230, a field could have an empty value. In practice, it probably doesn’t make much sense: semantically, a header with an empty value or ",
       "creator": "",
-      "categories": ["ASP.NET Core", "IIS", "HTTP"],
+      "categories": [
+        "ASP.NET Core",
+        "IIS",
+        "HTTP"
+      ],
       "guid": "https://thomaslevesque.com/2020/07/23/aspnet-core-iis-and-empty-http-headers/"
     }
   ],
-  "lastUpdated": "2025-12-23T15:46:52.204Z",
+  "lastUpdated": "2025-12-24T13:13:48.316Z",
   "feedTitle": "Thomas Levesque's .NET Blog"
 }

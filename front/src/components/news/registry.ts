@@ -22,6 +22,10 @@ import { jetbrainsDotnetBlogMeta } from './jetbrains-dotnet-blog/meta';
 import jetbrainsDotnetBlogFr from './jetbrains-dotnet-blog/fr.json';
 import jetbrainsDotnetBlogEn from './jetbrains-dotnet-blog/en.json';
 import jetbrainsDotnetBlogData from './jetbrains-dotnet-blog/data.json';
+import { anthonyGirettiBlogMeta } from './anthony-giretti-blog/meta';
+import anthonyGirettiBlogFr from './anthony-giretti-blog/fr.json';
+import anthonyGirettiBlogEn from './anthony-giretti-blog/en.json';
+import anthonyGirettiBlogData from './anthony-giretti-blog/data.json';
 import type { RssFeedData } from '../../pages/News/types';
 
 export interface RssSource {
@@ -92,6 +96,14 @@ export const rssSources: RssSource[] = [
       en: jetbrainsDotnetBlogEn,
     },
     data: jetbrainsDotnetBlogData as RssFeedData,
+  },
+  {
+    meta: anthonyGirettiBlogMeta,
+    translations: {
+      fr: anthonyGirettiBlogFr,
+      en: anthonyGirettiBlogEn,
+    },
+    data: anthonyGirettiBlogData as RssFeedData,
   },
 ];
 
