@@ -3,7 +3,7 @@ import type { RssSourceMeta } from '../microsoft-devblogs/meta';
 export const anthonyGirettiBlogMeta: RssSourceMeta = {
   slug: 'anthony-giretti-blog',
   feedUrl: 'https://anthonygiretti.com/feed/',
-  maxItems: 15,
+  maxItems: 30,
   searchKeywords: [
     'anthony giretti',
     'giretti',

@@ -2,6 +2,23 @@
   "source": "dotnettips-blog",
   "items": [
     {
+      "title": "Supercharging Application Performance with Intelligent Client-Side Caching",
+      "link": "https://dotnettips.wordpress.com/2025/12/28/supercharging-application-performance-with-intelligent-client-side-caching/",
+      "pubDate": "Sun, 28 Dec 2025 07:00:00 +0000",
+      "contentSnippet": "This excerpt discusses enhancing Microsoft .NET application performance by minimizing network calls. The author emphasizes client-side caching with Spargine’s InMemoryCache, which drastically improves responsiveness and scalability for costly operati",
+      "creator": "dotNetDave",
+      "categories": [
+        ".NET",
+        "Performance",
+        "Spargine",
+        "Cache",
+        "Caching",
+        "Code Performance",
+        "Reflection"
+      ],
+      "guid": "http://dotnettips.wordpress.com/?p=15991"
+    },
+    {
       "title": "Code It Anyway You Want: Initializing Reference Type Static Fields Inline for Enhanced Code Readability",
       "link": "https://dotnettips.wordpress.com/2025/12/21/code-it-anyway-you-want-initializing-reference-type-static-fields-inline-for-enhanced-code-readability/",
       "pubDate": "Sun, 21 Dec 2025 07:00:00 +0000",
@@ -138,24 +155,8 @@
         "Validation"
       ],
       "guid": "http://dotnettips.wordpress.com/?p=15619"
-    },
-    {
-      "title": "Defensive Programming Rule #1: Anticipate Errors and Eliminate Bugs",
-      "link": "https://dotnettips.wordpress.com/2025/10/26/defensive-programming-rule-1-anticipate-errors-and-eliminate-bugs/",
-      "pubDate": "Sun, 26 Oct 2025 06:00:00 +0000",
-      "contentSnippet": "Defensive programming emphasizes anticipating potential failures in code, treating every line as a possible error point. Developers should use structured exception handling, provide meaningful error messages, and maintain system integrity. Tools like",
-      "creator": "dotNetDave",
-      "categories": [
-        ".NET",
-        "Bugs",
-        "C#",
-        "Code Quality",
-        "Defensive Programming",
-        "Validation"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=15607"
     }
   ],
-  "lastUpdated": "2025-12-24T13:13:48.363Z",
+  "lastUpdated": "2025-12-31T15:03:45.803Z",
   "feedTitle": "dotNetTips.com"
 }

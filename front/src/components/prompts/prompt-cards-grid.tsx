@@ -81,13 +81,14 @@ export const PromptCardsGrid: React.FC<Props> = ({
                       justifyContent: 'center',
                       width: 36,
                       height: 36,
-                      border: `1px solid ${COLORS.promptsIcon}`,
-                      borderRadius: 1,
+                      backgroundColor: COLORS.promptsIcon,
+                      borderRadius: '50%',
+                      flexShrink: 0,
                     }}
                   >
                     <TextSnippetIcon
                       fontSize="large"
-                      sx={{ color: COLORS.promptsIcon, fontSize: 20 }}
+                      sx={{ color: '#FFFFFF', fontSize: 20 }}
                     />
                   </Box>
                   <Typography

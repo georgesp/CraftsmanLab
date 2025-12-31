@@ -10,37 +10,37 @@ const RSS_SOURCES = [
   {
     slug: 'microsoft-devblogs',
     feedUrl: 'https://devblogs.microsoft.com/dotnet/feed/',
-    maxItems: 20,
+    maxItems: 30,
   },
   {
     slug: 'developpez-dotnet',
     feedUrl: 'https://dotnet.developpez.com/index/rss',
-    maxItems: 15,
+    maxItems: 30,
   },
   {
     slug: 'jon-skeet-blog',
     feedUrl: 'https://codeblog.jonskeet.uk/feed/',
-    maxItems: 15,
+    maxItems: 30,
   },
   {
     slug: 'thomas-levesque-blog',
     feedUrl: 'https://thomaslevesque.com/index.xml',
-    maxItems: 15,
+    maxItems: 30,
   },
   {
     slug: 'dotnettips-blog',
     feedUrl: 'https://dotnettips.wordpress.com/feed/',
-    maxItems: 15,
+    maxItems: 30,
   },
   {
     slug: 'jetbrains-dotnet-blog',
     feedUrl: 'https://blog.jetbrains.com/dotnet/feed/',
-    maxItems: 15,
+    maxItems: 30,
   },
   {
     slug: 'anthony-giretti-blog',
     feedUrl: 'https://anthonygiretti.com/feed/',
-    maxItems: 15,
+    maxItems: 30,
   },
   // Add more RSS sources here as needed
 ];

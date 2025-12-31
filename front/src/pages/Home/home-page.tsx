@@ -116,7 +116,21 @@ export const HomePage: React.FC = () => {
                         </Box>
 
                         <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, mb: 1 }}>
-                          <NewspaperIcon sx={{ color: 'primary.main', fontSize: 20, mt: 0.5 }} />
+                          <Box
+                            sx={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              width: 36,
+                              height: 36,
+                              backgroundColor: '#4caf50',
+                              borderRadius: '50%',
+                              mt: 0.2,
+                              flexShrink: 0,
+                            }}
+                          >
+                            <NewspaperIcon sx={{ color: '#FFFFFF', fontSize: 20 }} />
+                          </Box>
                           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flex: 1, gap: 2 }}>
                             <Typography
                               variant="h6"

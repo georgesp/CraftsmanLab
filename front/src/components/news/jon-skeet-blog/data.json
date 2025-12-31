@@ -2,6 +2,18 @@
   "source": "jon-skeet-blog",
   "items": [
     {
+      "title": "Changing Immutable Collections",
+      "link": "https://codeblog.jonskeet.uk/2025/12/31/changing-immutable-collections/",
+      "pubDate": "Wed, 31 Dec 2025 10:32:45 +0000",
+      "contentSnippet": "As I’ve written before, I’m leaning heavily into immutability in the election site code. Until September 2025 (it’s taken a long time to get round to writing this blog post) that meant a combination of records, ImmutableList<T> and ImmutableDictionar",
+      "creator": "jonskeet",
+      "categories": [
+        "C#",
+        "Election 2029"
+      ],
+      "guid": "http://codeblog.jonskeet.uk/2025/12/31/changing-immutable-collections/"
+    },
+    {
       "title": "Records and the ‘with’ operator, redux",
       "link": "https://codeblog.jonskeet.uk/2025/07/29/records-and-the-with-operator-redux/",
       "pubDate": "Tue, 29 Jul 2025 20:00:38 +0000",
@@ -103,20 +115,8 @@
         "Election 2029"
       ],
       "guid": "http://codeblog.jonskeet.uk/2025/02/08/election-2029-the-impossible-exception-solved/"
-    },
-    {
-      "title": "Election 2029: An Impossible Exception",
-      "link": "https://codeblog.jonskeet.uk/2025/02/07/election-2029-an-impossible-exception/",
-      "pubDate": "Fri, 07 Feb 2025 23:32:01 +0000",
-      "contentSnippet": "I really thought I’d already written a first blog post about my Election 2029 site (https://election2029.uk) but I appear to be further behind on my blogging than I’d thought. This is therefore a little odd first post in the series, but never mind. T",
-      "creator": "jonskeet",
-      "categories": [
-        "Diagnostics",
-        "Election 2029"
-      ],
-      "guid": "http://codeblog.jonskeet.uk/2025/02/07/election-2029-an-impossible-exception/"
     }
   ],
-  "lastUpdated": "2025-12-24T13:13:49.214Z",
+  "lastUpdated": "2025-12-31T15:03:46.356Z",
   "feedTitle": "Jon Skeet's coding blog"
 }

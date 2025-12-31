@@ -126,11 +126,13 @@ git push
 
 | Slug | URL du Flux | Max Items | Fréquence Typique |
 |------|-------------|-----------|-------------------|
-| `microsoft-devblogs` | https://devblogs.microsoft.com/dotnet/feed/ | 20 | Quotidienne |
-| `developpez-dotnet` | https://dotnet.developpez.com/index/rss | 15 | Hebdomadaire |
-| `jon-skeet-blog` | https://codeblog.jonskeet.uk/feed/ | 15 | Mensuelle |
-| `thomas-levesque-blog` | https://thomaslevesque.com/index.xml | 15 | Mensuelle |
-| `dotnettips-blog` | https://dotnettips.wordpress.com/feed/ | 15 | Hebdomadaire |
+| `microsoft-devblogs` | https://devblogs.microsoft.com/dotnet/feed/ | 30 | Quotidienne |
+| `developpez-dotnet` | https://dotnet.developpez.com/index/rss | 30 | Hebdomadaire |
+| `jon-skeet-blog` | https://codeblog.jonskeet.uk/feed/ | 30 | Mensuelle |
+| `thomas-levesque-blog` | https://thomaslevesque.com/index.xml | 30 | Mensuelle |
+| `dotnettips-blog` | https://dotnettips.wordpress.com/feed/ | 30 | Hebdomadaire |
+| `jetbrains-dotnet-blog` | https://blog.jetbrains.com/dotnet/feed/ | 30 | Hebdomadaire |
+| `anthony-giretti-blog` | https://anthonygiretti.com/feed/ | 30 | Mensuelle |
 
 ## Automatisation (CI/CD)
 
@@ -262,7 +264,9 @@ Si vous souhaitez corriger ou personnaliser les catégories d'un article :
 - [ ] Vérifier la section "Dernières actualités" sur la page d'accueil
 - [ ] Tester les filtres par source et par catégorie
 - [ ] Tester la recherche d'articles
-- [ ] Committer les changements (`data.json`)
+- [ ] **Vérifier le thème "Autres" pour identifier de nouvelles catégories fréquentes**
+- [ ] **Si nécessaire, mettre à jour `categoryThemes` dans `news-page.tsx`**
+- [ ] Committer les changements (`data.json` et éventuellement `news-page.tsx`)
 - [ ] Pousser sur le repository
 
 ## Commandes Rapides
@@ -289,6 +293,7 @@ git push
 4. **Backup** : Garder un historique des `data.json` via Git
 5. **Performance** : Le script utilise `Promise.all()` pour récupérer tous les flux en parallèle
 6. **Catégories personnalisées** : Profitez de la préservation des catégories pour normaliser et améliorer les filtres
+7. **Nouveaux mots clés** : Lorsque de nouveaux mots clés (technologies, frameworks, outils) apparaissent dans les flux RSS, il faut les ajouter dans la définition des catégories dans le fichier `front/src/pages/News/news-page.tsx` (objet `categoryThemes`) pour qu'ils soient correctement groupés par thème dans l'interface utilisateur
 
 ## Technique : Préservation des Catégories
 
@@ -318,6 +323,90 @@ const items = feed.items.map(item => {
 ```
 
 **Identifiant utilisé :** Le champ `guid` (ou `link` en fallback) sert d'identifiant unique pour matcher les articles existants.
+
+## Mise à Jour des Catégories dans l'Interface
+
+### Contexte
+Lorsque de nouveaux mots clés (technologies, frameworks, outils, plateformes) apparaissent dans les flux RSS, ils doivent être ajoutés dans le fichier `front/src/pages/News/news-page.tsx` pour être correctement regroupés par thème dans l'interface utilisateur.
+
+### Où modifier
+Le fichier à modifier est : [front/src/pages/News/news-page.tsx](../src/pages/News/news-page.tsx)
+
+L'objet `categoryThemes` (lignes 16-28) définit le regroupement des catégories par thème :
+
+```typescript
+const categoryThemes: Record<string, string[]> = {
+  'Sources': [], // Les sources seront ajoutées dynamiquement
+  'Langages': ['.NET', 'C#', 'F#', 'Swift', 'TypeScript', 'JavaScript', 'Python', 'Java', 'Kotlin', 'Rust', 'Go'],
+  'Frameworks': ['.NET MAUI', 'ASP.NET', 'Blazor', 'React', 'Angular', 'Vue', 'Entity Framework', 'ML.NET'],
+  'Plateformes': ['Azure', 'Azure DevOPs', 'GitHub', 'AWS', 'Google Cloud', 'Kubernetes', 'Docker'],
+  'Mobile': ['iOS', 'Android', 'Mobile', 'Xamarin', 'Widgets'],
+  'Testing': ['Testing', 'Unit Testing', 'Integration Testing', 'Test Automation'],
+  'DevOps': ['CI/CD', 'DevOps', 'Deployment', 'Monitoring'],
+  'Outils': ['Visual Studio', 'VS Code', 'Xcode', 'Rider', 'Git'],
+  'Architecture': ['Microservices', 'Design Patterns', 'Architecture', 'Cloud Native'],
+  'Autres': []
+};
+```
+
+### Quand mettre à jour
+
+Après avoir rafraîchi les flux RSS, vérifiez si de nouvelles catégories apparaissent fréquemment :
+
+1. **Lancez le site en mode développement** :
+   ```bash
+   npm run dev
+   ```
+
+2. **Accédez à la page News** : `/news`
+
+3. **Vérifiez le thème "Autres"** : Si des catégories importantes apparaissent dans le thème "Autres", elles devraient probablement être ajoutées à un thème spécifique
+
+4. **Ajoutez les nouveaux mots clés** dans `categoryThemes` dans le thème approprié
+
+### Exemple de mise à jour
+
+Si vous remarquez que ".NET 10" ou "IA" apparaissent fréquemment dans "Autres" :
+
+```typescript
+const categoryThemes: Record<string, string[]> = {
+  'Sources': [],
+  'Langages': ['.NET', '.NET 10', 'C#', 'F#', 'Swift', 'TypeScript', 'JavaScript', 'Python', 'Java', 'Kotlin', 'Rust', 'Go'],
+  'Frameworks': ['.NET MAUI', 'ASP.NET', 'Blazor', 'React', 'Angular', 'Vue', 'Entity Framework', 'ML.NET'],
+  'Plateformes': ['Azure', 'Azure DevOPs', 'GitHub', 'AWS', 'Google Cloud', 'Kubernetes', 'Docker'],
+  'IA & ML': ['IA', 'AI', 'Copilot', 'GitHub Copilot', 'GPT', 'Machine Learning', 'ML.NET'], // Nouveau thème
+  'Mobile': ['iOS', 'Android', 'Mobile', 'Xamarin', 'Widgets'],
+  'Testing': ['Testing', 'Unit Testing', 'Integration Testing', 'Test Automation'],
+  'DevOps': ['CI/CD', 'DevOps', 'Deployment', 'Monitoring'],
+  'Outils': ['Visual Studio', 'VS Code', 'Xcode', 'Rider', 'Git'],
+  'Architecture': ['Microservices', 'Design Patterns', 'Architecture', 'Cloud Native'],
+  'Autres': []
+};
+```
+
+### Fonctionnement du Matching
+
+Le système fait un matching bidirectionnel (insensible à la casse) :
+- Si une catégorie **contient** un mot clé → match
+- Si un mot clé **contient** une catégorie → match
+
+Par exemple :
+- `.NET 10` matchera avec `.NET` dans le thème "Langages"
+- `ASP.NET Core` matchera avec `ASP.NET` dans le thème "Frameworks"
+- `Visual Studio 2022` matchera avec `Visual Studio` dans le thème "Outils"
+
+### Checklist de Mise à Jour des Catégories
+
+Après avoir rafraîchi les flux RSS :
+
+- [ ] Tester localement avec `npm run dev`
+- [ ] Consulter la page `/news`
+- [ ] Vérifier le thème "Autres"
+- [ ] Identifier les catégories fréquentes mal placées
+- [ ] Ajouter les nouveaux mots clés dans `categoryThemes`
+- [ ] Créer de nouveaux thèmes si nécessaire
+- [ ] Re-tester l'interface pour vérifier le groupement
+- [ ] Committer les modifications de `news-page.tsx`
 
 ## Génération Intelligente de Catégories
 

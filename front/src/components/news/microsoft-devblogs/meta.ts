@@ -12,7 +12,7 @@ export const microsoftDevBlogsMeta: RssSourceMeta = {
   feedUrl: 'https://devblogs.microsoft.com/dotnet/feed/',
   icon: '/microsoft-icon.png',
   color: '#0078D4',
-  maxItems: 20,
+  maxItems: 30,
   searchKeywords: [
     '.net',
     'dotnet',

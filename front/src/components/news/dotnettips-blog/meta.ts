@@ -5,7 +5,7 @@ export const dotnetTipsBlogMeta: RssSourceMeta = {
   feedUrl: 'https://dotnettips.wordpress.com/feed/',
   icon: '/dotnettips-icon.png',
   color: '#512BD4',
-  maxItems: 15,
+  maxItems: 30,
   searchKeywords: [
     'dotnettips',
     '.net tips',

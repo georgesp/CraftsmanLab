@@ -1,2 +1,2 @@
 export { NewsPage } from './news-page';
-export type { NewsItem, NewsFeed } from './types';
+export type { NewsItem } from './types';

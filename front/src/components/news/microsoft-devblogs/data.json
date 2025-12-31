@@ -2,6 +2,30 @@
   "source": "microsoft-devblogs",
   "items": [
     {
+      "title": "Top .NET Blog Posts of 2025",
+      "link": "https://devblogs.microsoft.com/dotnet/top-dotnet-blogs-posts-of-2025/",
+      "pubDate": "Tue, 30 Dec 2025 18:05:00 +0000",
+      "contentSnippet": "Let's look back at the most-read .NET blog posts published in 2025, from .NET 10 to AI, performance, and developer tooling.\nThe post Top .NET Blog Posts of 2025 appeared first on .NET Blog.",
+      "creator": "Jon Galloway",
+      "categories": [
+        ".NET",
+        ".NET Aspire",
+        "AI",
+        "C#",
+        "Cloud Native",
+        "Performance",
+        "Visual Studio",
+        "Visual Studio Code",
+        ".NET 10",
+        "2025 wrapped",
+        "aspire",
+        "community",
+        "performance",
+        "tooling"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59259"
+    },
+    {
       "title": "Microsoft.Testing.Platform Now Fully Supported in Azure DevOps",
       "link": "https://devblogs.microsoft.com/dotnet/microsoft-testing-platform-azure-retry/",
       "pubDate": "Tue, 16 Dec 2025 18:05:00 +0000",
@@ -140,20 +164,8 @@
         "Azure"
       ],
       "guid": "https://devblogs.microsoft.com/dotnet/?p=59006"
-    },
-    {
-      "title": "Reinventing how .NET Builds and Ships (Again)",
-      "link": "https://devblogs.microsoft.com/dotnet/reinventing-how-dotnet-builds-and-ships-again/",
-      "pubDate": "Thu, 20 Nov 2025 18:05:00 +0000",
-      "contentSnippet": "An exploration of how .NET evolved from a distributed build system to Unified Build, dramatically reducing complexity and build times while improving flexibility and predictability for shipping .NET releases.\nThe post Reinventing how .NET Builds and ",
-      "creator": "Matt Mitchell",
-      "categories": [
-        ".NET",
-        "Infrastructure"
-      ],
-      "guid": "https://devblogs.microsoft.com/dotnet/?p=58953"
     }
   ],
-  "lastUpdated": "2025-12-24T13:13:48.213Z",
+  "lastUpdated": "2025-12-31T15:03:45.657Z",
   "feedTitle": ".NET Blog"
 }

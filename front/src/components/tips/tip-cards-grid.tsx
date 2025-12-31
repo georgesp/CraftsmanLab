@@ -113,13 +113,14 @@ export const TipCardsGrid: React.FC<Props> = ({
                       justifyContent: 'center',
                       width: 36,
                       height: 36,
-                      border: `1px solid ${COLORS.tipsIcon}`,
-                      borderRadius: 1,
+                      backgroundColor: COLORS.tipsIcon,
+                      borderRadius: '50%',
+                      flexShrink: 0,
                     }}
                   >
                     <TipsAndUpdatesIcon
                       fontSize="large"
-                      sx={{ color: COLORS.tipsIcon, fontSize: 20 }}
+                      sx={{ color: '#FFFFFF', fontSize: 20 }}
                     />
                   </Box>
                   <Typography

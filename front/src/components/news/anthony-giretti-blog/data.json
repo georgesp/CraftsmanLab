@@ -171,7 +171,7 @@
         ".NET",
         "Azure",
         "C#",
-        ".NET8 Isolated",
+        ".NET 8 Isolated",
         "ASP.NET Core",
         "Azure Functions"
       ],
@@ -206,8 +206,73 @@
         "Azure Functions"
       ],
       "guid": "https://anthonygiretti.com/?p=19717"
+    },
+    {
+      "title": "From .NET 6 to .NET 8, my migration experience: Using OpenApi on Azure Function on .NET 8 isolated",
+      "link": "https://anthonygiretti.com/2024/11/04/net-from-net-6-to-net-8-my-migration-experience-using-openapi-on-azure-function-on-net-8-isolated/",
+      "pubDate": "Sun, 03 Nov 2024 23:47:37 +0000",
+      "contentSnippet": "Introduction I recently migrated an Azure function based on HttpTriggers. This function was running on...",
+      "creator": "anthonygiretti",
+      "categories": [
+        ".NET",
+        "C#",
+        ".NET 8 Isolated",
+        "Azure Functions",
+        "OpenAPI",
+        "Swagger"
+      ],
+      "guid": "https://anthonygiretti.com/?p=19709"
+    },
+    {
+      "title": "From .NET 6 to .NET 8, my migration experience: Entity Framework Core 8",
+      "link": "https://anthonygiretti.com/2024/10/07/from-net-6-to-net-8-my-migration-experience-entity-framework-core-8/",
+      "pubDate": "Sun, 06 Oct 2024 23:08:25 +0000",
+      "contentSnippet": "Introduction We finally migrated our web applications to .NET 8 from .NET 6. (And yes...",
+      "creator": "anthonygiretti",
+      "categories": [
+        ".NET",
+        ".NET 8",
+        "Entity Framework Core 8"
+      ],
+      "guid": "https://anthonygiretti.com/?p=19703"
+    },
+    {
+      "title": "NDepend is the must-have tool for .NET applications. Discovering the report feature at a glance.",
+      "link": "https://anthonygiretti.com/2024/02/11/ndepend-is-the-must-have-tool-for-net-applications-discovering-the-report-feature-at-a-glance/",
+      "pubDate": "Sun, 11 Feb 2024 22:48:06 +0000",
+      "contentSnippet": "Introduction In computer science and software engineering, in particular, software quality is an overall assessment...",
+      "creator": "anthonygiretti",
+      "categories": [
+        ".NET",
+        "Extensibility",
+        "NDepend"
+      ],
+      "guid": "https://anthonygiretti.com/?p=19686"
+    },
+    {
+      "title": "C# 12: Introducing the spread operator on collections",
+      "link": "https://anthonygiretti.com/2024/01/03/c-12-introducing-the-spread-operator-on-collections/",
+      "pubDate": "Wed, 03 Jan 2024 02:39:28 +0000",
+      "contentSnippet": "Introduction .NET 8 and C# 12 are available in preview and I’m glad to share...",
+      "creator": "anthonygiretti",
+      "categories": [
+        "C#",
+        "C# 12"
+      ],
+      "guid": "https://anthonygiretti.com/?p=19679"
+    },
+    {
+      "title": "Anthony DNI",
+      "link": "https://anthonygiretti.com/2023/07/24/anthony-dni/",
+      "pubDate": "Mon, 24 Jul 2023 14:07:24 +0000",
+      "contentSnippet": "(289) 796-2649",
+      "creator": "anthonygiretti",
+      "categories": [
+        "Non classé"
+      ],
+      "guid": "https://anthonygiretti.com/?p=19698"
     }
   ],
-  "lastUpdated": "2025-12-24T13:13:52.346Z",
+  "lastUpdated": "2025-12-31T15:03:49.252Z",
   "feedTitle": "Anthony Giretti's .NET blog"
 }

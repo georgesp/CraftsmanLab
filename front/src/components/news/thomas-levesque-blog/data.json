@@ -34,8 +34,10 @@
       "contentSnippet": "Cloudflare Workers Cloudflare Workers is a serverless environment that runs Javascript. Basically, you just write code that handle HTTP requests, similarly to Node.js. The code is deployed globally across the Cloudflare network, which means it’s alwa",
       "creator": "",
       "categories": [
-        "Cloudflare",
+        ".NET",
+        "HTTP",
         "JavaScript",
+        "Cloudflare",
         "Serverless"
       ],
       "guid": "https://thomaslevesque.com/2022/11/01/building-a-url-shortener-in-12-lines-of-code-using-cloudflare-workers/"
@@ -49,7 +51,7 @@
       "categories": [
         "ASP.NET Core",
         "JSON",
-        "Serialization"
+        "Configuration"
       ],
       "guid": "https://thomaslevesque.com/2022/09/19/using-multiple-json-serialization-settings-in-aspnet-core/"
     },
@@ -73,9 +75,10 @@
       "contentSnippet": ".NET 6.0 and C# 10 are just around the corner, so now is a good time to review some of the most interesting new language features!\nRecord structs 📄 Proposal\nRecords were introduced in C# 9 as a simple way to define data types with value equality sem",
       "creator": "",
       "categories": [
-        "C#",
+        ".NET 6",
         "C# 10",
-        ".NET 6"
+        "API",
+        "Records"
       ],
       "guid": "https://thomaslevesque.com/2021/11/04/a-quick-review-of-csharp-10-new-language-features/"
     },
@@ -86,10 +89,11 @@
       "contentSnippet": "We’re reaching the end of this series on records as strongly-typed ids. Sorry for the long delay since the last post… life happened! So far we’ve covered ASP.NET Core model binding, JSON serialization, and EF Core integration. Almost everything is wo",
       "creator": "",
       "categories": [
-        "C#",
+        "ASP.NET Core",
         "C# 9",
-        "Records",
-        "Strongly-typed IDs"
+        "JSON",
+        "Entity Framework Core",
+        "Records"
       ],
       "guid": "https://thomaslevesque.com/2021/03/19/csharp-9-records-as-strongly-typed-ids-part-5-final-bits-and-conclusion/"
     },
@@ -100,10 +104,11 @@
       "contentSnippet": "So far in this series, I showed how to use C# 9 records to declare strongly-typed ids as easily as this:\npublic record ProductId(int Value) : StronglyTypedId<int>(Value); I also explained how to make them work correctly with ASP.NET Core model bindin",
       "creator": "",
       "categories": [
-        "C#",
+        "ASP.NET Core",
         "C# 9",
-        "Records",
-        "Entity Framework Core"
+        "Database",
+        "Entity Framework Core",
+        "Records"
       ],
       "guid": "https://thomaslevesque.com/2020/12/23/csharp-9-records-as-strongly-typed-ids-part-4-entity-framework-core-integration/"
     },
@@ -114,10 +119,9 @@
       "contentSnippet": "In the previous post in this series, we noticed that the strongly-typed id was serialized to JSON in an unexpected way:\n{ \"id\": { \"value\": 1 }, \"name\": \"Apple\", \"unitPrice\": 0.8 } When you think about it, it’s not really unexpected: the strongly-type",
       "creator": "",
       "categories": [
-        "C#",
         "C# 9",
-        "Records",
-        "JSON"
+        "JSON",
+        "Records"
       ],
       "guid": "https://thomaslevesque.com/2020/12/07/csharp-9-records-as-strongly-typed-ids-part-3-json-serialization/"
     },
@@ -128,10 +132,9 @@
       "contentSnippet": "Last time, I explained how easy it is to use C# 9 record types as strongly-typed ids:\npublic record ProductId(int Value); But unfortunately, we’re not quite done yet: there are a few issues to fix before our strongly-typed ids are really usable. For ",
       "creator": "",
       "categories": [
-        "C#",
+        "ASP.NET Core",
         "C# 9",
-        "Records",
-        "ASP.NET Core"
+        "Records"
       ],
       "guid": "https://thomaslevesque.com/2020/11/23/csharp-9-records-as-strongly-typed-ids-part-2-aspnet-core-route-and-query-parameters/"
     },
@@ -156,9 +159,8 @@
       "contentSnippet": "Dependency injection: the good and the bad Dependency injection (DI) is a great pattern, which can really help make your code cleaner, more decoupled and more testable. There are many DI libraries, like Autofac, Lamar (StructureMap’s successor), Cast",
       "creator": "",
       "categories": [
-        "Dependency Injection",
-        "Castle",
-        ".NET"
+        "Best Practices",
+        "Dependency Injection"
       ],
       "guid": "https://thomaslevesque.com/2020/09/27/automatic-factory-with-microsoft-extensions-dependencyinjection-and-castle-dynamicproxy/"
     },
@@ -183,8 +185,7 @@
       "creator": "",
       "categories": [
         "JSON",
-        "Serialization",
-        ".NET"
+        "Dependency Injection"
       ],
       "guid": "https://thomaslevesque.com/2020/08/31/inject-service-into-system-text-json-converter/"
     },
@@ -200,8 +201,185 @@
         "HTTP"
       ],
       "guid": "https://thomaslevesque.com/2020/07/23/aspnet-core-iis-and-empty-http-headers/"
+    },
+    {
+      "title": "Exposing a custom type as a JSON string in an ASP.NET Core API",
+      "link": "https://thomaslevesque.com/2020/06/27/exposing-custom-type-as-json-string-in-asp-net-core-api/",
+      "pubDate": "Sat, 27 Jun 2020 00:00:00 +0000",
+      "contentSnippet": "Sometimes your API needs to expose a non-primitive type that has a “natural” string representation. For instance, a standard representation for a duration is the ISO 8601 format, where “1 month, 2 days, 3 hours and 4 minutes” can be represented as P1",
+      "creator": "",
+      "categories": [
+        "ASP.NET Core",
+        "JSON",
+        "API"
+      ],
+      "guid": "https://thomaslevesque.com/2020/06/27/exposing-custom-type-as-json-string-in-asp-net-core-api/"
+    },
+    {
+      "title": "Git tip: how to fix an accidental commit on the wrong branch",
+      "link": "https://thomaslevesque.com/2020/05/29/git-tip-how-to-fix-an-accidental-commit-on-the-wrong-branch/",
+      "pubDate": "Fri, 29 May 2020 00:00:00 +0000",
+      "contentSnippet": "Oh no, you just accidentally commited to master, when you were supposed to work on a feature branch! How to fix it? It’s actually pretty easy with Git!\nA common Git workflow nowadays is the “feature branch” workflow: you can’t push directly to the “m",
+      "creator": "",
+      "categories": [
+        "Git"
+      ],
+      "guid": "https://thomaslevesque.com/2020/05/29/git-tip-how-to-fix-an-accidental-commit-on-the-wrong-branch/"
+    },
+    {
+      "title": "Exciting new features in C# 9",
+      "link": "https://thomaslevesque.com/2020/05/25/exciting-new-features-in-csharp-9/",
+      "pubDate": "Mon, 25 May 2020 00:00:00 +0000",
+      "contentSnippet": "Last week at Microsoft Build, there have been a lot of exciting annoucements! .NET 5, Blazor WebAssembly, .NET MAUI, WinUI… But the thing I’m most eager to get my hands on is C# 9, which introduces many interesting new features, so let’s take a quick",
+      "creator": "",
+      "categories": [
+        ".NET 5",
+        "C# 9",
+        "API"
+      ],
+      "guid": "https://thomaslevesque.com/2020/05/25/exciting-new-features-in-csharp-9/"
+    },
+    {
+      "title": "Things every C# developer should know #1: hash codes",
+      "link": "https://thomaslevesque.com/2020/05/15/things-every-csharp-developer-should-know-1-hash-codes/",
+      "pubDate": "Fri, 15 May 2020 00:00:00 +0000",
+      "contentSnippet": "As a C# developer, there are obviously a lot of skills you need to master to be effective: language syntax, framework classes, third-party libraries, databases, regular expressions, the HTTP protocol, etc. But there are a handful of things that I con",
+      "creator": "",
+      "categories": [
+        "HTTP",
+        "Database"
+      ],
+      "guid": "https://thomaslevesque.com/2020/05/15/things-every-csharp-developer-should-know-1-hash-codes/"
+    },
+    {
+      "title": "Moving my blog to Hugo",
+      "link": "https://thomaslevesque.com/2020/05/06/moving-my-blog-to-hugo/",
+      "pubDate": "Wed, 06 May 2020 00:00:00 +0000",
+      "contentSnippet": "If you’re a regular reader of my blog, you probably noticed that the design has changed. In fact, it’s not just the design, it’s just about everything!\nMy blog used to be hosted on WordPress. It did the job, but honestly, I didn’t really like WordPre",
+      "creator": "",
+      "categories": [
+        "Best Practices",
+        "Hugo"
+      ],
+      "guid": "https://thomaslevesque.com/2020/05/06/moving-my-blog-to-hugo/"
+    },
+    {
+      "title": "About",
+      "link": "https://thomaslevesque.com/about/",
+      "pubDate": "Fri, 01 May 2020 23:42:43 +0200",
+      "contentSnippet": "I’m Thomas Levesque, a French software developer from Paris. I’ve been programming in C# almost since the beginning, and I still love it. I’ve done a lot of desktop app development with WinForms and WPF, but nowadays my focus is mostly on ASP.NET Cor",
+      "creator": "",
+      "categories": [
+        ".NET",
+        "ASP.NET Core"
+      ],
+      "guid": "https://thomaslevesque.com/about/"
+    },
+    {
+      "title": "Using the OAuth 2.0 device flow to authenticate users in desktop apps",
+      "link": "https://thomaslevesque.com/2020/03/28/using-the-oauth-2-0-device-flow-to-authenticate-users-in-desktop-apps/",
+      "pubDate": "Sat, 28 Mar 2020 00:00:00 +0000",
+      "contentSnippet": "Over the last few years, OpenID Connect has become one of the most common ways to authenticate users in a web application. But if you want to use it in a desktop application, it can be a little awkward…\nAuthorization code flow OpenID Connect is an au",
+      "creator": "",
+      "categories": [
+        "OAuth 2.0"
+      ],
+      "guid": "https://thomaslevesque.com/2020/03/28/using-the-oauth-2-0-device-flow-to-authenticate-users-in-desktop-apps/"
+    },
+    {
+      "title": "Lazily resolving services to fix circular dependencies in .NET Core",
+      "link": "https://thomaslevesque.com/2020/03/18/lazily-resolving-services-to-fix-circular-dependencies-in-net-core/",
+      "pubDate": "Wed, 18 Mar 2020 00:00:00 +0000",
+      "contentSnippet": "The problem with circular dependencies When building an application, good design dictates that you should avoid circular dependencies between your services. A circular dependency is when some components depend on each other, directly or indirectly, e",
+      "creator": "",
+      "categories": [
+        ".NET Core",
+        "Best Practices"
+      ],
+      "guid": "https://thomaslevesque.com/2020/03/18/lazily-resolving-services-to-fix-circular-dependencies-in-net-core/"
+    },
+    {
+      "title": "Handling query string parameters with no value in ASP.NET Core",
+      "link": "https://thomaslevesque.com/2020/01/30/handling-query-string-parameters-with-no-value-in-asp-net-core/",
+      "pubDate": "Thu, 30 Jan 2020 00:00:00 +0000",
+      "contentSnippet": "Query strings are typically made of a sequence of key-value pairs, like ?foo=hello&bar=world…. However, if you look at RFC 3986, you can see that query strings are very loosely specified. It mentions that\nquery components are often used to carry iden",
+      "creator": "",
+      "categories": [
+        "ASP.NET Core"
+      ],
+      "guid": "https://thomaslevesque.com/2020/01/30/handling-query-string-parameters-with-no-value-in-asp-net-core/"
+    },
+    {
+      "title": "ASP.NET Core: when environments are not enough, use sub-environments!",
+      "link": "https://thomaslevesque.com/2019/12/20/asp-net-core-when-environments-are-not-enough-use-sub-environments/",
+      "pubDate": "Fri, 20 Dec 2019 00:00:00 +0000",
+      "contentSnippet": "Out of the box, ASP.NET Core has the concept of “environments”, which allows your app to use different settings based on which environment it’s running in. For instance, you can have Development/Staging/Production environments, each with its own sett",
+      "creator": "",
+      "categories": [
+        "ASP.NET Core",
+        "Configuration"
+      ],
+      "guid": "https://thomaslevesque.com/2019/12/20/asp-net-core-when-environments-are-not-enough-use-sub-environments/"
+    },
+    {
+      "title": "Easy unit testing of null argument validation (C# 8 edition)",
+      "link": "https://thomaslevesque.com/2019/11/19/easy-unit-testing-of-null-argument-validation-c-8-edition/",
+      "pubDate": "Tue, 19 Nov 2019 00:00:00 +0000",
+      "contentSnippet": "A few years ago, I blogged about a way to automate unit testing of null argument validation. Its usage looked like this:\n[Fact] public void FullOuterJoin_Throws_If_Argument_Is_Null() { var left = Enumerable.Empty<int>(); var right = Enumerable.Empty<",
+      "creator": "",
+      "categories": [
+        "C# 8",
+        "Unit Testing"
+      ],
+      "guid": "https://thomaslevesque.com/2019/11/19/easy-unit-testing-of-null-argument-validation-c-8-edition/"
+    },
+    {
+      "title": "Using foreach with index in C#",
+      "link": "https://thomaslevesque.com/2019/11/18/using-foreach-with-index-in-c/",
+      "pubDate": "Mon, 18 Nov 2019 00:00:00 +0000",
+      "contentSnippet": "Just a quick tip today!\nfor and foreach loops are among the most useful constructs in a C# developer’s toolbox. To iterate a collection, foreach is, in my opinion, more convenient than for in most cases. It works with all collection types, including ",
+      "creator": "",
+      "categories": [],
+      "guid": "https://thomaslevesque.com/2019/11/18/using-foreach-with-index-in-c/"
+    },
+    {
+      "title": "Handling type hierarchies in Cosmos DB (part 2)",
+      "link": "https://thomaslevesque.com/2019/10/15/handling-type-hierarchies-in-cosmos-db-part-2/",
+      "pubDate": "Tue, 15 Oct 2019 00:00:00 +0000",
+      "contentSnippet": "This is the second post in a series of 2:\nHandling type hierarchies in Cosmos DB (part 1) Handling type hierarchies in Cosmos DB (part 2) (this post) In the previous post, I talked about the difficulty of handling type hierarchies in Cosmos DB, showe",
+      "creator": "",
+      "categories": [
+        "Cosmos DB"
+      ],
+      "guid": "https://thomaslevesque.com/2019/10/15/handling-type-hierarchies-in-cosmos-db-part-2/"
+    },
+    {
+      "title": "Handling type hierarchies in Cosmos DB (part 1)",
+      "link": "https://thomaslevesque.com/2019/10/14/handling-type-hierarchies-in-cosmos-db-part1/",
+      "pubDate": "Mon, 14 Oct 2019 00:00:00 +0000",
+      "contentSnippet": "This is the first post in a series of 2:\nHandling type hierarchies in Cosmos DB (part 1) (this post) Handling type hierarchies in Cosmos DB (part 2) Azure Cosmos DB is Microsoft’s NoSQL cloud database. In Cosmos DB, you store JSON documents in contai",
+      "creator": "",
+      "categories": [
+        "Azure",
+        "Cosmos DB",
+        "JSON",
+        "Database"
+      ],
+      "guid": "https://thomaslevesque.com/2019/10/14/handling-type-hierarchies-in-cosmos-db-part1/"
+    },
+    {
+      "title": "Using TypeScript to write Cosmos DB stored procedures with async/await",
+      "link": "https://thomaslevesque.com/2019/07/15/using-typescript-to-write-cosmos-db-stored-procedures-with-async-await/",
+      "pubDate": "Mon, 15 Jul 2019 00:00:00 +0000",
+      "contentSnippet": "Disclaimer: I am by no mean a TypeScript expert. In fact, I know very little about JS, npm, gulp, etc. So it’s entirely possible I said something really stupid in this article, or maybe I missed a much simpler way of doing things. Don’t hesitate to l",
+      "creator": "",
+      "categories": [
+        "Cosmos DB",
+        "TypeScript"
+      ],
+      "guid": "https://thomaslevesque.com/2019/07/15/using-typescript-to-write-cosmos-db-stored-procedures-with-async-await/"
     }
   ],
-  "lastUpdated": "2025-12-24T13:13:48.316Z",
+  "lastUpdated": "2025-12-31T15:03:45.803Z",
   "feedTitle": "Thomas Levesque's .NET Blog"
 }
