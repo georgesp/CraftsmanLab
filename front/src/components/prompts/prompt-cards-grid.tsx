@@ -51,12 +51,26 @@ export const PromptCardsGrid: React.FC<Props> = ({
     <Grid container spacing={4}>
       {items.map((p) => (
         <Grid item xs={12} sm={6} md={4} lg={3} xl={3} key={p.slug}>
-          <PromptCard
-            sx={{ backgroundColor: COLORS.cardBgDark, boxShadow: 'none', border: 'none' }}
+          <RouterLink
+            to={`/prompts/${p.slug}`}
+            style={{ display: 'block', height: '100%', color: 'inherit', textDecoration: 'none' }}
           >
-            <RouterLink
-              to={`/prompts/${p.slug}`}
-              style={{ display: 'block', height: '100%', color: 'inherit', textDecoration: 'none' }}
+            <PromptCard
+              className="prompt-card"
+              sx={{
+                backgroundColor: COLORS.cardBgDark,
+                boxShadow: 'none',
+                border: 'none',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+                cursor: 'pointer',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: 3,
+                },
+              }}
             >
               <PromptCardContent sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
@@ -67,13 +81,14 @@ export const PromptCardsGrid: React.FC<Props> = ({
                       justifyContent: 'center',
                       width: 36,
                       height: 36,
-                      border: `1px solid ${COLORS.promptsIcon}`,
-                      borderRadius: 1,
+                      backgroundColor: COLORS.promptsIcon,
+                      borderRadius: '50%',
+                      flexShrink: 0,
                     }}
                   >
                     <TextSnippetIcon
                       fontSize="large"
-                      sx={{ color: COLORS.promptsIcon, fontSize: 20 }}
+                      sx={{ color: '#FFFFFF', fontSize: 20 }}
                     />
                   </Box>
                   <Typography
@@ -89,8 +104,8 @@ export const PromptCardsGrid: React.FC<Props> = ({
                 </Typography>
                 <KeywordChips keywords={p.keywords} />
               </PromptCardContent>
-            </RouterLink>
-          </PromptCard>
+            </PromptCard>
+          </RouterLink>
         </Grid>
       ))}
       {seeAllLink && (

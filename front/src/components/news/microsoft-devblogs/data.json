@@ -1,0 +1,171 @@
+{
+  "source": "microsoft-devblogs",
+  "items": [
+    {
+      "title": "Top .NET Blog Posts of 2025",
+      "link": "https://devblogs.microsoft.com/dotnet/top-dotnet-blogs-posts-of-2025/",
+      "pubDate": "Tue, 30 Dec 2025 18:05:00 +0000",
+      "contentSnippet": "Let's look back at the most-read .NET blog posts published in 2025, from .NET 10 to AI, performance, and developer tooling.\nThe post Top .NET Blog Posts of 2025 appeared first on .NET Blog.",
+      "creator": "Jon Galloway",
+      "categories": [
+        ".NET",
+        ".NET Aspire",
+        "AI",
+        "C#",
+        "Cloud Native",
+        "Performance",
+        "Visual Studio",
+        "Visual Studio Code",
+        ".NET 10",
+        "2025 wrapped",
+        "aspire",
+        "community",
+        "performance",
+        "tooling"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59259"
+    },
+    {
+      "title": "Microsoft.Testing.Platform Now Fully Supported in Azure DevOps",
+      "link": "https://devblogs.microsoft.com/dotnet/microsoft-testing-platform-azure-retry/",
+      "pubDate": "Tue, 16 Dec 2025 18:05:00 +0000",
+      "contentSnippet": "Azure DevOps enhanced support for Microsoft.Testing.Platform, from running tests to publishing results!\nThe post Microsoft.Testing.Platform Now Fully Supported in Azure DevOps appeared first on .NET Blog.",
+      "creator": "Youssef Fahmy",
+      "categories": [
+        ".NET",
+        "C#",
+        "Azure DevOPs",
+        "Testing"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59196"
+    },
+    {
+      "title": "How to Build iOS Widgets with .NET MAUI",
+      "link": "https://devblogs.microsoft.com/dotnet/how-to-build-ios-widgets-with-dotnet-maui/",
+      "pubDate": "Mon, 15 Dec 2025 18:05:00 +0000",
+      "contentSnippet": "Build professional iOS widgets with .NET MAUI, from static displays to interactive widgets.\nThe post How to Build iOS Widgets with .NET MAUI appeared first on .NET Blog.",
+      "creator": "Toine de Boer",
+      "categories": [
+        ".NET",
+        ".NET MAUI",
+        "iOS",
+        "Mobile",
+        "Swift",
+        "Widgets",
+        "Xcode"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59146"
+    },
+    {
+      "title": ".NET and .NET Framework December 2025 servicing releases updates",
+      "link": "https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-december-2025-servicing-updates/",
+      "pubDate": "Tue, 09 Dec 2025 18:48:25 +0000",
+      "contentSnippet": "A recap of the latest servicing updates for .NET and .NET Framework for December 2025.\nThe post .NET and .NET Framework December 2025 servicing releases updates appeared first on .NET Blog.",
+      "creator": ".NET Team, Tara Overfield",
+      "categories": [
+        ".NET",
+        "Maintenance & Updates"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59134"
+    },
+    {
+      "title": "Implementing Cross-Platform In-App Billing in .NET MAUI Applications",
+      "link": "https://devblogs.microsoft.com/dotnet/cross-platform-billing-dotnet-maui/",
+      "pubDate": "Tue, 09 Dec 2025 18:05:00 +0000",
+      "contentSnippet": "Learn how to implement in-app purchases in your .NET MAUI apps with our new cross-platform billing sample for Android, iOS, Mac Catalyst, and Windows.\nThe post Implementing Cross-Platform In-App Billing in .NET MAUI Applications appeared first on .NE",
+      "creator": "Gerald Versluis",
+      "categories": [
+        ".NET",
+        ".NET MAUI",
+        "Billing",
+        "Google Play Billing",
+        "In-App Purchases",
+        "Microsoft Store",
+        "StoreKit"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59124"
+    },
+    {
+      "title": "Microsoft Learn MCP Server Elevates Development",
+      "link": "https://devblogs.microsoft.com/dotnet/microsoft-learn-mcp-server-elevates-development/",
+      "pubDate": "Mon, 08 Dec 2025 20:00:00 +0000",
+      "contentSnippet": "Explore how the Learn MCP server enhances the developer experience with Copilot, showcase practical examples, and provide straightforward integration instructions for Visual Studio, Visual Studio Code, the Copilot Command Line Interface, and the Copi",
+      "creator": "Wendy Breiding (SHE/HER), Eric Imasogie",
+      "categories": [
+        ".NET",
+        "AI",
+        "C#",
+        "VS Code",
+        "Copilot",
+        "MCP Server"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59101"
+    },
+    {
+      "title": ".NET 10 Networking Improvements",
+      "link": "https://devblogs.microsoft.com/dotnet/dotnet-10-networking-improvements/",
+      "pubDate": "Mon, 08 Dec 2025 18:05:00 +0000",
+      "contentSnippet": "Introducing new networking features in .NET 10 including HTTP space, WebSockets, security and more!\nThe post .NET 10 Networking Improvements appeared first on .NET Blog.",
+      "creator": "Máňa",
+      "categories": [
+        ".NET",
+        "Networking",
+        ".NET 10",
+        "HTTP"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59089"
+    },
+    {
+      "title": ".NET Conf 2025 Recap – Celebrating .NET 10, Visual Studio 2026, AI, Community, & More",
+      "link": "https://devblogs.microsoft.com/dotnet/dotnet-conf-2025-recap/",
+      "pubDate": "Thu, 04 Dec 2025 18:05:00 +0000",
+      "contentSnippet": ".NET Conf 2025 is over, but you can catch up with all the announcements and fun with video recordings, slides, demos, and more.\nThe post .NET Conf 2025 Recap – Celebrating .NET 10, Visual Studio 2026, AI, Community, & More appeared first on .NET Blog",
+      "creator": ".NET Team",
+      "categories": [
+        ".NET",
+        ".NET MAUI",
+        "AI",
+        "ASP.NET Core",
+        "Blazor",
+        "C#",
+        "NuGet",
+        "Visual Studio",
+        ".NET 10"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59079"
+    },
+    {
+      "title": "Introducing Data Ingestion Building Blocks (Preview)",
+      "link": "https://devblogs.microsoft.com/dotnet/introducing-data-ingestion-building-blocks-preview/",
+      "pubDate": "Wed, 03 Dec 2025 18:05:00 +0000",
+      "contentSnippet": "Announcing the preview of open, modular data ingestion building blocks in .NET, empowering developers to build scalable AI pipelines with seamless integration, extensibility, and easy getting started experiences across the .NET ecosystem.\nThe post In",
+      "creator": "Luis Quintanilla, Adam Sitnik",
+      "categories": [
+        ".NET",
+        "AI",
+        "Data"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59053"
+    },
+    {
+      "title": ".NET Day on Agentic Modernization Coming Soon",
+      "link": "https://devblogs.microsoft.com/dotnet/dotnet-day-on-agentic-modernization-coming-soon/",
+      "pubDate": "Wed, 26 Nov 2025 21:00:00 +0000",
+      "contentSnippet": "Join us live on December 9 to explore the newest, most practical ways to modernize your .NET apps with Azure, AI, and powerful agentic tooling.\nThe post .NET Day on Agentic Modernization Coming Soon appeared first on .NET Blog.",
+      "creator": "Matt Soucoup",
+      "categories": [
+        ".NET",
+        "AI",
+        "Azure",
+        "Cloud Native",
+        "GitHub",
+        "Agentic Modernization",
+        "Agents",
+        "Azure"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59006"
+    }
+  ],
+  "lastUpdated": "2025-12-31T15:03:45.657Z",
+  "feedTitle": ".NET Blog"
+}

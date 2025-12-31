@@ -1,0 +1,122 @@
+{
+  "source": "jon-skeet-blog",
+  "items": [
+    {
+      "title": "Changing Immutable Collections",
+      "link": "https://codeblog.jonskeet.uk/2025/12/31/changing-immutable-collections/",
+      "pubDate": "Wed, 31 Dec 2025 10:32:45 +0000",
+      "contentSnippet": "As I’ve written before, I’m leaning heavily into immutability in the election site code. Until September 2025 (it’s taken a long time to get round to writing this blog post) that meant a combination of records, ImmutableList<T> and ImmutableDictionar",
+      "creator": "jonskeet",
+      "categories": [
+        "C#",
+        "Election 2029"
+      ],
+      "guid": "http://codeblog.jonskeet.uk/2025/12/31/changing-immutable-collections/"
+    },
+    {
+      "title": "Records and the ‘with’ operator, redux",
+      "link": "https://codeblog.jonskeet.uk/2025/07/29/records-and-the-with-operator-redux/",
+      "pubDate": "Tue, 29 Jul 2025 20:00:38 +0000",
+      "contentSnippet": "In my previous blog post I described some behaviour of C# record types which was unexpected to me, though entirely correct according to the documentation. This is a follow-up post to that one, so if you haven’t read that one yet, please do so – I won",
+      "creator": "jonskeet",
+      "categories": [
+        "C#",
+        "Election 2029"
+      ],
+      "guid": "http://codeblog.jonskeet.uk/2025/07/29/records-and-the-with-operator-redux/"
+    },
+    {
+      "title": "Unexpected inconsistency in records",
+      "link": "https://codeblog.jonskeet.uk/2025/07/19/unexpected-inconsistency-in-records/",
+      "pubDate": "Sat, 19 Jul 2025 13:04:48 +0000",
+      "contentSnippet": "Unexpected inconsistency in records The other day, I was trying to figure out a bug in my code, and it turned out to be a misunderstanding on my part as to how C# records work. It’s entirely possible that I’m the only one who expected them to work in",
+      "creator": "jonskeet",
+      "categories": [
+        "C#"
+      ],
+      "guid": "http://codeblog.jonskeet.uk/2025/07/19/unexpected-inconsistency-in-records/"
+    },
+    {
+      "title": "Election 2029: Postcodes",
+      "link": "https://codeblog.jonskeet.uk/2025/04/13/election-2029-postcodes/",
+      "pubDate": "Sun, 13 Apr 2025 07:41:11 +0000",
+      "contentSnippet": "Postcodes After a pretty practical previous post about records and collections, this post is less likely to give anyone ideas about how they might tackle a problem in their own project, and doesn’t have any feature requests for Microsoft either. It’s",
+      "creator": "jonskeet",
+      "categories": [
+        "C#",
+        "Election 2029"
+      ],
+      "guid": "http://codeblog.jonskeet.uk/2025/04/13/election-2029-postcodes/"
+    },
+    {
+      "title": "Records and Collections",
+      "link": "https://codeblog.jonskeet.uk/2025/03/27/records-and-collections/",
+      "pubDate": "Thu, 27 Mar 2025 14:20:54 +0000",
+      "contentSnippet": "Records and Collections This post is to some extent a grab-bag of points of friction I’ve encountered when using records and collections within the election site. Records recap This may end up being the most generally useful blog post in this series.",
+      "creator": "jonskeet",
+      "categories": [
+        "C#",
+        "Election 2029"
+      ],
+      "guid": "http://codeblog.jonskeet.uk/2025/03/27/records-and-collections/"
+    },
+    {
+      "title": "Election 2029: Storage",
+      "link": "https://codeblog.jonskeet.uk/2025/03/27/election-2029-storage/",
+      "pubDate": "Thu, 27 Mar 2025 11:46:31 +0000",
+      "contentSnippet": "Storage Since my last post about the data models, I’ve simplified things very slightly – basically the improvements that I thought about while writing the post have now been implemented. I won’t go into the details of the changes, as they’re not real",
+      "creator": "jonskeet",
+      "categories": [
+        "Election 2029"
+      ],
+      "guid": "http://codeblog.jonskeet.uk/2025/03/27/election-2029-storage/"
+    },
+    {
+      "title": "Election 2029: Data Models",
+      "link": "https://codeblog.jonskeet.uk/2025/03/16/election-2029-data-models/",
+      "pubDate": "Sun, 16 Mar 2025 07:28:55 +0000",
+      "contentSnippet": "Data models (and view-models) and how they’re used I was considering using the term “architecture” somewhere in the title of this post, but it feels too pompous for the scale of site. I could probably justify it, but it would give me the ick every ti",
+      "creator": "jonskeet",
+      "categories": [
+        "Election 2029"
+      ],
+      "guid": "http://codeblog.jonskeet.uk/2025/03/16/election-2029-data-models/"
+    },
+    {
+      "title": "Election 2029: Technical overview",
+      "link": "https://codeblog.jonskeet.uk/2025/03/10/election-2029-technical-overview/",
+      "pubDate": "Mon, 10 Mar 2025 19:01:34 +0000",
+      "contentSnippet": "Technical overview This post is mostly for scene-setting purposes. There’s nothing particularly remarkable here, but it’s useful to get the plain facts out of the way before we get into genuinely interesting design aspects. Just as a reminder, go to ",
+      "creator": "jonskeet",
+      "categories": [
+        "Election 2029"
+      ],
+      "guid": "http://codeblog.jonskeet.uk/2025/03/10/election-2029-technical-overview/"
+    },
+    {
+      "title": "Election 2029: Introduction",
+      "link": "https://codeblog.jonskeet.uk/2025/03/10/election-2029-introduction/",
+      "pubDate": "Mon, 10 Mar 2025 17:48:39 +0000",
+      "contentSnippet": "Introduction It’s been over 8 months since I started my UK Election 2029 site, and high time that I actually wrote an introduction post so that I can get into more detailed topics later. In 2024, shortly after the UK general election was announced, I",
+      "creator": "jonskeet",
+      "categories": [
+        "Election 2029"
+      ],
+      "guid": "http://codeblog.jonskeet.uk/2025/03/10/election-2029-introduction/"
+    },
+    {
+      "title": "Election 2029: The Impossible Exception – Solved",
+      "link": "https://codeblog.jonskeet.uk/2025/02/08/election-2029-the-impossible-exception-solved/",
+      "pubDate": "Sat, 08 Feb 2025 04:07:15 +0000",
+      "contentSnippet": "Shortly after writing my previous post, a colleague pinged me to say she’d figured out what was wrong – at least at the most immediate level, i.e. the exception itself. Nothing is wrong with the ordering code – it’s just that the exception message is",
+      "creator": "jonskeet",
+      "categories": [
+        "Diagnostics",
+        "Election 2029"
+      ],
+      "guid": "http://codeblog.jonskeet.uk/2025/02/08/election-2029-the-impossible-exception-solved/"
+    }
+  ],
+  "lastUpdated": "2025-12-31T15:03:46.356Z",
+  "feedTitle": "Jon Skeet's coding blog"
+}

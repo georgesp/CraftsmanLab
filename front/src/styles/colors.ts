@@ -50,6 +50,7 @@ export const COLORS = {
   tipsIcon: '#02a8e9', // Couleur vive pour l'icone des tips
   // Orange vif choisi pour les prompts : contraste fort avec les fonds sombres et chaleureux.
   promptsIcon: '#FF8A33', // Couleur vive (orange) pour l'icone des prompts
+  newsIcon: '#4caf50', // Couleur verte pour l'icône des news
 
   // Grouped dark-theme palette for easier maintenance
   // Keep top-level keys for backward compatibility; prefer using `COLORS.darkTheme.*` going forward.

@@ -1,0 +1,162 @@
+{
+  "source": "dotnettips-blog",
+  "items": [
+    {
+      "title": "Supercharging Application Performance with Intelligent Client-Side Caching",
+      "link": "https://dotnettips.wordpress.com/2025/12/28/supercharging-application-performance-with-intelligent-client-side-caching/",
+      "pubDate": "Sun, 28 Dec 2025 07:00:00 +0000",
+      "contentSnippet": "This excerpt discusses enhancing Microsoft .NET application performance by minimizing network calls. The author emphasizes client-side caching with Spargine’s InMemoryCache, which drastically improves responsiveness and scalability for costly operati",
+      "creator": "dotNetDave",
+      "categories": [
+        ".NET",
+        "Performance",
+        "Spargine",
+        "Cache",
+        "Caching",
+        "Code Performance",
+        "Reflection"
+      ],
+      "guid": "http://dotnettips.wordpress.com/?p=15991"
+    },
+    {
+      "title": "Code It Anyway You Want: Initializing Reference Type Static Fields Inline for Enhanced Code Readability",
+      "link": "https://dotnettips.wordpress.com/2025/12/21/code-it-anyway-you-want-initializing-reference-type-static-fields-inline-for-enhanced-code-readability/",
+      "pubDate": "Sun, 21 Dec 2025 07:00:00 +0000",
+      "contentSnippet": "Microsoft advises initializing reference type static fields inline to enhance code readability and prevent issues from uninitialized fields. Two patterns are shown: inline initialization and using a static constructor. While both methods do not alloc",
+      "creator": "dotNetDave",
+      "categories": [
+        "Code Analysis",
+        "Code It Any Way You Want",
+        "Performance"
+      ],
+      "guid": "http://dotnettips.wordpress.com/?p=15924"
+    },
+    {
+      "title": "UX Chronicles: When OpenAI’s Magic Meets a Messy User Experience",
+      "link": "https://dotnettips.wordpress.com/2025/12/14/ux-chronicles-when-openais-magic-meets-a-messy-user-experience/",
+      "pubDate": "Sun, 14 Dec 2025 07:00:00 +0000",
+      "contentSnippet": "The author expresses frustration with Sora's poor user experience and ongoing instability, emphasizing navigation difficulties, session issues, and prolonged outages. Despite Sora's impressive capabilities, the author argues that without prioritizing",
+      "creator": "dotNetDave",
+      "categories": [
+        "UX",
+        "AI",
+        "OpenAI",
+        "Sora"
+      ],
+      "guid": "http://dotnettips.wordpress.com/?p=15905"
+    },
+    {
+      "title": "Immutable Collection Add() Trap: Don’t Get Burned — Use a Builder Instead",
+      "link": "https://dotnettips.wordpress.com/2025/12/07/immutable-collection-add-trap-dont-get-burned-use-a-builder-instead/",
+      "pubDate": "Sun, 07 Dec 2025 07:00:00 +0000",
+      "contentSnippet": "When using immutable collections in .NET, remember that the Add() method creates a new instance rather than mutating the original. Ignoring the return value leads to ineffective loops. Instead, use a builder for efficiency, as it offers faster perfor",
+      "creator": "dotNetDave",
+      "categories": [
+        "Performance",
+        "Collections",
+        "Immutable Collections"
+      ],
+      "guid": "http://dotnettips.wordpress.com/?p=15893"
+    },
+    {
+      "title": "Defensive Programming Rule #6: Verify Resource Availability (Before You Access It)",
+      "link": "https://dotnettips.wordpress.com/2025/11/30/defensive-programming-rule-6-verify-resource-availability-before-you-access-it/",
+      "pubDate": "Sun, 30 Nov 2025 07:00:00 +0000",
+      "contentSnippet": "The article emphasizes the importance of defensive programming in .NET applications by validating resource availability before access. It outlines guidelines for checking connectivity, setting timeouts, and managing user experiences when resources ar",
+      "creator": "dotNetDave",
+      "categories": [
+        ".NET",
+        "Bugs",
+        "C#",
+        "Code Quality",
+        "Defensive Programming"
+      ],
+      "guid": "http://dotnettips.wordpress.com/?p=15704"
+    },
+    {
+      "title": "Defensive Programming Rule #5: Let the Compiler Work for You — Harness the Power of Type Checking",
+      "link": "https://dotnettips.wordpress.com/2025/11/23/defensive-programming-rule-5-let-the-compiler-work-for-you-harness-the-power-of-type-checking/",
+      "pubDate": "Sun, 23 Nov 2025 07:00:00 +0000",
+      "contentSnippet": "The excerpt discusses coding standards highlighted in \"Rock Your Code: Coding Standards for Microsoft .NET,\" emphasizing the pitfalls of using numerous public fields in a class. It advocates for strong typing, proper encapsulation, and input validati",
+      "creator": "dotNetDave",
+      "categories": [
+        ".NET",
+        "Bugs",
+        "C#",
+        "Code Quality",
+        "Defensive Programming",
+        "Validation"
+      ],
+      "guid": "http://dotnettips.wordpress.com/?p=15662"
+    },
+    {
+      "title": "Defensive Programming Rule #4: Safe and Efficient Type Casting",
+      "link": "https://dotnettips.wordpress.com/2025/11/16/defensive-programming-rule-4-safe-and-efficient-type-casting/",
+      "pubDate": "Sun, 16 Nov 2025 07:00:00 +0000",
+      "contentSnippet": "This article emphasizes defensive programming by highlighting safe type compatibility checks in .NET. It advises using the 'is' keyword to prevent InvalidCastException and warns against unnecessary type casts that clutter code and affect performance.",
+      "creator": "dotNetDave",
+      "categories": [
+        ".NET",
+        "Bugs",
+        "C#",
+        "Code Quality",
+        "Defensive Programming",
+        "Type Casting",
+        "Validation"
+      ],
+      "guid": "http://dotnettips.wordpress.com/?p=15645"
+    },
+    {
+      "title": "dotNetDave Rocks Austin .NET User Group November 2025 Meeting",
+      "link": "https://dotnettips.wordpress.com/2025/11/10/dotnetdave-rocks-austin-net-user-group-november-2025-meeting/",
+      "pubDate": "Mon, 10 Nov 2025 20:04:03 +0000",
+      "contentSnippet": "The dotNetDave No Rest for the Wicked World Tour will visit Austin on November 20, 2025, where I will present a session titled \"Röck Yoür Cöde.\" This session addresses critical issues in memory management related to disposable types in .NET, offering",
+      "creator": "dotNetDave",
+      "categories": [
+        ".NET",
+        "C#",
+        "Code Quality",
+        "Memory Management",
+        "Performance",
+        "Events"
+      ],
+      "guid": "http://dotnettips.wordpress.com/?p=15852"
+    },
+    {
+      "title": "Defensive Programming Rule #3: Validate Your Enums (Every Time)",
+      "link": "https://dotnettips.wordpress.com/2025/11/09/defensive-programming-rule-3-validate-your-enums-every-time/",
+      "pubDate": "Sun, 09 Nov 2025 07:00:00 +0000",
+      "contentSnippet": "Enums enhance code readability but can lead to errors if not validated, as any integer can be cast as an Enum, including invalid values. Validating Enum inputs prevents silent data corruption, ensures meaningful defaults, and avoids processing imposs",
+      "creator": "dotNetDave",
+      "categories": [
+        ".NET",
+        "Bugs",
+        "C#",
+        "Code Quality",
+        "Defensive Programming",
+        "Enums",
+        "Validation"
+      ],
+      "guid": "http://dotnettips.wordpress.com/?p=15632"
+    },
+    {
+      "title": "Defensive Programming Rule #2: Always Validate Method Parameters",
+      "link": "https://dotnettips.wordpress.com/2025/11/02/defensive-programming-rule-2-always-validate-method-parameters/",
+      "pubDate": "Sun, 02 Nov 2025 06:00:00 +0000",
+      "contentSnippet": "Parameter validation is crucial in programming, ensuring applications reject bad data before it causes issues. It safeguards data integrity, reduces bugs, and enhances developer satisfaction. The use of meaningful exceptions and tools like Spargine c",
+      "creator": "dotNetDave",
+      "categories": [
+        ".NET",
+        "Bugs",
+        "C#",
+        "Code Quality",
+        "Defensive Programming",
+        "Exceptions",
+        "Validation"
+      ],
+      "guid": "http://dotnettips.wordpress.com/?p=15619"
+    }
+  ],
+  "lastUpdated": "2025-12-31T15:03:45.803Z",
+  "feedTitle": "dotNetTips.com"
+}

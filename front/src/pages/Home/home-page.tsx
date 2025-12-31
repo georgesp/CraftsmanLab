@@ -1,11 +1,14 @@
 import * as React from 'react';
-import { Container, Typography, Box, Card } from '@mui/material';
+import { Container, Typography, Box, Card, Grid, Link as MuiLink, Chip } from '@mui/material';
 import { alpha } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
 import { COLORS } from '../../styles/colors';
 import { PAGE_SPACING } from '../../styles/spacing';
 import { LazyTipCardsGrid } from '../../components/tips/tip-cards-grid-lazy';
 import { PageLayout } from '../../components';
+import { rssSources } from '../../components/news/registry';
+import NewspaperIcon from '@mui/icons-material/Newspaper';
+import { PromptCard, PromptCardContent } from '../Prompts/styles';
 // Lazy-load the prompts grid to avoid importing import.meta-based registry in tests
 const LazyPromptCardsGrid = React.lazy(() =>
   import('../../components/prompts/prompt-cards-grid').then((m) => ({
@@ -14,12 +17,189 @@ const LazyPromptCardsGrid = React.lazy(() =>
 );
 
 export const HomePage: React.FC = () => {
-  const { t } = useTranslation('pages');
+  const { t, i18n } = useTranslation('pages');
+
+  const formatDate = (dateString: string) => {
+    try {
+      const date = new Date(dateString);
+      return date.toLocaleDateString(i18n.language === 'fr' ? 'fr-FR' : 'en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
+    } catch {
+      return dateString;
+    }
+  };
+
+  // Get translated source info
+  const getSourceInfo = (sourceSlug: string) => {
+    const source = rssSources.find(s => s.meta.slug === sourceSlug);
+    if (!source) return { title: sourceSlug, description: '' };
+    
+    const lang = i18n.language === 'fr' ? 'fr' : 'en';
+    return source.translations[lang];
+  };
+
+  // Get latest 3 news articles
+  const latestNews = React.useMemo(() => {
+    return rssSources
+      .flatMap(source => 
+        source.data.items.map(item => ({
+          ...item,
+          sourceSlug: source.meta.slug,
+          sourceInfo: getSourceInfo(source.meta.slug),
+        }))
+      )
+      .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime())
+      .slice(0, 3);
+  }, [i18n.language]);
 
   return (
     <PageLayout>
       {/* Decorative hatched band between header and content */}
-      <Box
+
+      <Container
+        maxWidth={false}
+        disableGutters
+        sx={{ px: 0, mx: 0, width: '100%', backgroundColor: COLORS.darkGreyBg }}
+      >
+        {/* Latest News Section */}
+        <Box sx={{ py: 4, width: '100%' }}>
+          <Box sx={{ px: { xs: 1, md: 2 }, mx: 0, width: '100%' }}>
+            <Typography variant="h4" align="left" sx={{ mb: 3, marginLeft: 1 }}>
+              {t('home.latestNews', { defaultValue: 'Dernières actualités' })}
+            </Typography>
+            <Grid container spacing={3}>
+              {latestNews.map((item) => (
+                <Grid item xs={12} sm={12} md={12} key={item.guid}>
+                  <MuiLink
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    underline="none"
+                    sx={{
+                      display: 'block',
+                      height: '100%',
+                      '&:hover': {
+                        '& .news-card': {
+                          transform: 'translateY(-4px)',
+                          boxShadow: 3,
+                        },
+                      },
+                    }}
+                  >
+                    <PromptCard
+                      className="news-card"
+                      sx={{
+                        backgroundColor: COLORS.cardBgDark,
+                        height: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      <PromptCardContent sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+                        {/* Source badge */}
+                        <Box sx={{ mb: 1 }}>
+                          <Chip
+                            label={item.sourceInfo.title}
+                            size="small"
+                            sx={{
+                              height: 20,
+                              fontSize: '0.7rem',
+                              backgroundColor: 'primary.main',
+                              color: 'white',
+                            }}
+                          />
+                        </Box>
+
+                        <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, mb: 1 }}>
+                          <Box
+                            sx={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              width: 36,
+                              height: 36,
+                              backgroundColor: '#4caf50',
+                              borderRadius: '50%',
+                              mt: 0.2,
+                              flexShrink: 0,
+                            }}
+                          >
+                            <NewspaperIcon sx={{ color: '#FFFFFF', fontSize: 20 }} />
+                          </Box>
+                          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flex: 1, gap: 2 }}>
+                            <Typography
+                              variant="h6"
+                              component="h3"
+                              sx={{
+                                fontSize: '1.1rem',
+                                lineHeight: 1.3,
+                                fontWeight: 600,
+                              }}
+                            >
+                              {item.title}
+                            </Typography>
+                            <Typography
+                              variant="body2"
+                              color="text.secondary"
+                              sx={{ 
+                                fontSize: '0.8rem',
+                                whiteSpace: 'nowrap',
+                              }}
+                            >
+                              {formatDate(item.pubDate)}
+                            </Typography>
+                          </Box>
+                        </Box>
+
+                        <Typography
+                          variant="body1"
+                          sx={{
+                            mb: 2,
+                            flex: 1,
+                            color: 'text.primary',
+                            lineHeight: 1.6,
+                            display: '-webkit-box',
+                            WebkitLineClamp: 3,
+                            WebkitBoxOrient: 'vertical',
+                            overflow: 'hidden',
+                          }}
+                        >
+                          {item.contentSnippet}
+                        </Typography>
+
+                        {item.categories && item.categories.length > 0 && (
+                          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mt: 'auto' }}>
+                            {item.categories.slice(0, 3).map((category, idx) => (
+                              <Chip
+                                key={idx}
+                                label={category}
+                                size="small"
+                                variant="outlined"
+                                sx={{
+                                  height: 20,
+                                  fontSize: '0.65rem',
+                                  borderColor: 'primary.main',
+                                  color: 'primary.main',
+                                }}
+                              />
+                            ))}
+                          </Box>
+                        )}
+                      </PromptCardContent>
+                    </PromptCard>
+                  </MuiLink>
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
+        </Box>
+
+        <Box
         aria-hidden
         sx={{
           mt: 2,
@@ -34,12 +214,8 @@ export const HomePage: React.FC = () => {
             ${alpha(COLORS.cardBgDark, 1)} 24px
           )`,
         }}
-      />
-      <Container
-        maxWidth={false}
-        disableGutters
-        sx={{ px: 0, mx: 0, width: '100%', backgroundColor: COLORS.darkGreyBg }}
-      >
+        />
+
         {/* Tips Section */}
         <Box sx={{ py: PAGE_SPACING.content.paddingY, width: '100%' }}>
           {/* <Typography
