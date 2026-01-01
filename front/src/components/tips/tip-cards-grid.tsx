@@ -70,7 +70,7 @@ export const TipCardsGrid: React.FC<Props> = ({
   const items = useMemo(() => {
     const source = externalItems ?? tipsList;
     // Nombre de colonnes en fonction du viewport; les cartes s'élargissent jusqu'au palier suivant
-    const columns = isLgUp ? 4 : isMdUp ? 3 : isSmUp ? 2 : 1;
+    const columns = isLgUp ? 3 : isMdUp ? 3 : isSmUp ? 2 : 1;
     if (!rows || rows <= 0) return source; // pas de limite -> tout afficher
 
     // Nombre total d'emplacements visibles (on réserve 1 si on affiche la flèche "voir tout")
@@ -82,7 +82,7 @@ export const TipCardsGrid: React.FC<Props> = ({
   return (
     <Grid container spacing={4}>
       {items.map((t) => (
-        <Grid item xs={12} sm={6} md={4} lg={3} xl={3} key={t.slug}>
+        <Grid item xs={12} sm={6} md={4} lg={4} xl={4} key={t.slug}>
           <RouterLink
             to={`/tips/${t.slug}`}
             style={{ display: 'block', height: '100%', color: 'inherit', textDecoration: 'none' }}
@@ -142,7 +142,7 @@ export const TipCardsGrid: React.FC<Props> = ({
         </Grid>
       ))}
       {seeAllLink && (
-        <Grid item xs={12} sm={6} md={4} lg={3} xl={3} key="see-all-tips">
+        <Grid item xs={12} sm={6} md={4} lg={4} xl={4} key="see-all-tips">
           <PromptCard
             sx={{
               display: 'flex',
