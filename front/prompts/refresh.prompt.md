@@ -6,19 +6,25 @@ Ce document décrit la procédure pour mettre à jour les articles des flux RSS 
 
 Le système récupère automatiquement les derniers articles depuis les flux RSS configurés et les stocke dans des fichiers `data.json` pour chaque source. Cette opération doit être effectuée régulièrement pour garder le contenu à jour.
 
-**⚠️ Important : Préservation des Catégories**
+**⚠️ Important : Préservation des Catégories et des Articles**
 
-Le script de rafraîchissement préserve automatiquement les catégories (`categories`) des articles existants. Cela permet de :
-- ✅ Corriger manuellement les catégories mal formatées dans le flux RSS
-- ✅ Ajouter des catégories personnalisées
-- ✅ Normaliser les catégories entre différentes sources
-- ✅ Éviter que les modifications manuelles soient écrasées lors du rafraîchissement
+Le script de rafraîchissement préserve automatiquement :
+- ✅ Les **catégories** (`categories`) des articles existants
+- ✅ Les **anciens articles** qui ne sont plus dans le flux RSS (mode accumulation)
 
 **Comportement du script :**
 - Pour les **nouveaux articles** : utilise les catégories du flux RSS, ou génère des catégories intelligentes si le flux RSS n'en fournit pas
-- Pour les **articles existants** (même `guid`) : conserve les catégories du fichier `data.json` existant
+- Pour les **articles existants** (même `guid`) : conserve les catégories du fichier `data.json` existant ET les autres champs sont mis à jour depuis le flux RSS
 - Pour les **articles avec catégories vides** : génère automatiquement des catégories pertinentes basées sur le titre et le contenu de l'article
-- Les autres champs (titre, description, date) sont toujours mis à jour depuis le flux RSS
+- **Mode accumulation** : Les articles sont **ajoutés** au fichier `data.json` existant, jamais supprimés. Le script fusionne les nouveaux articles du flux RSS avec tous les anciens articles déjà présents
+- **Tri par date** : Tous les articles (nouveaux + anciens) sont triés par date de publication, du plus récent au plus ancien
+- **Paramètre maxItems** : Limite uniquement le nombre de nouveaux articles récupérés depuis le flux RSS lors de chaque rafraîchissement, mais ne limite pas le nombre total d'articles dans `data.json`
+
+**Avantages du mode accumulation :**
+- 📚 Constitution d'une **archive complète** des articles au fil du temps
+- 🔍 Les anciens articles restent **recherchables** et accessibles
+- 📊 Meilleure **couverture historique** des technologies et actualités
+- 🎯 Aucune perte d'information même si un article disparaît du flux RSS
 
 ## Quand rafraîchir les flux ?
 
@@ -97,7 +103,43 @@ front/src/components/news/
 }
 ```
 
-### 4. Tester Localement
+### 4. Ajouter les Catégories Manquantes (si nécessaire)
+
+⚠️ **Important** : Certains flux RSS ne fournissent pas de catégories pour leurs articles. Dans ce cas, il faut générer automatiquement des catégories pertinentes.
+
+Pour ajouter des catégories aux articles qui n'en ont pas :
+
+```bash
+cd front
+node scripts/add-missing-categories.mjs
+```
+
+Le script va :
+- ✅ Analyser tous les fichiers `data.json` de toutes les sources
+- ✅ Identifier les articles avec des catégories vides (`categories: []`)
+- ✅ Générer automatiquement des catégories pertinentes basées sur le **titre** et le **contenu** de l'article
+- ✅ Détecter les technologies, frameworks, langages, outils mentionnés (C#, .NET, ASP.NET Core, Azure, etc.)
+- ✅ Sauvegarder les fichiers avec les catégories ajoutées
+
+**Exemple de sortie :**
+```
+🔄 Ajout de catégories manquantes...
+
+✓ microsoft-devblogs: Tous les articles ont déjà des catégories
+✓ developpez-dotnet: Tous les articles ont déjà des catégories
+✅ thomas-levesque-blog: 71 articles mis à jour avec des catégories
+
+✅ Terminé ! 71 articles au total ont été mis à jour avec des catégories.
+```
+
+**Quand utiliser ce script :**
+- 📌 Après avoir ajouté une nouvelle source RSS qui ne fournit pas de catégories
+- 📌 Après avoir rafraîchi des flux RSS qui ont des articles sans catégories
+- 📌 Lorsqu'un article a des catégories vides ou non pertinentes
+
+**Note :** Les catégories générées automatiquement sont intelligentes et basées sur des mots-clés techniques détectés dans le contenu. Vous pouvez ensuite les modifier manuellement si nécessaire, et elles seront préservées lors des prochains rafraîchissements.
+
+### 5. Tester Localement
 
 Démarrez le serveur de développement pour vérifier les changements :
 
@@ -109,6 +151,7 @@ npm run dev
 - ✅ La page `/news` affiche les nouveaux articles
 - ✅ La section "Dernières actualités" de la page d'accueil est à jour
 - ✅ Les filtres par source fonctionnent correctement
+- ✅ Les filtres par catégorie affichent tous les articles correctement
 - ✅ La date "Dernière mise à jour" est correcte
 - ✅ La recherche trouve les nouveaux articles
 
@@ -118,21 +161,24 @@ Si tout fonctionne correctement, committer les fichiers `data.json` mis à jour 
 
 ```bash
 git add front/src/components/news/*/data.json
-git commit -m "chore: mise à jour des flux RSS - $(date +%Y-%m-%d)"
+git add front/scripts/add-missing-categories.mjs  # Si vous avez modifié le script
+git commit -m "chore: mise à jour des flux RSS avec catégories - $(date +%Y-%m-%d)"
 git push
 ```
 
 ## Sources Actuellement Configurées
 
-| Slug | URL du Flux | Max Items | Fréquence Typique |
-|------|-------------|-----------|-------------------|
-| `microsoft-devblogs` | https://devblogs.microsoft.com/dotnet/feed/ | 30 | Quotidienne |
-| `developpez-dotnet` | https://dotnet.developpez.com/index/rss | 30 | Hebdomadaire |
-| `jon-skeet-blog` | https://codeblog.jonskeet.uk/feed/ | 30 | Mensuelle |
-| `thomas-levesque-blog` | https://thomaslevesque.com/index.xml | 30 | Mensuelle |
-| `dotnettips-blog` | https://dotnettips.wordpress.com/feed/ | 30 | Hebdomadaire |
-| `jetbrains-dotnet-blog` | https://blog.jetbrains.com/dotnet/feed/ | 30 | Hebdomadaire |
-| `anthony-giretti-blog` | https://anthonygiretti.com/feed/ | 30 | Mensuelle |
+| Slug | URL du Flux | Max Items | Fréquence Typique | Note |
+|------|-------------|-----------|-------------------|------|
+| `microsoft-devblogs` | https://devblogs.microsoft.com/dotnet/feed/ | 100 | Quotidienne | Mode accumulation |
+| `developpez-dotnet` | https://dotnet.developpez.com/index/rss | 100 | Hebdomadaire | Mode accumulation |
+| `jon-skeet-blog` | https://codeblog.jonskeet.uk/feed/ | 100 | Mensuelle | Mode accumulation |
+| `thomas-levesque-blog` | https://thomaslevesque.com/index.xml | 100 | Mensuelle | Mode accumulation |
+| `dotnettips-blog` | https://dotnettips.wordpress.com/feed/ | 100 | Hebdomadaire | Mode accumulation |
+| `jetbrains-dotnet-blog` | https://blog.jetbrains.com/dotnet/feed/ | 100 | Hebdomadaire | Mode accumulation |
+| `anthony-giretti-blog` | https://anthonygiretti.com/feed/ | 100 | Mensuelle | Mode accumulation |
+
+**Note sur maxItems** : Cette valeur limite le nombre de **nouveaux** articles récupérés depuis le flux RSS à chaque rafraîchissement. Le nombre total d'articles dans `data.json` peut être plus élevé car tous les anciens articles sont conservés (mode accumulation).
 
 ## Automatisation (CI/CD)
 
@@ -253,11 +299,14 @@ Si vous souhaitez corriger ou personnaliser les catégories d'un article :
 - Ajouter des catégories personnalisées pour améliorer les filtres
 - Supprimer des catégories non pertinentes
 
+**💡 Astuce alternative :** Plutôt que de modifier manuellement chaque article, vous pouvez aussi utiliser le script `add-missing-categories.mjs` qui génère automatiquement des catégories pertinentes pour tous les articles vides en une seule commande.
+
 ## Checklist de Rafraîchissement
 
 - [ ] Exécuter `npm run fetch-rss` dans le dossier `front/`
 - [ ] Vérifier que toutes les sources affichent `✅`
 - [ ] Vérifier que les fichiers `data.json` sont mis à jour
+- [ ] **Exécuter `node scripts/add-missing-categories.mjs` pour ajouter les catégories manquantes**
 - [ ] Vérifier que les catégories personnalisées sont préservées
 - [ ] Tester localement avec `npm run dev`
 - [ ] Vérifier la page `/news`
@@ -275,11 +324,18 @@ Si vous souhaitez corriger ou personnaliser les catégories d'un article :
 # Rafraîchir tous les flux RSS
 cd front && npm run fetch-rss
 
-# Rafraîchir et tester immédiatement
-cd front && npm run fetch-rss && npm run dev
+# Rafraîchir et ajouter les catégories manquantes
+cd front && npm run fetch-rss && node scripts/add-missing-categories.mjs
 
-# Rafraîchir, committer et pousser
-cd front && npm run fetch-rss && \
+# Rafraîchir, ajouter catégories et tester immédiatement
+cd front && npm run fetch-rss && node scripts/add-missing-categories.mjs && npm run dev
+
+# Rafraîchir, ajouter catégories, committer et pousser
+cd front && npm run fetch-rss && node scripts/add-missing-categories.mjs && \
+git add src/components/news/*/data.json && \
+git commit -m "chore: mise à jour RSS avec catégories" && \
+git push
+```
 git add src/components/news/*/data.json && \
 git commit -m "chore: mise à jour RSS" && \
 git push

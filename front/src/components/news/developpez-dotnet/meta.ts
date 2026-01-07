@@ -5,7 +5,7 @@ export const developpezDotnetMeta: RssSourceMeta = {
   feedUrl: 'https://dotnet.developpez.com/index/rss',
   icon: '/developpez-icon.png',
   color: '#0B5C9B',
-  maxItems: 30,
+  maxItems: 100,
   searchKeywords: [
     'developpez',
     'developpez.com',

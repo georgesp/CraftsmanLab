@@ -5,7 +5,7 @@ export const jonSkeetBlogMeta: RssSourceMeta = {
   feedUrl: 'https://codeblog.jonskeet.uk/feed/',
   icon: '/jonskeet-icon.png',
   color: '#2C3E50',
-  maxItems: 30,
+  maxItems: 100,
   searchKeywords: [
     'jon skeet',
     'jonskeet',

@@ -2,6 +2,95 @@
   "source": "dotnettips-blog",
   "items": [
     {
+      "title": "Coding Faster with dotNetTips.com Spargine 10: January 2026 Release",
+      "link": "https://dotnettips.wordpress.com/2026/01/06/coding-faster-with-dotnettips-com-spargine-10-january-2026-release/",
+      "pubDate": "Tue, 06 Jan 2026 07:00:00 +0000",
+      "contentSnippet": "Spargine 10 (v2026.10.1.5) launches on January 5th, 2026, featuring enhancements for .NET 10, including new types, methods, benchmarks, and significant performance upgrades. There are breaking changes that may affect existing code. Community contribu",
+      "creator": "dotNetDave",
+      "categories": [
+        ".NET",
+        "CoPilot",
+        "Csharp",
+        "Development",
+        "Open Source",
+        "Performance",
+        "Spargine"
+      ],
+      "guid": "http://dotnettips.wordpress.com/?p=16124"
+    },
+    {
+      "title": "Leveraging Span-Based String Concatenation for Improved Performance",
+      "link": "https://dotnettips.wordpress.com/2026/01/04/leveraging-span-based-string-concatenation-for-improved-performance/",
+      "pubDate": "Sun, 04 Jan 2026 07:00:00 +0000",
+      "contentSnippet": "The excerpt from \"Rock Your Code\" emphasizes the importance of efficient string concatenation in .NET. It highlights the advantages of using the Span type over traditional methods, demonstrating that replacing Substring with AsSpan and leveraging the",
+      "creator": "dotNetDave",
+      "categories": [
+        ".NET",
+        "Code Analysis",
+        "Performance",
+        "Strings"
+      ],
+      "guid": "http://dotnettips.wordpress.com/?p=16008"
+    },
+    {
+      "title": "Visual Studio 2026: Regressions, Reliability Issues, and Missed Opportunities",
+      "link": "https://dotnettips.wordpress.com/2026/01/01/visual-studio-2026-regressions-reliability-issues-and-missed-opportunities/",
+      "pubDate": "Thu, 01 Jan 2026 07:30:00 +0000",
+      "contentSnippet": "Visual Studio 2026 has regressed by removing or disabling key code-quality features, making development more difficult. The Analyze tool suffers from inconsistencies and lack of reliability, while various testing functionalities are also flawed. AI t",
+      "creator": "dotNetDave",
+      "categories": [
+        ".NET",
+        "Code Analysis",
+        "Code Quality",
+        "Development",
+        "User Experience",
+        "VS.NET",
+        "Analyze",
+        "CoPilot",
+        "Live Unit Testing",
+        "Multilingual App Toolkit",
+        "Unit Testing",
+        "Visual Studio"
+      ],
+      "guid": "http://dotnettips.wordpress.com/?p=16090"
+    },
+    {
+      "title": "Rock Your Code: Code & App Performance for Microsoft .NET (5th Edition)",
+      "link": "https://dotnettips.wordpress.com/2026/01/01/rock-your-code-code-app-performance-for-microsoft-net-5th-edition/",
+      "pubDate": "Thu, 01 Jan 2026 07:00:00 +0000",
+      "contentSnippet": "The fifth edition of David McCarter's book, \"Röck Yöur Cöde: Code & App Performance for Microsoft .NET,\" is now available on Amazon. It offers practical techniques for enhancing .NET application performance, including coding patterns, memory insights",
+      "creator": "dotNetDave",
+      "categories": [
+        ".NET",
+        ".NET Coding Standards",
+        ".NET Core",
+        "Architecture",
+        "Books",
+        "C#",
+        "Code Analysis",
+        "Code It Any Way You Want",
+        "Code Quality",
+        "Coding Standards",
+        "Development",
+        "Globalization",
+        "Internationalization",
+        "Lambda",
+        "LINQ",
+        "Memory Management",
+        "OOP",
+        "Performance",
+        "Source Generators",
+        "Spargine",
+        "Third-Party Products",
+        "Threading",
+        "User Experience",
+        "VS.NET",
+        "Book",
+        "Code Performance"
+      ],
+      "guid": "http://dotnettips.wordpress.com/?p=16002"
+    },
+    {
       "title": "Supercharging Application Performance with Intelligent Client-Side Caching",
       "link": "https://dotnettips.wordpress.com/2025/12/28/supercharging-application-performance-with-intelligent-client-side-caching/",
       "pubDate": "Sun, 28 Dec 2025 07:00:00 +0000",
@@ -157,6 +246,6 @@
       "guid": "http://dotnettips.wordpress.com/?p=15619"
     }
   ],
-  "lastUpdated": "2025-12-31T15:03:45.803Z",
+  "lastUpdated": "2026-01-07T17:08:38.125Z",
   "feedTitle": "dotNetTips.com"
 }

@@ -84,6 +84,20 @@
       "guid": "https://visualstudio.developpez.com/actu/377370/Microsoft-annonce-la-mise-a-jour-d-octobre-2025-pour-Visual-Studio-2022-v17-14-avec-des-ameliorations-au-niveau-des-choix-de-modeles-des-flux-agentics-et-de-la-gestion-des-fils-de-discussion/"
     },
     {
+      "title": "Laissez l'agent de codage Copilot se charger des tâches fastidieuses : analyser votre référentiel, planifier des tâches en plusieurs étapes, créer des tickets et des pull requests, par Bruno Capuano",
+      "link": "https://microsoft.developpez.com/actu/375953/Laissez-l-agent-de-codage-Copilot-se-charger-des-taches-fastidieuses-analyser-votre-referentiel-planifier-des-taches-en-plusieurs-etapes-creer-des-tickets-et-des-pull-requests-par-Bruno-Capuano/",
+      "pubDate": "Mon, 20 Oct 2025 02:53:00 +0200",
+      "contentSnippet": "Laissez l'agent de codage Copilot se charger des tâches fastidieuses : analyser votre référentiel, planifier des tâches en plusieurs étapes, créer des tickets et des pull requests, par Bruno Capuano.\nGitHub Copilot est un assistant IA de programmatio",
+      "creator": "",
+      "categories": [
+        "Copilot",
+        "GitHub",
+        "AI",
+        "Agents"
+      ],
+      "guid": "https://microsoft.developpez.com/actu/375953/Laissez-l-agent-de-codage-Copilot-se-charger-des-taches-fastidieuses-analyser-votre-referentiel-planifier-des-taches-en-plusieurs-etapes-creer-des-tickets-et-des-pull-requests-par-Bruno-Capuano/"
+    },
+    {
       "title": "Présentation de Microsoft Agent Framework (Preview) : simplifier les agents IA pour tous les développeurs, par Luis Quintanilla",
       "link": "https://microsoft.developpez.com/actu/376441/Presentation-de-Microsoft-Agent-Framework-Preview-simplifier-les-agents-IA-pour-tous-les-developpeurs-par-Luis-Quintanilla/",
       "pubDate": "Tue, 07 Oct 2025 15:18:00 +0200",
@@ -110,18 +124,18 @@
       "guid": "https://visualstudio.developpez.com/actu/376364/Microsoft-annonce-la-mise-a-jour-de-septembre-2025-pour-Visual-Studio-2022-v17-14-avec-un-agent-de-profilage-un-agent-de-modernisation-des-applications-NET-et-des-ameliorations-du-mode-Agent-Copilot/"
     },
     {
-      "title": "Laissez l'agent de codage Copilot se charger des tâches fastidieuses : analyser votre référentiel, planifier des tâches en plusieurs étapes, créer des tickets et des pull requests, par Bruno Capuano",
-      "link": "https://microsoft.developpez.com/actu/375953/Laissez-l-agent-de-codage-Copilot-se-charger-des-taches-fastidieuses-analyser-votre-referentiel-planifier-des-taches-en-plusieurs-etapes-creer-des-tickets-et-des-pull-requests-par-Bruno-Capuano/",
-      "pubDate": "Mon, 20 Oct 2025 02:53:00 +0200",
-      "contentSnippet": "Laissez l'agent de codage Copilot se charger des tâches fastidieuses : analyser votre référentiel, planifier des tâches en plusieurs étapes, créer des tickets et des pull requests, par Bruno Capuano.\nGitHub Copilot est un assistant IA de programmatio",
+      "title": "5 instructions générative de Copilot Chat que les développeurs .NET devraient adopter dès aujourd'hui, par Wendy Breiding",
+      "link": "https://intelligence-artificielle.developpez.com/actu/374784/5-instructions-generative-de-Copilot-Chat-que-les-developpeurs-NET-devraient-adopter-des-aujourd-hui-par-Wendy-Breiding/",
+      "pubDate": "Tue, 26 Aug 2025 18:07:00 +0200",
+      "contentSnippet": "5 instructions générative de Copilot Chat que les développeurs .NET devraient adopter dès aujourd'hui, par Wendy Breiding\nL'intelligence artificielle est en train de devenir un élément clé de la boîte à outils du développeur .NET moderne. Avec GitHub",
       "creator": "",
       "categories": [
-        "Copilot",
-        "GitHub",
+        ".NET",
         "AI",
-        "Agents"
+        "Copilot",
+        "GitHub"
       ],
-      "guid": "https://microsoft.developpez.com/actu/375953/Laissez-l-agent-de-codage-Copilot-se-charger-des-taches-fastidieuses-analyser-votre-referentiel-planifier-des-taches-en-plusieurs-etapes-creer-des-tickets-et-des-pull-requests-par-Bruno-Capuano/"
+      "guid": "https://intelligence-artificielle.developpez.com/actu/374784/5-instructions-generative-de-Copilot-Chat-que-les-developpeurs-NET-devraient-adopter-des-aujourd-hui-par-Wendy-Breiding/"
     },
     {
       "title": "GPT-5 pour les développeurs Microsoft : GitHub Copilot, AI Toolkit dans Visual Studio Code, Azure AI Foundry, GitHub Models, Microsoft Copilot Studio, Microsoft 365 Copilot, OpenAI .NET SDK",
@@ -137,20 +151,6 @@
         "OpenAI"
       ],
       "guid": "https://microsoft.developpez.com/actu/374820/GPT-5-pour-les-developpeurs-Microsoft-GitHub-Copilot-AI-Toolkit-dans-Visual-Studio-Code-Azure-AI-Foundry-GitHub-Models-Microsoft-Copilot-Studio-Microsoft-365-Copilot-OpenAI-NET-SDK/"
-    },
-    {
-      "title": "5 instructions générative de Copilot Chat que les développeurs .NET devraient adopter dès aujourd'hui, par Wendy Breiding",
-      "link": "https://intelligence-artificielle.developpez.com/actu/374784/5-instructions-generative-de-Copilot-Chat-que-les-developpeurs-NET-devraient-adopter-des-aujourd-hui-par-Wendy-Breiding/",
-      "pubDate": "Tue, 26 Aug 2025 18:07:00 +0200",
-      "contentSnippet": "5 instructions générative de Copilot Chat que les développeurs .NET devraient adopter dès aujourd'hui, par Wendy Breiding\nL'intelligence artificielle est en train de devenir un élément clé de la boîte à outils du développeur .NET moderne. Avec GitHub",
-      "creator": "",
-      "categories": [
-        ".NET",
-        "AI",
-        "Copilot",
-        "GitHub"
-      ],
-      "guid": "https://intelligence-artificielle.developpez.com/actu/374784/5-instructions-generative-de-Copilot-Chat-que-les-developpeurs-NET-devraient-adopter-des-aujourd-hui-par-Wendy-Breiding/"
     },
     {
       "title": "ReSharper, l'extension Visual Studio de JetBrains pour les développeurs .NET, est disponible dans Microsoft Visual Studio Code : la preview publique est maintenant ouverte",
@@ -192,20 +192,6 @@
       "guid": "https://dotnet.developpez.com/actu/372078/Microsoft-presente-les-nouvelles-fonctionnalites-du-langage-de-programmation-de-C-14-membres-d-extension-affectation-par-condition-nulle-proprietes-field-stockees/"
     },
     {
-      "title": "L'EDI .NET multiplateforme Rider 2025.1 est disponible : Explorateur de solutions amélioré, nouvelles fonctionnalités de l'AI Assistant, mises à jour du développement du jeu, et plus encore",
-      "link": "https://jetbrains.developpez.com/actu/371563/L-EDI-NET-multiplateforme-Rider-2025-1-est-disponible-Explorateur-de-solutions-ameliore-nouvelles-fonctionnalites-de-l-AI-Assistant-mises-a-jour-du-developpement-du-jeu-et-plus-encore/",
-      "pubDate": "Mon, 12 May 2025 03:19:00 +0200",
-      "contentSnippet": "Rider 2025.1 est disponible : Explorateur de solutions amélioré, nouvelles fonctionnalités de l'AI Assistant, mises à jour du développement du jeu, et plus encore.\nJetBrains Rider est un EDI .NET complet et multiplateforme qui fonctionne avec une gra",
-      "creator": "",
-      "categories": [
-        ".NET",
-        "Rider",
-        "JetBrains",
-        "AI"
-      ],
-      "guid": "https://jetbrains.developpez.com/actu/371563/L-EDI-NET-multiplateforme-Rider-2025-1-est-disponible-Explorateur-de-solutions-ameliore-nouvelles-fonctionnalites-de-l-AI-Assistant-mises-a-jour-du-developpement-du-jeu-et-plus-encore/"
-    },
-    {
       "title": "ReSharper 2025.1, l'extension Visual Studio de JetBrains pour les développeurs .NET, est disponible : mises à jour des performances et améliorations complètes de l'expérience",
       "link": "https://jetbrains.developpez.com/actu/371256/ReSharper-2025-1-l-extension-Visual-Studio-de-JetBrains-pour-les-developpeurs-NET-est-disponible-mises-a-jour-des-performances-et-ameliorations-completes-de-l-experience/",
       "pubDate": "Mon, 12 May 2025 14:36:00 +0200",
@@ -219,6 +205,20 @@
         "Performance"
       ],
       "guid": "https://jetbrains.developpez.com/actu/371256/ReSharper-2025-1-l-extension-Visual-Studio-de-JetBrains-pour-les-developpeurs-NET-est-disponible-mises-a-jour-des-performances-et-ameliorations-completes-de-l-experience/"
+    },
+    {
+      "title": "L'EDI .NET multiplateforme Rider 2025.1 est disponible : Explorateur de solutions amélioré, nouvelles fonctionnalités de l'AI Assistant, mises à jour du développement du jeu, et plus encore",
+      "link": "https://jetbrains.developpez.com/actu/371563/L-EDI-NET-multiplateforme-Rider-2025-1-est-disponible-Explorateur-de-solutions-ameliore-nouvelles-fonctionnalites-de-l-AI-Assistant-mises-a-jour-du-developpement-du-jeu-et-plus-encore/",
+      "pubDate": "Mon, 12 May 2025 03:19:00 +0200",
+      "contentSnippet": "Rider 2025.1 est disponible : Explorateur de solutions amélioré, nouvelles fonctionnalités de l'AI Assistant, mises à jour du développement du jeu, et plus encore.\nJetBrains Rider est un EDI .NET complet et multiplateforme qui fonctionne avec une gra",
+      "creator": "",
+      "categories": [
+        ".NET",
+        "Rider",
+        "JetBrains",
+        "AI"
+      ],
+      "guid": "https://jetbrains.developpez.com/actu/371563/L-EDI-NET-multiplateforme-Rider-2025-1-est-disponible-Explorateur-de-solutions-ameliore-nouvelles-fonctionnalites-de-l-AI-Assistant-mises-a-jour-du-developpement-du-jeu-et-plus-encore/"
     },
     {
       "title": "Microsoft annonce un template IA .NET en avant-première pour rendre le développement de l'IA avec .NET plus facile à découvrir et à utiliser, avec des conseils dans Visual Studio et Visual Studio Code",
@@ -275,6 +275,6 @@
       "guid": "https://jetbrains.developpez.com/actu/365223/Rider-2024-3-disponible-prise-en-charge-des-dernieres-fonctionnalites-du-SDK-NET-9-et-C-13-debogage-de-console-pour-le-developpement-de-jeux-ameliorations-pour-l-assistant-IA-et-plus/"
     }
   ],
-  "lastUpdated": "2025-12-31T15:03:45.824Z",
+  "lastUpdated": "2026-01-07T17:08:38.189Z",
   "feedTitle": "Flux .NET Developpez"
 }
