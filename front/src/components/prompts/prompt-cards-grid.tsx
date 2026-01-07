@@ -79,8 +79,8 @@ export const PromptCardsGrid: React.FC<Props> = ({
                       display: 'inline-flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      width: 36,
-                      height: 36,
+                      width: 22,
+                      height: 22,
                       backgroundColor: COLORS.promptsIcon,
                       borderRadius: '50%',
                       flexShrink: 0,
@@ -88,18 +88,18 @@ export const PromptCardsGrid: React.FC<Props> = ({
                   >
                     <TextSnippetIcon
                       fontSize="large"
-                      sx={{ color: '#FFFFFF', fontSize: 20 }}
+                      sx={{ color: '#FFFFFF', fontSize: 12 }}
                     />
                   </Box>
                   <Typography
-                    variant="h5"
+                    variant="h6"
                     component="h3"
                     sx={{ fontWeight: TYPOGRAPHY.fontWeights.bold, mb: 0, color: 'text.primary' }}
                   >
                     {getTranslatedText(p.slug, 'title', p.title)}
                   </Typography>
                 </Box>
-                <Typography variant="body1" sx={{ color: 'text.primary', flexGrow: 1, mb: 1 }}>
+                <Typography variant="body2" sx={{ color: 'text.primary', flexGrow: 1, mb: 1 }}>
                   {getTranslatedText(p.slug, 'shortDescription', p.shortDescription)}
                 </Typography>
                 <KeywordChips keywords={p.keywords} />

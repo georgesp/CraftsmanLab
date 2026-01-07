@@ -10,37 +10,37 @@ const RSS_SOURCES = [
   {
     slug: 'microsoft-devblogs',
     feedUrl: 'https://devblogs.microsoft.com/dotnet/feed/',
-    maxItems: 30,
+    maxItems: 100,
   },
   {
     slug: 'developpez-dotnet',
     feedUrl: 'https://dotnet.developpez.com/index/rss',
-    maxItems: 30,
+    maxItems: 100,
   },
   {
     slug: 'jon-skeet-blog',
     feedUrl: 'https://codeblog.jonskeet.uk/feed/',
-    maxItems: 30,
+    maxItems: 100,
   },
   {
     slug: 'thomas-levesque-blog',
     feedUrl: 'https://thomaslevesque.com/index.xml',
-    maxItems: 30,
+    maxItems: 100,
   },
   {
     slug: 'dotnettips-blog',
     feedUrl: 'https://dotnettips.wordpress.com/feed/',
-    maxItems: 30,
+    maxItems: 100,
   },
   {
     slug: 'jetbrains-dotnet-blog',
     feedUrl: 'https://blog.jetbrains.com/dotnet/feed/',
-    maxItems: 30,
+    maxItems: 100,
   },
   {
     slug: 'anthony-giretti-blog',
     feedUrl: 'https://anthonygiretti.com/feed/',
-    maxItems: 30,
+    maxItems: 100,
   },
   // Add more RSS sources here as needed
 ];
@@ -81,8 +81,8 @@ async function fetchSingleRSS(slug, feedUrl, maxItems) {
       });
     }
     
-    // Extraire uniquement les données nécessaires
-    const items = feed.items.slice(0, maxItems).map(item => {
+    // Extraire uniquement les données nécessaires depuis le flux RSS
+    const newItems = feed.items.slice(0, maxItems).map(item => {
       const guid = item.guid || item.link || '';
       const existingItem = existingItemsMap.get(guid);
       
@@ -97,6 +97,24 @@ async function fetchSingleRSS(slug, feedUrl, maxItems) {
         guid: guid,
       };
     });
+    
+    // Fusionner avec les articles existants (sans supprimer les anciens)
+    const allItems = [...newItems];
+    
+    if (existingData && existingData.items) {
+      // Ajouter les articles existants qui ne sont pas dans les nouveaux
+      const newGuids = new Set(newItems.map(item => item.guid));
+      existingData.items.forEach(existingItem => {
+        if (!newGuids.has(existingItem.guid)) {
+          allItems.push(existingItem);
+        }
+      });
+    }
+    
+    // Trier par date (plus récent en premier)
+    allItems.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+    
+    const items = allItems;
 
     return {
       source: slug,

@@ -7,6 +7,7 @@ import type { PromptMeta } from './prompts/prompt-types';
 // ----- Tips: metas (named imports) -----
 import { meta as pollyMeta } from './tips/polly/meta';
 import { meta as msResilienceMeta } from './tips/microsoft-extensions-resilience/meta';
+import { meta as msExtensionsAIMeta } from './tips/microsoft-extensions-ai/meta';
 import { meta as dapperMeta } from './tips/dapper/meta';
 import { meta as tickerqMeta } from './tips/tickerq/meta';
 import { meta as automapperMeta } from './tips/automapper/meta';
@@ -40,6 +41,10 @@ export const tipsEntries: TipEntry[] = [
     ...msResilienceMeta,
     load: () =>
       import('./tips/microsoft-extensions-resilience/microsoft-extensions-resilience'),
+  },
+  {
+    ...msExtensionsAIMeta,
+    load: () => import('./tips/microsoft-extensions-ai/microsoft-extensions-ai'),
   },
   { ...dapperMeta, load: () => import('./tips/dapper/dapper') },
   { ...tickerqMeta, load: () => import('./tips/tickerq/tickerq') },
@@ -97,6 +102,8 @@ import pollyFr from './tips/polly/fr.json';
 import pollyEn from './tips/polly/en.json';
 import msResilienceFr from './tips/microsoft-extensions-resilience/fr.json';
 import msResilienceEn from './tips/microsoft-extensions-resilience/en.json';
+import msExtensionsAIFr from './tips/microsoft-extensions-ai/fr.json';
+import msExtensionsAIEn from './tips/microsoft-extensions-ai/en.json';
 import dapperFr from './tips/dapper/fr.json';
 import dapperEn from './tips/dapper/en.json';
 import tickerqFr from './tips/tickerq/fr.json';
@@ -149,6 +156,7 @@ import closedxmlEn from './tips/closedxml/en.json';
 export const tipsTranslationsFr = {
   ...pollyFr,
   ...msResilienceFr,
+  ...msExtensionsAIFr,
   ...dapperFr,
   ...tickerqFr,
   ...automapperFr,
@@ -178,6 +186,7 @@ export const tipsTranslationsFr = {
 export const tipsTranslationsEn = {
   ...pollyEn,
   ...msResilienceEn,
+  ...msExtensionsAIEn,
   ...dapperEn,
   ...tickerqEn,
   ...automapperEn,

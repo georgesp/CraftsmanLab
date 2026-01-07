@@ -5,7 +5,7 @@ export const thomasLevesqueBlogMeta: RssSourceMeta = {
   feedUrl: 'https://thomaslevesque.com/index.xml',
   icon: '/thomaslevesque-icon.png',
   color: '#FF6B35',
-  maxItems: 30,
+  maxItems: 100,
   searchKeywords: [
     'thomas levesque',
     'thomaslevesque',

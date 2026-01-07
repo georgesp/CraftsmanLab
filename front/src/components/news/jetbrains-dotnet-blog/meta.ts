@@ -5,7 +5,7 @@ export const jetbrainsDotnetBlogMeta: RssSourceMeta = {
   feedUrl: 'https://blog.jetbrains.com/dotnet/feed/',
   icon: '/jetbrains-icon.png',
   color: '#FF318C',
-  maxItems: 30,
+  maxItems: 100,
   searchKeywords: [
     'jetbrains',
     'rider',

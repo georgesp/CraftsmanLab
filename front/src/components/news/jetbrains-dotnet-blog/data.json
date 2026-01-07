@@ -2,6 +2,18 @@
   "source": "jetbrains-dotnet-blog",
   "items": [
     {
+      "title": "dotInsights | January 2026",
+      "link": "https://blog.jetbrains.com/dotnet/2026/01/05/dotinsights-january-2026/",
+      "pubDate": "Mon, 05 Jan 2026 15:26:27 +0000",
+      "contentSnippet": "Did you know? In C# default interface methods allow you to include a method implementation directly in an interface. Welcome to dotInsights by JetBrains! This newsletter is the home for recent .NET and software development related information. 🔗 Lin",
+      "creator": "Rachel Appel",
+      "categories": [
+        "net-tools",
+        "dotinsights"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=672037"
+    },
+    {
       "title": "ReSharper and Rider 2025.3.1 Released: Next Edit Suggestions and Other Important Updates",
       "link": "https://blog.jetbrains.com/dotnet/2025/12/18/resharper-and-rider-2025-3-1/",
       "pubDate": "Thu, 18 Dec 2025 17:47:54 +0000",
@@ -159,6 +171,6 @@
       "guid": "https://blog.jetbrains.com/?post_type=rscpp&p=658125"
     }
   ],
-  "lastUpdated": "2025-12-31T15:03:45.884Z",
+  "lastUpdated": "2026-01-07T17:08:38.060Z",
   "feedTitle": ".NET Tools : Essential productivity kit for .NET and game developers | The JetBrains Blog"
 }
