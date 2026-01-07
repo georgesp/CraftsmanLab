@@ -3,7 +3,7 @@ import { Container, Typography, Card, Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { ScrollToTopButton, PageLayout } from '../../components';
 import { PromptCardsGrid } from '../../components/prompts/prompt-cards-grid';
-import { COLORS, TYPOGRAPHY } from '../../styles';
+import { COLORS } from '../../styles/colors';
 import { PromptsPageContainer, GridContainer } from './styles';
 
 export const PromptsPage: React.FC = () => {
@@ -87,7 +87,7 @@ export const PromptsPage: React.FC = () => {
                 variant="h6"
                 component="h2"
                 gutterBottom
-                sx={{ fontWeight: TYPOGRAPHY.fontWeights.semiBold, px: 0, mx: 0, width: '100%', color: 'text.primary' }}
+                sx={{ fontWeight: 600, px: 0, mx: 0, width: '100%', color: 'text.primary' }}
               >
                 {t('prompts.whatIsPrompt')}
               </Typography>
@@ -109,7 +109,7 @@ export const PromptsPage: React.FC = () => {
                 component="h2"
                 gutterBottom
                 sx={{
-                  fontWeight: TYPOGRAPHY.fontWeights.semiBold,
+                  fontWeight: 600,
                   marginTop: 2,
                   px: 0,
                   mx: 0,

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Button, Menu, MenuItem, Box } from '@mui/material';
 import { Language as LanguageIcon, ExpandMore } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
-import { COLORS, TYPOGRAPHY } from '../../../styles';
 
 const languages = [
   { code: 'fr', name: 'Français', flag: '🇫🇷' },
@@ -40,10 +39,10 @@ export const LanguageSelector: React.FC = () => {
         sx={{
           color: 'inherit',
           textTransform: 'none',
-          fontWeight: TYPOGRAPHY.fontWeights.medium,
-          fontSize: TYPOGRAPHY.fontSizes.nav,
+          fontWeight: 500,
+          fontSize: '0.95rem',
           '&:hover': {
-            backgroundColor: COLORS.overlay.light10,
+            backgroundColor: 'rgba(255, 255, 255, 0.1)',
           },
         }}
       >
@@ -67,7 +66,7 @@ export const LanguageSelector: React.FC = () => {
             key={language.code}
             onClick={() => handleLanguageChange(language.code)}
             selected={language.code === (i18n.resolvedLanguage || i18n.language)}
-            sx={{ fontSize: TYPOGRAPHY.fontSizes.nav }}
+            sx={{ fontSize: '0.95rem' }}
           >
             {language.flag} {language.name}
           </MenuItem>

@@ -1,11 +1,11 @@
 import { styled } from '@mui/material/styles';
 import { AppBar, Toolbar, Box } from '@mui/material';
-import { COLORS, TYPOGRAPHY } from '../../styles';
+import { COLORS } from '../../styles/colors';
 
 export const StyledAppBar = styled(AppBar)({
   width: '100%',
   backgroundColor: COLORS.darkGreyBg,
-  color: COLORS.white,
+  color: '#FFFFFF',
 });
 
 export const StyledToolbar = styled(Toolbar)(({ theme }) => ({
@@ -25,8 +25,8 @@ export const NavigationContainer = styled(Box)(({ theme }) => ({
   gap: theme.spacing(3),
   alignItems: 'center',
   '& a': {
-    color: COLORS.white,
-    fontSize: TYPOGRAPHY.fontSizes.nav,
+    color: '#FFFFFF',
+    fontSize: '0.95rem',
     textDecoration: 'none',
     '&:hover': {
       color: theme.palette.primary.light,

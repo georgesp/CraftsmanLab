@@ -1,20 +1,18 @@
 // Version simplifiée du moteur de recherche basée sur les métadonnées
 // Utilise uniquement les registres avec searchKeywords pour une recherche optimisée
 
-export type SearchKind = 'tip' | 'prompt' | 'news';
+export type SearchKind = 'tip' | 'prompt';
 
 export type SearchHit = {
   kind: SearchKind;
   slug: string;
   title: string;
   shortDescription: string;
-  link?: string; // For news articles that link externally
 };
 
 // Métadonnées fiables via les registres existants
 import { tipsList } from '../components/tips/registry';
 import { promptsList } from '../components/prompts/registry';
-import { rssSources } from '../components/news/registry';
 import i18n from '../i18n';
 
 // Note: keywords are unified across languages; no need to detect language here.
@@ -39,7 +37,6 @@ type IndexedItem = {
   title: string;
   shortDescription: string;
   searchKeywords?: string[];
-  link?: string;
 };
 
 function buildIndex(): IndexedItem[] {
@@ -66,28 +63,6 @@ function buildIndex(): IndexedItem[] {
       shortDescription: getPromptTranslation(p.slug, 'shortDescription', p.shortDescription),
       searchKeywords: p.metadata?.searchKeywords,
     });
-  }
-
-  // Indexer les articles de news
-  for (const source of rssSources) {
-    const sourceKeywords = source.meta.searchKeywords || [];
-    
-    for (const article of source.data.items || []) {
-      // Combine source keywords + article categories as search keywords
-      const articleKeywords = [
-        ...sourceKeywords,
-        ...(article.categories || []).map((c) => c.toLowerCase()),
-      ];
-
-      items.push({
-        kind: 'news',
-        slug: article.guid, // Use guid as unique identifier
-        title: article.title,
-        shortDescription: article.contentSnippet || '',
-        searchKeywords: articleKeywords,
-        link: article.link,
-      });
-    }
   }
 
   return items;
@@ -118,12 +93,11 @@ export function searchAll(query: string): SearchHit[] {
     return false;
   });
 
-  // Tri par pertinence : tips d'abord, puis prompts, puis news
+  // Tri par pertinence : tips d'abord, puis par titre
   matched.sort((a, b) => {
-    // Priorité : tips > prompts > news
+    // Priorité aux tips
     if (a.kind !== b.kind) {
-      const order = { tip: 1, prompt: 2, news: 3 };
-      return order[a.kind] - order[b.kind];
+      return a.kind === 'tip' ? -1 : 1;
     }
 
     // Ensuite, priorité aux correspondances exactes dans le titre
@@ -150,6 +124,5 @@ export function searchAll(query: string): SearchHit[] {
     slug: item.slug,
     title: item.title,
     shortDescription: item.shortDescription,
-    link: item.link,
   }));
 }
