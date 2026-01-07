@@ -7,6 +7,7 @@ export type TagChipsFilterProps = {
   selected: string[];
   onToggle: (tag: string) => void;
   size?: 'small' | 'medium';
+  formatLabels?: boolean;
 };
 
 export const TagChipsFilter: React.FC<TagChipsFilterProps> = ({
@@ -14,6 +15,7 @@ export const TagChipsFilter: React.FC<TagChipsFilterProps> = ({
   selected,
   onToggle,
   size = 'small',
+  formatLabels = true,
 }) => {
   if (!tags.length) return null;
 
@@ -79,7 +81,7 @@ export const TagChipsFilter: React.FC<TagChipsFilterProps> = ({
         return (
           <Chip
             key={tag}
-            label={toPascalCase(tag)}
+            label={formatLabels ? toPascalCase(tag) : tag}
             aria-label={tag}
             size={size}
             clickable

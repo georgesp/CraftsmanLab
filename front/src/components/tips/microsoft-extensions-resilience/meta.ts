@@ -21,7 +21,6 @@ export const meta: TipMeta = {
       'bulkhead',
       'fault injection',
       'résilience',
-      'stratégies',
       'strategy',
       'httpclient',
       'builder',

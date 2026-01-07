@@ -312,7 +312,7 @@ const PromptBody: React.FC = () => {
             top: 8,
             right: 8,
             zIndex: 1,
-            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+            backgroundColor: COLORS.overlay.lightSemi,
             borderRadius: 0,
             border: '1px solid',
             borderColor: 'grey.300',
