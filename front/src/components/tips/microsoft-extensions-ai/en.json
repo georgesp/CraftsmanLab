@@ -1,0 +1,140 @@
+{
+  "microsoft-extensions-ai": {
+    "title": "Microsoft.Extensions.AI",
+    "shortDescription": "Unified abstraction for integrating generative AI services into your .NET applications.",
+    "content": {
+      "mainTitle": "Microsoft.Extensions.AI: a unified abstraction for generative AI in .NET",
+      "intro": "Microsoft.Extensions.AI is a library that provides standardized abstractions for integrating generative AI services (chat, embeddings, image generation) into your .NET applications. It follows the same dependency injection and middleware patterns you already know from the .NET ecosystem.",
+      "useCases": {
+        "title": "Main use cases:",
+        "items": [
+          "Integrate chat models (OpenAI, Azure OpenAI, etc.) with a unified API",
+          "Generate embeddings for semantic search or RAG",
+          "Create images from text prompts",
+          "Add observability (OpenTelemetry), caching and rate limiting",
+          "Switch AI providers without rewriting your code"
+        ]
+      },
+      "summary": "Microsoft.Extensions.AI provides standardized interfaces (IChatClient, IEmbeddingGenerator, IImageGenerator) and middleware components to enrich your AI pipelines with resilience, logging and caching.",
+      "sections": {
+        "packages": {
+          "title": "The packages",
+          "description": "The library is divided into two main packages:",
+          "abstractions": {
+            "title": "Microsoft.Extensions.AI.Abstractions",
+            "description": "Contains the base interfaces (IChatClient, IEmbeddingGenerator, IImageGenerator). Libraries providing AI clients typically reference only this package."
+          },
+          "core": {
+            "title": "Microsoft.Extensions.AI",
+            "description": "Main package that includes abstractions + high-level utilities (middleware, builder patterns, dependency injection). This is the package you reference in your applications."
+          },
+          "installation": {
+            "title": "Installation",
+            "code": "# Main package\ndotnet add package Microsoft.Extensions.AI\n\n# Or only abstractions (for libraries)\ndotnet add package Microsoft.Extensions.AI.Abstractions"
+          }
+        },
+        "interfaces": {
+          "title": "Core interfaces",
+          "chatClient": {
+            "title": "IChatClient",
+            "description": "Interface for chat models (LLM). Supports multi-turn conversations, multimodal content (text, images, audio) and streaming.",
+            "capabilities": [
+              "Send/receive messages",
+              "Response streaming",
+              "Function calling (tools)",
+              "Structured output"
+            ]
+          },
+          "embeddingGenerator": {
+            "title": "IEmbeddingGenerator<TInput, TEmbedding>",
+            "description": "Generates embeddings (vectors) from text or other inputs. Useful for semantic search, clustering, or RAG systems."
+          },
+          "imageGenerator": {
+            "title": "IImageGenerator (experimental)",
+            "description": "Generates images from text prompts. Supports configuration (size, format) and composition with middleware."
+          }
+        },
+        "examples": {
+          "title": "Practical examples",
+          "basicChat": {
+            "title": "Basic chat with IChatClient",
+            "description": "In this example, IChatClient is injected via DI and used to send a simple message."
+          },
+          "streaming": {
+            "title": "Response streaming",
+            "description": "For long responses, use CompleteStreamingAsync to receive tokens as they arrive."
+          },
+          "middleware": {
+            "title": "Middleware: OpenTelemetry + Caching",
+            "description": "Easily add observability and caching to your pipelines:",
+            "explanation": "Middleware automatically applies to all IChatClient calls. You can chain multiple middlewares (logging, rate limiting, retry, etc.)."
+          },
+          "embeddings": {
+            "title": "Embedding generation",
+            "description": "Use IEmbeddingGenerator to create vectors from text."
+          }
+        },
+        "benefits": {
+          "title": "Benefits of Microsoft.Extensions.AI",
+          "items": [
+            {
+              "title": "Portability",
+              "description": "Switch providers (OpenAI → Azure OpenAI → others) without touching your business logic."
+            },
+            {
+              "title": "Testability",
+              "description": "Easily mock IChatClient or IEmbeddingGenerator in your unit tests."
+            },
+            {
+              "title": "Middleware ecosystem",
+              "description": "Leverage the .NET ecosystem: OpenTelemetry, caching, rate limiting, resilience."
+            },
+            {
+              "title": "Dependency injection",
+              "description": "Native integration with IServiceCollection and familiar .NET patterns."
+            },
+            {
+              "title": "Consistent API",
+              "description": "A single API for all your generative AI needs (chat, embeddings, images)."
+            }
+          ]
+        },
+        "bestPractices": {
+          "title": "Best practices",
+          "items": [
+            {
+              "rule": "Use abstractions in your business code",
+              "reason": "Don't depend directly on a specific SDK (e.g., OpenAI SDK). This facilitates testing and migration."
+            },
+            {
+              "rule": "Add observability from the start",
+              "reason": "Use UseOpenTelemetry() to track costs, latencies and errors of your AI calls."
+            },
+            {
+              "rule": "Enable caching for repeated requests",
+              "reason": "Reduce costs and latency by caching identical responses."
+            },
+            {
+              "rule": "Compose with resilience",
+              "reason": "Combine with Microsoft.Extensions.Resilience to add retry, circuit breaker, etc."
+            },
+            {
+              "rule": "Separate configuration from logic",
+              "reason": "Configure your clients in Startup/Program.cs, inject them via DI."
+            }
+          ]
+        },
+        "resources": {
+          "title": "Resources",
+          "officialDocs": "Official Microsoft documentation",
+          "samples": "Sample repository (dotnet/ai-samples)",
+          "eshopSupport": "End-to-end example (eShopSupport)"
+        }
+      },
+      "footer": {
+        "sourceLabel": "Official documentation",
+        "writtenOn": "Written on {{date}}"
+      }
+    }
+  }
+}
