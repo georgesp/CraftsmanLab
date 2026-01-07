@@ -1,10 +1,9 @@
 import { SxProps, Theme } from '@mui/material/styles';
-import { COLORS, SHADOWS } from '../../styles';
 
 export const homePageStyles: { [key: string]: SxProps<Theme> } = {
   descriptionBox: {
-    backgroundColor: COLORS.homeDescriptionBg,
-    boxShadow: SHADOWS.light,
+    backgroundColor: '#f3f7ff',
+    boxShadow: '0 8px 28px rgba(16,24,40,0.06)',
     p: 4,
     maxWidth: 900,
     width: '100%',

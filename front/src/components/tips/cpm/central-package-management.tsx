@@ -5,7 +5,6 @@ import { Box, Typography } from '@mui/material';
 import { CodeBlock } from '../../ui/CodeBlock';
 import { meta } from './meta';
 import { TipContent } from '../../ui';
-import { COLORS } from '../../../styles';
 
 const CentralPackageManagementTip: React.FC = () => {
   const { t } = useTranslation('tips');
@@ -119,36 +118,36 @@ dotnet sln add src/**/*.csproj`}
       <Box component="table" sx={{ width: '100%', borderCollapse: 'collapse' }}>
         <thead>
           <tr>
-            <th style={{ textAlign: 'left', padding: '8px', borderBottom: `1px solid ${COLORS.table.border}` }}>
+            <th style={{ textAlign: 'left', padding: '8px', borderBottom: '1px solid #ddd' }}>
               {t('cpm.content.sections.bestPractices.tableHeaders.tip')}
             </th>
-            <th style={{ textAlign: 'left', padding: '8px', borderBottom: `1px solid ${COLORS.table.border}` }}>
+            <th style={{ textAlign: 'left', padding: '8px', borderBottom: '1px solid #ddd' }}>
               {t('cpm.content.sections.bestPractices.tableHeaders.why')}
             </th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td style={{ padding: '8px', borderBottom: `1px solid ${COLORS.table.border}` }}>
+            <td style={{ padding: '8px', borderBottom: '1px solid #ddd' }}>
               {t('cpm.content.sections.bestPractices.rows.vcs.title')}
             </td>
-            <td style={{ padding: '8px', borderBottom: `1px solid ${COLORS.table.border}` }}>
+            <td style={{ padding: '8px', borderBottom: '1px solid #ddd' }}>
               {t('cpm.content.sections.bestPractices.rows.vcs.why')}
             </td>
           </tr>
           <tr>
-            <td style={{ padding: '8px', borderBottom: `1px solid ${COLORS.table.border}` }}>
+            <td style={{ padding: '8px', borderBottom: '1px solid #ddd' }}>
               {t('cpm.content.sections.bestPractices.rows.outdated.title')}
             </td>
-            <td style={{ padding: '8px', borderBottom: `1px solid ${COLORS.table.border}` }}>
+            <td style={{ padding: '8px', borderBottom: '1px solid #ddd' }}>
               {t('cpm.content.sections.bestPractices.rows.outdated.why')}
             </td>
           </tr>
           <tr>
-            <td style={{ padding: '8px', borderBottom: `1px solid ${COLORS.table.border}` }}>
+            <td style={{ padding: '8px', borderBottom: '1px solid #ddd' }}>
               {t('cpm.content.sections.bestPractices.rows.locked.title')}
             </td>
-            <td style={{ padding: '8px', borderBottom: `1px solid ${COLORS.table.border}` }}>
+            <td style={{ padding: '8px', borderBottom: '1px solid #ddd' }}>
               {t('cpm.content.sections.bestPractices.rows.locked.why')}
             </td>
           </tr>

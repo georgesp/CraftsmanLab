@@ -9,7 +9,8 @@ import {
   CircularProgress,
 } from '@mui/material';
 import { Email, Send } from '@mui/icons-material';
-import { COLORS, TYPOGRAPHY } from '../../styles';
+import { COLORS } from '../../styles/colors';
+import { TYPOGRAPHY } from '../../styles/typography';
 import { CONTACT_EMAIL } from '../../utils/constants';
 import { PageLayout } from '../../components';
 import {
@@ -215,7 +216,7 @@ export const ContactPage: React.FC = () => {
                           borderStyle: 'solid',
                           px: 2,
                           py: 1,
-                          fontWeight: TYPOGRAPHY.fontWeights.semiBold,
+                          fontWeight: 600,
                           textTransform: 'none',
                           '&:hover': {
                             background: COLORS.maltlightRed,
@@ -245,7 +246,7 @@ export const ContactPage: React.FC = () => {
                           borderStyle: 'solid',
                           px: 2,
                           py: 1,
-                          fontWeight: TYPOGRAPHY.fontWeights.semiBold,
+                          fontWeight: 600,
                           textTransform: 'none',
                           '&:hover': {
                             background: COLORS.linkedInlightBlue,

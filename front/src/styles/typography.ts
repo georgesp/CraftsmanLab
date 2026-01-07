@@ -16,7 +16,6 @@ export const TYPOGRAPHY = {
     caption: '0.7rem', // était 0.875rem (pour les éléments MuiChip, etc.)
     small: '0.75rem', // pour les petits textes
     tiny: '0.65rem', // pour les très petits textes
-    nav: '0.95rem', // pour la navigation et le sélecteur de langue
   },
 
   // Responsive font sizes - tailles encore plus petites sur mobile

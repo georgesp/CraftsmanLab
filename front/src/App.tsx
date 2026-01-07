@@ -8,7 +8,6 @@ import { PromptsPage } from './pages/Prompts/prompts-page';
 import { PromptDetailPage } from './pages/Prompts/prompt-detail-page';
 import { TipsPage } from './pages/Tips/tips-page';
 import { TipDetailPage } from './pages/Tips/tip-detail-page';
-import { NewsPage } from './pages/News/news-page';
 import { telerikTheme } from './theme/theme';
 
 function App() {
@@ -26,7 +25,6 @@ function App() {
           <Route path="/prompts/:slug" element={<PromptDetailPage />} />
           <Route path="/tips" element={<TipsPage />} />
           <Route path="/tips/:slug" element={<TipDetailPage />} />
-          <Route path="/news" element={<NewsPage />} />
         </Routes>
       </Router>
     </ThemeProvider>
