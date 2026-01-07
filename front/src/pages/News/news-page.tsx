@@ -588,22 +588,22 @@ export const NewsPage: React.FC = () => {
                                   display: 'inline-flex',
                                   alignItems: 'center',
                                   justifyContent: 'center',
-                                  width: 36,
-                                  height: 36,
+                                  width: 22,
+                                  height: 22,
                                   backgroundColor: COLORS.newsIcon,
                                   borderRadius: '50%',
                                   mt: 0.2,
                                   flexShrink: 0,
                                 }}
                               >
-                                <NewspaperIcon sx={{ color: '#FFFFFF', fontSize: 20 }} />
+                                <NewspaperIcon sx={{ color: '#FFFFFF', fontSize: 12 }} />
                               </Box>
                               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flex: 1, gap: 2 }}>
                                 <Typography
-                                  variant="h6"
+                                  variant="subtitle1"
                                   component="h3"
                                   sx={{
-                                    fontSize: '1.1rem',
+                                    fontSize: '1.0rem',
                                     lineHeight: 1.3,
                                     fontWeight: 600,
                                   }}
@@ -611,10 +611,10 @@ export const NewsPage: React.FC = () => {
                                   {item.title}
                                 </Typography>
                                 <Typography
-                                  variant="body2"
+                                  variant="caption"
                                   color="text.secondary"
                                   sx={{ 
-                                    fontSize: '0.8rem',
+                                    fontSize: '0.75rem',
                                     whiteSpace: 'nowrap',
                                   }}
                                 >
@@ -625,16 +625,16 @@ export const NewsPage: React.FC = () => {
 
                             {item.creator && (
                               <Typography
-                                variant="body2"
+                                variant="caption"
                                 color="text.secondary"
-                                sx={{ mb: 1.5, fontSize: '0.875rem' }}
+                                sx={{ mb: 1.5, fontSize: '0.8rem' }}
                               >
                                 {item.creator}
                               </Typography>
                             )}
 
                             <Typography
-                              variant="body1"
+                              variant="body2"
                               sx={{
                                 mb: 2,
                                 flex: 1,
