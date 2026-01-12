@@ -1,6 +1,7 @@
 import { createTheme } from '@mui/material/styles';
 import { COLORS } from '../styles/colors';
 import { TYPOGRAPHY } from '../styles/typography';
+import { SHADOWS } from '../styles/shadows';
 
 export const telerikTheme = createTheme({
   palette: {
@@ -11,31 +12,20 @@ export const telerikTheme = createTheme({
       contrastText: '#ffffff',
     },
     secondary: {
-      main: '#40e0d0', // Turquoise Telerik
-      light: '#70f0e0',
-      dark: '#2aa0a0',
-      contrastText: '#000000',
+      main: COLORS.secondary.main,
+      light: COLORS.secondary.light,
+      dark: COLORS.secondary.dark,
+      contrastText: COLORS.secondary.contrastText,
     },
     background: {
       default: COLORS.darkGreyBg,
       paper: COLORS.darkGreyBg,
     },
     text: {
-      primary: COLORS.textPrimary || '#E6EEF3',
-      secondary: '#9AA6AC',
+      primary: COLORS.textPrimary,
+      secondary: COLORS.textSecondary,
     },
-    grey: {
-      50: '#f7fafc',
-      100: '#edf2f7',
-      200: '#e2e8f0',
-      300: '#cbd5e0',
-      400: '#a0aec0',
-      500: '#718096',
-      600: '#4a5568',
-      700: '#2d3748',
-      800: '#1a202c',
-      900: '#171923',
-    },
+    grey: COLORS.grey,
   },
   typography: {
     fontFamily: TYPOGRAPHY.fontFamily,
@@ -44,14 +34,14 @@ export const telerikTheme = createTheme({
       fontWeight: TYPOGRAPHY.fontWeights.bold,
       lineHeight: TYPOGRAPHY.lineHeights.tight,
       letterSpacing: TYPOGRAPHY.letterSpacing.tight,
-      color: COLORS.textPrimary || '#E6EEF3',
+      color: COLORS.textPrimary,
     },
     h2: {
       fontSize: TYPOGRAPHY.fontSizes.h2,
       fontWeight: TYPOGRAPHY.fontWeights.semiBold,
       lineHeight: TYPOGRAPHY.lineHeights.normal,
       letterSpacing: TYPOGRAPHY.letterSpacing.normal,
-      color: COLORS.textPrimary || '#E6EEF3',
+      color: COLORS.textPrimary,
     },
     h3: {
       fontSize: TYPOGRAPHY.fontSizes.h3,
@@ -69,23 +59,23 @@ export const telerikTheme = createTheme({
       fontSize: TYPOGRAPHY.fontSizes.h5,
       fontWeight: TYPOGRAPHY.fontWeights.medium,
       lineHeight: TYPOGRAPHY.lineHeights.relaxed,
-      color: '#9AA6AC',
+      color: COLORS.textSecondary,
     },
     h6: {
       fontSize: TYPOGRAPHY.fontSizes.h6,
       fontWeight: TYPOGRAPHY.fontWeights.medium,
       lineHeight: TYPOGRAPHY.lineHeights.relaxed,
-      color: '#E6EEF3',
+      color: COLORS.textPrimary,
     },
     body1: {
       fontSize: TYPOGRAPHY.fontSizes.body1,
       lineHeight: TYPOGRAPHY.lineHeights.relaxed,
-      color: COLORS.textPrimary || '#E6EEF3',
+      color: COLORS.textPrimary,
     },
     body2: {
       fontSize: TYPOGRAPHY.fontSizes.body2,
       lineHeight: TYPOGRAPHY.lineHeights.relaxed,
-      color: '#9AA6AC',
+      color: COLORS.textSecondary,
     },
     button: {
       textTransform: 'none',
@@ -102,14 +92,14 @@ export const telerikTheme = createTheme({
           fontSize: TYPOGRAPHY.fontSizes.button,
           fontWeight: TYPOGRAPHY.fontWeights.semiBold,
           textTransform: 'none',
-          boxShadow: 'none',
+          boxShadow: SHADOWS.none,
           '&:hover': {
-            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+            boxShadow: SHADOWS.button,
           },
         },
         contained: {
           background: `linear-gradient(135deg, ${COLORS.primary.main} 0%, ${COLORS.primary.light} 100%)`,
-          color: '#fff',
+          color: COLORS.white,
           '&:hover': {
             background: `linear-gradient(135deg, ${COLORS.primary.dark} 0%, ${COLORS.primary.main} 100%)`,
           },

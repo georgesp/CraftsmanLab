@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { COLORS } from '../../styles/colors';
+import { COLORS, TYPOGRAPHY } from '../../styles';
 
 export const Footer: React.FC = () => {
   const { t } = useTranslation(['common', 'pages']);
@@ -16,12 +16,12 @@ export const Footer: React.FC = () => {
         borderTop: 'none',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         color: 'text.primary',
-        fontSize: '0.85rem',
+        fontSize: TYPOGRAPHY.fontSizes.body1,
       }}
     >
-      <Typography variant="caption" sx={{ fontSize: '0.8rem', color: 'text.primary' }}>
+      <Typography variant="caption" sx={{ fontSize: TYPOGRAPHY.fontSizes.body2, color: 'text.primary' }}>
         {t('pages:footer.copyright', '© 2025 CraftsmanLab. Tous droits réservés.')}
       </Typography>
     </Box>

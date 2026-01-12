@@ -1,5 +1,6 @@
 import React, { PropsWithChildren } from 'react';
 import { Box } from '@mui/material';
+import { TYPOGRAPHY } from '../../styles';
 
 /**
  * TipContent
@@ -14,24 +15,24 @@ export const TipContent: React.FC<PropsWithChildren> = ({ children }) => {
         '& .MuiTypography-h3': {
           marginTop: 0,
           marginBottom: 2,
-          fontWeight: 700,
+          fontWeight: TYPOGRAPHY.fontWeights.bold,
         },
         // Section titles
         '& .MuiTypography-h4': {
           marginTop: 3,
           marginBottom: 1.5,
-          fontWeight: 700,
+          fontWeight: TYPOGRAPHY.fontWeights.bold,
         },
         // Subsection titles
         '& .MuiTypography-h5': {
           marginTop: 2.5,
           marginBottom: 1,
-          fontWeight: 700,
+          fontWeight: TYPOGRAPHY.fontWeights.bold,
         },
         '& .MuiTypography-h6': {
           marginTop: 2,
           marginBottom: 1,
-          fontWeight: 700,
+          fontWeight: TYPOGRAPHY.fontWeights.bold,
         },
         // Subtitle / caption adjustments
         '& .MuiTypography-subtitle1': {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Box } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { COLORS } from '../../../styles/colors';
+import { COLORS } from '../../../styles';
 
 export interface ViewAllTipsButtonProps {
   /** Texte affiché sur le bouton */
@@ -40,7 +40,7 @@ export const ViewAllTipsButton: React.FC<ViewAllTipsButtonProps> = ({
           backgroundColor: COLORS.itemListHover,
           '&:hover': {
             borderColor: COLORS.itemListHover,
-            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            backgroundColor: COLORS.overlay.light10,
             color: COLORS.darkTheme.textOnDark,
           },
         }}

@@ -1,5 +1,6 @@
 {
   "home": {
+    "latestNews": "Dernières actualités",
     "latestTips": "Derniers tips publiés :",
     "latestPrompts": "Derniers prompts publiés :"
   },
@@ -44,8 +45,16 @@
     },
   "infoTitle": "Mes coordonnées",
     "successMessage": "Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais."
-  }
-  ,
+  },
+  "news": {
+    "title": "Actualités .NET",
+    "allSources": "Toutes les sources",
+    "lastUpdated": "Dernière mise à jour : {{date}}",
+    "readArticle": "Lire l'article",
+    "noItems": "Aucun article disponible pour le moment.",
+    "error": "Impossible de charger le flux d'actualités.",
+    "partialError": "Certains flux n'ont pas pu être chargés."
+  },
   "footer": {
     "copyright": "© 2025 CraftsmanLab. Tous droits réservés."
   }
