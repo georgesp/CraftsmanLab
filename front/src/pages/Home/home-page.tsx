@@ -151,7 +151,7 @@ export const HomePage: React.FC = () => {
                                 whiteSpace: 'nowrap',
                               }}
                             >
-                              {formatDate(item.pubDate)}
+                              {item.creator && `${item.creator}, `}{formatDate(item.pubDate)}
                             </Typography>
                           </Box>
                         </Box>
