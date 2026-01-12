@@ -618,20 +618,10 @@ export const NewsPage: React.FC = () => {
                                     whiteSpace: 'nowrap',
                                   }}
                                 >
-                                  {formatDate(item.pubDate)}
+                                  {item.creator && `${item.creator}, `}{formatDate(item.pubDate)}
                                 </Typography>
                               </Box>
                             </Box>
-
-                            {item.creator && (
-                              <Typography
-                                variant="caption"
-                                color="text.secondary"
-                                sx={{ mb: 1.5, fontSize: '0.8rem' }}
-                              >
-                                {item.creator}
-                              </Typography>
-                            )}
 
                             <Typography
                               variant="body2"
