@@ -3,10 +3,10 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  /* Color tokens from COLORS.overlay.textLightSemi and COLORS.darkGreyBg */
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #23272F; /* match COLORS.darkGreyBg */
+  color-scheme: light;
+  /* Color tokens for light theme */
+  color: #1A1D1F;
+  background-color: #FAFBFC; /* match COLORS.darkGreyBg (now light) */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -18,11 +18,11 @@
 a {
   font-weight: 500;
   /* Color tokens from COLORS.link.default and COLORS.link.hover */
-  color: #646cff;
+  color: #1976d2;
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: #115293;
 }
 
 html, body, #root {
@@ -33,14 +33,14 @@ body {
   margin: 0;
   min-width: 320px;
   overflow-x: hidden; /* Avoid unwanted horizontal scroll */
-  background-color: #23272F; /* enforce dark background on body */
+  background-color: #FAFBFC; /* enforce light background on body */
 }
 
 #root {
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: #23272F; /* ensure root container matches dark bg */
+  background-color: #FAFBFC; /* ensure root container matches light bg */
 }
 
 /* Always use dark theme background to avoid white banding at page bottom */
