@@ -148,7 +148,7 @@ export const TipCardsGrid: React.FC<Props> = ({
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              minHeight: 160,
+              height: '100%',
               backgroundColor: COLORS.cardBgDark,
               boxShadow: 'none',
               border: 'none',
