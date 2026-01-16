@@ -1,5 +1,6 @@
 import { SxProps, Theme } from '@mui/material/styles';
 import { COLORS, SHADOWS } from '../../styles';
+import { BORDER_RADIUS } from '../../theme/theme';
 
 export const homePageStyles: { [key: string]: SxProps<Theme> } = {
   descriptionBox: {
@@ -8,6 +9,6 @@ export const homePageStyles: { [key: string]: SxProps<Theme> } = {
     p: 4,
     maxWidth: 900,
     width: '100%',
-    borderRadius: 12,
+    borderRadius: BORDER_RADIUS.none,
   },
 };
