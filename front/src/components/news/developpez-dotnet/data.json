@@ -2,6 +2,17 @@
   "source": "developpez-dotnet",
   "items": [
     {
+      "title": "IA générative avec des grands modèles de langage en C# en 2026 : une base pour les développeurs .NET/C# travaillant avec Microsoft Foundry, GitHub Models et AI Extensions, par Jeremy Likness",
+      "link": "https://intelligence-artificielle.developpez.com/actu/379222/IA-generative-avec-des-grands-modeles-de-langage-en-C-en-2026-une-base-pour-les-developpeurs-NET-C-travaillant-avec-Microsoft-Foundry-GitHub-Models-et-AI-Extensions-par-Jeremy-Likness/",
+      "pubDate": "Wed, 14 Jan 2026 16:44:00 +0100",
+      "contentSnippet": "IA générative avec des grands modèles de langage en C# en 2026 : une base pour les développeurs .NET/C# travaillant avec Microsoft Foundry, GitHub Models et AI Extensions, par Jeremy Likness\nL'IA générative est devenue la technologie grand public à l",
+      "creator": "",
+      "categories": [
+        "GitHub"
+      ],
+      "guid": "https://intelligence-artificielle.developpez.com/actu/379222/IA-generative-avec-des-grands-modeles-de-langage-en-C-en-2026-une-base-pour-les-developpeurs-NET-C-travaillant-avec-Microsoft-Foundry-GitHub-Models-et-AI-Extensions-par-Jeremy-Likness/"
+    },
+    {
       "title": "Microsoft annonce que le langage de programmation F# 10 est disponible avec .NET 10 et Visual Studio 2026, apportant des améliorations axées sur la clarté, la cohérence et les performances",
       "link": "https://dotnet.developpez.com/actu/377751/Microsoft-annonce-que-le-langage-de-programmation-F-10-est-disponible-avec-NET-10-et-Visual-Studio-2026-apportant-des-ameliorations-axees-sur-la-clarte-la-coherence-et-les-performances/",
       "pubDate": "Tue, 18 Nov 2025 16:26:00 +0100",
@@ -275,6 +286,6 @@
       "guid": "https://jetbrains.developpez.com/actu/365223/Rider-2024-3-disponible-prise-en-charge-des-dernieres-fonctionnalites-du-SDK-NET-9-et-C-13-debogage-de-console-pour-le-developpement-de-jeux-ameliorations-pour-l-assistant-IA-et-plus/"
     }
   ],
-  "lastUpdated": "2026-01-07T17:08:38.189Z",
+  "lastUpdated": "2026-01-16T16:56:19.547Z",
   "feedTitle": "Flux .NET Developpez"
 }
