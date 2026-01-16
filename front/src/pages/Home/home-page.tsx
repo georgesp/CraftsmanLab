@@ -124,7 +124,7 @@ export const HomePage: React.FC = () => {
                               width: 22,
                               height: 22,
                               backgroundColor: '#4caf50',
-                              borderRadius: '50%',
+                              borderRadius: 0,
                               mt: 0.2,
                               flexShrink: 0,
                             }}

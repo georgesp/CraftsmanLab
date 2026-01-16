@@ -252,7 +252,7 @@ export const TipsPage: React.FC = () => {
                         mb: 2,
                         p: 1.5,
                         backgroundColor: COLORS.categorySelectedBg,
-                        borderRadius: 1,
+                        borderRadius: 0,
                         border: `1px solid ${COLORS.categorySelectedBorder}`,
                       }}
                     >
@@ -281,7 +281,7 @@ export const TipsPage: React.FC = () => {
                               color: 'white',
                               px: 1,
                               py: 0.5,
-                              borderRadius: 0.5,
+                              borderRadius: 0,
                               fontSize: '0.75rem',
                             }}
                           >

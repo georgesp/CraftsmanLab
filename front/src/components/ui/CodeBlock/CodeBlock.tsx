@@ -42,7 +42,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
         m: 0,
         bgcolor: (t) =>
           t.palette.mode === 'dark' ? COLORS.codeBlockTextDark : COLORS.codeBlockTextLight,
-        borderRadius: '8px',
+        borderRadius: 0,
         overflowX: 'auto',
         maxHeight,
         fontFamily: TYPOGRAPHY.fontFamily,

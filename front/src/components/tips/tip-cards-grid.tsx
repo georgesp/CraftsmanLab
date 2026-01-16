@@ -114,7 +114,7 @@ export const TipCardsGrid: React.FC<Props> = ({
                       width: 22,
                       height: 22,
                       backgroundColor: COLORS.tipsIcon,
-                      borderRadius: '50%',
+                      borderRadius: 0,
                       flexShrink: 0,
                     }}
                   >
@@ -148,7 +148,7 @@ export const TipCardsGrid: React.FC<Props> = ({
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              minHeight: 160,
+              height: '100%',
               backgroundColor: COLORS.cardBgDark,
               boxShadow: 'none',
               border: 'none',

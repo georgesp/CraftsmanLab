@@ -3,6 +3,15 @@ import { COLORS } from '../styles/colors';
 import { TYPOGRAPHY } from '../styles/typography';
 import { SHADOWS } from '../styles/shadows';
 
+// Constante centralisée pour tous les border-radius du site
+export const BORDER_RADIUS = {
+  none: 0,           // Pas d'arrondi (utilisé partout actuellement)
+  small: 4,          // Petit arrondi (si besoin futur)
+  medium: 8,         // Arrondi moyen (si besoin futur)
+  large: 12,         // Grand arrondi (si besoin futur)
+  circle: '50%',     // Cercle complet (avatars, icônes)
+};
+
 export const telerikTheme = createTheme({
   palette: {
     primary: {
@@ -87,7 +96,7 @@ export const telerikTheme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
+          borderRadius: BORDER_RADIUS.none,
           padding: '12px 24px',
           fontSize: TYPOGRAPHY.fontSizes.button,
           fontWeight: TYPOGRAPHY.fontWeights.semiBold,
@@ -126,7 +135,7 @@ export const telerikTheme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 12,
+          borderRadius: BORDER_RADIUS.none,
           boxShadow: 'none',
           border: 'none',
           background: 'transparent',
@@ -152,7 +161,7 @@ export const telerikTheme = createTheme({
       styleOverrides: {
         root: {
           '& .MuiOutlinedInput-root': {
-            borderRadius: 0,
+            borderRadius: BORDER_RADIUS.none,
             '& .MuiOutlinedInput-notchedOutline': {
               borderColor: COLORS.searchInputText,
             },
@@ -170,7 +179,7 @@ export const telerikTheme = createTheme({
     MuiChip: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
+          borderRadius: BORDER_RADIUS.none,
           fontWeight: TYPOGRAPHY.fontWeights.medium,
           fontSize: TYPOGRAPHY.fontSizes.caption,
         },
@@ -179,13 +188,13 @@ export const telerikTheme = createTheme({
     MuiAlert: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
+          borderRadius: BORDER_RADIUS.none,
         },
       },
     },
   },
   shape: {
-    borderRadius: 8,
+    borderRadius: BORDER_RADIUS.none,
   },
   spacing: 8,
 });

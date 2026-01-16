@@ -1,5 +1,6 @@
 import { styled } from '@mui/material/styles';
 import { Box, Card, CardContent } from '@mui/material';
+import { BORDER_RADIUS } from '../../theme/theme';
 // ...existing code...
 import { PAGE_SPACING } from '../../styles/spacing';
 
@@ -14,7 +15,7 @@ export const GridContainer = styled(Box)(({ theme }) => ({
 
 export const PromptCard = styled(Card)(() => ({
   height: '100%',
-  borderRadius: '12px',
+  borderRadius: BORDER_RADIUS.none,
   overflow: 'hidden',
 }));
 export const PromptCardContent = styled(CardContent)(({ theme }) => ({

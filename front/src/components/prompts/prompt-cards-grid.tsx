@@ -82,7 +82,7 @@ export const PromptCardsGrid: React.FC<Props> = ({
                       width: 22,
                       height: 22,
                       backgroundColor: COLORS.promptsIcon,
-                      borderRadius: '50%',
+                      borderRadius: 0,
                       flexShrink: 0,
                     }}
                   >

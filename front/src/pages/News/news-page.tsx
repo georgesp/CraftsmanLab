@@ -9,6 +9,7 @@ import { PageLayout, ScrollToTopButton } from '../../components';
 import { COLORS } from '../../styles/colors';
 import { GridContainer } from '../Prompts/styles';
 import { PromptCard, PromptCardContent } from '../Prompts/styles';
+import { KeywordChips } from '../../components/ui/KeywordChips';
 import { rssSources } from '../../components/news/registry';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 
@@ -341,7 +342,7 @@ export const NewsPage: React.FC = () => {
                         mb: 2,
                         p: 1.5,
                         backgroundColor: COLORS.categorySelectedBg,
-                        borderRadius: 1,
+                        borderRadius: 0,
                         border: `1px solid ${COLORS.categorySelectedBorder}`,
                       }}
                     >
@@ -404,7 +405,7 @@ export const NewsPage: React.FC = () => {
                               color: 'white',
                               px: 1,
                               py: 0.5,
-                              borderRadius: 0.5,
+                              borderRadius: 0,
                               fontSize: '0.75rem',
                             }}
                           >
@@ -591,7 +592,7 @@ export const NewsPage: React.FC = () => {
                                   width: 22,
                                   height: 22,
                                   backgroundColor: COLORS.newsIcon,
-                                  borderRadius: '50%',
+                                  borderRadius: 0,
                                   mt: 0.2,
                                   flexShrink: 0,
                                 }}
@@ -636,23 +637,7 @@ export const NewsPage: React.FC = () => {
                             </Typography>
 
                             {item.categories && item.categories.length > 0 && (
-                              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                                {item.categories.slice(0, 3).map((cat, idx) => (
-                                  <Typography
-                                    key={idx}
-                                    variant="caption"
-                                    sx={{
-                                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                                      px: 1,
-                                      py: 0.25,
-                                      borderRadius: 1,
-                                      fontSize: '0.75rem',
-                                    }}
-                                  >
-                                    {cat}
-                                  </Typography>
-                                ))}
-                              </Box>
+                              <KeywordChips keywords={item.categories.slice(0, 3)} />
                             )}
                           </PromptCardContent>
                         </PromptCard>
