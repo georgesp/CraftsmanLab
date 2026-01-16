@@ -2,6 +2,21 @@
   "source": "dotnettips-blog",
   "items": [
     {
+      "title": "File I/O Performance: Picking the Fastest Weapon in Your Arsenal",
+      "link": "https://dotnettips.wordpress.com/2026/01/11/file-i-o-performance-picking-the-fastest-weapon-in-your-arsenal/",
+      "pubDate": "Sun, 11 Jan 2026 07:00:00 +0000",
+      "contentSnippet": "This article provides insights on the fastest file I/O methods for .NET 10, emphasizing benchmarks with 1 MB payloads.",
+      "creator": "dotNetDave",
+      "categories": [
+        ".NET",
+        "C#",
+        "Performance",
+        "File",
+        "I/O"
+      ],
+      "guid": "http://dotnettips.wordpress.com/?p=16019"
+    },
+    {
       "title": "Coding Faster with dotNetTips.com Spargine 10: January 2026 Release",
       "link": "https://dotnettips.wordpress.com/2026/01/06/coding-faster-with-dotnettips-com-spargine-10-january-2026-release/",
       "pubDate": "Tue, 06 Jan 2026 07:00:00 +0000",
@@ -246,6 +261,6 @@
       "guid": "http://dotnettips.wordpress.com/?p=15619"
     }
   ],
-  "lastUpdated": "2026-01-07T17:08:38.125Z",
+  "lastUpdated": "2026-01-16T16:56:18.783Z",
   "feedTitle": "dotNetTips.com"
 }

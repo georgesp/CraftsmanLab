@@ -2,6 +2,31 @@
   "source": "anthony-giretti-blog",
   "items": [
     {
+      "title": ".NET 10: Streaming over WebSockets with the New WebSocket Stream API",
+      "link": "https://anthonygiretti.com/2026/01/12/net-10-streaming-over-websockets-with-the-new-websocket-stream-api/",
+      "pubDate": "Sun, 11 Jan 2026 23:44:52 +0000",
+      "contentSnippet": "Introduction .NET 10 introduces a new WebSocket stream API that makes working with WebSockets feel...",
+      "creator": "anthonygiretti",
+      "categories": [
+        ".NET",
+        ".NET 10",
+        "WebSocketStream API"
+      ],
+      "guid": "https://anthonygiretti.com/?p=19832"
+    },
+    {
+      "title": ".NET 10: Automatic support of TLS 1.3 on MacOS",
+      "link": "https://anthonygiretti.com/2026/01/12/net-10-automatic-support-of-tls-1-3-on-macos/",
+      "pubDate": "Sun, 11 Jan 2026 23:33:33 +0000",
+      "contentSnippet": "Introduction With .NET 10, macOS developers get a nice upgrade for free: TLS 1.3 is...",
+      "creator": "anthonygiretti",
+      "categories": [
+        ".NET",
+        ".NET 10"
+      ],
+      "guid": "https://anthonygiretti.com/?p=19829"
+    },
+    {
       "title": "C# 14: User-Defined Compound Assignment Operators",
       "link": "https://anthonygiretti.com/2025/11/23/c-14-user-defined-compound-assignment-operators/",
       "pubDate": "Sun, 23 Nov 2025 19:47:57 +0000",
@@ -273,6 +298,6 @@
       "guid": "https://anthonygiretti.com/?p=19698"
     }
   ],
-  "lastUpdated": "2026-01-07T17:08:40.962Z",
+  "lastUpdated": "2026-01-16T16:56:21.180Z",
   "feedTitle": "Anthony Giretti's .NET blog"
 }
