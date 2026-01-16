@@ -591,7 +591,7 @@ export const NewsPage: React.FC = () => {
                                   width: 22,
                                   height: 22,
                                   backgroundColor: COLORS.newsIcon,
-                                  borderRadius: '50%',
+                                  borderRadius: 0,
                                   mt: 0.2,
                                   flexShrink: 0,
                                 }}
