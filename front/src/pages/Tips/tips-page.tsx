@@ -136,7 +136,7 @@ export const TipsPage: React.FC = () => {
             >
               <Box
                 component="img"
-                src="/image-memo-white.png"
+                src="/image-memo.png"
                 alt="Illustration tips"
                 sx={{
                   width: 80,
@@ -234,12 +234,12 @@ export const TipsPage: React.FC = () => {
                       mb: 2,
                       '& .MuiOutlinedInput-root': {
                         fontSize: { xs: '0.75rem', md: '0.875rem' },
-                        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                        backgroundColor: COLORS.categoryInputBg,
                         '&:hover': {
-                          backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                          backgroundColor: COLORS.categoryInputBgHover,
                         },
                         '&.Mui-focused': {
-                          backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                          backgroundColor: COLORS.categoryInputBgHover,
                         },
                       },
                     }}
@@ -251,9 +251,9 @@ export const TipsPage: React.FC = () => {
                       sx={{ 
                         mb: 2,
                         p: 1.5,
-                        backgroundColor: 'rgba(25, 118, 210, 0.08)',
+                        backgroundColor: COLORS.categorySelectedBg,
                         borderRadius: 1,
-                        border: '1px solid rgba(25, 118, 210, 0.2)',
+                        border: `1px solid ${COLORS.categorySelectedBorder}`,
                       }}
                     >
                       <Typography 
@@ -297,7 +297,7 @@ export const TipsPage: React.FC = () => {
                                 height: 18,
                                 color: 'white',
                                 '&:hover': {
-                                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                                    backgroundColor: '#E8EBF0',
                                 },
                               }}
                             >
@@ -342,13 +342,13 @@ export const TipsPage: React.FC = () => {
                               backgroundColor: isSelected ? 'primary.main' : 'transparent',
                               color: isSelected ? 'white' : 'text.primary',
                               border: '1px solid',
-                              borderColor: isSelected ? 'primary.main' : 'rgba(255, 255, 255, 0.23)',
+                              borderColor: isSelected ? 'primary.main' : COLORS.categoryChipBorder,
                               cursor: 'pointer',
                               transition: 'all 0.2s ease',
                               '&:hover': {
                                 backgroundColor: isSelected 
                                   ? 'primary.dark' 
-                                  : 'rgba(255, 255, 255, 0.08)',
+                                  : COLORS.categoryChipHover,
                                 borderColor: 'primary.main',
                               },
                               '& .MuiChip-label': {

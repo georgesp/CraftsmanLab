@@ -117,7 +117,7 @@ export const Header: React.FC = () => {
         >
           <Box
             component="img"
-            src="/noBgColorWhite.png"
+            src="/noBgColor.png"
             alt="CraftsmanLab"
             sx={{
               height: 56,

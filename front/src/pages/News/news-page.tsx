@@ -323,12 +323,12 @@ export const NewsPage: React.FC = () => {
                       mb: 2,
                       '& .MuiOutlinedInput-root': {
                         fontSize: '0.875rem',
-                        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                        backgroundColor: COLORS.categoryInputBg,
                         '&:hover': {
-                          backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                          backgroundColor: COLORS.categoryInputBgHover,
                         },
                         '&.Mui-focused': {
-                          backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                          backgroundColor: COLORS.categoryInputBgHover,
                         },
                       },
                     }}
@@ -340,9 +340,9 @@ export const NewsPage: React.FC = () => {
                       sx={{ 
                         mb: 2,
                         p: 1.5,
-                        backgroundColor: 'rgba(25, 118, 210, 0.08)',
+                        backgroundColor: COLORS.categorySelectedBg,
                         borderRadius: 1,
-                        border: '1px solid rgba(25, 118, 210, 0.2)',
+                        border: `1px solid ${COLORS.categorySelectedBorder}`,
                       }}
                     >
                       <Typography 
@@ -385,7 +385,7 @@ export const NewsPage: React.FC = () => {
                                 height: 18,
                                 color: 'white',
                                 '&:hover': {
-                                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                                  backgroundColor: COLORS.iconButtonHover,
                                 },
                               }}
                             >
@@ -420,7 +420,7 @@ export const NewsPage: React.FC = () => {
                                 height: 18,
                                 color: 'white',
                                 '&:hover': {
-                                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                                  backgroundColor: COLORS.iconButtonHover,
                                 },
                               }}
                             >
@@ -462,7 +462,7 @@ export const NewsPage: React.FC = () => {
                                   height: 20,
                                   color: 'primary.main',
                                   '&:hover': {
-                                    backgroundColor: 'rgba(25, 118, 210, 0.08)',
+                                    backgroundColor: COLORS.categorySelectedBg,
                                   },
                                 }}
                               >
@@ -507,13 +507,13 @@ export const NewsPage: React.FC = () => {
                                     backgroundColor: isSelected ? 'primary.main' : 'transparent',
                                     color: isSelected ? 'white' : 'text.primary',
                                     border: '1px solid',
-                                    borderColor: isSelected ? 'primary.main' : 'rgba(255, 255, 255, 0.23)',
+                                    borderColor: isSelected ? 'primary.main' : COLORS.categoryChipBorder,
                                     cursor: 'pointer',
                                     transition: 'all 0.2s ease',
                                     '&:hover': {
                                       backgroundColor: isSelected 
                                         ? 'primary.dark' 
-                                        : 'rgba(255, 255, 255, 0.08)',
+                                        : COLORS.categoryChipHover,
                                       borderColor: 'primary.main',
                                     },
                                     '& .MuiChip-label': {
@@ -596,7 +596,7 @@ export const NewsPage: React.FC = () => {
                                   flexShrink: 0,
                                 }}
                               >
-                                <NewspaperIcon sx={{ color: '#FFFFFF', fontSize: 12 }} />
+                                <NewspaperIcon sx={{ color: COLORS.white, fontSize: 12 }} />
                               </Box>
                               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flex: 1, gap: 2 }}>
                                 <Typography
