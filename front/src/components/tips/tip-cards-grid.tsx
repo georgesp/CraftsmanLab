@@ -5,7 +5,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { tipsList } from './registry';
-import { COLORS, TYPOGRAPHY } from '../../styles';
+import { COLORS, TYPOGRAPHY, PAGE_SPACING } from '../../styles';
 import { PromptCard, PromptCardContent } from '../../pages/Prompts/styles';
 import { KeywordChips } from '../ui/KeywordChips';
 
@@ -80,7 +80,7 @@ export const TipCardsGrid: React.FC<Props> = ({
   }, [externalItems, rows, seeAllLink, isLgUp, isMdUp, isSmUp]);
 
   return (
-    <Grid container spacing={4}>
+    <Grid container spacing={PAGE_SPACING.cardGrid}>
       {items.map((t) => (
         <Grid item xs={12} sm={6} md={4} lg={4} xl={4} key={t.slug}>
           <RouterLink

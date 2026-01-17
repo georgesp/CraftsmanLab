@@ -5,7 +5,7 @@ import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { promptsList } from './registry';
-import { COLORS, TYPOGRAPHY } from '../../styles';
+import { COLORS, TYPOGRAPHY, PAGE_SPACING } from '../../styles';
 import { PromptCard, PromptCardContent } from '../../pages/Prompts/styles';
 import { KeywordChips } from '../ui/KeywordChips';
 
@@ -48,7 +48,7 @@ export const PromptCardsGrid: React.FC<Props> = ({
   }, [rows, showMore, seeAllLink, isLgUp, isMdUp, isSmUp]);
 
   return (
-    <Grid container spacing={4}>
+    <Grid container spacing={PAGE_SPACING.cardGrid}>
       {items.map((p) => (
         <Grid item xs={12} sm={6} md={4} lg={3} xl={3} key={p.slug}>
           <RouterLink

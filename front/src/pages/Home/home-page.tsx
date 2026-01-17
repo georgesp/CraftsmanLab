@@ -70,7 +70,7 @@ export const HomePage: React.FC = () => {
             <Typography variant="h4" align="left" sx={{ mb: 3, marginLeft: 1 }}>
               {t('home.latestNews', { defaultValue: 'Dernières actualités' })}
             </Typography>
-            <Grid container spacing={3}>
+            <Grid container spacing={PAGE_SPACING.cardGrid}>
               {latestNews.map((item) => (
                 <Grid item xs={12} sm={12} md={12} key={item.guid}>
                   <MuiLink
