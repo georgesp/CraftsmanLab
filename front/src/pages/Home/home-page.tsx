@@ -93,6 +93,7 @@ export const HomePage: React.FC = () => {
                       className="news-card"
                       sx={{
                         backgroundColor: COLORS.cardBgDark,
+                        border: `${COLORS.cardBorderWidth} solid ${COLORS.cardBorder}`,
                         height: '100%',
                         display: 'flex',
                         flexDirection: 'column',

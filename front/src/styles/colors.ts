@@ -34,6 +34,8 @@ export const COLORS = {
   // Add subtle UI tokens for the new visual refresh
   // Light mode tokens
   cardBgDark: '#F2F4F7', // Fond de carte gris très léger
+  cardBorder: '#E8EBF0', // Bordure de carte (un peu plus foncé que cardBgDark)
+  cardBorderWidth: '1px', // Épaisseur de bordure des cards
   // Centralized text color for light theme
   textPrimary: '#1A1D1F',
   // Keywords chip gradient (tons clairs)

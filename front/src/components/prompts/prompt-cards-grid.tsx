@@ -60,7 +60,7 @@ export const PromptCardsGrid: React.FC<Props> = ({
               sx={{
                 backgroundColor: COLORS.cardBgDark,
                 boxShadow: 'none',
-                border: 'none',
+                border: `${COLORS.cardBorderWidth} solid ${COLORS.cardBorder}`,
                 height: '100%',
                 display: 'flex',
                 flexDirection: 'column',
@@ -118,7 +118,7 @@ export const PromptCardsGrid: React.FC<Props> = ({
               minHeight: 160,
               backgroundColor: COLORS.cardBgDark,
               boxShadow: 'none',
-              border: 'none',
+              border: `${COLORS.cardBorderWidth} solid ${COLORS.cardBorder}`,
             }}
           >
             <RouterLink

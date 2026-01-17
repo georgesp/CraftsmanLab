@@ -92,7 +92,7 @@ export const TipCardsGrid: React.FC<Props> = ({
               sx={{
                 backgroundColor: COLORS.cardBgDark,
                 boxShadow: 'none',
-                border: 'none',
+                border: `${COLORS.cardBorderWidth} solid ${COLORS.cardBorder}`,
                 height: '100%',
                 display: 'flex',
                 flexDirection: 'column',
@@ -151,7 +151,7 @@ export const TipCardsGrid: React.FC<Props> = ({
               height: '100%',
               backgroundColor: COLORS.cardBgDark,
               boxShadow: 'none',
-              border: 'none',
+              border: `${COLORS.cardBorderWidth} solid ${COLORS.cardBorder}`,
             }}
           >
             <RouterLink
