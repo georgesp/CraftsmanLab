@@ -125,6 +125,7 @@ export const Header: React.FC = () => {
               objectFit: 'contain',
               display: 'block',
               flexShrink: 0,
+              border: 'none',
             }}
           />
         </MuiLink>

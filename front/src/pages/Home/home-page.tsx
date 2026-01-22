@@ -2,8 +2,7 @@ import * as React from 'react';
 import { Container, Typography, Box, Card, Grid, Link as MuiLink, Chip } from '@mui/material';
 import { alpha } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
-import { COLORS } from '../../styles/colors';
-import { PAGE_SPACING } from '../../styles/spacing';
+import { COLORS, PAGE_SPACING, TYPOGRAPHY } from '../../styles';
 import { LazyTipCardsGrid } from '../../components/tips/tip-cards-grid-lazy';
 import { PageLayout } from '../../components';
 import { rssSources } from '../../components/news/registry';
@@ -101,96 +100,93 @@ export const HomePage: React.FC = () => {
                         cursor: 'pointer',
                       }}
                     >
-                      <PromptCardContent sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-                        {/* Source badge */}
-                        <Box sx={{ mb: 1 }}>
-                          <Chip
-                            label={item.sourceInfo.title}
-                            size="small"
-                            sx={{
-                              height: 20,
-                              fontSize: '0.7rem',
-                              backgroundColor: 'primary.main',
-                              color: 'white',
-                            }}
-                          />
-                        </Box>
-
-                        <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, mb: 1 }}>
-                          <Box
-                            sx={{
-                              display: 'inline-flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              width: 22,
-                              height: 22,
-                              backgroundColor: '#4caf50',
-                              borderRadius: 0,
-                              mt: 0.2,
-                              flexShrink: 0,
-                            }}
-                          >
-                            <NewspaperIcon sx={{ color: '#FFFFFF', fontSize: 12 }} />
-                          </Box>
-                          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flex: 1, gap: 2 }}>
-                            <Typography
-                              variant="subtitle1"
-                              component="h3"
+                      <PromptCardContent sx={{ flex: 1, display: 'flex', flexDirection: 'column', padding: 0 }}>
+                        {/* Contenu de la card */}
+                        <Box sx={{ px: PAGE_SPACING.cardPadding, pt: PAGE_SPACING.cardPadding, pb: PAGE_SPACING.cardPadding, flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                          {/* Titre avec icône */}
+                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
+                            <Box
                               sx={{
-                                fontSize: '1.0rem',
-                                lineHeight: 1.3,
-                                fontWeight: 600,
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                width: 22,
+                                height: 22,
+                                backgroundColor: COLORS.newsIcon,
+                                borderRadius: 0,
+                                flexShrink: 0,
                               }}
+                            >
+                              <NewspaperIcon sx={{ color: '#FFFFFF', fontSize: 12 }} />
+                            </Box>
+                            <Typography
+                              variant="h6"
+                              component="h3"
+                              sx={{ fontWeight: TYPOGRAPHY.fontWeights.bold, mb: 0, color: 'text.primary' }}
                             >
                               {item.title}
                             </Typography>
+                          </Box>
+                          
+                          {/* Ligne séparatrice */}
+                          <Box sx={{ width: '100%', height: '1px', backgroundColor: COLORS.cardDivider, mb: 1, mx: -PAGE_SPACING.cardPadding }} />
+                          
+                          {/* Source badge et date */}
+                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1, flexWrap: 'wrap' }}>
+                            <Chip
+                              label={item.sourceInfo.title}
+                              size="small"
+                              sx={{
+                                height: 20,
+                                fontSize: '0.7rem',
+                                backgroundColor: 'primary.main',
+                                color: 'white',
+                              }}
+                            />
                             <Typography
                               variant="caption"
                               color="text.secondary"
-                              sx={{ 
-                                fontSize: '0.75rem',
-                                whiteSpace: 'nowrap',
-                              }}
+                              sx={{ fontSize: '0.75rem' }}
                             >
                               {item.creator && `${item.creator}, `}{formatDate(item.pubDate)}
                             </Typography>
                           </Box>
+
+                          <Typography
+                            variant="body2"
+                            sx={{
+                              mb: 2,
+                              flex: 1,
+                              color: 'text.primary',
+                              lineHeight: 1.6,
+                              display: '-webkit-box',
+                              WebkitLineClamp: 3,
+                              WebkitBoxOrient: 'vertical',
+                              overflow: 'hidden',
+                            }}
+                          >
+                            {item.contentSnippet}
+                          </Typography>
+
+                          {item.categories && item.categories.length > 0 && (
+                            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mt: 'auto' }}>
+                              {item.categories.slice(0, 3).map((category, idx) => (
+                                <Chip
+                                  key={idx}
+                                  label={category}
+                                  size="small"
+                                  variant="outlined"
+                                  sx={{
+                                    height: 20,
+                                    fontSize: '0.65rem',
+                                    borderColor: 'primary.main',
+                                    color: 'primary.main',
+                                  }}
+                                />
+                              ))}
+                            </Box>
+                          )}
                         </Box>
-
-                        <Typography
-                          variant="body2"
-                          sx={{
-                            mb: 2,
-                            flex: 1,
-                            color: 'text.primary',
-                            lineHeight: 1.6,
-                            display: '-webkit-box',
-                            WebkitLineClamp: 3,
-                            WebkitBoxOrient: 'vertical',
-                            overflow: 'hidden',
-                          }}
-                        >
-                          {item.contentSnippet}
-                        </Typography>
-
-                        {item.categories && item.categories.length > 0 && (
-                          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mt: 'auto' }}>
-                            {item.categories.slice(0, 3).map((category, idx) => (
-                              <Chip
-                                key={idx}
-                                label={category}
-                                size="small"
-                                variant="outlined"
-                                sx={{
-                                  height: 20,
-                                  fontSize: '0.65rem',
-                                  borderColor: 'primary.main',
-                                  color: 'primary.main',
-                                }}
-                              />
-                            ))}
-                          </Box>
-                        )}
                       </PromptCardContent>
                     </PromptCard>
                   </MuiLink>

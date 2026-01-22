@@ -17,24 +17,18 @@ export const KeywordChips: React.FC<Props> = ({
   if (!keywords.length) return null;
 
   return (
-    <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: -1.5 }}>
+    <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap' }}>
       {keywords.map((keyword) => (
         <Chip
           key={keyword}
           label={keyword}
           size={size}
-          variant={variant}
+          variant="outlined"
           sx={{
-            fontSize: '0.75rem',
-            height: 'auto',
-            color: 'text.primary',
-            background: `linear-gradient(180deg, ${COLORS.cardKeywordStart}, ${COLORS.cardKeywordEnd})`,
-            border: '0px solid transparent',
-            borderRadius: 2,
-            '& .MuiChip-label': {
-              px: 1,
-              py: 0.25,
-            },
+            height: 20,
+            fontSize: '0.65rem',
+            borderColor: 'primary.main',
+            color: 'primary.main',
           }}
         />
       ))}

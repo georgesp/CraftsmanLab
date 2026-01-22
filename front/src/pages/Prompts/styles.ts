@@ -21,4 +21,7 @@ export const PromptCard = styled(Card)(() => ({
 export const PromptCardContent = styled(CardContent)(({ theme }) => ({
   padding: theme.spacing(PAGE_SPACING.cardPadding),
   color: theme.palette.text.primary,
+  '&:last-child': {
+    paddingBottom: 0,
+  },
 }));

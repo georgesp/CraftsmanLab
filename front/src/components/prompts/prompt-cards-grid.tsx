@@ -72,37 +72,45 @@ export const PromptCardsGrid: React.FC<Props> = ({
                 },
               }}
             >
-              <PromptCardContent sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
-                  <Box
-                    sx={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: 22,
-                      height: 22,
-                      backgroundColor: COLORS.promptsIcon,
-                      borderRadius: 0,
-                      flexShrink: 0,
-                    }}
-                  >
-                    <TextSnippetIcon
-                      fontSize="large"
-                      sx={{ color: '#FFFFFF', fontSize: 12 }}
-                    />
+              <PromptCardContent sx={{ display: 'flex', flexDirection: 'column', height: '100%', padding: 0, overflow: 'hidden' }}>
+                {/* Contenu de la card */}
+                <Box sx={{ px: PAGE_SPACING.cardPadding, pt: PAGE_SPACING.cardPadding, pb: PAGE_SPACING.cardPadding, flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                  {/* Titre avec icône */}
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
+                    <Box
+                      sx={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: 22,
+                        height: 22,
+                        backgroundColor: COLORS.promptsIcon,
+                        borderRadius: 0,
+                        flexShrink: 0,
+                      }}
+                    >
+                      <TextSnippetIcon
+                        fontSize="large"
+                        sx={{ color: '#FFFFFF', fontSize: 12 }}
+                      />
+                    </Box>
+                    <Typography
+                      variant="h6"
+                      component="h3"
+                      sx={{ fontWeight: TYPOGRAPHY.fontWeights.bold, mb: 0, color: 'text.primary' }}
+                    >
+                      {getTranslatedText(p.slug, 'title', p.title)}
+                    </Typography>
                   </Box>
-                  <Typography
-                    variant="h6"
-                    component="h3"
-                    sx={{ fontWeight: TYPOGRAPHY.fontWeights.bold, mb: 0, color: 'text.primary' }}
-                  >
-                    {getTranslatedText(p.slug, 'title', p.title)}
+                  
+                  {/* Ligne séparatrice */}
+                  <Box sx={{ width: '100%', height: '1px', backgroundColor: COLORS.cardDivider, mb: 1, mx: -PAGE_SPACING.cardPadding }} />
+                  
+                  <Typography variant="body2" sx={{ color: 'text.primary', flexGrow: 1, mb: 1 }}>
+                    {getTranslatedText(p.slug, 'shortDescription', p.shortDescription)}
                   </Typography>
+                  <KeywordChips keywords={p.keywords} />
                 </Box>
-                <Typography variant="body2" sx={{ color: 'text.primary', flexGrow: 1, mb: 1 }}>
-                  {getTranslatedText(p.slug, 'shortDescription', p.shortDescription)}
-                </Typography>
-                <KeywordChips keywords={p.keywords} />
               </PromptCardContent>
             </PromptCard>
           </RouterLink>
