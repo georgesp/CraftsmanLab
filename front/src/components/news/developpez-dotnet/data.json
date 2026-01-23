@@ -19,7 +19,6 @@
       "contentSnippet": "Microsoft annonce que le langage de programmation F# 10 est disponible avec .NET 10 et Visual Studio 2026, apportant des améliorations axées sur la clarté, la cohérence et les performances\nF# 10 est désormais disponible avec .NET 10 et Visual Studio ",
       "creator": "",
       "categories": [
-        "F#",
         ".NET 10",
         "Visual Studio 2026",
         "Performance"
@@ -34,8 +33,7 @@
       "creator": "",
       "categories": [
         "C#",
-        "C# 14",
-        ".NET 10",
+        ".NET",
         "Performance"
       ],
       "guid": "https://dotnet.developpez.com/actu/377739/Microsoft-presente-les-nouvelles-fonctionnalites-de-C-14-qui-devraient-permettre-aux-developpeurs-C-de-beneficier-de-certaines-des-ameliorations-de-performances-offertes-par-NET-10/"
@@ -172,7 +170,7 @@
       "categories": [
         ".NET",
         "Visual Studio",
-        "VS Code",
+        "Visual Studio Code",
         "ReSharper",
         "JetBrains"
       ],
@@ -185,8 +183,7 @@
       "contentSnippet": "Exploration des membres d'extension en C# 14 : la nouvelle syntaxe des membres d'extension préserve l'énorme quantité de méthodes d'extension paramètre This existantes tout en introduisant de nouveaux types.\nC# 14 introduit les membres d'extension. C",
       "creator": "",
       "categories": [
-        "C#",
-        "C# 14"
+        "C#"
       ],
       "guid": "https://dotnet.developpez.com/actu/372182/Exploration-des-membres-d-extension-en-C-14-preservation-de-l-enorme-quantite-de-methodes-d-extension-parametre-This-existantes-tout-en-introduisant-de-nouveaux-types/"
     },
@@ -197,8 +194,7 @@
       "contentSnippet": "Microsoft présente les nouvelles fonctionnalités du langage de programmation de C# 14 : membres d'extension, affectation par condition nulle, propriétés field stockées\nC# 14 inclut les nouvelles fonctionnalités suivantes : Membres d'extension, Mot cl",
       "creator": "",
       "categories": [
-        "C#",
-        "C# 14"
+        "C#"
       ],
       "guid": "https://dotnet.developpez.com/actu/372078/Microsoft-presente-les-nouvelles-fonctionnalites-du-langage-de-programmation-de-C-14-membres-d-extension-affectation-par-condition-nulle-proprietes-field-stockees/"
     },
@@ -286,6 +282,6 @@
       "guid": "https://jetbrains.developpez.com/actu/365223/Rider-2024-3-disponible-prise-en-charge-des-dernieres-fonctionnalites-du-SDK-NET-9-et-C-13-debogage-de-console-pour-le-developpement-de-jeux-ameliorations-pour-l-assistant-IA-et-plus/"
     }
   ],
-  "lastUpdated": "2026-01-16T16:56:19.547Z",
+  "lastUpdated": "2026-01-23T10:47:00.304Z",
   "feedTitle": "Flux .NET Developpez"
 }

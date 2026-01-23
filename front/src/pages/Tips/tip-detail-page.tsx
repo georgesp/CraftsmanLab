@@ -30,7 +30,7 @@ export const TipDetailPage: React.FC = () => {
 
     const allSearchKeywords = (slug: string) => {
       const tip = tipsList.find((x) => x.slug === slug);
-      const all = tip?.metadata?.searchKeywords ?? [];
+      const all = tip?.searchKeywords ?? [];
       return uniq(normalize(all));
     };
 
@@ -149,7 +149,13 @@ export const TipDetailPage: React.FC = () => {
                 <Grid item xs={12} md={3} lg={3}>
                   <Paper
                     variant="outlined"
-                    sx={{ p: 2, position: 'sticky', top: 24, borderColor: COLORS.itemListHover }}
+                    sx={{ 
+                      p: 2, 
+                      position: 'sticky', 
+                      top: 24, 
+                      borderColor: COLORS.itemListHover,
+                      height: 'fit-content',
+                    }}
                     ref={leftPaperRef}
                   >
                     <Typography variant="h6" sx={{ mb: 2 }} ref={leftTitleRef}>
@@ -181,7 +187,13 @@ export const TipDetailPage: React.FC = () => {
                   <Grid item xs={12} md={3} lg={3}>
                     <Paper
                       variant="outlined"
-                      sx={{ p: 2, position: 'sticky', top: 24, borderColor: COLORS.itemListHover }}
+                      sx={{ 
+                        p: 2, 
+                        position: 'sticky', 
+                        top: 24, 
+                        borderColor: COLORS.itemListHover,
+                        height: 'fit-content',
+                      }}
                       ref={rightPaperRef}
                     >
                       <Typography variant="h6" sx={{ mb: 1 }} ref={rightTitleRef}>

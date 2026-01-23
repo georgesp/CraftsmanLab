@@ -44,4 +44,10 @@ export const PAGE_SPACING = {
     large: 3,
     xlarge: 4,
   },
+
+  // Espacement entre les cards dans les grilles
+  cardGrid: 2,
+
+  // Padding interne des cards
+  cardPadding: 1,
 };

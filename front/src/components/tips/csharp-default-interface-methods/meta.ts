@@ -5,15 +5,6 @@ export const meta: TipMeta = {
   title: '',
   shortDescription: '',
   writtenOn: '2025-09-07',
-  keywords: ['C#' as const],
-  metadata: {
-    searchKeywords: [
-      'default',
-      'dim',
-      'interface',
-      'c# 8',
-      'implementation',
-    ],
-    tags: ['c#', 'interfaces'],
-  },
+  categories: ['C#', 'Interfaces'],
+  searchKeywords: ['default interface methods', 'c#', 'csharp', 'interfaces', 'c# 8', 'default implementation', 'traits'],
 };

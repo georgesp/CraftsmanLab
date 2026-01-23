@@ -9,8 +9,7 @@
       "creator": "",
       "categories": [
         "C#",
-        "C# 14",
-        ".NET 10"
+        ".NET"
       ],
       "guid": "https://thomaslevesque.com/2025/10/07/interesting-new-csharp-14-features-coming-with-net-10/"
     },
@@ -92,7 +91,7 @@
         "ASP.NET Core",
         "C# 9",
         "JSON",
-        "Entity Framework Core",
+        "Entity Framework",
         "Records"
       ],
       "guid": "https://thomaslevesque.com/2021/03/19/csharp-9-records-as-strongly-typed-ids-part-5-final-bits-and-conclusion/"
@@ -107,7 +106,7 @@
         "ASP.NET Core",
         "C# 9",
         "Database",
-        "Entity Framework Core",
+        "Entity Framework",
         "Records"
       ],
       "guid": "https://thomaslevesque.com/2020/12/23/csharp-9-records-as-strongly-typed-ids-part-4-entity-framework-core-integration/"
@@ -388,7 +387,7 @@
       "contentSnippet": "ASP.NET Core SignalR is a super easy way to establish two-way communication between an ASP.NET Core app and its clients, using WebSockets, Server-Sent Events, or long polling, depending on the client’s capabilities. For instance, it can be used to se",
       "creator": "",
       "categories": [
-        ".NET Core",
+        ".NET",
         "ASP.NET Core",
         "SignalR",
         "Azure Service Bus",
@@ -1211,6 +1210,6 @@
       "guid": "https://thomaslevesque.com/2009/10/08/c-4-0-implementing-a-custom-dynamic-object/"
     }
   ],
-  "lastUpdated": "2026-01-16T16:56:18.798Z",
+  "lastUpdated": "2026-01-23T10:47:00.199Z",
   "feedTitle": "Thomas Levesque's .NET Blog"
 }

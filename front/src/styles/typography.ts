@@ -30,7 +30,7 @@ export const TYPOGRAPHY = {
   },
 
   // Famille de police
-  fontFamily: 'Inter Tight, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif',
+  fontFamily: '"Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
 
   // Poids des polices
   fontWeights: {

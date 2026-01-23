@@ -1,8 +1,9 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { Container, Card, Typography, Box, Chip, TextField, InputAdornment, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import { useTranslation } from 'react-i18next';
+import { useSearchParams } from 'react-router-dom';
 import { PageLayout, ScrollToTopButton } from '../../components';
 import { TipCardsGrid } from '../../components/tips/tip-cards-grid';
 import { COLORS } from '../../styles/colors';
@@ -44,57 +45,90 @@ const toPascalCase = (s: string) => {
 
 export const TipsPage: React.FC = () => {
   const { t } = useTranslation('pages');
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [tagFilter, setTagFilter] = useState<string>('');
+  const [searchParams] = useSearchParams();
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [categoryFilter, setCategoryFilter] = useState<string>('');
 
-  // Compter les occurrences de chaque tag
-  const tagOccurrences = useMemo(() => {
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  // Apply filters from URL params on mount
+  useEffect(() => {
+    const tagsParam = searchParams.get('tags');
+    if (tagsParam) {
+      const tags = tagsParam.split(',').map((tag) => tag.trim()).filter(Boolean);
+      setSelectedCategories(tags);
+    }
+  }, [searchParams]);
+
+  // Compter les occurrences de chaque catégorie basé sur les tips filtrés
+  const categoryOccurrences = useMemo(() => {
     const occurrences: Record<string, number> = {};
-    tipsList.forEach((tip) => {
-      (tip.metadata?.tags || []).forEach((tag) => {
-        const normalized = tag.trim();
+    
+    // Filtrer les tips par les catégories déjà sélectionnées
+    const filteredTips = selectedCategories.length === 0
+      ? tipsList
+      : tipsList.filter((tip) => {
+          const categories = tip.categories ?? [];
+          const selectedSet = new Set(selectedCategories);
+          return Array.from(selectedSet).every((c) => categories.includes(c));
+        });
+    
+    filteredTips.forEach((tip) => {
+      (tip.categories || []).forEach((category) => {
+        const normalized = category.trim();
         if (normalized) {
           occurrences[normalized] = (occurrences[normalized] || 0) + 1;
         }
       });
     });
     return occurrences;
-  }, []);
+  }, [selectedCategories]);
 
-  // Collect all tags from tips metadata, normalized & unique
-  const allTags = useMemo(() => {
-    const tags = tipsList.flatMap((tip) => tip.metadata?.tags ?? []);
-    const norm = tags.map((s) => s.trim()).filter(Boolean);
+  // Collect all categories from filtered tips, normalized & unique
+  const allCategories = useMemo(() => {
+    const filteredTips = selectedCategories.length === 0
+      ? tipsList
+      : tipsList.filter((tip) => {
+          const categories = tip.categories ?? [];
+          const selectedSet = new Set(selectedCategories);
+          return Array.from(selectedSet).every((c) => categories.includes(c));
+        });
+    
+    const categories = filteredTips.flatMap((tip) => tip.categories ?? []);
+    const norm = categories.map((s) => s.trim()).filter(Boolean);
     return Array.from(new Set(norm)).sort((a, b) => {
       // Trier par nombre d'occurrences (descendant), puis alphabétiquement
-      const countDiff = (tagOccurrences[b] || 0) - (tagOccurrences[a] || 0);
+      const countDiff = (categoryOccurrences[b] || 0) - (categoryOccurrences[a] || 0);
       if (countDiff !== 0) return countDiff;
       return a.localeCompare(b);
     });
-  }, [tagOccurrences]);
+  }, [categoryOccurrences, selectedCategories]);
 
-  // Filtrer les tags par le texte de recherche
-  const filteredTags = useMemo(() => {
-    if (!tagFilter.trim()) return allTags;
-    const lowerFilter = tagFilter.toLowerCase();
-    return allTags.filter((tag) => tag.toLowerCase().includes(lowerFilter));
-  }, [allTags, tagFilter]);
+  // Filtrer les catégories par le texte de recherche
+  const filteredCategories = useMemo(() => {
+    if (!categoryFilter.trim()) return allCategories;
+    const lowerFilter = categoryFilter.toLowerCase();
+    return allCategories.filter((category) => category.toLowerCase().includes(lowerFilter));
+  }, [allCategories, categoryFilter]);
 
-  const toggleTag = (tag: string) => {
-    setSelectedTags((prev) =>
-      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
+  const toggleCategory = (category: string) => {
+    setSelectedCategories((prev) =>
+      prev.includes(category) ? prev.filter((c) => c !== category) : [...prev, category],
     );
   };
 
   const filtered = useMemo(() => {
-    if (selectedTags.length === 0) return tipsList;
-    const selectedSet = new Set(selectedTags);
+    if (selectedCategories.length === 0) return tipsList;
+    const selectedSet = new Set(selectedCategories);
     return tipsList.filter((tip) => {
-      const tags = tip.metadata?.tags ?? [];
-      // match si l'élément possède tous les tags sélectionnés
-      return Array.from(selectedSet).every((t) => tags.includes(t));
+      const categories = tip.categories ?? [];
+      // match si l'élément possède toutes les catégories sélectionnées
+      return Array.from(selectedSet).every((c) => categories.includes(c));
     });
-  }, [selectedTags]);
+  }, [selectedCategories]);
 
   return (
     <PageLayout>
@@ -106,76 +140,73 @@ export const TipsPage: React.FC = () => {
         <PromptsPageContainer
           sx={{
             // add small horizontal padding on xs/sm so text isn't flush against viewport edges
-            px: { xs: 2, sm: 3, md: 0 },
+            px: { xs: 2, sm: 3, md: 3 },
             mx: 0,
             width: '100%',
-            ml: { xs: 0, md: 6 },
             mb: 0,
           }}
         >
+          {/* Encadré avec fond coloré pour l'image et le texte */}
           <Box
             sx={{
-              display: 'flex',
-              alignItems: 'stretch',
-              // reduce the gap on md+ so text sits a bit closer to the image
-              gap: { xs: 1, sm: 2, md: 2 },
-              flexWrap: { xs: 'wrap', md: 'nowrap' },
+              backgroundColor: COLORS.cardBgDark,
+              borderRadius: 2,
+              p: { xs: 1.5, sm: 2, md: 2 },
+              mb: 1,
             }}
           >
             <Box
               sx={{
-                flex: { xs: '1 1 100%', md: '0 0 auto' },
-                width: { xs: '100%', md: 'auto' },
-                maxWidth: { xs: '100%', md: 'none' },
-                alignSelf: { xs: 'center', md: 'stretch' },
-                position: 'relative',
                 display: 'flex',
-                mr: { xs: 2, md: 0 },
-                mb: { xs: 2, md: 1 },
+                alignItems: 'stretch',
+                // reduce the gap on md+ so text sits a bit closer to the image
+                gap: { xs: 1, sm: 2, md: 2 },
+                flexWrap: { xs: 'wrap', md: 'nowrap' },
               }}
             >
               <Box
-                component="img"
-                src="/image-memo.png"
-                alt="Illustration tips"
                 sx={{
-                  width: 80,
-                  height: 'auto',
-                  objectFit: 'contain',
-                  display: 'block',
+                  flex: { xs: '1 1 100%', md: '0 0 auto' },
+                  width: { xs: '100%', md: 'auto' },
+                  maxWidth: { xs: '100%', md: 'none' },
+                  alignSelf: { xs: 'center', md: 'stretch' },
+                  position: 'relative',
+                  display: 'flex',
+                  mr: { xs: 2, md: 0 },
+                  mb: { xs: 2, md: 0 },
                 }}
-              />
-            </Box>
-            <Box
-              sx={{
-                position: 'relative',
-                // keep a small left padding on md+ so text is closer but not glued
-                pl: { xs: 0, md: '0.75rem' },
-                pr: 0,
-                flex: 1,
-                width: { xs: '100%', md: 'auto' },
-                mr: { xs: 0, md: 3 },
-              }}
-            >
-              <Box
-                component="span"
-                sx={{
-                  position: 'absolute',
-                  left: 0,
-                  top: 0,
-                  bottom: 0,
-                  width: 0,
-                  background: COLORS.darkGreyBg,
-                  display: 'none',
-                }}
-              />
-              <Typography
-                variant="body1"
-                sx={{ px: 0, mx: 0, width: '100%', color: 'text.primary' }}
               >
-                {t('tips.description')} <br />
-                {t('tips.aiNote')}
-              </Typography>
+                <Box
+                  component="img"
+                  src="/image-memo.png"
+                  alt="Illustration tips"
+                  sx={{
+                    width: 80,
+                    height: 'auto',
+                    objectFit: 'contain',
+                    display: 'block',
+                  }}
+                />
+              </Box>
+              <Box
+                sx={{
+                  position: 'relative',
+                  // keep a small left padding on md+ so text is closer but not glued
+                  pl: { xs: 0, md: '0.75rem' },
+                  pr: 0,
+                  flex: 1,
+                  width: { xs: '100%', md: 'auto' },
+                  mr: { xs: 0, md: 3 },
+                }}
+              >
+                <Typography
+                  variant="body1"
+                  sx={{ px: 0, mx: 0, width: '100%', color: 'text.primary' }}
+                >
+                  {t('tips.description')} <br />
+                  {t('tips.aiNote')}
+                </Typography>
+              </Box>
             </Box>
           </Box>
         </PromptsPageContainer>
@@ -221,8 +252,8 @@ export const TipsPage: React.FC = () => {
                     fullWidth
                     size="small"
                     placeholder={t('tips.searchKeywords', { defaultValue: 'Rechercher...' })}
-                    value={tagFilter}
-                    onChange={(e) => setTagFilter(e.target.value)}
+                    value={categoryFilter}
+                    onChange={(e) => setCategoryFilter(e.target.value)}
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
@@ -246,7 +277,7 @@ export const TipsPage: React.FC = () => {
                   />
 
                   {/* Tags sélectionnés */}
-                  {selectedTags.length > 0 && (
+                  {selectedCategories.length > 0 && (
                     <Box 
                       sx={{ 
                         mb: 2,
@@ -267,12 +298,12 @@ export const TipsPage: React.FC = () => {
                           textTransform: 'uppercase',
                         }}
                       >
-                        {t('tips.selectedKeywords', { defaultValue: 'Sélection' })} ({selectedTags.length})
+                        {t('tips.selectedKeywords', { defaultValue: 'Sélection' })} ({selectedCategories.length})
                       </Typography>
                       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
-                        {selectedTags.map((tag) => (
+                        {selectedCategories.map((category) => (
                           <Box
-                            key={tag}
+                            key={category}
                             sx={{
                               display: 'flex',
                               alignItems: 'center',
@@ -286,11 +317,11 @@ export const TipsPage: React.FC = () => {
                             }}
                           >
                             <Typography sx={{ fontSize: '0.75rem', flex: 1 }}>
-                              {toPascalCase(tag)}
+                              {category}
                             </Typography>
                             <IconButton
                               size="small"
-                              onClick={() => toggleTag(tag)}
+                              onClick={() => toggleCategory(category)}
                               sx={{
                                 ml: 0.5,
                                 width: 18,
@@ -311,15 +342,15 @@ export const TipsPage: React.FC = () => {
                   
                   <Box sx={{ mb: 2 }}>
                     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.75 }}>
-                      {filteredTags.map((tag) => {
-                        const isSelected = selectedTags.includes(tag);
+                      {filteredCategories.map((category) => {
+                        const isSelected = selectedCategories.includes(category);
                         
                         return (
                           <Chip
-                            key={tag}
+                            key={category}
                             label={
                               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                                <span>{toPascalCase(tag)}</span>
+                                <span>{category}</span>
                                 <Typography
                                   component="span"
                                   sx={{
@@ -329,11 +360,11 @@ export const TipsPage: React.FC = () => {
                                     fontWeight: 500,
                                   }}
                                 >
-                                  {tagOccurrences[tag] || 0}
+                                  {categoryOccurrences[category] || 0}
                                 </Typography>
                               </Box>
                             }
-                            onClick={() => toggleTag(tag)}
+                            onClick={() => toggleCategory(category)}
                             size="small"
                             sx={{
                               height: { xs: 24, md: 28 },

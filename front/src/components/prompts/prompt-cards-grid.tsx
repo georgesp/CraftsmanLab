@@ -5,7 +5,7 @@ import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { promptsList } from './registry';
-import { COLORS, TYPOGRAPHY } from '../../styles';
+import { COLORS, TYPOGRAPHY, PAGE_SPACING } from '../../styles';
 import { PromptCard, PromptCardContent } from '../../pages/Prompts/styles';
 import { KeywordChips } from '../ui/KeywordChips';
 
@@ -48,7 +48,7 @@ export const PromptCardsGrid: React.FC<Props> = ({
   }, [rows, showMore, seeAllLink, isLgUp, isMdUp, isSmUp]);
 
   return (
-    <Grid container spacing={4}>
+    <Grid container spacing={PAGE_SPACING.cardGrid}>
       {items.map((p) => (
         <Grid item xs={12} sm={6} md={4} lg={3} xl={3} key={p.slug}>
           <RouterLink
@@ -60,7 +60,7 @@ export const PromptCardsGrid: React.FC<Props> = ({
               sx={{
                 backgroundColor: COLORS.cardBgDark,
                 boxShadow: 'none',
-                border: 'none',
+                border: `${COLORS.cardBorderWidth} solid ${COLORS.cardBorder}`,
                 height: '100%',
                 display: 'flex',
                 flexDirection: 'column',
@@ -72,37 +72,45 @@ export const PromptCardsGrid: React.FC<Props> = ({
                 },
               }}
             >
-              <PromptCardContent sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
-                  <Box
-                    sx={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: 22,
-                      height: 22,
-                      backgroundColor: COLORS.promptsIcon,
-                      borderRadius: 0,
-                      flexShrink: 0,
-                    }}
-                  >
-                    <TextSnippetIcon
-                      fontSize="large"
-                      sx={{ color: '#FFFFFF', fontSize: 12 }}
-                    />
+              <PromptCardContent sx={{ display: 'flex', flexDirection: 'column', height: '100%', padding: 0, overflow: 'hidden' }}>
+                {/* Contenu de la card */}
+                <Box sx={{ px: PAGE_SPACING.cardPadding, pt: PAGE_SPACING.cardPadding, pb: PAGE_SPACING.cardPadding, flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                  {/* Titre avec icône */}
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
+                    <Box
+                      sx={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: 22,
+                        height: 22,
+                        backgroundColor: COLORS.promptsIcon,
+                        borderRadius: 0,
+                        flexShrink: 0,
+                      }}
+                    >
+                      <TextSnippetIcon
+                        fontSize="large"
+                        sx={{ color: '#FFFFFF', fontSize: 12 }}
+                      />
+                    </Box>
+                    <Typography
+                      variant="h6"
+                      component="h3"
+                      sx={{ fontWeight: TYPOGRAPHY.fontWeights.bold, mb: 0, color: 'text.primary' }}
+                    >
+                      {getTranslatedText(p.slug, 'title', p.title)}
+                    </Typography>
                   </Box>
-                  <Typography
-                    variant="h6"
-                    component="h3"
-                    sx={{ fontWeight: TYPOGRAPHY.fontWeights.bold, mb: 0, color: 'text.primary' }}
-                  >
-                    {getTranslatedText(p.slug, 'title', p.title)}
+                  
+                  {/* Ligne séparatrice */}
+                  <Box sx={{ width: '100%', height: '1px', backgroundColor: COLORS.cardDivider, mb: 1, mx: -PAGE_SPACING.cardPadding }} />
+                  
+                  <Typography variant="body2" sx={{ color: 'text.primary', flexGrow: 1, mb: 1 }}>
+                    {getTranslatedText(p.slug, 'shortDescription', p.shortDescription)}
                   </Typography>
+                  <KeywordChips keywords={p.keywords} />
                 </Box>
-                <Typography variant="body2" sx={{ color: 'text.primary', flexGrow: 1, mb: 1 }}>
-                  {getTranslatedText(p.slug, 'shortDescription', p.shortDescription)}
-                </Typography>
-                <KeywordChips keywords={p.keywords} />
               </PromptCardContent>
             </PromptCard>
           </RouterLink>
@@ -118,7 +126,7 @@ export const PromptCardsGrid: React.FC<Props> = ({
               minHeight: 160,
               backgroundColor: COLORS.cardBgDark,
               boxShadow: 'none',
-              border: 'none',
+              border: `${COLORS.cardBorderWidth} solid ${COLORS.cardBorder}`,
             }}
           >
             <RouterLink

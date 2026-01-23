@@ -1,8 +1,14 @@
 {
   "home": {
     "latestNews": "Latest News",
-    "latestTips": "Latest published tips:",
-    "latestPrompts": "Latest published prompts:"
+    "latestTips": "Latest tips",
+    "latestPrompts": "Latest prompts",
+    "recommendedSources": "Recommended Sources",
+    "mostUsedTags": "Most Used Tags",
+    "articles": "articles",
+    "seeMoreNews": "See more news",
+    "tipsTags": "Tags",
+    "seeMoreTips": "See more tips"
   },
   "tips": {
     "title": "Tips and Memos",
@@ -56,7 +62,7 @@
     "partialError": "Some feeds could not be loaded."
   },
   "footer": {
-    "copyright": "© 2025 CraftsmanLab. All rights reserved."
+    "copyright": "© 2026 CraftsmanLab. All rights reserved."
   }
 
 }

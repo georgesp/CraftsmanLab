@@ -34,6 +34,9 @@ export const COLORS = {
   // Add subtle UI tokens for the new visual refresh
   // Light mode tokens
   cardBgDark: '#F2F4F7', // Fond de carte gris très léger
+  cardBorder: '#E8EBF0', // Bordure de carte (un peu plus foncé que cardBgDark)
+  cardDivider: '#D1D5DB', // Ligne séparatrice horizontale dans les cards
+  cardBorderWidth: '0.5px', // Épaisseur de bordure des cards
   // Centralized text color for light theme
   textPrimary: '#1A1D1F',
   // Keywords chip gradient (tons clairs)
@@ -58,10 +61,13 @@ export const COLORS = {
 
   // Vivid accent color chosen to contrast with light card backgrounds.
   // Turquoise/teal works well for both tips and prompts: lively and readable.
-  tipsIcon: '#02a8e9', // Couleur vive pour l'icone des tips
+  tipsIcon: '#2196F3', // Couleur bleue pour l'icone des tips (Material Blue)
+  tipsHeaderBg: '#E3F2FD', // Couleur très claire (fond de bande) pour tips
   // Orange foncé choisi pour les prompts : contraste suffisant avec les fonds clairs.
   promptsIcon: '#E67300', // Couleur vive (orange foncé) pour l'icone des prompts - ratio 3.5:1
+  promptsHeaderBg: '#FFF3E6', // Couleur très claire (fond de bande) pour prompts
   newsIcon: '#4caf50', // Couleur verte pour l'icône des news
+  newsHeaderBg: '#E8F5E9', // Couleur très claire (fond de bande) pour news
 
   // Grouped light-theme palette for easier maintenance
   // Keep top-level keys for backward compatibility; prefer using `COLORS.darkTheme.*` going forward.

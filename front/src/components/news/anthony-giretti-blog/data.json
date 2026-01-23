@@ -2,15 +2,40 @@
   "source": "anthony-giretti-blog",
   "items": [
     {
+      "title": ".NET 10: Zip and GZip API Improvements",
+      "link": "https://anthonygiretti.com/2026/01/19/net-10-zip-and-gzip-api-improvements/",
+      "pubDate": "Mon, 19 Jan 2026 02:17:19 +0000",
+      "contentSnippet": "Introduction Compression APIs like ZipArchive and GZipStream have been part of .NET for years. They’ve...",
+      "creator": "anthonygiretti",
+      "categories": [
+        ".NET",
+        ".NET 10",
+        "GZipStream",
+        "Zip"
+      ],
+      "guid": "https://anthonygiretti.com/?p=19838"
+    },
+    {
+      "title": ".NET 10: Post-Quantum Cryptography Comes to .NET",
+      "link": "https://anthonygiretti.com/2026/01/19/net-10-post-quantum-cryptography-comes-to-net/",
+      "pubDate": "Mon, 19 Jan 2026 01:47:20 +0000",
+      "contentSnippet": "Introduction Quantum computing is no longer just a research topic. As the technology matures, the...",
+      "creator": "anthonygiretti",
+      "categories": [
+        ".NET",
+        ".NET 10",
+        "Post Quantum Cryptography"
+      ],
+      "guid": "https://anthonygiretti.com/?p=19835"
+    },
+    {
       "title": ".NET 10: Streaming over WebSockets with the New WebSocket Stream API",
       "link": "https://anthonygiretti.com/2026/01/12/net-10-streaming-over-websockets-with-the-new-websocket-stream-api/",
       "pubDate": "Sun, 11 Jan 2026 23:44:52 +0000",
       "contentSnippet": "Introduction .NET 10 introduces a new WebSocket stream API that makes working with WebSockets feel...",
       "creator": "anthonygiretti",
       "categories": [
-        ".NET",
-        ".NET 10",
-        "WebSocketStream API"
+        ".NET"
       ],
       "guid": "https://anthonygiretti.com/?p=19832"
     },
@@ -21,8 +46,7 @@
       "contentSnippet": "Introduction With .NET 10, macOS developers get a nice upgrade for free: TLS 1.3 is...",
       "creator": "anthonygiretti",
       "categories": [
-        ".NET",
-        ".NET 10"
+        ".NET"
       ],
       "guid": "https://anthonygiretti.com/?p=19829"
     },
@@ -34,8 +58,7 @@
       "creator": "anthonygiretti",
       "categories": [
         ".NET",
-        "C#",
-        "C# 14"
+        "C#"
       ],
       "guid": "https://anthonygiretti.com/?p=19824"
     },
@@ -47,8 +70,7 @@
       "creator": "anthonygiretti",
       "categories": [
         ".NET",
-        "C#",
-        "C# 14"
+        "C#"
       ],
       "guid": "https://anthonygiretti.com/?p=19820"
     },
@@ -60,8 +82,7 @@
       "creator": "anthonygiretti",
       "categories": [
         ".NET",
-        "C#",
-        "C# 14"
+        "C#"
       ],
       "guid": "https://anthonygiretti.com/?p=19817"
     },
@@ -73,8 +94,7 @@
       "creator": "anthonygiretti",
       "categories": [
         ".NET",
-        "C#",
-        "C# 14"
+        "C#"
       ],
       "guid": "https://anthonygiretti.com/?p=19812"
     },
@@ -86,8 +106,7 @@
       "creator": "anthonygiretti",
       "categories": [
         ".NET",
-        "C#",
-        "C# 14"
+        "C#"
       ],
       "guid": "https://anthonygiretti.com/?p=19810"
     },
@@ -99,8 +118,7 @@
       "creator": "anthonygiretti",
       "categories": [
         ".NET",
-        "C#",
-        "C# 14"
+        "C#"
       ],
       "guid": "https://anthonygiretti.com/?p=19807"
     },
@@ -112,8 +130,7 @@
       "creator": "anthonygiretti",
       "categories": [
         ".NET",
-        "C#",
-        "C# 14"
+        "C#"
       ],
       "guid": "https://anthonygiretti.com/?p=19794"
     },
@@ -125,8 +142,7 @@
       "creator": "anthonygiretti",
       "categories": [
         ".NET",
-        "C#",
-        "C# 13"
+        "C#"
       ],
       "guid": "https://anthonygiretti.com/?p=19788"
     },
@@ -139,7 +155,6 @@
       "categories": [
         ".NET",
         "C#",
-        "C# 13",
         "Lock"
       ],
       "guid": "https://anthonygiretti.com/?p=19784"
@@ -152,8 +167,7 @@
       "creator": "anthonygiretti",
       "categories": [
         ".NET",
-        "C#",
-        "C# 13"
+        "C#"
       ],
       "guid": "https://anthonygiretti.com/?p=19780"
     },
@@ -281,8 +295,7 @@
       "contentSnippet": "Introduction .NET 8 and C# 12 are available in preview and I’m glad to share...",
       "creator": "anthonygiretti",
       "categories": [
-        "C#",
-        "C# 12"
+        "C#"
       ],
       "guid": "https://anthonygiretti.com/?p=19679"
     },
@@ -298,6 +311,6 @@
       "guid": "https://anthonygiretti.com/?p=19698"
     }
   ],
-  "lastUpdated": "2026-01-16T16:56:21.180Z",
+  "lastUpdated": "2026-01-23T10:47:02.077Z",
   "feedTitle": "Anthony Giretti's .NET blog"
 }
