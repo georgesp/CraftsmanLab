@@ -2,7 +2,11 @@
   "home": {
     "latestNews": "Latest News",
     "latestTips": "Latest published tips:",
-    "latestPrompts": "Latest published prompts:"
+    "latestPrompts": "Latest published prompts:",
+    "recommendedSources": "Recommended Sources",
+    "mostUsedTags": "Most Used Tags",
+    "articles": "articles",
+    "seeMoreNews": "See more news"
   },
   "tips": {
     "title": "Tips and Memos",

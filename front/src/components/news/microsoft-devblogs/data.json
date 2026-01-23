@@ -9,7 +9,6 @@
       "creator": "Rahul Bhandari (MSFT), Tara Overfield",
       "categories": [
         ".NET",
-        ".NET Framework",
         "Maintenance & Updates"
       ],
       "guid": "https://devblogs.microsoft.com/dotnet/?p=59357"
@@ -57,7 +56,6 @@
       "categories": [
         ".NET",
         "Entity Framework",
-        "EFcore",
         "MongoDB"
       ],
       "guid": "https://devblogs.microsoft.com/dotnet/?p=59297"
@@ -73,7 +71,6 @@
         "AI",
         "Azure",
         "C#",
-        "Azure OpenAI",
         "ChatGPT",
         "Generative AI",
         "Large Language Models",
@@ -108,7 +105,6 @@
         "Performance",
         "Visual Studio",
         "Visual Studio Code",
-        ".NET 10",
         "2025 wrapped",
         "aspire",
         "community",
@@ -187,7 +183,7 @@
         ".NET",
         "AI",
         "C#",
-        "VS Code",
+        "Visual Studio Code",
         "Copilot",
         "MCP Server"
       ],
@@ -202,7 +198,6 @@
       "categories": [
         ".NET",
         "Networking",
-        ".NET 10",
         "HTTP"
       ],
       "guid": "https://devblogs.microsoft.com/dotnet/?p=59089"
@@ -221,8 +216,7 @@
         "Blazor",
         "C#",
         "NuGet",
-        "Visual Studio",
-        ".NET 10"
+        "Visual Studio"
       ],
       "guid": "https://devblogs.microsoft.com/dotnet/?p=59079"
     },
@@ -252,8 +246,7 @@
         "Cloud Native",
         "GitHub",
         "Agentic Modernization",
-        "Agents",
-        "Azure"
+        "Agents"
       ],
       "guid": "https://devblogs.microsoft.com/dotnet/?p=59006"
     }
