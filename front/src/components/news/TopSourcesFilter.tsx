@@ -29,13 +29,13 @@ export const TopSourcesFilter: React.FC<TopSourcesFilterProps> = ({
         backgroundColor: COLORS.cardBgDark,
         border: `1px solid ${COLORS.cardBorder}`,
         borderRadius: 1,
-        p: 2,
+        p: 1.5,
       }}
     >
       <Typography
         variant="h6"
         sx={{
-          mb: 2,
+          mb: 1.5,
           fontSize: '1rem',
           fontWeight: 600,
           color: 'text.primary',
@@ -49,15 +49,15 @@ export const TopSourcesFilter: React.FC<TopSourcesFilterProps> = ({
           <ListItem
             key={source.slug}
             disablePadding
-            sx={{ mb: 0.5 }}
+            sx={{ mb: 0.25 }}
           >
             <ListItemButton
               selected={selectedSource === source.slug}
               onClick={() => onSourceClick(selectedSource === source.slug ? null : source.slug)}
               sx={{
                 borderRadius: 1,
-                py: 1,
-                px: 1.5,
+                py: 0.5,
+                px: 1,
                 '&.Mui-selected': {
                   backgroundColor: COLORS.categorySelectedBg,
                   '&:hover': {
