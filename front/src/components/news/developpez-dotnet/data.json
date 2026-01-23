@@ -18,7 +18,11 @@
       "pubDate": "Tue, 18 Nov 2025 16:26:00 +0100",
       "contentSnippet": "Microsoft annonce que le langage de programmation F# 10 est disponible avec .NET 10 et Visual Studio 2026, apportant des améliorations axées sur la clarté, la cohérence et les performances\nF# 10 est désormais disponible avec .NET 10 et Visual Studio ",
       "creator": "",
-      "categories": [],
+      "categories": [
+        ".NET 10",
+        "Visual Studio 2026",
+        "Performance"
+      ],
       "guid": "https://dotnet.developpez.com/actu/377751/Microsoft-annonce-que-le-langage-de-programmation-F-10-est-disponible-avec-NET-10-et-Visual-Studio-2026-apportant-des-ameliorations-axees-sur-la-clarte-la-coherence-et-les-performances/"
     },
     {
@@ -278,6 +282,6 @@
       "guid": "https://jetbrains.developpez.com/actu/365223/Rider-2024-3-disponible-prise-en-charge-des-dernieres-fonctionnalites-du-SDK-NET-9-et-C-13-debogage-de-console-pour-le-developpement-de-jeux-ameliorations-pour-l-assistant-IA-et-plus/"
     }
   ],
-  "lastUpdated": "2026-01-16T16:56:19.547Z",
+  "lastUpdated": "2026-01-23T10:47:00.304Z",
   "feedTitle": "Flux .NET Developpez"
 }

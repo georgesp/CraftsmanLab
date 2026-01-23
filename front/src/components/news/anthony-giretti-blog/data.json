@@ -2,6 +2,33 @@
   "source": "anthony-giretti-blog",
   "items": [
     {
+      "title": ".NET 10: Zip and GZip API Improvements",
+      "link": "https://anthonygiretti.com/2026/01/19/net-10-zip-and-gzip-api-improvements/",
+      "pubDate": "Mon, 19 Jan 2026 02:17:19 +0000",
+      "contentSnippet": "Introduction Compression APIs like ZipArchive and GZipStream have been part of .NET for years. They’ve...",
+      "creator": "anthonygiretti",
+      "categories": [
+        ".NET",
+        ".NET 10",
+        "GZipStream",
+        "Zip"
+      ],
+      "guid": "https://anthonygiretti.com/?p=19838"
+    },
+    {
+      "title": ".NET 10: Post-Quantum Cryptography Comes to .NET",
+      "link": "https://anthonygiretti.com/2026/01/19/net-10-post-quantum-cryptography-comes-to-net/",
+      "pubDate": "Mon, 19 Jan 2026 01:47:20 +0000",
+      "contentSnippet": "Introduction Quantum computing is no longer just a research topic. As the technology matures, the...",
+      "creator": "anthonygiretti",
+      "categories": [
+        ".NET",
+        ".NET 10",
+        "Post Quantum Cryptography"
+      ],
+      "guid": "https://anthonygiretti.com/?p=19835"
+    },
+    {
       "title": ".NET 10: Streaming over WebSockets with the New WebSocket Stream API",
       "link": "https://anthonygiretti.com/2026/01/12/net-10-streaming-over-websockets-with-the-new-websocket-stream-api/",
       "pubDate": "Sun, 11 Jan 2026 23:44:52 +0000",
@@ -284,6 +311,6 @@
       "guid": "https://anthonygiretti.com/?p=19698"
     }
   ],
-  "lastUpdated": "2026-01-16T16:56:21.180Z",
+  "lastUpdated": "2026-01-23T10:47:02.077Z",
   "feedTitle": "Anthony Giretti's .NET blog"
 }
