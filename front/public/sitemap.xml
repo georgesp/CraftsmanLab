@@ -5,82 +5,207 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
   <url>
   <loc>https://craftsmanlab.fr/prompts</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
   <loc>https://craftsmanlab.fr/tips</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <url>
+  <loc>https://craftsmanlab.fr/news</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <url>
   <loc>https://craftsmanlab.fr/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 
-  <!-- Prompts detail pages -->
   <url>
   <loc>https://craftsmanlab.fr/prompts/craftsmanlab-rules</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+
   <url>
   <loc>https://craftsmanlab.fr/prompts/aspnet-core-guidances</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+
   <url>
   <loc>https://craftsmanlab.fr/prompts/dot-net-async-best-practices</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
-  <!-- Tips detail pages -->
-  <url>
-  <loc>https://craftsmanlab.fr/tips/nsubstitute</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-  <loc>https://craftsmanlab.fr/tips/switch-tuple</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
   <url>
   <loc>https://craftsmanlab.fr/tips/polly</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+
+  <url>
+  <loc>https://craftsmanlab.fr/tips/microsoft-extensions-resilience</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+  <loc>https://craftsmanlab.fr/tips/microsoft-extensions-ai</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
   <url>
   <loc>https://craftsmanlab.fr/tips/dapper</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+
   <url>
-  <loc>https://craftsmanlab.fr/tips/xunit</loc>
+  <loc>https://craftsmanlab.fr/tips/tickerq</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  <url>
-  <loc>https://craftsmanlab.fr/tips/central-package-management</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+
   <url>
   <loc>https://craftsmanlab.fr/tips/automapper</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+
+  <url>
+  <loc>https://craftsmanlab.fr/tips/xunit</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+  <loc>https://craftsmanlab.fr/tips/nsubstitute</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+  <loc>https://craftsmanlab.fr/tips/facet</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+  <loc>https://craftsmanlab.fr/tips/switch-tuple</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+  <loc>https://craftsmanlab.fr/tips/central-package-management</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+  <loc>https://craftsmanlab.fr/tips/collection</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
   <url>
   <loc>https://craftsmanlab.fr/tips/key-value-collection</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+
   <url>
-  <loc>https://craftsmanlab.fr/tips/collection</loc>
+  <loc>https://craftsmanlab.fr/tips/csharp-11</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+  <loc>https://craftsmanlab.fr/tips/csharp-12</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+  <loc>https://craftsmanlab.fr/tips/csharp-14</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+  <loc>https://craftsmanlab.fr/tips/csharp-default-interface-methods</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+  <loc>https://craftsmanlab.fr/tips/kokoro-sharp</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+  <loc>https://craftsmanlab.fr/tips/mcp-servers</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+  <loc>https://craftsmanlab.fr/tips/tsql-apply</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+  <loc>https://craftsmanlab.fr/tips/openjson</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+  <loc>https://craftsmanlab.fr/tips/tsql-schema-only</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+  <loc>https://craftsmanlab.fr/tips/csharp-pattern-matching</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+  <loc>https://craftsmanlab.fr/tips/queue-stack</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+  <loc>https://craftsmanlab.fr/tips/csharp-solid-principles</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+  <loc>https://craftsmanlab.fr/tips/diffplex</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+  <loc>https://craftsmanlab.fr/tips/closedxml</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

@@ -10,7 +10,6 @@ import { PageLayout, ScrollToTopButton } from '../../components';
 import { COLORS, PAGE_SPACING, TYPOGRAPHY } from '../../styles';
 import { GridContainer } from '../Prompts/styles';
 import { PromptCard, PromptCardContent } from '../Prompts/styles';
-import { KeywordChips } from '../../components/ui/KeywordChips';
 import { rssSources } from '../../components/news/registry';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 

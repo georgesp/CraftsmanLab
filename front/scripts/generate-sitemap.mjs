@@ -5,51 +5,76 @@ const PUBLIC_DIR = path.resolve(process.cwd(), 'public');
 const SRC_DIR = path.resolve(process.cwd(), 'src');
 const DOMAIN = 'https://craftsmanlab.fr';
 
-async function collectSlugs(dir, pattern = /slug:\s*'([a-z0-9-]+)'/ig) {
-  const files = await fs.readdir(dir, { withFileTypes: true });
-  const slugs = [];
-  for (const f of files) {
-    const full = path.join(dir, f.name);
-    if (f.isDirectory()) {
-      slugs.push(...await collectSlugs(full, pattern));
-    } else if (f.isFile() && f.name.endsWith('.tsx')) {
-      const content = await fs.readFile(full, 'utf8');
-      let m;
-      while ((m = pattern.exec(content)) !== null) {
-        slugs.push(m[1]);
+// Import the content manifest directly
+async function getEntriesFromManifest() {
+  const manifestPath = path.join(SRC_DIR, 'components', 'content-manifest.ts');
+  const content = await fs.readFile(manifestPath, 'utf8');
+  
+  // Extract tips slugs
+  const tipSlugs = [];
+  // Match all tip meta imports: import { meta as xxxMeta } from './tips/folder/meta';
+  const tipsMetaImports = content.matchAll(/import\s*\{\s*meta\s+as\s+\w+Meta\s*\}\s*from\s*'\.\/tips\/([^']+)\/meta'/g);
+  for (const match of tipsMetaImports) {
+    const folder = match[1];
+    // Read the meta file to get the slug
+    const metaPath = path.join(SRC_DIR, 'components', 'tips', folder, 'meta.ts');
+    try {
+      const metaContent = await fs.readFile(metaPath, 'utf8');
+      const slugMatch = metaContent.match(/slug:\s*['"]([^'"]+)['"]/);
+      if (slugMatch) {
+        tipSlugs.push(slugMatch[1]);
       }
+    } catch (e) {
+      console.warn(`Could not read meta for tips/${folder}:`, e.message);
     }
   }
-  return slugs;
-}
-
-function uniq(arr) {
-  return Array.from(new Set(arr));
+  
+  // Extract prompts slugs
+  const promptSlugs = [];
+  // Match all prompt meta imports
+  const promptsMetaImports = content.matchAll(/import\s*\{\s*meta\s+as\s+\w+Meta\s*\}\s*from\s*'\.\/prompts\/([^']+)\/meta'/g);
+  for (const match of promptsMetaImports) {
+    const folder = match[1];
+    // Read the meta file to get the slug
+    const metaPath = path.join(SRC_DIR, 'components', 'prompts', folder, 'meta.ts');
+    try {
+      const metaContent = await fs.readFile(metaPath, 'utf8');
+      const slugMatch = metaContent.match(/slug:\s*['"]([^'"]+)['"]/);
+      if (slugMatch) {
+        promptSlugs.push(slugMatch[1]);
+      }
+    } catch (e) {
+      console.warn(`Could not read meta for prompts/${folder}:`, e.message);
+    }
+  }
+  
+  return { tipSlugs, promptSlugs };
 }
 
 function buildUrlEntry(loc, changefreq = 'monthly', priority = '0.6') {
-  return `  <url>\n    <loc>${loc}</loc>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>\n`;
+  return `  <url>
+  <loc>${loc}</loc>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+  </url>
+`;
 }
 
 async function main() {
   try {
-    const promptsDir = path.join(SRC_DIR, 'components', 'prompts');
-    const tipsDir = path.join(SRC_DIR, 'components', 'tips');
+    const { tipSlugs, promptSlugs } = await getEntriesFromManifest();
 
-    const promptSlugs = await collectSlugs(promptsDir);
-    const tipSlugs = await collectSlugs(tipsDir);
-
-    const allPromptSlugs = uniq(promptSlugs);
-    const allTipSlugs = uniq(tipSlugs);
+    console.log(`Found ${promptSlugs.length} prompts and ${tipSlugs.length} tips`);
 
     const urls = [];
     urls.push({ loc: `${DOMAIN}/`, changefreq: 'weekly', priority: '1.0' });
     urls.push({ loc: `${DOMAIN}/prompts`, changefreq: 'weekly', priority: '0.8' });
     urls.push({ loc: `${DOMAIN}/tips`, changefreq: 'weekly', priority: '0.8' });
+    urls.push({ loc: `${DOMAIN}/news`, changefreq: 'daily', priority: '0.8' });
     urls.push({ loc: `${DOMAIN}/contact`, changefreq: 'monthly', priority: '0.5' });
 
-    for (const s of allPromptSlugs) urls.push({ loc: `${DOMAIN}/prompts/${s}` });
-    for (const s of allTipSlugs) urls.push({ loc: `${DOMAIN}/tips/${s}` });
+    for (const s of promptSlugs) urls.push({ loc: `${DOMAIN}/prompts/${s}` });
+    for (const s of tipSlugs) urls.push({ loc: `${DOMAIN}/tips/${s}` });
 
     const xml = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'];
     for (const u of urls) {
@@ -67,8 +92,11 @@ async function main() {
   }
 }
 
-if (import.meta.url === `file://${process.cwd()}/scripts/generate-sitemap.mjs`) {
-  main();
+if (import.meta.url.startsWith('file:')) {
+  const modulePath = import.meta.url.slice(7);
+  if (modulePath.endsWith('/scripts/generate-sitemap.mjs')) {
+    main();
+  }
 }
 
 export default main;

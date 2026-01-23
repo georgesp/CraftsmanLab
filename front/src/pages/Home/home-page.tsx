@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Container, Typography, Box, Card, Grid, Link as MuiLink, Chip, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { alpha } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
 import { COLORS, PAGE_SPACING, TYPOGRAPHY } from '../../styles';
 import { LazyTipCardsGrid } from '../../components/tips/tip-cards-grid-lazy';
