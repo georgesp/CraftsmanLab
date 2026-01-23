@@ -142,35 +142,57 @@ export const NewsPage: React.FC = () => {
     return source.translations[lang];
   };
 
-  // Compter les occurrences de chaque catégorie (y compris les sources)
+  // Compter les occurrences de chaque catégorie (y compris les sources) basé sur les articles filtrés
   const categoryOccurrences = useMemo(() => {
     const occurrences: Record<string, number> = {};
-    rssSources.forEach(source => {
-      const lang = i18n.language === 'fr' ? 'fr' : 'en';
-      const sourceName = source.translations[lang].title;
-      // Compter les articles par source
-      occurrences[sourceName] = source.data.items.length;
-      // Compter les catégories
-      source.data.items.forEach(item => {
-        (item.categories || []).forEach(cat => {
-          const normalized = cat.trim();
-          if (normalized) {
-            occurrences[normalized] = (occurrences[normalized] || 0) + 1;
-          }
+    const lang = i18n.language === 'fr' ? 'fr' : 'en';
+    
+    rssSources
+      .filter(source => !selectedSource || source.meta.slug === selectedSource)
+      .forEach(source => {
+        const sourceName = source.translations[lang].title;
+        
+        // Filtrer les items de cette source par les catégories sélectionnées
+        const filteredItems = source.data.items.filter(item => {
+          if (selectedCategories.length === 0) return true;
+          const itemCategories = (item.categories || []).map(c => c.toLowerCase());
+          const selectedSet = new Set(selectedCategories.map(c => c.toLowerCase()));
+          return Array.from(selectedSet).every(cat => itemCategories.includes(cat));
+        });
+        
+        // Compter les articles filtrés par source
+        occurrences[sourceName] = filteredItems.length;
+        
+        // Compter les catégories des articles filtrés
+        filteredItems.forEach(item => {
+          (item.categories || []).forEach(cat => {
+            const normalized = cat.trim();
+            if (normalized) {
+              occurrences[normalized] = (occurrences[normalized] || 0) + 1;
+            }
+          });
         });
       });
-    });
     return occurrences;
-  }, [i18n.language]);
+  }, [i18n.language, selectedSource, selectedCategories]);
 
-  // Collect all unique categories from all items
+  // Collect all unique categories from filtered items
   const allCategories = useMemo(() => {
-    const categories = rssSources.flatMap(source =>
-      source.data.items.flatMap(item => item.categories || [])
-    );
+    const categories = rssSources
+      .filter(source => !selectedSource || source.meta.slug === selectedSource)
+      .flatMap(source =>
+        source.data.items
+          .filter(item => {
+            if (selectedCategories.length === 0) return true;
+            const itemCategories = (item.categories || []).map(c => c.toLowerCase());
+            const selectedSet = new Set(selectedCategories.map(c => c.toLowerCase()));
+            return Array.from(selectedSet).every(cat => itemCategories.includes(cat));
+          })
+          .flatMap(item => item.categories || [])
+      );
     const normalized = categories.map(c => c.trim()).filter(Boolean);
     return Array.from(new Set(normalized)).sort((a, b) => a.localeCompare(b));
-  }, []);
+  }, [selectedSource, selectedCategories]);
 
   // Préparer la liste des sources pour le groupement
   const sourcesList = useMemo(() => {

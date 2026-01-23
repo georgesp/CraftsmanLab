@@ -63,10 +63,20 @@ export const TipsPage: React.FC = () => {
     }
   }, [searchParams]);
 
-  // Compter les occurrences de chaque catégorie
+  // Compter les occurrences de chaque catégorie basé sur les tips filtrés
   const categoryOccurrences = useMemo(() => {
     const occurrences: Record<string, number> = {};
-    tipsList.forEach((tip) => {
+    
+    // Filtrer les tips par les catégories déjà sélectionnées
+    const filteredTips = selectedCategories.length === 0
+      ? tipsList
+      : tipsList.filter((tip) => {
+          const categories = tip.categories ?? [];
+          const selectedSet = new Set(selectedCategories);
+          return Array.from(selectedSet).every((c) => categories.includes(c));
+        });
+    
+    filteredTips.forEach((tip) => {
       (tip.categories || []).forEach((category) => {
         const normalized = category.trim();
         if (normalized) {
@@ -75,11 +85,19 @@ export const TipsPage: React.FC = () => {
       });
     });
     return occurrences;
-  }, []);
+  }, [selectedCategories]);
 
-  // Collect all categories from tips, normalized & unique
+  // Collect all categories from filtered tips, normalized & unique
   const allCategories = useMemo(() => {
-    const categories = tipsList.flatMap((tip) => tip.categories ?? []);
+    const filteredTips = selectedCategories.length === 0
+      ? tipsList
+      : tipsList.filter((tip) => {
+          const categories = tip.categories ?? [];
+          const selectedSet = new Set(selectedCategories);
+          return Array.from(selectedSet).every((c) => categories.includes(c));
+        });
+    
+    const categories = filteredTips.flatMap((tip) => tip.categories ?? []);
     const norm = categories.map((s) => s.trim()).filter(Boolean);
     return Array.from(new Set(norm)).sort((a, b) => {
       // Trier par nombre d'occurrences (descendant), puis alphabétiquement
@@ -87,7 +105,7 @@ export const TipsPage: React.FC = () => {
       if (countDiff !== 0) return countDiff;
       return a.localeCompare(b);
     });
-  }, [categoryOccurrences]);
+  }, [categoryOccurrences, selectedCategories]);
 
   // Filtrer les catégories par le texte de recherche
   const filteredCategories = useMemo(() => {

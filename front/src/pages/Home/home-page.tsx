@@ -60,12 +60,28 @@ export const HomePage: React.FC = () => {
       .slice(0, 5);
   }, [i18n.language]);
 
-  // Calculate top 20 keywords across all articles
+  // Calculate top 30 keywords based on filtered articles
   const topKeywords: KeywordInfo[] = React.useMemo(() => {
     const keywordCounts: Record<string, number> = {};
     
-    rssSources.forEach(source => {
+    // Filtrer d'abord par source si une source est sélectionnée
+    const sourcesToInclude = selectedSource 
+      ? rssSources.filter(source => source.meta.slug === selectedSource)
+      : rssSources;
+    
+    sourcesToInclude.forEach(source => {
       source.data.items.forEach(item => {
+        // Si des keywords sont déjà sélectionnés, ne compter que les articles qui les ont tous
+        if (selectedKeywords.length > 0) {
+          const itemCategories = (item.categories || []).map(c => c.toLowerCase());
+          const selectedSet = new Set(selectedKeywords.map(k => k.toLowerCase()));
+          const hasAllSelected = Array.from(selectedSet).every(keyword => 
+            itemCategories.includes(keyword)
+          );
+          if (!hasAllSelected) return;
+        }
+        
+        // Compter les catégories de cet article
         if (item.categories) {
           item.categories.forEach(category => {
             keywordCounts[category] = (keywordCounts[category] || 0) + 1;
@@ -78,7 +94,7 @@ export const HomePage: React.FC = () => {
       .map(([keyword, count]) => ({ keyword, count }))
       .sort((a, b) => b.count - a.count)
       .slice(0, 30);
-  }, []);
+  }, [selectedSource, selectedKeywords]);
 
   // Get latest 3 news articles
   const latestNews = React.useMemo(() => {
@@ -124,11 +140,20 @@ export const HomePage: React.FC = () => {
     });
   };
 
-  // Calculate top 30 tags for tips
+  // Calculate top 30 tags for tips based on filtered tips
   const topTipTags: KeywordInfo[] = React.useMemo(() => {
     const tagCounts: Record<string, number> = {};
     
-    tipsList.forEach(tip => {
+    // Filtrer les tips par les tags déjà sélectionnés
+    const tipsToInclude = selectedTipTags.length === 0 
+      ? tipsList
+      : tipsList.filter(tip => {
+          const categories = tip.categories || [];
+          const selectedSet = new Set(selectedTipTags);
+          return Array.from(selectedSet).every(tag => categories.includes(tag));
+        });
+    
+    tipsToInclude.forEach(tip => {
       const categories = tip.categories || [];
       categories.forEach(category => {
         tagCounts[category] = (tagCounts[category] || 0) + 1;
@@ -139,7 +164,7 @@ export const HomePage: React.FC = () => {
       .map(([keyword, count]) => ({ keyword, count }))
       .sort((a, b) => b.count - a.count)
       .slice(0, 30);
-  }, []);
+  }, [selectedTipTags]);
 
   // Filter tips by selected tags
   const filteredTips = React.useMemo(() => {
