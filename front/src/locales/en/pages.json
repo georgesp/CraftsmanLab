@@ -1,8 +1,8 @@
 {
   "home": {
     "latestNews": "Latest News",
-    "latestTips": "Latest published tips:",
-    "latestPrompts": "Latest published prompts:",
+    "latestTips": "Latest tips",
+    "latestPrompts": "Latest prompts",
     "recommendedSources": "Recommended Sources",
     "mostUsedTags": "Most Used Tags",
     "articles": "articles",

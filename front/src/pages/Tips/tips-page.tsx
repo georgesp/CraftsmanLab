@@ -151,7 +151,7 @@ export const TipsPage: React.FC = () => {
             sx={{
               backgroundColor: COLORS.cardBgDark,
               borderRadius: 2,
-              p: { xs: 2, sm: 3, md: 3 },
+              p: { xs: 1.5, sm: 2, md: 2 },
               mb: 1,
             }}
           >

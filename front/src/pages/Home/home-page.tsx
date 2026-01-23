@@ -197,11 +197,21 @@ export const HomePage: React.FC = () => {
         sx={{ px: 0, mx: 0, width: '100%', backgroundColor: COLORS.darkGreyBg }}
       >
         {/* Latest News Section */}
-        <Box sx={{ py: 4, width: '100%' }}>
-          <Box sx={{ px: { xs: 1, md: 2 }, mx: 0, width: '100%' }}>
-            <Typography variant="h4" align="left" sx={{ mb: 3, marginLeft: 1 }}>
-              {t('home.latestNews', { defaultValue: 'Dernières actualités' })}
-            </Typography>
+        <Box sx={{ pt: 2, pb: 4, width: '100%' }}>
+          <Box sx={{ px: { xs: 1, md: 3 }, mx: 0, width: '100%' }}>
+            {/* Encadré avec fond coloré pour le titre */}
+            <Box
+              sx={{
+                backgroundColor: COLORS.cardBgDark,
+                borderRadius: 2,
+                p: { xs: 1.5, sm: 2, md: 2 },
+                mb: 3,
+              }}
+            >
+              <Typography variant="h4" align="left">
+                {t('home.latestNews', { defaultValue: 'Dernières actualités' })}
+              </Typography>
+            </Box>
             
             {/* Layout en 2 colonnes : Filtres (gauche) + Actualités (droite) */}
             <Box 
@@ -376,7 +386,8 @@ export const HomePage: React.FC = () => {
                     variant="outlined"
                     fullWidth
                     sx={{
-                      py: 0.8,
+                      py: 0.56,
+                      borderWidth: '1px',
                       borderColor: 'primary.main',
                       color: 'primary.main',
                       '&:hover': {
@@ -392,30 +403,22 @@ export const HomePage: React.FC = () => {
             </Box>
           </Box>
         </Box>
-
-        <Box
-        aria-hidden
-        sx={{
-          mt: 2,
-          height: 60,
-          width: '100%',
-          flex: '0 0 auto',
-          // Motif hachuré: cardBg très léger en surimpression
-          backgroundImage: `repeating-linear-gradient(45deg,
-            ${alpha(COLORS.darkTheme.background, 1)} 0px,
-            ${alpha(COLORS.darkTheme.background, 1)} 12px,
-            ${alpha(COLORS.cardBgDark, 1)} 12px,
-            ${alpha(COLORS.cardBgDark, 1)} 24px
-          )`,
-        }}
-        />
-
         {/* Tips Section */}
-        <Box sx={{ py: PAGE_SPACING.content.paddingY, width: '100%' }}>
-          <Box sx={{ px: { xs: 1, md: 2 }, mx: 0, width: '100%' }}>
-            <Typography variant="h4" align="left" sx={{ mb: 3, marginLeft: 1 }}>
-              {t('home.latestTips', { defaultValue: 'Derniers tips publiés :' })}
-            </Typography>
+        <Box sx={{ pt: 2, pb: PAGE_SPACING.content.paddingY, width: '100%' }}>
+          <Box sx={{ px: { xs: 1, md: 3 }, mx: 0, width: '100%' }}>
+            {/* Encadré avec fond coloré pour le titre */}
+            <Box
+              sx={{
+                backgroundColor: COLORS.cardBgDark,
+                borderRadius: 2,
+                p: { xs: 1.5, sm: 2, md: 2 },
+                mb: 3,
+              }}
+            >
+              <Typography variant="h4" align="left">
+                {t('home.latestTips', { defaultValue: 'Derniers tips' })}
+              </Typography>
+            </Box>
             
             {/* Layout en 2 colonnes : Filtres (gauche) + Tips (droite) */}
             <Box 
@@ -470,7 +473,8 @@ export const HomePage: React.FC = () => {
                     variant="outlined"
                     fullWidth
                     sx={{
-                      py: 0.8,
+                      py: 0.56,
+                      borderWidth: '1px',
                       borderColor: 'primary.main',
                       color: 'primary.main',
                       '&:hover': {
@@ -500,9 +504,21 @@ export const HomePage: React.FC = () => {
             }}
           >
             {/* Arrow card intégrée dans la grille via seeAllLink */}
-            <Typography variant="h4" align="left" sx={{ mt: 2, mb: 4, marginLeft: 3 }}>
-              {t('home.latestPrompts')}
-            </Typography>
+            <Box sx={{ px: { xs: 1, md: 3 }, mx: 0, width: '100%', mt: 1, mb: 2 }}>
+              {/* Encadré avec fond coloré pour le titre */}
+              <Box
+                sx={{
+                  backgroundColor: COLORS.cardBgDark,
+                  borderRadius: 2,
+                  p: { xs: 1.5, sm: 2, md: 2 },
+                  mb: 2,
+                }}
+              >
+                <Typography variant="h4" align="left">
+                  {t('home.latestPrompts')}
+                </Typography>
+              </Box>
+            </Box>
             <Box
               sx={{
                 px: { xs: 0, md: 1 },

@@ -1,8 +1,8 @@
 {
   "home": {
     "latestNews": "Dernières actualités",
-    "latestTips": "Derniers tips publiés :",
-    "latestPrompts": "Derniers prompts publiés :",
+    "latestTips": "Derniers tips",
+    "latestPrompts": "Derniers prompts",
     "recommendedSources": "Sources recommandées",
     "mostUsedTags": "Tags les plus utilisés",
     "articles": "articles",
