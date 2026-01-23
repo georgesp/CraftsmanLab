@@ -96,11 +96,12 @@ export const HomePage: React.FC = () => {
           return false;
         }
         
-        // Filter by keywords
+        // Filter by keywords - l'article doit avoir toutes les catégories sélectionnées
         if (selectedKeywords.length > 0) {
           const itemCategories = (item.categories || []).map(c => c.toLowerCase());
-          return selectedKeywords.some(keyword => 
-            itemCategories.includes(keyword.toLowerCase())
+          const selectedSet = new Set(selectedKeywords.map(k => k.toLowerCase()));
+          return Array.from(selectedSet).every(keyword => 
+            itemCategories.includes(keyword)
           );
         }
         
@@ -147,7 +148,8 @@ export const HomePage: React.FC = () => {
     const selectedSet = new Set(selectedTipTags);
     return tipsList.filter(tip => {
       const categories = tip.categories || [];
-      return Array.from(selectedSet).some(tag => categories.includes(tag));
+      // Le tip doit avoir toutes les catégories sélectionnées
+      return Array.from(selectedSet).every(tag => categories.includes(tag));
     });
   }, [selectedTipTags]);
 

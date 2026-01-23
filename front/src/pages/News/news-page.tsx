@@ -100,6 +100,11 @@ export const NewsPage: React.FC = () => {
   const [categoryFilter, setCategoryFilter] = useState<string>('');
   const [expandedThemes, setExpandedThemes] = useState<Set<string>>(new Set());
 
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // Appliquer les filtres depuis l'URL au chargement
   useEffect(() => {
     const sourceParam = searchParams.get('source');

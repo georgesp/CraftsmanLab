@@ -49,6 +49,11 @@ export const TipsPage: React.FC = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [categoryFilter, setCategoryFilter] = useState<string>('');
 
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // Apply filters from URL params on mount
   useEffect(() => {
     const tagsParam = searchParams.get('tags');
