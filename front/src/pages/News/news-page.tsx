@@ -582,7 +582,7 @@ export const NewsPage: React.FC = () => {
               {/* Colonne de droite - Articles (70%) */}
               <Box sx={{ flex: 1, minWidth: 0 }}>
                 {allItems.length > 0 && (
-                  <Grid container spacing={4}>
+                  <Grid container spacing={2}>
                   {allItems.map((item) => (
                     <Grid item xs={12} sm={12} md={12} key={item.guid}>
                       <MuiLink
