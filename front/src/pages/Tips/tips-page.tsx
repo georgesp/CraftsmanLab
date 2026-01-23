@@ -7,6 +7,7 @@ import { useSearchParams } from 'react-router-dom';
 import { PageLayout, ScrollToTopButton } from '../../components';
 import { TipCardsGrid } from '../../components/tips/tip-cards-grid';
 import { COLORS } from '../../styles/colors';
+import { LAYOUT } from '../../styles/layout';
 import { GridContainer, PromptsPageContainer } from '../Prompts/styles';
 import { tipsList } from '../../components/tips/registry';
 
@@ -195,6 +196,7 @@ export const TipsPage: React.FC = () => {
               <Box 
                 sx={{ 
                   width: { xs: '35%', sm: '30%', md: '15%' },
+                  maxWidth: LAYOUT.leftColumn.maxWidth,
                   flexShrink: 0,
                 }}
               >

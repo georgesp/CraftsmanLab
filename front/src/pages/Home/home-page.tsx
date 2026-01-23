@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Container, Typography, Box, Card, Grid, Link as MuiLink, Chip, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { COLORS, PAGE_SPACING, TYPOGRAPHY } from '../../styles';
+import { COLORS, PAGE_SPACING, TYPOGRAPHY, LAYOUT } from '../../styles';
 import { LazyTipCardsGrid } from '../../components/tips/tip-cards-grid-lazy';
 import { PageLayout } from '../../components';
 import { rssSources } from '../../components/news/registry';
@@ -225,6 +225,7 @@ export const HomePage: React.FC = () => {
               <Box 
                 sx={{ 
                   width: { xs: '100%', md: '25%' },
+                  maxWidth: LAYOUT.leftColumn.maxWidth,
                   display: 'flex',
                   flexDirection: 'column',
                   gap: 2,
@@ -435,6 +436,7 @@ export const HomePage: React.FC = () => {
               <Box 
                 sx={{ 
                   width: { xs: '100%', md: '25%' },
+                  maxWidth: LAYOUT.leftColumn.maxWidth,
                   display: 'flex',
                   flexDirection: 'column',
                   gap: 2,

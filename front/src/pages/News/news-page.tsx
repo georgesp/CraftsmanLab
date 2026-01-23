@@ -7,7 +7,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import CloseIcon from '@mui/icons-material/Close';
 import { useTranslation } from 'react-i18next';
 import { PageLayout, ScrollToTopButton } from '../../components';
-import { COLORS, PAGE_SPACING, TYPOGRAPHY } from '../../styles';
+import { COLORS, PAGE_SPACING, TYPOGRAPHY, LAYOUT } from '../../styles';
 import { GridContainer } from '../Prompts/styles';
 import { PromptCard, PromptCardContent } from '../Prompts/styles';
 import { rssSources } from '../../components/news/registry';
@@ -330,6 +330,7 @@ export const NewsPage: React.FC = () => {
               <Box 
                 sx={{ 
                   width: { xs: '100%', md: '15%' },
+                  maxWidth: LAYOUT.leftColumn.maxWidth,
                   flexShrink: 0,
                 }}
               >
