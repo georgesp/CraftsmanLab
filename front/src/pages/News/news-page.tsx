@@ -335,19 +335,9 @@ export const NewsPage: React.FC = () => {
               >
                 <Box sx={{ 
                   position: { md: 'sticky' }, 
-                  top: 20,
+                  top: 0,
                 }}>
                   {/* Catégories groupées par thème */}
-                  <Typography 
-                    variant="h6" 
-                    sx={{ 
-                      mb: 2, 
-                      fontSize: '1rem',
-                      fontWeight: 600,
-                    }}
-                  >
-                    {t('news.categories', { defaultValue: 'Catégories' })}
-                  </Typography>
 
                   {/* Champ de recherche pour filtrer les catégories */}
                   <TextField

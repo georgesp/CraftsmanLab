@@ -200,20 +200,8 @@ export const TipsPage: React.FC = () => {
               >
                 <Box sx={{ 
                   position: { md: 'sticky' }, 
-                  top: 20,
+                  top: 0,
                 }}>
-                  {/* Titre des mots-clés */}
-                  <Typography 
-                    variant="h6" 
-                    sx={{ 
-                      mb: 2, 
-                      fontSize: { xs: '0.875rem', md: '1rem' },
-                      fontWeight: 600,
-                    }}
-                  >
-                    {t('tips.keywords', { defaultValue: 'Mots-clés' })}
-                  </Typography>
-
                   {/* Champ de recherche pour filtrer les tags */}
                   <TextField
                     fullWidth
