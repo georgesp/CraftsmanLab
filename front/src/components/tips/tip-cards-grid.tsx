@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Grid, Typography, Box, IconButton, useMediaQuery, useTheme } from '@mui/material';
+import { Grid, Typography, Box, IconButton, useMediaQuery, useTheme, Chip } from '@mui/material';
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Link as RouterLink } from 'react-router-dom';
@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next';
 import { tipsList } from './registry';
 import { COLORS, TYPOGRAPHY, PAGE_SPACING } from '../../styles';
 import { PromptCard, PromptCardContent } from '../../pages/Prompts/styles';
-import { KeywordChips } from '../ui/KeywordChips';
 
 type Props = {
   rows?: number; // nombre de lignes à afficher (au lieu du nombre d'éléments)
@@ -142,7 +141,24 @@ export const TipCardsGrid: React.FC<Props> = ({
                     {getTranslatedText(t.slug, 'shortDescription', t.shortDescription)}
                   </Typography>
 
-                  <KeywordChips keywords={t.keywords} />
+                  {t.categories && t.categories.length > 0 && (
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mt: 'auto' }}>
+                      {t.categories.map((category, idx) => (
+                        <Chip
+                          key={idx}
+                          label={category}
+                          size="small"
+                          variant="outlined"
+                          sx={{
+                            height: 20,
+                            fontSize: '0.65rem',
+                            borderColor: 'primary.main',
+                            color: 'primary.main',
+                          }}
+                        />
+                      ))}
+                    </Box>
+                  )}
                 </Box>
               </PromptCardContent>
             </PromptCard>

@@ -7,6 +7,7 @@ import { COLORS, PAGE_SPACING, TYPOGRAPHY } from '../../styles';
 import { LazyTipCardsGrid } from '../../components/tips/tip-cards-grid-lazy';
 import { PageLayout } from '../../components';
 import { rssSources } from '../../components/news/registry';
+import { tipsList } from '../../components/tips/registry';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import { PromptCard, PromptCardContent } from '../Prompts/styles';
 import { TopSourcesFilter, type SourceInfo } from '../../components/news/TopSourcesFilter';
@@ -22,6 +23,7 @@ export const HomePage: React.FC = () => {
   const { t, i18n } = useTranslation('pages');
   const [selectedSource, setSelectedSource] = React.useState<string | null>(null);
   const [selectedKeywords, setSelectedKeywords] = React.useState<string[]>([]);
+  const [selectedTipTags, setSelectedTipTags] = React.useState<string[]>([]);
 
   const formatDate = (dateString: string) => {
     try {
@@ -118,6 +120,43 @@ export const HomePage: React.FC = () => {
         return prev.filter(k => k !== keyword);
       }
       return [...prev, keyword];
+    });
+  };
+
+  // Calculate top 30 tags for tips
+  const topTipTags: KeywordInfo[] = React.useMemo(() => {
+    const tagCounts: Record<string, number> = {};
+    
+    tipsList.forEach(tip => {
+      const categories = tip.categories || [];
+      categories.forEach(category => {
+        tagCounts[category] = (tagCounts[category] || 0) + 1;
+      });
+    });
+
+    return Object.entries(tagCounts)
+      .map(([keyword, count]) => ({ keyword, count }))
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 30);
+  }, []);
+
+  // Filter tips by selected tags
+  const filteredTips = React.useMemo(() => {
+    if (selectedTipTags.length === 0) return tipsList;
+    
+    const selectedSet = new Set(selectedTipTags);
+    return tipsList.filter(tip => {
+      const categories = tip.categories || [];
+      return Array.from(selectedSet).some(tag => categories.includes(tag));
+    });
+  }, [selectedTipTags]);
+
+  const handleTipTagClick = (tag: string) => {
+    setSelectedTipTags(prev => {
+      if (prev.includes(tag)) {
+        return prev.filter(t => t !== tag);
+      }
+      return [...prev, tag];
     });
   };
 
@@ -310,7 +349,7 @@ export const HomePage: React.FC = () => {
                     variant="outlined"
                     fullWidth
                     sx={{
-                      py: 1.5,
+                      py: 0.8,
                       borderColor: 'primary.main',
                       color: 'primary.main',
                       '&:hover': {
@@ -346,30 +385,78 @@ export const HomePage: React.FC = () => {
 
         {/* Tips Section */}
         <Box sx={{ py: PAGE_SPACING.content.paddingY, width: '100%' }}>
-          {/* <Typography
-          variant="h6"
-          align="left"
-          color="text.secondary"
-          sx={{ mb: 6, marginLeft: 3 }}
-        >
-          Au cours de mes missions, je me suis toujours dit que ce serait utile
-          d'avoir un endroit avec de petits rappels.
-          <br />
-          Et parce que même avec l'IA, il faut valider des pull requests et ne
-          pas oublier les fondamentaux.
-        </Typography> */}
           <Box sx={{ px: { xs: 1, md: 2 }, mx: 0, width: '100%' }}>
-            {(() => {
-              const isTest =
-                typeof globalThis.process !== 'undefined' &&
-                globalThis.process?.env?.NODE_ENV === 'test';
-              if (isTest) return null;
-              return (
-                <React.Suspense fallback={null}>
-                  <LazyTipCardsGrid rows={3} seeAllLink="/tips" />
-                </React.Suspense>
-              );
-            })()}
+            <Typography variant="h4" align="left" sx={{ mb: 3, marginLeft: 1 }}>
+              {t('home.latestTips', { defaultValue: 'Derniers tips publiés :' })}
+            </Typography>
+            
+            {/* Layout en 2 colonnes : Filtres (gauche) + Tips (droite) */}
+            <Box 
+              sx={{ 
+                display: 'flex', 
+                gap: 3, 
+                flexDirection: { xs: 'column', md: 'row' } 
+              }}
+            >
+              {/* Colonne de gauche - Filtres par tags (25%) */}
+              <Box 
+                sx={{ 
+                  width: { xs: '100%', md: '25%' },
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 2,
+                }}
+              >
+                {/* Filtre par tags */}
+                <TopKeywordsFilter
+                  keywords={topTipTags}
+                  selectedKeywords={selectedTipTags}
+                  onKeywordClick={handleTipTagClick}
+                  title={t('home.tipsTags', { defaultValue: 'Tags' })}
+                />
+              </Box>
+              
+              {/* Colonne de droite - Tips (75%) */}
+              <Box sx={{ flex: 1, minWidth: 0 }}>
+                {(() => {
+                  const isTest =
+                    typeof globalThis.process !== 'undefined' &&
+                    globalThis.process?.env?.NODE_ENV === 'test';
+                  if (isTest) return null;
+                  return (
+                    <React.Suspense fallback={null}>
+                      <LazyTipCardsGrid rows={3} items={filteredTips} />
+                    </React.Suspense>
+                  );
+                })()}
+                
+                {/* Bouton Voir plus */}
+                <Box sx={{ mt: 3 }}>
+                  <Button
+                    component={Link}
+                    to={{
+                      pathname: '/tips',
+                      search: new URLSearchParams({
+                        ...(selectedTipTags.length > 0 && { tags: selectedTipTags.join(',') }),
+                      }).toString(),
+                    }}
+                    variant="outlined"
+                    fullWidth
+                    sx={{
+                      py: 0.8,
+                      borderColor: 'primary.main',
+                      color: 'primary.main',
+                      '&:hover': {
+                        borderColor: 'primary.light',
+                        backgroundColor: 'rgba(25, 118, 210, 0.08)',
+                      },
+                    }}
+                  >
+                    {t('home.seeMoreTips', { defaultValue: 'Voir plus de tips' })}
+                  </Button>
+                </Box>
+              </Box>
+            </Box>
           </Box>
         </Box>
 

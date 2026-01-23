@@ -30,7 +30,7 @@ export const TipDetailPage: React.FC = () => {
 
     const allSearchKeywords = (slug: string) => {
       const tip = tipsList.find((x) => x.slug === slug);
-      const all = tip?.metadata?.searchKeywords ?? [];
+      const all = tip?.searchKeywords ?? [];
       return uniq(normalize(all));
     };
 

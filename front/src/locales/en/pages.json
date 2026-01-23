@@ -6,7 +6,9 @@
     "recommendedSources": "Recommended Sources",
     "mostUsedTags": "Most Used Tags",
     "articles": "articles",
-    "seeMoreNews": "See more news"
+    "seeMoreNews": "See more news",
+    "tipsTags": "Tags",
+    "seeMoreTips": "See more tips"
   },
   "tips": {
     "title": "Tips and Memos",

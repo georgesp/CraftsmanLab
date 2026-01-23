@@ -12,12 +12,14 @@ interface TopKeywordsFilterProps {
   keywords: KeywordInfo[];
   selectedKeywords: string[];
   onKeywordClick: (keyword: string) => void;
+  title?: string;
 }
 
 export const TopKeywordsFilter: React.FC<TopKeywordsFilterProps> = ({
   keywords,
   selectedKeywords,
   onKeywordClick,
+  title,
 }) => {
   const { t } = useTranslation('pages');
 
@@ -39,7 +41,7 @@ export const TopKeywordsFilter: React.FC<TopKeywordsFilterProps> = ({
           color: 'text.primary',
         }}
       >
-        {t('home.mostUsedTags', { defaultValue: 'Tags les plus utilisés' })}
+        {title || t('home.mostUsedTags', { defaultValue: 'Tags les plus utilisés' })}
       </Typography>
       
       <Box

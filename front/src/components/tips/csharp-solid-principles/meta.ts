@@ -5,9 +5,6 @@ export const meta: TipMeta = {
   title: '',
   shortDescription: '',
   writtenOn: '2025-09-04',
-  keywords: ['C#' as const],
-  metadata: {
-    searchKeywords: ['solid', 'single responsibility', 'open closed', 'liskov', 'interface segregation', 'dependency inversion'],
-    tags: ['solid', 'c#'],
-  },
+  categories: ['SOLID', 'C#'],
+  searchKeywords: ['solid', 'c#', 'csharp', 'principles', 'design patterns', 'srp', 'ocp', 'lsp', 'isp', 'dip', 'architecture'],
 };

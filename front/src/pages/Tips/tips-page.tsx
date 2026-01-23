@@ -1,8 +1,9 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { Container, Card, Typography, Box, Chip, TextField, InputAdornment, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import { useTranslation } from 'react-i18next';
+import { useSearchParams } from 'react-router-dom';
 import { PageLayout, ScrollToTopButton } from '../../components';
 import { TipCardsGrid } from '../../components/tips/tip-cards-grid';
 import { COLORS } from '../../styles/colors';
@@ -44,15 +45,25 @@ const toPascalCase = (s: string) => {
 
 export const TipsPage: React.FC = () => {
   const { t } = useTranslation('pages');
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [tagFilter, setTagFilter] = useState<string>('');
+  const [searchParams] = useSearchParams();
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [categoryFilter, setCategoryFilter] = useState<string>('');
 
-  // Compter les occurrences de chaque tag
-  const tagOccurrences = useMemo(() => {
+  // Apply filters from URL params on mount
+  useEffect(() => {
+    const tagsParam = searchParams.get('tags');
+    if (tagsParam) {
+      const tags = tagsParam.split(',').map((tag) => tag.trim()).filter(Boolean);
+      setSelectedCategories(tags);
+    }
+  }, [searchParams]);
+
+  // Compter les occurrences de chaque catégorie
+  const categoryOccurrences = useMemo(() => {
     const occurrences: Record<string, number> = {};
     tipsList.forEach((tip) => {
-      (tip.metadata?.tags || []).forEach((tag) => {
-        const normalized = tag.trim();
+      (tip.categories || []).forEach((category) => {
+        const normalized = category.trim();
         if (normalized) {
           occurrences[normalized] = (occurrences[normalized] || 0) + 1;
         }
@@ -61,40 +72,40 @@ export const TipsPage: React.FC = () => {
     return occurrences;
   }, []);
 
-  // Collect all tags from tips metadata, normalized & unique
-  const allTags = useMemo(() => {
-    const tags = tipsList.flatMap((tip) => tip.metadata?.tags ?? []);
-    const norm = tags.map((s) => s.trim()).filter(Boolean);
+  // Collect all categories from tips, normalized & unique
+  const allCategories = useMemo(() => {
+    const categories = tipsList.flatMap((tip) => tip.categories ?? []);
+    const norm = categories.map((s) => s.trim()).filter(Boolean);
     return Array.from(new Set(norm)).sort((a, b) => {
       // Trier par nombre d'occurrences (descendant), puis alphabétiquement
-      const countDiff = (tagOccurrences[b] || 0) - (tagOccurrences[a] || 0);
+      const countDiff = (categoryOccurrences[b] || 0) - (categoryOccurrences[a] || 0);
       if (countDiff !== 0) return countDiff;
       return a.localeCompare(b);
     });
-  }, [tagOccurrences]);
+  }, [categoryOccurrences]);
 
-  // Filtrer les tags par le texte de recherche
-  const filteredTags = useMemo(() => {
-    if (!tagFilter.trim()) return allTags;
-    const lowerFilter = tagFilter.toLowerCase();
-    return allTags.filter((tag) => tag.toLowerCase().includes(lowerFilter));
-  }, [allTags, tagFilter]);
+  // Filtrer les catégories par le texte de recherche
+  const filteredCategories = useMemo(() => {
+    if (!categoryFilter.trim()) return allCategories;
+    const lowerFilter = categoryFilter.toLowerCase();
+    return allCategories.filter((category) => category.toLowerCase().includes(lowerFilter));
+  }, [allCategories, categoryFilter]);
 
-  const toggleTag = (tag: string) => {
-    setSelectedTags((prev) =>
-      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
+  const toggleCategory = (category: string) => {
+    setSelectedCategories((prev) =>
+      prev.includes(category) ? prev.filter((c) => c !== category) : [...prev, category],
     );
   };
 
   const filtered = useMemo(() => {
-    if (selectedTags.length === 0) return tipsList;
-    const selectedSet = new Set(selectedTags);
+    if (selectedCategories.length === 0) return tipsList;
+    const selectedSet = new Set(selectedCategories);
     return tipsList.filter((tip) => {
-      const tags = tip.metadata?.tags ?? [];
-      // match si l'élément possède tous les tags sélectionnés
-      return Array.from(selectedSet).every((t) => tags.includes(t));
+      const categories = tip.categories ?? [];
+      // match si l'élément possède toutes les catégories sélectionnées
+      return Array.from(selectedSet).every((c) => categories.includes(c));
     });
-  }, [selectedTags]);
+  }, [selectedCategories]);
 
   return (
     <PageLayout>
@@ -221,8 +232,8 @@ export const TipsPage: React.FC = () => {
                     fullWidth
                     size="small"
                     placeholder={t('tips.searchKeywords', { defaultValue: 'Rechercher...' })}
-                    value={tagFilter}
-                    onChange={(e) => setTagFilter(e.target.value)}
+                    value={categoryFilter}
+                    onChange={(e) => setCategoryFilter(e.target.value)}
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
@@ -246,7 +257,7 @@ export const TipsPage: React.FC = () => {
                   />
 
                   {/* Tags sélectionnés */}
-                  {selectedTags.length > 0 && (
+                  {selectedCategories.length > 0 && (
                     <Box 
                       sx={{ 
                         mb: 2,
@@ -267,12 +278,12 @@ export const TipsPage: React.FC = () => {
                           textTransform: 'uppercase',
                         }}
                       >
-                        {t('tips.selectedKeywords', { defaultValue: 'Sélection' })} ({selectedTags.length})
+                        {t('tips.selectedKeywords', { defaultValue: 'Sélection' })} ({selectedCategories.length})
                       </Typography>
                       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
-                        {selectedTags.map((tag) => (
+                        {selectedCategories.map((category) => (
                           <Box
-                            key={tag}
+                            key={category}
                             sx={{
                               display: 'flex',
                               alignItems: 'center',
@@ -286,11 +297,11 @@ export const TipsPage: React.FC = () => {
                             }}
                           >
                             <Typography sx={{ fontSize: '0.75rem', flex: 1 }}>
-                              {toPascalCase(tag)}
+                              {category}
                             </Typography>
                             <IconButton
                               size="small"
-                              onClick={() => toggleTag(tag)}
+                              onClick={() => toggleCategory(category)}
                               sx={{
                                 ml: 0.5,
                                 width: 18,
@@ -311,15 +322,15 @@ export const TipsPage: React.FC = () => {
                   
                   <Box sx={{ mb: 2 }}>
                     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.75 }}>
-                      {filteredTags.map((tag) => {
-                        const isSelected = selectedTags.includes(tag);
+                      {filteredCategories.map((category) => {
+                        const isSelected = selectedCategories.includes(category);
                         
                         return (
                           <Chip
-                            key={tag}
+                            key={category}
                             label={
                               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                                <span>{toPascalCase(tag)}</span>
+                                <span>{category}</span>
                                 <Typography
                                   component="span"
                                   sx={{
@@ -329,11 +340,11 @@ export const TipsPage: React.FC = () => {
                                     fontWeight: 500,
                                   }}
                                 >
-                                  {tagOccurrences[tag] || 0}
+                                  {categoryOccurrences[category] || 0}
                                 </Typography>
                               </Box>
                             }
-                            onClick={() => toggleTag(tag)}
+                            onClick={() => toggleCategory(category)}
                             size="small"
                             sx={{
                               height: { xs: 24, md: 28 },
