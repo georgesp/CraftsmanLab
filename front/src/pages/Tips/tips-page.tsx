@@ -140,76 +140,73 @@ export const TipsPage: React.FC = () => {
         <PromptsPageContainer
           sx={{
             // add small horizontal padding on xs/sm so text isn't flush against viewport edges
-            px: { xs: 2, sm: 3, md: 0 },
+            px: { xs: 2, sm: 3, md: 3 },
             mx: 0,
             width: '100%',
-            ml: { xs: 0, md: 6 },
             mb: 0,
           }}
         >
+          {/* Encadré avec fond coloré pour l'image et le texte */}
           <Box
             sx={{
-              display: 'flex',
-              alignItems: 'stretch',
-              // reduce the gap on md+ so text sits a bit closer to the image
-              gap: { xs: 1, sm: 2, md: 2 },
-              flexWrap: { xs: 'wrap', md: 'nowrap' },
+              backgroundColor: COLORS.cardBgDark,
+              borderRadius: 2,
+              p: { xs: 2, sm: 3, md: 3 },
+              mb: 1,
             }}
           >
             <Box
               sx={{
-                flex: { xs: '1 1 100%', md: '0 0 auto' },
-                width: { xs: '100%', md: 'auto' },
-                maxWidth: { xs: '100%', md: 'none' },
-                alignSelf: { xs: 'center', md: 'stretch' },
-                position: 'relative',
                 display: 'flex',
-                mr: { xs: 2, md: 0 },
-                mb: { xs: 2, md: 1 },
+                alignItems: 'stretch',
+                // reduce the gap on md+ so text sits a bit closer to the image
+                gap: { xs: 1, sm: 2, md: 2 },
+                flexWrap: { xs: 'wrap', md: 'nowrap' },
               }}
             >
               <Box
-                component="img"
-                src="/image-memo.png"
-                alt="Illustration tips"
                 sx={{
-                  width: 80,
-                  height: 'auto',
-                  objectFit: 'contain',
-                  display: 'block',
+                  flex: { xs: '1 1 100%', md: '0 0 auto' },
+                  width: { xs: '100%', md: 'auto' },
+                  maxWidth: { xs: '100%', md: 'none' },
+                  alignSelf: { xs: 'center', md: 'stretch' },
+                  position: 'relative',
+                  display: 'flex',
+                  mr: { xs: 2, md: 0 },
+                  mb: { xs: 2, md: 0 },
                 }}
-              />
-            </Box>
-            <Box
-              sx={{
-                position: 'relative',
-                // keep a small left padding on md+ so text is closer but not glued
-                pl: { xs: 0, md: '0.75rem' },
-                pr: 0,
-                flex: 1,
-                width: { xs: '100%', md: 'auto' },
-                mr: { xs: 0, md: 3 },
-              }}
-            >
-              <Box
-                component="span"
-                sx={{
-                  position: 'absolute',
-                  left: 0,
-                  top: 0,
-                  bottom: 0,
-                  width: 0,
-                  background: COLORS.darkGreyBg,
-                  display: 'none',
-                }}
-              />
-              <Typography
-                variant="body1"
-                sx={{ px: 0, mx: 0, width: '100%', color: 'text.primary' }}
               >
-                {t('tips.description')} <br />
-                {t('tips.aiNote')}
-              </Typography>
+                <Box
+                  component="img"
+                  src="/image-memo.png"
+                  alt="Illustration tips"
+                  sx={{
+                    width: 80,
+                    height: 'auto',
+                    objectFit: 'contain',
+                    display: 'block',
+                  }}
+                />
+              </Box>
+              <Box
+                sx={{
+                  position: 'relative',
+                  // keep a small left padding on md+ so text is closer but not glued
+                  pl: { xs: 0, md: '0.75rem' },
+                  pr: 0,
+                  flex: 1,
+                  width: { xs: '100%', md: 'auto' },
+                  mr: { xs: 0, md: 3 },
+                }}
+              >
+                <Typography
+                  variant="body1"
+                  sx={{ px: 0, mx: 0, width: '100%', color: 'text.primary' }}
+                >
+                  {t('tips.description')} <br />
+                  {t('tips.aiNote')}
+                </Typography>
+              </Box>
             </Box>
           </Box>
         </PromptsPageContainer>
