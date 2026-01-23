@@ -217,7 +217,8 @@ export const HomePage: React.FC = () => {
               sx={{ 
                 display: 'flex', 
                 gap: 3, 
-                flexDirection: { xs: 'column', md: 'row' } 
+                flexDirection: { xs: 'column', md: 'row' },
+                alignItems: { xs: 'stretch', md: 'stretch' }
               }}
             >
               {/* Colonne de gauche - Filtres (25%) */}
@@ -234,6 +235,7 @@ export const HomePage: React.FC = () => {
                   sources={topSources}
                   selectedSource={selectedSource}
                   onSourceClick={handleSourceClick}
+                  fullHeight
                 />
                 
                 {/* Filtre par mots-clés */}
@@ -241,6 +243,7 @@ export const HomePage: React.FC = () => {
                   keywords={topKeywords}
                   selectedKeywords={selectedKeywords}
                   onKeywordClick={handleKeywordClick}
+                  fullHeight
                 />
               </Box>
               
@@ -424,7 +427,8 @@ export const HomePage: React.FC = () => {
               sx={{ 
                 display: 'flex', 
                 gap: 3, 
-                flexDirection: { xs: 'column', md: 'row' } 
+                flexDirection: { xs: 'column', md: 'row' },
+                alignItems: { xs: 'stretch', md: 'stretch' }
               }}
             >
               {/* Colonne de gauche - Filtres par tags (25%) */}
@@ -442,6 +446,7 @@ export const HomePage: React.FC = () => {
                   selectedKeywords={selectedTipTags}
                   onKeywordClick={handleTipTagClick}
                   title={t('home.tipsTags', { defaultValue: 'Tags' })}
+                  fullHeight
                 />
               </Box>
               

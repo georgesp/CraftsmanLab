@@ -13,6 +13,7 @@ interface TopKeywordsFilterProps {
   selectedKeywords: string[];
   onKeywordClick: (keyword: string) => void;
   title?: string;
+  fullHeight?: boolean;
 }
 
 export const TopKeywordsFilter: React.FC<TopKeywordsFilterProps> = ({
@@ -20,6 +21,7 @@ export const TopKeywordsFilter: React.FC<TopKeywordsFilterProps> = ({
   selectedKeywords,
   onKeywordClick,
   title,
+  fullHeight = false,
 }) => {
   const { t } = useTranslation('pages');
 
@@ -30,6 +32,7 @@ export const TopKeywordsFilter: React.FC<TopKeywordsFilterProps> = ({
         border: `1px solid ${COLORS.cardBorder}`,
         borderRadius: 1,
         p: 2,
+        ...(fullHeight && { height: '100%' }),
       }}
     >
       <Typography
