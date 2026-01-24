@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Typography, Box, Alert, Grid, Paper, Snackbar } from '@mui/material';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { telerikTheme } from '../../theme/theme';
 import { PAGE_SPACING } from '../../styles/spacing';
 import { PageLayout, ScrollToTopButton } from '../../components';
 import { COLORS } from '../../styles/colors';
@@ -50,8 +47,7 @@ export const PromptDetailPage: React.FC = () => {
   // ...
 
   return (
-    <ThemeProvider theme={telerikTheme}>
-      <CssBaseline />
+    <>
       <PageLayout>
         <Container maxWidth="lg">
           <Box sx={{ py: PAGE_SPACING.detail.paddingY, my: PAGE_SPACING.detail.marginY }}>
@@ -87,15 +83,15 @@ export const PromptDetailPage: React.FC = () => {
           </Box>
         </Container>
         <ScrollToTopButton />
+        <Snackbar
+          open={copyOpen}
+          autoHideDuration={2000}
+          onClose={() => setCopyOpen(false)}
+          message={t('messages.promptCopied')}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        />
       </PageLayout>
-      <Snackbar
-        open={copyOpen}
-        autoHideDuration={2000}
-        onClose={() => setCopyOpen(false)}
-        message={t('messages.promptCopied')}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-      />
-    </ThemeProvider>
+    </>
   );
 };
 

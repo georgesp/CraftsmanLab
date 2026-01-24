@@ -66,7 +66,7 @@ export const ContactPage: React.FC = () => {
         // Basic client-side protections
         // 1) Honeypot: if filled, probably a bot -> abort silently
         if (honeypot && honeypot.trim() !== '') {
-          // eslint-disable-next-line no-console
+           
           console.warn('Honeypot filled - possible bot submission, ignoring.');
           return;
         }
@@ -76,7 +76,7 @@ export const ContactPage: React.FC = () => {
           const remaining = Math.ceil(
             (COOLDOWN_SECONDS * 1000 - (Date.now() - lastSentAt)) / 1000,
           );
-          // eslint-disable-next-line no-alert
+           
           alert(`Veuillez patienter ${remaining} secondes avant d'envoyer un autre message.`);
           return;
         }
@@ -98,11 +98,11 @@ export const ContactPage: React.FC = () => {
 
         if (!res.ok) {
           const err = await res.text();
-          // eslint-disable-next-line no-console
+           
           console.error('Erreur envoi formulaire - Status:', res.status);
           console.error('Erreur envoi formulaire - Body:', err);
           // show a simple alert for now
-          // eslint-disable-next-line no-alert
+           
           alert(`Une erreur est survenue lors de l'envoi (${res.status}): ${err}`);
           return;
         }
@@ -115,9 +115,9 @@ export const ContactPage: React.FC = () => {
   setFormData({ name: '', email: '', subject: '', message: '' });
   setTimeout(() => setShowSuccess(false), 5000);
       } catch (error) {
-        // eslint-disable-next-line no-console
+         
         console.error('Erreur envoi formulaire:', error);
-        // eslint-disable-next-line no-alert
+         
         alert("Impossible de contacter le serveur d'envoi.");
       } finally {
         setIsLoading(false);

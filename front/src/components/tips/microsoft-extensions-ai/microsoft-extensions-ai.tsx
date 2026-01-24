@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography, List, ListItem } from '@mui/material';

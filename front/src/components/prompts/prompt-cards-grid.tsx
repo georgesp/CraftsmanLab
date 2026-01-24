@@ -1,4 +1,4 @@
-import React from 'react';
+import { useMemo, type FC } from 'react';
 import { Grid, Typography, Box, IconButton, useMediaQuery, useTheme } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
@@ -16,7 +16,7 @@ type Props = {
   seeAllLabel?: string;
 };
 
-export const PromptCardsGrid: React.FC<Props> = ({
+export const PromptCardsGrid: FC<Props> = ({
   rows,
   showMore = true,
   seeAllLink,
@@ -35,7 +35,7 @@ export const PromptCardsGrid: React.FC<Props> = ({
     return translated || fallback;
   };
 
-  const items = React.useMemo(() => {
+  const items = useMemo(() => {
     let list = promptsList;
     if (!showMore) {
       list = list.filter((p) => p.slug !== 'more');

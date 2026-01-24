@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Chip } from '@mui/material';
 import type { Keyword } from '../../../utils/constants';
 
