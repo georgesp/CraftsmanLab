@@ -18,7 +18,7 @@ export function useCanonical(path?: string) {
         document.head.appendChild(balise);
       }
       balise.href = url;
-    } catch (err) {
+    } catch {
       // noop en environnement non-browser ou si head non disponible
       // garder silencieux pour ne pas interrompre l'app
     }

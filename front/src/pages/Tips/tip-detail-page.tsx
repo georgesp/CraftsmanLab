@@ -126,9 +126,8 @@ export const TipDetailPage: React.FC = () => {
   }, [entry?.slug]);
 
   // Set canonical for tip detail pages to non-www preferred host
-  if (entry) {
-    useCanonical(`/tips/${entry.slug}`);
-  }
+  const canonicalPath = entry ? `/tips/${entry.slug}` : undefined;
+  useCanonical(canonicalPath);
 
   return (
     <>

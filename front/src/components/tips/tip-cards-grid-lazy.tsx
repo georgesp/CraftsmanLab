@@ -9,4 +9,4 @@ export const LazyTipCardsGrid = (hasLazy
   ? lazy(() =>
       import('./tip-cards-grid').then((m: any) => ({ default: m.TipCardsGrid })),
     )
-  : (_: TipGridProps) => null) as unknown as ComponentType<TipGridProps>;
+  : () => null) as unknown as ComponentType<TipGridProps>;
