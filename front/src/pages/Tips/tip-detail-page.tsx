@@ -1,9 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import { telerikTheme } from '../../theme/theme';
 import { PAGE_SPACING } from '../../styles/spacing';
 import { PageLayout, ScrollToTopButton } from '../../components';
 import { COLORS } from '../../styles/colors';
@@ -134,8 +131,7 @@ export const TipDetailPage: React.FC = () => {
   }
 
   return (
-    <ThemeProvider theme={telerikTheme}>
-      <CssBaseline />
+    <>
       <PageLayout>
         <Container maxWidth={false}>
           <Box sx={{ py: PAGE_SPACING.detail.paddingY, my: PAGE_SPACING.detail.marginY }}>
@@ -214,7 +210,7 @@ export const TipDetailPage: React.FC = () => {
         </Container>
         <ScrollToTopButton />
       </PageLayout>
-    </ThemeProvider>
+    </>
   );
 };
 
