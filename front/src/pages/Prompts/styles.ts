@@ -9,7 +9,7 @@ export const PromptsPageContainer = styled(Box)(({ theme }) => ({
   marginBottom: theme.spacing(PAGE_SPACING.container.marginBottom),
 }));
 export const GridContainer = styled(Box)(({ theme }) => ({
-  paddingTop: theme.spacing(4),
+  paddingTop: 0,
   paddingBottom: theme.spacing(4),
 }));
 
