@@ -14,12 +14,14 @@ interface TopSourcesFilterProps {
   sources: SourceInfo[];
   selectedSource: string | null;
   onSourceClick: (slug: string | null) => void;
+  fullHeight?: boolean;
 }
 
 export const TopSourcesFilter: React.FC<TopSourcesFilterProps> = ({
   sources,
   selectedSource,
   onSourceClick,
+  fullHeight = false,
 }) => {
   const { t } = useTranslation('pages');
 
@@ -30,6 +32,7 @@ export const TopSourcesFilter: React.FC<TopSourcesFilterProps> = ({
         border: `1px solid ${COLORS.cardBorder}`,
         borderRadius: 1,
         p: 1.5,
+        ...(fullHeight && { flex: 1 }),
       }}
     >
       <Typography

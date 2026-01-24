@@ -53,7 +53,7 @@ function buildIndex(): IndexedItem[] {
       slug: t.slug,
       title: getTipTranslation(t.slug, 'title', t.title),
       shortDescription: getTipTranslation(t.slug, 'shortDescription', t.shortDescription),
-      searchKeywords: t.metadata?.searchKeywords,
+      searchKeywords: t.searchKeywords,
     });
   }
 

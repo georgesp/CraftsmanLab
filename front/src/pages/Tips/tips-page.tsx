@@ -7,41 +7,9 @@ import { useSearchParams } from 'react-router-dom';
 import { PageLayout, ScrollToTopButton } from '../../components';
 import { TipCardsGrid } from '../../components/tips/tip-cards-grid';
 import { COLORS } from '../../styles/colors';
+import { LAYOUT } from '../../styles/layout';
 import { GridContainer, PromptsPageContainer } from '../Prompts/styles';
 import { tipsList } from '../../components/tips/registry';
-
-// Special display mappings for acronyms / branded terms.
-const SPECIAL_MAPPINGS: Record<string, string> = {
-  dotnet: '.NET',
-  'f#': 'F#',
-  fsharp: 'F#',
-  sql: 'SQL',
-  tsql: 'T-SQL',
-  npm: 'NPM',
-  mcp: 'MCP',
-  ai: 'AI',
-  orm: 'ORM',
-  json: 'JSON',
-  nuget: 'NuGet',
-};
-
-// Convert a tag string to PascalCase for display.
-// Preserve '#' (so 'c#11' -> 'C#11') and treat other non-alphanumeric as separators.
-const toPascalCase = (s: string) => {
-  if (!s) return s;
-  // Check explicit special-case mappings first. Normalize by removing separators.
-  const normalizedForMap = s.toLowerCase().replace(/[^a-z0-9#]+/g, '');
-  if (SPECIAL_MAPPINGS[normalizedForMap]) return SPECIAL_MAPPINGS[normalizedForMap];
-
-  // Allow '#' to remain inside tokens; replace other non-alphanumeric (except #) with space
-  // Preserve literal spaces when the original string contains them (e.g. 'dot net' -> 'Dot Net')
-  const preserveSpaces = /\s/.test(s);
-  const cleaned = s.replace(/[^A-Za-z0-9#]+/g, ' ').trim();
-  const parts = cleaned.split(/\s+/).filter(Boolean);
-  if (parts.length === 0) return '';
-  const transformed = parts.map((p) => p.charAt(0).toUpperCase() + p.slice(1).toLowerCase());
-  return preserveSpaces ? transformed.join(' ') : transformed.join('');
-};
 
 export const TipsPage: React.FC = () => {
   const { t } = useTranslation('pages');
@@ -228,25 +196,14 @@ export const TipsPage: React.FC = () => {
               <Box 
                 sx={{ 
                   width: { xs: '35%', sm: '30%', md: '15%' },
+                  maxWidth: LAYOUT.leftColumn.maxWidth,
                   flexShrink: 0,
                 }}
               >
                 <Box sx={{ 
                   position: { md: 'sticky' }, 
-                  top: 20,
+                  top: 0,
                 }}>
-                  {/* Titre des mots-clés */}
-                  <Typography 
-                    variant="h6" 
-                    sx={{ 
-                      mb: 2, 
-                      fontSize: { xs: '0.875rem', md: '1rem' },
-                      fontWeight: 600,
-                    }}
-                  >
-                    {t('tips.keywords', { defaultValue: 'Mots-clés' })}
-                  </Typography>
-
                   {/* Champ de recherche pour filtrer les tags */}
                   <TextField
                     fullWidth

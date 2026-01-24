@@ -13,7 +13,9 @@
   "tips": {
     "title": "Tips and Memos",
     "description": "A collection of synthetic sheets on fundamental concepts of the .NET and C# ecosystem. Each tip aims to clarify an architectural point, a key interface or an API best practice.",
-    "aiNote": "Don't be surprised: the content of the sheets was generated with the help of AI."
+    "aiNote": "Don't be surprised: the content of the sheets was generated with the help of AI.",
+    "searchKeywords": "Search...",
+    "selectedKeywords": "Selection"
   },
   "tipDetailPage": {
     "loading": "Loading…",
@@ -59,7 +61,9 @@
     "readArticle": "Read article",
     "noItems": "No articles available at the moment.",
     "error": "Unable to load news feed.",
-    "partialError": "Some feeds could not be loaded."
+    "partialError": "Some feeds could not be loaded.",
+    "searchCategories": "Search...",
+    "selectedCategories": "Selection"
   },
   "footer": {
     "copyright": "© 2026 CraftsmanLab. All rights reserved."

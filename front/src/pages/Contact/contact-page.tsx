@@ -168,7 +168,13 @@ export const ContactPage: React.FC = () => {
           >
             {/* Left column: Hero + Info cards */}
             <Box
-              sx={{ flex: { xs: '1 1 100%', md: '0 0 50%' }, maxWidth: { xs: '100%', md: '50%' } }}
+              sx={{ 
+                flex: { xs: '1 1 100%', md: '0 0 50%' }, 
+                maxWidth: { xs: '100%', md: '50%' },
+                backgroundColor: COLORS.cardBgDark,
+                borderRadius: 2,
+                p: { xs: 2, md: 3 },
+              }}
             >
               <HeroSection>
                 <Typography

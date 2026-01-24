@@ -7,10 +7,9 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import CloseIcon from '@mui/icons-material/Close';
 import { useTranslation } from 'react-i18next';
 import { PageLayout, ScrollToTopButton } from '../../components';
-import { COLORS, PAGE_SPACING, TYPOGRAPHY } from '../../styles';
+import { COLORS, PAGE_SPACING, TYPOGRAPHY, LAYOUT } from '../../styles';
 import { GridContainer } from '../Prompts/styles';
 import { PromptCard, PromptCardContent } from '../Prompts/styles';
-import { KeywordChips } from '../../components/ui/KeywordChips';
 import { rssSources } from '../../components/news/registry';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 
@@ -331,24 +330,15 @@ export const NewsPage: React.FC = () => {
               <Box 
                 sx={{ 
                   width: { xs: '100%', md: '15%' },
+                  maxWidth: LAYOUT.leftColumn.maxWidth,
                   flexShrink: 0,
                 }}
               >
                 <Box sx={{ 
                   position: { md: 'sticky' }, 
-                  top: 20,
+                  top: 0,
                 }}>
                   {/* Catégories groupées par thème */}
-                  <Typography 
-                    variant="h6" 
-                    sx={{ 
-                      mb: 2, 
-                      fontSize: '1rem',
-                      fontWeight: 600,
-                    }}
-                  >
-                    {t('news.categories', { defaultValue: 'Catégories' })}
-                  </Typography>
 
                   {/* Champ de recherche pour filtrer les catégories */}
                   <TextField
@@ -582,7 +572,7 @@ export const NewsPage: React.FC = () => {
               {/* Colonne de droite - Articles (70%) */}
               <Box sx={{ flex: 1, minWidth: 0 }}>
                 {allItems.length > 0 && (
-                  <Grid container spacing={4}>
+                  <Grid container spacing={2}>
                   {allItems.map((item) => (
                     <Grid item xs={12} sm={12} md={12} key={item.guid}>
                       <MuiLink

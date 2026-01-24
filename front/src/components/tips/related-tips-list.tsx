@@ -19,7 +19,7 @@ export const RelatedTipsList: React.FC<Props> = ({ currentSlug, maxItems = 7, li
   const uniq = (arr: string[]) => Array.from(new Set(arr));
   const allSearchKeywords = (tipSlug: string) => {
     const tip = tipsList.find((x) => x.slug === tipSlug);
-    const all = tip?.metadata?.searchKeywords ?? [];
+    const all = tip?.searchKeywords ?? [];
     return uniq(normalize(all));
   };
 
