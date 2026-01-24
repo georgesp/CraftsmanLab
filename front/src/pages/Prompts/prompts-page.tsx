@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment, type FC } from 'react';
 import { Container, Typography, Card, Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { ScrollToTopButton, PageLayout } from '../../components';
@@ -6,7 +6,7 @@ import { PromptCardsGrid } from '../../components/prompts/prompt-cards-grid';
 import { COLORS, TYPOGRAPHY } from '../../styles';
 import { PromptsPageContainer, GridContainer } from './styles';
 
-export const PromptsPage: React.FC = () => {
+export const PromptsPage: FC = () => {
   const { t } = useTranslation('pages');
 
   return (
@@ -92,10 +92,10 @@ export const PromptsPage: React.FC = () => {
                   {t('prompts.promptDefinitionFull')
                     .split('\n')
                     .map((line, idx) => (
-                      <React.Fragment key={idx}>
+                      <Fragment key={idx}>
                         {line}
                         <br />
-                      </React.Fragment>
+                      </Fragment>
                     ))}
                 </Typography>
                 <Typography

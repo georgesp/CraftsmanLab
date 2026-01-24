@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Typography, Chip } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { COLORS } from '../../styles/colors';

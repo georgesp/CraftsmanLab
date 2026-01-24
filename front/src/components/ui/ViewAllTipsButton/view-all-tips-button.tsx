@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, Box } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';

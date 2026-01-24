@@ -10,7 +10,7 @@ import { TipList } from '../../components/tips/tip-list';
 import { ViewAllTipsButton } from '../../components/ui';
 import { RelatedTipsList } from '../../components/tips/related-tips-list';
 import { tipsList } from '../../components/tips/registry';
-import { useCanonical } from '@/utils/useCanonical';
+import { useCanonical } from '../../hooks/useCanonical';
 
 export const TipDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
