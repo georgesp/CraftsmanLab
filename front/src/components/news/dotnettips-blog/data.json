@@ -2,6 +2,36 @@
   "source": "dotnettips-blog",
   "items": [
     {
+      "title": "Collection Performance: High-Performance Collection Randomization in .NET",
+      "link": "https://dotnettips.wordpress.com/2026/01/18/collection-performance-high-performance-collection-randomization-in-net/",
+      "pubDate": "Sun, 18 Jan 2026 07:00:00 +0000",
+      "contentSnippet": "The article examines shuffling options in .NET 8, highlighting the performance of three APIs: LINQ.Shuffle(), Random.Shuffle(), and RandomNumberGenerator.Shuffle().",
+      "creator": "dotNetDave",
+      "categories": [
+        ".NET",
+        "Code Analysis",
+        "LINQ",
+        "Performance",
+        "Collections"
+      ],
+      "guid": "http://dotnettips.wordpress.com/?p=16029"
+    },
+    {
+      "title": "File I/O Performance: Picking the Fastest Weapon in Your Arsenal",
+      "link": "https://dotnettips.wordpress.com/2026/01/11/file-i-o-performance-picking-the-fastest-weapon-in-your-arsenal/",
+      "pubDate": "Sun, 11 Jan 2026 07:00:00 +0000",
+      "contentSnippet": "This article provides insights on the fastest file I/O methods for .NET 10, emphasizing benchmarks with 1 MB payloads.",
+      "creator": "dotNetDave",
+      "categories": [
+        ".NET",
+        "C#",
+        "Performance",
+        "File",
+        "I/O"
+      ],
+      "guid": "http://dotnettips.wordpress.com/?p=16019"
+    },
+    {
       "title": "Coding Faster with dotNetTips.com Spargine 10: January 2026 Release",
       "link": "https://dotnettips.wordpress.com/2026/01/06/coding-faster-with-dotnettips-com-spargine-10-january-2026-release/",
       "pubDate": "Tue, 06 Jan 2026 07:00:00 +0000",
@@ -10,7 +40,7 @@
       "categories": [
         ".NET",
         "CoPilot",
-        "Csharp",
+        "C#",
         "Development",
         "Open Source",
         "Performance",
@@ -44,7 +74,6 @@
         "Code Quality",
         "Development",
         "User Experience",
-        "VS.NET",
         "Analyze",
         "CoPilot",
         "Live Unit Testing",
@@ -62,31 +91,15 @@
       "creator": "dotNetDave",
       "categories": [
         ".NET",
-        ".NET Coding Standards",
-        ".NET Core",
         "Architecture",
-        "Books",
         "C#",
-        "Code Analysis",
-        "Code It Any Way You Want",
-        "Code Quality",
-        "Coding Standards",
-        "Development",
-        "Globalization",
-        "Internationalization",
-        "Lambda",
         "LINQ",
         "Memory Management",
         "OOP",
         "Performance",
-        "Source Generators",
-        "Spargine",
-        "Third-Party Products",
         "Threading",
         "User Experience",
-        "VS.NET",
-        "Book",
-        "Code Performance"
+        "Book"
       ],
       "guid": "http://dotnettips.wordpress.com/?p=16002"
     },
@@ -246,6 +259,6 @@
       "guid": "http://dotnettips.wordpress.com/?p=15619"
     }
   ],
-  "lastUpdated": "2026-01-07T17:08:38.125Z",
+  "lastUpdated": "2026-01-24T06:40:18.656Z",
   "feedTitle": "dotNetTips.com"
 }

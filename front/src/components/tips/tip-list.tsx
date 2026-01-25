@@ -1,4 +1,4 @@
-import React from 'react';
+import { useMemo, type FC } from 'react';
 import { List, ListItemButton, ListItemText, type SxProps, type Theme } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { COLORS } from '../../styles/colors';
@@ -12,7 +12,7 @@ type Props = {
   listSx?: SxProps<Theme>;
 };
 
-export const TipList: React.FC<Props> = ({ selectedSlug, onNavigate, maxItems, listSx }) => {
+export const TipList: FC<Props> = ({ selectedSlug, onNavigate, maxItems, listSx }) => {
   const { t } = useTranslation('tips');
 
   // Helper function to get translated text with fallback
@@ -22,7 +22,7 @@ export const TipList: React.FC<Props> = ({ selectedSlug, onNavigate, maxItems, l
     return translated || fallback;
   };
 
-  const items = React.useMemo(() => {
+  const items = useMemo(() => {
     if (maxItems && maxItems > 0) {
       return tipsList.slice(0, maxItems);
     }

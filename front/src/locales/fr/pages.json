@@ -1,13 +1,21 @@
 {
   "home": {
     "latestNews": "Dernières actualités",
-    "latestTips": "Derniers tips publiés :",
-    "latestPrompts": "Derniers prompts publiés :"
+    "latestTips": "Derniers tips",
+    "latestPrompts": "Derniers prompts",
+    "recommendedSources": "Sources recommandées",
+    "mostUsedTags": "Tags les plus utilisés",
+    "articles": "articles",
+    "seeMoreNews": "Voir plus d'actualités",
+    "tipsTags": "Tags",
+    "seeMoreTips": "Voir plus de tips"
   },
   "tips": {
     "title": "Tips et Mémos",
     "description": "Une collection de fiches synthétiques sur des concepts fondamentaux de l'écosystème .NET et C#. Chaque tip vise à clarifier un point d'architecture, une interface clé ou une bonne pratique d'API.",
-    "aiNote": "Ne soyez pas surpris : les contenus des fiches ont été générés avec l'aide de l'IA."
+    "aiNote": "Ne soyez pas surpris : les contenus des fiches ont été générés avec l'aide de l'IA.",
+    "searchKeywords": "Rechercher...",
+    "selectedKeywords": "Sélection"
   },
   "tipDetailPage": {
     "loading": "Chargement…",
@@ -53,9 +61,11 @@
     "readArticle": "Lire l'article",
     "noItems": "Aucun article disponible pour le moment.",
     "error": "Impossible de charger le flux d'actualités.",
-    "partialError": "Certains flux n'ont pas pu être chargés."
+    "partialError": "Certains flux n'ont pas pu être chargés.",
+    "searchCategories": "Rechercher...",
+    "selectedCategories": "Sélection"
   },
   "footer": {
-    "copyright": "© 2025 CraftsmanLab. Tous droits réservés."
+    "copyright": "© 2026 CraftsmanLab. Tous droits réservés."
   }
 }

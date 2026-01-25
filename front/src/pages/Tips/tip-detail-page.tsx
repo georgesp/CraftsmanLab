@@ -1,9 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import { telerikTheme } from '../../theme/theme';
 import { PAGE_SPACING } from '../../styles/spacing';
 import { PageLayout, ScrollToTopButton } from '../../components';
 import { COLORS } from '../../styles/colors';
@@ -13,7 +10,7 @@ import { TipList } from '../../components/tips/tip-list';
 import { ViewAllTipsButton } from '../../components/ui';
 import { RelatedTipsList } from '../../components/tips/related-tips-list';
 import { tipsList } from '../../components/tips/registry';
-import { useCanonical } from '@/utils/useCanonical';
+import { useCanonical } from '../../hooks/useCanonical';
 
 export const TipDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -30,7 +27,7 @@ export const TipDetailPage: React.FC = () => {
 
     const allSearchKeywords = (slug: string) => {
       const tip = tipsList.find((x) => x.slug === slug);
-      const all = tip?.metadata?.searchKeywords ?? [];
+      const all = tip?.searchKeywords ?? [];
       return uniq(normalize(all));
     };
 
@@ -129,13 +126,11 @@ export const TipDetailPage: React.FC = () => {
   }, [entry?.slug]);
 
   // Set canonical for tip detail pages to non-www preferred host
-  if (entry) {
-    useCanonical(`/tips/${entry.slug}`);
-  }
+  const canonicalPath = entry ? `/tips/${entry.slug}` : undefined;
+  useCanonical(canonicalPath);
 
   return (
-    <ThemeProvider theme={telerikTheme}>
-      <CssBaseline />
+    <>
       <PageLayout>
         <Container maxWidth={false}>
           <Box sx={{ py: PAGE_SPACING.detail.paddingY, my: PAGE_SPACING.detail.marginY }}>
@@ -149,7 +144,13 @@ export const TipDetailPage: React.FC = () => {
                 <Grid item xs={12} md={3} lg={3}>
                   <Paper
                     variant="outlined"
-                    sx={{ p: 2, position: 'sticky', top: 24, borderColor: COLORS.itemListHover }}
+                    sx={{ 
+                      p: 2, 
+                      position: 'sticky', 
+                      top: 24, 
+                      borderColor: COLORS.itemListHover,
+                      height: 'fit-content',
+                    }}
                     ref={leftPaperRef}
                   >
                     <Typography variant="h6" sx={{ mb: 2 }} ref={leftTitleRef}>
@@ -181,7 +182,13 @@ export const TipDetailPage: React.FC = () => {
                   <Grid item xs={12} md={3} lg={3}>
                     <Paper
                       variant="outlined"
-                      sx={{ p: 2, position: 'sticky', top: 24, borderColor: COLORS.itemListHover }}
+                      sx={{ 
+                        p: 2, 
+                        position: 'sticky', 
+                        top: 24, 
+                        borderColor: COLORS.itemListHover,
+                        height: 'fit-content',
+                      }}
                       ref={rightPaperRef}
                     >
                       <Typography variant="h6" sx={{ mb: 1 }} ref={rightTitleRef}>
@@ -202,7 +209,7 @@ export const TipDetailPage: React.FC = () => {
         </Container>
         <ScrollToTopButton />
       </PageLayout>
-    </ThemeProvider>
+    </>
   );
 };
 

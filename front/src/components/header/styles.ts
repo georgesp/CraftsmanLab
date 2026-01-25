@@ -5,7 +5,8 @@ import { COLORS, TYPOGRAPHY } from '../../styles';
 export const StyledAppBar = styled(AppBar)({
   width: '100%',
   backgroundColor: COLORS.darkGreyBg,
-  color: COLORS.white,
+  color: COLORS.textPrimary,
+  borderBottom: `3px solid ${COLORS.cardBgDark}`,
 });
 
 export const StyledToolbar = styled(Toolbar)(({ theme }) => ({
@@ -25,11 +26,11 @@ export const NavigationContainer = styled(Box)(({ theme }) => ({
   gap: theme.spacing(3),
   alignItems: 'center',
   '& a': {
-    color: COLORS.white,
+    color: COLORS.textPrimary,
     fontSize: TYPOGRAPHY.fontSizes.nav,
     textDecoration: 'none',
     '&:hover': {
-      color: theme.palette.primary.light,
+      color: theme.palette.primary.main,
     },
   },
   // On small screens put navigation on its own line and align to the right

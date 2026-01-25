@@ -16,7 +16,7 @@ describe('HomePage Component', () => {
     // Vérifier que le logo CraftsmanLab est affiché
     const logo = screen.getByAltText('CraftsmanLab');
     expect(logo).toBeInTheDocument();
-    expect(logo).toHaveAttribute('src', '/noBgColorWhite.png');
+    expect(logo).toHaveAttribute('src', '/noBgColor.png');
   });
 
   test('renders main hero section', () => {

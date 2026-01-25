@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Container, Card, Typography, Box, Grid, Alert, Link as MuiLink, Chip, TextField, InputAdornment, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
@@ -6,7 +7,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import CloseIcon from '@mui/icons-material/Close';
 import { useTranslation } from 'react-i18next';
 import { PageLayout, ScrollToTopButton } from '../../components';
-import { COLORS } from '../../styles/colors';
+import { COLORS, PAGE_SPACING, TYPOGRAPHY, LAYOUT } from '../../styles';
 import { GridContainer } from '../Prompts/styles';
 import { PromptCard, PromptCardContent } from '../Prompts/styles';
 import { rssSources } from '../../components/news/registry';
@@ -92,10 +93,31 @@ const groupCategoriesByTheme = (categories: string[], categoryOccurrences: Recor
 
 export const NewsPage: React.FC = () => {
   const { t, i18n } = useTranslation('pages');
+  const [searchParams] = useSearchParams();
   const [selectedSource, setSelectedSource] = useState<string | null>(null);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [categoryFilter, setCategoryFilter] = useState<string>('');
   const [expandedThemes, setExpandedThemes] = useState<Set<string>>(new Set());
+
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  // Appliquer les filtres depuis l'URL au chargement
+  useEffect(() => {
+    const sourceParam = searchParams.get('source');
+    const keywordsParam = searchParams.get('keywords');
+    
+    if (sourceParam) {
+      setSelectedSource(sourceParam);
+    }
+    
+    if (keywordsParam) {
+      const keywords = keywordsParam.split(',').filter(k => k.trim());
+      setSelectedCategories(keywords);
+    }
+  }, [searchParams]);
 
   const formatDate = (dateString: string) => {
     try {
@@ -119,35 +141,57 @@ export const NewsPage: React.FC = () => {
     return source.translations[lang];
   };
 
-  // Compter les occurrences de chaque catégorie (y compris les sources)
+  // Compter les occurrences de chaque catégorie (y compris les sources) basé sur les articles filtrés
   const categoryOccurrences = useMemo(() => {
     const occurrences: Record<string, number> = {};
-    rssSources.forEach(source => {
-      const lang = i18n.language === 'fr' ? 'fr' : 'en';
-      const sourceName = source.translations[lang].title;
-      // Compter les articles par source
-      occurrences[sourceName] = source.data.items.length;
-      // Compter les catégories
-      source.data.items.forEach(item => {
-        (item.categories || []).forEach(cat => {
-          const normalized = cat.trim();
-          if (normalized) {
-            occurrences[normalized] = (occurrences[normalized] || 0) + 1;
-          }
+    const lang = i18n.language === 'fr' ? 'fr' : 'en';
+    
+    rssSources
+      .filter(source => !selectedSource || source.meta.slug === selectedSource)
+      .forEach(source => {
+        const sourceName = source.translations[lang].title;
+        
+        // Filtrer les items de cette source par les catégories sélectionnées
+        const filteredItems = source.data.items.filter(item => {
+          if (selectedCategories.length === 0) return true;
+          const itemCategories = (item.categories || []).map(c => c.toLowerCase());
+          const selectedSet = new Set(selectedCategories.map(c => c.toLowerCase()));
+          return Array.from(selectedSet).every(cat => itemCategories.includes(cat));
+        });
+        
+        // Compter les articles filtrés par source
+        occurrences[sourceName] = filteredItems.length;
+        
+        // Compter les catégories des articles filtrés
+        filteredItems.forEach(item => {
+          (item.categories || []).forEach(cat => {
+            const normalized = cat.trim();
+            if (normalized) {
+              occurrences[normalized] = (occurrences[normalized] || 0) + 1;
+            }
+          });
         });
       });
-    });
     return occurrences;
-  }, [i18n.language]);
+  }, [i18n.language, selectedSource, selectedCategories]);
 
-  // Collect all unique categories from all items
+  // Collect all unique categories from filtered items
   const allCategories = useMemo(() => {
-    const categories = rssSources.flatMap(source =>
-      source.data.items.flatMap(item => item.categories || [])
-    );
+    const categories = rssSources
+      .filter(source => !selectedSource || source.meta.slug === selectedSource)
+      .flatMap(source =>
+        source.data.items
+          .filter(item => {
+            if (selectedCategories.length === 0) return true;
+            const itemCategories = (item.categories || []).map(c => c.toLowerCase());
+            const selectedSet = new Set(selectedCategories.map(c => c.toLowerCase()));
+            return Array.from(selectedSet).every(cat => itemCategories.includes(cat));
+          })
+          .flatMap(item => item.categories || [])
+      );
     const normalized = categories.map(c => c.trim()).filter(Boolean);
     return Array.from(new Set(normalized)).sort((a, b) => a.localeCompare(b));
-  }, []);
+  }, [selectedSource, selectedCategories]);
 
   // Préparer la liste des sources pour le groupement
   const sourcesList = useMemo(() => {
@@ -286,24 +330,15 @@ export const NewsPage: React.FC = () => {
               <Box 
                 sx={{ 
                   width: { xs: '100%', md: '15%' },
+                  maxWidth: LAYOUT.leftColumn.maxWidth,
                   flexShrink: 0,
                 }}
               >
                 <Box sx={{ 
                   position: { md: 'sticky' }, 
-                  top: 20,
+                  top: 0,
                 }}>
                   {/* Catégories groupées par thème */}
-                  <Typography 
-                    variant="h6" 
-                    sx={{ 
-                      mb: 2, 
-                      fontSize: '1rem',
-                      fontWeight: 600,
-                    }}
-                  >
-                    {t('news.categories', { defaultValue: 'Catégories' })}
-                  </Typography>
 
                   {/* Champ de recherche pour filtrer les catégories */}
                   <TextField
@@ -323,12 +358,12 @@ export const NewsPage: React.FC = () => {
                       mb: 2,
                       '& .MuiOutlinedInput-root': {
                         fontSize: '0.875rem',
-                        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                        backgroundColor: COLORS.categoryInputBg,
                         '&:hover': {
-                          backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                          backgroundColor: COLORS.categoryInputBgHover,
                         },
                         '&.Mui-focused': {
-                          backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                          backgroundColor: COLORS.categoryInputBgHover,
                         },
                       },
                     }}
@@ -340,9 +375,9 @@ export const NewsPage: React.FC = () => {
                       sx={{ 
                         mb: 2,
                         p: 1.5,
-                        backgroundColor: 'rgba(25, 118, 210, 0.08)',
-                        borderRadius: 1,
-                        border: '1px solid rgba(25, 118, 210, 0.2)',
+                        backgroundColor: COLORS.categorySelectedBg,
+                        borderRadius: 0,
+                        border: `1px solid ${COLORS.categorySelectedBorder}`,
                       }}
                     >
                       <Typography 
@@ -385,7 +420,7 @@ export const NewsPage: React.FC = () => {
                                 height: 18,
                                 color: 'white',
                                 '&:hover': {
-                                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                                  backgroundColor: COLORS.iconButtonHover,
                                 },
                               }}
                             >
@@ -404,7 +439,7 @@ export const NewsPage: React.FC = () => {
                               color: 'white',
                               px: 1,
                               py: 0.5,
-                              borderRadius: 0.5,
+                              borderRadius: 0,
                               fontSize: '0.75rem',
                             }}
                           >
@@ -420,7 +455,7 @@ export const NewsPage: React.FC = () => {
                                 height: 18,
                                 color: 'white',
                                 '&:hover': {
-                                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                                  backgroundColor: COLORS.iconButtonHover,
                                 },
                               }}
                             >
@@ -462,7 +497,7 @@ export const NewsPage: React.FC = () => {
                                   height: 20,
                                   color: 'primary.main',
                                   '&:hover': {
-                                    backgroundColor: 'rgba(25, 118, 210, 0.08)',
+                                    backgroundColor: COLORS.categorySelectedBg,
                                   },
                                 }}
                               >
@@ -507,13 +542,13 @@ export const NewsPage: React.FC = () => {
                                     backgroundColor: isSelected ? 'primary.main' : 'transparent',
                                     color: isSelected ? 'white' : 'text.primary',
                                     border: '1px solid',
-                                    borderColor: isSelected ? 'primary.main' : 'rgba(255, 255, 255, 0.23)',
+                                    borderColor: isSelected ? 'primary.main' : COLORS.categoryChipBorder,
                                     cursor: 'pointer',
                                     transition: 'all 0.2s ease',
                                     '&:hover': {
                                       backgroundColor: isSelected 
                                         ? 'primary.dark' 
-                                        : 'rgba(255, 255, 255, 0.08)',
+                                        : COLORS.categoryChipHover,
                                       borderColor: 'primary.main',
                                     },
                                     '& .MuiChip-label': {
@@ -537,7 +572,7 @@ export const NewsPage: React.FC = () => {
               {/* Colonne de droite - Articles (70%) */}
               <Box sx={{ flex: 1, minWidth: 0 }}>
                 {allItems.length > 0 && (
-                  <Grid container spacing={4}>
+                  <Grid container spacing={2}>
                   {allItems.map((item) => (
                     <Grid item xs={12} sm={12} md={12} key={item.guid}>
                       <MuiLink
@@ -560,6 +595,7 @@ export const NewsPage: React.FC = () => {
                           className="news-card"
                           sx={{
                             backgroundColor: COLORS.cardBgDark,
+                            border: `${COLORS.cardBorderWidth} solid ${COLORS.cardBorder}`,
                             height: '100%',
                             display: 'flex',
                             flexDirection: 'column',
@@ -567,93 +603,93 @@ export const NewsPage: React.FC = () => {
                             cursor: 'pointer',
                           }}
                         >
-                          <PromptCardContent sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-                            {/* Source badge */}
-                            <Box sx={{ mb: 1 }}>
-                              <Chip
-                                label={item.sourceInfo.title}
-                                size="small"
-                                sx={{
-                                  height: 20,
-                                  fontSize: '0.7rem',
-                                  backgroundColor: 'primary.main',
-                                  color: 'white',
-                                }}
-                              />
-                            </Box>
-
-                            <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, mb: 1 }}>
-                              <Box
-                                sx={{
-                                  display: 'inline-flex',
-                                  alignItems: 'center',
-                                  justifyContent: 'center',
-                                  width: 22,
-                                  height: 22,
-                                  backgroundColor: COLORS.newsIcon,
-                                  borderRadius: '50%',
-                                  mt: 0.2,
-                                  flexShrink: 0,
-                                }}
-                              >
-                                <NewspaperIcon sx={{ color: '#FFFFFF', fontSize: 12 }} />
-                              </Box>
-                              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flex: 1, gap: 2 }}>
-                                <Typography
-                                  variant="subtitle1"
-                                  component="h3"
+                          <PromptCardContent sx={{ flex: 1, display: 'flex', flexDirection: 'column', padding: 0 }}>
+                            {/* Contenu de la card */}
+                            <Box sx={{ px: PAGE_SPACING.cardPadding, pt: PAGE_SPACING.cardPadding, pb: PAGE_SPACING.cardPadding, flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                              {/* Titre avec icône */}
+                              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
+                                <Box
                                   sx={{
-                                    fontSize: '1.0rem',
-                                    lineHeight: 1.3,
-                                    fontWeight: 600,
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    width: 22,
+                                    height: 22,
+                                    backgroundColor: COLORS.newsIcon,
+                                    borderRadius: 0,
+                                    flexShrink: 0,
                                   }}
+                                >
+                                  <NewspaperIcon sx={{ color: '#FFFFFF', fontSize: 12 }} />
+                                </Box>
+                                <Typography
+                                  variant="h6"
+                                  component="h3"
+                                  sx={{ fontWeight: TYPOGRAPHY.fontWeights.bold, mb: 0, color: 'text.primary' }}
                                 >
                                   {item.title}
                                 </Typography>
+                              </Box>
+                              
+                              {/* Ligne séparatrice */}
+                              <Box sx={{ width: '100%', height: '1px', backgroundColor: COLORS.cardDivider, mb: 1, mx: -PAGE_SPACING.cardPadding }} />
+                              
+                              {/* Source badge et date */}
+                              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1, flexWrap: 'wrap' }}>
+                                <Chip
+                                  label={item.sourceInfo.title}
+                                  size="small"
+                                  sx={{
+                                    height: 20,
+                                    fontSize: '0.7rem',
+                                    backgroundColor: 'primary.main',
+                                    color: 'white',
+                                  }}
+                                />
                                 <Typography
                                   variant="caption"
                                   color="text.secondary"
-                                  sx={{ 
-                                    fontSize: '0.75rem',
-                                    whiteSpace: 'nowrap',
-                                  }}
+                                  sx={{ fontSize: '0.75rem' }}
                                 >
                                   {item.creator && `${item.creator}, `}{formatDate(item.pubDate)}
                                 </Typography>
                               </Box>
+
+                              <Typography
+                                variant="body2"
+                                sx={{
+                                  mb: 2,
+                                  flex: 1,
+                                  color: 'text.primary',
+                                  lineHeight: 1.6,
+                                  display: '-webkit-box',
+                                  WebkitLineClamp: 3,
+                                  WebkitBoxOrient: 'vertical',
+                                  overflow: 'hidden',
+                                }}
+                              >
+                                {item.contentSnippet}
+                              </Typography>
+
+                              {item.categories && item.categories.length > 0 && (
+                                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mt: 'auto' }}>
+                                  {item.categories.map((category, idx) => (
+                                    <Chip
+                                      key={idx}
+                                      label={category}
+                                      size="small"
+                                      variant="outlined"
+                                      sx={{
+                                        height: 20,
+                                        fontSize: '0.65rem',
+                                        borderColor: 'primary.main',
+                                        color: 'primary.main',
+                                      }}
+                                    />
+                                  ))}
+                                </Box>
+                              )}
                             </Box>
-
-                            <Typography
-                              variant="body2"
-                              sx={{
-                                mb: 2,
-                                flex: 1,
-                                color: 'text.primary',
-                                lineHeight: 1.6,
-                              }}
-                            >
-                              {item.contentSnippet}...
-                            </Typography>
-
-                            {item.categories && item.categories.length > 0 && (
-                              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                                {item.categories.slice(0, 3).map((cat, idx) => (
-                                  <Typography
-                                    key={idx}
-                                    variant="caption"
-                                    sx={{
-                                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                                      px: 1,
-                                      py: 0.25,
-                                      borderRadius: 1,
-                                      fontSize: '0.75rem',
-                                    }}
-                                  >
-                                    {cat}
-                                  </Typography>
-                                ))}
-                              </Box>
-                            )}
                           </PromptCardContent>
                         </PromptCard>
                       </MuiLink>

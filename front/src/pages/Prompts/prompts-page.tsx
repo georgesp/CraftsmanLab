@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment, type FC } from 'react';
 import { Container, Typography, Card, Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { ScrollToTopButton, PageLayout } from '../../components';
@@ -6,7 +6,7 @@ import { PromptCardsGrid } from '../../components/prompts/prompt-cards-grid';
 import { COLORS, TYPOGRAPHY } from '../../styles';
 import { PromptsPageContainer, GridContainer } from './styles';
 
-export const PromptsPage: React.FC = () => {
+export const PromptsPage: FC = () => {
   const { t } = useTranslation('pages');
 
   return (
@@ -19,43 +19,48 @@ export const PromptsPage: React.FC = () => {
         <PromptsPageContainer
           sx={{
             // add small horizontal padding on xs/sm so text isn't flush against viewport edges
-            px: { xs: 2, sm: 3, md: 0 },
+            px: { xs: 2, sm: 3, md: 3 },
             mx: 0,
             width: '100%',
-            // align with Tips page spacing on md+
-            ml: { xs: 0, md: 6 },
-            mr: { xs: 0, md: 6 },
-            // ensure inner right padding on large screens so text doesn't feel truncated
-            pr: { md: 6 },
+            mb: 0,
           }}
         >
+          {/* Encadré avec fond coloré pour l'image et le texte */}
           <Box
             sx={{
-              display: 'flex',
-              // ensure stacking on small screens and row layout on larger ones
-              flexDirection: { xs: 'column', md: 'row' },
-              alignItems: 'stretch',
-              gap: { xs: 2, sm: 4 },
-              flexWrap: { xs: 'wrap', md: 'nowrap' },
+              backgroundColor: COLORS.cardBgDark,
+              borderRadius: 2,
+              p: { xs: 1.5, sm: 2, md: 2 },
+              mb: 1,
             }}
           >
             <Box
               sx={{
-                // smaller on md+, centered and capped on small screens
-                flex: { xs: '1 1 100%', md: '0 0 280px' },
-                width: { xs: '100%', md: 280 },
-                // cap the max width globally so it never grows too large on narrow viewports
-                maxWidth: 320,
-                mx: { xs: 'auto', md: 0 },
-                alignSelf: { xs: 'center', md: 'stretch' },
-                borderRadius: 1,
-                boxShadow: 3,
-                overflow: 'hidden',
-                position: 'relative',
-                backgroundColor: COLORS.darkGreyBg,
                 display: 'flex',
+                // ensure stacking on small screens and row layout on larger ones
+                flexDirection: { xs: 'column', md: 'row' },
+                alignItems: 'stretch',
+                gap: { xs: 2, sm: 4 },
+                flexWrap: { xs: 'wrap', md: 'nowrap' },
               }}
             >
+              <Box
+                sx={{
+                  // smaller on md+, centered and capped on small screens
+                  flex: { xs: '1 1 100%', md: '0 0 280px' },
+                  width: { xs: '100%', md: 280 },
+                  // cap the max width globally so it never grows too large on narrow viewports
+                  maxWidth: 320,
+                  mx: { xs: 'auto', md: 0 },
+                  alignSelf: { xs: 'center', md: 'stretch' },
+                  borderRadius: 1,
+                  boxShadow: 3,
+                  overflow: 'hidden',
+                  position: 'relative',
+                  backgroundColor: COLORS.darkGreyBg,
+                  display: 'flex',
+                }}
+              >
                 <Box
                   component="img"
                   src="/image-ia.png"
@@ -70,63 +75,53 @@ export const PromptsPage: React.FC = () => {
                 />
               </Box>
               <Box
-                sx={{ position: 'relative', pl: { xs: 0, md: '0.75rem' }, flex: 1, mr: { xs: 0, md: 3 } }}
+                sx={{ position: 'relative', pl: { xs: 0, md: '0.75rem' }, flex: 1 }}
               >
-              <span
-                style={{
-                  position: 'absolute',
-                  left: 0,
-                  top: 0,
-                  bottom: 0,
-                  width: 0,
-                  display: 'none',
-                  background: COLORS.darkGreyBg,
-                }}
-              />
-              <Typography
-                variant="h6"
-                component="h2"
-                gutterBottom
-                sx={{ fontWeight: TYPOGRAPHY.fontWeights.semiBold, px: 0, mx: 0, width: '100%', color: 'text.primary' }}
-              >
-                {t('prompts.whatIsPrompt')}
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{ px: 0, mx: 0, width: '100%', color: 'text.primary' }}
-              >
-                {t('prompts.promptDefinitionFull')
-                  .split('\n')
-                  .map((line, idx) => (
-                    <React.Fragment key={idx}>
-                      {line}
-                      <br />
-                    </React.Fragment>
-                  ))}
-              </Typography>
-              <Typography
-                variant="h6"
-                component="h2"
-                gutterBottom
-                sx={{
-                  fontWeight: TYPOGRAPHY.fontWeights.semiBold,
-                  marginTop: 2,
-                  px: 0,
-                  mx: 0,
-                  width: '100%',
-                  color: 'text.primary',
-                }}
-              >
-                {t('prompts.whyPromptTitle')}
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{ px: 0, mx: 0, width: '100%', color: 'text.primary' }}
-              >
-                {t('prompts.whyPromptBody1')}
-                <br />
-                {t('prompts.whyPromptBody2')}
-              </Typography>
+                <Typography
+                  variant="h6"
+                  component="h2"
+                  gutterBottom
+                  sx={{ fontWeight: TYPOGRAPHY.fontWeights.semiBold, px: 0, mx: 0, width: '100%', color: 'text.primary' }}
+                >
+                  {t('prompts.whatIsPrompt')}
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{ px: 0, mx: 0, width: '100%', color: 'text.primary' }}
+                >
+                  {t('prompts.promptDefinitionFull')
+                    .split('\n')
+                    .map((line, idx) => (
+                      <Fragment key={idx}>
+                        {line}
+                        <br />
+                      </Fragment>
+                    ))}
+                </Typography>
+                <Typography
+                  variant="h6"
+                  component="h2"
+                  gutterBottom
+                  sx={{
+                    fontWeight: TYPOGRAPHY.fontWeights.semiBold,
+                    marginTop: 2,
+                    px: 0,
+                    mx: 0,
+                    width: '100%',
+                    color: 'text.primary',
+                  }}
+                >
+                  {t('prompts.whyPromptTitle')}
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{ px: 0, mx: 0, width: '100%', color: 'text.primary' }}
+                >
+                  {t('prompts.whyPromptBody1')}
+                  <br />
+                  {t('prompts.whyPromptBody2')}
+                </Typography>
+              </Box>
             </Box>
           </Box>
         </PromptsPageContainer>

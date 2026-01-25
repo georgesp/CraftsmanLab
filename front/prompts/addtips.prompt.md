@@ -97,7 +97,6 @@ export const meta: TipMeta = {
 
 ```tsx
 // src/components/tips/<slug>/<slug>.tsx
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';

@@ -2,13 +2,23 @@
   "source": "developpez-dotnet",
   "items": [
     {
+      "title": "IA générative avec des grands modèles de langage en C# en 2026 : une base pour les développeurs .NET/C# travaillant avec Microsoft Foundry, GitHub Models et AI Extensions, par Jeremy Likness",
+      "link": "https://intelligence-artificielle.developpez.com/actu/379222/IA-generative-avec-des-grands-modeles-de-langage-en-C-en-2026-une-base-pour-les-developpeurs-NET-C-travaillant-avec-Microsoft-Foundry-GitHub-Models-et-AI-Extensions-par-Jeremy-Likness/",
+      "pubDate": "Wed, 14 Jan 2026 16:44:00 +0100",
+      "contentSnippet": "IA générative avec des grands modèles de langage en C# en 2026 : une base pour les développeurs .NET/C# travaillant avec Microsoft Foundry, GitHub Models et AI Extensions, par Jeremy Likness\nL'IA générative est devenue la technologie grand public à l",
+      "creator": "",
+      "categories": [
+        "GitHub"
+      ],
+      "guid": "https://intelligence-artificielle.developpez.com/actu/379222/IA-generative-avec-des-grands-modeles-de-langage-en-C-en-2026-une-base-pour-les-developpeurs-NET-C-travaillant-avec-Microsoft-Foundry-GitHub-Models-et-AI-Extensions-par-Jeremy-Likness/"
+    },
+    {
       "title": "Microsoft annonce que le langage de programmation F# 10 est disponible avec .NET 10 et Visual Studio 2026, apportant des améliorations axées sur la clarté, la cohérence et les performances",
       "link": "https://dotnet.developpez.com/actu/377751/Microsoft-annonce-que-le-langage-de-programmation-F-10-est-disponible-avec-NET-10-et-Visual-Studio-2026-apportant-des-ameliorations-axees-sur-la-clarte-la-coherence-et-les-performances/",
       "pubDate": "Tue, 18 Nov 2025 16:26:00 +0100",
       "contentSnippet": "Microsoft annonce que le langage de programmation F# 10 est disponible avec .NET 10 et Visual Studio 2026, apportant des améliorations axées sur la clarté, la cohérence et les performances\nF# 10 est désormais disponible avec .NET 10 et Visual Studio ",
       "creator": "",
       "categories": [
-        "F#",
         ".NET 10",
         "Visual Studio 2026",
         "Performance"
@@ -23,8 +33,7 @@
       "creator": "",
       "categories": [
         "C#",
-        "C# 14",
-        ".NET 10",
+        ".NET",
         "Performance"
       ],
       "guid": "https://dotnet.developpez.com/actu/377739/Microsoft-presente-les-nouvelles-fonctionnalites-de-C-14-qui-devraient-permettre-aux-developpeurs-C-de-beneficier-de-certaines-des-ameliorations-de-performances-offertes-par-NET-10/"
@@ -161,7 +170,7 @@
       "categories": [
         ".NET",
         "Visual Studio",
-        "VS Code",
+        "Visual Studio Code",
         "ReSharper",
         "JetBrains"
       ],
@@ -174,8 +183,7 @@
       "contentSnippet": "Exploration des membres d'extension en C# 14 : la nouvelle syntaxe des membres d'extension préserve l'énorme quantité de méthodes d'extension paramètre This existantes tout en introduisant de nouveaux types.\nC# 14 introduit les membres d'extension. C",
       "creator": "",
       "categories": [
-        "C#",
-        "C# 14"
+        "C#"
       ],
       "guid": "https://dotnet.developpez.com/actu/372182/Exploration-des-membres-d-extension-en-C-14-preservation-de-l-enorme-quantite-de-methodes-d-extension-parametre-This-existantes-tout-en-introduisant-de-nouveaux-types/"
     },
@@ -186,8 +194,7 @@
       "contentSnippet": "Microsoft présente les nouvelles fonctionnalités du langage de programmation de C# 14 : membres d'extension, affectation par condition nulle, propriétés field stockées\nC# 14 inclut les nouvelles fonctionnalités suivantes : Membres d'extension, Mot cl",
       "creator": "",
       "categories": [
-        "C#",
-        "C# 14"
+        "C#"
       ],
       "guid": "https://dotnet.developpez.com/actu/372078/Microsoft-presente-les-nouvelles-fonctionnalites-du-langage-de-programmation-de-C-14-membres-d-extension-affectation-par-condition-nulle-proprietes-field-stockees/"
     },
@@ -275,6 +282,6 @@
       "guid": "https://jetbrains.developpez.com/actu/365223/Rider-2024-3-disponible-prise-en-charge-des-dernieres-fonctionnalites-du-SDK-NET-9-et-C-13-debogage-de-console-pour-le-developpement-de-jeux-ameliorations-pour-l-assistant-IA-et-plus/"
     }
   ],
-  "lastUpdated": "2026-01-07T17:08:38.189Z",
+  "lastUpdated": "2026-01-24T06:40:18.740Z",
   "feedTitle": "Flux .NET Developpez"
 }

@@ -117,7 +117,7 @@ export const Header: React.FC = () => {
         >
           <Box
             component="img"
-            src="/noBgColorWhite.png"
+            src="/noBgColor.png"
             alt="CraftsmanLab"
             sx={{
               height: 56,
@@ -125,6 +125,7 @@ export const Header: React.FC = () => {
               objectFit: 'contain',
               display: 'block',
               flexShrink: 0,
+              border: 'none',
             }}
           />
         </MuiLink>

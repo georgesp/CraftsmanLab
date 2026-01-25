@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { COLORS, TYPOGRAPHY } from '../../styles';
@@ -22,7 +21,7 @@ export const Footer: React.FC = () => {
       }}
     >
       <Typography variant="caption" sx={{ fontSize: TYPOGRAPHY.fontSizes.body2, color: 'text.primary' }}>
-        {t('pages:footer.copyright', '© 2025 CraftsmanLab. Tous droits réservés.')}
+        {t('pages:footer.copyright', '© 2026 CraftsmanLab. Tous droits réservés.')}
       </Typography>
     </Box>
   );

@@ -10,17 +10,17 @@ export const COLORS = {
   maltlightRed: '#ff5c5c30', // Rouge clair pour hover
 
   codeBlockTextDark: '#2e2e2eff',
-  codeBlockTextLight: '#fcfcfcff',
+  codeBlockTextLight: '#F2F4F7', // Même couleur que les cards pour cohérence
 
-  submitBtnColor: '#6E7176', // Couleur du bouton de soumission, gris moyen
-  submitBtnColorHover: '#989898ff', // Couleur du bouton de soumission au survol, gris foncé
+  submitBtnColor: '#E9ECEF', // Couleur du bouton de soumission, gris très clair
+  submitBtnColorHover: '#CED4DA', // Couleur du bouton de soumission au survol, gris moyen clair
 
-  darkGreyBg: '#23272F', // Nouveau gris foncé pour l'utilisation
+  darkGreyBg: '#FAFBFC', // Fond principal clair (ancien gris foncé remplacé)
 
-  searchResultIcon: '#B9BBBE', // Couleur des icônes de résultats de recherche, gris clair
+  searchResultIcon: '#6B7280', // Couleur des icônes de résultats de recherche, gris moyen
 
-  copyBtnColor: '#494949ff', // Couleur du bouton de copie, gris clair
-  copyBtnColorHover: '#63a4ff', // Couleur du bouton de copie au survol, gris clair
+  copyBtnColor: '#E9ECEF', // Couleur du bouton de copie, gris très clair
+  copyBtnColorHover: '#1976d2', // Couleur du bouton de copie au survol, bleu primaire
 
   white: '#FFFFFF', // Blanc pour les textes et éléments sur fond sombre
   defaultBg: '#F7FAFC', // Fond par défaut très clair pour parties non colorées
@@ -32,49 +32,66 @@ export const COLORS = {
   },
   // Add subtle UI tokens for the new visual refresh
   // Add subtle UI tokens for the new visual refresh
-  // Dark mode tokens based on provided image
-  cardBgDark: '#2A2F33', // slightly lighter than darkGreyBg for cards
-  // Centralized text color for dark theme
-  textPrimary: '#E6EEF3',
-  // Keywords chip gradient (slightly lighter than card background)
-  cardKeywordStart: '#374046',
-  cardKeywordEnd: '#2F363A',
-  // Search input text color (slightly like cardBgDark)
-  searchInputText: '#2A2F33',
+  // Light mode tokens
+  cardBgDark: '#F2F4F7', // Fond de carte gris très léger
+  cardBorder: '#E8EBF0', // Bordure de carte (un peu plus foncé que cardBgDark)
+  cardDivider: '#D1D5DB', // Ligne séparatrice horizontale dans les cards
+  cardBorderWidth: '0.5px', // Épaisseur de bordure des cards
+  // Centralized text color for light theme
+  textPrimary: '#1A1D1F',
+  // Keywords chip gradient (tons clairs)
+  cardKeywordStart: '#E8EBF0',
+  cardKeywordEnd: '#F0F2F5',
+  // Search input text color
+  searchInputText: '#1A1D1F',
 
-  // New token for list item hover backgrounds (slightly lighter than cardBgDark)
-  itemListHover: '#374046',
+  // New token for list item hover backgrounds (fond clair au survol)
+  itemListHover: '#F0F2F5',
 
-  // Vivid accent color chosen to contrast with dark card backgrounds (#2A2F33).
+  // Filter & Category UI colors
+  categoryInputBg: '#E8EBF0', // Fond du champ de recherche des catégories
+  categoryInputBgHover: '#DDE1E6', // Fond hover du champ de recherche
+  categoryChipBorder: '#D1D5DB', // Bordure des chips de catégories non sélectionnés
+  categoryChipHover: '#E8EBF0', // Fond hover des chips de catégories
+  categorySelectedBg: 'rgba(25, 118, 210, 0.08)', // Fond de la zone des catégories sélectionnées
+  categorySelectedBorder: 'rgba(25, 118, 210, 0.2)', // Bordure de la zone des catégories sélectionnées
+  expandButtonHover: '#E8EBF0', // Fond hover du bouton expand/collapse
+  iconOverlay: 'rgba(255, 255, 255, 0.1)', // Overlay semi-transparent pour icônes
+  iconButtonHover: 'rgba(255, 255, 255, 0.2)', // Fond hover des boutons d'icône
+
+  // Vivid accent color chosen to contrast with light card backgrounds.
   // Turquoise/teal works well for both tips and prompts: lively and readable.
-  tipsIcon: '#02a8e9', // Couleur vive pour l'icone des tips
-  // Orange vif choisi pour les prompts : contraste fort avec les fonds sombres et chaleureux.
-  promptsIcon: '#FF8A33', // Couleur vive (orange) pour l'icone des prompts
+  tipsIcon: '#2196F3', // Couleur bleue pour l'icone des tips (Material Blue)
+  tipsHeaderBg: '#E3F2FD', // Couleur très claire (fond de bande) pour tips
+  // Orange foncé choisi pour les prompts : contraste suffisant avec les fonds clairs.
+  promptsIcon: '#E67300', // Couleur vive (orange foncé) pour l'icone des prompts - ratio 3.5:1
+  promptsHeaderBg: '#FFF3E6', // Couleur très claire (fond de bande) pour prompts
   newsIcon: '#4caf50', // Couleur verte pour l'icône des news
+  newsHeaderBg: '#E8F5E9', // Couleur très claire (fond de bande) pour news
 
-  // Grouped dark-theme palette for easier maintenance
+  // Grouped light-theme palette for easier maintenance
   // Keep top-level keys for backward compatibility; prefer using `COLORS.darkTheme.*` going forward.
   darkTheme: {
     // page / surfaces
-    background: '#23272F',
-    pageAlt: '#242424', // used in index.css
-    cardBg: '#E6EEF3', // same as textPrimary per recent change
+    background: '#FAFBFC',
+    pageAlt: '#F8F9FA', // used in index.css
+    cardBg: '#F0F2F5', // Gris clair pour les cartes
 
     // text
-    textPrimary: '#E6EEF3',
-    textOnDark: '#FFFFFF',
+    textPrimary: '#1A1D1F',
+    textOnDark: '#1A1D1F',
 
     // chips / accents
-    keywordStart: '#374046',
-    keywordEnd: '#2F363A',
+    keywordStart: '#E8EBF0',
+    keywordEnd: '#F0F2F5',
 
     // Input-specific colors requested:
-    // - inputBackground: couleur de la zone de saisie (même que la typographie)
-    // - inputText: couleur du texte à l'intérieur de la zone de saisie (même que le fond de la page)
-    inputBackground: '#E6EEF3', // same as textPrimary
-    inputText: '#23272F', // same as darkGreyBg
+    // - inputBackground: couleur de la zone de saisie
+    // - inputText: couleur du texte à l'intérieur de la zone de saisie
+    inputBackground: '#FFFFFF', // Blanc pour les inputs
+    inputText: '#1A1D1F', // Texte foncé
 
-    inputContactBorder: '#E6EEF3', // same as darkGreyBg
+    inputContactBorder: '#D1D5DB', // Bordure grise claire
   },
 
   // Source code syntax highlighting colors inspired by MSDN
@@ -105,9 +122,9 @@ export const COLORS = {
 
   // Couleurs pour le bouton ScrollToTop
   scrollToTop: {
-    background: '#23272F', // Même couleur que darkGreyBg pour s'intégrer naturellement
-    hover: '#63a4ff', // Bleu clair (primary.light) pour un accent vibrant au hover
-    border: '#374046', // Même couleur que itemListHover pour une bordure subtile
+    background: '#FFFFFF', // Fond blanc
+    hover: '#1976d2', // Bleu primaire pour un accent vibrant au hover
+    border: '#D1D5DB', // Bordure grise claire
   },
 
   // Palette secondaire (Turquoise Telerik) déplacée depuis theme.ts
@@ -134,10 +151,10 @@ export const COLORS = {
   },
 
   // Couleur de texte secondaire (utilisée dans theme.ts)
-  textSecondary: '#9AA6AC',
+  textSecondary: '#6B7280',
 
   // Fond de la description box sur la page d'accueil
-  homeDescriptionBg: '#f3f7ff',
+  homeDescriptionBg: '#F0F4FF',
 
   // Overlays avec transparence
   overlay: {
@@ -148,8 +165,8 @@ export const COLORS = {
 
   // Couleurs des liens (index.css)
   link: {
-    default: '#646cff',
-    hover: '#535bf2',
+    default: '#1976d2',
+    hover: '#115293',
   },
 
   // Couleurs pour les tableaux

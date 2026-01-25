@@ -55,7 +55,6 @@ export const meta: TipMeta = {
 
 <slug>.tsx (squelette)
 ```tsx
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
 import { Box, Typography } from '@mui/material';

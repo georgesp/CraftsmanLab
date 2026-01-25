@@ -1,13 +1,12 @@
 import { useMemo } from 'react';
-import { Grid, Typography, Box, IconButton, useMediaQuery, useTheme } from '@mui/material';
+import { Grid, Typography, Box, IconButton, useMediaQuery, useTheme, Chip } from '@mui/material';
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { tipsList } from './registry';
-import { COLORS, TYPOGRAPHY } from '../../styles';
+import { COLORS, TYPOGRAPHY, PAGE_SPACING } from '../../styles';
 import { PromptCard, PromptCardContent } from '../../pages/Prompts/styles';
-import { KeywordChips } from '../ui/KeywordChips';
 
 type Props = {
   rows?: number; // nombre de lignes à afficher (au lieu du nombre d'éléments)
@@ -80,7 +79,7 @@ export const TipCardsGrid: React.FC<Props> = ({
   }, [externalItems, rows, seeAllLink, isLgUp, isMdUp, isSmUp]);
 
   return (
-    <Grid container spacing={4}>
+    <Grid container spacing={PAGE_SPACING.cardGrid}>
       {items.map((t) => (
         <Grid item xs={12} sm={6} md={4} lg={4} xl={4} key={t.slug}>
           <RouterLink
@@ -92,7 +91,7 @@ export const TipCardsGrid: React.FC<Props> = ({
               sx={{
                 backgroundColor: COLORS.cardBgDark,
                 boxShadow: 'none',
-                border: 'none',
+                border: `${COLORS.cardBorderWidth} solid ${COLORS.cardBorder}`,
                 height: '100%',
                 display: 'flex',
                 flexDirection: 'column',
@@ -104,38 +103,63 @@ export const TipCardsGrid: React.FC<Props> = ({
                 },
               }}
             >
-              <PromptCardContent sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
-                  <Box
-                    sx={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: 22,
-                      height: 22,
-                      backgroundColor: COLORS.tipsIcon,
-                      borderRadius: '50%',
-                      flexShrink: 0,
-                    }}
-                  >
-                    <TipsAndUpdatesIcon
-                      fontSize="large"
-                      sx={{ color: '#FFFFFF', fontSize: 12 }}
-                    />
+              <PromptCardContent sx={{ display: 'flex', flexDirection: 'column', height: '100%', padding: 0, overflow: 'hidden' }}>
+                {/* Contenu de la card */}
+                <Box sx={{ px: PAGE_SPACING.cardPadding, pt: PAGE_SPACING.cardPadding, pb: PAGE_SPACING.cardPadding, flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                  {/* Titre avec icône */}
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
+                    <Box
+                      sx={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: 22,
+                        height: 22,
+                        backgroundColor: COLORS.tipsIcon,
+                        borderRadius: 0,
+                        flexShrink: 0,
+                      }}
+                    >
+                      <TipsAndUpdatesIcon
+                        fontSize="large"
+                        sx={{ color: '#FFFFFF', fontSize: 12 }}
+                      />
+                    </Box>
+                    <Typography
+                      variant="h6"
+                      component="h3"
+                      sx={{ fontWeight: TYPOGRAPHY.fontWeights.bold, mb: 0, color: 'text.primary' }}
+                    >
+                      {getTranslatedText(t.slug, 'title', t.title)}
+                    </Typography>
                   </Box>
-                  <Typography
-                    variant="h6"
-                    component="h3"
-                    sx={{ fontWeight: TYPOGRAPHY.fontWeights.bold, mb: 0, color: 'text.primary' }}
-                  >
-                    {getTranslatedText(t.slug, 'title', t.title)}
+                  
+                  {/* Ligne séparatrice */}
+                  <Box sx={{ width: '100%', height: '1px', backgroundColor: COLORS.cardDivider, mb: 1, mx: -PAGE_SPACING.cardPadding }} />
+                  
+                  <Typography variant="body2" sx={{ color: 'text.primary', flexGrow: 1, mb: 1 }}>
+                    {getTranslatedText(t.slug, 'shortDescription', t.shortDescription)}
                   </Typography>
-                </Box>
-                <Typography variant="body2" sx={{ color: 'text.primary', flexGrow: 1, mb: 1 }}>
-                  {getTranslatedText(t.slug, 'shortDescription', t.shortDescription)}
-                </Typography>
 
-                <KeywordChips keywords={t.keywords} />
+                  {t.categories && t.categories.length > 0 && (
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mt: 'auto' }}>
+                      {t.categories.map((category, idx) => (
+                        <Chip
+                          key={idx}
+                          label={category}
+                          size="small"
+                          variant="outlined"
+                          sx={{
+                            height: 20,
+                            fontSize: '0.65rem',
+                            borderColor: 'primary.main',
+                            color: 'primary.main',
+                          }}
+                        />
+                      ))}
+                    </Box>
+                  )}
+                </Box>
               </PromptCardContent>
             </PromptCard>
           </RouterLink>
@@ -148,10 +172,10 @@ export const TipCardsGrid: React.FC<Props> = ({
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              minHeight: 160,
+              height: '100%',
               backgroundColor: COLORS.cardBgDark,
               boxShadow: 'none',
-              border: 'none',
+              border: `${COLORS.cardBorderWidth} solid ${COLORS.cardBorder}`,
             }}
           >
             <RouterLink

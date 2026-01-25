@@ -14,8 +14,8 @@ describe('TipsPage - tag filtering', () => {
         title: 'A',
         shortDescription: '',
         writtenOn: '2025-01-01',
-        keywords: ['C#'],
-        metadata: { tags: ['x', 'y'] },
+        categories: ['x', 'y'],
+        searchKeywords: ['a', 'test'],
         load: async () => ({ default: () => null }),
       },
       {
@@ -23,8 +23,8 @@ describe('TipsPage - tag filtering', () => {
         title: 'B',
         shortDescription: '',
         writtenOn: '2025-01-02',
-        keywords: ['C#'],
-        metadata: { tags: ['y'] },
+        categories: ['y'],
+        searchKeywords: ['b', 'test'],
         load: async () => ({ default: () => null }),
       },
       {
@@ -32,8 +32,8 @@ describe('TipsPage - tag filtering', () => {
         title: 'C',
         shortDescription: '',
         writtenOn: '2025-01-03',
-        keywords: ['C#'],
-        metadata: { tags: ['z'] },
+        categories: ['z'],
+        searchKeywords: ['c', 'test'],
         load: async () => ({ default: () => null }),
       },
     ];

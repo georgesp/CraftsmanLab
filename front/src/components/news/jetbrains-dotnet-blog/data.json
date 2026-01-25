@@ -2,6 +2,35 @@
   "source": "jetbrains-dotnet-blog",
   "items": [
     {
+      "title": "ReSharper 2026.1 Early Access Program Has Begun",
+      "link": "https://blog.jetbrains.com/dotnet/2026/01/22/resharper-2026-1-early-access-program/",
+      "pubDate": "Thu, 22 Jan 2026 13:42:08 +0000",
+      "contentSnippet": "The ReSharper 2026.1 Early Access Program is now open, and the first EAP build brings a mix of C# productivity improvements, new inspections, performance work, and expanded C++ language support. As always, EAP builds are an opportunity to try upcomin",
+      "creator": "Sasha Ivanova",
+      "categories": [
+        "Net-Tools",
+        "ReSharper"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=675128"
+    },
+    {
+      "title": "Rider 2026.1 Early Access Program Is Now Open!",
+      "link": "https://blog.jetbrains.com/dotnet/2026/01/22/rider-2026-1-early-access-program-start/",
+      "pubDate": "Thu, 22 Jan 2026 13:41:54 +0000",
+      "contentSnippet": "The Early Access Program (EAP) for Rider 2026.1 has just begun, and the first preview build for the upcoming major release is already out.  There are several ways for you to get your hands on the first preview build: A reminder of what the EAP is all",
+      "creator": "Sasha Ivanova",
+      "categories": [
+        "Net-Tools",
+        "Rider",
+        "Azure",
+        "Devops",
+        "Natvis",
+        "NuGet",
+        "Package-Management"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=675034"
+    },
+    {
       "title": "dotInsights | January 2026",
       "link": "https://blog.jetbrains.com/dotnet/2026/01/05/dotinsights-january-2026/",
       "pubDate": "Mon, 05 Jan 2026 15:26:27 +0000",
@@ -171,6 +200,6 @@
       "guid": "https://blog.jetbrains.com/?post_type=rscpp&p=658125"
     }
   ],
-  "lastUpdated": "2026-01-07T17:08:38.060Z",
+  "lastUpdated": "2026-01-24T06:40:18.606Z",
   "feedTitle": ".NET Tools : Essential productivity kit for .NET and game developers | The JetBrains Blog"
 }

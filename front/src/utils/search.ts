@@ -80,7 +80,7 @@ function buildIndex(): IndexedItem[] {
   const items: IndexedItem[] = [];
 
   const pushFrom = (kind: SearchKind, map: RawModuleMap) => {
-    Object.entries(map).forEach(([_, mod]) => {
+    Object.entries(map).forEach(([, mod]) => {
       const src: string = typeof mod === 'string' ? mod : ((mod as any)?.default ?? '');
       if (!src) return;
       const meta = extractMetaFromSource(src);

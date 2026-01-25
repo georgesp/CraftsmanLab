@@ -2,6 +2,65 @@
   "source": "microsoft-devblogs",
   "items": [
     {
+      "title": ".NET and .NET Framework January 2026 servicing releases updates",
+      "link": "https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-january-2026-servicing-updates/",
+      "pubDate": "Tue, 13 Jan 2026 21:24:09 +0000",
+      "contentSnippet": "A recap of the latest servicing updates for .NET and .NET Framework for January 2026.\nThe post .NET and .NET Framework January 2026 servicing releases updates appeared first on .NET Blog.",
+      "creator": "Rahul Bhandari (MSFT), Tara Overfield",
+      "categories": [
+        ".NET",
+        "Maintenance & Updates"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59357"
+    },
+    {
+      "title": "How to Build Android Widgets with .NET MAUI",
+      "link": "https://devblogs.microsoft.com/dotnet/how-to-build-android-widgets-with-dotnet-maui/",
+      "pubDate": "Mon, 12 Jan 2026 18:05:00 +0000",
+      "contentSnippet": "Build interactive Android widgets with .NET MAUI using RemoteViews, intents, and shared data.\nThe post How to Build Android Widgets with .NET MAUI appeared first on .NET Blog.",
+      "creator": "Toine de Boer",
+      "categories": [
+        ".NET",
+        ".NET MAUI",
+        "Android",
+        "AppWidgetProvider",
+        "RemoteViews",
+        "Widgets"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59345"
+    },
+    {
+      "title": "How We Synchronize .NET’s Virtual Monorepo",
+      "link": "https://devblogs.microsoft.com/dotnet/how-we-synchronize-dotnets-virtual-monorepo/",
+      "pubDate": "Mon, 12 Jan 2026 17:00:00 +0000",
+      "contentSnippet": "A deep dive into the technical challenges of keeping .NET's product repositories synchronized with our Virtual Monolithic Repository using a custom two-way algorithm.\nThe post How We Synchronize .NET’s Virtual Monorepo appeared first on .NET Blog.",
+      "creator": "Přemek Vysoký",
+      "categories": [
+        ".NET",
+        ".NET Internals",
+        "Developer Stories",
+        "GIT",
+        "Infrastructure",
+        "Monorepo",
+        "Source Control",
+        "VMR"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59335"
+    },
+    {
+      "title": "Secure and Intelligent: Queryable Encryption and Vector Search in MongoDB EF Core Provider",
+      "link": "https://devblogs.microsoft.com/dotnet/mongodb-efcore-provider-queryable-encryption-vector-search/",
+      "pubDate": "Wed, 07 Jan 2026 18:05:00 +0000",
+      "contentSnippet": "The MongoDB EF Core provider now supports Queryable Encryption and Vector Search. Learn how to encrypt sensitive data while querying it and build AI-powered semantic search applications directly with EF Core.\nThe post Secure and Intelligent: Queryabl",
+      "creator": "Rishit Bhatia, Luce Carter",
+      "categories": [
+        ".NET",
+        "Entity Framework",
+        "MongoDB"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59297"
+    },
+    {
       "title": "Generative AI with Large Language Models in C# in 2026",
       "link": "https://devblogs.microsoft.com/dotnet/generative-ai-with-large-language-models-in-dotnet-and-csharp/",
       "pubDate": "Mon, 05 Jan 2026 18:05:00 +0000",
@@ -12,13 +71,10 @@
         "AI",
         "Azure",
         "C#",
-        "azure openai",
         "ChatGPT",
-        "Csharp",
-        "generative ai",
-        "large-language-models",
-        "rag",
-        "semantic kernel"
+        "Generative AI",
+        "Large Language Models",
+        "Semantic Kernel"
       ],
       "guid": "https://devblogs.microsoft.com/dotnet/?p=59282"
     },
@@ -49,7 +105,6 @@
         "Performance",
         "Visual Studio",
         "Visual Studio Code",
-        ".NET 10",
         "2025 wrapped",
         "aspire",
         "community",
@@ -128,7 +183,7 @@
         ".NET",
         "AI",
         "C#",
-        "VS Code",
+        "Visual Studio Code",
         "Copilot",
         "MCP Server"
       ],
@@ -143,7 +198,6 @@
       "categories": [
         ".NET",
         "Networking",
-        ".NET 10",
         "HTTP"
       ],
       "guid": "https://devblogs.microsoft.com/dotnet/?p=59089"
@@ -162,8 +216,7 @@
         "Blazor",
         "C#",
         "NuGet",
-        "Visual Studio",
-        ".NET 10"
+        "Visual Studio"
       ],
       "guid": "https://devblogs.microsoft.com/dotnet/?p=59079"
     },
@@ -193,12 +246,11 @@
         "Cloud Native",
         "GitHub",
         "Agentic Modernization",
-        "Agents",
-        "Azure"
+        "Agents"
       ],
       "guid": "https://devblogs.microsoft.com/dotnet/?p=59006"
     }
   ],
-  "lastUpdated": "2026-01-07T17:08:38.290Z",
+  "lastUpdated": "2026-01-24T06:40:18.606Z",
   "feedTitle": ".NET Blog"
 }
