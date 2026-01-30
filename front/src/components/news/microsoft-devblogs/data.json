@@ -2,6 +2,40 @@
   "source": "microsoft-devblogs",
   "items": [
     {
+      "title": ".NET AI Essentials – The Core Building Blocks Explained",
+      "link": "https://devblogs.microsoft.com/dotnet/dotnet-ai-essentials-the-core-building-blocks-explained/",
+      "pubDate": "Wed, 28 Jan 2026 17:30:00 +0000",
+      "contentSnippet": "Learn how Microsoft.Extensions.AI provides a unified API for building intelligent .NET applications with any LLM provider - one interface, endless possibilities, with built-in middleware, telemetry, structured outputs and more.\nThe post .NET AI Essen",
+      "creator": "Jeremy Likness",
+      "categories": [
+        ".NET",
+        "AI",
+        "C#",
+        "Generative AI",
+        "LLM",
+        "Microsoft.Extensions.AI"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59420"
+    },
+    {
+      "title": "Join Microsoft at NDC London 2026 – Let’s Build the Future of .NET Together",
+      "link": "https://devblogs.microsoft.com/dotnet/join-us-at-ndc-london-2026/",
+      "pubDate": "Mon, 26 Jan 2026 18:05:00 +0000",
+      "contentSnippet": "Meet the .NET team at NDC London 2026 to explore the latest in .NET 10, Azure, and AI-powered development through sessions and 1:1 meetups.\nThe post Join Microsoft at NDC London 2026 – Let’s Build the Future of .NET Together appeared first on .NET Bl",
+      "creator": ".NET Team",
+      "categories": [
+        ".NET",
+        "AI",
+        "ASP.NET Core",
+        "Azure",
+        "C#",
+        "Conferences",
+        "London",
+        "NDC"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59404"
+    },
+    {
       "title": ".NET and .NET Framework January 2026 servicing releases updates",
       "link": "https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-january-2026-servicing-updates/",
       "pubDate": "Tue, 13 Jan 2026 21:24:09 +0000",
@@ -251,6 +285,6 @@
       "guid": "https://devblogs.microsoft.com/dotnet/?p=59006"
     }
   ],
-  "lastUpdated": "2026-01-24T06:40:18.606Z",
+  "lastUpdated": "2026-01-30T16:17:56.253Z",
   "feedTitle": ".NET Blog"
 }

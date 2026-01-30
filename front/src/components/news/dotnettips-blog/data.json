@@ -2,6 +2,38 @@
   "source": "dotnettips-blog",
   "items": [
     {
+      "title": "Boost Your .NET Projects with Spargine: Supercharge Your .NET Apps with NetworkHelper",
+      "link": "https://dotnettips.wordpress.com/2026/01/28/boost-your-net-projects-with-spargine-supercharge-your-net-apps-with-networkhelper/",
+      "pubDate": "Wed, 28 Jan 2026 07:00:00 +0000",
+      "contentSnippet": "NetworkHelper is a utility created to streamline network-related operations for .NET applications. It centralizes code for network diagnostics, logging, and performance tuning, offering a clean API for tasks like retrieving IP addresses and statistic",
+      "creator": "dotNetDave",
+      "categories": [
+        ".NET",
+        "Network",
+        "Open Source",
+        "Spargine"
+      ],
+      "guid": "http://dotnettips.wordpress.com/?p=16661"
+    },
+    {
+      "title": "String Performance: The Fastest Way to Get a String’s Length",
+      "link": "https://dotnettips.wordpress.com/2026/01/25/string-performance-the-fastest-way-to-get-a-strings-length/",
+      "pubDate": "Sun, 25 Jan 2026 07:00:00 +0000",
+      "contentSnippet": "Retrieving the character count of a string in .NET has various methods: using Span with Length, Length, or Enumerable.Count().  This article will prove which is the fastest method.",
+      "creator": "dotNetDave",
+      "categories": [
+        ".NET",
+        "Code Analysis",
+        "Performance",
+        "CA1820",
+        "CA1829",
+        "Code Performance",
+        "Span",
+        "Strings"
+      ],
+      "guid": "http://dotnettips.wordpress.com/?p=16047"
+    },
+    {
       "title": "Collection Performance: High-Performance Collection Randomization in .NET",
       "link": "https://dotnettips.wordpress.com/2026/01/18/collection-performance-high-performance-collection-randomization-in-net/",
       "pubDate": "Sun, 18 Jan 2026 07:00:00 +0000",
@@ -259,6 +291,6 @@
       "guid": "http://dotnettips.wordpress.com/?p=15619"
     }
   ],
-  "lastUpdated": "2026-01-24T06:40:18.656Z",
+  "lastUpdated": "2026-01-30T16:17:56.311Z",
   "feedTitle": "dotNetTips.com"
 }
