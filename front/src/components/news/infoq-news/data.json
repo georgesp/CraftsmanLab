@@ -1,0 +1,282 @@
+{
+  "source": "infoq-news",
+  "items": [
+    {
+      "title": "Rspack Releases Version 1.7: Final 1.x Update Before 2.0 Transition",
+      "link": "https://www.infoq.com/news/2026/01/rspack-final-rust/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Fri, 30 Jan 2026 10:00:00 GMT",
+      "contentSnippet": "Rspack 1.7 has launched, enhancing performance and plugin compatibility as it prepares for a major version transition. Key features include improved SWC plugin compatibility, native asset importing as bytes, and default lazy compilation for dynamic m",
+      "creator": "Daniel Curtis",
+      "categories": [
+        "Bundlers",
+        "JavaScript",
+        "Web Deploy",
+        "TypeScript",
+        "Web Development",
+        "Performance",
+        "Development",
+        "news"
+      ],
+      "guid": "https://www.infoq.com/news/2026/01/rspack-final-rust/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Presentation: WASM Components are a FaaS' Best Friend",
+      "link": "https://www.infoq.com/presentations/wasm-components-faas/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Fri, 30 Jan 2026 09:30:00 GMT",
+      "contentSnippet": "Laurent Doguin shares why Wasm’s cold-start performance and security model make it the ideal FaaS runtime. He discusses the WebAssembly Component Model for polyglot interoperability and explains how to build distributed, provider-based architectures ",
+      "creator": "Laurent Doguin",
+      "categories": [
+        "WebAssembly",
+        "FaaS",
+        "QCon London 2025",
+        "Web Development",
+        "Transcripts",
+        "Architecture & Design",
+        "Development",
+        "presentation"
+      ],
+      "guid": "https://www.infoq.com/presentations/wasm-components-faas/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Article: Autonomous Big Data Optimization: Multi-Agent Reinforcement Learning to Achieve Self-Tuning Apache Spark",
+      "link": "https://www.infoq.com/articles/agent-reinforcement-learning-apache-spark/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Fri, 30 Jan 2026 09:00:00 GMT",
+      "contentSnippet": "This article introduces a reinforcement learning (RL) approach grounded in Apache Spark that enables distributed computing systems to learn optimal configurations autonomously, much like an apprentice engineer who learns by doing. The author also imp",
+      "creator": "Hina Gandhi",
+      "categories": [
+        "Reinforcement Learning",
+        "Apache Spark",
+        "Agents",
+        "AI, ML & Data Engineering",
+        "Development",
+        "article"
+      ],
+      "guid": "https://www.infoq.com/articles/agent-reinforcement-learning-apache-spark/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Podcast: The Technical Founder's Path: Code, Leadership, and Balance",
+      "link": "https://www.infoq.com/podcasts/code-leadership-balance/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Fri, 30 Jan 2026 09:00:00 GMT",
+      "contentSnippet": "In this podcast, Shane Hastie, Lead Editor for Culture & Methods, spoke to Trisha Ballakur about transitioning from coder to startup CEO, balancing technical leadership with business development, and avoiding burnout on the journey.\n By Trisha Ballak",
+      "creator": "Trisha Ballakur",
+      "categories": [
+        "Culture",
+        "Burnout",
+        "Teamwork",
+        "Management",
+        "Engineering Culture Podcast",
+        "Leadership",
+        "Startup",
+        "Culture & Methods",
+        "podcast"
+      ],
+      "guid": "https://www.infoq.com/podcasts/code-leadership-balance/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Microsoft Adds Custom Copilot Agents for .NET Developers with C# and WinForms Experts",
+      "link": "https://www.infoq.com/news/2026/01/copilot-agents-csharp-winforms/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Fri, 30 Jan 2026 08:00:00 GMT",
+      "contentSnippet": "Microsoft and GitHub have expanded the Copilot ecosystem with the first .NET-focused GitHub Copilot custom agents, designed to improve productivity and code quality for C# and Windows Forms developers. The announcement, part of the broader Copilot cu",
+      "creator": "Edin Kapić",
+      "categories": [
+        "Agents",
+        "github",
+        ".NET",
+        "Visual Studio",
+        "Development",
+        "news"
+      ],
+      "guid": "https://www.infoq.com/news/2026/01/copilot-agents-csharp-winforms/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Anthropic Releases Updated Constitution for Claude",
+      "link": "https://www.infoq.com/news/2026/01/anthropic-constitution/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Fri, 30 Jan 2026 07:49:00 GMT",
+      "contentSnippet": "Anthropic has published an updated constitution for Claude, its AI assistant, providing a structured framework that guides behavior, reasoning, and training. The constitution combines explicit principles with contextual guidance, making it a practica",
+      "creator": "Robert Krzaczyński",
+      "categories": [
+        "Anthropic",
+        "Large language models",
+        "Artificial Intelligence",
+        "Ethics",
+        "Safety",
+        "AI, ML & Data Engineering",
+        "news"
+      ],
+      "guid": "https://www.infoq.com/news/2026/01/anthropic-constitution/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Article: Engineering Speed at Scale — Architectural Lessons from Sub-100-ms APIs",
+      "link": "https://www.infoq.com/articles/engineering-speed-scale/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 29 Jan 2026 16:00:00 GMT",
+      "contentSnippet": "Sub‑100-ms APIs emerge from disciplined architecture using latency budgets, minimized hops, async fan‑out, layered caching, circuit breakers, and strong observability. But long‑term speed depends on culture, with teams owning p99, monitoring drift, m",
+      "creator": "Saranya Vedagiri",
+      "categories": [
+        "Low Latency",
+        "Performance Tuning",
+        "Performance",
+        "Architecture & Design",
+        "Development",
+        "article"
+      ],
+      "guid": "https://www.infoq.com/articles/engineering-speed-scale/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Uber Moves from Static Limits to Priority-Aware Load Control for Distributed Storage",
+      "link": "https://www.infoq.com/news/2026/01/uber-priority-aware-load-manager/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 29 Jan 2026 15:00:00 GMT",
+      "contentSnippet": "Uber engineers detailed how they evolved their storage platform from static rate limiting to a priority-aware load management system. The approach protects Docstore and Schemaless, Uber’s MySQL-based distributed databases, by colocating control with ",
+      "creator": "Leela Kumili",
+      "categories": [
+        "Low Latency",
+        "Priority Filter",
+        "Unification",
+        "Sharding",
+        "MySQL",
+        "Rankings",
+        "Load Balancing",
+        "Prioritization",
+        "Distributed Data",
+        "Architecture & Design",
+        "Development",
+        "news"
+      ],
+      "guid": "https://www.infoq.com/news/2026/01/uber-priority-aware-load-manager/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Building Software Organisations Where People Can Thrive",
+      "link": "https://www.infoq.com/news/2026/01/organisations-people-thrive/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 29 Jan 2026 11:33:00 GMT",
+      "contentSnippet": "Continuous learning, adaptability, and strong support networks are the foundations for thriving teams, Matthew Card mentioned. Trust is built through consistent, fair leadership and addressing toxic behaviour, bias, and microaggressions early. By fos",
+      "creator": "Ben Linders",
+      "categories": [
+        "Trust",
+        "Organization",
+        "learning",
+        "Psychological Safety",
+        "Collaboration",
+        "Resilience",
+        "QCon Software Development Conference",
+        "Social Skills",
+        "Leadership",
+        "QCon London 2025",
+        "Culture & Methods",
+        "news"
+      ],
+      "guid": "https://www.infoq.com/news/2026/01/organisations-people-thrive/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Google DeepMind Introduces ATLAS Scaling Laws for Multilingual Language Models",
+      "link": "https://www.infoq.com/news/2026/01/google-deepmind-atlas/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 29 Jan 2026 06:09:00 GMT",
+      "contentSnippet": "Google DeepMind researchers have introduced ATLAS, a set of scaling laws for multilingual language models that formalize how model size, training data volume, and language mixtures interact as the number of supported languages increases.\n By Robert K",
+      "creator": "Robert Krzaczyński",
+      "categories": [
+        "Large language models",
+        "Google DeepMind",
+        "AI, ML & Data Engineering",
+        "news"
+      ],
+      "guid": "https://www.infoq.com/news/2026/01/google-deepmind-atlas/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Presentation: Foundation Models for Ranking: Challenges, Successes, and Lessons Learned",
+      "link": "https://www.infoq.com/presentations/foundation-models-ranking/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 28 Jan 2026 17:03:00 GMT",
+      "contentSnippet": "Moumita Bhattacharya discusses the evolution of Netflix’s ranking systems, from the multi-model architecture to a Unified Contextual Recommender (UniCoRn). She explains how they built a task-agnostic User Foundation Model to capture long-term member ",
+      "creator": "Moumita Bhattacharya",
+      "categories": [
+        "Artificial Intelligence",
+        "QCon London 2025",
+        "Modeling",
+        "Transcripts",
+        "AI, ML & Data Engineering",
+        "presentation"
+      ],
+      "guid": "https://www.infoq.com/presentations/foundation-models-ranking/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Swift Cross-Platform Framework Skip Now Fully Open Source",
+      "link": "https://www.infoq.com/news/2026/01/swift-skip-open-sourced/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 28 Jan 2026 16:00:00 GMT",
+      "contentSnippet": "After three years of development, the team behind Skip, a solution designed to create iOS and Android apps from a single Swift/SwiftUI codebase, has announced their decision to make the product completely and open source, in order to foster adoption ",
+      "creator": "Sergio De Simone",
+      "categories": [
+        "Swift",
+        "Google",
+        "Kotlin",
+        "Open Source",
+        "Android",
+        "Mobile",
+        "iOS",
+        "SwiftUI",
+        "GUI",
+        "Apple",
+        "Cross Platform",
+        "Development",
+        "news"
+      ],
+      "guid": "https://www.infoq.com/news/2026/01/swift-skip-open-sourced/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Railway Highlights the Importance of Logs, Metrics, Traces, and Alerts for Diagnosing System Failure",
+      "link": "https://www.infoq.com/news/2026/01/railway-diagnosing-failure/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 28 Jan 2026 12:00:00 GMT",
+      "contentSnippet": "Railway’s engineering team published a comprehensive guide to observability, explaining how developers and SRE teams can use logs, metrics, traces, and alerts together to understand and diagnose production system failures.\n By Craig Risi",
+      "creator": "Craig Risi",
+      "categories": [
+        "Observability",
+        "Reinforcement Learning",
+        "Alerting",
+        "DevOps",
+        "news"
+      ],
+      "guid": "https://www.infoq.com/news/2026/01/railway-diagnosing-failure/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Google BigQuery Adds SQL-Native Managed Inference for Hugging Face Models",
+      "link": "https://www.infoq.com/news/2026/01/bigquery-sql-huggingface-managed/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 28 Jan 2026 10:55:00 GMT",
+      "contentSnippet": "Google has launched SQL-native managed inference for 180,000+ Hugging Face models in BigQuery. The preview release collapses the ML lifecycle into a unified SQL interface, eliminating the need for separate Kubernetes or Vertex AI management. Key feat",
+      "creator": "Steef-Jan Wiggers",
+      "categories": [
+        "Google BigQuery",
+        "Gemma",
+        "Cloud",
+        "Artificial Intelligence",
+        "Hugging Face",
+        "Google Cloud Platform",
+        "Google Cloud",
+        "DevOps",
+        "AI, ML & Data Engineering",
+        "Architecture & Design",
+        "Development",
+        "news"
+      ],
+      "guid": "https://www.infoq.com/news/2026/01/bigquery-sql-huggingface-managed/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Google Introduces TranslateGemma Open Models for Multilingual Translation",
+      "link": "https://www.infoq.com/news/2026/01/google-translategemma-models/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 28 Jan 2026 10:16:00 GMT",
+      "contentSnippet": "Google has released TranslateGemma, a set of open translation models based on the Gemma 3 architecture, offering 4B, 12B, and 27B parameter variants designed to support machine translation across 55 languages and to run on platforms ranging from mobi",
+      "creator": "Daniel Dominguez",
+      "categories": [
+        "Gemma",
+        "Natural Language Processing",
+        "Google",
+        "Model Fine Tuning",
+        "Large language models",
+        "Translation",
+        "Reinforcement Learning",
+        "Gemini",
+        "Artificial Intelligence",
+        "AI, ML & Data Engineering",
+        "news"
+      ],
+      "guid": "https://www.infoq.com/news/2026/01/google-translategemma-models/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    }
+  ],
+  "lastUpdated": "2026-01-30T16:17:57.194Z",
+  "feedTitle": "InfoQ"
+}

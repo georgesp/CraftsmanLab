@@ -42,6 +42,11 @@ const RSS_SOURCES = [
     feedUrl: 'https://anthonygiretti.com/feed/',
     maxItems: 100,
   },
+  {
+    slug: 'infoq-news',
+    feedUrl: 'https://feed.infoq.com',
+    maxItems: 100,
+  },
   // Add more RSS sources here as needed
 ];
 
@@ -65,8 +70,33 @@ async function loadExistingData(slug) {
 async function fetchSingleRSS(slug, feedUrl, maxItems) {
   try {
     console.log(`🔄 Fetching RSS feed: ${slug}...`);
-    const parser = new Parser();
-    const feed = await parser.parseURL(feedUrl);
+    
+    // Pour InfoQ, utiliser fetch avec des headers personnalisés
+    let feed;
+    if (slug === 'infoq-news') {
+      const response = await fetch(feedUrl, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+          'Accept': 'application/rss+xml, application/xml, text/xml, */*',
+        }
+      });
+      
+      if (!response.ok) {
+        throw new Error(`Status code ${response.status}`);
+      }
+      
+      const xmlText = await response.text();
+      const parser = new Parser();
+      feed = await parser.parseString(xmlText);
+    } else {
+      const parser = new Parser({
+        customHeaders: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+          'Accept': 'application/rss+xml, application/xml, text/xml, */*'
+        }
+      });
+      feed = await parser.parseURL(feedUrl);
+    }
     
     // Charger les données existantes
     const existingData = await loadExistingData(slug);
