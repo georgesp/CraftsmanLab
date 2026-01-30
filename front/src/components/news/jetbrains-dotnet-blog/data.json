@@ -2,6 +2,55 @@
   "source": "jetbrains-dotnet-blog",
   "items": [
     {
+      "title": "ReSharper and Rider 2025.3.2 Updates Out Now!",
+      "link": "https://blog.jetbrains.com/dotnet/2026/01/29/resharper-and-rider-2025-3-2/",
+      "pubDate": "Thu, 29 Jan 2026 15:44:43 +0000",
+      "contentSnippet": "We’ve just released another update for ReSharper, Rider and the .NET tools version 2025.3. You can update to this version from inside those tools, using the Toolbox app or our website.  Let’s take a look at the latest updates.  Rider 2025.3.2 Agent C",
+      "creator": "Sasha Ivanova",
+      "categories": [
+        "net-tools",
+        "releases",
+        "resharper",
+        "rider"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=677156"
+    },
+    {
+      "title": "Game Dev in 2025: Excerpts From the State of Game Development Report",
+      "link": "https://blog.jetbrains.com/dotnet/2026/01/29/game-dev-in-2025-excerpts-from-the-state-of-game-development-report/",
+      "pubDate": "Thu, 29 Jan 2026 10:00:00 +0000",
+      "contentSnippet": "As we approach the midpoint of the decade, game developers face an evolving landscape shaped by shifting job security, technology choices, platform strategies, and practical AI adoption. Our State of Game Development 2025 report reveals critical insi",
+      "creator": "Anna Ruban",
+      "categories": [
+        "net-tools",
+        "ai",
+        "research",
+        "teamcity-2",
+        "game-development",
+        "gamedev",
+        "report",
+        "rider"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=675222"
+    },
+    {
+      "title": "How We Made Variable Inspections 87 Times Faster for Unreal Engine in Rider",
+      "link": "https://blog.jetbrains.com/dotnet/2026/01/26/how-we-made-variable-inspections-87-times-faster-for-unreal-engine-in-rider/",
+      "pubDate": "Mon, 26 Jan 2026 13:08:53 +0000",
+      "contentSnippet": "If you’ve ever expanded a complex Unreal Engine variable in Rider’s debugger and had time to contemplate your life choices, this post is for you. We’ve rewritten our expression evaluator, and the results are dramatic: Variable inspection is up to 87 ",
+      "creator": "Sasha Korepanov",
+      "categories": [
+        "net-tools",
+        "rider",
+        "eap",
+        "game-debugging",
+        "game-development",
+        "lldb",
+        "unreal-engine"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=676804"
+    },
+    {
       "title": "ReSharper 2026.1 Early Access Program Has Begun",
       "link": "https://blog.jetbrains.com/dotnet/2026/01/22/resharper-2026-1-early-access-program/",
       "pubDate": "Thu, 22 Jan 2026 13:42:08 +0000",
@@ -200,6 +249,6 @@
       "guid": "https://blog.jetbrains.com/?post_type=rscpp&p=658125"
     }
   ],
-  "lastUpdated": "2026-01-24T06:40:18.606Z",
+  "lastUpdated": "2026-01-30T16:17:56.279Z",
   "feedTitle": ".NET Tools : Essential productivity kit for .NET and game developers | The JetBrains Blog"
 }
