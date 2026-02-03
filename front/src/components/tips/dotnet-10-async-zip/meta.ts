@@ -1,0 +1,31 @@
+import type { TipMeta } from '..';
+
+export const meta: TipMeta = {
+  slug: 'dotnet-10-async-zip',
+  title: '',
+  shortDescription: '',
+  writtenOn: '2026-02-03',
+  categories: ['C#', '.NET 10', 'Async', 'Zip'],
+  searchKeywords: [
+    'zip',
+    'async',
+    'asynchronous',
+    'compression',
+    'ZipArchive',
+    'ZipFile',
+    'GZipStream',
+    'extraction',
+    'performance',
+    '.NET 10',
+    'dotnet 10',
+    'CreateFromDirectoryAsync',
+    'ExtractToDirectoryAsync',
+    'fichiers zip',
+    'compression asynchrone',
+    'extraction asynchrone',
+    'archive',
+    'gzip',
+    'concatenated gzip',
+    'async I/O',
+  ],
+};
