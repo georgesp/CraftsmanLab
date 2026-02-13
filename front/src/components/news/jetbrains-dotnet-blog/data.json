@@ -18,7 +18,14 @@
       "link": "https://blog.jetbrains.com/dotnet/2026/01/29/resharper-and-rider-2025-3-2/",
       "pubDate": "Thu, 29 Jan 2026 15:44:43 +0000",
       "contentSnippet": "We’ve just released another update for ReSharper, Rider and the .NET tools version 2025.3. You can update to this version from inside those tools, using the Toolbox app or our website.  Let’s take a look at the latest updates.  Rider 2025.3.2 Agent C",
-      "creator": "Sasha Ivanova", "categories": [ "Net-Tools", "Releases", "ReSharper", "Rider" ], "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=677156"
+      "creator": "Sasha Ivanova",
+      "categories": [
+        "Net-Tools",
+        "Releases",
+        "ReSharper",
+        "Rider"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=677156"
     },
     {
       "title": "Game Dev in 2025: Excerpts From the State of Game Development Report",
@@ -26,7 +33,14 @@
       "pubDate": "Thu, 29 Jan 2026 10:00:00 +0000",
       "contentSnippet": "As we approach the midpoint of the decade, game developers face an evolving landscape shaped by shifting job security, technology choices, platform strategies, and practical AI adoption. Our State of Game Development 2025 report reveals critical insi",
       "creator": "Anna Ruban",
-      "categories": [ "Net-Tools", "AI", "Research", "TeamCity-2", "Game-Development", "GameDev", "Report",
+      "categories": [
+        "Net-Tools",
+        "AI",
+        "Research",
+        "TeamCity-2",
+        "Game-Development",
+        "GameDev",
+        "Report",
         "rider"
       ],
       "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=675222"
@@ -38,13 +52,14 @@
       "contentSnippet": "If you’ve ever expanded a complex Unreal Engine variable in Rider’s debugger and had time to contemplate your life choices, this post is for you. We’ve rewritten our expression evaluator, and the results are dramatic: Variable inspection is up to 87 ",
       "creator": "Sasha Korepanov",
       "categories": [
-        "Net-Tools", 
-        "Rider", 
-        "EAP", 
-        "Game-Debugging", 
-        "Game-Development", 
-        "LLDB", 
-        "Unreal-Engine" ],
+        "Net-Tools",
+        "Rider",
+        "EAP",
+        "Game-Debugging",
+        "Game-Development",
+        "LLDB",
+        "Unreal-Engine"
+      ],
       "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=676804"
     },
     {
@@ -246,6 +261,6 @@
       "guid": "https://blog.jetbrains.com/?post_type=rscpp&p=658125"
     }
   ],
-  "lastUpdated": "2026-02-12T13:17:48.239Z",
+  "lastUpdated": "2026-02-13T15:42:49.670Z",
   "feedTitle": ".NET Tools : Essential productivity kit for .NET and game developers | The JetBrains Blog"
 }
