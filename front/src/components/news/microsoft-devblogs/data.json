@@ -2,6 +2,65 @@
   "source": "microsoft-devblogs",
   "items": [
     {
+      "title": "GitHub Copilot Testing for .NET Brings AI-powered Unit Tests to Visual Studio 2026",
+      "link": "https://devblogs.microsoft.com/dotnet/github-copilot-testing-for-dotnet-available-in-visual-studio/",
+      "pubDate": "Wed, 11 Feb 2026 18:05:00 +0000",
+      "contentSnippet": "GitHub Copilot testing for .NET is now available in Visual Studio 18.3, offering AI-powered tools to quickly create, build, and run unit tests. With flexible prompts and full IDE integration, it supports testing from single methods to entire solution",
+      "creator": "McKenna Barlow",
+      "categories": [
+        ".NET",
+        "AI",
+        "Visual Studio",
+        "Agent",
+        "Copilot",
+        "GitHub Copilot",
+        "Test"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59430"
+    },
+    {
+      "title": ".NET 11 Preview 1 is now available!",
+      "link": "https://devblogs.microsoft.com/dotnet/dotnet-11-preview-1/",
+      "pubDate": "Tue, 10 Feb 2026 22:38:20 +0000",
+      "contentSnippet": "Find out about the new features in .NET 11 Preview 1 across the .NET runtime, SDK, libraries, ASP.NET Core, Blazor, C#, .NET MAUI, and more!\nThe post .NET 11 Preview 1 is now available! appeared first on .NET Blog.",
+      "creator": ".NET Team",
+      "categories": [
+        ".NET",
+        ".NET MAUI",
+        "ASP.NET Core",
+        "Blazor",
+        "C#",
+        ".NET 11",
+        "Featured"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59495"
+    },
+    {
+      "title": ".NET and .NET Framework February 2026 servicing releases updates",
+      "link": "https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-february-2026-servicing-updates/",
+      "pubDate": "Tue, 10 Feb 2026 19:00:00 +0000",
+      "contentSnippet": "A recap of the latest servicing updates for .NET and .NET Framework for February 2026.\nThe post .NET and .NET Framework February 2026 servicing releases updates appeared first on .NET Blog.",
+      "creator": "Rahul Bhandari (MSFT), Tara Overfield",
+      "categories": [
+        ".NET",
+        ".NET Framework",
+        "Maintenance & Updates"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59483"
+    },
+    {
+      "title": ".NET Framework 3.5 Moves to Standalone Deployment in new versions of Windows",
+      "link": "https://devblogs.microsoft.com/dotnet/dotnet-framework-3-5-moves-to-standalone-deployment-in-new-versions-of-windows/",
+      "pubDate": "Thu, 05 Feb 2026 18:00:00 +0000",
+      "contentSnippet": "An announcement of .NET Framework 3.5 servicing updates on new versions of Windows.\nThe post .NET Framework 3.5 Moves to Standalone Deployment in new versions of Windows appeared first on .NET Blog.",
+      "creator": "Tara Overfield, Brett Lopez",
+      "categories": [
+        ".NET",
+        ".NET Framework"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59455"
+    },
+    {
       "title": ".NET AI Essentials – The Core Building Blocks Explained",
       "link": "https://devblogs.microsoft.com/dotnet/dotnet-ai-essentials-the-core-building-blocks-explained/",
       "pubDate": "Wed, 28 Jan 2026 17:30:00 +0000",
@@ -285,6 +344,6 @@
       "guid": "https://devblogs.microsoft.com/dotnet/?p=59006"
     }
   ],
-  "lastUpdated": "2026-01-30T16:17:56.253Z",
+  "lastUpdated": "2026-02-12T13:17:48.204Z",
   "feedTitle": ".NET Blog"
 }

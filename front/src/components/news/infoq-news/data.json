@@ -2,6 +2,270 @@
   "source": "infoq-news",
   "items": [
     {
+      "title": "Creating Impactful Teams through Diversity Using Session 0",
+      "link": "https://www.infoq.com/news/2026/02/create-impactful-teams-diversity/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 12 Feb 2026 11:09:00 GMT",
+      "contentSnippet": "Diverse and empowered teams are impactful teams, Natan Žabkar Nordberg mentioned in his talk on creating impactful software teams at QCon London. A session 0 helps set expectations and ensures that everyone is approaching the team in a compatible way",
+      "creator": "Ben Linders",
+      "categories": [
+        "Diversity",
+        "Team Collaboration",
+        "Conference",
+        "QCon",
+        "Communication",
+        "Collaboration",
+        "Teamwork"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/create-impactful-teams-diversity/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "WhatsApp Deploys Rust-Based Media Parser to Block Malware on 3 Billion Devices",
+      "link": "https://www.infoq.com/news/2026/02/whatsapp-rust-media-malware/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 12 Feb 2026 10:24:00 GMT",
+      "contentSnippet": "WhatsApp has rewritten its media handling library in Rust, replacing 160,000 lines of C++ with 90,000 lines of memory-safe code for 3 billion devices. The rollout, part of a system called Kaleidoscope, uses differential fuzzing to ensure bug-for-bug ",
+      "creator": "Steef-Jan Wiggers",
+      "categories": [
+        "Security",
+        "Memory Leaks",
+        "Rust",
+        "Mobile",
+        "iOS",
+        "Malware",
+        "Android",
+        "Development",
+        "Architecture",
+        "Design"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/whatsapp-rust-media-malware/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Article: You’ve Generated Your MVP Using AI. What Does That Mean for Your Software Architecture?",
+      "link": "https://www.infoq.com/articles/ai-generated-mvp/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 12 Feb 2026 09:00:00 GMT",
+      "contentSnippet": "AI‑generated code creates implicit architectural decisions, forcing teams to rely on experimentation to validate quality attributes. To get useful results from AI, teams must clearly express trade‑offs and reasoning so the model can generate solution",
+      "creator": "Pierre Pureur, Kurt Bittner",
+      "categories": [
+        "Architecture",
+        "MVP",
+        "AI",
+        "Design"
+      ],
+      "guid": "https://www.infoq.com/articles/ai-generated-mvp/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Presentation: Scaling to 100+ as a Director: Lessons From Growing Engineering Organizations",
+      "link": "https://www.infoq.com/presentations/scaling-engineering-teams/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 11 Feb 2026 14:41:00 GMT",
+      "contentSnippet": "Thiago Ghisi explains the structural shifts required as an engineering org scales from 30 to 100+ engineers. He shares how to transition from managing performance to building opinionated leadership teams and shaping long-term culture. He discusses hi",
+      "creator": "Thiago Ghisi",
+      "categories": [
+        "Transcripts",
+        "Scalability",
+        "QCon",
+        "Teamwork",
+        "Culture & Methods",
+        "Presentation"
+      ],
+      "guid": "https://www.infoq.com/presentations/scaling-engineering-teams/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Podcast: [Video Podcast] The Craft of Software Architecture in the Age of AI Tools",
+      "link": "https://www.infoq.com/podcasts/craft-software-architecture/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 11 Feb 2026 11:00:00 GMT",
+      "contentSnippet": "AI coding assistants promise speed, but what do they mean for quality, trust, and the architect’s craft? In this inaugural episode of Next Gen Architecture Playbook, Shweta Vohra and Grady Booch explore a principled view of how architecture must evol",
+      "creator": "Grady Booch",
+      "categories": [
+        "Architecture",
+        "AI",
+        "Architecture",
+        "Design",
+        "Podcast"
+      ],
+      "guid": "https://www.infoq.com/podcasts/craft-software-architecture/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "CloudFront Adds Origin mTLS Authentication for End-to-End Zero Trust",
+      "link": "https://www.infoq.com/news/2026/02/amazon-cloudfront-mtls-origins/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 11 Feb 2026 10:17:00 GMT",
+      "contentSnippet": "Amazon CloudFront now supports mutual TLS authentication for origin servers, completing end-to-end zero-trust authentication from viewers to backends. The feature replaces IP allowlists and shared secrets with cryptographic verification, proving part",
+      "creator": "Steef-Jan Wiggers",
+      "categories": [
+        "Zero Trust",
+        "CDN",
+        "Amazon",
+        "Cloud Security",
+        "Networking",
+        "Authentication",
+        "Amazon Web Services",
+        "AWS",
+        "Cloud",
+        "Architecture",
+        "Design",
+        "DevOps"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/amazon-cloudfront-mtls-origins/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Article: From Prompts to Production: A Playbook for Agentic Development",
+      "link": "https://www.infoq.com/articles/prompts-to-production-playbook-for-agentic-development/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 11 Feb 2026 09:00:00 GMT",
+      "contentSnippet": "In this article, author Abhishek Goswami shares a practitioner's playbook with development practices, that describes building agentic AI applications and scaling them in production. He also presents core architecture patterns for agentic application ",
+      "creator": "Abhishek Goswami",
+      "categories": [
+        "Agents",
+        "Patterns",
+        "Practices",
+        "AI",
+        "Data Engineering",
+        "ML"
+      ],
+      "guid": "https://www.infoq.com/articles/prompts-to-production-playbook-for-agentic-development/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Pandas 3.0 Introduces Default String Dtype and Copy-on-Write Semantics",
+      "link": "https://www.infoq.com/news/2026/02/pandas-library/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 11 Feb 2026 08:40:00 GMT",
+      "contentSnippet": "The pandas team has released pandas 3.0.0, a major update that changes core behaviors around string handling, memory semantics, and datetime resolution, while removing a substantial amount of deprecated functionality. The release introduces several c",
+      "creator": "Robert Krzaczyński",
+      "categories": [
+        "API",
+        "Data",
+        "Python",
+        "AI",
+        "Data Engineering",
+        "ML"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/pandas-library/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Kubernetes Drives AI Expansion as Cultural Shift Becomes Critical",
+      "link": "https://www.infoq.com/news/2026/02/kubernetes-ai-culture-impact/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 11 Feb 2026 08:00:00 GMT",
+      "contentSnippet": "A new CNCF report identifies Kubernetes as the primary engine for AI growth, with 82% production adoption. However, technical maturity has outpaced organisational change. Human factors, such as siloed team structures and a lack of cross-functional co",
+      "creator": "Mark Silvester",
+      "categories": [
+        "Kubernetes",
+        "AI",
+        "Cloud",
+        "Development",
+        "AI",
+        "Data Engineering",
+        "ML",
+        "DevOps"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/kubernetes-ai-culture-impact/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "GitHub Copilot SDK Lets Developers Integrate Copilot CLI's Engine into Apps",
+      "link": "https://www.infoq.com/news/2026/02/github-copilot-sdk/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Tue, 10 Feb 2026 20:00:00 GMT",
+      "contentSnippet": "Now available in technical preview on GitHub, the GitHub Copilot SDK lets developers embed the same engine that powers GitHub Copilot CLI into their own apps, making it easier to build agentic workflows.\n By Sergio De Simone",
+      "creator": "Sergio De Simone",
+      "categories": [
+        "Agents",
+        "Open Source",
+        "GitHub",
+        "LLM",
+        "Development",
+        "AI",
+        "Data Engineering",
+        "ML"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/github-copilot-sdk/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "QCon Previews 20th Anniversary Conferences: Production AI, Resilience, and Staff+ Engineering",
+      "link": "https://www.infoq.com/news/2026/02/qcon-previews-20th-anniversary/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Tue, 10 Feb 2026 13:00:00 GMT",
+      "contentSnippet": "Celebrating its 20th anniversary, QCon’s 2026 conferences in London and San Francisco will focus on the engineering realities of agentic AI, resilient architectures, and platform ROI. The programs continue the series' two-decade tradition of practiti",
+      "creator": "Artenisa Chatziou",
+      "categories": [
+        "QCon London 2026",
+        "Architecture",
+        "Software Engineering",
+        "QCon San Francisco 2026",
+        "QCon Software Development Conference",
+        "Artificial Intelligence",
+        "Resilience",
+        "Architecture",
+        "Design",
+        "AI",
+        "Data Engineering",
+        "ML",
+        "news"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/qcon-previews-20th-anniversary/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "BellSoft Survey Finds Container Security Practices Are Undermining Developers’ Own Goals",
+      "link": "https://www.infoq.com/news/2026/02/bellsoft-container-security/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Tue, 10 Feb 2026 12:00:00 GMT",
+      "contentSnippet": "Container security incidents are becoming a routine reality for software teams, and the tools meant to protect them may be making the problem worse.\n By Craig Risi",
+      "creator": "Craig Risi",
+      "categories": [
+        "Security",
+        "Vulnerabilities",
+        "Containers",
+        "DevOps"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/bellsoft-container-security/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Windsurf Introduces Arena Mode to Compare AI Models During Development",
+      "link": "https://www.infoq.com/news/2026/02/windsurf-arena-mode/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Tue, 10 Feb 2026 10:35:00 GMT",
+      "contentSnippet": "Windsurf has introduced Arena Mode inside its IDE allowing developers to compare large language models side by side while working on real coding tasks. The feature is designed to let users evaluate models directly within their existing development co",
+      "creator": "Daniel Dominguez",
+      "categories": [
+        "Software Development",
+        "Source Code",
+        "Developer Experience",
+        "Code Quality",
+        "LLM",
+        "Coding Standards",
+        "IDE",
+        "AI",
+        "Data Engineering",
+        "ML"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/windsurf-arena-mode/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Article: Jakarta EE 12 Milestone 2: Advent of the Data Age Along with Consistency and Configuration",
+      "link": "https://www.infoq.com/articles/jakartaee-12-milestone-2/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Tue, 10 Feb 2026 09:00:00 GMT",
+      "contentSnippet": "Jakarta EE 12 Milestone 2 marks the beginning of the next generation of enterprise Java. It introduces Jakarta Query, a unified query language across Persistence, Data, and NoSQL, while aligning the platform with Java 21. This milestone focuses on in",
+      "creator": "Otavio Santana",
+      "categories": [
+        "Jakarta EE",
+        "Java",
+        "NoSQL",
+        "Persistence",
+        "Query",
+        "Eclipse JNoSQL",
+        "JPA",
+        "Architecture",
+        "Design"
+      ],
+      "guid": "https://www.infoq.com/articles/jakartaee-12-milestone-2/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Waku: the Minimal React Framework Reaches Alpha",
+      "link": "https://www.infoq.com/news/2026/02/waku-react-framework/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Tue, 10 Feb 2026 08:30:00 GMT",
+      "contentSnippet": "Waku 1.0 alpha, a lightweight React framework, achieves a major milestone with stable public APIs, shifting focus to bug fixes and compatibility. Ideal for mostly-static sites, it offers flexible rendering options. Built on Vite and Hono, Waku priori",
+      "creator": "Daniel Curtis",
+      "categories": [
+        "TypeScript",
+        "React",
+        "Web Development",
+        "JavaScript",
+        "Web Deploy",
+        "Development"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/waku-react-framework/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
       "title": "Rspack Releases Version 1.7: Final 1.x Update Before 2.0 Transition",
       "link": "https://www.infoq.com/news/2026/01/rspack-final-rust/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
       "pubDate": "Fri, 30 Jan 2026 10:00:00 GMT",
@@ -14,8 +278,7 @@
         "TypeScript",
         "Web Development",
         "Performance",
-        "Development",
-        "news"
+        "Development"
       ],
       "guid": "https://www.infoq.com/news/2026/01/rspack-final-rust/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
     },
@@ -31,9 +294,8 @@
         "QCon London 2025",
         "Web Development",
         "Transcripts",
-        "Architecture & Design",
-        "Development",
-        "presentation"
+        "Architecture",
+        "Design"
       ],
       "guid": "https://www.infoq.com/presentations/wasm-components-faas/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
     },
@@ -47,7 +309,9 @@
         "Reinforcement Learning",
         "Apache Spark",
         "Agents",
-        "AI, ML & Data Engineering",
+        "AI",
+        "Data Engineering",
+        "ML",
         "Development",
         "article"
       ],
@@ -80,11 +344,9 @@
       "creator": "Edin Kapić",
       "categories": [
         "Agents",
-        "github",
+        "GitHub",
         ".NET",
-        "Visual Studio",
-        "Development",
-        "news"
+        "Visual Studio"
       ],
       "guid": "https://www.infoq.com/news/2026/01/copilot-agents-csharp-winforms/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
     },
@@ -96,12 +358,13 @@
       "creator": "Robert Krzaczyński",
       "categories": [
         "Anthropic",
-        "Large language models",
-        "Artificial Intelligence",
+        "LLM",
+        "AI",
         "Ethics",
         "Safety",
-        "AI, ML & Data Engineering",
-        "news"
+        "AI",
+        "Data Engineering",
+        "ML"
       ],
       "guid": "https://www.infoq.com/news/2026/01/anthropic-constitution/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
     },
@@ -113,11 +376,10 @@
       "creator": "Saranya Vedagiri",
       "categories": [
         "Low Latency",
-        "Performance Tuning",
         "Performance",
-        "Architecture & Design",
-        "Development",
-        "article"
+        "Architecture",
+        "Design",
+        "Development"
       ],
       "guid": "https://www.infoq.com/articles/engineering-speed-scale/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
     },
@@ -137,9 +399,8 @@
         "Load Balancing",
         "Prioritization",
         "Distributed Data",
-        "Architecture & Design",
-        "Development",
-        "news"
+        "Architecture",
+        "Design"
       ],
       "guid": "https://www.infoq.com/news/2026/01/uber-priority-aware-load-manager/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
     },
@@ -152,7 +413,7 @@
       "categories": [
         "Trust",
         "Organization",
-        "learning",
+        "Learning",
         "Psychological Safety",
         "Collaboration",
         "Resilience",
@@ -160,8 +421,7 @@
         "Social Skills",
         "Leadership",
         "QCon London 2025",
-        "Culture & Methods",
-        "news"
+        "Culture & Methods"
       ],
       "guid": "https://www.infoq.com/news/2026/01/organisations-people-thrive/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
     },
@@ -172,10 +432,11 @@
       "contentSnippet": "Google DeepMind researchers have introduced ATLAS, a set of scaling laws for multilingual language models that formalize how model size, training data volume, and language mixtures interact as the number of supported languages increases.\n By Robert K",
       "creator": "Robert Krzaczyński",
       "categories": [
-        "Large language models",
+        "LLM",
         "Google DeepMind",
-        "AI, ML & Data Engineering",
-        "news"
+        "AI",
+        "Data Engineering",
+        "ML"
       ],
       "guid": "https://www.infoq.com/news/2026/01/google-deepmind-atlas/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
     },
@@ -190,8 +451,9 @@
         "QCon London 2025",
         "Modeling",
         "Transcripts",
-        "AI, ML & Data Engineering",
-        "presentation"
+        "AI",
+        "Data Engineering",
+        "ML"
       ],
       "guid": "https://www.infoq.com/presentations/foundation-models-ranking/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
     },
@@ -212,9 +474,7 @@
         "SwiftUI",
         "GUI",
         "Apple",
-        "Cross Platform",
-        "Development",
-        "news"
+        "Cross Platform"
       ],
       "guid": "https://www.infoq.com/news/2026/01/swift-skip-open-sourced/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
     },
@@ -228,8 +488,7 @@
         "Observability",
         "Reinforcement Learning",
         "Alerting",
-        "DevOps",
-        "news"
+        "DevOps"
       ],
       "guid": "https://www.infoq.com/news/2026/01/railway-diagnosing-failure/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
     },
@@ -245,13 +504,13 @@
         "Cloud",
         "Artificial Intelligence",
         "Hugging Face",
-        "Google Cloud Platform",
         "Google Cloud",
         "DevOps",
-        "AI, ML & Data Engineering",
-        "Architecture & Design",
-        "Development",
-        "news"
+        "AI",
+        "Data Engineering",
+        "ML",
+        "Architecture",
+        "Design"
       ],
       "guid": "https://www.infoq.com/news/2026/01/bigquery-sql-huggingface-managed/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
     },
@@ -266,17 +525,17 @@
         "Natural Language Processing",
         "Google",
         "Model Fine Tuning",
-        "Large language models",
+        "LLM",
         "Translation",
         "Reinforcement Learning",
         "Gemini",
-        "Artificial Intelligence",
-        "AI, ML & Data Engineering",
-        "news"
+        "AI",
+        "Data Engineering",
+        "ML"
       ],
       "guid": "https://www.infoq.com/news/2026/01/google-translategemma-models/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
     }
   ],
-  "lastUpdated": "2026-01-30T16:17:57.194Z",
+  "lastUpdated": "2026-02-12T13:17:49.136Z",
   "feedTitle": "InfoQ"
 }
