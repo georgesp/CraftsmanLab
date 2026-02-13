@@ -2,6 +2,96 @@
   "source": "infoq-news",
   "items": [
     {
+      "title": "Teleport Launches Agentic Identity Framework to Secure AI Agents Across Enterprise Infrastructure",
+      "link": "https://www.infoq.com/news/2026/02/teleport-secure-ai-agents/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Fri, 13 Feb 2026 12:00:00 GMT",
+      "contentSnippet": "Teleport recently unveiled the Teleport Agentic Identity Framework, a new AI-centered security model designed to help enterprises safely deploy autonomous and semi-autonomous AI agents across cloud and on-premises environments.\n By Craig Risi",
+      "creator": "Craig Risi",
+      "categories": [
+        "Cloud Security",
+        "AIOps",
+        "Artificial Intelligence",
+        "DevOps"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/teleport-secure-ai-agents/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Podcast: Beyond Code: How Engineers Need to Evolve in the AI Era",
+      "link": "https://www.infoq.com/podcasts/beyond-code-engineers-evolve-ai-era/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Fri, 13 Feb 2026 09:00:00 GMT",
+      "contentSnippet": "In this podcast, Shane Hastie, Lead Editor for Culture & Methods, spoke to Ben Greene about embracing AI in software engineering, expanding beyond pure technical skills to understand business context, and prioritizing human empathy in increasingly au",
+      "creator": "Ben Greene",
+      "categories": [
+        "Startup",
+        "Artificial Intelligence",
+        "Leadership",
+        "Code Quality",
+        "Communication",
+        "Culture",
+        "Systems Thinking",
+        "Management",
+        "Teamwork",
+        "Podcast"
+      ],
+      "guid": "https://www.infoq.com/podcasts/beyond-code-engineers-evolve-ai-era/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Shadcn Releases Visual Project Builder",
+      "link": "https://www.infoq.com/news/2026/02/shadcn-ui-builder/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Fri, 13 Feb 2026 08:30:00 GMT",
+      "contentSnippet": "Introducing Shadcn's innovative visual project builder, accessible via `npx shadcn create`. This tool empowers developers to customize project setups visually before coding, ensuring a seamless design-first approach with real-time previews, extensive",
+      "creator": "Daniel Curtis",
+      "categories": [
+        "Web Components",
+        "Next.js",
+        "TypeScript",
+        "Web Development",
+        "React",
+        "Development"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/shadcn-ui-builder/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "VillageSQL Launches as an Extension-Focused MySQL Fork",
+      "link": "https://www.infoq.com/news/2026/02/villagesql-mysql/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Fri, 13 Feb 2026 06:52:00 GMT",
+      "contentSnippet": "A new open-source project, VillageSQL, has been introduced as a tracking fork of MySQL aimed at expanding extensibility and addressing feature gaps increasingly relevant to AI and agent-based workloads.\n By Robert Krzaczyński",
+      "creator": "Robert Krzaczyński",
+      "categories": [
+        "Postgres",
+        "MySQL",
+        "Retrieval-Augmented Generation",
+        "AI, ML & Data Engineering",
+        "news"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/villagesql-mysql/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "OpenAI Scales Single Primary Postgresql to Millions of Queries per Second for ChatGPT",
+      "link": "https://www.infoq.com/news/2026/02/openai-runs-chatgpt-postgres/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 12 Feb 2026 15:00:00 GMT",
+      "contentSnippet": "OpenAI described how it scaled PostgreSQL to support ChatGPT and its API platform, handling millions of queries per second for hundreds of millions of users. By running a single-primary PostgreSQL deployment on Azure with nearly 50 read replicas, opt",
+      "creator": "Leela Kumili",
+      "categories": [
+        "Cosmos",
+        "ChatGPT",
+        "Azure",
+        "OpenAI",
+        "SQL",
+        "Postgres",
+        "Scaling",
+        "Database Replication",
+        "Sharding",
+        "SQL Azure",
+        "Caching",
+        "Architecture & Design",
+        "Development",
+        "AI, ML & Data Engineering",
+        "news"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/openai-runs-chatgpt-postgres/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
       "title": "Creating Impactful Teams through Diversity Using Session 0",
       "link": "https://www.infoq.com/news/2026/02/create-impactful-teams-diversity/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
       "pubDate": "Thu, 12 Feb 2026 11:09:00 GMT",
@@ -536,6 +626,6 @@
       "guid": "https://www.infoq.com/news/2026/01/google-translategemma-models/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
     }
   ],
-  "lastUpdated": "2026-02-12T13:17:49.136Z",
+  "lastUpdated": "2026-02-13T15:42:50.523Z",
   "feedTitle": "InfoQ"
 }
