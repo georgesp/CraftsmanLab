@@ -2,6 +2,41 @@
   "source": "microsoft-devblogs",
   "items": [
     {
+      "title": "Vector Data in .NET – Building Blocks for AI Part 2",
+      "link": "https://devblogs.microsoft.com/dotnet/vector-data-in-dotnet-building-blocks-for-ai-part-2/",
+      "pubDate": "Thu, 26 Feb 2026 18:00:00 +0000",
+      "contentSnippet": "Discover how Microsoft.Extensions.VectorData brings unified vector database access to .NET - one interface for semantic search across any vector store with built-in support for embeddings, filtering, and RAG patterns.\nThe post Vector Data in .NET – B",
+      "creator": "Jeremy Likness",
+      "categories": [
+        ".NET",
+        "AI",
+        "C#",
+        "Embeddings",
+        "VectorData",
+        "Semantic Search",
+        "Vector Search"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59608"
+    },
+    {
+      "title": "The Dongle Died at Midnight – WinForms Agent Saved my German Mom’s Business Trip",
+      "link": "https://devblogs.microsoft.com/dotnet/the-dongle-died-at-midnight/",
+      "pubDate": "Tue, 24 Feb 2026 23:00:00 +0000",
+      "contentSnippet": "Vibe Coding. IntelliSense on Steroids. Intention-Based Development. Call it what makes you happy - it's \"just\" the next evolutionary step in software development for me. Which let me build my stranded 82-year-old retirement-resistant mom an ersatz ti",
+      "creator": "Klaus Loeffelmann",
+      "categories": [
+        ".NET",
+        "AI",
+        "WinForms",
+        "Agent",
+        "Copilot",
+        "GitHub Copilot",
+        "Visual Studio",
+        "WinForms"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59566"
+    },
+    {
       "title": "GitHub Copilot Testing for .NET Brings AI-powered Unit Tests to Visual Studio 2026",
       "link": "https://devblogs.microsoft.com/dotnet/github-copilot-testing-for-dotnet-available-in-visual-studio/",
       "pubDate": "Wed, 11 Feb 2026 18:05:00 +0000",
@@ -344,6 +379,6 @@
       "guid": "https://devblogs.microsoft.com/dotnet/?p=59006"
     }
   ],
-  "lastUpdated": "2026-02-13T15:42:49.619Z",
+  "lastUpdated": "2026-03-02T13:38:30.636Z",
   "feedTitle": ".NET Blog"
 }

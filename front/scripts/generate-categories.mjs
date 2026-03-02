@@ -10,12 +10,31 @@ function postProcessCategories(categories) {
   const processed = [];
   
   for (const category of categories) {
+    if (!category) continue;
+    const trimmed = category.trim();
+    const lower = trimmed.toLowerCase();
+
+    if (lower === 'ai, ml & data engineering') {
+      processed.push('AI', 'ML', 'Data Engineering');
+      continue;
+    }
+
+    if (lower === 'architecture & design') {
+      processed.push('Architecture', 'Design');
+      continue;
+    }
+
+    if (lower === 'ml & data engineering') {
+      processed.push('ML', 'Data Engineering');
+      continue;
+    }
+
     // Séparer les catégories contenant des virgules
-    if (category.includes(',')) {
-      const parts = category.split(',').map(part => part.trim()).filter(part => part);
+    if (trimmed.includes(',')) {
+      const parts = trimmed.split(',').map(part => part.trim()).filter(part => part);
       processed.push(...parts);
     } else {
-      processed.push(category);
+      processed.push(trimmed);
     }
   }
   

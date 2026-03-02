@@ -2,6 +2,647 @@
   "source": "infoq-news",
   "items": [
     {
+      "title": "Podcast: [Video Podcast] Frictionless DevEx with Nicole Forsgren",
+      "link": "https://www.infoq.com/podcasts/frictionless-devex/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Mon, 02 Mar 2026 11:00:00 GMT",
+      "contentSnippet": "In this episode, Thomas Betts talks with Dr. Nicole Forsgren, the author of Accelerate and one of the most prominent and important minds in DevOps and developer productivity. The conversation is about identifying and removing developer friction, the ",
+      "creator": "Nicole Forsgren",
+      "categories": [
+        "Design",
+        "Productivity",
+        "Architecture",
+        "Development",
+        "DevOps",
+        "AI",
+        "ML",
+        "Data Engineering",
+        "podcast"
+      ],
+      "guid": "https://www.infoq.com/podcasts/frictionless-devex/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Presentation: Busting AI Myths and Embracing Realities in Privacy & Security",
+      "link": "https://www.infoq.com/presentations/ai-systems-privacy-security/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Mon, 02 Mar 2026 09:01:00 GMT",
+      "contentSnippet": "Katharine Jarmul keynotes on common myths around privacy and security in AI and explores what the realities are, covering design patterns that help build more secure, more private AI systems.\n By Katharine Jarmul",
+      "creator": "Katharine Jarmul",
+      "categories": [
+        "Security",
+        "Privacy",
+        "Transcripts",
+        "AI",
+        "ML",
+        "Data Engineering"
+      ],
+      "guid": "https://www.infoq.com/presentations/ai-systems-privacy-security/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Java News Roundup: Lazy Constants, TornadoVM 3.0, NetBeans 29, Quarkus, JReleaser, Open Liberty",
+      "link": "https://www.infoq.com/news/2026/03/java-news-roundup-feb23-2026/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Mon, 02 Mar 2026 03:00:00 GMT",
+      "contentSnippet": "This week's Java roundup for February 23rd, 2026, features news highlighting: new JEP 531 Candidate, Lazy Constants; GA releases of TornadoVM 3.0 and NetBeans 29; point releases of Quarkus, JReleaser, Chicory and RefactorFirst; maintenance releases o",
+      "creator": "Michael Redlich",
+      "categories": [
+        "JDK 27",
+        "Open Liberty",
+        "TornadoVM",
+        "Quarkus",
+        "Java",
+        "Micronaut",
+        "JDK 26",
+        "RefactorFirst",
+        "Jox",
+        "JReleaser",
+        "Chicory",
+        "Netbeans",
+        "Architecture",
+        "Design",
+        "Development"
+      ],
+      "guid": "https://www.infoq.com/news/2026/03/java-news-roundup-feb23-2026/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Argo CD 3.3 Brings Safer GitOps Deletions and Smoother Day‑to‑Day Operations",
+      "link": "https://www.infoq.com/news/2026/02/argocd-33/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Sat, 28 Feb 2026 23:30:00 GMT",
+      "contentSnippet": "The application deployment and lifecycle management tool Argo CD has reached a new milestone with the release of version 3.3, extending the capabilities of the popular GitOps continuous delivery tool while addressing several long-standing pain points",
+      "creator": "Matt Saunders",
+      "categories": [
+        "GitOps",
+        "Continuous Delivery",
+        "Argo CD",
+        "DevOps"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/argocd-33/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "MySQL 9.6 Changes Foreign Key Constraints and Cascade Handling",
+      "link": "https://www.infoq.com/news/2026/02/mysql-foreign-keys/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Sat, 28 Feb 2026 08:34:00 GMT",
+      "contentSnippet": "MySQL is changing the way foreign key constraints and cascades are managed. Starting with MySQL 9.6, foreign key validation and cascade actions are handled by the SQL layer rather than the InnoDB storage engine. This will improve change tracking, rep",
+      "creator": "Renato Losio",
+      "categories": [
+        "Open Source",
+        "Relational Databases",
+        "MySQL",
+        "Development",
+        "AI",
+        "ML",
+        "Data Engineering"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/mysql-foreign-keys/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Vercel Releases React Best Practices Skill with 40+ Performance Rules for AI Agents",
+      "link": "https://www.infoq.com/news/2026/02/vercel-react-best-practices/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Fri, 27 Feb 2026 14:30:00 GMT",
+      "contentSnippet": "Vercel has launched \"react-best-practices,\" an open-source repository featuring 40+ performance optimization rules for React and Next.js apps. Tailored for AI coding agents yet valuable for developers, it categorizes rules based on impact, assisting ",
+      "creator": "Daniel Curtis",
+      "categories": [
+        "Web",
+        "React",
+        "Agents",
+        "AI",
+        "Development"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/vercel-react-best-practices/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Kubernetes Introduces Node Readiness Controller to Improve Pod Scheduling Reliability",
+      "link": "https://www.infoq.com/news/2026/02/kubernetes-node-readiness/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Fri, 27 Feb 2026 12:00:00 GMT",
+      "contentSnippet": "The Kubernetes project recently announced a new core controller called the Node Readiness Controller, designed to enhance scheduling reliability and cluster health by making the API server’s view of node readiness more accurate.\n By Craig Risi",
+      "creator": "Craig Risi",
+      "categories": [
+        "Kubernetes",
+        "Distributed Control Nodes",
+        "DevOps"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/kubernetes-node-readiness/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Presentation: Platforms for Secure API Connectivity with Architecture as Code",
+      "link": "https://www.infoq.com/presentations/secure-connectivity-api/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Fri, 27 Feb 2026 09:19:00 GMT",
+      "contentSnippet": "Jim Gough discusses the transition from accidental architect to API program leader, explaining how to manage the complexity of secure API connectivity. He shares the Common Architecture Language Model (CALM), a framework designed to bridge the develo",
+      "creator": "Jim Gough",
+      "categories": [
+        "Platforms",
+        "Security",
+        "Transcripts",
+        "API",
+        "QCon London 2025",
+        "Architecture",
+        "Design"
+      ],
+      "guid": "https://www.infoq.com/presentations/secure-connectivity-api/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Microsoft Open Sources Evals for Agent Interop Starter Kit to Benchmark Enterprise AI Agents",
+      "link": "https://www.infoq.com/news/2026/02/evals-agent-interop/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Fri, 27 Feb 2026 08:00:00 GMT",
+      "contentSnippet": "Microsoft's Evals for Agent Interop is an open-source starter kit that enables developers to evaluate AI agents in realistic work scenarios. It features curated scenarios, datasets, and an evaluation harness to assess agent performance across tools l",
+      "creator": "Edin Kapić",
+      "categories": [
+        ".NET",
+        "Agents",
+        "AI",
+        "Development"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/evals-agent-interop/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Pinterest’s CDC-Powered Ingestion Slashes Database Latency from 24 Hours to 15 Minutes",
+      "link": "https://www.infoq.com/news/2026/02/pinterest-cdc-db-ingestion/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 26 Feb 2026 15:00:00 GMT",
+      "contentSnippet": "Pinterest launched a next-generation CDC-based database ingestion framework using Kafka, Flink, Spark, and Iceberg. The system reduces data availability latency from 24+ hours to 15 minutes, processes only changed records, supports incremental update",
+      "creator": "Leela Kumili",
+      "categories": [
+        "Database",
+        "S3",
+        "MySQL",
+        "Change Data Capture",
+        "Apache Flink",
+        "Apache Spark",
+        "Apache Kafka",
+        "Apache Iceberg",
+        "Debezium",
+        "Architecture",
+        "Design",
+        "Development",
+        "DevOps"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/pinterest-cdc-db-ingestion/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "ASP.NET Core in .NET 11 Preview 1 Brings New Blazor Components, Improved Navigation, and WebAssembly",
+      "link": "https://www.infoq.com/news/2026/02/asp-net-core-11-preview1/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 26 Feb 2026 12:00:00 GMT",
+      "contentSnippet": "Microsoft has released ASP.NET Core in .NET 11 Preview 1, introducing new Blazor components like EnvironmentBoundary, Label, and DisplayName, along with relative URI navigation, QuickGrid row click events, IHostedService support in WebAssembly, envir",
+      "creator": "Almir Vuk",
+      "categories": [
+        ".NET 11",
+        ".NET Core",
+        "ASP.NET",
+        "Development"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/asp-net-core-11-preview1/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Lessons from Growing a Software Leadership Team",
+      "link": "https://www.infoq.com/news/2026/02/software-leadership-team/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 26 Feb 2026 11:03:00 GMT",
+      "contentSnippet": "Thiago Ghisi explained how he guided managers and senior ICs to build a resilient leadership group beneath him in his talk Lessons from Growing Engineering Organizations at QCon London. Regular syncs, expectation calibration, and alignment on broader",
+      "creator": "Ben Linders",
+      "categories": [
+        "Social Skills",
+        "Collaboration",
+        "Culture",
+        "Coaching and Mentoring",
+        "Leadership",
+        "QCon Software Development Conference",
+        "QCon London 2025",
+        "Culture & Methods"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/software-leadership-team/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Article: Borrowing from Kotlin/Android to Architect Scalable iOS Apps in SwiftUI",
+      "link": "https://www.infoq.com/articles/kotlin-scalable-swiftui-patterns/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 26 Feb 2026 09:00:00 GMT",
+      "contentSnippet": "Building iOS apps can feel like stitching together guidance from blog posts and Apple samples, which are rarely representative of how production architectures grow and survive. In contrast, the Kotlin/Android ecosystem has converged on well-documente",
+      "creator": "Ivan Bliznyuk",
+      "categories": [
+        "Mobile",
+        "SwiftUI",
+        "Design Pattern",
+        "Kotlin",
+        "Swift",
+        "iOS",
+        "Architecture",
+        "Development"
+      ],
+      "guid": "https://www.infoq.com/articles/kotlin-scalable-swiftui-patterns/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Microsoft Agent Framework RC Simplifies Agentic Development in .NET and Python",
+      "link": "https://www.infoq.com/news/2026/02/ms-agent-framework-rc/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 26 Feb 2026 08:00:00 GMT",
+      "contentSnippet": "Microsoft has announced that the Microsoft Agent Framework has reached Release Candidate status for both .NET and Python. This milestone indicates that the API surface is stable and feature-complete for what is planned in version 1.0, setting the sta",
+      "creator": "Edin Kapić",
+      "categories": [
+        ".NET",
+        "Agents",
+        "AI",
+        "Development"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/ms-agent-framework-rc/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Cilium at Ten Years: Stronger Encryption, Safer Policies, and Clearer Visibility for Large Clusters",
+      "link": "https://www.infoq.com/news/2026/02/cilium-119/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 25 Feb 2026 23:00:00 GMT",
+      "contentSnippet": "Cilium 1.19 has been released, marking ten years of development for the eBPF-based networking and security project. There isn’t a flagship feature in this release; instead, it focuses on security hardening, tightening encryption, refining network pol",
+      "creator": "Matt Saunders",
+      "categories": [
+        "Clusters",
+        "Network Security",
+        "Kubernetes",
+        "Encryption",
+        "DevOps"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/cilium-119/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Warper: Rust Powered React Virtualisation Library",
+      "link": "https://www.infoq.com/news/2026/02/warper-rust-react/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 25 Feb 2026 17:00:00 GMT",
+      "contentSnippet": "Warper 7.2 is a cutting-edge open-source React virtualization library utilizing Rust and WebAssembly for unmatched performance. With zero-allocation hot paths and O(1) circular buffer operations, Warper achieves 120 FPS even with 100,000 items. Its c",
+      "creator": "Daniel Curtis",
+      "categories": [
+        "Web Development",
+        "Rust",
+        "React",
+        "Virtualization",
+        "TypeScript",
+        "Development"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/warper-rust-react/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Google Brings Its Developer Documentation Into the Age of AI Agents",
+      "link": "https://www.infoq.com/news/2026/02/google-documentation-ai-agents/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 25 Feb 2026 10:00:00 GMT",
+      "contentSnippet": "Google has announced the public preview of the Developer Knowledge API. It comes with a Model Context Protocol (MCP) server. This gives AI development tools a simple, machine-readable way to reach Google's official developer documentation.\n By Claudi",
+      "creator": "Claudio Masolo",
+      "categories": [
+        "Google Cloud",
+        "Agents",
+        "Documentation",
+        "AI",
+        "DevOps"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/google-documentation-ai-agents/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Presentation: Achieve Optimal Efficiency for Your Developer Experience Teams",
+      "link": "https://www.infoq.com/presentations/optimal-efficiency-devex/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 25 Feb 2026 09:00:00 GMT",
+      "contentSnippet": "Fabien Deshayes discusses the strategies behind Monzo’s Developer Velocity squad. He explains the \"Platform as a Product\" mindset, emphasizing the need for engineers with product acumen and tenure. He shares actionable frameworks for measuring DevEx ",
+      "creator": "Fabien Deshayes",
+      "categories": [
+        "Developer Experience",
+        "Transcripts",
+        "QCon London 2025",
+        "Best Practices",
+        "Culture & Methods"
+      ],
+      "guid": "https://www.infoq.com/presentations/optimal-efficiency-devex/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "AWS Drops Patent Infringement Protection for Video Encoding Services",
+      "link": "https://www.infoq.com/news/2026/02/aws-drops-patent-protection/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 25 Feb 2026 00:03:00 GMT",
+      "contentSnippet": "AWS has removed its legal protections for customers using its video transcoding and streaming services, potentially exposing them to patent infringement claims from codec rights holders. The change affects six services, including the popular file-bas",
+      "creator": "Renato Losio",
+      "categories": [
+        "Cloud",
+        "Video Codec",
+        "Software Patents",
+        "AWS",
+        "Streaming Video",
+        "Development",
+        "DevOps"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/aws-drops-patent-protection/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Apple Researchers Introduce Ferret-UI Lite, an On-Device AI Model for Seeing and Controlling UIs",
+      "link": "https://www.infoq.com/news/2026/02/apple-ferret-ui-lite-on-device/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Tue, 24 Feb 2026 19:00:00 GMT",
+      "contentSnippet": "Apple's Ferret-UI Lite is a 3B-parameter model optimized for mobile and desktop screens, designed to interpret screen images, understand UI elements such as icons and text, and interact with apps by, e.g., reading messages, checking health data, and ",
+      "creator": "Sergio De Simone",
+      "categories": [
+        "Apple",
+        "Large language models",
+        "GUI",
+        "Mobile",
+        "Agents",
+        "Web",
+        "Android",
+        "iOS",
+        "AI",
+        "ML",
+        "Data Engineering"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/apple-ferret-ui-lite-on-device/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Platform Engineering Labs Expands formae with Multi-Cloud Support",
+      "link": "https://www.infoq.com/news/2026/02/formae-multi-cloud/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Tue, 24 Feb 2026 12:00:00 GMT",
+      "contentSnippet": "Platform Engineering Labs today announced a major update to its open source Infrastructure-as-Code (IaC) platform, formae, adding beta support for Google Cloud Platform (GCP), Microsoft Azure, Oracle Cloud Infrastructure (OCI), and OVHcloud.\n By Crai",
+      "creator": "Craig Risi",
+      "categories": [
+        "Cloud",
+        "Platform Engineering",
+        "Multi-tenancy",
+        "DevOps"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/formae-multi-cloud/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "AI \"Vibe Coding\" Threatens Open Source as Maintainers Face Crisis",
+      "link": "https://www.infoq.com/news/2026/02/ai-floods-close-projects/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Tue, 24 Feb 2026 10:16:00 GMT",
+      "contentSnippet": "Daniel Stenberg shut down cURL's bug bounty after AI submissions hit 20%. Mitchell Hashimoto banned AI code from Ghostty. Steve Ruiz closed all external PRs to tldraw. Economic research shows \"vibe coding\" weakens the user engagement that sustains op",
+      "creator": "Steef-Jan Wiggers",
+      "categories": [
+        "Open Source",
+        "AI",
+        "Development",
+        "ML",
+        "Data Engineering"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/ai-floods-close-projects/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Article: Virtual Panel - Culture, Code, and Platform: Building High-Performing Teams",
+      "link": "https://www.infoq.com/articles/panel-high-performing-teams/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Tue, 24 Feb 2026 09:00:00 GMT",
+      "contentSnippet": "In this virtual panel, we'll focus on performance improvement through platform engineering and fostering developer experience, to increase productivity, quality, developer well-being, and more. We'll also explore the role that tech leadership can pla",
+      "creator": "Ben Linders, Patrick Kua, Abby Bangser, Sarah Wells",
+      "categories": [
+        "Platforms",
+        "GOTO Conference",
+        "Developer Experience",
+        "Virtual Panel",
+        "Agile Conferences",
+        "Teamwork",
+        "Leadership"
+      ],
+      "guid": "https://www.infoq.com/articles/panel-high-performing-teams/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "jQuery Releases v4: First Major Version in Almost 10 Years",
+      "link": "https://www.infoq.com/news/2026/02/jquery-4-release/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Fri, 20 Feb 2026 12:30:00 GMT",
+      "contentSnippet": "jQuery 4 has launched, celebrating 20 years of innovation in web development. This major update modernizes the library by removing legacy code and outdated browser support while ensuring simplicity and performance. With enhanced compatibility for mod",
+      "creator": "Daniel Curtis",
+      "categories": [
+        "JavaScript",
+        "Web Development",
+        "jQuery",
+        "Internet Explorer",
+        "Development"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/jquery-4-release/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "OpenTelemetry Project Publishes “Demystifying OpenTelemetry” Guide to Broaden Observability Adoption",
+      "link": "https://www.infoq.com/news/2026/02/opentelemetry-observability/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Fri, 20 Feb 2026 12:00:00 GMT",
+      "contentSnippet": "The OpenTelemetry open-source observability project recently published a comprehensive guide titled \"Demystifying OpenTelemetry\" aimed at helping organizations understand, adopt, and scale observability using the OpenTelemetry standard.\n By Craig Ris",
+      "creator": "Craig Risi",
+      "categories": [
+        "OpenTelemetry",
+        "Observability",
+        "DevOps"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/opentelemetry-observability/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Presentation: How WebAssembly Components Enable Safe and Portable Software Extensions",
+      "link": "https://www.infoq.com/presentations/webassembly-extensions/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Fri, 20 Feb 2026 09:49:00 GMT",
+      "contentSnippet": "Alex Radovici explains the shift from C-ABI and scripting to the Wasm Component Model (WASI Preview 2). He shares how to build secure plugin systems that run at near-native speed across Rust, TypeScript, and C++. Architects will learn about Wasm Inte",
+      "creator": "Alex Radovici",
+      "categories": [
+        "Web Development",
+        "Rust",
+        "Transcripts",
+        "WebAssembly",
+        "QCon London 2025",
+        "Development"
+      ],
+      "guid": "https://www.infoq.com/presentations/webassembly-extensions/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "JDK 26 and JDK 27: What We Know So Far",
+      "link": "https://www.infoq.com/news/2026/02/java-26-so-far/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Fri, 20 Feb 2026 02:30:00 GMT",
+      "contentSnippet": "JDK 26, the first non-LTS release since JDK 25, has reached its second release candidate with a final set of 10 new features, in the form of JEPs, that can be separated into five categories: Core Java Library, HotSpot, Java Language Specification, Se",
+      "creator": "Michael Redlich",
+      "categories": [
+        "Project Leyden",
+        "JDK 27",
+        "Java",
+        "JDK 26",
+        "Project Loom",
+        "Project Valhalla",
+        "Project Amber",
+        "Project Panama",
+        "Architecture",
+        "Design",
+        "Development"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/java-26-so-far/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Reducing Onboarding from 48 Hours to 4: inside Amazon Key’s Event-Driven Platform",
+      "link": "https://www.infoq.com/news/2026/02/amazon-key-event-driven-platform/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 19 Feb 2026 15:00:00 GMT",
+      "contentSnippet": "Amazon Key modernized its event platform by adopting a centralized, event-driven architecture built on Amazon EventBridge. The redesign processes millions of daily events with millisecond latency, improves schema governance, automates cross-account r",
+      "creator": "Leela Kumili",
+      "categories": [
+        "Platforms",
+        "Amazon",
+        "Modular Monolith",
+        "Service Bus",
+        "AWS",
+        "Evolutionary Architecture",
+        "Microservices",
+        "Integration",
+        "Event Driven Architecture",
+        "Cloud Architecture",
+        "Low Latency",
+        "CloudFormation",
+        "Architecture",
+        "Design",
+        "Development",
+        "DevOps"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/amazon-key-event-driven-platform/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Presentation: DevOps Modernization: AI Agents, Intelligent Observability and Automation",
+      "link": "https://www.infoq.com/presentations/devops-modernization-ai-agents/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 19 Feb 2026 13:08:00 GMT",
+      "contentSnippet": "The panelists share how AI is redefining DevOps and SRE practices by moving teams beyond reactive monitoring toward predictive, automated delivery and operations. They discuss integrating AI agents into CI/CD pipelines and feature management to enabl",
+      "creator": "Olalekan Elesin, Patrick Debois, Mallika Rao, Martin Reynolds, Renato Losio",
+      "categories": [
+        "InfoQ Live February 2026",
+        "Panel",
+        "Agents",
+        "InfoQ Live",
+        "Transcripts",
+        "AI",
+        "ML",
+        "Data Engineering"
+      ],
+      "guid": "https://www.infoq.com/presentations/devops-modernization-ai-agents/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "How a Small Enablement Team Supported Adopting a Single Environment for Distributed Testing",
+      "link": "https://www.infoq.com/news/2026/02/environment-distributed-testing/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 19 Feb 2026 11:23:00 GMT",
+      "contentSnippet": "Po Linn Chia presented how they re-used a single development environment to deploy multiple service versions for testing their distributed system in her presentation \"No QA Environment? No Problem\" at Dev Summit Boston. A small enablement team, cultu",
+      "creator": "Ben Linders",
+      "categories": [
+        "Developer Experience",
+        "Automated testing",
+        "InfoQ Dev Summit",
+        "Testing",
+        "Culture",
+        "InfoQ Dev Summit Boston 2025",
+        "Test Automation"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/environment-distributed-testing/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Hugging Face Introduces Community Evals for Transparent Model Benchmarking",
+      "link": "https://www.infoq.com/news/2026/02/hugging-face-evals/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 19 Feb 2026 10:55:00 GMT",
+      "contentSnippet": "Hugging Face has launched Community Evals, a feature that enables benchmark datasets on the Hub to host their own leaderboards and automatically collect evaluation results from model repositories.\n By Daniel Dominguez",
+      "creator": "Daniel Dominguez",
+      "categories": [
+        "Large language models",
+        "YAML",
+        "Benchmark",
+        "Hugging Face",
+        "AI",
+        "ML",
+        "Data Engineering"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/hugging-face-evals/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Article: Spec-Driven Development – Adoption at Enterprise Scale",
+      "link": "https://www.infoq.com/articles/enterprise-spec-driven-development/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 19 Feb 2026 09:00:00 GMT",
+      "contentSnippet": "Spec‑Driven Development shifts AI‑augmented software delivery from tactical prompting to collaborative intent articulation. Enterprises face gaps in tooling, workflow integration, multi‑repo coordination, and cross‑functional collaboration. Sustainab",
+      "creator": "Hari Krishnan",
+      "categories": [
+        "Spec Driven Development",
+        "Architecture",
+        "Design"
+      ],
+      "guid": "https://www.infoq.com/articles/enterprise-spec-driven-development/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "GitHub Agentic Workflows Unleash AI-Driven Repository Automation",
+      "link": "https://www.infoq.com/news/2026/02/github-agentic-workflows/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 18 Feb 2026 12:00:00 GMT",
+      "contentSnippet": "Recently launched in technical preview, GitHub Agentic Workflows introduce a way to automate complex, repetitive repository tasks using coding agents that understand context and intent, GitHub says. This enables workflows such as automatic issue tria",
+      "creator": "Sergio De Simone",
+      "categories": [
+        "Large language models",
+        "Continuous Integration",
+        "Agents",
+        "GitHub Actions",
+        "GitHub",
+        "Automation",
+        "Development",
+        "AI",
+        "ML",
+        "Data Engineering"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/github-agentic-workflows/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Presentation: Panel: Modern Data Architectures",
+      "link": "https://www.infoq.com/presentations/panel-modern-data-architectures/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 18 Feb 2026 09:20:00 GMT",
+      "contentSnippet": "The panelists emphasize that data engineering is no longer just about \"click-and-drag\" UI tools; it is software engineering applied to data.\n By Fabiane Nardon, Matthias Niehoff, Adi Polak, Sarah Usher",
+      "creator": "Fabiane Nardon, Matthias Niehoff, Adi Polak, Sarah Usher",
+      "categories": [
+        "Panel",
+        "Transcripts",
+        "QCon London 2025",
+        "Best Practices",
+        "AI",
+        "ML",
+        "Data Engineering"
+      ],
+      "guid": "https://www.infoq.com/presentations/panel-modern-data-architectures/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "How Dropbox Built a Scalable Context Engine for Enterprise Knowledge Search",
+      "link": "https://www.infoq.com/news/2026/02/dropbox-context-engine/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 18 Feb 2026 07:23:00 GMT",
+      "contentSnippet": "Dropbox engineers have detailed how the company built the context engine behind Dropbox Dash, revealing a shift toward index-based retrieval, knowledge graph-derived context, and continuous evaluation to support enterprise AI at scale.\n By Matt Foste",
+      "creator": "Matt Foster",
+      "categories": [
+        "Large language models",
+        "Search",
+        "Retrieval-Augmented Generation",
+        "Architecture",
+        "Distributed Systems",
+        "Architecture",
+        "Design",
+        "AI",
+        "ML",
+        "Data Engineering"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/dropbox-context-engine/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Uber and OpenAI Retool Rate Limiting Systems",
+      "link": "https://www.infoq.com/news/2026/02/uber-openai-rate-limiting/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Tue, 17 Feb 2026 23:02:00 GMT",
+      "contentSnippet": "Uber and OpenAI are replacing static rate limits with adaptive, infrastructure-level platforms. Uber’s Global Rate Limiter utilizes probabilistic shedding to manage 80M RPS, while OpenAI’s Access Engine implements a credit waterfall to prevent user i",
+      "creator": "Patrick Farry",
+      "categories": [
+        "Microservices",
+        "Distributed Systems",
+        "Architecture",
+        "Design",
+        "DevOps"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/uber-openai-rate-limiting/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Moonshot AI Releases Open-Weight Kimi K2.5 Model with Vision and Agent Swarm Capabilities",
+      "link": "https://www.infoq.com/news/2026/02/kimi-k25-swarm/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Tue, 17 Feb 2026 14:00:00 GMT",
+      "contentSnippet": "Moonshot AI released Kimi K2.5, their latest open-weight multimodal LLM. K2.5 excels at coding tasks, with benchmark scores comparable to frontier models such as GPT-5 and Gemini. It also features an agent swarm mode, which can direct up to 100 sub-a",
+      "creator": "Anthony Alford",
+      "categories": [
+        "Agents",
+        "AI",
+        "ML",
+        "Data Engineering"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/kimi-k25-swarm/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Leapwork Research Shows Why AI in Testing Still Depends on Reliability, Not Just Innovation",
+      "link": "https://www.infoq.com/news/2026/02/leapwork-ai-testing/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Tue, 17 Feb 2026 12:00:00 GMT",
+      "contentSnippet": "Leapwork recently released new research showing that while confidence in AI-driven software testing is growing rapidly, accuracy, stability, and ongoing manual effort remain decisive factors in how far teams are willing to trust automation.\n By Craig",
+      "creator": "Craig Risi",
+      "categories": [
+        "Software Testing",
+        "AI Development",
+        "Test Automation",
+        "DevOps",
+        "AI",
+        "ML",
+        "Data Engineering"
+      ],
+      "guid": "https://www.infoq.com/news/2026/02/leapwork-ai-testing/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
       "title": "Teleport Launches Agentic Identity Framework to Secure AI Agents Across Enterprise Infrastructure",
       "link": "https://www.infoq.com/news/2026/02/teleport-secure-ai-agents/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
       "pubDate": "Fri, 13 Feb 2026 12:00:00 GMT",
@@ -10,7 +651,7 @@
       "categories": [
         "Cloud Security",
         "AIOps",
-        "Artificial Intelligence",
+        "AI",
         "DevOps"
       ],
       "guid": "https://www.infoq.com/news/2026/02/teleport-secure-ai-agents/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
@@ -23,7 +664,7 @@
       "creator": "Ben Greene",
       "categories": [
         "Startup",
-        "Artificial Intelligence",
+        "AI",
         "Leadership",
         "Code Quality",
         "Communication",
@@ -61,8 +702,9 @@
         "Postgres",
         "MySQL",
         "Retrieval-Augmented Generation",
-        "AI, ML & Data Engineering",
-        "news"
+        "AI",
+        "ML",
+        "Data Engineering"
       ],
       "guid": "https://www.infoq.com/news/2026/02/villagesql-mysql/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
     },
@@ -84,10 +726,12 @@
         "Sharding",
         "SQL Azure",
         "Caching",
-        "Architecture & Design",
+        "Architecture",
+        "Design",
         "Development",
-        "AI, ML & Data Engineering",
-        "news"
+        "AI",
+        "ML",
+        "Data Engineering"
       ],
       "guid": "https://www.infoq.com/news/2026/02/openai-runs-chatgpt-postgres/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
     },
@@ -275,14 +919,12 @@
         "Software Engineering",
         "QCon San Francisco 2026",
         "QCon Software Development Conference",
-        "Artificial Intelligence",
         "Resilience",
         "Architecture",
         "Design",
         "AI",
         "Data Engineering",
-        "ML",
-        "news"
+        "ML"
       ],
       "guid": "https://www.infoq.com/news/2026/02/qcon-previews-20th-anniversary/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
     },
@@ -537,7 +1179,6 @@
       "contentSnippet": "Moumita Bhattacharya discusses the evolution of Netflix’s ranking systems, from the multi-model architecture to a Unified Contextual Recommender (UniCoRn). She explains how they built a task-agnostic User Foundation Model to capture long-term member ",
       "creator": "Moumita Bhattacharya",
       "categories": [
-        "Artificial Intelligence",
         "QCon London 2025",
         "Modeling",
         "Transcripts",
@@ -592,7 +1233,6 @@
         "Google BigQuery",
         "Gemma",
         "Cloud",
-        "Artificial Intelligence",
         "Hugging Face",
         "Google Cloud",
         "DevOps",
@@ -626,6 +1266,6 @@
       "guid": "https://www.infoq.com/news/2026/01/google-translategemma-models/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
     }
   ],
-  "lastUpdated": "2026-02-13T15:42:50.523Z",
+  "lastUpdated": "2026-03-02T13:38:37.161Z",
   "feedTitle": "InfoQ"
 }
