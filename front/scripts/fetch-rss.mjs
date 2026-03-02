@@ -4,6 +4,51 @@ import path from 'path';
 
 const SOURCES_DIR = path.resolve(process.cwd(), 'src', 'components', 'news');
 
+function postProcessCategories(categories) {
+  const processed = [];
+
+  for (const category of categories) {
+    if (!category) continue;
+    const trimmed = category.trim();
+    const lower = trimmed.toLowerCase();
+
+    if (lower === 'ai, ml & data engineering') {
+      processed.push('AI', 'ML', 'Data Engineering');
+      continue;
+    }
+
+    if (lower === 'architecture & design') {
+      processed.push('Architecture', 'Design');
+      continue;
+    }
+
+    if (lower === 'ml & data engineering') {
+      processed.push('ML', 'Data Engineering');
+      continue;
+    }
+
+    if (trimmed.includes(',')) {
+      const parts = trimmed.split(',').map(part => part.trim()).filter(Boolean);
+      processed.push(...parts);
+      continue;
+    }
+
+    processed.push(trimmed);
+  }
+
+  const normalized = processed.map(cat => {
+    if (cat.toLowerCase() === 'artificial intelligence') return 'AI';
+    return cat;
+  });
+
+  const filtered = normalized.filter(cat => {
+    const lower = cat.toLowerCase();
+    return lower !== 'news' && lower !== 'article';
+  });
+
+  return Array.from(new Set(filtered));
+}
+
 // Import the registry to get all RSS sources
 // Note: Since this is a build script, we use a simplified approach
 const RSS_SOURCES = [
@@ -42,6 +87,11 @@ const RSS_SOURCES = [
     feedUrl: 'https://anthonygiretti.com/feed/',
     maxItems: 100,
   },
+  {
+    slug: 'infoq-news',
+    feedUrl: 'https://feed.infoq.com',
+    maxItems: 100,
+  },
   // Add more RSS sources here as needed
 ];
 
@@ -65,8 +115,33 @@ async function loadExistingData(slug) {
 async function fetchSingleRSS(slug, feedUrl, maxItems) {
   try {
     console.log(`🔄 Fetching RSS feed: ${slug}...`);
-    const parser = new Parser();
-    const feed = await parser.parseURL(feedUrl);
+    
+    // Pour InfoQ, utiliser fetch avec des headers personnalisés
+    let feed;
+    if (slug === 'infoq-news') {
+      const response = await fetch(feedUrl, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+          'Accept': 'application/rss+xml, application/xml, text/xml, */*',
+        }
+      });
+      
+      if (!response.ok) {
+        throw new Error(`Status code ${response.status}`);
+      }
+      
+      const xmlText = await response.text();
+      const parser = new Parser();
+      feed = await parser.parseString(xmlText);
+    } else {
+      const parser = new Parser({
+        customHeaders: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+          'Accept': 'application/rss+xml, application/xml, text/xml, */*'
+        }
+      });
+      feed = await parser.parseURL(feedUrl);
+    }
     
     // Charger les données existantes
     const existingData = await loadExistingData(slug);
@@ -93,7 +168,7 @@ async function fetchSingleRSS(slug, feedUrl, maxItems) {
         contentSnippet: item.contentSnippet?.substring(0, 250) || '',
         creator: item.creator || item.author || '',
         // Préserver les catégories existantes si l'article existe déjà
-        categories: existingItem?.categories || item.categories || [],
+        categories: postProcessCategories(existingItem?.categories || item.categories || []),
         guid: guid,
       };
     });

@@ -32,6 +32,7 @@ import { meta as queueStackMeta } from './tips/queue-stack/meta';
 import { meta as csharpSolidPrinciplesMeta } from './tips/csharp-solid-principles/meta';
 import { meta as diffplexMeta } from './tips/diffplex/meta';
 import { meta as closedxmlMeta } from './tips/closedxml/meta';
+import { meta as dotnet10AsyncZipMeta } from './tips/dotnet-10-async-zip/meta';
 
 export type TipEntry = TipMeta & { load: () => Promise<any> };
 
@@ -76,6 +77,7 @@ export const tipsEntries: TipEntry[] = [
   { ...csharpSolidPrinciplesMeta, load: () => import('./tips/csharp-solid-principles/csharp-solid-principles') },
   { ...diffplexMeta, load: () => import('./tips/diffplex/diffplex') },
   { ...closedxmlMeta, load: () => import('./tips/closedxml/closedxml') },
+  { ...dotnet10AsyncZipMeta, load: () => import('./tips/dotnet-10-async-zip/dotnet-10-async-zip') },
 ];
 
 // ----- Prompts: metas -----
@@ -152,6 +154,8 @@ import diffplexFr from './tips/diffplex/fr.json';
 import diffplexEn from './tips/diffplex/en.json';
 import closedxmlFr from './tips/closedxml/fr.json';
 import closedxmlEn from './tips/closedxml/en.json';
+import dotnet10AsyncZipFr from './tips/dotnet-10-async-zip/fr.json';
+import dotnet10AsyncZipEn from './tips/dotnet-10-async-zip/en.json';
 
 export const tipsTranslationsFr = {
   ...pollyFr,
@@ -181,6 +185,7 @@ export const tipsTranslationsFr = {
   ...solidPrinciplesCsharpFr,
   ...diffplexFr,
   ...closedxmlFr,
+  ...dotnet10AsyncZipFr,
 };
 
 export const tipsTranslationsEn = {
@@ -211,6 +216,7 @@ export const tipsTranslationsEn = {
   ...solidPrinciplesCsharpEn,
   ...diffplexEn,
   ...closedxmlEn,
+  ...dotnet10AsyncZipEn,
 };
 
 // ----- Prompts: translations -----

@@ -4,6 +4,59 @@ import path from 'path';
 const SOURCES_DIR = path.resolve(process.cwd(), 'src', 'components', 'news');
 
 /**
+ * Post-traite les catégories pour nettoyer et séparer
+ */
+function postProcessCategories(categories) {
+  const processed = [];
+  
+  for (const category of categories) {
+    if (!category) continue;
+    const trimmed = category.trim();
+    const lower = trimmed.toLowerCase();
+
+    if (lower === 'ai, ml & data engineering') {
+      processed.push('AI', 'ML', 'Data Engineering');
+      continue;
+    }
+
+    if (lower === 'architecture & design') {
+      processed.push('Architecture', 'Design');
+      continue;
+    }
+
+    if (lower === 'ml & data engineering') {
+      processed.push('ML', 'Data Engineering');
+      continue;
+    }
+
+    // Séparer les catégories contenant des virgules
+    if (trimmed.includes(',')) {
+      const parts = trimmed.split(',').map(part => part.trim()).filter(part => part);
+      processed.push(...parts);
+    } else {
+      processed.push(trimmed);
+    }
+  }
+  
+  // Remplacer "Artificial Intelligence" par "AI"
+  const normalized = processed.map(cat => {
+    if (cat.toLowerCase() === 'artificial intelligence') {
+      return 'AI';
+    }
+    return cat;
+  });
+  
+  // Filtrer les mots qui n'apportent rien (news, article)
+  const filtered = normalized.filter(cat => {
+    const lowerCat = cat.toLowerCase();
+    return lowerCat !== 'news' && lowerCat !== 'article';
+  });
+  
+  // Supprimer les doublons
+  return Array.from(new Set(filtered));
+}
+
+/**
  * Génère des catégories intelligentes basées sur le titre et le contenu
  */
 function generateCategories(title, contentSnippet) {
@@ -138,8 +191,11 @@ function generateCategories(title, contentSnippet) {
     else categories.push('Programming');
   }
   
-  // Dédupliquer et limiter à 5 catégories max
-  return [...new Set(categories)].slice(0, 5);
+  // Post-traiter les catégories pour séparer par virgule et filtrer
+  const processed = postProcessCategories(categories);
+  
+  // Limiter à 5 catégories max
+  return processed.slice(0, 5);
 }
 
 /**

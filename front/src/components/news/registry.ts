@@ -26,6 +26,10 @@ import { anthonyGirettiBlogMeta } from './anthony-giretti-blog/meta';
 import anthonyGirettiBlogFr from './anthony-giretti-blog/fr.json';
 import anthonyGirettiBlogEn from './anthony-giretti-blog/en.json';
 import anthonyGirettiBlogData from './anthony-giretti-blog/data.json';
+import { infoqNewsMeta } from './infoq-news/meta';
+import infoqNewsFr from './infoq-news/fr.json';
+import infoqNewsEn from './infoq-news/en.json';
+import infoqNewsData from './infoq-news/data.json';
 import type { RssFeedData } from '../../pages/News/types';
 
 export interface RssSource {
@@ -104,6 +108,14 @@ export const rssSources: RssSource[] = [
       en: anthonyGirettiBlogEn,
     },
     data: anthonyGirettiBlogData as RssFeedData,
+  },
+  {
+    meta: infoqNewsMeta,
+    translations: {
+      fr: infoqNewsFr,
+      en: infoqNewsEn,
+    },
+    data: infoqNewsData as RssFeedData,
   },
 ];
 

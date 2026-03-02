@@ -5,6 +5,57 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Post-process categories to clean and split them
+function postProcessCategories(categories) {
+  const processed = [];
+  
+  for (const category of categories) {
+    if (!category) continue;
+    const trimmed = category.trim();
+    const lower = trimmed.toLowerCase();
+
+    if (lower === 'ai, ml & data engineering') {
+      processed.push('AI', 'ML', 'Data Engineering');
+      continue;
+    }
+
+    if (lower === 'architecture & design') {
+      processed.push('Architecture', 'Design');
+      continue;
+    }
+
+    if (lower === 'ml & data engineering') {
+      processed.push('ML', 'Data Engineering');
+      continue;
+    }
+
+    // Séparer les catégories contenant des virgules
+    if (trimmed.includes(',')) {
+      const parts = trimmed.split(',').map(part => part.trim()).filter(part => part);
+      processed.push(...parts);
+    } else {
+      processed.push(trimmed);
+    }
+  }
+  
+  // Remplacer "Artificial Intelligence" par "AI"
+  const normalized = processed.map(cat => {
+    if (cat.toLowerCase() === 'artificial intelligence') {
+      return 'AI';
+    }
+    return cat;
+  });
+  
+  // Filtrer les mots qui n'apportent rien (news, article)
+  const filtered = normalized.filter(cat => {
+    const lowerCat = cat.toLowerCase();
+    return lowerCat !== 'news' && lowerCat !== 'article';
+  });
+  
+  // Supprimer les doublons
+  return Array.from(new Set(filtered));
+}
+
 // Extract categories from article title and content
 function extractCategories(title, contentSnippet) {
   const text = `${title} ${contentSnippet}`.toLowerCase();
@@ -136,7 +187,8 @@ function extractCategories(title, contentSnippet) {
   // Hugo (blog platform)
   if (text.match(/\bhugo\b/i)) categories.push('Hugo');
 
-  return Array.from(new Set(categories)); // Remove duplicates
+  // Post-traiter les catégories pour séparer par virgule et filtrer
+  return postProcessCategories(categories);
 }
 
 // Process a single news source file

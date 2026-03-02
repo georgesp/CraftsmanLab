@@ -1,0 +1,67 @@
+{
+  "dotnet-10-async-zip": {
+    "title": "API Zip Async .NET 10",
+    "shortDescription": "Découvrez les nouvelles APIs asynchrones pour la compression ZIP et les améliorations de performance dans .NET 10",
+    "content": {
+      "mainTitle": "Améliorations des API Zip et GZip asynchrones dans .NET 10",
+      "summary": "Les APIs asynchrones pour la compression et décompression ZIP de .NET 10 améliorent les performances et la réactivité des applications.",
+      "intro": ".NET 10 introduit de nouvelles APIs asynchrones pour travailler avec les archives ZIP et améliore significativement les performances des opérations de compression et décompression, notamment pour les archives volumineuses et les flux GZip concaténés.",
+      "sections": {
+        "improvements": {
+          "title": "Améliorations majeures",
+          "list": {
+            "async": "Nouvelles méthodes async pour les opérations non-bloquantes",
+            "performance": "Meilleures performances I/O asynchrones et parallélisation de l'extraction",
+            "gzip": "Support optimisé des flux GZip concaténés",
+            "memory": "Utilisation mémoire réduite et meilleur recyclage des buffers",
+            "noBreaking": "Aucun changement cassant - le code existant bénéficie automatiquement des optimisations"
+          }
+        },
+        "newApis": {
+          "title": "Nouvelles APIs asynchrones",
+          "description": ".NET 10 ajoute plusieurs méthodes asynchrones très attendues :"
+        },
+        "examples": {
+          "title": "Exemples d'utilisation",
+          "extract": {
+            "title": "Extraction asynchrone d'une archive ZIP",
+            "description": "Le code ci-dessous fonctionne beaucoup plus rapidement sur .NET 10 grâce aux optimisations internes :"
+          },
+          "create": {
+            "title": "Création asynchrone d'une archive ZIP",
+            "description": "Créer une archive ZIP de manière asynchrone à partir d'un répertoire :"
+          },
+          "gzip": {
+            "title": "Lecture de fichiers GZip concaténés",
+            "description": "GZip peut contenir plusieurs membres concaténés. .NET 10 gère cela plus efficacement :",
+            "benefits": "Détection intelligente des limites des membres GZip, overhead réduit lors de la lecture de plusieurs blocs, et meilleures performances en lecture asynchrone."
+          }
+        },
+        "benefits": {
+          "title": "Avantages",
+          "list": {
+            "better": "Meilleures performances sans modification de code",
+            "async": "Support complet des opérations asynchrones",
+            "cancellation": "Support des CancellationToken pour annuler les opérations longues",
+            "responsive": "Applications plus réactives avec les opérations I/O-bound",
+            "large": "Traitement efficace des grandes archives"
+          }
+        },
+        "keyPoints": {
+          "title": "Points clés",
+          "list": {
+            "noChange": "Aucun changement d'API cassant",
+            "auto": "Optimisations automatiques en ciblant .NET 10",
+            "io": "I/O asynchrone amélioré, moins de blocages",
+            "parallel": "Extraction parallélisée pour les archives contenant de nombreux fichiers",
+            "gzip": "Support natif amélioré des fichiers GZip multi-membres"
+          }
+        }
+      },
+      "footer": {
+        "sourceLabel": "Documentation Microsoft sur les nouveautés .NET 10",
+        "writtenOn": "Écrit le {{date}}"
+      }
+    }
+  }
+}

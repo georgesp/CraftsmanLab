@@ -2,6 +2,94 @@
   "source": "jetbrains-dotnet-blog",
   "items": [
     {
+      "title": "C# Extension Members",
+      "link": "https://blog.jetbrains.com/dotnet/2026/02/23/csharp-extension-members/",
+      "pubDate": "Mon, 23 Feb 2026 14:44:31 +0000",
+      "contentSnippet": "Overview: What are extension members? Extension members allow you to define additional members for existing types without modifying their definitions. With them, you can add functionality to existing types you don’t have access to or don’t control, f",
+      "creator": "Rachel Appel",
+      "categories": [
+        "Net-Tools",
+        "C#",
+        "C#14"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=679230"
+    },
+    {
+      "title": "dotInsights | February 2026",
+      "link": "https://blog.jetbrains.com/dotnet/2026/02/10/dotinsights-february-2026/",
+      "pubDate": "Tue, 10 Feb 2026 14:50:52 +0000",
+      "contentSnippet": "Did you know? C# allows digit separators (_) in numeric literals to make large numbers more readable, e.g., int num = 1_000_000; is valid and equals one million. Welcome to dotInsights by JetBrains! This newsletter is the home for recent .NET and sof",
+      "creator": "Rachel Appel",
+      "categories": [
+        "Net-Tools",
+        "DotInsights"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=679133"
+    },
+    {
+      "title": "Open Source in Focus: .NET Projects and the Tools Behind Them",
+      "link": "https://blog.jetbrains.com/blog/2026/02/10/open-source-in-focus-dotnet-projects-and-the-tools-behind-them/",
+      "pubDate": "Tue, 10 Feb 2026 07:23:42 +0000",
+      "contentSnippet": "At JetBrains, we love seeing the developer community grow and thrive. That’s why we support open-source projects that make a real difference – the ones that help developers learn, build, and create better software together. We’re proud to back open-s",
+      "creator": "Lena Morozova",
+      "categories": [
+        "Community",
+        "Open-source",
+        ".NET",
+        "Community-support"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=blog&p=679077"
+    },
+    {
+      "title": "ReSharper and Rider 2025.3.2 Updates Out Now!",
+      "link": "https://blog.jetbrains.com/dotnet/2026/01/29/resharper-and-rider-2025-3-2/",
+      "pubDate": "Thu, 29 Jan 2026 15:44:43 +0000",
+      "contentSnippet": "We’ve just released another update for ReSharper, Rider and the .NET tools version 2025.3. You can update to this version from inside those tools, using the Toolbox app or our website.  Let’s take a look at the latest updates.  Rider 2025.3.2 Agent C",
+      "creator": "Sasha Ivanova",
+      "categories": [
+        "Net-Tools",
+        "Releases",
+        "ReSharper",
+        "Rider"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=677156"
+    },
+    {
+      "title": "Game Dev in 2025: Excerpts From the State of Game Development Report",
+      "link": "https://blog.jetbrains.com/dotnet/2026/01/29/game-dev-in-2025-excerpts-from-the-state-of-game-development-report/",
+      "pubDate": "Thu, 29 Jan 2026 10:00:00 +0000",
+      "contentSnippet": "As we approach the midpoint of the decade, game developers face an evolving landscape shaped by shifting job security, technology choices, platform strategies, and practical AI adoption. Our State of Game Development 2025 report reveals critical insi",
+      "creator": "Anna Ruban",
+      "categories": [
+        "Net-Tools",
+        "AI",
+        "Research",
+        "TeamCity-2",
+        "Game-Development",
+        "GameDev",
+        "Report",
+        "rider"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=675222"
+    },
+    {
+      "title": "How We Made Variable Inspections 87 Times Faster for Unreal Engine in Rider",
+      "link": "https://blog.jetbrains.com/dotnet/2026/01/26/how-we-made-variable-inspections-87-times-faster-for-unreal-engine-in-rider/",
+      "pubDate": "Mon, 26 Jan 2026 13:08:53 +0000",
+      "contentSnippet": "If you’ve ever expanded a complex Unreal Engine variable in Rider’s debugger and had time to contemplate your life choices, this post is for you. We’ve rewritten our expression evaluator, and the results are dramatic: Variable inspection is up to 87 ",
+      "creator": "Sasha Korepanov",
+      "categories": [
+        "Net-Tools",
+        "Rider",
+        "EAP",
+        "Game-Debugging",
+        "Game-Development",
+        "LLDB",
+        "Unreal-Engine"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=676804"
+    },
+    {
       "title": "ReSharper 2026.1 Early Access Program Has Begun",
       "link": "https://blog.jetbrains.com/dotnet/2026/01/22/resharper-2026-1-early-access-program/",
       "pubDate": "Thu, 22 Jan 2026 13:42:08 +0000",
@@ -200,6 +288,6 @@
       "guid": "https://blog.jetbrains.com/?post_type=rscpp&p=658125"
     }
   ],
-  "lastUpdated": "2026-01-24T06:40:18.606Z",
+  "lastUpdated": "2026-03-02T13:38:31.891Z",
   "feedTitle": ".NET Tools : Essential productivity kit for .NET and game developers | The JetBrains Blog"
 }
