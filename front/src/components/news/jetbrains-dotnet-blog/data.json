@@ -2,6 +2,19 @@
   "source": "jetbrains-dotnet-blog",
   "items": [
     {
+      "title": "C# Extension Members",
+      "link": "https://blog.jetbrains.com/dotnet/2026/02/23/csharp-extension-members/",
+      "pubDate": "Mon, 23 Feb 2026 14:44:31 +0000",
+      "contentSnippet": "Overview: What are extension members? Extension members allow you to define additional members for existing types without modifying their definitions. With them, you can add functionality to existing types you don’t have access to or don’t control, f",
+      "creator": "Rachel Appel",
+      "categories": [
+        "Net-Tools",
+        "C#",
+        "C#14"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=679230"
+    },
+    {
       "title": "dotInsights | February 2026",
       "link": "https://blog.jetbrains.com/dotnet/2026/02/10/dotinsights-february-2026/",
       "pubDate": "Tue, 10 Feb 2026 14:50:52 +0000",
@@ -12,6 +25,20 @@
         "DotInsights"
       ],
       "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=679133"
+    },
+    {
+      "title": "Open Source in Focus: .NET Projects and the Tools Behind Them",
+      "link": "https://blog.jetbrains.com/blog/2026/02/10/open-source-in-focus-dotnet-projects-and-the-tools-behind-them/",
+      "pubDate": "Tue, 10 Feb 2026 07:23:42 +0000",
+      "contentSnippet": "At JetBrains, we love seeing the developer community grow and thrive. That’s why we support open-source projects that make a real difference – the ones that help developers learn, build, and create better software together. We’re proud to back open-s",
+      "creator": "Lena Morozova",
+      "categories": [
+        "Community",
+        "Open-source",
+        ".NET",
+        "Community-support"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=blog&p=679077"
     },
     {
       "title": "ReSharper and Rider 2025.3.2 Updates Out Now!",
@@ -261,6 +288,6 @@
       "guid": "https://blog.jetbrains.com/?post_type=rscpp&p=658125"
     }
   ],
-  "lastUpdated": "2026-02-13T15:42:49.670Z",
+  "lastUpdated": "2026-03-02T13:38:31.891Z",
   "feedTitle": ".NET Tools : Essential productivity kit for .NET and game developers | The JetBrains Blog"
 }

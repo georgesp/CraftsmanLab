@@ -2,6 +2,18 @@
   "source": "anthony-giretti-blog",
   "items": [
     {
+      "title": ".NET 10: System.Text.Json Improvements",
+      "link": "https://anthonygiretti.com/2026/03/02/net-10-system-text-json-improvements/",
+      "pubDate": "Mon, 02 Mar 2026 00:25:48 +0000",
+      "contentSnippet": "Introduction System.Text.Json continues to evolve in .NET 10 with meaningful improvements focused on correctness and...",
+      "creator": "anthonygiretti",
+      "categories": [
+        ".NET 10",
+        "System.Text.Json"
+      ],
+      "guid": "https://anthonygiretti.com/?p=19848"
+    },
+    {
       "title": ".NET 10: Zip and GZip API Improvements",
       "link": "https://anthonygiretti.com/2026/01/19/net-10-zip-and-gzip-api-improvements/",
       "pubDate": "Mon, 19 Jan 2026 02:17:19 +0000",
@@ -311,6 +323,6 @@
       "guid": "https://anthonygiretti.com/?p=19698"
     }
   ],
-  "lastUpdated": "2026-02-13T15:42:51.494Z",
+  "lastUpdated": "2026-03-02T13:38:35.266Z",
   "feedTitle": "Anthony Giretti's .NET blog"
 }

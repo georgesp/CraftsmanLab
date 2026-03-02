@@ -4,6 +4,51 @@ import path from 'path';
 
 const SOURCES_DIR = path.resolve(process.cwd(), 'src', 'components', 'news');
 
+function postProcessCategories(categories) {
+  const processed = [];
+
+  for (const category of categories) {
+    if (!category) continue;
+    const trimmed = category.trim();
+    const lower = trimmed.toLowerCase();
+
+    if (lower === 'ai, ml & data engineering') {
+      processed.push('AI', 'ML', 'Data Engineering');
+      continue;
+    }
+
+    if (lower === 'architecture & design') {
+      processed.push('Architecture', 'Design');
+      continue;
+    }
+
+    if (lower === 'ml & data engineering') {
+      processed.push('ML', 'Data Engineering');
+      continue;
+    }
+
+    if (trimmed.includes(',')) {
+      const parts = trimmed.split(',').map(part => part.trim()).filter(Boolean);
+      processed.push(...parts);
+      continue;
+    }
+
+    processed.push(trimmed);
+  }
+
+  const normalized = processed.map(cat => {
+    if (cat.toLowerCase() === 'artificial intelligence') return 'AI';
+    return cat;
+  });
+
+  const filtered = normalized.filter(cat => {
+    const lower = cat.toLowerCase();
+    return lower !== 'news' && lower !== 'article';
+  });
+
+  return Array.from(new Set(filtered));
+}
+
 // Import the registry to get all RSS sources
 // Note: Since this is a build script, we use a simplified approach
 const RSS_SOURCES = [
@@ -123,7 +168,7 @@ async function fetchSingleRSS(slug, feedUrl, maxItems) {
         contentSnippet: item.contentSnippet?.substring(0, 250) || '',
         creator: item.creator || item.author || '',
         // Préserver les catégories existantes si l'article existe déjà
-        categories: existingItem?.categories || item.categories || [],
+        categories: postProcessCategories(existingItem?.categories || item.categories || []),
         guid: guid,
       };
     });
