@@ -2,6 +2,21 @@
   "source": "microsoft-devblogs",
   "items": [
     {
+      "title": "Release v1.0 of the official MCP C# SDK",
+      "link": "https://devblogs.microsoft.com/dotnet/release-v10-of-the-official-mcp-csharp-sdk/",
+      "pubDate": "Thu, 05 Mar 2026 18:05:00 +0000",
+      "contentSnippet": "Discover what’s new in the v1.0 release of the official MCP C# SDK, including enhanced authorization, richer metadata, and powerful patterns for tool calling and long-running requests.\nThe post Release v1.0 of the official MCP C# SDK appeared first o",
+      "creator": "Mike Kistler",
+      "categories": [
+        ".NET",
+        "AI",
+        "C#",
+        "MCP",
+        "sdk"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59636"
+    },
+    {
       "title": "Vector Data in .NET – Building Blocks for AI Part 2",
       "link": "https://devblogs.microsoft.com/dotnet/vector-data-in-dotnet-building-blocks-for-ai-part-2/",
       "pubDate": "Thu, 26 Feb 2026 18:00:00 +0000",
@@ -31,8 +46,7 @@
         "Agent",
         "Copilot",
         "GitHub Copilot",
-        "Visual Studio",
-        "WinForms"
+        "Visual Studio"
       ],
       "guid": "https://devblogs.microsoft.com/dotnet/?p=59566"
     },
@@ -379,6 +393,6 @@
       "guid": "https://devblogs.microsoft.com/dotnet/?p=59006"
     }
   ],
-  "lastUpdated": "2026-03-02T13:38:30.636Z",
+  "lastUpdated": "2026-03-06T08:34:02.743Z",
   "feedTitle": ".NET Blog"
 }

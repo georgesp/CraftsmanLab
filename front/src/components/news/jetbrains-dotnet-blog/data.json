@@ -2,6 +2,35 @@
   "source": "jetbrains-dotnet-blog",
   "items": [
     {
+      "title": "ReSharper for Visual Studio Code, Cursor, and Compatible Editors Is Out",
+      "link": "https://blog.jetbrains.com/dotnet/2026/03/05/resharper-for-visual-studio-code-cursor-and-compatible-editors-is-out/",
+      "pubDate": "Thu, 05 Mar 2026 11:31:57 +0000",
+      "contentSnippet": "ReSharper has been a trusted productivity tool for C# developers in Visual Studio for over 20 years. Today, we’re taking the next step and officially releasing the ReSharper extension for Visual Studio Code and compatible editors. After a year in Pub",
+      "creator": "Alexander Kurakin",
+      "categories": [
+        "Net-Tools",
+        "Releases",
+        "Cursor",
+        "Release",
+        "ReSharper-for-VS-Code",
+        "Rider",
+        "VS-Code"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=685394"
+    },
+    {
+      "title": "dotInsights | March 2026",
+      "link": "https://blog.jetbrains.com/dotnet/2026/03/04/dotinsights-march-2026/",
+      "pubDate": "Wed, 04 Mar 2026 12:44:40 +0000",
+      "contentSnippet": "Did you know? The async and await keywords in C# were introduced in C# 5.0 (2012) to simplify asynchronous programming. Under the hood, the compiler uses a state machine to transform your asynchronous code into manageable tasks. As a developer, you n",
+      "creator": "Rachel Appel",
+      "categories": [
+        "Net-Tools",
+        "DotInsights"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=684885"
+    },
+    {
       "title": "C# Extension Members",
       "link": "https://blog.jetbrains.com/dotnet/2026/02/23/csharp-extension-members/",
       "pubDate": "Mon, 23 Feb 2026 14:44:31 +0000",
@@ -288,6 +317,6 @@
       "guid": "https://blog.jetbrains.com/?post_type=rscpp&p=658125"
     }
   ],
-  "lastUpdated": "2026-03-02T13:38:31.891Z",
+  "lastUpdated": "2026-03-06T08:34:03.158Z",
   "feedTitle": ".NET Tools : Essential productivity kit for .NET and game developers | The JetBrains Blog"
 }
