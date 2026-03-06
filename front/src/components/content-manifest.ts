@@ -33,6 +33,7 @@ import { meta as csharpSolidPrinciplesMeta } from './tips/csharp-solid-principle
 import { meta as diffplexMeta } from './tips/diffplex/meta';
 import { meta as closedxmlMeta } from './tips/closedxml/meta';
 import { meta as dotnet10AsyncZipMeta } from './tips/dotnet-10-async-zip/meta';
+import { meta as avaloniaUiMeta } from './tips/avalonia/meta';
 
 export type TipEntry = TipMeta & { load: () => Promise<any> };
 
@@ -78,6 +79,7 @@ export const tipsEntries: TipEntry[] = [
   { ...diffplexMeta, load: () => import('./tips/diffplex/diffplex') },
   { ...closedxmlMeta, load: () => import('./tips/closedxml/closedxml') },
   { ...dotnet10AsyncZipMeta, load: () => import('./tips/dotnet-10-async-zip/dotnet-10-async-zip') },
+  { ...avaloniaUiMeta, load: () => import('./tips/avalonia/avalonia') },
 ];
 
 // ----- Prompts: metas -----
@@ -156,6 +158,8 @@ import closedxmlFr from './tips/closedxml/fr.json';
 import closedxmlEn from './tips/closedxml/en.json';
 import dotnet10AsyncZipFr from './tips/dotnet-10-async-zip/fr.json';
 import dotnet10AsyncZipEn from './tips/dotnet-10-async-zip/en.json';
+import avaloniaUiFr from './tips/avalonia/fr.json';
+import avaloniaUiEn from './tips/avalonia/en.json';
 
 export const tipsTranslationsFr = {
   ...pollyFr,
@@ -186,6 +190,7 @@ export const tipsTranslationsFr = {
   ...diffplexFr,
   ...closedxmlFr,
   ...dotnet10AsyncZipFr,
+  ...avaloniaUiFr,
 };
 
 export const tipsTranslationsEn = {
@@ -217,6 +222,7 @@ export const tipsTranslationsEn = {
   ...diffplexEn,
   ...closedxmlEn,
   ...dotnet10AsyncZipEn,
+  ...avaloniaUiEn,
 };
 
 // ----- Prompts: translations -----
