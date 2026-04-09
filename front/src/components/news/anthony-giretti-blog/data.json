@@ -2,6 +2,21 @@
   "source": "anthony-giretti-blog",
   "items": [
     {
+      "title": "ASP.NET Core: Why I Couldn’t Upgrade FluentValidation Past 11.4 in My Calzolari.Grpc.AspNetCore.Validation Package (and How I Finally Fixed It)",
+      "link": "https://anthonygiretti.com/2026/04/08/asp-net-core-why-i-couldnt-upgrade-fluentvalidation-past-11-4-in-my-calzolari-grpc-aspnetcore-validation-package-and-how-i-finally-fixed-it/",
+      "pubDate": "Wed, 08 Apr 2026 00:51:31 +0000",
+      "contentSnippet": "Context I’m the author of the Calzolari.Grpc.AspNetCore.Validation package, which provides request message validation for gRPC...",
+      "creator": "anthonygiretti",
+      "categories": [
+        ".NET",
+        "ASP.NET Core",
+        "C#",
+        "FluentValidation",
+        "gRPC"
+      ],
+      "guid": "https://anthonygiretti.com/?p=19913"
+    },
+    {
       "title": ".NET 10: System.Text.Json Improvements",
       "link": "https://anthonygiretti.com/2026/03/02/net-10-system-text-json-improvements/",
       "pubDate": "Mon, 02 Mar 2026 00:25:48 +0000",
@@ -61,6 +76,53 @@
         ".NET"
       ],
       "guid": "https://anthonygiretti.com/?p=19829"
+    },
+    {
+      "title": "ASP.NET Core 10: First-class Server-Sent Events with an Angular client",
+      "link": "https://anthonygiretti.com/2026/01/03/asp-net-core-10-first-class-server-sent-events-with-an-angular-client/",
+      "pubDate": "Sat, 03 Jan 2026 18:55:00 +0000",
+      "contentSnippet": "Introduction For years, if you wanted to push data from the server to the client...",
+      "creator": "anthonygiretti",
+      "categories": [
+        "Angular",
+        "ASP.NET Core",
+        "Server Sent Events"
+      ],
+      "guid": "https://anthonygiretti.com/?p=19902"
+    },
+    {
+      "title": "ASP.NET Core 10: New OpenTelemetry metrics for Identity",
+      "link": "https://anthonygiretti.com/2025/12/17/asp-net-core-10-new-opentelemetry-metrics-for-identity/",
+      "pubDate": "Wed, 17 Dec 2025 15:14:00 +0000",
+      "contentSnippet": "Introduction ASP.NET Core has been shipping built-in OpenTelemetry meters for hosting, Kestrel, routing, and rate...",
+      "creator": "anthonygiretti",
+      "categories": [
+        "ASP.NET Core",
+        "OpenTelemetry"
+      ],
+      "guid": "https://anthonygiretti.com/?p=19891"
+    },
+    {
+      "title": "ASP.NET Core 10: Clearer separation between middlewares and endpoints for more predictable routing",
+      "link": "https://anthonygiretti.com/2025/12/16/asp-net-core-10-clearer-separation-between-middlewares-and-endpoints-for-more-predictable-routing/",
+      "pubDate": "Tue, 16 Dec 2025 11:21:00 +0000",
+      "contentSnippet": "Introduction If you’ve been working with ASP.NET Core long enough, you’ve probably been bitten at...",
+      "creator": "anthonygiretti",
+      "categories": [
+        "ASP.NET Core"
+      ],
+      "guid": "https://anthonygiretti.com/?p=19887"
+    },
+    {
+      "title": "ASP.NET Core 10: Easy support of local multi host",
+      "link": "https://anthonygiretti.com/2025/12/13/asp-net-core-10-easy-support-of-local-multi-host/",
+      "pubDate": "Sat, 13 Dec 2025 14:12:04 +0000",
+      "contentSnippet": "Introduction If you’ve ever built a project locally that needed to respond on multiple hostnames,...",
+      "creator": "anthonygiretti",
+      "categories": [
+        "ASP.NET Core"
+      ],
+      "guid": "https://anthonygiretti.com/?p=19882"
     },
     {
       "title": "C# 14: User-Defined Compound Assignment Operators",
@@ -145,6 +207,35 @@
         "C#"
       ],
       "guid": "https://anthonygiretti.com/?p=19794"
+    },
+    {
+      "title": "C# 14: Introducing Interceptors",
+      "link": "https://anthonygiretti.com/2025/11/15/c-14-introducing-interceptors/",
+      "pubDate": "Sat, 15 Nov 2025 02:07:09 +0000",
+      "contentSnippet": "Introduction C# 14 ships with a feature that sounds almost too good to be true:...",
+      "creator": "anthonygiretti",
+      "categories": [
+        "C#",
+        "C#14",
+        "Interceptors"
+      ],
+      "guid": "https://anthonygiretti.com/?p=19875"
+    },
+    {
+      "title": "C# 14: Interceptors in practice with automatic correlation headers",
+      "link": "https://anthonygiretti.com/2025/11/15/c-14-interceptors-in-practice-with-automatic-correlation-headers/",
+      "pubDate": "Sat, 15 Nov 2025 01:32:24 +0000",
+      "contentSnippet": "Introduction Interceptors became a stable C# language feature with C# 14 and .NET 10, after spending...",
+      "creator": "anthonygiretti",
+      "categories": [
+        ".NET",
+        "C#",
+        "Source generator",
+        "C#14",
+        "HttpClient",
+        "Interceptors"
+      ],
+      "guid": "https://anthonygiretti.com/?p=19858"
     },
     {
       "title": "C# 13: Introducing the new escape sequence",
@@ -323,6 +414,6 @@
       "guid": "https://anthonygiretti.com/?p=19698"
     }
   ],
-  "lastUpdated": "2026-03-06T08:34:04.830Z",
+  "lastUpdated": "2026-04-09T13:34:47.955Z",
   "feedTitle": "Anthony Giretti's .NET blog"
 }
