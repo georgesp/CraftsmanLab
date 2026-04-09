@@ -4,6 +4,30 @@ import path from 'path';
 
 const SOURCES_DIR = path.resolve(process.cwd(), 'src', 'components', 'news');
 
+const GENERIC_CATEGORIES = new Set([
+  'news', 'article', 'articles',
+  'blog', 'blogs', 'blogpost', 'blog post',
+  'post', 'posts',
+  'host', 'hosting',
+  'general', 'générale', 'général',
+  'other', 'autre', 'others',
+  'misc', 'miscellaneous', 'divers',
+  'featured', 'à la une',
+  'uncategorized', 'uncategorised',
+  'sans catégorie', 'non classé', 'non classée',
+  'update', 'updates',
+  'tip', 'tips',
+]);
+
+function toPascalCaseIfLower(str) {
+  if (/[A-Z]/.test(str)) return str;
+  return str.split(' ').map(word => {
+    if (!word) return word;
+    if (/^\.net$/i.test(word)) return '.NET';
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }).join(' ');
+}
+
 function postProcessCategories(categories) {
   const processed = [];
 
@@ -38,13 +62,10 @@ function postProcessCategories(categories) {
 
   const normalized = processed.map(cat => {
     if (cat.toLowerCase() === 'artificial intelligence') return 'AI';
-    return cat;
+    return toPascalCaseIfLower(cat);
   });
 
-  const filtered = normalized.filter(cat => {
-    const lower = cat.toLowerCase();
-    return lower !== 'news' && lower !== 'article';
-  });
+  const filtered = normalized.filter(cat => !GENERIC_CATEGORIES.has(cat.toLowerCase().trim()));
 
   return Array.from(new Set(filtered));
 }
@@ -167,8 +188,9 @@ async function fetchSingleRSS(slug, feedUrl, maxItems) {
         pubDate: item.pubDate || item.isoDate || '',
         contentSnippet: item.contentSnippet?.substring(0, 250) || '',
         creator: item.creator || item.author || '',
-        // Préserver les catégories existantes si l'article existe déjà
-        categories: postProcessCategories(existingItem?.categories || item.categories || []),
+        // Préserver les catégories existantes telles quelles, sans les retraiter
+        // Pour les nouveaux articles, nettoyer les catégories du flux RSS
+        categories: existingItem ? existingItem.categories : postProcessCategories(item.categories || []),
         guid: guid,
       };
     });
