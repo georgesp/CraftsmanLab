@@ -2,6 +2,18 @@
   "source": "developpez-dotnet",
   "items": [
     {
+      "title": "Microsoft annonce la version 1.0 de Microsoft Agent Framework pour .NET et Python, offrant une orchestration multi-agents de niveau entreprise et la prise en charge de modèles d'IA multi-fournisseurs",
+      "link": "https://microsoft.developpez.com/actu/381878/Microsoft-annonce-la-version-1-0-de-Microsoft-Agent-Framework-pour-NET-et-Python-offrant-une-orchestration-multi-agents-de-niveau-entreprise-et-la-prise-en-charge-de-modeles-d-IA-multi-fournisseurs/",
+      "pubDate": "Mon, 06 Apr 2026 15:56:00 +0200",
+      "contentSnippet": "Microsoft annonce la version 1.0 de Microsoft Agent Framework pour .NET et Python, offrant une orchestration multi-agents de niveau entreprise et la prise en charge de modèles d'IA multi-fournisseurs\nL'équipe de Microsoft a annoncé que Microsoft Agen",
+      "creator": "",
+      "categories": [
+        "Agents",
+        "Python"
+      ],
+      "guid": "https://microsoft.developpez.com/actu/381878/Microsoft-annonce-la-version-1-0-de-Microsoft-Agent-Framework-pour-NET-et-Python-offrant-une-orchestration-multi-agents-de-niveau-entreprise-et-la-prise-en-charge-de-modeles-d-IA-multi-fournisseurs/"
+    },
+    {
       "title": "IA générative avec des grands modèles de langage en C# en 2026 : une base pour les développeurs .NET/C# travaillant avec Microsoft Foundry, GitHub Models et AI Extensions, par Jeremy Likness",
       "link": "https://intelligence-artificielle.developpez.com/actu/379222/IA-generative-avec-des-grands-modeles-de-langage-en-C-en-2026-une-base-pour-les-developpeurs-NET-C-travaillant-avec-Microsoft-Foundry-GitHub-Models-et-AI-Extensions-par-Jeremy-Likness/",
       "pubDate": "Wed, 14 Jan 2026 16:44:00 +0100",
@@ -282,6 +294,6 @@
       "guid": "https://jetbrains.developpez.com/actu/365223/Rider-2024-3-disponible-prise-en-charge-des-dernieres-fonctionnalites-du-SDK-NET-9-et-C-13-debogage-de-console-pour-le-developpement-de-jeux-ameliorations-pour-l-assistant-IA-et-plus/"
     }
   ],
-  "lastUpdated": "2026-03-06T08:34:04.504Z",
+  "lastUpdated": "2026-04-09T13:34:45.661Z",
   "feedTitle": "Flux .NET Developpez"
 }
