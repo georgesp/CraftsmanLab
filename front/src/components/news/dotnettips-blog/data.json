@@ -2,6 +2,167 @@
   "source": "dotnettips-blog",
   "items": [
     {
+      "title": "String Performance: Avoid Unnecessary Conversions with StringBuilder",
+      "link": "https://dotnettips.com/2026/04/05/string-performance-avoid-unnecessary-conversions-with-stringbuilder/",
+      "pubDate": "Sun, 05 Apr 2026 06:00:00 +0000",
+      "contentSnippet": "The excerpt from \"Rock Your Code\" advises caution when using StringBuilder with non-string types, highlighting that unnecessary conversions can hinder performance.",
+      "creator": "David (dotNetDave) McCarter",
+      "categories": [
+        ".NET",
+        "Code Analysis",
+        "Performance",
+        "Code Performance",
+        "StringBuilder",
+        "Strings"
+      ],
+      "guid": "https://dotnettips.com/?p=16557"
+    },
+    {
+      "title": "Coding Faster with dotNetTips.com Spargine 10: April 2026 Release",
+      "link": "https://dotnettips.com/2026/04/01/coding-faster-with-dotnettips-com-spargine-10-april-2026-release/",
+      "pubDate": "Wed, 01 Apr 2026 06:00:00 +0000",
+      "contentSnippet": "Spargine 10 (v2026.10.4.1) is released on April 1, 2026, featuring support for .NET 10, new methods, and enhanced performance benchmarks. This open-source project aims to improve reliability and speed significantly. Community feedback and contributio",
+      "creator": "David (dotNetDave) McCarter",
+      "categories": [
+        ".NET",
+        "Open Source",
+        "Performance",
+        "Spargine"
+      ],
+      "guid": "https://dotnettips.com/?p=17399"
+    },
+    {
+      "title": "General Performance: Comparing Methods for Retrieving Process File Path",
+      "link": "https://dotnettips.com/2026/03/29/general-performance-comparing-methods-for-retrieving-process-file-path/",
+      "pubDate": "Sun, 29 Mar 2026 06:00:00 +0000",
+      "contentSnippet": "The excerpt from \"Rock Your Code\" explains two methods for retrieving the initiating file's path in .NET.",
+      "creator": "David (dotNetDave) McCarter",
+      "categories": [
+        ".NET",
+        "Code Analysis",
+        "Performance",
+        "Code Performance"
+      ],
+      "guid": "https://dotnettips.com/?p=16543"
+    },
+    {
+      "title": "General Performance: Exploring Thread ID Retrieval Methods",
+      "link": "https://dotnettips.com/2026/03/22/general-performance-exploring-thread-id-retrieval-methods/",
+      "pubDate": "Sun, 22 Mar 2026 06:00:00 +0000",
+      "contentSnippet": "This article explains two methods to obtain the current thread ID in .NET and shows which method is more performant.",
+      "creator": "David (dotNetDave) McCarter",
+      "categories": [
+        ".NET",
+        "Code Analysis",
+        "Performance",
+        "Code Performance",
+        "Thread"
+      ],
+      "guid": "https://dotnettips.com/?p=16537"
+    },
+    {
+      "title": "dotNetDave Says… Good Recruiters Are Transparent and Willing to Share Details About the Job Position",
+      "link": "https://dotnettips.com/2026/03/18/dotnetdave-says-good-recruiters-are-transparent-and-willing-to-share-details-about-the-job-position/",
+      "pubDate": "Wed, 18 Mar 2026 06:00:00 +0000",
+      "contentSnippet": "The text emphasizes the importance of transparency in the recruiting process, highlighting that unclear communication from recruiters can hinder trust. Job seekers should request essential details upfront, while recruiters are encouraged to lead with",
+      "creator": "David (dotNetDave) McCarter",
+      "categories": [
+        "Career Development",
+        "Interviewing",
+        "Job Hunting",
+        "Recruiters"
+      ],
+      "guid": "https://dotnettips.com/?p=17098"
+    },
+    {
+      "title": "Regular Expression Performance: Supercharge Your Match Counting",
+      "link": "https://dotnettips.com/2026/03/15/regular-expression-performance-supercharge-your-match-counting/",
+      "pubDate": "Sun, 15 Mar 2026 06:00:00 +0000",
+      "contentSnippet": "String manipulation is crucial in modern applications, significantly impacting performance and memory usage in .NET. learn how to achieve nearly double the speed and zero memory allocations when a count is required from a regular expression.",
+      "creator": "David (dotNetDave) McCarter",
+      "categories": [
+        ".NET",
+        "Code Analysis",
+        "Code Performance",
+        "Regular Expression",
+        "Strings"
+      ],
+      "guid": "https://dotnettips.com/?p=16502"
+    },
+    {
+      "title": "Rock Your Career: The Recruiter Survival Guide for Software Engineers – How to Use Recruiters Without Getting Used",
+      "link": "https://dotnettips.com/2026/03/13/rock-your-career-the-recruiter-survival-guide-for-software-engineers-how-to-use-recruiters-without-getting-used/",
+      "pubDate": "Fri, 13 Mar 2026 17:17:17 +0000",
+      "contentSnippet": "A new eBook by David McCarter offers software engineers practical strategies for effectively navigating the recruiting process. It emphasizes understanding recruiter dynamics, identifying high-quality recruiters, and avoiding common pitfalls. The gui",
+      "creator": "David (dotNetDave) McCarter",
+      "categories": [
+        "Books",
+        "Career Development",
+        "Soft Skills",
+        "AI",
+        "Technical Interview"
+      ],
+      "guid": "https://dotnettips.com/?p=17174"
+    },
+    {
+      "title": "CollabTalk Podcast: Episode 183 with David McCarter",
+      "link": "https://dotnettips.com/2026/03/12/collabtalk-podcast-episode-183-with-david-mccarter/",
+      "pubDate": "Thu, 12 Mar 2026 06:00:00 +0000",
+      "contentSnippet": "In a recent podcast, Christian Buckley and I discussed the dual nature of AI, sparking excitement and anxiety among software engineers. We explored its implications for the future of the profession, its impact on software design and development, and ",
+      "creator": "David (dotNetDave) McCarter",
+      "categories": [
+        "AI",
+        "Event"
+      ],
+      "guid": "https://dotnettips.com/?p=17166"
+    },
+    {
+      "title": "UX Chronicles: How OpenAI Broke Sora",
+      "link": "https://dotnettips.com/2026/03/12/ux-chronicles-how-openai-broke-sora/",
+      "pubDate": "Thu, 12 Mar 2026 06:00:00 +0000",
+      "contentSnippet": "The article critiques OpenAI's Sora 2 platform, highlighting its worsened user experience compared to Sora 1. Key features have been removed, leading to confusion and inefficiency for users. The author argues that Sora 2 exemplifies a troubling indus",
+      "creator": "David (dotNetDave) McCarter",
+      "categories": [
+        "Architecture",
+        "Development",
+        "UX Chronicles",
+        "Rant",
+        "User Experience"
+      ],
+      "guid": "https://dotnettips.com/?p=17125"
+    },
+    {
+      "title": "dotNetDave Says… Clear Naming Standards Create Clearer Code and Clearer Code Leads to Better Software",
+      "link": "https://dotnettips.com/2026/03/11/dotnetdave-says-clear-naming-standards-create-clearer-code-and-clearer-code-leads-to-better-software/",
+      "pubDate": "Wed, 11 Mar 2026 06:00:00 +0000",
+      "contentSnippet": "Clear naming standards in software development significantly enhance code readability, maintainability, and overall quality. Consistent naming reduces cognitive load, facilitates collaboration, and lowers long-term maintenance costs. Ignoring these s",
+      "creator": "David (dotNetDave) McCarter",
+      "categories": [
+        ".NET",
+        ".NET Coding Standards",
+        "Code Analysis",
+        "Coding Standards",
+        "dotNetDave Says",
+        "Open Source",
+        "Software Development Process"
+      ],
+      "guid": "https://dotnettips.com/?p=17089"
+    },
+    {
+      "title": "dotNetDave Says… Rushing into Coding Without Proper Planning Will Lead to Costly Mistakes and Delays",
+      "link": "https://dotnettips.wordpress.com/2026/03/04/dotnetdave-says-rushing-into-coding-without-proper-planning-will-lead-to-costly-mistakes-and-delays/",
+      "pubDate": "Wed, 04 Mar 2026 07:00:00 +0000",
+      "contentSnippet": "Effective software projects require thorough planning and architecture before coding begins. Skipping these steps often leads to costly mistakes, delays, and technical debt. A strong foundation improves system maintainability and user satisfaction. M",
+      "creator": "David (dotNetDave) McCarter",
+      "categories": [
+        ".NET",
+        "Architecture",
+        "Code Quality",
+        "Planning"
+      ],
+      "guid": "http://dotnettips.wordpress.com/?p=17081"
+    },
+    {
       "title": "Inside the AWS SDK for .NET: A Code Quality Wake-Up Call",
       "link": "https://dotnettips.wordpress.com/2026/03/01/inside-the-aws-sdk-for-net-a-code-quality-wake-up-call/",
       "pubDate": "Sun, 01 Mar 2026 07:00:00 +0000",
@@ -429,6 +590,6 @@
       "guid": "http://dotnettips.wordpress.com/?p=15619"
     }
   ],
-  "lastUpdated": "2026-03-02T13:38:30.732Z",
+  "lastUpdated": "2026-04-09T13:34:45.878Z",
   "feedTitle": "dotNetTips.com"
 }

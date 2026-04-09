@@ -1,6 +1,6 @@
 import { useMemo, useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Container, Card, Typography, Box, Grid, Alert, Link as MuiLink, Chip, TextField, InputAdornment, IconButton } from '@mui/material';
+import { Container, Card, Typography, Box, Grid, Alert, Link as MuiLink, Chip, TextField, InputAdornment, IconButton, Tooltip } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -408,9 +408,11 @@ export const NewsPage: React.FC = () => {
                               fontSize: '0.75rem',
                             }}
                           >
-                            <Typography sx={{ fontSize: '0.75rem', flex: 1 }}>
-                              {getSourceInfo(selectedSource).title}
-                            </Typography>
+                            <Tooltip title={getSourceInfo(selectedSource).title} placement="right" enterDelay={500}>
+                              <Typography sx={{ fontSize: '0.75rem', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                {getSourceInfo(selectedSource).title}
+                              </Typography>
+                            </Tooltip>
                             <IconButton
                               size="small"
                               onClick={() => setSelectedSource(null)}
@@ -443,9 +445,11 @@ export const NewsPage: React.FC = () => {
                               fontSize: '0.75rem',
                             }}
                           >
-                            <Typography sx={{ fontSize: '0.75rem', flex: 1 }}>
-                              {category}
-                            </Typography>
+                            <Tooltip title={category} placement="right" enterDelay={500}>
+                              <Typography sx={{ fontSize: '0.75rem', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                {category}
+                              </Typography>
+                            </Tooltip>
                             <IconButton
                               size="small"
                               onClick={() => toggleCategory(category)}
@@ -515,11 +519,11 @@ export const NewsPage: React.FC = () => {
                                 : selectedCategories.includes(category);
                               
                               return (
+                                <Tooltip key={category} title={category} placement="right" enterDelay={500}>
                                 <Chip
-                                  key={category}
                                   label={
-                                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                                      <span>{category}</span>
+                                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', minWidth: 0 }}>
+                                      <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0, flex: 1 }}>{category}</span>
                                       <Typography
                                         component="span"
                                         sx={{
@@ -527,6 +531,7 @@ export const NewsPage: React.FC = () => {
                                           ml: 1,
                                           opacity: 0.7,
                                           fontWeight: 500,
+                                          flexShrink: 0,
                                         }}
                                       >
                                         {categoryOccurrences[category] || 0}
@@ -559,6 +564,7 @@ export const NewsPage: React.FC = () => {
                                     },
                                   }}
                                 />
+                                </Tooltip>
                               );
                             })}
                           </Box>

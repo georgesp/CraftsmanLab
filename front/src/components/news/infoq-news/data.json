@@ -2,6 +2,526 @@
   "source": "infoq-news",
   "items": [
     {
+      "title": "AAIF's MCP Dev Summit: Gateways, gRPC, and Observability Signal Protocol Hardening",
+      "link": "https://www.infoq.com/news/2026/04/aaif-mcp-summit/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 09 Apr 2026 13:10:00 GMT",
+      "contentSnippet": "The MCP Dev Summit North America 2026, held on April 2-3 at the New York Marriott Marquis, gathered about 1,200 attendees. Hosted by the Linux Foundation's Agentic AI Foundation, discussions focused on the Model Context Protocol's evolution and enter",
+      "creator": "Andrew Hoblitzell",
+      "categories": [
+        "Model Context Protocol (MCP)",
+        "AI",
+        "Protocol",
+        "Open Source",
+        "Development",
+        "ML",
+        "Data Engineering"
+      ],
+      "guid": "https://www.infoq.com/news/2026/04/aaif-mcp-summit/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Presentation: Choosing Your AI Copilot: Maximizing Developer Productivity",
+      "link": "https://www.infoq.com/presentations/ai-coding-agents-copilot/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 09 Apr 2026 12:00:00 GMT",
+      "contentSnippet": "Sepehr Khosravi discusses the current state of AI-assisted coding, moving beyond basic autocompletion to sophisticated agentic workflows. He explains the technical nuances of Cursor’s \"Composer\" and Claude Code’s research capabilities, providing tips",
+      "creator": "Sepehr Khosravi",
+      "categories": [
+        "Agents",
+        "AI",
+        "Transcripts",
+        "QCon San Francisco 2025",
+        "ML",
+        "Data Engineering",
+        "presentation"
+      ],
+      "guid": "https://www.infoq.com/presentations/ai-coding-agents-copilot/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Developing Your Leadership Skills toward Principal Engineering",
+      "link": "https://www.infoq.com/news/2026/04/leadership-skills/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 09 Apr 2026 11:10:00 GMT",
+      "contentSnippet": "Work isn’t the only place where you can develop valuable leadership skills, Sophie Weston mentioned in the video The Principal Engineer’s Path from her QCon London talk. She suggested thinking about the things you do outside of your job where you can",
+      "creator": "Ben Linders",
+      "categories": [
+        "QCon Software Development Conference",
+        "Leadership",
+        "QCon London 2025",
+        "Psychological Safety",
+        "Staff Plus",
+        "Social Skills",
+        "Careers",
+        "learning",
+        "Culture & Methods"
+      ],
+      "guid": "https://www.infoq.com/news/2026/04/leadership-skills/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Article: Building Hierarchical Agentic RAG Systems: Multi-Modal Reasoning with Autonomous Error Recovery",
+      "link": "https://www.infoq.com/articles/building-hierarchical-agentic-rag-systems/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 09 Apr 2026 09:00:00 GMT",
+      "contentSnippet": "In this article, the author explores how hierarchical agentic RAG systems coordinate specialized workers through structured orchestration to improve accuracy, reliability, and explainability in complex enterprise analytics workflows. The article uses",
+      "creator": "Abhijit Ubale",
+      "categories": [
+        "Retrieval-Augmented Generation",
+        "Development",
+        "Architecture",
+        "Design",
+        "AI",
+        "ML",
+        "Data Engineering"
+      ],
+      "guid": "https://www.infoq.com/articles/building-hierarchical-agentic-rag-systems/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Aspire 13.2 Released with Expanded CLI, TypeScript AppHost Preview, and Dashboard Improvements",
+      "link": "https://www.infoq.com/news/2026/04/aspire-13-2-release/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 09 Apr 2026 08:30:00 GMT",
+      "contentSnippet": "Aspire 13.2 brings expanded CLI with detached mode and process management, TypeScript AppHost support in preview, dashboard telemetry export and import, stable Docker Compose publishing, Microsoft Foundry integration, Azure Virtual Network support, a",
+      "creator": "Almir Vuk",
+      "categories": [
+        ".NET Aspire",
+        ".NET",
+        ".NET 8",
+        ".NET 9",
+        ".NET 10",
+        "Development"
+      ],
+      "guid": "https://www.infoq.com/news/2026/04/aspire-13-2-release/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Google Brings MCP Support to Colab, Enabling Cloud Execution for AI Agents",
+      "link": "https://www.infoq.com/news/2026/04/colab-mcp-server/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 09 Apr 2026 08:30:00 GMT",
+      "contentSnippet": "Google has released the open-source Colab MCP Server, enabling AI agents to directly interact with Google Colab through the Model Context Protocol (MCP). The project is designed to bridge local agent workflows with cloud-based execution, allowing dev",
+      "creator": "Robert Krzaczyński",
+      "categories": [
+        "Agents",
+        "Model Context Protocol (MCP)",
+        "AI",
+        "Google",
+        "ML",
+        "Data Engineering"
+      ],
+      "guid": "https://www.infoq.com/news/2026/04/colab-mcp-server/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Tailwind CSS 4.2 Ships Webpack Plugin, New Palettes and Logical Property Utilities",
+      "link": "https://www.infoq.com/news/2026/04/tailwind-css-4-2-webpack/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 08 Apr 2026 14:48:00 GMT",
+      "contentSnippet": "Tailwind CSS version 4.2.0, released on February 18, 2026, includes a webpack plugin for streamlined integration and four new color palettes. It expands logical property utilities and improves recompilation speed by 3.8x. This update is particularly ",
+      "creator": "Daniel Curtis",
+      "categories": [
+        "Styling",
+        "JavaScript",
+        "HTML",
+        "Web Development",
+        "CSS",
+        "Bundlers",
+        "Development"
+      ],
+      "guid": "https://www.infoq.com/news/2026/04/tailwind-css-4-2-webpack/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Cloudflare and ETH Zurich Outline Approaches for AI-Driven Cache Optimization",
+      "link": "https://www.infoq.com/news/2026/04/cloudflare-ai-caching-strategies/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 08 Apr 2026 14:20:00 GMT",
+      "contentSnippet": "Cloudflare and ETH Zurich highlight how AI-driven crawler traffic challenges traditional caching in CDNs and databases. They propose AI-aware strategies including separate cache tiers, adaptive algorithms, and pay-per-crawl models to balance performa",
+      "creator": "Leela Kumili",
+      "categories": [
+        "CDN",
+        "Database",
+        "Distributed Cache",
+        "Machine Learning",
+        "AI",
+        "AI Architecture",
+        "Performance",
+        "BOTS",
+        "Caching",
+        "Retrieval-Augmented Generation",
+        "Development",
+        "Architecture",
+        "Design",
+        "ML",
+        "Data Engineering"
+      ],
+      "guid": "https://www.infoq.com/news/2026/04/cloudflare-ai-caching-strategies/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "GitHub Actions Custom Runner Images Reach General Availability",
+      "link": "https://www.infoq.com/news/2026/04/github-actions-custom-runners/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 08 Apr 2026 14:00:00 GMT",
+      "contentSnippet": "GitHub has just announced the availability of custom images for its hosted runners. They've finally left the public preview phase that started back in October behind them. This feature will enable teams to use a GitHub-approved base image and then co",
+      "creator": "Claudio Masolo",
+      "categories": [
+        "github",
+        "GitHub Actions",
+        "DevOps"
+      ],
+      "guid": "https://www.infoq.com/news/2026/04/github-actions-custom-runners/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Presentation: Local First – How To Build Software Which Still Works After the Acquihire",
+      "link": "https://www.infoq.com/presentations/local-first-build-software/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 08 Apr 2026 10:37:00 GMT",
+      "contentSnippet": "Alex Good discusses the fragility of modern cloud-dependent apps and shares a roadmap for \"local-first\" software. By leveraging a Git-like DAG structure and Automerge, he explains how to move from brittle client-server models to resilient systems whe",
+      "creator": "Alex Good",
+      "categories": [
+        "Best Practices",
+        "QCon London 2025",
+        "Transcripts",
+        "Methodologies",
+        "Culture & Methods",
+        "presentation"
+      ],
+      "guid": "https://www.infoq.com/presentations/local-first-build-software/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Article: Stateful Continuation for AI Agents: Why Transport Layers Now Matter",
+      "link": "https://www.infoq.com/articles/ai-agent-transport-layer/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 08 Apr 2026 09:00:00 GMT",
+      "contentSnippet": "Agent workflows make transport a first-order concern. Multi-turn, tool-heavy loops amplify overhead that is negligible in single-turn LLM use. Stateful continuation cuts overhead dramatically. Caching context server-side can reduce client-sent data b",
+      "creator": "Anirudh Mendiratta",
+      "categories": [
+        "OpenAI",
+        "WebSocket",
+        "AI Coding",
+        "HTTP",
+        "AI Assisted Coding",
+        "Development",
+        "Architecture",
+        "Design",
+        "AI",
+        "ML",
+        "Data Engineering"
+      ],
+      "guid": "https://www.infoq.com/articles/ai-agent-transport-layer/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Presentation: State of Play: AI Coding Assistants",
+      "link": "https://www.infoq.com/presentations/ai-coding-assistants/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 08 Apr 2026 08:34:00 GMT",
+      "contentSnippet": "Birgitta Böckeler discusses the rapid evolution of AI agents, moving beyond \"vibe coding\" to sophisticated context engineering. She explains how architectural constraints and \"harness engineering\" create the safety nets required for autonomous code g",
+      "creator": "Birgitta Böckeler",
+      "categories": [
+        "Agents",
+        "AI",
+        "Transcripts",
+        "QCon London 2026",
+        "ML",
+        "Data Engineering",
+        "presentation"
+      ],
+      "guid": "https://www.infoq.com/presentations/ai-coding-assistants/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Inside Spotify’s 2025 Wrapped Archive: AI Narratives at Scale and the Privacy Trade‑Off",
+      "link": "https://www.infoq.com/news/2026/04/spotify-wrapped-privacy/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 08 Apr 2026 07:00:00 GMT",
+      "contentSnippet": "Spotify's engineering team developed the 2025 \"Wrapped Archive,\" generating 1.4 billion personalized reports for 350 million users. This system identifies key listening days and crafts narratives using a language model. As companies increasingly prov",
+      "creator": "Matt Foster",
+      "categories": [
+        "User Experience",
+        "Machine Learning",
+        "Data Privacy",
+        "Privacy",
+        "Architecture",
+        "Design",
+        "Culture & Methods"
+      ],
+      "guid": "https://www.infoq.com/news/2026/04/spotify-wrapped-privacy/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Presentation: When Every Bit Counts: How Valkey Rebuilt Its Hashtable for Modern Hardware",
+      "link": "https://www.infoq.com/presentations/hashtable-modern-hardware/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Tue, 07 Apr 2026 13:40:00 GMT",
+      "contentSnippet": "Madelyn Olson discusses the evolution of Valkey's data structures, moving away from \"textbook\" pointer-chasing HashMaps to more cache-aware designs. She explains the implementation of \"Swedish\" tables to maximize memory density. She shares insights o",
+      "creator": "Madelyn Olson",
+      "categories": [
+        "Transcripts",
+        "Case Study",
+        "QCon San Francisco 2025",
+        "Hardware",
+        "Development",
+        "AI",
+        "ML",
+        "Data Engineering",
+        "presentation"
+      ],
+      "guid": "https://www.infoq.com/presentations/hashtable-modern-hardware/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Istio Evolves for the AI Era with Multicluster, Ambient Mode, and Inference Capabilities",
+      "link": "https://www.infoq.com/news/2026/04/istio-ai-multicluster/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Tue, 07 Apr 2026 12:00:00 GMT",
+      "contentSnippet": "The Cloud Native Computing Foundation (CNCF) has announced a major evolution of Istio, introducing new capabilities aimed at making service meshes “future-ready” for AI-driven workloads.\n By Craig Risi",
+      "creator": "Craig Risi",
+      "categories": [
+        "AI",
+        "Istio",
+        "Cloud Native Computing Foundation",
+        "DevOps"
+      ],
+      "guid": "https://www.infoq.com/news/2026/04/istio-ai-multicluster/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Decentralizing Architectural Decisions with the Architecture Advice Process",
+      "link": "https://www.infoq.com/news/2026/03/architecture-advice-process/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 05 Mar 2026 11:33:00 GMT",
+      "contentSnippet": "Our system architectures have changed as technology and development practices have evolved, but the way we practice architecture hasn’t kept up. According to Andrew Harmel-Law, architecture needs to be decentralized, similar to how we have decentrali",
+      "creator": "Ben Linders",
+      "categories": [
+        "Culture",
+        "Architecture",
+        "Process",
+        "GOTO Conference",
+        "Patterns and Practices",
+        "Culture & Methods",
+        "Design"
+      ],
+      "guid": "https://www.infoq.com/news/2026/03/architecture-advice-process/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "QCon AI Boston’s Early Program Focuses on the Engineering Work Behind Production AI",
+      "link": "https://www.infoq.com/news/2026/03/qconai-boston-2026-talks/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 05 Mar 2026 11:00:00 GMT",
+      "contentSnippet": "As teams move AI from pilots to production, the hard problems shift from demos to dependability. The first confirmed talks for QCon AI Boston (June 1–2) focus on context engineering, agent explainability, reasoning beyond basic RAG, evaluation, gover",
+      "creator": "Artenisa Chatziou",
+      "categories": [
+        "Generative AI",
+        "QCon AI Boston 2026",
+        "AI",
+        "QCon Software Development Conference",
+        "ML",
+        "Data Engineering"
+      ],
+      "guid": "https://www.infoq.com/news/2026/03/qconai-boston-2026-talks/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "GitHub Data Shows AI Tools Creating \"Convenience Loops\" That Reshape Developer Language Choices",
+      "link": "https://www.infoq.com/news/2026/03/ai-reshapes-language-choice/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 05 Mar 2026 10:22:00 GMT",
+      "contentSnippet": "GitHub’s Octoverse 2025 report reveals a \"convenience loop\" where AI coding assistants drive language choice. TypeScript’s 66% surge to the #1 spot highlights a shift toward static typing, as types provide essential guardrails for LLMs. While Python ",
+      "creator": "Steef-Jan Wiggers",
+      "categories": [
+        "Programming Languages",
+        "Developer Experience",
+        "GitHub",
+        "AI",
+        "Software Engineering",
+        "TypeScript",
+        "ML",
+        "Data Engineering",
+        "Development"
+      ],
+      "guid": "https://www.infoq.com/news/2026/03/ai-reshapes-language-choice/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Cloudflare Debuts Markdown for Agents and Content Signals to Guide AI Crawlers",
+      "link": "https://www.infoq.com/news/2026/03/cloudflare-crawler/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 05 Mar 2026 07:19:00 GMT",
+      "contentSnippet": "Cloudflare has introduced “Markdown for Agents,” a feature that lets AI crawlers request Markdown versions of web pages. The company pairs the feature with a proposed “Content Signals” mechanism that lets publishers declare whether their content may ",
+      "creator": "Matt Foster",
+      "categories": [
+        "HTTP",
+        "Cloudflare",
+        "Agents",
+        "Web",
+        "Data Privacy",
+        "AI",
+        "ML",
+        "Data Engineering",
+        "Development"
+      ],
+      "guid": "https://www.infoq.com/news/2026/03/cloudflare-crawler/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Presentation: What I Wish I Knew When I Started with Green IT",
+      "link": "https://www.infoq.com/presentations/green-it/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 04 Mar 2026 12:03:00 GMT",
+      "contentSnippet": "Ludi Akue discusses how the tech sector’s rising emissions impact our global climate goals. Drawing from her experience as a CTO, she explains seven key lessons for implementing Green IT. She shares insights on LCA assessments, the paradox of microse",
+      "creator": "Ludi Akue",
+      "categories": [
+        "QCon London 2025",
+        "Green Software",
+        "Transcripts",
+        "Culture & Methods"
+      ],
+      "guid": "https://www.infoq.com/presentations/green-it/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Vue Router 5: File-Based Routing Into Core with No Breaking Changes",
+      "link": "https://www.infoq.com/news/2026/03/vue-router-5/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 04 Mar 2026 09:00:00 GMT",
+      "contentSnippet": "Vue Router 5.0 has integrated unplugin-vue-router into its core, enhancing file-based routing and TypeScript support. This transition release boasts no breaking changes, simplifies dependencies, and introduces experimental features like data loaders ",
+      "creator": "Daniel Curtis",
+      "categories": [
+        "Routing",
+        "JavaScript",
+        "Web Development",
+        "Vue.js",
+        "TypeScript",
+        "Development"
+      ],
+      "guid": "https://www.infoq.com/news/2026/03/vue-router-5/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Podcast: [Video Podcast] AI Autonomy Is Redefining Architecture: Boundaries Now Matter Most",
+      "link": "https://www.infoq.com/podcasts/redefining-architecture-boundaries-matter-most/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 04 Mar 2026 09:00:00 GMT",
+      "contentSnippet": "This conversation explores why generative AI is not just another automation layer but a shift into autonomy. The key idea is that we cannot retrofit AI into old procedural workflows and expect it to behave. Once autonomy is introduced, systems will d",
+      "creator": "Jesper Lowgren",
+      "categories": [
+        "Architecture",
+        "The InfoQ Podcast",
+        "Generative AI",
+        "AI",
+        "ML",
+        "Data Engineering",
+        "Design",
+        "Development"
+      ],
+      "guid": "https://www.infoq.com/podcasts/redefining-architecture-boundaries-matter-most/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Google Launches Automated Review Feature in Gemini CLI Conductor",
+      "link": "https://www.infoq.com/news/2026/03/gemini-cli-conductor-reviews/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Tue, 03 Mar 2026 20:00:00 GMT",
+      "contentSnippet": "Google has enhanced its Gemini CLI extension, Conductor, by adding support for automated reviews. The company says this update allows Conductor \"to go beyond just planning and execution into validation\", enabling it to check AI-generated code for qua",
+      "creator": "Sergio De Simone",
+      "categories": [
+        "Continuous Improvement",
+        "Gemini CLI",
+        "Open Source",
+        "Google",
+        "AI",
+        "ML",
+        "Data Engineering",
+        "Development"
+      ],
+      "guid": "https://www.infoq.com/news/2026/03/gemini-cli-conductor-reviews/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "From Central Control to Team Autonomy: Rethinking Infrastructure Delivery",
+      "link": "https://www.infoq.com/news/2026/03/adidas-decentralized-platform/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Tue, 03 Mar 2026 15:01:00 GMT",
+      "contentSnippet": "Adidas engineers describe shifting from a centralized Infrastructure-as-Code model to a decentralized one. Five teams autonomously deployed over 81 new infrastructure stacks in two months, using layered IaC modules, automated pipelines, and shared fr",
+      "creator": "Leela Kumili",
+      "categories": [
+        "Infrastructure as Code",
+        "Internal Developer Portal",
+        "Platform Engineering",
+        "Architecture",
+        "Design",
+        "Culture & Methods",
+        "Development",
+        "DevOps"
+      ],
+      "guid": "https://www.infoq.com/news/2026/03/adidas-decentralized-platform/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Google Publishes Scaling Principles for Agentic Architectures",
+      "link": "https://www.infoq.com/news/2026/03/google-multi-agent/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Tue, 03 Mar 2026 14:00:00 GMT",
+      "contentSnippet": "Researchers from Google and MIT published a paper describing a predictive framework for scaling multi-agent systems. The framework shows that there is a tool-coordination trade-off and it can be used to select an optimal agentic architecture for a gi",
+      "creator": "Anthony Alford",
+      "categories": [
+        "LLM",
+        "Agents",
+        "AI",
+        "ML",
+        "Data Engineering"
+      ],
+      "guid": "https://www.infoq.com/news/2026/03/google-multi-agent/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Google Cloud Brings Full OpenTelemetry Support to Cloud Monitoring Metrics",
+      "link": "https://www.infoq.com/news/2026/03/google-cloud-opentelemetry/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Tue, 03 Mar 2026 12:00:00 GMT",
+      "contentSnippet": "Google Cloud recently unveiled broad support for the OpenTelemetry Protocol (OTLP) in Cloud Monitoring, marking a step toward unifying telemetry collection across its observability stack.\n By Craig Risi",
+      "creator": "Craig Risi",
+      "categories": [
+        "Google Cloud",
+        "Monitoring",
+        "OpenTelemetry",
+        "DevOps"
+      ],
+      "guid": "https://www.infoq.com/news/2026/03/google-cloud-opentelemetry/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "AWS Launches Agent Plugins to Automate Cloud Deployment",
+      "link": "https://www.infoq.com/news/2026/03/aws-launches-agent-plugins/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Tue, 03 Mar 2026 10:13:00 GMT",
+      "contentSnippet": "AWS launched Agent Plugins for AWS, providing AI coding agents with specialized deployment skills. The initial deploy-on-aws plugin transforms workflows by accepting commands like \"deploy to AWS\" and generating complete pipelines with architecture re",
+      "creator": "Steef-Jan Wiggers",
+      "categories": [
+        "AWS",
+        "Cloud",
+        "Infrastructure as Code",
+        "Developer Experience",
+        "Agents",
+        "Amazon",
+        "Automated Deployment",
+        "Amazon Web Services",
+        "AI",
+        "ML",
+        "Data Engineering",
+        "Architecture",
+        "Design",
+        "Development",
+        "DevOps"
+      ],
+      "guid": "https://www.infoq.com/news/2026/03/aws-launches-agent-plugins/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Google Enhances Node Pool Auto-Creation Speed for GKE Clusters",
+      "link": "https://www.infoq.com/news/2026/03/gke-node-pool-speed-update/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Tue, 03 Mar 2026 08:00:00 GMT",
+      "contentSnippet": "Google Cloud has optimised GKE's node pool auto-creation, significantly cutting \"Time to Ready\" for massive clusters. By improving control plane communication and request batching, GKE now provisions resources faster, rivalling tools like Karpenter. ",
+      "creator": "Mark Silvester",
+      "categories": [
+        "Kubernetes Operator",
+        "Google Cloud Platform",
+        "Kubernetes",
+        "Architecture",
+        "Design",
+        "Development",
+        "DevOps"
+      ],
+      "guid": "https://www.infoq.com/news/2026/03/gke-node-pool-speed-update/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "GitHub's Points to a More Global, AI-Challenged Open Source Ecosystem in 2026",
+      "link": "https://www.infoq.com/news/2026/03/github-ai-2026/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Tue, 03 Mar 2026 08:00:00 GMT",
+      "contentSnippet": "GitHub has released its yearly look at open-source trends. They used data from the Octoverse 2025 report to help the open-source community get ready for the coming year. The picture that emerges is one of extraordinary scale and the structural strain",
+      "creator": "Claudio Masolo",
+      "categories": [
+        "Predictions",
+        "GitHub",
+        "AI",
+        "Development"
+      ],
+      "guid": "https://www.infoq.com/news/2026/03/github-ai-2026/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Hybrid Cloud Data at Uber: How Engineers Solved Extreme-Scale Replication Challenges",
+      "link": "https://www.infoq.com/news/2026/03/uber-scaled-data-replication/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Mon, 02 Mar 2026 15:00:00 GMT",
+      "contentSnippet": "Uber’s HiveSync team optimized Hadoop Distcp to handle multi-petabyte replication across hybrid cloud and on-premise data lakes. Enhancements include task parallelization, Uber jobs for small transfers, and improved observability, enabling 5x replica",
+      "creator": "Leela Kumili",
+      "categories": [
+        "Observability",
+        "Data Lake",
+        "Distributed Systems",
+        "Big Data",
+        "Database Replication",
+        "Data Pipelines",
+        "Architecture",
+        "Design",
+        "Development"
+      ],
+      "guid": "https://www.infoq.com/news/2026/03/uber-scaled-data-replication/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
       "title": "Podcast: [Video Podcast] Frictionless DevEx with Nicole Forsgren",
       "link": "https://www.infoq.com/podcasts/frictionless-devex/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
       "pubDate": "Mon, 02 Mar 2026 11:00:00 GMT",
@@ -1266,6 +1786,6 @@
       "guid": "https://www.infoq.com/news/2026/01/google-translategemma-models/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
     }
   ],
-  "lastUpdated": "2026-03-02T13:38:37.161Z",
+  "lastUpdated": "2026-04-09T13:34:46.402Z",
   "feedTitle": "InfoQ"
 }

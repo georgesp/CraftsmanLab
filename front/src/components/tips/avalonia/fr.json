@@ -1,0 +1,104 @@
+{
+  "avalonia": {
+    "title": "Avalonia UI",
+    "shortDescription": "Framework UI cross-platform pour .NET : Windows, macOS, Linux, iOS, Android et WebAssembly.",
+    "content": {
+      "mainTitle": "Avalonia UI : framework cross-platform pour .NET",
+      "intro": "Avalonia est un framework UI open-source et cross-platform pour .NET. Il permet de créer des applications en C# et XAML qui s'exécutent sur Windows, macOS, Linux, iOS, Android et WebAssembly depuis une seule base de code.",
+      "summary": "Framework UI open-source pour .NET permettant de créer des applications cross-platform en C# et XAML, avec un rendu pixel-perfect identique sur toutes les plateformes.",
+      "tocTitle": "Sommaire",
+      "tocItems": [
+        "Qu'est-ce qu'Avalonia ?",
+        "Installation",
+        "Exemples de code",
+        "Déploiement Windows",
+        "Déploiement macOS",
+        "Support mobile (iOS & Android)"
+      ],
+      "sections": {
+        "whatIsIt": {
+          "title": "Qu'est-ce qu'Avalonia ?",
+          "description": "Avalonia est né de la volonté de porter WPF (Windows Presentation Foundation) sur d'autres plateformes. Contrairement à .NET MAUI qui abstrait les contrôles natifs de chaque OS, Avalonia utilise son propre moteur de rendu (Skia ou Direct2D) pour dessiner chaque pixel de façon identique sur toutes les plateformes. L'application a ainsi exactement le même aspect sur Windows, macOS, Linux ou un appareil Android.",
+          "architectureTitle": "Points clés de l'architecture",
+          "architectureItems": [
+            "Moteur de rendu propre basé sur Skia ou Direct2D — aucun contrôle natif OS",
+            "Couche plateforme minimale : fenêtres, événements d'entrée, presse-papiers, accélération matérielle",
+            "Data binding, MVVM, animations et styling proches de WPF/UWP",
+            "Basé sur .NET Standard 2.0+ (compatible .NET 8 et supérieur recommandé)",
+            "Intégration native : Win32 APIs sur Windows, Cocoa sur macOS, X11/Wayland sur Linux"
+          ]
+        },
+        "installation": {
+          "title": "Installation",
+          "description": "Prérequis : .NET 8 ou supérieur. Installe les templates Avalonia via la CLI dotnet, puis crée ton premier projet.",
+          "templatesTitle": "Templates disponibles",
+          "templateItems": [
+            "avalonia.app — Application bureau desktop (Windows, macOS, Linux)",
+            "avalonia.mvvm — Application bureau avec le pattern MVVM (ReactiveUI inclus)",
+            "avalonia.xplat — Application cross-platform ciblant Bureau + Mobile + WebAssembly"
+          ],
+          "ideTitle": "IDE recommandés",
+          "ideItems": [
+            "JetBrains Rider — Expérience complète sur macOS/Linux avec le plugin AvaloniaRider (prévisualisation XAML live)",
+            "Visual Studio 2022 — Recommandé sur Windows avec l'extension Avalonia pour Visual Studio",
+            "Visual Studio Code — Supporté mais avec des fonctionnalités limitées"
+          ]
+        },
+        "examples": {
+          "title": "Exemples de code",
+          "xamlTitle": "Interface XAML — MainWindow.axaml",
+          "xamlDescription": "Une fenêtre simple avec un champ de saisie et un bouton. La syntaxe XAML est très proche de WPF : même namespace, même mécanique de binding.",
+          "codeBehindTitle": "Code-behind — MainWindow.axaml.cs",
+          "codeBehindDescription": "Gestion de l'événement click dans le code-behind. L'approche code-behind fonctionne parfaitement pour des cas simples.",
+          "mvvmTitle": "Pattern MVVM avec ReactiveUI",
+          "mvvmDescription": "Le template MVVM intègre ReactiveUI. Le ViewModel expose des propriétés observables : la vue se lie automatiquement via le binding XAML."
+        },
+        "deployWindows": {
+          "title": "Déploiement Windows",
+          "description": "Sur Windows, Avalonia fonctionne dès Windows 8.1. La méthode recommandée pour la distribution est la publication en Self-Contained avec un fichier unique : l'exécutable embarque le runtime .NET et toutes les dépendances.",
+          "publishTitle": "Commandes de publication",
+          "publishDescription": "La publication en single file simplifie la distribution : un seul exécutable à fournir à l'utilisateur, sans installer le runtime .NET.",
+          "innoTitle": "Installeur avec Inno Setup ou WiX",
+          "innoDescription": "Après publication, génère un installeur en pointant vers le dossier de sortie. Inno Setup et WiX Toolset sont les options les plus répandues pour les applications Windows .NET.",
+          "storeTitle": "Distribution via le Microsoft Store",
+          "storeDescription": "Avalonia supporte le packaging MSIX pour le Microsoft Store. Utilise le SDK Windows App avec la cible win10-x64, puis soumets le package via le Partner Center."
+        },
+        "deployMac": {
+          "title": "Déploiement macOS",
+          "description": "Sur macOS, les applications Avalonia sont distribuées sous forme de bundle .app. Ce dossier suit une structure précise attendue par le système. Avalonia supporte macOS 10.14 (Mojave) et supérieur.",
+          "bundleTitle": "Structure du bundle .app",
+          "bundleDescription": "Le bundle .app contient le binaire (généré par dotnet publish), les ressources et un fichier Info.plist qui décrit l'application au système.",
+          "publishTitle": "Publication et création du bundle",
+          "publishDescription": "Publie pour la cible osx-arm64 (Apple Silicon) ou osx-x64 (Intel), crée manuellement la structure .app, configure Info.plist et copie les fichiers publiés.",
+          "plistTitle": "Info.plist minimum",
+          "plistDescription": "Le fichier Info.plist décrit l'application à macOS. Les clés CFBundleExecutable, CFBundleIdentifier et NSHighResolutionCapable sont indispensables.",
+          "signTitle": "Signature et notarisation",
+          "signDescription": "Depuis macOS 10.15 (Catalina), la signature (codesign) et la notarisation (notarytool) sont obligatoires pour distribuer une application hors App Store. Un compte Apple Developer payant est requis."
+        },
+        "mobile": {
+          "title": "Support mobile (iOS & Android)",
+          "description": "Avalonia supporte le développement mobile depuis la version 11. Le template avalonia.xplat génère un projet multi-cibles : un seul code UI partagé pour bureau, mobile et WebAssembly.",
+          "compatTitle": "Compatibilité",
+          "compatItems": [
+            "iOS : iOS 13 et supérieur (suit le cycle de vie MAUI pour le support .NET)",
+            "Android : API 21 (Android 5.0 Lollipop) à API 36 (Android 16)",
+            "Cycle de vie mobile géré nativement — intégration avec la plateforme sous-jacente"
+          ],
+          "setupTitle": "Mise en place avec le template xplat",
+          "setupDescription": "Le template avalonia.xplat crée un projet solution avec des sous-projets ciblant Desktop, Android et iOS. La couche UI est entièrement partagée.",
+          "limitationsTitle": "Points d'attention",
+          "limitationItems": [
+            "Le support mobile est plus récent que le support bureau — vérifier la disponibilité des contrôles avancés",
+            "La signature iOS nécessite un Mac avec Xcode installé",
+            "MAUI reste l'option officiellement supportée par Microsoft pour des contrôles 100% natifs",
+            "Évaluer les performances Skia sur les appareils cibles avant de commencer"
+          ]
+        }
+      },
+      "footer": {
+        "sourceLabel": "Documentation officielle Avalonia",
+        "writtenOn": "Écrit le {{date}}"
+      }
+    }
+  }
+}
