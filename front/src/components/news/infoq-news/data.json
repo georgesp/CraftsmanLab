@@ -2,6 +2,291 @@
   "source": "infoq-news",
   "items": [
     {
+      "title": "CNCF Warns Kubernetes Alone Is Not Enough to Secure LLM Workloads",
+      "link": "https://www.infoq.com/news/2026/04/kubernetes-secure-workloads/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Fri, 17 Apr 2026 12:00:00 GMT",
+      "contentSnippet": "A new blog from the Cloud Native Computing Foundation highlights a critical gap in how organizations are deploying large language models (LLMs) on Kubernetes: while Kubernetes excels at orchestrating and isolating workloads, it does not inherently un",
+      "creator": "Craig Risi",
+      "categories": [
+        "AI",
+        "Kubernetes",
+        "Large language models",
+        "Cloud Security",
+        "Cloud Native Computing Foundation",
+        "DevOps",
+        "ML",
+        "Data Engineering"
+      ],
+      "guid": "https://www.infoq.com/news/2026/04/kubernetes-secure-workloads/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Anthropic Introduces Agent-Based Code Review for Claude Code",
+      "link": "https://www.infoq.com/news/2026/04/claude-code-review/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Fri, 17 Apr 2026 10:16:00 GMT",
+      "contentSnippet": "Anthropic has introduced a new Code Review feature for Claude Code, adding an agent-based pull request review system that analyzes code changes using multiple AI reviewers.\n By Daniel Dominguez",
+      "creator": "Daniel Dominguez",
+      "categories": [
+        "Github",
+        "AI",
+        "Code Reviews",
+        "Anthropic",
+        "Large language models",
+        "Claude",
+        "Code Generation",
+        "Software Development",
+        "ML",
+        "Data Engineering"
+      ],
+      "guid": "https://www.infoq.com/news/2026/04/claude-code-review/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Presentation: Speed at Scale: Optimizing the Largest CX Platform Out There",
+      "link": "https://www.infoq.com/presentations/optimize-performance-cx-platform/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Fri, 17 Apr 2026 09:20:00 GMT",
+      "contentSnippet": "Matheus Albuquerque shares strategies for optimizing a massive CX platform, moving from React 15 and Webpack 1 to modern standards. He discusses using AST-based codemods for large-scale migrations, implementing differential serving with module/nomodu",
+      "creator": "Matheus Albuquerque",
+      "categories": [
+        "QCon London 2025",
+        "Web Development",
+        "Performance",
+        "Transcripts",
+        "Culture & Methods",
+        "Presentation"
+      ],
+      "guid": "https://www.infoq.com/presentations/optimize-performance-cx-platform/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Article: Lakehouse Tower of Babel: Handling Identifier Resolution Rules Across Database Engines",
+      "link": "https://www.infoq.com/articles/lakehouse-sql-identifier-rules/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Fri, 17 Apr 2026 09:00:00 GMT",
+      "contentSnippet": "Lakehouse architectures enable multiple engines to operate on shared data using open table formats such as Apache Iceberg. However, differences in SQL identifier resolution and catalog naming rules create interoperability failures. This article exami",
+      "creator": "Maninder Parmar",
+      "categories": [
+        "Database",
+        "Apache Iceberg",
+        "Data Lake",
+        "SQL",
+        "Data Portability",
+        "Data Catalog",
+        "AI",
+        "ML",
+        "Data Engineering",
+        "Architecture",
+        "Design"
+      ],
+      "guid": "https://www.infoq.com/articles/lakehouse-sql-identifier-rules/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "AWS Launches Agent Registry in Preview to Govern AI Agent Sprawl Across Enterprises",
+      "link": "https://www.infoq.com/news/2026/04/aws-agent-registry-preview/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Fri, 17 Apr 2026 06:54:00 GMT",
+      "contentSnippet": "AWS released Agent Registry in preview as part of Amazon Bedrock AgentCore, providing a centralized catalog for discovering, governing, and reusing AI agents, tools, and MCP servers across organizations. The registry indexes agents regardless of wher",
+      "creator": "Steef-Jan Wiggers",
+      "categories": [
+        "Agent2Agent",
+        "Model Context Protocol (MCP)",
+        "Agents",
+        "Service Reliability",
+        "Cloud",
+        "AWS",
+        "Amazon Web Services",
+        "Registry",
+        "Amazon",
+        "DevOps",
+        "AI",
+        "ML",
+        "Data Engineering",
+        "Architecture",
+        "Design",
+        "Development"
+      ],
+      "guid": "https://www.infoq.com/news/2026/04/aws-agent-registry-preview/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "AWS Introduces S3 Files, Bringing File System Access to S3 Buckets",
+      "link": "https://www.infoq.com/news/2026/04/aws-s3-files/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 16 Apr 2026 18:08:00 GMT",
+      "contentSnippet": "AWS recently introduced S3 Files, which lets users mount an Amazon S3 bucket and access its data through a standard file system interface. Applications can read and write files using standard file operations, while the system automatically translates",
+      "creator": "Renato Losio",
+      "categories": [
+        "S3",
+        "Cloud",
+        "AWS",
+        "File-Systems",
+        "Data Storage",
+        "Storage",
+        "DevOps",
+        "Architecture",
+        "Design"
+      ],
+      "guid": "https://www.infoq.com/news/2026/04/aws-s3-files/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Google Opens Gemma 4 Under Apache 2.0 with Multimodal and Agentic Capabilities",
+      "link": "https://www.infoq.com/news/2026/04/google-gemm4/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 16 Apr 2026 17:05:00 GMT",
+      "contentSnippet": "Google has announced the release of Gemma 4, a series of open-weight AI models, including variants with 2B, 4B, 26B, and 31B parameters, under the Apache 2.0 license. Key features include enhanced video and image processing, audio input on smaller mo",
+      "creator": "Hien Luu",
+      "categories": [
+        "Large language models",
+        "Edge Computing",
+        "Generative AI",
+        "AI",
+        "ML",
+        "Data Engineering",
+        "Architecture",
+        "Design",
+        "Development"
+      ],
+      "guid": "https://www.infoq.com/news/2026/04/google-gemm4/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Cloudflare Launches Code Mode MCP Server to Optimize Token Usage for AI Agents",
+      "link": "https://www.infoq.com/news/2026/04/cloudflare-code-mode-mcp-server/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 16 Apr 2026 14:17:00 GMT",
+      "contentSnippet": "Cloudflare has launched a new Model Context Protocol (MCP) server powered by Code Mode, enabling AI agents to interact with large APIs with minimal token usage. The server reduces context footprint across 2,500+ endpoints, improves multi-API orchestr",
+      "creator": "Leela Kumili",
+      "categories": [
+        "Model Context Protocol (MCP)",
+        "AI Architecture",
+        "Agents",
+        "Workflow / BPM",
+        "Large language models",
+        "API",
+        "Orchestration",
+        "TypeScript",
+        "Optimization",
+        "AI",
+        "ML",
+        "Data Engineering",
+        "Development",
+        "Architecture",
+        "Design"
+      ],
+      "guid": "https://www.infoq.com/news/2026/04/cloudflare-code-mode-mcp-server/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Presentation: From VR to Flat Screens: Bridging the Input and Immersion Gap",
+      "link": "https://www.infoq.com/presentations/game-vr-flat-screens/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 16 Apr 2026 14:10:00 GMT",
+      "contentSnippet": "Dany Lepage discusses the architectural journey of porting a hit VR title to seven non-VR platforms. He explains how his team solved the challenges of cross-progression, diverse input paradigms, and maintaining release velocity across Steam, iOS, and",
+      "creator": "Dany Lepage",
+      "categories": [
+        "Game Development",
+        "QCon San Francisco 2025",
+        "Cross Platform",
+        "Platform Engineering",
+        "Transcripts",
+        "Development",
+        "Presentation"
+      ],
+      "guid": "https://www.infoq.com/presentations/game-vr-flat-screens/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Platform as a Product: Delivering Value While Balancing Competing Priorities",
+      "link": "https://www.infoq.com/news/2026/04/platform-product-deliver-value/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 16 Apr 2026 11:52:00 GMT",
+      "contentSnippet": "Software platforms must be treated as products. Success requires balancing engineering, design, usability, security, and value for internal customers and the organisation, Abby Bangser mentioned in her talk Platform as a Product. A product mindset, c",
+      "creator": "Ben Linders",
+      "categories": [
+        "Platforms",
+        "Developer Experience",
+        "Usability",
+        "Business Value",
+        "Technical Debt",
+        "Platform Engineering",
+        "Software Development",
+        "GOTO Conference",
+        "Security",
+        "Culture & Methods"
+      ],
+      "guid": "https://www.infoq.com/news/2026/04/platform-product-deliver-value/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Cursor 3 Introduces Agent-First Interface, Moving Beyond the IDE Model",
+      "link": "https://www.infoq.com/news/2026/04/cursor-3-agent-first-interface/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Thu, 16 Apr 2026 09:37:00 GMT",
+      "contentSnippet": "Anysphere released Cursor 3, a redesigned interface built from scratch that shifts the primary model from file editing to managing parallel coding agents. The new workspace supports local-to-cloud agent handoff, multi-repo parallel execution, and a p",
+      "creator": "Steef-Jan Wiggers",
+      "categories": [
+        "AI",
+        "AI Development",
+        "Developer Experience",
+        "IDE",
+        "Large language models",
+        "ML",
+        "Data Engineering",
+        "Development"
+      ],
+      "guid": "https://www.infoq.com/news/2026/04/cursor-3-agent-first-interface/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "OpenTelemetry Declarative Configuration Reaches Stability Milestone",
+      "link": "https://www.infoq.com/news/2026/04/opentelemetry-declarative-config/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 15 Apr 2026 23:45:00 GMT",
+      "contentSnippet": "The OpenTelemetry project has announced that key portions of its declarative configuration specification have reached stable status. The observability framework is a vendor-neutral and language-agnostic way to configure telemetry collection.\n By Matt",
+      "creator": "Matt Saunders",
+      "categories": [
+        "Declarative Programming",
+        "OpenTelemetry",
+        "Observability",
+        "DevOps"
+      ],
+      "guid": "https://www.infoq.com/news/2026/04/opentelemetry-declarative-config/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Google’s TurboQuant Compression May Support Faster Inference, Same Accuracy on Less Capable Hardware",
+      "link": "https://www.infoq.com/news/2026/04/turboquant-compression-kv-cache/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 15 Apr 2026 16:53:00 GMT",
+      "contentSnippet": "Google Research unveiled TurboQuant, a novel quantization algorithm that compresses large language models’ Key-Value caches by up to 6x. With 3.5-bit compression, near-zero accuracy loss, and no retraining needed, it allows developers to run massive ",
+      "creator": "Bruno Couriol",
+      "categories": [
+        "Large language models",
+        "Performance",
+        "Compression",
+        "Optimization",
+        "AI",
+        "ML",
+        "Data Engineering",
+        "Development"
+      ],
+      "guid": "https://www.infoq.com/news/2026/04/turboquant-compression-kv-cache/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Presentation: Empower Your Developers: How Open Source Dependencies Risk Management Can Unlock Innovation",
+      "link": "https://www.infoq.com/presentations/open-source-dependencies/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 15 Apr 2026 12:50:00 GMT",
+      "contentSnippet": "Celine Pypaert discusses the ubiquitous nature of open-source software and shares a blueprint for securing modern applications. She explains how to prioritize high-risk vulnerabilities using exploitability data, the role of Software Bill of Materials",
+      "creator": "Celine Pypaert",
+      "categories": [
+        "QCon London 2025",
+        "Open Source",
+        "Risk Management",
+        "Transcripts",
+        "Culture & Methods",
+        "Presentation"
+      ],
+      "guid": "https://www.infoq.com/presentations/open-source-dependencies/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
+      "title": "Zendesk Says AI Makes Code Abundant, Shifting the Bottleneck to “Absorption Capacity”",
+      "link": "https://www.infoq.com/news/2026/04/zendesk-absorption-capacity/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "pubDate": "Wed, 15 Apr 2026 12:30:00 GMT",
+      "contentSnippet": "Zendesk argues that GenAI shifts the bottleneck in software delivery from writing code to “absorption capacity”, which is the organisation’s ability to define problems clearly, integrate changes into the wider system, and turn implementation into rel",
+      "creator": "Eran Stiller",
+      "categories": [
+        "Netflix",
+        "Architecture Decision Records",
+        "AI Assisted Coding",
+        "Generative AI",
+        "Software Development Lifecycle",
+        "Architecture",
+        "Design",
+        "Culture & Methods"
+      ],
+      "guid": "https://www.infoq.com/news/2026/04/zendesk-absorption-capacity/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+    },
+    {
       "title": "AAIF's MCP Dev Summit: Gateways, gRPC, and Observability Signal Protocol Hardening",
       "link": "https://www.infoq.com/news/2026/04/aaif-mcp-summit/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
       "pubDate": "Thu, 09 Apr 2026 13:10:00 GMT",
@@ -1786,6 +2071,6 @@
       "guid": "https://www.infoq.com/news/2026/01/google-translategemma-models/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
     }
   ],
-  "lastUpdated": "2026-04-09T13:34:46.402Z",
+  "lastUpdated": "2026-04-17T12:45:23.649Z",
   "feedTitle": "InfoQ"
 }

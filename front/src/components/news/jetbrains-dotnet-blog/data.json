@@ -2,6 +2,21 @@
   "source": "jetbrains-dotnet-blog",
   "items": [
     {
+      "title": "Webinar – OSS Power-Ups: XenoAtom.Terminal.UI",
+      "link": "https://blog.jetbrains.com/dotnet/2026/04/09/webinar-oss-power-ups-xenoatom-terminal-ui/",
+      "pubDate": "Thu, 09 Apr 2026 15:32:51 +0000",
+      "contentSnippet": "Join us Thursday, April 16, 2026, 15:00 – 16:30 UTC (check other timezones) for our free live webinar, OSS PowerUps – XenoAtom.Terminal.UI, with Alexandre Mutel. This is the fifteenth episode of our series of OSS Power-Ups, where we put a spotlight o",
+      "creator": "Matthias Koch",
+      "categories": [
+        "Net-tools",
+        "Livestreams",
+        "Oss",
+        "Power-up",
+        "Terminal"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=696186"
+    },
+    {
       "title": "dotInsights | April 2026",
       "link": "https://blog.jetbrains.com/dotnet/2026/04/08/dotinsights-april-2026/",
       "pubDate": "Wed, 08 Apr 2026 13:43:24 +0000",
@@ -18,7 +33,7 @@
       "title": "Profile .NET Apps Without Restarting: Monitoring Comes to ReSharper",
       "link": "https://blog.jetbrains.com/dotnet/2026/03/31/profile-dotnet-apps-without-restarting-monitoring-comes-to-resharper/",
       "pubDate": "Tue, 31 Mar 2026 09:16:05 +0000",
-      "contentSnippet": "Tracking down performance bottlenecks in Visual Studio often means interrupting your workflow, restarting your application in profiling mode, and hoping you can reliably reproduce the exact issue. We think there's a better way. If you have already us",
+      "contentSnippet": "Tracking down performance bottlenecks in Visual Studio often means interrupting your workflow, restarting your application in profiling mode, and hoping you can reliably reproduce the exact issue. We think there’s a better way. If you have already us",
       "creator": "Alexey Totin",
       "categories": [
         ".NET",
@@ -109,7 +124,7 @@
       "title": "ReSharper for Visual Studio Code, Cursor, and Compatible Editors Is Out",
       "link": "https://blog.jetbrains.com/dotnet/2026/03/05/resharper-for-visual-studio-code-cursor-and-compatible-editors-is-out/",
       "pubDate": "Thu, 05 Mar 2026 11:31:57 +0000",
-      "contentSnippet": "ReSharper has been a trusted productivity tool for C# developers in Visual Studio for over 20 years. Today, we're taking the next step and officially releasing the ReSharper extension for Visual Studio Code and compatible editors. After a year in Pub",
+      "contentSnippet": "ReSharper has been a trusted productivity tool for C# developers in Visual Studio for over 20 years. Today, we’re taking the next step and officially releasing the ReSharper extension for Visual Studio Code and compatible editors. After a year in Pub",
       "creator": "Alexander Kurakin",
       "categories": [
         "ReSharper",
@@ -124,7 +139,7 @@
       "title": "dotInsights | March 2026",
       "link": "https://blog.jetbrains.com/dotnet/2026/03/04/dotinsights-march-2026/",
       "pubDate": "Wed, 04 Mar 2026 12:44:40 +0000",
-      "contentSnippet": "Did you know? The async and await keywords in C# were introduced in C# 5.0 (2012) to simplify asynchronous programming. Under the hood, the compiler uses a state machine to transform your asynchronous code into manageable tasks. As a developer, you n",
+      "contentSnippet": "Did you know? The async and await keywords in C# were introduced in C# 5.0 (2012) to simplify asynchronous programming. Under the hood, the compiler uses a state machine to transform your asynchronous code into manageable tasks. As a developer, you n",
       "creator": "Rachel Appel",
       "categories": [
         ".NET",
@@ -138,7 +153,7 @@
       "title": "C# Extension Members",
       "link": "https://blog.jetbrains.com/dotnet/2026/02/23/csharp-extension-members/",
       "pubDate": "Mon, 23 Feb 2026 14:44:31 +0000",
-      "contentSnippet": "Overview: What are extension members? Extension members allow you to define additional members for existing types without modifying their definitions. With them, you can add functionality to existing types you don't have access to or don't control, f",
+      "contentSnippet": "Overview: What are extension members? Extension members allow you to define additional members for existing types without modifying their definitions. With them, you can add functionality to existing types you don’t have access to or don’t control, f",
       "creator": "Rachel Appel",
       "categories": [
         "C#",
@@ -423,6 +438,6 @@
       "guid": "https://blog.jetbrains.com/?post_type=rscpp&p=658125"
     }
   ],
-  "lastUpdated": "2026-04-09T13:34:45.562Z",
+  "lastUpdated": "2026-04-17T12:45:22.605Z",
   "feedTitle": ".NET Tools : Essential productivity kit for .NET and game developers | The JetBrains Blog"
 }
