@@ -305,6 +305,7 @@ export const TipsPage: React.FC = () => {
                         return (
                           <Chip
                             key={category}
+                            aria-label={category}
                             label={
                               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
                                 <span>{category}</span>

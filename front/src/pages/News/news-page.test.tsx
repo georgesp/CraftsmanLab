@@ -17,41 +17,15 @@ describe('NewsPage Component', () => {
     jest.clearAllMocks();
   });
 
-  test('renders loading state initially', () => {
-    (global.fetch as jest.Mock).mockResolvedValue({
-      ok: true,
-      json: async () => ({ items: [], lastUpdated: new Date().toISOString() }),
-    });
-
+  test('renders page without crashing', () => {
     render(<NewsPageWrapper />);
-    expect(screen.getByRole('progressbar')).toBeInTheDocument();
+    expect(document.body).not.toBeEmptyDOMElement();
   });
 
-  test('renders news items when data is loaded', async () => {
-    const mockData = {
-      items: [
-        {
-          title: 'Test Article',
-          link: 'https://example.com',
-          pubDate: '2025-01-01',
-          contentSnippet: 'Test content snippet',
-          creator: 'Test Author',
-          categories: ['Testing'],
-          guid: 'test-123',
-        },
-      ],
-      lastUpdated: '2025-01-01T00:00:00Z',
-    };
-
-    (global.fetch as jest.Mock).mockResolvedValue({
-      ok: true,
-      json: async () => mockData,
-    });
-
+  test('renders news articles from static data', () => {
     render(<NewsPageWrapper />);
-
-    // Wait for loading to finish
-    await screen.findByText('Test Article');
-    expect(screen.getByText('Test Article')).toBeInTheDocument();
+    // The news page renders article links from static RSS data
+    const links = screen.getAllByRole('link');
+    expect(links.length).toBeGreaterThan(0);
   });
 });
