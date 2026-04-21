@@ -71,7 +71,7 @@ All styling should use these tokens rather than inline values. `BORDER_RADIUS.no
 
 ### Search
 
-Client-side full-text search is implemented in [src/utils/search.ts](src/utils/search.ts). It uses `import.meta.glob` with `?raw` to load the raw `.tsx` source of every tip and prompt at build time, then extracts meta fields via regex and builds an in-memory index. The Jest test environment mocks this with [src/utils/search-client.jest.ts](src/utils/search-client.jest.ts) (mapped via `moduleNameMapper` in `package.json`).
+Client-side search is implemented in [src/utils/search-client.ts](src/utils/search-client.ts). It relies on the central content registry in [src/components/content-manifest.ts](src/components/content-manifest.ts) together with each item's `meta.ts` data and i18n translations, rather than scanning raw source files via `import.meta.glob`. When updating or testing search behavior, mock the current search client/registry flow instead of the removed `src/utils/search.ts` implementation.
 
 ### Azure Static Web Apps
 
