@@ -25,6 +25,11 @@ npm run generate-manifest   # Regenerate content-manifest.ts after adding a tip/
 npm run generate-sitemap
 npm run fetch-rss
 npm run generate-categories
+
+# Diagnostic scripts (run directly with node)
+node scripts/check-tip-i18n-keys.mjs      # Check for missing i18n keys in tips
+node scripts/check-prompt-i18n-keys.mjs   # Check for missing i18n keys in prompts
+node scripts/add-missing-categories.mjs   # Add missing categories to tips/prompts
 ```
 
 ## Architecture
@@ -33,7 +38,7 @@ This is a **React 18 + TypeScript + Vite** SPA deployed on **Azure Static Web Ap
 
 ### Routing
 
-Five routes defined in [src/App.tsx](src/App.tsx): `/`, `/contact`, `/prompts`, `/prompts/:slug`, `/tips`, `/tips/:slug`, `/news`. The app is wrapped in MUI `ThemeProvider` with the custom `telerikTheme`.
+Seven routes defined in [src/App.tsx](src/App.tsx): `/`, `/contact`, `/prompts`, `/prompts/:slug`, `/tips`, `/tips/:slug`, `/news`. The app is wrapped in MUI `ThemeProvider` with the custom `telerikTheme`.
 
 ### Content System (Tips & Prompts)
 
@@ -61,6 +66,7 @@ The MUI theme is built in [src/theme/theme.ts](src/theme/theme.ts) and reference
 - `src/styles/colors.ts` — all colour constants
 - `src/styles/typography.ts` — font sizes, weights, line heights
 - `src/styles/spacing.ts` and `src/styles/shadows.ts`
+- `src/styles/layout.ts` — layout dimensions (column widths, etc.)
 
 All styling should use these tokens rather than inline values. `BORDER_RADIUS.none` (0) is the current global border-radius standard.
 
