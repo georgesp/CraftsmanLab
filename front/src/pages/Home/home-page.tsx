@@ -40,10 +40,17 @@ export const HomePage: React.FC = () => {
   // Get translated source info
   const getSourceInfo = (sourceSlug: string) => {
     const source = rssSources.find(s => s.meta.slug === sourceSlug);
-    if (!source) return { title: sourceSlug, description: '' };
-    
+    if (!source) {
+      return { title: sourceSlug, description: '' };
+    }
+
     const lang = i18n.language === 'fr' ? 'fr' : 'en';
-    return source.translations[lang];
+    const translation = source.translations[lang] ?? source.translations.en ?? source.translations.fr;
+    return {
+      title: translation?.title ?? sourceSlug,
+      description: translation?.description ?? '',
+      website: translation?.website,
+    };
   };
 
   // Calculate top 5 sources by article count
@@ -51,7 +58,7 @@ export const HomePage: React.FC = () => {
     const sourceCounts = rssSources.map(source => ({
       slug: source.meta.slug,
       name: getSourceInfo(source.meta.slug).title,
-      articleCount: source.data.items.length,
+      articleCount: source.data?.items?.length ?? 0,
     }));
     
     return sourceCounts
@@ -69,7 +76,8 @@ export const HomePage: React.FC = () => {
       : rssSources;
     
     sourcesToInclude.forEach(source => {
-      source.data.items.forEach(item => {
+      const items = source.data?.items ?? [];
+      items.forEach(item => {
         // Si des keywords sont déjà sélectionnés, ne compter que les articles qui les ont tous
         if (selectedKeywords.length > 0) {
           const itemCategories = (item.categories || []).map(c => c.toLowerCase());
@@ -98,13 +106,14 @@ export const HomePage: React.FC = () => {
   // Get latest 3 news articles
   const latestNews = React.useMemo(() => {
     return rssSources
-      .flatMap(source => 
-        source.data.items.map(item => ({
+      .flatMap(source => {
+        const items = source.data?.items ?? [];
+        return items.map(item => ({
           ...item,
           sourceSlug: source.meta.slug,
           sourceInfo: getSourceInfo(source.meta.slug),
-        }))
-      )
+        }));
+      })
       .filter(item => {
         // Filter by source
         if (selectedSource && item.sourceSlug !== selectedSource) {

@@ -136,9 +136,14 @@ export const NewsPage: React.FC = () => {
   const getSourceInfo = (sourceSlug: string) => {
     const source = rssSources.find(s => s.meta.slug === sourceSlug);
     if (!source) return { title: sourceSlug, description: '' };
-    
+
     const lang = i18n.language === 'fr' ? 'fr' : 'en';
-    return source.translations[lang];
+    const translation = source.translations[lang] ?? source.translations.en ?? source.translations.fr;
+    return {
+      title: translation?.title ?? sourceSlug,
+      description: translation?.description ?? '',
+      website: translation?.website,
+    };
   };
 
   // Compter les occurrences de chaque catégorie (y compris les sources) basé sur les articles filtrés
@@ -149,10 +154,11 @@ export const NewsPage: React.FC = () => {
     rssSources
       .filter(source => !selectedSource || source.meta.slug === selectedSource)
       .forEach(source => {
-        const sourceName = source.translations[lang].title;
+        const translation = source.translations[lang] ?? source.translations.en ?? source.translations.fr;
+        const sourceName = translation?.title ?? source.meta.slug;
         
         // Filtrer les items de cette source par les catégories sélectionnées
-        const filteredItems = source.data.items.filter(item => {
+        const filteredItems = (source.data?.items ?? []).filter(item => {
           if (selectedCategories.length === 0) return true;
           const itemCategories = (item.categories || []).map(c => c.toLowerCase());
           const selectedSet = new Set(selectedCategories.map(c => c.toLowerCase()));
@@ -180,7 +186,7 @@ export const NewsPage: React.FC = () => {
     const categories = rssSources
       .filter(source => !selectedSource || source.meta.slug === selectedSource)
       .flatMap(source =>
-        source.data.items
+        (source.data?.items ?? [])
           .filter(item => {
             if (selectedCategories.length === 0) return true;
             const itemCategories = (item.categories || []).map(c => c.toLowerCase());
@@ -197,7 +203,7 @@ export const NewsPage: React.FC = () => {
   const sourcesList = useMemo(() => {
     const lang = i18n.language === 'fr' ? 'fr' : 'en';
     return rssSources.map(source => ({
-      name: source.translations[lang].title,
+      name: (source.translations[lang] ?? source.translations.en ?? source.translations.fr)?.title ?? source.meta.slug,
       slug: source.meta.slug,
     }));
   }, [i18n.language]);
@@ -258,8 +264,8 @@ export const NewsPage: React.FC = () => {
   const allItems = useMemo(() => {
     const items = rssSources
       .filter(source => !selectedSource || source.meta.slug === selectedSource)
-      .flatMap(source => 
-        source.data.items.map(item => ({
+      .flatMap(source =>
+        (source.data?.items ?? []).map(item => ({
           ...item,
           sourceSlug: source.meta.slug,
           sourceInfo: getSourceInfo(source.meta.slug),
@@ -278,8 +284,8 @@ export const NewsPage: React.FC = () => {
   }, [i18n.language, selectedSource, selectedCategories]);
 
   // Vérifier s'il y a des erreurs
-  const hasErrors = rssSources.some(s => s.data.error !== undefined);
-  const lastUpdated = rssSources[0]?.data.lastUpdated;
+  const hasErrors = rssSources.some(s => s.data?.error !== undefined);
+  const lastUpdated = rssSources[0]?.data?.lastUpdated;
 
   return (
     <PageLayout>
@@ -513,7 +519,7 @@ export const NewsPage: React.FC = () => {
                             {displayedCategories.map((category) => {
                               // Vérifier si c'est une source
                               const lang = i18n.language === 'fr' ? 'fr' : 'en';
-                              const sourceSlug = rssSources.find(s => s.translations[lang].title === category)?.meta.slug;
+                              const sourceSlug = rssSources.find(s => (s.translations[lang] ?? s.translations.en ?? s.translations.fr)?.title === category)?.meta.slug;
                               const isSelected = sourceSlug 
                                 ? selectedSource === sourceSlug 
                                 : selectedCategories.includes(category);

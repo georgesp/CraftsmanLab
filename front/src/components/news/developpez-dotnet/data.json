@@ -2,6 +2,20 @@
   "source": "developpez-dotnet",
   "items": [
     {
+      "title": "Découvrez les types union dans C# 15, par Bill Wagner",
+      "link": "https://dotnet.developpez.com/actu/382121/Decouvrez-les-types-union-dans-C-15-par-Bill-Wagner/",
+      "pubDate": "Tue, 14 Apr 2026 13:17:00 +0200",
+      "contentSnippet": "Découvrez les types union dans C# 15, par Bill Wagner \nLes types union étaient très attendus dans C#, et ils sont enfin là. À partir de .NET 11 Preview 2, C# 15 introduit le mot-clé union. Le mot-clé union permet de déclarer qu'une valeur appartient ",
+      "creator": "",
+      "categories": [
+        "C#",
+        ".NET",
+        "C# 15",
+        "Preview"
+      ],
+      "guid": "https://dotnet.developpez.com/actu/382121/Decouvrez-les-types-union-dans-C-15-par-Bill-Wagner/"
+    },
+    {
       "title": "Microsoft annonce la version 1.0 de Microsoft Agent Framework pour .NET et Python, offrant une orchestration multi-agents de niveau entreprise et la prise en charge de modèles d'IA multi-fournisseurs",
       "link": "https://microsoft.developpez.com/actu/381878/Microsoft-annonce-la-version-1-0-de-Microsoft-Agent-Framework-pour-NET-et-Python-offrant-une-orchestration-multi-agents-de-niveau-entreprise-et-la-prise-en-charge-de-modeles-d-IA-multi-fournisseurs/",
       "pubDate": "Mon, 06 Apr 2026 15:56:00 +0200",
@@ -294,6 +308,6 @@
       "guid": "https://jetbrains.developpez.com/actu/365223/Rider-2024-3-disponible-prise-en-charge-des-dernieres-fonctionnalites-du-SDK-NET-9-et-C-13-debogage-de-console-pour-le-developpement-de-jeux-ameliorations-pour-l-assistant-IA-et-plus/"
     }
   ],
-  "lastUpdated": "2026-04-09T13:34:45.661Z",
+  "lastUpdated": "2026-04-17T12:45:25.046Z",
   "feedTitle": "Flux .NET Developpez"
 }

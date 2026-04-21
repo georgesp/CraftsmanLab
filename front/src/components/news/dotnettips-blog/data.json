@@ -2,6 +2,21 @@
   "source": "dotnettips-blog",
   "items": [
     {
+      "title": "Collection Performance: High-Performance Emptiness Checks for Concurrent & Immutable Collections",
+      "link": "https://dotnettips.com/2026/04/12/collection-performance-high-performance-emptiness-checks-for-concurrent-immutable-collections/",
+      "pubDate": "Sun, 12 Apr 2026 06:00:00 +0000",
+      "contentSnippet": "Count vs IsEmpty can be the difference between fast code and a performance disaster. For some immutable and concurrent collections, the wrong choice is tens of thousands of times slower.",
+      "creator": "David (dotNetDave) McCarter",
+      "categories": [
+        ".NET",
+        "Performance",
+        "Code Performance",
+        "Collections",
+        "Count"
+      ],
+      "guid": "https://dotnettips.com/?p=16589"
+    },
+    {
       "title": "String Performance: Avoid Unnecessary Conversions with StringBuilder",
       "link": "https://dotnettips.com/2026/04/05/string-performance-avoid-unnecessary-conversions-with-stringbuilder/",
       "pubDate": "Sun, 05 Apr 2026 06:00:00 +0000",
@@ -590,6 +605,6 @@
       "guid": "http://dotnettips.wordpress.com/?p=15619"
     }
   ],
-  "lastUpdated": "2026-04-09T13:34:45.878Z",
+  "lastUpdated": "2026-04-17T12:45:23.508Z",
   "feedTitle": "dotNetTips.com"
 }
