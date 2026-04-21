@@ -21,9 +21,15 @@ npm run format        # Prettier write
 npm run format:check  # Prettier check
 
 # Utility scripts (also run as part of prebuild)
+npm run generate-manifest   # Regenerate content-manifest.ts after adding a tip/prompt
 npm run generate-sitemap
 npm run fetch-rss
 npm run generate-categories
+
+# Diagnostic scripts (run directly with node)
+node scripts/check-tip-i18n-keys.mjs      # Check for missing i18n keys in tips
+node scripts/check-prompt-i18n-keys.mjs   # Check for missing i18n keys in prompts
+node scripts/add-missing-categories.mjs   # Add missing categories to tips/prompts
 ```
 
 ## Architecture
@@ -32,7 +38,7 @@ This is a **React 18 + TypeScript + Vite** SPA deployed on **Azure Static Web Ap
 
 ### Routing
 
-Five routes defined in [src/App.tsx](src/App.tsx): `/`, `/contact`, `/prompts`, `/prompts/:slug`, `/tips`, `/tips/:slug`, `/news`. The app is wrapped in MUI `ThemeProvider` with the custom `telerikTheme`.
+Seven routes defined in [src/App.tsx](src/App.tsx): `/`, `/contact`, `/prompts`, `/prompts/:slug`, `/tips`, `/tips/:slug`, `/news`. The app is wrapped in MUI `ThemeProvider` with the custom `telerikTheme`.
 
 ### Content System (Tips & Prompts)
 
@@ -42,14 +48,8 @@ The site's primary content are **Tips** (technical articles about .NET/C#/SQL) a
 - `<slug>.tsx` — the React component rendering the content (default export)
 - `en.json` / `fr.json` — i18n translation namespaces for that item
 
-**Adding a new tip or prompt does not require manually editing [src/components/content-manifest.ts](src/components/content-manifest.ts)** — that file is auto-generated (see the `AUTO-GENERATED` header) and is consumed by both the content registry and the i18n system.
+**[src/components/content-manifest.ts](src/components/content-manifest.ts) is AUTO-GENERATED — do not edit it manually.** After adding a new tip or prompt (its folder, `meta.ts`, component, and translation files), run `npm run generate-manifest` to regenerate it. The script is also part of `prebuild`, so it runs automatically before every `npm run build`. The manifest registers every item's meta import, dynamic `load()` function, and static translation imports, and is the single source of truth consumed by the content registry and i18n system.
 
-To add content:
-- create the new item folder under `src/components/tips/<slug>/` or `src/components/prompts/<slug>/`
-- add the required files: `meta.ts`, `<slug>.tsx`, `en.json`, and `fr.json`
-- run `npm run generate-manifest` to regenerate `src/components/content-manifest.ts`
-
-Run `npm run generate-manifest` whenever you add, remove, or rename a tip/prompt, or make a structural change that affects the generated manifest entries.
 ### Internationalisation
 
 The app supports **French and English** via `react-i18next`. Language is auto-detected from the browser and persisted in `localStorage`. Translation namespaces:
@@ -66,12 +66,13 @@ The MUI theme is built in [src/theme/theme.ts](src/theme/theme.ts) and reference
 - `src/styles/colors.ts` — all colour constants
 - `src/styles/typography.ts` — font sizes, weights, line heights
 - `src/styles/spacing.ts` and `src/styles/shadows.ts`
+- `src/styles/layout.ts` — layout dimensions (column widths, etc.)
 
 All styling should use these tokens rather than inline values. `BORDER_RADIUS.none` (0) is the current global border-radius standard.
 
 ### Search
 
-Client-side search is implemented in [src/utils/search-client.ts](src/utils/search-client.ts). It relies on the central content registry in [src/components/content-manifest.ts](src/components/content-manifest.ts) together with each item's `meta.ts` data and i18n translations, rather than scanning raw source files via `import.meta.glob`. When updating or testing search behavior, mock the current search client/registry flow instead of the removed `src/utils/search.ts` implementation.
+Client-side full-text search is implemented in [src/utils/search-client.ts](src/utils/search-client.ts). It builds an in-memory index at startup from the existing registries (`tipsList`, `promptsList`, `rssSources`) and resolves translated titles/descriptions via `i18n.t`. Matching checks title, `shortDescription`, and `searchKeywords` (unified FR/EN array); results are sorted tips → prompts → news. The Jest test environment uses [src/utils/search-client.jest.ts](src/utils/search-client.jest.ts) (a static mock with sample data, mapped via `moduleNameMapper` in `package.json`).
 
 ### Azure Static Web Apps
 
