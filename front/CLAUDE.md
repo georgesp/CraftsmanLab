@@ -42,8 +42,14 @@ The site's primary content are **Tips** (technical articles about .NET/C#/SQL) a
 - `<slug>.tsx` — the React component rendering the content (default export)
 - `en.json` / `fr.json` — i18n translation namespaces for that item
 
-**Adding a new tip or prompt requires updating [src/components/content-manifest.ts](src/components/content-manifest.ts)** — this file manually registers every item's meta import, dynamic `load()` import, and static translation imports. It is the single source of truth for the content registry and is also consumed by the i18n system.
+**Adding a new tip or prompt does not require manually editing [src/components/content-manifest.ts](src/components/content-manifest.ts)** — that file is auto-generated (see the `AUTO-GENERATED` header) and is consumed by both the content registry and the i18n system.
 
+To add content:
+- create the new item folder under `src/components/tips/<slug>/` or `src/components/prompts/<slug>/`
+- add the required files: `meta.ts`, `<slug>.tsx`, `en.json`, and `fr.json`
+- run `npm run generate-manifest` to regenerate `src/components/content-manifest.ts`
+
+Run `npm run generate-manifest` whenever you add, remove, or rename a tip/prompt, or make a structural change that affects the generated manifest entries.
 ### Internationalisation
 
 The app supports **French and English** via `react-i18next`. Language is auto-detected from the browser and persisted in `localStorage`. Translation namespaces:
