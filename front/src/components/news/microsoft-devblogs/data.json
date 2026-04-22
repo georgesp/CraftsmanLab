@@ -2,10 +2,56 @@
   "source": "microsoft-devblogs",
   "items": [
     {
-      "title": "Your Migration's Source of Truth: The Modernization Assessment",
+      "title": "Pin Clustering in .NET MAUI Maps",
+      "link": "https://devblogs.microsoft.com/dotnet/pin-clustering-in-dotnet-maui-maps/",
+      "pubDate": "Wed, 15 Apr 2026 16:45:00 +0000",
+      "contentSnippet": ".NET MAUI 11 adds pin clustering to the Map control, automatically grouping nearby pins into cluster markers. Learn how to enable clustering, create separate clustering groups, and handle cluster taps on Android and iOS.\nThe post Pin Clustering in .N",
+      "creator": "David Ortinau",
+      "categories": [
+        ".NET",
+        ".NET MAUI",
+        ".NET 11",
+        "Clustering",
+        "Controls",
+        "Maps",
+        "Mobile"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59753"
+    },
+    {
+      "title": ".NET and .NET Framework April 2026 servicing releases updates",
+      "link": "https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-april-2026-servicing-updates/",
+      "pubDate": "Tue, 14 Apr 2026 19:49:00 +0000",
+      "contentSnippet": "A recap of the latest servicing updates for .NET and .NET Framework for April 2026.\nThe post .NET and .NET Framework April 2026 servicing releases updates appeared first on .NET Blog.",
+      "creator": "Rahul Bhandari (MSFT), Tara Overfield",
+      "categories": [
+        ".NET",
+        ".NET Framework",
+        "Maintenance & Updates"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59908"
+    },
+    {
+      "title": ".NET 11 Preview 3 is now available!",
+      "link": "https://devblogs.microsoft.com/dotnet/dotnet-11-preview-3/",
+      "pubDate": "Tue, 14 Apr 2026 19:30:00 +0000",
+      "contentSnippet": "Find out about the new features in .NET 11 Preview 3 across the .NET runtime, SDK, libraries, ASP.NET Core, .NET MAUI, C#, Entity Framework Core, container images, and more!\nThe post .NET 11 Preview 3 is now available! appeared first on .NET Blog.",
+      "creator": ".NET Team",
+      "categories": [
+        ".NET",
+        ".NET MAUI",
+        "ASP.NET Core",
+        "C#",
+        "Entity Framework",
+        ".NET 11"
+      ],
+      "guid": "https://devblogs.microsoft.com/dotnet/?p=59905"
+    },
+    {
+      "title": "Your Migration’s Source of Truth: The Modernization Assessment",
       "link": "https://devblogs.microsoft.com/dotnet/your-migrations-source-of-truth-the-modernization-assessment/",
       "pubDate": "Tue, 07 Apr 2026 18:00:00 +0000",
-      "contentSnippet": "Introducing GitHub Copilot Modernization and diving into the assessment report as part of cloud modernization process\nThe post Your Migration's Source of Truth: The Modernization Assessment appeared first on .NET Blog.",
+      "contentSnippet": "Introducing GitHub Copilot Modernization and diving into the assessment report as part of cloud modernization process\nThe post Your Migration’s Source of Truth: The Modernization Assessment appeared first on .NET Blog.",
       "creator": "Jeffrey Fritz",
       "categories": [
         ".NET",
@@ -20,7 +66,7 @@
       "title": "ASP.NET Core 2.3 end of support announcement",
       "link": "https://devblogs.microsoft.com/dotnet/aspnet-core-2-3-end-of-support/",
       "pubDate": "Tue, 07 Apr 2026 17:00:00 +0000",
-      "contentSnippet": "ASP.NET Core 2.3 will reach end of support on April 7, 2027. Learn what this means for your applications and how to upgrade to a modern supported version of .NET.\nThe post ASP.NET Core 2.3 end of support announcement appeared first on .NET Blog.",
+      "contentSnippet": "ASP.NET Core 2.3 will reach end of support on April 13, 2027. Learn what this means for your applications and how to upgrade to a modern supported version of .NET.\nThe post ASP.NET Core 2.3 end of support announcement appeared first on .NET Blog.",
       "creator": "Daniel Roth",
       "categories": [
         ".NET",
@@ -558,6 +604,6 @@
       "guid": "https://devblogs.microsoft.com/dotnet/?p=59006"
     }
   ],
-  "lastUpdated": "2026-04-09T13:34:45.518Z",
+  "lastUpdated": "2026-04-17T12:45:22.517Z",
   "feedTitle": ".NET Blog"
 }
