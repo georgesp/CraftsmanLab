@@ -8,8 +8,8 @@
       "contentSnippet": "With the release of .NET 10 just around the corner (next month!), it’s time to take a look at the new features we can expect for C# 14.\nNote: the goal of this post is not to be an exhaustive list of all new features. I will only cover the ones that s",
       "creator": "",
       "categories": [
-        "C#",
-        ".NET"
+        ".NET 10",
+        "C# 14"
       ],
       "guid": "https://thomaslevesque.com/2025/10/07/interesting-new-csharp-14-features-coming-with-net-10/"
     },
@@ -20,9 +20,7 @@
       "contentSnippet": "Writing this mostly for future me in case I need it again. Hopefully it can help someone else too!\nSometimes you need to run a GitHub Actions workflow, but it’s not on the default branch yet, because it’s still a work in progress and hasn’t been merg",
       "creator": "",
       "categories": [
-        "GitHub Actions",
-        "CI/CD",
-        "DevOps"
+        "GitHub Actions"
       ],
       "guid": "https://thomaslevesque.com/2024/04/25/running-a-github-actions-workflow-that-doesnt-exist-yet-on-the-default-branch/"
     },
@@ -33,11 +31,10 @@
       "contentSnippet": "Cloudflare Workers Cloudflare Workers is a serverless environment that runs Javascript. Basically, you just write code that handle HTTP requests, similarly to Node.js. The code is deployed globally across the Cloudflare network, which means it’s alwa",
       "creator": "",
       "categories": [
-        ".NET",
-        "HTTP",
-        "JavaScript",
         "Cloudflare",
-        "Serverless"
+        "Serverless",
+        "JavaScript",
+        "HTTP"
       ],
       "guid": "https://thomaslevesque.com/2022/11/01/building-a-url-shortener-in-12-lines-of-code-using-cloudflare-workers/"
     },
@@ -48,9 +45,8 @@
       "contentSnippet": "My blog has been a bit quiet in the last 18 months or so, because, well, life happened… In that time span I became a father, changed jobs twice, and relocated to Canada with my family, so free time has been scarce. Anyway, I recently ran into a probl",
       "creator": "",
       "categories": [
-        "ASP.NET Core",
-        "JSON",
-        "Configuration"
+        ".NET Core",
+        "ASP.NET Core"
       ],
       "guid": "https://thomaslevesque.com/2022/09/19/using-multiple-json-serialization-settings-in-aspnet-core/"
     },
@@ -62,8 +58,7 @@
       "creator": "",
       "categories": [
         ".NET Framework",
-        "Visual Studio 2022",
-        "Build"
+        "Visual Studio 2022"
       ],
       "guid": "https://thomaslevesque.com/2021/11/12/building-a-project-that-target-net-45-in-visual-studio-2022/"
     },
@@ -75,9 +70,7 @@
       "creator": "",
       "categories": [
         ".NET 6",
-        "C# 10",
-        "API",
-        "Records"
+        "C# 10"
       ],
       "guid": "https://thomaslevesque.com/2021/11/04/a-quick-review-of-csharp-10-new-language-features/"
     },
@@ -88,11 +81,8 @@
       "contentSnippet": "We’re reaching the end of this series on records as strongly-typed ids. Sorry for the long delay since the last post… life happened! So far we’ve covered ASP.NET Core model binding, JSON serialization, and EF Core integration. Almost everything is wo",
       "creator": "",
       "categories": [
-        "ASP.NET Core",
-        "C# 9",
-        "JSON",
-        "Entity Framework",
-        "Records"
+        ".NET Core",
+        "ASP.NET Core"
       ],
       "guid": "https://thomaslevesque.com/2021/03/19/csharp-9-records-as-strongly-typed-ids-part-5-final-bits-and-conclusion/"
     },
@@ -103,11 +93,9 @@
       "contentSnippet": "So far in this series, I showed how to use C# 9 records to declare strongly-typed ids as easily as this:\npublic record ProductId(int Value) : StronglyTypedId<int>(Value); I also explained how to make them work correctly with ASP.NET Core model bindin",
       "creator": "",
       "categories": [
+        ".NET Core",
         "ASP.NET Core",
-        "C# 9",
-        "Database",
-        "Entity Framework",
-        "Records"
+        "Entity Framework Core"
       ],
       "guid": "https://thomaslevesque.com/2020/12/23/csharp-9-records-as-strongly-typed-ids-part-4-entity-framework-core-integration/"
     },
@@ -118,9 +106,7 @@
       "contentSnippet": "In the previous post in this series, we noticed that the strongly-typed id was serialized to JSON in an unexpected way:\n{ \"id\": { \"value\": 1 }, \"name\": \"Apple\", \"unitPrice\": 0.8 } When you think about it, it’s not really unexpected: the strongly-type",
       "creator": "",
       "categories": [
-        "C# 9",
-        "JSON",
-        "Records"
+        "Programming"
       ],
       "guid": "https://thomaslevesque.com/2020/12/07/csharp-9-records-as-strongly-typed-ids-part-3-json-serialization/"
     },
@@ -131,9 +117,8 @@
       "contentSnippet": "Last time, I explained how easy it is to use C# 9 record types as strongly-typed ids:\npublic record ProductId(int Value); But unfortunately, we’re not quite done yet: there are a few issues to fix before our strongly-typed ids are really usable. For ",
       "creator": "",
       "categories": [
-        "ASP.NET Core",
-        "C# 9",
-        "Records"
+        ".NET Core",
+        "ASP.NET Core"
       ],
       "guid": "https://thomaslevesque.com/2020/11/23/csharp-9-records-as-strongly-typed-ids-part-2-aspnet-core-route-and-query-parameters/"
     },
@@ -144,10 +129,7 @@
       "contentSnippet": "Strongly-typed ids Entities typically have integer, GUID or string ids, because those types are supported directly by databases. However, if all your entities have ids of the same type, it becomes pretty easy to mix them up, and use the id of a Produ",
       "creator": "",
       "categories": [
-        "C#",
-        "C# 9",
-        "Records",
-        "Strongly-typed IDs"
+        "Database"
       ],
       "guid": "https://thomaslevesque.com/2020/10/30/using-csharp-9-records-as-strongly-typed-ids/"
     },
@@ -158,7 +140,7 @@
       "contentSnippet": "Dependency injection: the good and the bad Dependency injection (DI) is a great pattern, which can really help make your code cleaner, more decoupled and more testable. There are many DI libraries, like Autofac, Lamar (StructureMap’s successor), Cast",
       "creator": "",
       "categories": [
-        "Best Practices",
+        "Testing",
         "Dependency Injection"
       ],
       "guid": "https://thomaslevesque.com/2020/09/27/automatic-factory-with-microsoft-extensions-dependencyinjection-and-castle-dynamicproxy/"
@@ -170,7 +152,6 @@
       "contentSnippet": "I’ve been using Azure Cosmos DB on a fairly regular basis for the last 2 years or so. It’s a pretty good database, but one thing has always bothered me: the lack of a proper tool to query and modify data in the database. Basically, here are the curre",
       "creator": "",
       "categories": [
-        "Azure",
         "Cosmos DB",
         "Database"
       ],
@@ -183,7 +164,6 @@
       "contentSnippet": "Most JSON converters are fairly simple, and typically self-contained. But once in a while, you need to do something a little more complex in a converter, and you end up needing to call a service. However, there’s no built-in dependency injection in S",
       "creator": "",
       "categories": [
-        "JSON",
         "Dependency Injection"
       ],
       "guid": "https://thomaslevesque.com/2020/08/31/inject-service-into-system-text-json-converter/"
@@ -195,8 +175,8 @@
       "contentSnippet": "HTTP headers are key/value pairs sent at the beginning of a request or response. According to the grammar in RFC 7230, a field could have an empty value. In practice, it probably doesn’t make much sense: semantically, a header with an empty value or ",
       "creator": "",
       "categories": [
+        ".NET Core",
         "ASP.NET Core",
-        "IIS",
         "HTTP"
       ],
       "guid": "https://thomaslevesque.com/2020/07/23/aspnet-core-iis-and-empty-http-headers/"
@@ -208,8 +188,8 @@
       "contentSnippet": "Sometimes your API needs to expose a non-primitive type that has a “natural” string representation. For instance, a standard representation for a duration is the ISO 8601 format, where “1 month, 2 days, 3 hours and 4 minutes” can be represented as P1",
       "creator": "",
       "categories": [
+        ".NET Core",
         "ASP.NET Core",
-        "JSON",
         "API"
       ],
       "guid": "https://thomaslevesque.com/2020/06/27/exposing-custom-type-as-json-string-in-asp-net-core-api/"
@@ -232,9 +212,8 @@
       "contentSnippet": "Last week at Microsoft Build, there have been a lot of exciting annoucements! .NET 5, Blazor WebAssembly, .NET MAUI, WinUI… But the thing I’m most eager to get my hands on is C# 9, which introduces many interesting new features, so let’s take a quick",
       "creator": "",
       "categories": [
-        ".NET 5",
-        "C# 9",
-        "API"
+        ".NET MAUI",
+        "Blazor"
       ],
       "guid": "https://thomaslevesque.com/2020/05/25/exciting-new-features-in-csharp-9/"
     },
@@ -245,8 +224,8 @@
       "contentSnippet": "As a C# developer, there are obviously a lot of skills you need to master to be effective: language syntax, framework classes, third-party libraries, databases, regular expressions, the HTTP protocol, etc. But there are a handful of things that I con",
       "creator": "",
       "categories": [
-        "HTTP",
-        "Database"
+        "Database",
+        "HTTP"
       ],
       "guid": "https://thomaslevesque.com/2020/05/15/things-every-csharp-developer-should-know-1-hash-codes/"
     },
@@ -257,8 +236,7 @@
       "contentSnippet": "If you’re a regular reader of my blog, you probably noticed that the design has changed. In fact, it’s not just the design, it’s just about everything!\nMy blog used to be hosted on WordPress. It did the job, but honestly, I didn’t really like WordPre",
       "creator": "",
       "categories": [
-        "Best Practices",
-        "Hugo"
+        "Programming"
       ],
       "guid": "https://thomaslevesque.com/2020/05/06/moving-my-blog-to-hugo/"
     },
@@ -270,7 +248,8 @@
       "creator": "",
       "categories": [
         ".NET",
-        "ASP.NET Core"
+        "ASP.NET",
+        "WPF"
       ],
       "guid": "https://thomaslevesque.com/about/"
     },
@@ -281,7 +260,8 @@
       "contentSnippet": "Over the last few years, OpenID Connect has become one of the most common ways to authenticate users in a web application. But if you want to use it in a desktop application, it can be a little awkward…\nAuthorization code flow OpenID Connect is an au",
       "creator": "",
       "categories": [
-        "OAuth 2.0"
+        "OAuth 2.0",
+        "Security"
       ],
       "guid": "https://thomaslevesque.com/2020/03/28/using-the-oauth-2-0-device-flow-to-authenticate-users-in-desktop-apps/"
     },
@@ -292,8 +272,7 @@
       "contentSnippet": "The problem with circular dependencies When building an application, good design dictates that you should avoid circular dependencies between your services. A circular dependency is when some components depend on each other, directly or indirectly, e",
       "creator": "",
       "categories": [
-        ".NET Core",
-        "Best Practices"
+        ".NET Core"
       ],
       "guid": "https://thomaslevesque.com/2020/03/18/lazily-resolving-services-to-fix-circular-dependencies-in-net-core/"
     },
@@ -304,6 +283,7 @@
       "contentSnippet": "Query strings are typically made of a sequence of key-value pairs, like ?foo=hello&bar=world…. However, if you look at RFC 3986, you can see that query strings are very loosely specified. It mentions that\nquery components are often used to carry iden",
       "creator": "",
       "categories": [
+        ".NET Core",
         "ASP.NET Core"
       ],
       "guid": "https://thomaslevesque.com/2020/01/30/handling-query-string-parameters-with-no-value-in-asp-net-core/"
@@ -315,8 +295,8 @@
       "contentSnippet": "Out of the box, ASP.NET Core has the concept of “environments”, which allows your app to use different settings based on which environment it’s running in. For instance, you can have Development/Staging/Production environments, each with its own sett",
       "creator": "",
       "categories": [
-        "ASP.NET Core",
-        "Configuration"
+        ".NET Core",
+        "ASP.NET Core"
       ],
       "guid": "https://thomaslevesque.com/2019/12/20/asp-net-core-when-environments-are-not-enough-use-sub-environments/"
     },
@@ -327,7 +307,6 @@
       "contentSnippet": "A few years ago, I blogged about a way to automate unit testing of null argument validation. Its usage looked like this:\n[Fact] public void FullOuterJoin_Throws_If_Argument_Is_Null() { var left = Enumerable.Empty<int>(); var right = Enumerable.Empty<",
       "creator": "",
       "categories": [
-        "C# 8",
         "Unit Testing"
       ],
       "guid": "https://thomaslevesque.com/2019/11/19/easy-unit-testing-of-null-argument-validation-c-8-edition/"
@@ -361,9 +340,7 @@
       "contentSnippet": "This is the first post in a series of 2:\nHandling type hierarchies in Cosmos DB (part 1) (this post) Handling type hierarchies in Cosmos DB (part 2) Azure Cosmos DB is Microsoft’s NoSQL cloud database. In Cosmos DB, you store JSON documents in contai",
       "creator": "",
       "categories": [
-        "Azure",
         "Cosmos DB",
-        "JSON",
         "Database"
       ],
       "guid": "https://thomaslevesque.com/2019/10/14/handling-type-hierarchies-in-cosmos-db-part1/"
@@ -376,7 +353,8 @@
       "creator": "",
       "categories": [
         "Cosmos DB",
-        "TypeScript"
+        "TypeScript",
+        "Async/Await"
       ],
       "guid": "https://thomaslevesque.com/2019/07/15/using-typescript-to-write-cosmos-db-stored-procedures-with-async-await/"
     },
@@ -387,11 +365,10 @@
       "contentSnippet": "ASP.NET Core SignalR is a super easy way to establish two-way communication between an ASP.NET Core app and its clients, using WebSockets, Server-Sent Events, or long polling, depending on the client’s capabilities. For instance, it can be used to se",
       "creator": "",
       "categories": [
-        ".NET",
+        ".NET Core",
+        "Azure",
         "ASP.NET Core",
-        "SignalR",
-        "Azure Service Bus",
-        "WebSockets"
+        "SignalR"
       ],
       "guid": "https://thomaslevesque.com/2019/03/18/scaling-out-asp-net-core-signalr-using-azure-service-bus/"
     },
@@ -404,6 +381,7 @@
       "categories": [
         ".NET Core",
         "ASP.NET Core",
+        "API",
         "Security"
       ],
       "guid": "https://thomaslevesque.com/2019/01/10/google-shutdown-fixing-google-authentication-in-asp-net-core/"
@@ -416,8 +394,8 @@
       "creator": "",
       "categories": [
         ".NET Core",
-        "ASP.NET Core",
-        "Azure AD"
+        "Azure",
+        "ASP.NET Core"
       ],
       "guid": "https://thomaslevesque.com/2018/12/24/multitenant-azure-ad-issuer-validation-in-asp-net-core/"
     },
@@ -429,9 +407,7 @@
       "creator": "",
       "categories": [
         ".NET Core",
-        "WPF",
-        "XML",
-        "MSBuild"
+        "WPF"
       ],
       "guid": "https://thomaslevesque.com/2018/11/23/making-a-wpf-app-using-a-sdk-style-project-with-msbuildsdkextras/"
     },
@@ -458,7 +434,7 @@
       "categories": [
         ".NET Core",
         "ASP.NET Core",
-        "JSON"
+        "API"
       ],
       "guid": "https://thomaslevesque.com/2018/09/04/handling-multipart-requests-with-json-and-file-uploads-in-asp-net-core/"
     },
@@ -483,9 +459,8 @@
       "contentSnippet": "As you probably know, .NET Core runs on many platforms: Windows, macOS, and many UNIX/Linux variants, whether on x86/x64 architectures or on ARM. This enables a wide range of interesting scenarios… For instance, is a very small machine like a Raspber",
       "creator": "",
       "categories": [
-        ".NET Core 2",
-        "ASP.NET Core",
-        "Raspberry Pi"
+        ".NET Core",
+        "ASP.NET Core"
       ],
       "guid": "https://thomaslevesque.com/2018/04/17/hosting-an-asp-net-core-2-application-on-a-raspberry-pi/"
     },
@@ -497,9 +472,7 @@
       "creator": "",
       "categories": [
         "Azure Functions",
-        "GitHub",
-        "Mocking",
-        "Webhooks"
+        "GitHub"
       ],
       "guid": "https://thomaslevesque.com/2018/03/30/writing-a-github-webhook-as-an-azure-function/"
     },
@@ -534,7 +507,7 @@
       "contentSnippet": "The problem If you often use HttpClient to call REST APIs or to transfer files, you may have been annoyed by the way this class handles request timeout. There are two major issues with timeout handling in HttpClient:\nThe timeout is defined at the Htt",
       "creator": "",
       "categories": [
-        "HTTP",
+        "API",
         "REST API"
       ],
       "guid": "https://thomaslevesque.com/2018/02/25/better-timeout-handling-with-httpclient/"
@@ -546,9 +519,8 @@
       "contentSnippet": "T4 (Text Template Transformation Toolkit) is a great tool to generate code at design time; you can, for instance, create POCO classes from database tables, generate repetitive code, etc. In Visual Studio, T4 files (.tt extension) are associated with ",
       "creator": "",
       "categories": [
-        "Database",
         "Visual Studio",
-        "T4 Templates"
+        "Database"
       ],
       "guid": "https://thomaslevesque.com/2017/11/13/transform-t4-templates-as-part-of-the-build-and-pass-variables-from-the-project/"
     },
@@ -559,8 +531,7 @@
       "contentSnippet": "To be honest, I never really liked MSBuild until recently. The project files generated by Visual Studio were a mess, most of their content was redundant, you had to unload the projects to edit them, it was poorly documented… But with the advent of .N",
       "creator": "",
       "categories": [
-        "Visual Studio",
-        "MSBuild"
+        "Visual Studio"
       ],
       "guid": "https://thomaslevesque.com/2017/09/18/common-msbuild-properties-and-items-with-directory-build-props/"
     },
@@ -573,7 +544,6 @@
       "categories": [
         ".NET",
         "Visual Studio",
-        "LINQPad",
         "Testing"
       ],
       "guid": "https://thomaslevesque.com/2017/08/26/testing-and-debugging-library-code-from-linqpad/"
@@ -586,8 +556,8 @@
       "creator": "",
       "categories": [
         ".NET Core",
-        "LINQ",
-        "Performance"
+        "Performance",
+        "LINQ"
       ],
       "guid": "https://thomaslevesque.com/2017/03/29/linq-performance-improvements-in-net-core/"
     },
@@ -598,7 +568,7 @@
       "contentSnippet": "A few days ago, I discovered a little gem: Sprache. The name means “language” in German. It’s a very elegant and easy to use library to create text parsers, using parser combinators, which are a very common technique in functional programming. The th",
       "creator": "",
       "categories": [
-        "Sprache"
+        "Programming"
       ],
       "guid": "https://thomaslevesque.com/2017/02/23/easy-text-parsing-in-c-with-sprache/"
     },
@@ -609,7 +579,7 @@
       "contentSnippet": "FakeItEasy is a popular mocking framework for .NET, with an very intuitive and easy-to-use API. For about one year, I’ve been a maintainer of FakeItEasy, along with Adam Ralph and Blair Conrad. It’s been a real pleasure working with them and I had a ",
       "creator": "",
       "categories": [
-        "Mocking"
+        "API"
       ],
       "guid": "https://thomaslevesque.com/2017/02/20/whats-new-in-fakeiteasy-3-0-0/"
     },
@@ -632,7 +602,7 @@
       "creator": "",
       "categories": [
         "Async/Await",
-        "HTTP"
+        "API"
       ],
       "guid": "https://thomaslevesque.com/2016/12/08/fun-with-the-httpclient-pipeline/"
     },
@@ -643,9 +613,8 @@
       "contentSnippet": "Last time on this blog I talked about the new tuple feature of C# 7. In Visual Studio 15 Preview 3, the feature wasn’t quite finished; it lacked 2 important aspects:\nemitting metadata for the names of tuple elements, so that the names are preserved a",
       "creator": "",
       "categories": [
-        "C# 7",
-        "Visual Studio 15",
-        "Tuples"
+        "Visual Studio",
+        "Preview"
       ],
       "guid": "https://thomaslevesque.com/2016/08/23/tuple-deconstruction-in-c-7/"
     },
@@ -656,9 +625,7 @@
       "contentSnippet": "A tuple is an finite ordered list of values, of possibly different types, which is used to bundle related values together without having to create a specific type to hold them.\nIn .NET 4.0, a set of Tuple classes has been introduced in the framework,",
       "creator": "",
       "categories": [
-        "C# 7",
-        ".NET 4",
-        "Tuples"
+        "Programming"
       ],
       "guid": "https://thomaslevesque.com/2016/07/25/tuples-in-c-7/"
     },
@@ -680,8 +647,7 @@
       "contentSnippet": "In the last few months, I’ve been using AppVeyor CI on some of my open-source projects (along with Cake for the build scripts). I really like it, but one thing bothered me: I couldn’t find a way to manually publish packages to NuGet.org directly from",
       "creator": "",
       "categories": [
-        "AppVeyor",
-        "NuGet"
+        "Nuget"
       ],
       "guid": "https://thomaslevesque.com/2016/04/20/publishing-a-package-from-appveyor-to-nuget-org/"
     },
@@ -692,8 +658,9 @@
       "contentSnippet": "About two weeks ago, Microsoft released the first preview of the next version of Visual Studio. You can read about what’s new in the release notes. Some of the new features are really nice (for instance I love the new “lightweight installer”), but th",
       "creator": "",
       "categories": [
-        "C# 7",
-        "Visual Studio"
+        "Visual Studio",
+        "Testing",
+        "Preview"
       ],
       "guid": "https://thomaslevesque.com/2016/04/16/test-driving-c-7-features-in-visual-studio-15-preview/"
     },
@@ -704,8 +671,7 @@
       "contentSnippet": "Today I’d like to share a nice feature I discovered recently in FakeItEasy.\nWhen you write unit tests for a class that takes dependencies, you typically need to create fake/mock dependencies and manually inject them into the SUT (System Under Test), ",
       "creator": "",
       "categories": [
-        "Testing",
-        "Mocking"
+        "Unit Testing"
       ],
       "guid": "https://thomaslevesque.com/2016/01/17/automatically-inject-fakes-in-test-fixture-with-fakeiteasy/"
     },
@@ -716,8 +682,6 @@
       "contentSnippet": "Async programming in C# used to be hard; thanks to .NET 4’s Task Parallel Library and C# 5’s async/await feature, it has become fairly easy, and as a result, is becoming much more common. At the same time, a standardized approach to cancellation has ",
       "creator": "",
       "categories": [
-        "C# 5",
-        ".NET 4",
         "Async/Await"
       ],
       "guid": "https://thomaslevesque.com/2015/12/31/using-multiple-cancellation-sources-with-createlinkedtokensource/"
@@ -774,7 +738,7 @@
       "creator": "",
       "categories": [
         ".NET",
-        "Configuration"
+        "Database"
       ],
       "guid": "https://thomaslevesque.com/2015/06/28/how-to-retrieve-dates-as-utc-in-sqlite/"
     },
@@ -785,7 +749,7 @@
       "contentSnippet": "Exception filters are one of the major new features of C# 6. They take advantage of a CLR feature that was there from the start, but wasn’t used in C# until now. They allow you to specify a condition on a catch block:\nstatic void Main() { try { Foo.D",
       "creator": "",
       "categories": [
-        "C# 6"
+        "Programming"
       ],
       "guid": "https://thomaslevesque.com/2015/06/21/exception-filters-in-c-6/"
     },
@@ -796,8 +760,7 @@
       "contentSnippet": "Unit testing can be tedious sometimes, especially when testing classes that have complex dependencies. Fortunately, some tools make it somewhat easier. I’ve been using FakeItEasy a lot recently; it’s a very easy to use mocking framework for .NET. It ",
       "creator": "",
       "categories": [
-        "Testing",
-        "Mocking"
+        "Unit Testing"
       ],
       "guid": "https://thomaslevesque.com/2015/06/14/create-an-auto-mocking-container-with-unity-and-fakeiteasy/"
     },
@@ -821,7 +784,8 @@
       "creator": "",
       "categories": [
         ".NET",
-        "ReSharper"
+        "Resharper",
+        "JetBrains"
       ],
       "guid": "https://thomaslevesque.com/2015/03/13/leveraging-resharper-annotations/"
     },
@@ -832,7 +796,7 @@
       "contentSnippet": "I love to solve C# puzzles; I think it’s a great way to gain a deep understanding of the language. And besides, it’s fun!\nI just came up with this one:\nstatic void Test(out int x, out int y) { x = 42; y = 123; Console.WriteLine (x == y); } What do yo",
       "creator": "",
       "categories": [
-        "Programming"
+        "Testing"
       ],
       "guid": "https://thomaslevesque.com/2015/03/10/c-puzzle-1/"
     },
@@ -843,7 +807,7 @@
       "contentSnippet": "One of the major new features in C# 6 is string interpolation, which allows you to write things like this:\nstring text = $\"{p.Name} was born on {p.DateOfBirth:D}\"; A lesser known aspect of this feature is that an interpolated string can be treated ei",
       "creator": "",
       "categories": [
-        "C# 6"
+        "Programming"
       ],
       "guid": "https://thomaslevesque.com/2015/02/24/customizing-string-interpolation-in-c-6/"
     },
@@ -854,8 +818,9 @@
       "contentSnippet": "Recently, my team and I started writing unit tests on an application that uses a lot of async code. We used NUnit (2.6) because we were already familiar with it, but we had never tried it on async code yet.\nLet’s assume the system under test is this ",
       "creator": "",
       "categories": [
-        "Async/Await",
-        "Testing"
+        "Unit Testing",
+        "NUnit",
+        "Async/Await"
       ],
       "guid": "https://thomaslevesque.com/2015/02/01/async-unit-tests-with-nunit/"
     },
@@ -910,7 +875,6 @@
       "contentSnippet": "Asynchrony in C# 5 is awesome, and I’ve been using it a lot since it was introduced. But there are few annoying limitations; for instance, you cannot pass parameters by reference (ref or out) to an asynchronous method. There are good reasons for that",
       "creator": "",
       "categories": [
-        "C# 5",
         "Async/Await"
       ],
       "guid": "https://thomaslevesque.com/2014/11/04/passing-parameters-by-reference-to-an-asynchronous-method/"
@@ -922,7 +886,7 @@
       "contentSnippet": "When unit testing a method, one of the things to test is argument validation : for instance, ensure that the method throws a ArgumentNullException when a null argument is passed for a parameter that isn’t allowed to be null. Writing this kind of test",
       "creator": "",
       "categories": [
-        "Testing"
+        "Unit Testing"
       ],
       "guid": "https://thomaslevesque.com/2014/11/02/easy-unit-testing-of-null-argument-validation/"
     },
@@ -979,7 +943,7 @@
       "contentSnippet": "If you have used the HttpWebRequest class to upload data, you know that it uses a “push” model. What I mean is that you call the GetRequestStream method, which opens the connection if necessary, sends the headers, and returns a stream on which you ca",
       "creator": "",
       "categories": [
-        "HTTP"
+        "Programming"
       ],
       "guid": "https://thomaslevesque.com/2013/11/30/uploading-data-with-httpclient-using-a-push-model/"
     },
@@ -1034,6 +998,7 @@
       "contentSnippet": "If you’re writing a client application that needs to store user credentials, it’s usually not a good idea to store the password as plain text, for obvious security reasons. So you need to encrypt it, but as soon as you start to think about encryption",
       "creator": "",
       "categories": [
+        "API",
         "Security"
       ],
       "guid": "https://thomaslevesque.com/2013/05/21/an-easy-and-secure-way-to-store-a-password-using-data-protection-api/"
@@ -1056,7 +1021,6 @@
       "contentSnippet": "Caller info attributes are one of the new features of C# 5. They’re attributes applied to optional method parameters that enable you to pass caller information implicitly to a method. I’m not sure that description is very clear, so an example will he",
       "creator": "",
       "categories": [
-        "C# 5",
         ".NET Framework"
       ],
       "guid": "https://thomaslevesque.com/2012/06/13/using-c-5-caller-info-attributes-when-targeting-earlier-versions-of-the-net-framework/"
@@ -1068,7 +1032,7 @@
       "contentSnippet": "Visual Studio 2012 RC is out since last week, and even though I didn’t have much time to play with it yet, I think I like it so far. Lots of things have already been said about the design, and about the most important new features, but there are also",
       "creator": "",
       "categories": [
-        "Visual Studio 2012"
+        "Visual Studio"
       ],
       "guid": "https://thomaslevesque.com/2012/06/02/little-known-new-features-in-visual-studio-2012/"
     },
@@ -1102,8 +1066,9 @@
       "contentSnippet": "It’s been a while since I last wrote about markup extensions… The release of Visual Studio 11 Developer Preview, which introduces a number of new features to WPF, just gave me a reason to play with them again. The feature I’m going to discuss here is",
       "creator": "",
       "categories": [
+        "Visual Studio",
         "WPF",
-        "Visual Studio 11"
+        "Preview"
       ],
       "guid": "https://thomaslevesque.com/2011/09/23/wpf-4-5-subscribing-to-an-event-using-a-markup-extension/"
     },
@@ -1148,7 +1113,8 @@
       "contentSnippet": "I’m currently working on a project that uses Entity Framework 4. Even though lazy loading is enabled, I often use the ObjectQuery.Include method to eagerly load associated entities, in order to avoid database roundtrips when I access them:\nvar query ",
       "creator": "",
       "categories": [
-        "Entity Framework"
+        "Entity Framework",
+        "Database"
       ],
       "guid": "https://thomaslevesque.com/2010/10/03/entity-framework-using-include-with-lambda-expressions/"
     },
@@ -1192,9 +1158,10 @@
       "contentSnippet": "THE feature that was missing from WPF ! Visual Studio 2010 beta 2 has been released last week, and it brings to WPF a long awaited feature : support for bindings in InputBindings.\nAs a reminder, the issue in previous releases was that the Command pro",
       "creator": "",
       "categories": [
+        "Visual Studio",
         "WPF",
-        "Visual Studio 2010",
-        "Async/Await"
+        "Async/Await",
+        "Preview"
       ],
       "guid": "https://thomaslevesque.com/2009/10/26/vs2010-binding-support-in-inputbindings/"
     },
@@ -1205,11 +1172,11 @@
       "contentSnippet": "If you’ve been following the news about .NET, you probably know that the upcoming version 4.0 of C# introduces a new dynamic type. This type allows to access members of an object which are not statically known (at compile time). These members will be",
       "creator": "",
       "categories": [
-        "C# 4"
+        "Programming"
       ],
       "guid": "https://thomaslevesque.com/2009/10/08/c-4-0-implementing-a-custom-dynamic-object/"
     }
   ],
-  "lastUpdated": "2026-04-17T12:45:22.721Z",
+  "lastUpdated": "2026-07-09T15:21:09.044Z",
   "feedTitle": "Thomas Levesque's .NET Blog"
 }

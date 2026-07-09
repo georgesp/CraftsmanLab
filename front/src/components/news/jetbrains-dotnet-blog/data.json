@@ -2,442 +2,195 @@
   "source": "jetbrains-dotnet-blog",
   "items": [
     {
-      "title": "Webinar – OSS Power-Ups: XenoAtom.Terminal.UI",
-      "link": "https://blog.jetbrains.com/dotnet/2026/04/09/webinar-oss-power-ups-xenoatom-terminal-ui/",
-      "pubDate": "Thu, 09 Apr 2026 15:32:51 +0000",
-      "contentSnippet": "Join us Thursday, April 16, 2026, 15:00 – 16:30 UTC (check other timezones) for our free live webinar, OSS PowerUps – XenoAtom.Terminal.UI, with Alexandre Mutel. This is the fifteenth episode of our series of OSS Power-Ups, where we put a spotlight o",
-      "creator": "Matthias Koch",
-      "categories": [
-        "Net-tools",
-        "Livestreams",
-        "Oss",
-        "Power-up",
-        "Terminal"
-      ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=696186"
-    },
-    {
-      "title": "dotInsights | April 2026",
-      "link": "https://blog.jetbrains.com/dotnet/2026/04/08/dotinsights-april-2026/",
-      "pubDate": "Wed, 08 Apr 2026 13:43:24 +0000",
-      "contentSnippet": "Did you know? You can use LINQ to XML to write queries in a readable and strongly-typed way directly against an XML document, making it one of the most intuitive ways to deal with XML in .NET. Welcome to dotInsights by JetBrains! This newsletter is t",
-      "creator": "Rachel Appel",
-      "categories": [
-        ".NET",
-        "JetBrains",
-        "LINQ"
-      ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=694836"
-    },
-    {
-      "title": "Profile .NET Apps Without Restarting: Monitoring Comes to ReSharper",
-      "link": "https://blog.jetbrains.com/dotnet/2026/03/31/profile-dotnet-apps-without-restarting-monitoring-comes-to-resharper/",
-      "pubDate": "Tue, 31 Mar 2026 09:16:05 +0000",
-      "contentSnippet": "Tracking down performance bottlenecks in Visual Studio often means interrupting your workflow, restarting your application in profiling mode, and hoping you can reliably reproduce the exact issue. We think there’s a better way. If you have already us",
-      "creator": "Alexey Totin",
-      "categories": [
-        ".NET",
-        "ReSharper",
-        "dotMemory",
-        "dotTrace",
-        "Performance",
-        "Profiling"
-      ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=695257"
-    },
-    {
-      "title": "ReSharper C++ 2026.1: Better performance, improved Unreal Engine workflows, and language support updates",
-      "link": "https://blog.jetbrains.com/rscpp/2026/03/30/resharper-cpp-2026-1-released/",
-      "pubDate": "Mon, 30 Mar 2026 10:48:01 +0000",
-      "contentSnippet": "ReSharper C++ 2026.1 is here, bringing performance improvements, expanded language support, and better tooling for Unreal Engine development. This release focuses on improved performance in large C++ codebases, enhancements in coding assistance and c",
-      "creator": "Sasha Ivanova",
-      "categories": [
-        "ReSharper C++",
-        "C++",
-        "C++26",
-        "Performance",
-        "Unreal Engine"
-      ],
-      "guid": "https://blog.jetbrains.com/?post_type=rscpp&p=694587"
-    },
-    {
-      "title": "ReSharper 2026.1: Built-in Performance Monitoring, Expansion to VS Code, and Faster Everyday Workflows",
-      "link": "https://blog.jetbrains.com/dotnet/2026/03/30/resharper-2026-1-released/",
-      "pubDate": "Mon, 30 Mar 2026 10:47:56 +0000",
-      "contentSnippet": "ReSharper 2026.1 is here, bringing improvements that focus on how you actually work: understanding runtime behavior, writing safer C#, and keeping Visual Studio responsive. This release introduces a new approach to performance monitoring, takes ReSha",
-      "creator": "Sasha Ivanova",
-      "categories": [
-        "ReSharper",
-        "C#",
-        "Performance",
-        "OOP",
-        "VS Code"
-      ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=693898"
-    },
-    {
-      "title": "Rider 2026.1: More AI Choice, Stronger .NET Tooling, and Expanded Game Dev Support",
-      "link": "https://blog.jetbrains.com/dotnet/2026/03/30/rider-2026-1-released/",
-      "pubDate": "Mon, 30 Mar 2026 10:47:40 +0000",
-      "contentSnippet": "Rider 2026.1 is here, bringing improvements across the areas that matter most: .NET development, game development workflows, and the overall IDE experience. Key updates include the ability to run file-based C# programs, inspect .NET disassemblies, an",
-      "creator": "Sasha Ivanova",
-      "categories": [
-        "Rider",
-        ".NET",
-        "AI",
-        "CMake",
-        "Game Development",
-        "NatVis",
-        "NuGet"
-      ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=693891"
-    },
-    {
-      "title": "Rider 2026.1 Release Candidate Is Out!",
-      "link": "https://blog.jetbrains.com/dotnet/2026/03/20/rider-2026-1-release-candidate/",
-      "pubDate": "Fri, 20 Mar 2026 12:48:45 +0000",
-      "contentSnippet": "The Rider 2026.1 Release Candidate is ready for you to try. This upcoming release brings improved support for the .NET ecosystem and game development workflows, as well as refinements to the overall developer experience. Rider 2026.1 allows you to wo",
-      "creator": "Sasha Ivanova",
-      "categories": [
-        "Rider",
-        ".NET",
-        "Preview"
-      ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=690066"
-    },
-    {
-      "title": "ReSharper 2026.1 Release Candidate Released!",
-      "link": "https://blog.jetbrains.com/dotnet/2026/03/20/resharper-2026-1-release-candidate/",
-      "pubDate": "Fri, 20 Mar 2026 12:48:09 +0000",
-      "contentSnippet": "The ReSharper 2026.1 Release Candidate is ready for you to try. This release focuses on making everyday .NET development faster and more predictable, with improvements to code analysis and language support, a new way to monitor runtime performance, a",
-      "creator": "Sasha Ivanova",
-      "categories": [
-        "ReSharper",
-        ".NET",
-        "Performance",
-        "VS Code",
-        "Preview"
-      ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=690004"
-    },
-    {
-      "title": "ReSharper for Visual Studio Code, Cursor, and Compatible Editors Is Out",
-      "link": "https://blog.jetbrains.com/dotnet/2026/03/05/resharper-for-visual-studio-code-cursor-and-compatible-editors-is-out/",
-      "pubDate": "Thu, 05 Mar 2026 11:31:57 +0000",
-      "contentSnippet": "ReSharper has been a trusted productivity tool for C# developers in Visual Studio for over 20 years. Today, we’re taking the next step and officially releasing the ReSharper extension for Visual Studio Code and compatible editors. After a year in Pub",
-      "creator": "Alexander Kurakin",
-      "categories": [
-        "ReSharper",
-        "C#",
-        "VS Code",
-        "Cursor",
-        "Rider"
-      ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=685394"
-    },
-    {
-      "title": "dotInsights | March 2026",
-      "link": "https://blog.jetbrains.com/dotnet/2026/03/04/dotinsights-march-2026/",
-      "pubDate": "Wed, 04 Mar 2026 12:44:40 +0000",
-      "contentSnippet": "Did you know? The async and await keywords in C# were introduced in C# 5.0 (2012) to simplify asynchronous programming. Under the hood, the compiler uses a state machine to transform your asynchronous code into manageable tasks. As a developer, you n",
-      "creator": "Rachel Appel",
-      "categories": [
-        ".NET",
-        "C#",
-        "JetBrains",
-        "Async/Await"
-      ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=684885"
-    },
-    {
-      "title": "C# Extension Members",
-      "link": "https://blog.jetbrains.com/dotnet/2026/02/23/csharp-extension-members/",
-      "pubDate": "Mon, 23 Feb 2026 14:44:31 +0000",
-      "contentSnippet": "Overview: What are extension members? Extension members allow you to define additional members for existing types without modifying their definitions. With them, you can add functionality to existing types you don’t have access to or don’t control, f",
-      "creator": "Rachel Appel",
-      "categories": [
-        "C#",
-        "C# 14",
-        ".NET"
-      ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=679230"
-    },
-    {
-      "title": "dotInsights | February 2026",
-      "link": "https://blog.jetbrains.com/dotnet/2026/02/10/dotinsights-february-2026/",
-      "pubDate": "Tue, 10 Feb 2026 14:50:52 +0000",
-      "contentSnippet": "Did you know? C# allows digit separators (_) in numeric literals to make large numbers more readable, e.g., int num = 1_000_000; is valid and equals one million. Welcome to dotInsights by JetBrains! This newsletter is the home for recent .NET and sof",
-      "creator": "Rachel Appel",
-      "categories": [
-        ".NET",
-        "C#",
-        "JetBrains"
-      ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=679133"
-    },
-    {
-      "title": "Open Source in Focus: .NET Projects and the Tools Behind Them",
-      "link": "https://blog.jetbrains.com/blog/2026/02/10/open-source-in-focus-dotnet-projects-and-the-tools-behind-them/",
-      "pubDate": "Tue, 10 Feb 2026 07:23:42 +0000",
-      "contentSnippet": "At JetBrains, we love seeing the developer community grow and thrive. That's why we support open-source projects that make a real difference – the ones that help developers learn, build, and create better software together. We're proud to back open-s",
-      "creator": "Lena Morozova",
-      "categories": [
-        ".NET",
-        "Open Source",
-        "Community",
-        "JetBrains"
-      ],
-      "guid": "https://blog.jetbrains.com/?post_type=blog&p=679077"
-    },
-    {
-      "title": "ReSharper and Rider 2025.3.2 Updates Out Now!",
-      "link": "https://blog.jetbrains.com/dotnet/2026/01/29/resharper-and-rider-2025-3-2/",
-      "pubDate": "Thu, 29 Jan 2026 15:44:45 +0000",
-      "contentSnippet": "We've just released another update for ReSharper, Rider and the .NET tools version 2025.3. You can update to this version from inside those tools, using the Toolbox app or our website.  Let's take a look at the latest updates.  Rider 2025.3.2 Agent C",
-      "creator": "Sasha Ivanova",
-      "categories": [
-        "ReSharper",
-        "Rider",
-        ".NET"
-      ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=677156"
-    },
-    {
-      "title": "Game Dev in 2025: Excerpts From the State of Game Development Report",
-      "link": "https://blog.jetbrains.com/dotnet/2026/01/29/game-dev-in-2025-excerpts-from-the-state-of-game-development-report/",
-      "pubDate": "Thu, 29 Jan 2026 10:00:00 +0000",
-      "contentSnippet": "As we approach the midpoint of the decade, game developers face an evolving landscape shaped by shifting job security, technology choices, platform strategies, and practical AI adoption. Our State of Game Development 2025 report reveals critical insi",
-      "creator": "Anna Ruban",
-      "categories": [
-        "AI",
-        "Game Development",
-        "Rider"
-      ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=675222"
-    },
-    {
-      "title": "How We Made Variable Inspections 87 Times Faster for Unreal Engine in Rider",
-      "link": "https://blog.jetbrains.com/dotnet/2026/01/26/how-we-made-variable-inspections-87-times-faster-for-unreal-engine-in-rider/",
-      "pubDate": "Mon, 26 Jan 2026 13:08:53 +0000",
-      "contentSnippet": "If you've ever expanded a complex Unreal Engine variable in Rider's debugger and had time to contemplate your life choices, this post is for you. We've rewritten our expression evaluator, and the results are dramatic: Variable inspection is up to 87 ",
+      "title": "Natvis Comes to Linux and macOS: Visualize Your C++ Types Without Writing a Single Data Formatter",
+      "link": "https://blog.jetbrains.com/dotnet/2026/07/06/natvis-comes-to-linux-and-macos-in-rider-2026-2-debugger/",
+      "pubDate": "Mon, 06 Jul 2026 11:13:40 +0000",
+      "contentSnippet": "If you’ve ever debugged your own C++ containers, strings, or hash tables on Linux or macOS, you know the deal: to see anything useful in the debugger, you have to write a custom data formatter. And writing a good data formatter is genuinely painful. ",
       "creator": "Sasha Korepanov",
       "categories": [
+        "Net-tools",
         "Rider",
-        "Performance",
-        "Debugging",
-        "Game Development",
-        "LLDB",
-        "Unreal Engine"
+        "Game-debugging",
+        "Game-developement",
+        "Gamedev",
+        "Natvis",
+        "Unreal-engine"
       ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=676804"
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=715556"
     },
     {
-      "title": "ReSharper 2026.1 Early Access Program Has Begun",
-      "link": "https://blog.jetbrains.com/dotnet/2026/01/22/resharper-2026-1-early-access-program/",
-      "pubDate": "Thu, 22 Jan 2026 13:42:08 +0000",
-      "contentSnippet": "The ReSharper 2026.1 Early Access Program is now open, and the first EAP build brings a mix of C# productivity improvements, new inspections, performance work, and expanded C++ language support. As always, EAP builds are an opportunity to try upcomin",
+      "title": "Your AI Agent Keeps Missing The Real Bottleneck.  JetBrains Rider Can Fix It Now.",
+      "link": "https://blog.jetbrains.com/dotnet/2026/06/25/performance-profiling-agent-skill-in-rider/",
+      "pubDate": "Thu, 25 Jun 2026 14:17:40 +0000",
+      "contentSnippet": "Here’s a case worth pondering: your app freezes for ten seconds, and you ask an AI agent what’s wrong. What does it actually do? For a long time the honest answer was: it rummages through your code and takes a wild guess. A snapshot taken by a profil",
       "creator": "Sasha Ivanova",
       "categories": [
-        "ReSharper",
-        "C#",
-        "C++",
-        "Performance",
-        "Preview"
-      ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=675128"
-    },
-    {
-      "title": "Rider 2026.1 Early Access Program Is Now Open!",
-      "link": "https://blog.jetbrains.com/dotnet/2026/01/22/rider-2026-1-early-access-program-start/",
-      "pubDate": "Thu, 22 Jan 2026 13:41:54 +0000",
-      "contentSnippet": "The Early Access Program (EAP) for Rider 2026.1 has just begun, and the first preview build for the upcoming major release is already out.  There are several ways for you to get your hands on the first preview build: A reminder of what the EAP is all",
-      "creator": "Sasha Ivanova",
-      "categories": [
+        "Net-tools",
+        "Jetbrains-ai",
         "Rider",
-        "Azure",
-        "DevOps",
-        "NatVis",
-        "NuGet",
-        "Preview"
+        "Eap",
+        "Mcp",
+        "Mcp-tools"
       ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=675034"
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=712000"
     },
     {
-      "title": "dotInsights | January 2026",
-      "link": "https://blog.jetbrains.com/dotnet/2026/01/05/dotinsights-january-2026/",
-      "pubDate": "Mon, 05 Jan 2026 15:26:27 +0000",
-      "contentSnippet": "Did you know? In C# default interface methods allow you to include a method implementation directly in an interface. Welcome to dotInsights by JetBrains! This newsletter is the home for recent .NET and software development related information. 🔗 Lin",
-      "creator": "Rachel Appel",
+      "title": "Your JetBrains IDE Expertise, Now on LinkedIn",
+      "link": "https://blog.jetbrains.com/blog/2026/06/17/your-jetbrains-ide-expertise-now-on-linkedin/",
+      "pubDate": "Wed, 17 Jun 2026 13:11:02 +0000",
+      "contentSnippet": "Every developer has tools they rely on daily. The workflows they’ve built around them, the ways they’ve learned to move faster, debug smarter, and write better code – that kind of hands-on experience can be hard to put into words. We’re collaborating",
+      "creator": "Ekaterina Ryabukha",
       "categories": [
-        ".NET",
-        "C#",
         "JetBrains"
       ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=672037"
+      "guid": "https://blog.jetbrains.com/?post_type=blog&p=711459"
     },
     {
-      "title": "ReSharper and Rider 2025.3.1 Released: Next Edit Suggestions and Other Important Updates",
-      "link": "https://blog.jetbrains.com/dotnet/2025/12/18/resharper-and-rider-2025-3-1/",
-      "pubDate": "Thu, 18 Dec 2025 17:47:54 +0000",
-      "contentSnippet": "Since the 2025.3 release, we've published several rapid-response updates (2025.3.0.1–2025.3.0.4) for ReSharper and Rider to address the most urgent issues as quickly as possible. The 2025.3.1 update brings all of those fixes together and includes add",
+      "title": "dotInsights | June 2026",
+      "link": "https://blog.jetbrains.com/dotnet/2026/06/12/dotinsights-june-2026/",
+      "pubDate": "Fri, 12 Jun 2026 11:43:07 +0000",
+      "contentSnippet": "Did you know? The var keyword isn’t a keyword! It’s one of several “contextual” keywords in C#, and it only has special meaning when used to declare a variable. Try defining a class called var and see what happens to the rest of your codebase… Welcom",
+      "creator": "Matt Ellis",
+      "categories": [
+        "Net-tools",
+        "Dotinsights"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=712652"
+    },
+    {
+      "title": "Rider 2026.2 EAP 5: Code Quality Checks for Your AI Agents, and More.",
+      "link": "https://blog.jetbrains.com/dotnet/2026/06/08/rider-2026-2-code-quality-check-hooks-for-ai-agents/",
+      "pubDate": "Mon, 08 Jun 2026 14:40:28 +0000",
+      "contentSnippet": "Rider 2026.2 EAP 5 is now available, bringing a faster startup flow with the new non-modal Welcome screen and quality-check hooks for AI agents. If you’re catching up on the 2026.2 EAP cycle, be sure to check out the blog posts we’ve already publishe",
       "creator": "Sasha Ivanova",
       "categories": [
-        "ReSharper",
+        "Net-tools",
         "Rider",
-        "AI"
+        "Ai-agent-hooks",
+        "Claude",
+        "Claude-code",
+        "Codex",
+        "Eap",
+        "Early-access-program",
+        "Jetbrains-ai",
+        "Mcp-tools"
       ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=669532"
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=711938"
     },
     {
-      "title": "Rider and ReSharper 2025.3.0.4: Important Updates Released",
-      "link": "https://blog.jetbrains.com/dotnet/2025/12/11/rider-and-resharper-2025-3-0-4/",
-      "pubDate": "Thu, 11 Dec 2025 11:13:45 +0000",
-      "contentSnippet": "Another set of updates for the 2025.3 versions of ReSharper and Rider has just been released. This release contains important bug-fixes as well as feature updates. Let's take a look at what's been improved. Rider 2025.3.0.4 Multi-agent experience in ",
+      "title": "WPF Hot Reload Is Here: Edit Your XAML and Watch It Update Live in Rider",
+      "link": "https://blog.jetbrains.com/dotnet/2026/06/03/wpf-hot-reload-in-jetbrains-rider/",
+      "pubDate": "Wed, 03 Jun 2026 08:59:33 +0000",
+      "contentSnippet": "WPF Hot Reload is now available in Rider, starting with the 2026.2 EAP 2 build. You can edit your XAML while your app is running under the debugger and see the changes immediately, with no rebuild, no restart, and no losing your place in the applicat",
       "creator": "Sasha Ivanova",
       "categories": [
-        "ReSharper",
+        "Net-tools",
         "Rider",
-        "Anthropic",
-        "Junie"
+        "Eap",
+        "Hot-reload",
+        "Xaml-2"
       ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=667888"
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=711537"
     },
     {
-      "title": "Meet the Islands Theme – The New Default Look for JetBrains IDEs",
-      "link": "https://blog.jetbrains.com/platform/2025/12/meet-the-islands-theme-the-new-default-look-for-jetbrains-ides/",
-      "pubDate": "Mon, 08 Dec 2025 09:53:16 +0000",
-      "contentSnippet": "The Islands theme is now the default look across JetBrains IDEs starting with version 2025.3.This update is more than a visual refresh. It's our commitment to creating a soft, balanced environment designed to support focus and comfort throughout your",
-      "creator": "Olga Berdnikova",
+      "title": "Deprecating dotMemory Unit",
+      "link": "https://blog.jetbrains.com/dotnet/2026/05/28/deprecating-dotmemory-unit/",
+      "pubDate": "Thu, 28 May 2026 10:55:03 +0000",
+      "contentSnippet": "dotMemory Unit has long served as a unit testing framework for detecting memory issues in .NET code. We are grateful to everyone who has used it as part of their development and testing workflows. After careful consideration, we have decided to retir",
+      "creator": "Alexander Kurakin",
       "categories": [
-        "JetBrains",
-        "IntelliJ",
-        "UI"
+        "Net-tools",
+        "Dotmemory",
+        "Deprecated",
+        "Dotmemory-unit"
       ],
-      "guid": "https://blog.jetbrains.com/?post_type=platform&p=664735"
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=710060"
     },
     {
-      "title": "5 Stories Of Developers Using JetBrains Rider to Create, Collaborate, and Have Fun",
-      "link": "https://blog.jetbrains.com/dotnet/2025/12/03/5-stories-of-developers-using-jetbrains-rider/",
-      "pubDate": "Wed, 03 Dec 2025 09:33:13 +0000",
-      "contentSnippet": "A year ago, we introduced a free non-commercial use license option for JetBrains Rider, hoping to remove barriers for developers who code with no financial objective in mind for their projects. Recently, we put out a call for your stories – curious t",
+      "title": "What Happens When You Give AI Agents the Map of Your Code’s Coverage?",
+      "link": "https://blog.jetbrains.com/dotnet/2026/05/22/claude-codex-ai-agent-skill-for-writing-tests/",
+      "pubDate": "Fri, 22 May 2026 12:54:04 +0000",
+      "contentSnippet": "When you ask an AI agent to write a new feature, a good agent will eventually say: “I need to write a test for this.” But what happens next is usually messy. To figure out where that new test belongs, the agent has to start searching through your pro",
       "creator": "Sasha Ivanova",
       "categories": [
+        "Net-tools",
+        "Dotcover",
         "Rider",
-        "Community"
+        "Eap",
+        "Mcp",
+        "Rider-2026-2",
+        "Test-coverage",
+        "Unit-test-coverage",
+        "Unit-test-generation"
       ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=663642"
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=709115"
     },
     {
-      "title": "dotInsights | December 2025",
-      "link": "https://blog.jetbrains.com/dotnet/2025/12/02/dotinsights-december-2025/",
-      "pubDate": "Tue, 02 Dec 2025 13:38:29 +0000",
-      "contentSnippet": "Did you know? Calling GC.Collect() explicitly forces the garbage collector to run and reclaim memory from unreachable objects. However, it's generally discouraged to use this method in most applications because the garbage collector is highly optimiz",
+      "title": "Rider 2026.2 EAP 3: Cost-effective Agentic Test Coverage, Code Change Previews, GameDev Templates, and NuGet Improvements",
+      "link": "https://blog.jetbrains.com/dotnet/2026/05/22/rider-2026-2-eap-3-cost-effective-agentic-test-coverage-code-change-previews-gamedev-templates-and-nuget-improvements/",
+      "pubDate": "Fri, 22 May 2026 12:42:42 +0000",
+      "contentSnippet": "JetBrains Rider 2026.2 EAP 3 is out! You can download this version from our website, update directly from within the IDE, use the free Toolbox App, or install it via snap packages. Here’s what you can expect from this update: New AI agent skill to re",
+      "creator": "Sasha Ivanova",
+      "categories": [
+        "Net-tools",
+        "Eap",
+        "Rider",
+        "Claude",
+        "Codex",
+        "Dotcover",
+        "Mpc",
+        "Nuget"
+      ],
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=709252"
+    },
+    {
+      "title": "dotInsights | May 2026",
+      "link": "https://blog.jetbrains.com/dotnet/2026/05/12/dotinsights-may-2026/",
+      "pubDate": "Tue, 12 May 2026 09:54:09 +0000",
+      "contentSnippet": "Did you know? C# supports ref return and ref local, which let you return and work with references to variables instead of copies of their values.  Welcome to dotInsights by JetBrains! This newsletter is the home for recent .NET and software developme",
       "creator": "Rachel Appel",
       "categories": [
-        ".NET",
-        "JetBrains",
-        "Performance"
+        "Net-tools",
+        "Dotinsights"
       ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=661395"
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=703865"
     },
     {
-      "title": "ReSharper and Rider 2025.3.0.3: A Fresh Set of Updates Released",
-      "link": "https://blog.jetbrains.com/dotnet/2025/11/27/resharper-and-rider-2025-3-0-3/",
-      "pubDate": "Thu, 27 Nov 2025 13:40:26 +0000",
-      "contentSnippet": "Another set of updates for the 2025.3 versions of ReSharper and Rider has just been released.  Let's take a look at what's been improved. ReSharper 2025.3.0.3 The most notable fix of this build is that extension methods from source-only NuGet package",
+      "title": "The ReSharper 2026.2 Early Access Program Begins: Bringing More AI Agents into Visual Studio",
+      "link": "https://blog.jetbrains.com/dotnet/2026/05/11/the-resharper-2026-2-eap-any-ai-agent-in-visual-studio/",
+      "pubDate": "Mon, 11 May 2026 13:16:35 +0000",
+      "contentSnippet": "We’re excited to announce that the Early Access Program (EAP) for ReSharper and .NET Tools 2026.2 is now underway! While our EAP announcements usually cover a wide range of new features, performance updates, and bug fixes, this release is different. ",
       "creator": "Sasha Ivanova",
       "categories": [
-        "ReSharper",
-        "Rider",
-        "NuGet"
-      ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=662570"
-    },
-    {
-      "title": "More Updates and Fixes for ReSharper and Rider 2025.3",
-      "link": "https://blog.jetbrains.com/dotnet/2025/11/20/resharper-rider-2025-3-0-2/",
-      "pubDate": "Thu, 20 Nov 2025 16:04:23 +0000",
-      "contentSnippet": "A second set of updates and bug fixes for the 2025.3 release of ReSharper and Rider has just been made public.  Let's take a look at what's been improved. ReSharper 2025.3.0.2  For the full list of issues resolved in this build, please refer to our i",
-      "creator": "Sasha Ivanova",
-      "categories": [
-        "ReSharper",
-        "Rider",
+        "Net-tools",
+        "Resharper",
+        "Acp",
+        "Ai-assistant",
+        "Eap",
         "Junie"
       ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=660447"
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=704732"
     },
     {
-      "title": "Database Features in Rider",
-      "link": "https://blog.jetbrains.com/dotnet/2025/11/17/database-features-in-rider/",
-      "pubDate": "Mon, 17 Nov 2025 14:08:01 +0000",
-      "contentSnippet": "Rider provides robust support for working with databases directly within the IDE – powered by DataGrip! Rider and DataGrip smooth development workflows by allowing you to manage and interact with a variety of database systems. This integration enhanc",
-      "creator": "Rachel Appel",
-      "categories": [
-        "Rider",
-        "Database",
-        "NoSQL",
-        "SQL"
-      ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=653393"
-    },
-    {
-      "title": "JetBrains Is Heading to VSLive! Orlando",
-      "link": "https://blog.jetbrains.com/dotnet/2025/11/15/jetbrains-is-heading-to-vslive-orlando/",
-      "pubDate": "Sat, 15 Nov 2025 01:33:47 +0000",
-      "contentSnippet": "Next week we'll be in Orlando, Florida for Visual Studio Live!, and if you work with .NET, we'd like to meet you. You'll find the JetBrains booth (#118) in the conference expo area throughout the week. Stop by to: We'll also have special offers avail",
-      "creator": "Mehul Harry",
-      "categories": [
-        "JetBrains",
-        "Events",
-        ".NET"
-      ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=659521"
-    },
-    {
-      "title": "C# 14 Language Features in ReSharper and Rider 2025.3",
-      "link": "https://blog.jetbrains.com/dotnet/2025/11/11/csharp-14-language-features-in-resharper-and-rider-2025-3/",
-      "pubDate": "Tue, 11 Nov 2025 15:49:55 +0000",
-      "contentSnippet": "Last year marked the first time we shipped ReSharper and Rider side by side with the official .NET SDK release – and we're happy to announce that we've done it again with the 2025.3 release! Download Rider 2025.3 Download ReSharper 2025.3 With .NET 1",
-      "creator": "Matthias Koch",
-      "categories": [
-        "C#",
-        "C# 14",
-        ".NET",
-        "ReSharper",
-        "Rider",
-        "Inspections"
-      ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=658258"
-    },
-    {
-      "title": "What's Been Fixed in Rider 2025.3",
-      "link": "https://blog.jetbrains.com/dotnet/2025/11/11/what-s-been-fixed-in-rider-2025-3/",
-      "pubDate": "Tue, 11 Nov 2025 15:49:14 +0000",
-      "contentSnippet": "Each release of JetBrains Rider is shaped by an ongoing conversation between our team and our users. Your feedback, bug reports, and upvotes complement our internal QA processes and performance tracking, helping us understand how issues manifest acro",
+      "title": "Rider 2026.2 Early Access Program Begins With Performance Improvements",
+      "link": "https://blog.jetbrains.com/dotnet/2026/05/11/rider-2026-2-early-access-program/",
+      "pubDate": "Mon, 11 May 2026 13:16:02 +0000",
+      "contentSnippet": "The Early Access Program (EAP) for Rider 2026.2 is now open, and the first preview build for the upcoming major release is already out.  There are several ways for you to get your hands on the first preview build: A reminder of what the EAP is all ab",
       "creator": "Sasha Ivanova",
       "categories": [
+        "Net-tools",
+        "Releases",
         "Rider",
-        ".NET"
+        "Net-aspire",
+        "Aspire",
+        "Azure",
+        "Azure-functions",
+        "Eap",
+        "Roslyn"
       ],
-      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=658299"
-    },
-    {
-      "title": "ReSharper C++ 2025.3: C++26 Language Support, Faster Unreal Engine Startup, and Visual Studio 2026 Compatibility",
-      "link": "https://blog.jetbrains.com/rscpp/2025/11/11/resharper-cpp-2025-3/",
-      "pubDate": "Tue, 11 Nov 2025 15:48:50 +0000",
-      "contentSnippet": "We're excited to announce that ReSharper C++ 2025.3 is here, bringing major language updates, performance improvements, and a refined UI in the upcoming Microsoft Visual Studio 2026 release. This version advances C++26 support with new language featu",
-      "creator": "Sasha Ivanova",
-      "categories": [
-        "ReSharper C++",
-        "C++",
-        "C++26",
-        "Unreal Engine",
-        "Visual Studio 2026",
-        "Performance"
-      ],
-      "guid": "https://blog.jetbrains.com/?post_type=rscpp&p=658125"
+      "guid": "https://blog.jetbrains.com/?post_type=dotnet&p=705476"
     }
   ],
-  "lastUpdated": "2026-04-17T12:45:22.605Z",
+  "lastUpdated": "2026-07-09T15:21:08.937Z",
   "feedTitle": ".NET Tools : Essential productivity kit for .NET and game developers | The JetBrains Blog"
 }

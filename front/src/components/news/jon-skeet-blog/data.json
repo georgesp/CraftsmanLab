@@ -114,31 +114,8 @@
         "Election 2029"
       ],
       "guid": "http://codeblog.jonskeet.uk/2025/03/10/election-2029-technical-overview/"
-    },
-    {
-      "title": "Election 2029: Introduction",
-      "link": "https://codeblog.jonskeet.uk/2025/03/10/election-2029-introduction/",
-      "pubDate": "Mon, 10 Mar 2025 17:48:39 +0000",
-      "contentSnippet": "Introduction It’s been over 8 months since I started my UK Election 2029 site, and high time that I actually wrote an introduction post so that I can get into more detailed topics later. In 2024, shortly after the UK general election was announced, I",
-      "creator": "jonskeet",
-      "categories": [
-        "Election 2029"
-      ],
-      "guid": "http://codeblog.jonskeet.uk/2025/03/10/election-2029-introduction/"
-    },
-    {
-      "title": "Election 2029: The Impossible Exception – Solved",
-      "link": "https://codeblog.jonskeet.uk/2025/02/08/election-2029-the-impossible-exception-solved/",
-      "pubDate": "Sat, 08 Feb 2025 04:07:15 +0000",
-      "contentSnippet": "Shortly after writing my previous post, a colleague pinged me to say she’d figured out what was wrong – at least at the most immediate level, i.e. the exception itself. Nothing is wrong with the ordering code – it’s just that the exception message is",
-      "creator": "jonskeet",
-      "categories": [
-        "Diagnostics",
-        "Election 2029"
-      ],
-      "guid": "http://codeblog.jonskeet.uk/2025/02/08/election-2029-the-impossible-exception-solved/"
     }
   ],
-  "lastUpdated": "2026-04-17T12:45:22.673Z",
+  "lastUpdated": "2026-07-09T15:21:09.243Z",
   "feedTitle": "Jon Skeet's coding blog"
 }
