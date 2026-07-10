@@ -2,41 +2,29 @@
   "source": "dotnettips-blog",
   "items": [
     {
-      "title": "Collection Performance: High-Performance Emptiness Checks for Concurrent & Immutable Collections",
-      "link": "https://dotnettips.com/2026/04/12/collection-performance-high-performance-emptiness-checks-for-concurrent-immutable-collections/",
-      "pubDate": "Sun, 12 Apr 2026 06:00:00 +0000",
-      "contentSnippet": "Count vs IsEmpty can be the difference between fast code and a performance disaster. For some immutable and concurrent collections, the wrong choice is tens of thousands of times slower.",
+      "title": "The .NET Host Process: What Runs Before Main() and Why It Sometimes Hangs",
+      "link": "https://dotnettips.com/2026/07/05/the-net-host-process-what-runs-before-main-and-why-it-sometimes-hangs/",
+      "pubDate": "Sun, 05 Jul 2026 06:00:00 +0000",
+      "contentSnippet": "This guide explores the essential role of the .NET host process, which initializes the runtime, resolves dependencies, and launches applications. It highlights common issues with lingering host processes, especially during BenchmarkDotNet runs, and o",
       "creator": "David (dotNetDave) McCarter",
       "categories": [
         ".NET",
+        "Benchmarking",
         "Performance",
-        "Code Performance",
-        "Collections",
-        "Count"
+        "Apphost",
+        "BenchmarkDotNet",
+        "CoreCLR",
+        "Dotnet",
+        "Hostfxr",
+        "Hostpolicy"
       ],
-      "guid": "https://dotnettips.com/?p=16589"
+      "guid": "https://dotnettips.com/?p=18182"
     },
     {
-      "title": "String Performance: Avoid Unnecessary Conversions with StringBuilder",
-      "link": "https://dotnettips.com/2026/04/05/string-performance-avoid-unnecessary-conversions-with-stringbuilder/",
-      "pubDate": "Sun, 05 Apr 2026 06:00:00 +0000",
-      "contentSnippet": "The excerpt from \"Rock Your Code\" advises caution when using StringBuilder with non-string types, highlighting that unnecessary conversions can hinder performance.",
-      "creator": "David (dotNetDave) McCarter",
-      "categories": [
-        ".NET",
-        "Code Analysis",
-        "Performance",
-        "Code Performance",
-        "StringBuilder",
-        "Strings"
-      ],
-      "guid": "https://dotnettips.com/?p=16557"
-    },
-    {
-      "title": "Coding Faster with dotNetTips.com Spargine 10: April 2026 Release",
-      "link": "https://dotnettips.com/2026/04/01/coding-faster-with-dotnettips-com-spargine-10-april-2026-release/",
-      "pubDate": "Wed, 01 Apr 2026 06:00:00 +0000",
-      "contentSnippet": "Spargine 10 (v2026.10.4.1) is released on April 1, 2026, featuring support for .NET 10, new methods, and enhanced performance benchmarks. This open-source project aims to improve reliability and speed significantly. Community feedback and contributio",
+      "title": "Coding Faster with dotNetTips.com Spargine 10: July 2026 Release",
+      "link": "https://dotnettips.com/2026/07/01/coding-faster-with-dotnettips-com-spargine-10-july-2026-release/",
+      "pubDate": "Wed, 01 Jul 2026 06:00:00 +0000",
+      "contentSnippet": "The announcement reveals the release of Spargine 10 (v2026.10.7.1) on July 1, 2026, introducing NuGet packages for .NET 10. This update enhances performance and reliability with new classes and methods, performance benchmarks, and optimizations. The ",
       "creator": "David (dotNetDave) McCarter",
       "categories": [
         ".NET",
@@ -44,567 +32,147 @@
         "Performance",
         "Spargine"
       ],
-      "guid": "https://dotnettips.com/?p=17399"
+      "guid": "https://dotnettips.com/?p=18208"
     },
     {
-      "title": "General Performance: Comparing Methods for Retrieving Process File Path",
-      "link": "https://dotnettips.com/2026/03/29/general-performance-comparing-methods-for-retrieving-process-file-path/",
-      "pubDate": "Sun, 29 Mar 2026 06:00:00 +0000",
-      "contentSnippet": "The excerpt from \"Rock Your Code\" explains two methods for retrieving the initiating file's path in .NET.",
+      "title": "IO Performance: Reuse HttpClient to Avoid Connection Overhead",
+      "link": "https://dotnettips.com/2026/06/28/io-performance-reuse-httpclient-to-avoid-connection-overhead/",
+      "pubDate": "Sun, 28 Jun 2026 06:00:00 +0000",
+      "contentSnippet": "When populating collections in .NET, choosing the right bulk operation improves both clarity and efficiency. Methods like AddRange() and InsertRange() allow multiple items to be added in a single call, reducing overhead compared to repeated individua",
       "creator": "David (dotNetDave) McCarter",
       "categories": [
         ".NET",
-        "Code Analysis",
-        "Performance",
-        "Code Performance"
-      ],
-      "guid": "https://dotnettips.com/?p=16543"
-    },
-    {
-      "title": "General Performance: Exploring Thread ID Retrieval Methods",
-      "link": "https://dotnettips.com/2026/03/22/general-performance-exploring-thread-id-retrieval-methods/",
-      "pubDate": "Sun, 22 Mar 2026 06:00:00 +0000",
-      "contentSnippet": "This article explains two methods to obtain the current thread ID in .NET and shows which method is more performant.",
-      "creator": "David (dotNetDave) McCarter",
-      "categories": [
-        ".NET",
-        "Code Analysis",
+        "Network",
         "Performance",
         "Code Performance",
-        "Thread"
+        "HttpClient",
+        "SocketsHttpHandler"
       ],
-      "guid": "https://dotnettips.com/?p=16537"
+      "guid": "https://dotnettips.com/?p=18171"
     },
     {
-      "title": "dotNetDave Says… Good Recruiters Are Transparent and Willing to Share Details About the Job Position",
-      "link": "https://dotnettips.com/2026/03/18/dotnetdave-says-good-recruiters-are-transparent-and-willing-to-share-details-about-the-job-position/",
-      "pubDate": "Wed, 18 Mar 2026 06:00:00 +0000",
-      "contentSnippet": "The text emphasizes the importance of transparency in the recruiting process, highlighting that unclear communication from recruiters can hinder trust. Job seekers should request essential details upfront, while recruiters are encouraged to lead with",
+      "title": "dotNetDave Rocks .NET Day Switzerland 2026",
+      "link": "https://dotnettips.com/2026/06/26/dotnetdave-rocks-net-day-switzerland-2026/",
+      "pubDate": "Fri, 26 Jun 2026 16:01:23 +0000",
+      "contentSnippet": "dotNetDave will be speaking at SQL Saturday in Austin, Texas, on June 27, 2026, as part of the No Rest for the Wicked World Tour. His sessions, \"Röck Yoür Cäreer\" and \"Unleash Your Inner Rockstar,\" focus on valuable career insights for tech professio",
+      "creator": "David (dotNetDave) McCarter",
+      "categories": [
+        ".NET",
+        "Benchmarking",
+        "Coding Standards",
+        "Conferences",
+        "Performance",
+        "Code Performance",
+        "Event"
+      ],
+      "guid": "https://dotnettips.com/?p=18301"
+    },
+    {
+      "title": "Database Performance: Making Entity Framework Queries Faster",
+      "link": "https://dotnettips.com/2026/06/21/database-performance-making-entity-framework-queries-faster/",
+      "pubDate": "Sun, 21 Jun 2026 06:00:00 +0000",
+      "contentSnippet": "The article discusses the advantages of using compiled queries in Entity Framework, especially for frequently executed and complex queries.",
+      "creator": "David (dotNetDave) McCarter",
+      "categories": [
+        ".NET",
+        ".NET Core",
+        "Databases",
+        "Entity Framework",
+        "Performance",
+        "Code Performance",
+        "Queries"
+      ],
+      "guid": "https://dotnettips.com/?p=18140"
+    },
+    {
+      "title": "Boost Your .NET Projects: Copilot, Benchmarks, and the Truth About Faster Code",
+      "link": "https://dotnettips.com/2026/06/14/boost-your-net-projects-copilot-benchmarks-and-the-truth-about-faster-code/",
+      "pubDate": "Sun, 14 Jun 2026 06:00:00 +0000",
+      "contentSnippet": "The article discusses the limitations and benefits of using Copilot for code optimization in the Spargine .NET project. While some suggestions from Copilot significantly improved performance, others were ineffective or detrimental. The author emphasi",
+      "creator": "David (dotNetDave) McCarter",
+      "categories": [
+        ".NET",
+        "AI",
+        "Code Analysis",
+        "Performance",
+        "Spargine",
+        "Code Performance",
+        "Collections",
+        "CoPilot",
+        "Strings"
+      ],
+      "guid": "https://dotnettips.com/?p=18036"
+    },
+    {
+      "title": "Boost Your .NET Projects: Future-Proofing Performance with Spargine’s Fast Methods",
+      "link": "https://dotnettips.com/2026/06/07/boost-your-net-projects-future-proofing-performance-with-spargines-fast-methods/",
+      "pubDate": "Sun, 07 Jun 2026 06:00:00 +0000",
+      "contentSnippet": "The book \"Rock Your Code: Code & App Performance for Microsoft .NET\" emphasizes the evolving nature of .NET performance. Spargine's Fast methods are designed to optimize code efficiency while allowing developers to maintain consistency in method usag",
+      "creator": "David (dotNetDave) McCarter",
+      "categories": [
+        ".NET",
+        "Performance",
+        "Spargine"
+      ],
+      "guid": "https://dotnettips.com/?p=18029"
+    },
+    {
+      "title": "dotNetDave Rocks SQL Saturday – Austin 2026",
+      "link": "https://dotnettips.com/2026/06/01/dotnetdave-rocks-sql-saturday-austin-2026/",
+      "pubDate": "Mon, 01 Jun 2026 19:23:50 +0000",
+      "contentSnippet": "dotNetDave will be speaking at SQL Saturday in Austin, Texas, on June 27, 2026, as part of the No Rest for the Wicked World Tour. His sessions, \"Röck Yoür Cäreer\" and \"Unleash Your Inner Rockstar,\" focus on valuable career insights for tech professio",
       "creator": "David (dotNetDave) McCarter",
       "categories": [
         "Career Development",
-        "Interviewing",
-        "Job Hunting",
-        "Recruiters"
+        "Coding Standards",
+        "Conferences",
+        "Soft Skills",
+        "Speaking",
+        "Career",
+        "Event",
+        "SQL Saturday"
       ],
-      "guid": "https://dotnettips.com/?p=17098"
+      "guid": "https://dotnettips.com/?p=18091"
     },
     {
-      "title": "Regular Expression Performance: Supercharge Your Match Counting",
-      "link": "https://dotnettips.com/2026/03/15/regular-expression-performance-supercharge-your-match-counting/",
-      "pubDate": "Sun, 15 Mar 2026 06:00:00 +0000",
-      "contentSnippet": "String manipulation is crucial in modern applications, significantly impacting performance and memory usage in .NET. learn how to achieve nearly double the speed and zero memory allocations when a count is required from a regular expression.",
-      "creator": "David (dotNetDave) McCarter",
-      "categories": [
-        ".NET",
-        "Code Analysis",
-        "Code Performance",
-        "Regular Expression",
-        "Strings"
-      ],
-      "guid": "https://dotnettips.com/?p=16502"
-    },
-    {
-      "title": "Rock Your Career: The Recruiter Survival Guide for Software Engineers – How to Use Recruiters Without Getting Used",
-      "link": "https://dotnettips.com/2026/03/13/rock-your-career-the-recruiter-survival-guide-for-software-engineers-how-to-use-recruiters-without-getting-used/",
-      "pubDate": "Fri, 13 Mar 2026 17:17:17 +0000",
-      "contentSnippet": "A new eBook by David McCarter offers software engineers practical strategies for effectively navigating the recruiting process. It emphasizes understanding recruiter dynamics, identifying high-quality recruiters, and avoiding common pitfalls. The gui",
+      "title": "Rock Your Career: Surviving The Technical Interview – 7th Edition",
+      "link": "https://dotnettips.com/2026/06/01/rock-your-career-surviving-the-technical-interview-7th-edition/",
+      "pubDate": "Mon, 01 Jun 2026 14:00:00 +0000",
+      "contentSnippet": "David McCarter has released the 7th edition of \"Rock Your Career: Surviving The Technical Interview,\" providing essential strategies for software engineers facing modern hiring challenges. This updated guide covers interview preparation, resume craft",
       "creator": "David (dotNetDave) McCarter",
       "categories": [
         "Books",
         "Career Development",
         "Soft Skills",
         "AI",
-        "Technical Interview"
+        "ATS",
+        "Interviewing",
+        "Interviewing Tips",
+        "Resume"
       ],
-      "guid": "https://dotnettips.com/?p=17174"
+      "guid": "https://dotnettips.com/?p=18019"
     },
     {
-      "title": "CollabTalk Podcast: Episode 183 with David McCarter",
-      "link": "https://dotnettips.com/2026/03/12/collabtalk-podcast-episode-183-with-david-mccarter/",
-      "pubDate": "Thu, 12 Mar 2026 06:00:00 +0000",
-      "contentSnippet": "In a recent podcast, Christian Buckley and I discussed the dual nature of AI, sparking excitement and anxiety among software engineers. We explored its implications for the future of the profession, its impact on software design and development, and ",
-      "creator": "David (dotNetDave) McCarter",
-      "categories": [
-        "AI",
-        "Event"
-      ],
-      "guid": "https://dotnettips.com/?p=17166"
-    },
-    {
-      "title": "UX Chronicles: How OpenAI Broke Sora",
-      "link": "https://dotnettips.com/2026/03/12/ux-chronicles-how-openai-broke-sora/",
-      "pubDate": "Thu, 12 Mar 2026 06:00:00 +0000",
-      "contentSnippet": "The article critiques OpenAI's Sora 2 platform, highlighting its worsened user experience compared to Sora 1. Key features have been removed, leading to confusion and inefficiency for users. The author argues that Sora 2 exemplifies a troubling indus",
-      "creator": "David (dotNetDave) McCarter",
-      "categories": [
-        "Architecture",
-        "Development",
-        "UX Chronicles",
-        "Rant",
-        "User Experience"
-      ],
-      "guid": "https://dotnettips.com/?p=17125"
-    },
-    {
-      "title": "dotNetDave Says… Clear Naming Standards Create Clearer Code and Clearer Code Leads to Better Software",
-      "link": "https://dotnettips.com/2026/03/11/dotnetdave-says-clear-naming-standards-create-clearer-code-and-clearer-code-leads-to-better-software/",
-      "pubDate": "Wed, 11 Mar 2026 06:00:00 +0000",
-      "contentSnippet": "Clear naming standards in software development significantly enhance code readability, maintainability, and overall quality. Consistent naming reduces cognitive load, facilitates collaboration, and lowers long-term maintenance costs. Ignoring these s",
+      "title": "GitHub Copilot Agent for Unit Tests: My Real-World Spargine Experiment",
+      "link": "https://dotnettips.com/2026/05/31/github-copilot-agent-for-unit-tests-my-real-world-spargine-experiment/",
+      "pubDate": "Sun, 31 May 2026 06:00:00 +0000",
+      "contentSnippet": "After experimenting with the GitHub Copilot Agent during the 2026 Microsoft MVP Summit, the author faced numerous challenges, including code deletion, slow performance, and inconsistent adherence to coding conventions. Despite these issues, the agent",
       "creator": "David (dotNetDave) McCarter",
       "categories": [
         ".NET",
         ".NET Coding Standards",
-        "Code Analysis",
-        "Coding Standards",
-        "dotNetDave Says",
-        "Open Source",
-        "Software Development Process"
-      ],
-      "guid": "https://dotnettips.com/?p=17089"
-    },
-    {
-      "title": "dotNetDave Says… Rushing into Coding Without Proper Planning Will Lead to Costly Mistakes and Delays",
-      "link": "https://dotnettips.wordpress.com/2026/03/04/dotnetdave-says-rushing-into-coding-without-proper-planning-will-lead-to-costly-mistakes-and-delays/",
-      "pubDate": "Wed, 04 Mar 2026 07:00:00 +0000",
-      "contentSnippet": "Effective software projects require thorough planning and architecture before coding begins. Skipping these steps often leads to costly mistakes, delays, and technical debt. A strong foundation improves system maintainability and user satisfaction. M",
-      "creator": "David (dotNetDave) McCarter",
-      "categories": [
-        ".NET",
-        "Architecture",
-        "Code Quality",
-        "Planning"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=17081"
-    },
-    {
-      "title": "Inside the AWS SDK for .NET: A Code Quality Wake-Up Call",
-      "link": "https://dotnettips.wordpress.com/2026/03/01/inside-the-aws-sdk-for-net-a-code-quality-wake-up-call/",
-      "pubDate": "Sun, 01 Mar 2026 07:00:00 +0000",
-      "contentSnippet": "The author critically reviews the AWS SDK for .NET, revealing alarming code quality issues, including 959,815 total violations and severe design flaws leading to potential memory leaks and resource management problems. Despite its popularity, the SDK",
-      "creator": "David (dotNetDave) McCarter",
-      "categories": [
-        ".NET",
-        "AWS",
-        "Cloud",
-        "Code Quality",
-        "Memory Management",
-        "Open Source",
-        "Performance",
-        "VS.NET",
-        "Amazon",
-        "Code Review",
-        "NDepend",
-        "SDK"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=16474"
-    },
-    {
-      "title": "Rock Your Career: When Recruiters Treat Interviews Like Lottery Tickets",
-      "link": "https://dotnettips.wordpress.com/2026/02/25/rock-your-career-when-recruiters-treat-interviews-like-lottery-tickets/",
-      "pubDate": "Wed, 25 Feb 2026 07:00:00 +0000",
-      "contentSnippet": "The excerpt highlights two recruiting approaches: strategic, quality-driven methods and the ineffective flypaper method, which focuses on quantity over candidate suitability. The latter can harm candidates' reputations and trust with hiring managers.",
-      "creator": "David (dotNetDave) McCarter",
-      "categories": [
-        "Career Development",
-        "Job Hunting",
-        "Recruiters"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=16970"
-    },
-    {
-      "title": "UX Chronicles: A Software Engineer’s Reality Check on Modern Air Travel",
-      "link": "https://dotnettips.wordpress.com/2026/02/22/ux-chronicles-a-software-engineers-reality-check-on-modern-air-travel/",
-      "pubDate": "Sun, 22 Feb 2026 07:00:00 +0000",
-      "contentSnippet": "The article highlights the disappointing state of user experience in air travel, focusing on unreliable software, poor connectivity, and frustrating airline apps. Despite expectations for improvement, airline systems remain outdated and inefficient, ",
-      "creator": "David (dotNetDave) McCarter",
-      "categories": [
-        "UX",
-        "Delta",
-        "JFK Airport",
-        "Rant",
-        "SAS",
-        "T-Mobile"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=16397"
-    },
-    {
-      "title": "Making Code Easier to Understand with Mermaid Diagrams and CodeRush",
-      "link": "https://dotnettips.wordpress.com/2026/02/20/making-code-easier-to-understand-with-mermaid-diagrams-and-coderush/",
-      "pubDate": "Fri, 20 Feb 2026 07:00:00 +0000",
-      "contentSnippet": "The author emphasizes the utility of CodeRush by DevExpress for refactoring, particularly its feature for embedding images in source code. Using Mermaid's flow diagrams, the author illustrates complex methods visually, enhancing code comprehension. D",
-      "creator": "David (dotNetDave) McCarter",
-      "categories": [
-        "Development",
-        "Spargine",
-        "Third-Party Products",
-        "CodeRush",
-        "Diagrams",
-        "Documentation",
-        "Flow Diagram",
-        "Mermaid"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=16981"
-    },
-    {
-      "title": "Boost Your .NET Projects with Spargine: Centralized Time Handling with the Clock Type",
-      "link": "https://dotnettips.wordpress.com/2026/02/15/boost-your-net-projects-with-spargine-centralized-time-handling-with-the-clock-type/",
-      "pubDate": "Sun, 15 Feb 2026 07:00:00 +0000",
-      "contentSnippet": "The Clock type in the DotNetTips.Spargine.Core assembly and NuGet package centralizes time-related functions to enhance application consistency and reduce fragmentation. It provides a comprehensive and reliable abstraction for developers, ensuring ef",
-      "creator": "David (dotNetDave) McCarter",
-      "categories": [
-        "Spargine",
-        "Clock",
-        "Time"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=16393"
-    },
-    {
-      "title": "Microsoft .NET Code Analysis: Efficient String Prefix Checks — StartsWith() vs. IndexOf()",
-      "link": "https://dotnettips.wordpress.com/2026/02/11/microsoft-net-code-analysis-efficient-string-prefix-checks-startswith-vs-indexof/",
-      "pubDate": "Wed, 11 Feb 2026 08:00:00 +0000",
-      "contentSnippet": "Using IndexOf() for checking if a string starts with a specific value in .NET is inefficient and unclear. This approach performs unnecessary work and obscures intent.",
-      "creator": "David (dotNetDave) McCarter",
-      "categories": [
-        ".NET",
-        "Code Analysis",
-        "Performance",
-        "Code Performance",
-        "Strings"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=16813"
-    },
-    {
-      "title": "Boost Your .NET Projects with Spargine: Modern Password Hashing Using PasswordHasher",
-      "link": "https://dotnettips.wordpress.com/2026/02/11/boost-your-net-projects-with-spargine-modern-password-hashing-using-passwordhasher/",
-      "pubDate": "Wed, 11 Feb 2026 07:00:00 +0000",
-      "contentSnippet": "Secure password hashing is vital for application security. The PasswordHasher class in Spargine for .NET 10 consolidates previous hashing implementations into a single solution that supports various modern algorithms. This enhances flexibility and en",
-      "creator": "David (dotNetDave) McCarter",
-      "categories": [
-        "Security",
-        "Spargine",
-        "Hashing",
-        "Passwords"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=16768"
-    },
-    {
-      "title": "Boost Your .NET Projects with Spargine: Global Phone Number and Postal Code Validation Made Easy",
-      "link": "https://dotnettips.wordpress.com/2026/02/08/boost-your-net-projects-with-spargine-global-phone-number-and-postal-code-validation-made-easy/",
-      "pubDate": "Sun, 08 Feb 2026 07:00:00 +0000",
-      "contentSnippet": "The CountryPhonePostalInfoRepository provides an efficient solution for validating phone numbers and postal codes globally, addressing the complexities of varying formats and rules. It offers a centralized API for reliable country-specific validation",
-      "creator": "David (dotNetDave) McCarter",
-      "categories": [
-        "Spargine",
-        "Validation"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=16373"
-    },
-    {
-      "title": "Boost Your .NET Projects with Spargine: High-Performance ULIDs with the Ulid Struct",
-      "link": "https://dotnettips.wordpress.com/2026/02/01/boost-your-net-projects-with-spargine-high-performance-ulids-with-the-ulid-struct/",
-      "pubDate": "Sun, 01 Feb 2026 07:00:00 +0000",
-      "contentSnippet": "In Spargine 8, I introduced the UlidGenerator type to make working with ULIDs easier in .NET applications. For the .NET 10 release, I took this idea further — converting ULIDs into a first-class value type (struct) in the DotNetTips.Spargine.Core ass",
-      "creator": "David (dotNetDave) McCarter",
-      "categories": [
-        ".NET",
-        "C#",
-        "Spargine",
-        "struct",
-        "Ulid"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=16230"
-    },
-    {
-      "title": "Boost Your .NET Projects with Spargine: Supercharge Your .NET Apps with NetworkHelper",
-      "link": "https://dotnettips.wordpress.com/2026/01/28/boost-your-net-projects-with-spargine-supercharge-your-net-apps-with-networkhelper/",
-      "pubDate": "Wed, 28 Jan 2026 07:00:00 +0000",
-      "contentSnippet": "NetworkHelper is a utility created to streamline network-related operations for .NET applications. It centralizes code for network diagnostics, logging, and performance tuning, offering a clean API for tasks like retrieving IP addresses and statistic",
-      "creator": "David (dotNetDave) McCarter",
-      "categories": [
-        ".NET",
-        "Network",
-        "Open Source",
-        "Spargine"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=16661"
-    },
-    {
-      "title": "String Performance: The Fastest Way to Get a String’s Length",
-      "link": "https://dotnettips.wordpress.com/2026/01/25/string-performance-the-fastest-way-to-get-a-strings-length/",
-      "pubDate": "Sun, 25 Jan 2026 07:00:00 +0000",
-      "contentSnippet": "Retrieving the character count of a string in .NET has various methods: using Span with Length, Length, or Enumerable.Count().  This article will prove which is the fastest method.",
-      "creator": "David (dotNetDave) McCarter",
-      "categories": [
-        ".NET",
-        "Code Analysis",
-        "Performance",
-        "CA1820",
-        "CA1829",
-        "Code Performance",
-        "Span",
-        "Strings"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=16047"
-    },
-    {
-      "title": "Collection Performance: High-Performance Collection Randomization in .NET",
-      "link": "https://dotnettips.wordpress.com/2026/01/18/collection-performance-high-performance-collection-randomization-in-net/",
-      "pubDate": "Sun, 18 Jan 2026 07:00:00 +0000",
-      "contentSnippet": "The article examines shuffling options in .NET 8, highlighting the performance of three APIs: LINQ.Shuffle(), Random.Shuffle(), and RandomNumberGenerator.Shuffle().",
-      "creator": "dotNetDave",
-      "categories": [
-        ".NET",
-        "Code Analysis",
-        "LINQ",
-        "Performance",
-        "Collections"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=16029"
-    },
-    {
-      "title": "File I/O Performance: Picking the Fastest Weapon in Your Arsenal",
-      "link": "https://dotnettips.wordpress.com/2026/01/11/file-i-o-performance-picking-the-fastest-weapon-in-your-arsenal/",
-      "pubDate": "Sun, 11 Jan 2026 07:00:00 +0000",
-      "contentSnippet": "This article provides insights on the fastest file I/O methods for .NET 10, emphasizing benchmarks with 1 MB payloads.",
-      "creator": "dotNetDave",
-      "categories": [
-        ".NET",
-        "C#",
-        "Performance",
-        "File",
-        "I/O"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=16019"
-    },
-    {
-      "title": "Coding Faster with dotNetTips.com Spargine 10: January 2026 Release",
-      "link": "https://dotnettips.wordpress.com/2026/01/06/coding-faster-with-dotnettips-com-spargine-10-january-2026-release/",
-      "pubDate": "Tue, 06 Jan 2026 07:00:00 +0000",
-      "contentSnippet": "Spargine 10 (v2026.10.1.5) launches on January 5th, 2026, featuring enhancements for .NET 10, including new types, methods, benchmarks, and significant performance upgrades. There are breaking changes that may affect existing code. Community contribu",
-      "creator": "dotNetDave",
-      "categories": [
-        ".NET",
-        "CoPilot",
-        "C#",
-        "Development",
-        "Open Source",
-        "Performance",
-        "Spargine"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=16124"
-    },
-    {
-      "title": "Leveraging Span-Based String Concatenation for Improved Performance",
-      "link": "https://dotnettips.wordpress.com/2026/01/04/leveraging-span-based-string-concatenation-for-improved-performance/",
-      "pubDate": "Sun, 04 Jan 2026 07:00:00 +0000",
-      "contentSnippet": "The excerpt from \"Rock Your Code\" emphasizes the importance of efficient string concatenation in .NET. It highlights the advantages of using the Span type over traditional methods, demonstrating that replacing Substring with AsSpan and leveraging the",
-      "creator": "dotNetDave",
-      "categories": [
-        ".NET",
-        "Code Analysis",
-        "Performance",
-        "Strings"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=16008"
-    },
-    {
-      "title": "Visual Studio 2026: Regressions, Reliability Issues, and Missed Opportunities",
-      "link": "https://dotnettips.wordpress.com/2026/01/01/visual-studio-2026-regressions-reliability-issues-and-missed-opportunities/",
-      "pubDate": "Thu, 01 Jan 2026 07:30:00 +0000",
-      "contentSnippet": "Visual Studio 2026 has regressed by removing or disabling key code-quality features, making development more difficult. The Analyze tool suffers from inconsistencies and lack of reliability, while various testing functionalities are also flawed. AI t",
-      "creator": "dotNetDave",
-      "categories": [
-        ".NET",
-        "Code Analysis",
-        "Code Quality",
-        "Development",
-        "User Experience",
-        "Analyze",
-        "CoPilot",
-        "Live Unit Testing",
-        "Multilingual App Toolkit",
-        "Unit Testing",
-        "Visual Studio"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=16090"
-    },
-    {
-      "title": "Rock Your Code: Code & App Performance for Microsoft .NET (5th Edition)",
-      "link": "https://dotnettips.wordpress.com/2026/01/01/rock-your-code-code-app-performance-for-microsoft-net-5th-edition/",
-      "pubDate": "Thu, 01 Jan 2026 07:00:00 +0000",
-      "contentSnippet": "The fifth edition of David McCarter's book, \"Röck Yöur Cöde: Code & App Performance for Microsoft .NET,\" is now available on Amazon. It offers practical techniques for enhancing .NET application performance, including coding patterns, memory insights",
-      "creator": "dotNetDave",
-      "categories": [
-        ".NET",
-        "Architecture",
-        "C#",
-        "LINQ",
-        "Memory Management",
-        "OOP",
-        "Performance",
-        "Threading",
-        "User Experience",
-        "Book"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=16002"
-    },
-    {
-      "title": "Supercharging Application Performance with Intelligent Client-Side Caching",
-      "link": "https://dotnettips.wordpress.com/2025/12/28/supercharging-application-performance-with-intelligent-client-side-caching/",
-      "pubDate": "Sun, 28 Dec 2025 07:00:00 +0000",
-      "contentSnippet": "This excerpt discusses enhancing Microsoft .NET application performance by minimizing network calls. The author emphasizes client-side caching with Spargine’s InMemoryCache, which drastically improves responsiveness and scalability for costly operati",
-      "creator": "dotNetDave",
-      "categories": [
-        ".NET",
-        "Performance",
-        "Spargine",
-        "Cache",
-        "Caching",
-        "Code Performance",
-        "Reflection"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=15991"
-    },
-    {
-      "title": "Code It Anyway You Want: Initializing Reference Type Static Fields Inline for Enhanced Code Readability",
-      "link": "https://dotnettips.wordpress.com/2025/12/21/code-it-anyway-you-want-initializing-reference-type-static-fields-inline-for-enhanced-code-readability/",
-      "pubDate": "Sun, 21 Dec 2025 07:00:00 +0000",
-      "contentSnippet": "Microsoft advises initializing reference type static fields inline to enhance code readability and prevent issues from uninitialized fields. Two patterns are shown: inline initialization and using a static constructor. While both methods do not alloc",
-      "creator": "dotNetDave",
-      "categories": [
-        "Code Analysis",
-        "Code It Any Way You Want",
-        "Performance"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=15924"
-    },
-    {
-      "title": "UX Chronicles: When OpenAI’s Magic Meets a Messy User Experience",
-      "link": "https://dotnettips.wordpress.com/2025/12/14/ux-chronicles-when-openais-magic-meets-a-messy-user-experience/",
-      "pubDate": "Sun, 14 Dec 2025 07:00:00 +0000",
-      "contentSnippet": "The author expresses frustration with Sora's poor user experience and ongoing instability, emphasizing navigation difficulties, session issues, and prolonged outages. Despite Sora's impressive capabilities, the author argues that without prioritizing",
-      "creator": "dotNetDave",
-      "categories": [
-        "UX",
+        ".NET Core",
         "AI",
-        "OpenAI",
-        "Sora"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=15905"
-    },
-    {
-      "title": "Immutable Collection Add() Trap: Don’t Get Burned — Use a Builder Instead",
-      "link": "https://dotnettips.wordpress.com/2025/12/07/immutable-collection-add-trap-dont-get-burned-use-a-builder-instead/",
-      "pubDate": "Sun, 07 Dec 2025 07:00:00 +0000",
-      "contentSnippet": "When using immutable collections in .NET, remember that the Add() method creates a new instance rather than mutating the original. Ignoring the return value leads to ineffective loops. Instead, use a builder for efficiency, as it offers faster perfor",
-      "creator": "dotNetDave",
-      "categories": [
-        "Performance",
-        "Collections",
-        "Immutable Collections"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=15893"
-    },
-    {
-      "title": "Defensive Programming Rule #6: Verify Resource Availability (Before You Access It)",
-      "link": "https://dotnettips.wordpress.com/2025/11/30/defensive-programming-rule-6-verify-resource-availability-before-you-access-it/",
-      "pubDate": "Sun, 30 Nov 2025 07:00:00 +0000",
-      "contentSnippet": "The article emphasizes the importance of defensive programming in .NET applications by validating resource availability before access. It outlines guidelines for checking connectivity, setting timeouts, and managing user experiences when resources ar",
-      "creator": "dotNetDave",
-      "categories": [
-        ".NET",
-        "Bugs",
         "C#",
+        "Code Analysis",
         "Code Quality",
-        "Defensive Programming"
+        "GitHub Copilot Agent",
+        "Spargine",
+        "VS.NET"
       ],
-      "guid": "http://dotnettips.wordpress.com/?p=15704"
-    },
-    {
-      "title": "Defensive Programming Rule #5: Let the Compiler Work for You — Harness the Power of Type Checking",
-      "link": "https://dotnettips.wordpress.com/2025/11/23/defensive-programming-rule-5-let-the-compiler-work-for-you-harness-the-power-of-type-checking/",
-      "pubDate": "Sun, 23 Nov 2025 07:00:00 +0000",
-      "contentSnippet": "The excerpt discusses coding standards highlighted in \"Rock Your Code: Coding Standards for Microsoft .NET,\" emphasizing the pitfalls of using numerous public fields in a class. It advocates for strong typing, proper encapsulation, and input validati",
-      "creator": "dotNetDave",
-      "categories": [
-        ".NET",
-        "Bugs",
-        "C#",
-        "Code Quality",
-        "Defensive Programming",
-        "Validation"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=15662"
-    },
-    {
-      "title": "Defensive Programming Rule #4: Safe and Efficient Type Casting",
-      "link": "https://dotnettips.wordpress.com/2025/11/16/defensive-programming-rule-4-safe-and-efficient-type-casting/",
-      "pubDate": "Sun, 16 Nov 2025 07:00:00 +0000",
-      "contentSnippet": "This article emphasizes defensive programming by highlighting safe type compatibility checks in .NET. It advises using the 'is' keyword to prevent InvalidCastException and warns against unnecessary type casts that clutter code and affect performance.",
-      "creator": "dotNetDave",
-      "categories": [
-        ".NET",
-        "Bugs",
-        "C#",
-        "Code Quality",
-        "Defensive Programming",
-        "Type Casting",
-        "Validation"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=15645"
-    },
-    {
-      "title": "dotNetDave Rocks Austin .NET User Group November 2025 Meeting",
-      "link": "https://dotnettips.wordpress.com/2025/11/10/dotnetdave-rocks-austin-net-user-group-november-2025-meeting/",
-      "pubDate": "Mon, 10 Nov 2025 20:04:03 +0000",
-      "contentSnippet": "The dotNetDave No Rest for the Wicked World Tour will visit Austin on November 20, 2025, where I will present a session titled \"Röck Yoür Cöde.\" This session addresses critical issues in memory management related to disposable types in .NET, offering",
-      "creator": "dotNetDave",
-      "categories": [
-        ".NET",
-        "C#",
-        "Code Quality",
-        "Memory Management",
-        "Performance",
-        "Events"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=15852"
-    },
-    {
-      "title": "Defensive Programming Rule #3: Validate Your Enums (Every Time)",
-      "link": "https://dotnettips.wordpress.com/2025/11/09/defensive-programming-rule-3-validate-your-enums-every-time/",
-      "pubDate": "Sun, 09 Nov 2025 07:00:00 +0000",
-      "contentSnippet": "Enums enhance code readability but can lead to errors if not validated, as any integer can be cast as an Enum, including invalid values. Validating Enum inputs prevents silent data corruption, ensures meaningful defaults, and avoids processing imposs",
-      "creator": "dotNetDave",
-      "categories": [
-        ".NET",
-        "Bugs",
-        "C#",
-        "Code Quality",
-        "Defensive Programming",
-        "Enums",
-        "Validation"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=15632"
-    },
-    {
-      "title": "Defensive Programming Rule #2: Always Validate Method Parameters",
-      "link": "https://dotnettips.wordpress.com/2025/11/02/defensive-programming-rule-2-always-validate-method-parameters/",
-      "pubDate": "Sun, 02 Nov 2025 06:00:00 +0000",
-      "contentSnippet": "Parameter validation is crucial in programming, ensuring applications reject bad data before it causes issues. It safeguards data integrity, reduces bugs, and enhances developer satisfaction. The use of meaningful exceptions and tools like Spargine c",
-      "creator": "dotNetDave",
-      "categories": [
-        ".NET",
-        "Bugs",
-        "C#",
-        "Code Quality",
-        "Defensive Programming",
-        "Exceptions",
-        "Validation"
-      ],
-      "guid": "http://dotnettips.wordpress.com/?p=15619"
+      "guid": "https://dotnettips.com/?p=17530"
     }
   ],
-  "lastUpdated": "2026-04-17T12:45:23.508Z",
+  "lastUpdated": "2026-07-09T15:21:09.338Z",
   "feedTitle": "dotNetTips.com"
 }

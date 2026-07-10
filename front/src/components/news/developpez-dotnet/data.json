@@ -2,15 +2,57 @@
   "source": "developpez-dotnet",
   "items": [
     {
+      "title": "Personnalisez l'apparence de Microsoft Visual Studio à votre guise grâce à la nouvelle page d'options « Couleurs du thème », qui vous permet de personnaliser n'importe quel code couleur Fluent depuis l'EDI",
+      "link": "https://visualstudio.developpez.com/actu/384266/Personnalisez-l-apparence-de-Microsoft-Visual-Studio-a-votre-guise-grace-a-la-nouvelle-page-d-options-Couleurs-du-theme-qui-vous-permet-de-personnaliser-n-importe-quel-code-couleur-Fluent-depuis-l-EDI/",
+      "pubDate": "Thu, 18 Jun 2026 03:18:00 +0200",
+      "contentSnippet": "Personnalisez l'apparence de Microsoft Visual Studio à votre guise grâce à la nouvelle page d'options « Couleurs du thème », qui vous permet de personnaliser n'importe quel code couleur Fluent directement depuis l'EDI\nMicrosoft a introduit une nouvel",
+      "creator": "",
+      "categories": [
+        "Visual Studio"
+      ],
+      "guid": "https://visualstudio.developpez.com/actu/384266/Personnalisez-l-apparence-de-Microsoft-Visual-Studio-a-votre-guise-grace-a-la-nouvelle-page-d-options-Couleurs-du-theme-qui-vous-permet-de-personnaliser-n-importe-quel-code-couleur-Fluent-depuis-l-EDI/"
+    },
+    {
+      "title": "Microsoft a publié l'ensemble d'utilitaires système PowerToys 0.100, avec un nouveau guide des raccourcis, des améliorations apportées à la palette de commandes et une mise à niveau vers .NET 10",
+      "link": "https://windows.developpez.com/actu/384064/Microsoft-a-publie-l-ensemble-d-utilitaires-systeme-PowerToys-0-100-avec-un-nouveau-guide-des-raccourcis-des-ameliorations-apportees-a-la-palette-de-commandes-et-une-mise-a-niveau-vers-NET-10/",
+      "pubDate": "Thu, 11 Jun 2026 13:04:00 +0200",
+      "contentSnippet": "Microsoft a publié l'ensemble d'utilitaires système PowerToys 0.100, avec un nouveau guide des raccourcis, des améliorations apportées à la palette de commandes et une mise à niveau vers .NET 10\nMicrosoft a publié la dernière version de son ensemble ",
+      "creator": "",
+      "categories": [
+        ".NET 10"
+      ],
+      "guid": "https://windows.developpez.com/actu/384064/Microsoft-a-publie-l-ensemble-d-utilitaires-systeme-PowerToys-0-100-avec-un-nouveau-guide-des-raccourcis-des-ameliorations-apportees-a-la-palette-de-commandes-et-une-mise-a-niveau-vers-NET-10/"
+    },
+    {
+      "title": "Améliorer la sécurité de la mémoire en C#, Richard Lander",
+      "link": "https://dotnet.developpez.com/actu/383782/Ameliorer-la-securite-de-la-memoire-en-C-Richard-Lander/",
+      "pubDate": "Thu, 04 Jun 2026 16:01:00 +0200",
+      "contentSnippet": "Améliorer la sécurité de la mémoire en C#, Richard Lander\n\r\n\r\nC# est un langage de programmation de haut niveau à usage général prenant en charge plusieurs paradigmes. C# englobe le typage statique,  le typage fort, la portée lexicale, la programmati",
+      "creator": "",
+      "categories": [
+        "Security"
+      ],
+      "guid": "https://dotnet.developpez.com/actu/383782/Ameliorer-la-securite-de-la-memoire-en-C-Richard-Lander/"
+    },
+    {
+      "title": "Microsoft présente la mise à jour de mai de Visual Studio 2026, avec un nouvel agent de planification, une interface de comparaison des différences multi-fichiers et une nouvelle version de MSVC Build Tools",
+      "link": "https://visualstudio.developpez.com/actu/383580/Microsoft-presente-la-mise-a-jour-de-mai-de-Visual-Studio-2026-avec-un-nouvel-agent-de-planification-une-interface-de-comparaison-des-differences-multi-fichiers-et-une-nouvelle-version-de-MSVC-Build-Tools/",
+      "pubDate": "Wed, 27 May 2026 13:34:00 +0200",
+      "contentSnippet": "Microsoft présente la mise à jour de mai de Visual Studio 2026, avec un nouvel agent de planification, une interface de comparaison des différences multi-fichiers et une nouvelle version de MSVC Build Tools\nMicrosoft a publié la mise à jour de mai 20",
+      "creator": "",
+      "categories": [
+        "Visual Studio 2026",
+        "Agents"
+      ],
+      "guid": "https://visualstudio.developpez.com/actu/383580/Microsoft-presente-la-mise-a-jour-de-mai-de-Visual-Studio-2026-avec-un-nouvel-agent-de-planification-une-interface-de-comparaison-des-differences-multi-fichiers-et-une-nouvelle-version-de-MSVC-Build-Tools/"
+    },
+    {
       "title": "Découvrez les types union dans C# 15, par Bill Wagner",
       "link": "https://dotnet.developpez.com/actu/382121/Decouvrez-les-types-union-dans-C-15-par-Bill-Wagner/",
       "pubDate": "Tue, 14 Apr 2026 13:17:00 +0200",
       "contentSnippet": "Découvrez les types union dans C# 15, par Bill Wagner \nLes types union étaient très attendus dans C#, et ils sont enfin là. À partir de .NET 11 Preview 2, C# 15 introduit le mot-clé union. Le mot-clé union permet de déclarer qu'une valeur appartient ",
       "creator": "",
       "categories": [
-        "C#",
-        ".NET",
-        "C# 15",
         "Preview"
       ],
       "guid": "https://dotnet.developpez.com/actu/382121/Decouvrez-les-types-union-dans-C-15-par-Bill-Wagner/"
@@ -19,7 +61,7 @@
       "title": "Microsoft annonce la version 1.0 de Microsoft Agent Framework pour .NET et Python, offrant une orchestration multi-agents de niveau entreprise et la prise en charge de modèles d'IA multi-fournisseurs",
       "link": "https://microsoft.developpez.com/actu/381878/Microsoft-annonce-la-version-1-0-de-Microsoft-Agent-Framework-pour-NET-et-Python-offrant-une-orchestration-multi-agents-de-niveau-entreprise-et-la-prise-en-charge-de-modeles-d-IA-multi-fournisseurs/",
       "pubDate": "Mon, 06 Apr 2026 15:56:00 +0200",
-      "contentSnippet": "Microsoft annonce la version 1.0 de Microsoft Agent Framework pour .NET et Python, offrant une orchestration multi-agents de niveau entreprise et la prise en charge de modèles d'IA multi-fournisseurs\nL'équipe de Microsoft a annoncé que Microsoft Agen",
+      "contentSnippet": "Microsoft annonce la version 1.0 de Microsoft Agent Framework pour .NET et Python, offrant une orchestration multi-agents de niveau entreprise et la prise en charge de modèles d'IA multi-fournisseurs\n\r\n\r\nL'équipe de Microsoft a annoncé que Microsoft ",
       "creator": "",
       "categories": [
         "Agents",
@@ -34,6 +76,7 @@
       "contentSnippet": "IA générative avec des grands modèles de langage en C# en 2026 : une base pour les développeurs .NET/C# travaillant avec Microsoft Foundry, GitHub Models et AI Extensions, par Jeremy Likness\nL'IA générative est devenue la technologie grand public à l",
       "creator": "",
       "categories": [
+        "AI",
         "GitHub"
       ],
       "guid": "https://intelligence-artificielle.developpez.com/actu/379222/IA-generative-avec-des-grands-modeles-de-langage-en-C-en-2026-une-base-pour-les-developpeurs-NET-C-travaillant-avec-Microsoft-Foundry-GitHub-Models-et-AI-Extensions-par-Jeremy-Likness/"
@@ -42,7 +85,7 @@
       "title": "Microsoft annonce que le langage de programmation F# 10 est disponible avec .NET 10 et Visual Studio 2026, apportant des améliorations axées sur la clarté, la cohérence et les performances",
       "link": "https://dotnet.developpez.com/actu/377751/Microsoft-annonce-que-le-langage-de-programmation-F-10-est-disponible-avec-NET-10-et-Visual-Studio-2026-apportant-des-ameliorations-axees-sur-la-clarte-la-coherence-et-les-performances/",
       "pubDate": "Tue, 18 Nov 2025 16:26:00 +0100",
-      "contentSnippet": "Microsoft annonce que le langage de programmation F# 10 est disponible avec .NET 10 et Visual Studio 2026, apportant des améliorations axées sur la clarté, la cohérence et les performances\nF# 10 est désormais disponible avec .NET 10 et Visual Studio ",
+      "contentSnippet": "Microsoft annonce que le langage de programmation F# 10 est disponible avec .NET 10 et Visual Studio 2026, apportant des améliorations axées sur la clarté, la cohérence et les performances\n\r\n\r\nF# 10 est désormais disponible avec .NET 10 et Visual Stu",
       "creator": "",
       "categories": [
         ".NET 10",
@@ -55,12 +98,13 @@
       "title": "Microsoft présente les nouvelles fonctionnalités de C# 14 qui devraient permettre aux développeurs C# de bénéficier de certaines des améliorations de performances offertes par .NET 10",
       "link": "https://dotnet.developpez.com/actu/377739/Microsoft-presente-les-nouvelles-fonctionnalites-de-C-14-qui-devraient-permettre-aux-developpeurs-C-de-beneficier-de-certaines-des-ameliorations-de-performances-offertes-par-NET-10/",
       "pubDate": "Tue, 18 Nov 2025 13:17:00 +0100",
-      "contentSnippet": "Microsoft présente les nouvelles fonctionnalités de C# 14 qui devraient permettre aux développeurs C# de bénéficier de certaines des améliorations de performances offertes par .NET 10.\nVoici un aperçu rapide de ce que Microsoft a apporté dans C# 14 :",
+      "contentSnippet": "Microsoft présente les nouvelles fonctionnalités de C# 14 qui devraient permettre aux développeurs C# de bénéficier de certaines des améliorations de performances offertes par .NET 10.\n\r\n\r\nVoici un aperçu rapide de ce que Microsoft a apporté dans C# ",
       "creator": "",
       "categories": [
-        "C#",
-        ".NET",
-        "Performance"
+        ".NET 10",
+        "C# 14",
+        "Performance",
+        "Preview"
       ],
       "guid": "https://dotnet.developpez.com/actu/377739/Microsoft-presente-les-nouvelles-fonctionnalites-de-C-14-qui-devraient-permettre-aux-developpeurs-C-de-beneficier-de-certaines-des-ameliorations-de-performances-offertes-par-NET-10/"
     },
@@ -72,8 +116,7 @@
       "creator": "",
       "categories": [
         "Visual Studio 2026",
-        "UX",
-        "IDE"
+        "Preview"
       ],
       "guid": "https://visualstudio.developpez.com/actu/377671/Microsoft-presente-le-premier-apercu-de-la-toute-nouvelle-experience-utilisateur-dans-Visual-Studio-2026-avec-une-conception-axee-sur-le-code-une-interface-des-parametres-repensee-et-bien-plus-encore/"
     },
@@ -81,7 +124,7 @@
       "title": "Microsoft annonce la dernière version de son framework logiciel .NET 10, apportant des améliorations au compilateur JIT, des améliorations NativeAOT, ainsi que l'optimisation du runtime",
       "link": "https://dotnet.developpez.com/actu/377608/Microsoft-annonce-la-derniere-version-de-son-framework-logiciel-NET-10-apportant-des-ameliorations-au-compilateur-JIT-des-ameliorations-NativeAOT-ainsi-que-l-optimisation-du-runtime/",
       "pubDate": "Wed, 12 Nov 2025 18:28:00 +0100",
-      "contentSnippet": "Microsoft annonce la dernière version de son framework logiciel .NET 10, apportant des améliorations au compilateur JIT, des améliorations NativeAOT, ainsi que l'optimisation du runtime \nLa version la plus récente de .NET est .NET 10, publiée récemme",
+      "contentSnippet": "Microsoft annonce la dernière version de son framework logiciel .NET 10, apportant des améliorations au compilateur JIT, des améliorations NativeAOT, ainsi que l'optimisation du runtime \n\r\n\r\nLa version la plus récente de .NET est .NET 10, publiée réc",
       "creator": "",
       "categories": [
         ".NET 10",
@@ -99,8 +142,6 @@
       "creator": "",
       "categories": [
         "Visual Studio 2026",
-        "IDE",
-        "AI",
         "Performance"
       ],
       "guid": "https://visualstudio.developpez.com/actu/377594/Microsot-annonce-que-Visual-Studio-2026-est-disponible-l-EDI-apporte-des-ameliorations-en-termes-de-performances-une-experience-utilisateur-repensee-et-une-avancee-dans-le-developpement-base-sur-l-IA/"
@@ -113,7 +154,6 @@
       "creator": "",
       "categories": [
         "Visual Studio 2022",
-        "AI",
         "Agents"
       ],
       "guid": "https://visualstudio.developpez.com/actu/377370/Microsoft-annonce-la-mise-a-jour-d-octobre-2025-pour-Visual-Studio-2022-v17-14-avec-des-ameliorations-au-niveau-des-choix-de-modeles-des-flux-agentics-et-de-la-gestion-des-fils-de-discussion/"
@@ -125,10 +165,9 @@
       "contentSnippet": "Laissez l'agent de codage Copilot se charger des tâches fastidieuses : analyser votre référentiel, planifier des tâches en plusieurs étapes, créer des tickets et des pull requests, par Bruno Capuano.\nGitHub Copilot est un assistant IA de programmatio",
       "creator": "",
       "categories": [
-        "Copilot",
-        "GitHub",
-        "AI",
-        "Agents"
+        "CoPilot",
+        "Agents",
+        "GitHub"
       ],
       "guid": "https://microsoft.developpez.com/actu/375953/Laissez-l-agent-de-codage-Copilot-se-charger-des-taches-fastidieuses-analyser-votre-referentiel-planifier-des-taches-en-plusieurs-etapes-creer-des-tickets-et-des-pull-requests-par-Bruno-Capuano/"
     },
@@ -136,11 +175,11 @@
       "title": "Présentation de Microsoft Agent Framework (Preview) : simplifier les agents IA pour tous les développeurs, par Luis Quintanilla",
       "link": "https://microsoft.developpez.com/actu/376441/Presentation-de-Microsoft-Agent-Framework-Preview-simplifier-les-agents-IA-pour-tous-les-developpeurs-par-Luis-Quintanilla/",
       "pubDate": "Tue, 07 Oct 2025 15:18:00 +0200",
-      "contentSnippet": "Présentation de Microsoft Agent Framework (Preview) : simplifier les agents IA pour tous les développeurs, par Luis Quintanilla\nLa création d'agents IA ne devrait pas être sorcière. Pourtant, de nombreux développeurs se retrouvent confrontés à une lo",
+      "contentSnippet": "Présentation de Microsoft Agent Framework (Preview) : simplifier les agents IA pour tous les développeurs, par Luis Quintanilla\n\r\n\r\nLa création d'agents IA ne devrait pas être sorcière. Pourtant, de nombreux développeurs se retrouvent confrontés à un",
       "creator": "",
       "categories": [
-        "AI",
-        "Agents"
+        "Agents",
+        "Preview"
       ],
       "guid": "https://microsoft.developpez.com/actu/376441/Presentation-de-Microsoft-Agent-Framework-Preview-simplifier-les-agents-IA-pour-tous-les-developpeurs-par-Luis-Quintanilla/"
     },
@@ -151,10 +190,9 @@
       "contentSnippet": "Microsoft annonce la mise à jour de septembre 2025 pour Visual Studio 2022 v17.14, avec un agent de profilage, un agent de modernisation des applications .NET, et des améliorations du mode Agent Copilot\nMicrosoft a annoncé la mise à jour de septembre",
       "creator": "",
       "categories": [
-        ".NET",
         "Visual Studio 2022",
-        "AI",
-        "Copilot"
+        "CoPilot",
+        "Agents"
       ],
       "guid": "https://visualstudio.developpez.com/actu/376364/Microsoft-annonce-la-mise-a-jour-de-septembre-2025-pour-Visual-Studio-2022-v17-14-avec-un-agent-de-profilage-un-agent-de-modernisation-des-applications-NET-et-des-ameliorations-du-mode-Agent-Copilot/"
     },
@@ -165,9 +203,8 @@
       "contentSnippet": "5 instructions générative de Copilot Chat que les développeurs .NET devraient adopter dès aujourd'hui, par Wendy Breiding\nL'intelligence artificielle est en train de devenir un élément clé de la boîte à outils du développeur .NET moderne. Avec GitHub",
       "creator": "",
       "categories": [
-        ".NET",
         "AI",
-        "Copilot",
+        "CoPilot",
         "GitHub"
       ],
       "guid": "https://intelligence-artificielle.developpez.com/actu/374784/5-instructions-generative-de-Copilot-Chat-que-les-developpeurs-NET-devraient-adopter-des-aujourd-hui-par-Wendy-Breiding/"
@@ -176,14 +213,14 @@
       "title": "GPT-5 pour les développeurs Microsoft : GitHub Copilot, AI Toolkit dans Visual Studio Code, Azure AI Foundry, GitHub Models, Microsoft Copilot Studio, Microsoft 365 Copilot, OpenAI .NET SDK",
       "link": "https://microsoft.developpez.com/actu/374820/GPT-5-pour-les-developpeurs-Microsoft-GitHub-Copilot-AI-Toolkit-dans-Visual-Studio-Code-Azure-AI-Foundry-GitHub-Models-Microsoft-Copilot-Studio-Microsoft-365-Copilot-OpenAI-NET-SDK/",
       "pubDate": "Wed, 20 Aug 2025 17:28:00 +0200",
-      "contentSnippet": "GPT-5 pour les développeurs Microsoft : GitHub Copilot, AI Toolkit dans Visual Studio Code, Azure AI Foundry, GitHub Models, Microsoft Copilot Studio, Microsoft 365 Copilot, OpenAI .NET SDK \nEn collaboration avec OpenAI, Microsoft a récemment déployé",
+      "contentSnippet": "GPT-5 pour les développeurs Microsoft : GitHub Copilot, AI Toolkit dans Visual Studio Code, Azure AI Foundry, GitHub Models, Microsoft Copilot Studio, Microsoft 365 Copilot, OpenAI .NET SDK \n\r\n\r\nEn collaboration avec OpenAI, Microsoft a récemment dép",
       "creator": "",
       "categories": [
-        "GPT-5",
+        "VS Code",
         "AI",
-        "Copilot",
+        "CoPilot",
         "Azure",
-        "OpenAI"
+        "GitHub"
       ],
       "guid": "https://microsoft.developpez.com/actu/374820/GPT-5-pour-les-developpeurs-Microsoft-GitHub-Copilot-AI-Toolkit-dans-Visual-Studio-Code-Azure-AI-Foundry-GitHub-Models-Microsoft-Copilot-Studio-Microsoft-365-Copilot-OpenAI-NET-SDK/"
     },
@@ -194,11 +231,10 @@
       "contentSnippet": "ReSharper,  l'extension Visual Studio de JetBrains pour les développeurs .NET, est disponible dans Microsoft Visual Studio Code : la preview publique est maintenant ouverte\nAu cours des 20 dernières années, ReSharper s'est affirmé comme l'outil de pr",
       "creator": "",
       "categories": [
-        ".NET",
-        "Visual Studio",
-        "Visual Studio Code",
-        "ReSharper",
-        "JetBrains"
+        "VS Code",
+        "Resharper",
+        "JetBrains",
+        "Preview"
       ],
       "guid": "https://jetbrains.developpez.com/actu/372358/ReSharper-l-extension-Visual-Studio-de-JetBrains-pour-les-developpeurs-NET-est-disponible-dans-Microsoft-Visual-Studio-Code-la-preview-publique-est-maintenant-ouverte/"
     },
@@ -209,105 +245,11 @@
       "contentSnippet": "Exploration des membres d'extension en C# 14 : la nouvelle syntaxe des membres d'extension préserve l'énorme quantité de méthodes d'extension paramètre This existantes tout en introduisant de nouveaux types.\nC# 14 introduit les membres d'extension. C",
       "creator": "",
       "categories": [
-        "C#"
+        "C# 14"
       ],
       "guid": "https://dotnet.developpez.com/actu/372182/Exploration-des-membres-d-extension-en-C-14-preservation-de-l-enorme-quantite-de-methodes-d-extension-parametre-This-existantes-tout-en-introduisant-de-nouveaux-types/"
-    },
-    {
-      "title": "Microsoft présente les nouvelles fonctionnalités du langage de programmation de C# 14 : membres d'extension, affectation par condition nulle, propriétés field stockées",
-      "link": "https://dotnet.developpez.com/actu/372078/Microsoft-presente-les-nouvelles-fonctionnalites-du-langage-de-programmation-de-C-14-membres-d-extension-affectation-par-condition-nulle-proprietes-field-stockees/",
-      "pubDate": "Thu, 15 May 2025 16:09:00 +0200",
-      "contentSnippet": "Microsoft présente les nouvelles fonctionnalités du langage de programmation de C# 14 : membres d'extension, affectation par condition nulle, propriétés field stockées\nC# 14 inclut les nouvelles fonctionnalités suivantes : Membres d'extension, Mot cl",
-      "creator": "",
-      "categories": [
-        "C#"
-      ],
-      "guid": "https://dotnet.developpez.com/actu/372078/Microsoft-presente-les-nouvelles-fonctionnalites-du-langage-de-programmation-de-C-14-membres-d-extension-affectation-par-condition-nulle-proprietes-field-stockees/"
-    },
-    {
-      "title": "ReSharper 2025.1, l'extension Visual Studio de JetBrains pour les développeurs .NET, est disponible : mises à jour des performances et améliorations complètes de l'expérience",
-      "link": "https://jetbrains.developpez.com/actu/371256/ReSharper-2025-1-l-extension-Visual-Studio-de-JetBrains-pour-les-developpeurs-NET-est-disponible-mises-a-jour-des-performances-et-ameliorations-completes-de-l-experience/",
-      "pubDate": "Mon, 12 May 2025 14:36:00 +0200",
-      "contentSnippet": "ReSharper 2025.1, l'extension Visual Studio de JetBrains pour les développeurs .NET, est disponible : mises à jour des performances et améliorations complètes de l'expérience\nReSharper est une extension Visual Studio pour les développeurs .NET. Selon",
-      "creator": "",
-      "categories": [
-        ".NET",
-        "Visual Studio",
-        "ReSharper",
-        "JetBrains",
-        "Performance"
-      ],
-      "guid": "https://jetbrains.developpez.com/actu/371256/ReSharper-2025-1-l-extension-Visual-Studio-de-JetBrains-pour-les-developpeurs-NET-est-disponible-mises-a-jour-des-performances-et-ameliorations-completes-de-l-experience/"
-    },
-    {
-      "title": "L'EDI .NET multiplateforme Rider 2025.1 est disponible : Explorateur de solutions amélioré, nouvelles fonctionnalités de l'AI Assistant, mises à jour du développement du jeu, et plus encore",
-      "link": "https://jetbrains.developpez.com/actu/371563/L-EDI-NET-multiplateforme-Rider-2025-1-est-disponible-Explorateur-de-solutions-ameliore-nouvelles-fonctionnalites-de-l-AI-Assistant-mises-a-jour-du-developpement-du-jeu-et-plus-encore/",
-      "pubDate": "Mon, 12 May 2025 03:19:00 +0200",
-      "contentSnippet": "Rider 2025.1 est disponible : Explorateur de solutions amélioré, nouvelles fonctionnalités de l'AI Assistant, mises à jour du développement du jeu, et plus encore.\nJetBrains Rider est un EDI .NET complet et multiplateforme qui fonctionne avec une gra",
-      "creator": "",
-      "categories": [
-        ".NET",
-        "Rider",
-        "JetBrains",
-        "AI"
-      ],
-      "guid": "https://jetbrains.developpez.com/actu/371563/L-EDI-NET-multiplateforme-Rider-2025-1-est-disponible-Explorateur-de-solutions-ameliore-nouvelles-fonctionnalites-de-l-AI-Assistant-mises-a-jour-du-developpement-du-jeu-et-plus-encore/"
-    },
-    {
-      "title": "Microsoft annonce un template IA .NET en avant-première pour rendre le développement de l'IA avec .NET plus facile à découvrir et à utiliser, avec des conseils dans Visual Studio et Visual Studio Code",
-      "link": "https://dotnet.developpez.com/actu/369950/Microsoft-annonce-un-template-IA-NET-en-avant-premiere-pour-rendre-le-developpement-de-l-IA-avec-NET-plus-facile-a-decouvrir-et-a-utiliser-avec-des-conseils-dans-Visual-Studio-et-Visual-Studio-Code/",
-      "pubDate": "Wed, 12 Mar 2025 13:39:00 +0100",
-      "contentSnippet": "Microsoft annonce un template IA .NET en avant-première pour rendre le développement de l'IA avec .NET plus facile à découvrir et à utiliser, avec des conseils dans Visual Studio et Visual Studio Code\nMicrosoft annonce un nouveau template d'applicati",
-      "creator": "",
-      "categories": [
-        ".NET",
-        "Visual Studio",
-        "VS Code",
-        "Templates"
-      ],
-      "guid": "https://dotnet.developpez.com/actu/369950/Microsoft-annonce-un-template-IA-NET-en-avant-premiere-pour-rendre-le-developpement-de-l-IA-avec-NET-plus-facile-a-decouvrir-et-a-utiliser-avec-des-conseils-dans-Visual-Studio-et-Visual-Studio-Code/"
-    },
-    {
-      "title": "Microsoft publie .NET 10 Preview 1 : cette préversion donne un aperçu de C# 14 et met l'accent sur des améliorations de performance, des optimisations des bibliothèques et une expérience développeur enrichie",
-      "link": "https://dotnet.developpez.com/actu/369679/Microsoft-publie-NET-10-Preview-1-cette-preversion-donne-un-apercu-de-C-14-et-met-l-accent-sur-des-ameliorations-de-performance-des-optimisations-des-bibliotheques-et-une-experience-developpeur-enrichie/",
-      "pubDate": "Mon, 03 Mar 2025 12:50:00 +0100",
-      "contentSnippet": "Microsoft publie .NET 10 Preview 1 :  cette préversion apporte un premier aperçu de C# 14\n\r\net met l'accent sur des améliorations de performance, des optimisations des bibliothèques et une expérience développeur enrichie   \nMicrosoft a présenté en av",
-      "creator": "",
-      "categories": [
-        ".NET 10",
-        "C# 14",
-        "Performance",
-        "Preview"
-      ],
-      "guid": "https://dotnet.developpez.com/actu/369679/Microsoft-publie-NET-10-Preview-1-cette-preversion-donne-un-apercu-de-C-14-et-met-l-accent-sur-des-ameliorations-de-performance-des-optimisations-des-bibliotheques-et-une-experience-developpeur-enrichie/"
-    },
-    {
-      "title": "Construire des applications intelligentes avec .NET et DeepSeek R1, par Matt Soucoup, Principal Cloud Developer Advocate chez Microsoft",
-      "link": "https://dotnet.developpez.com/actu/368930/Construire-des-applications-intelligentes-avec-NET-et-DeepSeek-R1-par-Matt-Soucoup-Principal-Cloud-Developer-Advocate-chez-Microsoft/",
-      "pubDate": "Sat, 08 Feb 2025 17:21:00 +0100",
-      "contentSnippet": "Construire des applications intelligentes avec .NET et DeepSeek R1, par Matt Soucoup, Principal Cloud Developer Advocate chez Microsoft\nVoici comment utiliser la bibliothèque Microsoft.Extensions.AI (MEAI) avec DeepSeek R1 sur GitHub Models afin que ",
-      "creator": "",
-      "categories": [
-        ".NET",
-        "DeepSeek",
-        "GitHub"
-      ],
-      "guid": "https://dotnet.developpez.com/actu/368930/Construire-des-applications-intelligentes-avec-NET-et-DeepSeek-R1-par-Matt-Soucoup-Principal-Cloud-Developer-Advocate-chez-Microsoft/"
-    },
-    {
-      "title": "Rider 2024.3 disponible : prise en charge des dernières fonctionnalités du SDK .NET 9 et C# 13, débogage de console pour le développement de jeux, améliorations pour l'assistant IA et plus",
-      "link": "https://jetbrains.developpez.com/actu/365223/Rider-2024-3-disponible-prise-en-charge-des-dernieres-fonctionnalites-du-SDK-NET-9-et-C-13-debogage-de-console-pour-le-developpement-de-jeux-ameliorations-pour-l-assistant-IA-et-plus/",
-      "pubDate": "Wed, 27 Nov 2024 11:08:00 +0100",
-      "contentSnippet": "",
-      "creator": "",
-      "categories": [
-        ".NET 9",
-        "C# 13",
-        "Rider"
-      ],
-      "guid": "https://jetbrains.developpez.com/actu/365223/Rider-2024-3-disponible-prise-en-charge-des-dernieres-fonctionnalites-du-SDK-NET-9-et-C-13-debogage-de-console-pour-le-developpement-de-jeux-ameliorations-pour-l-assistant-IA-et-plus/"
     }
   ],
-  "lastUpdated": "2026-04-17T12:45:25.046Z",
+  "lastUpdated": "2026-07-09T15:21:09.029Z",
   "feedTitle": "Flux .NET Developpez"
 }
