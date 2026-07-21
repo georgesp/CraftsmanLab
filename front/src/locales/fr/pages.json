@@ -8,14 +8,34 @@
     "articles": "articles",
     "seeMoreNews": "Voir plus d'actualités",
     "tipsTags": "Tags",
-    "seeMoreTips": "Voir plus de tips"
+    "seeMoreTips": "Voir plus de tips",
+    "heroEyebrow": "// craftsmanlab.fr",
+    "heroTitle": "L'établi du développeur .NET.",
+    "heroBody": "Tips, mémos et prompts système pour aller plus vite au quotidien — et une veille .NET tenue à jour.",
+    "ctaTips": "Explorer les tips",
+    "ctaPrompts": "Voir les prompts",
+    "statTips": "tips",
+    "statPrompts": "prompts",
+    "statWatch": "veille hebdo",
+    "sectionNews": "// actualités",
+    "sectionTips": "Tips & mémos",
+    "sectionPrompts": "Prompts",
+    "seeAll": "voir tout"
   },
   "tips": {
     "title": "Tips et Mémos",
     "description": "Une collection de fiches synthétiques sur des concepts fondamentaux de l'écosystème .NET et C#. Chaque tip vise à clarifier un point d'architecture, une interface clé ou une bonne pratique d'API.",
     "aiNote": "Ne soyez pas surpris : les contenus des fiches ont été générés avec l'aide de l'IA.",
     "searchKeywords": "Rechercher...",
-    "selectedKeywords": "Sélection"
+    "selectedKeywords": "Sélection",
+    "bandTitle": "Tips & mémos",
+    "subtitle": "Des fiches synthétiques sur les concepts fondamentaux de l'écosystème .NET et C#.",
+    "results": "résultats",
+    "sortRecent": "tri : récents",
+    "categoriesGroup": "Catégories",
+    "noteTitle": "À noter",
+    "noteBody": "Les contenus des fiches sont générés avec l'aide de l'IA, puis relus.",
+    "searchPlaceholder": "rechercher un tip…"
   },
   "tipDetailPage": {
     "loading": "Chargement…",
@@ -33,11 +53,18 @@
     "title": "Prompts",
     "description": "Collection de prompts système pour l'intelligence artificielle.",
     "whatIsPrompt": "Qu'est-ce qu'un prompt ?",
-  "promptDefinition": "Un prompt système est le texte de base que l'on transmet à un modèle d'intelligence artificielle avant toute interaction. Il est en général stocké dans un fichier markdown (.md) à la racine du projet ; on peut en avoir plusieurs en fonction des besoins et des périmètres.",
-  "promptDefinitionFull": "Un prompt système est le texte de base que l'on transmet à un modèle d'intelligence artificielle avant toute interaction. Il est en général stocké dans un fichier markdown (.md) à la racine du projet ; on peut en avoir plusieurs en fonction des besoins et des périmètres.\n\nCe sont un peu les dix commandements qui seront pris en considération par l'agent IA lors de la génération de ses réponses et de son code.\n\nPour être sûr que ces règles soient bien prises en compte, il vaut mieux les préciser au début de la conversation avec l'IA.\n\nPar exemple :\n«En prenant en compte les règles du fichier rules.prompt.md, j'aimerais que tu ...»",
-  "whyPromptTitle": "Pourquoi un bon prompt est essentiel avec l'IA ?",
-  "whyPromptBody1": "Un prompt bien rédigé permet d'obtenir des réponses plus pertinentes, précises et adaptées à vos besoins. Il guide l'intelligence artificielle, réduit les malentendus et maximise la valeur des outils IA.",
-  "whyPromptBody2": "Il faut vraiment voir l'IA comme un collaborateur : si l'instruction est vague, elle risque de mal interpréter vos attentes et de fournir des réponses inappropriées ou hors sujet."
+    "promptDefinition": "Un prompt système est le texte de base que l'on transmet à un modèle d'intelligence artificielle avant toute interaction. Il est en général stocké dans un fichier markdown (.md) à la racine du projet ; on peut en avoir plusieurs en fonction des besoins et des périmètres.",
+    "promptDefinitionFull": "Un prompt système est le texte de base que l'on transmet à un modèle d'intelligence artificielle avant toute interaction. Il est en général stocké dans un fichier markdown (.md) à la racine du projet ; on peut en avoir plusieurs en fonction des besoins et des périmètres.\n\nCe sont un peu les dix commandements qui seront pris en considération par l'agent IA lors de la génération de ses réponses et de son code.\n\nPour être sûr que ces règles soient bien prises en compte, il vaut mieux les préciser au début de la conversation avec l'IA.\n\nPar exemple :\n«En prenant en compte les règles du fichier rules.prompt.md, j'aimerais que tu ...»",
+    "whyPromptTitle": "Pourquoi un bon prompt est essentiel avec l'IA ?",
+    "whyPromptBody1": "Un prompt bien rédigé permet d'obtenir des réponses plus pertinentes, précises et adaptées à vos besoins. Il guide l'intelligence artificielle, réduit les malentendus et maximise la valeur des outils IA.",
+    "whyPromptBody2": "Il faut vraiment voir l'IA comme un collaborateur : si l'instruction est vague, elle risque de mal interpréter vos attentes et de fournir des réponses inappropriées ou hors sujet.",
+    "def2": "Ce sont un peu les dix commandements qui seront pris en considération par l'agent IA lors de la génération de ses réponses et de son code.",
+    "def3": "Pour être sûr que ces règles soient bien prises en compte, il vaut mieux les préciser au début de la conversation avec l'IA. Par exemple :",
+    "example": "« En prenant en compte les règles du fichier rules.prompt.md, j'aimerais que tu … »",
+    "available": "Les prompts disponibles",
+    "count": "prompts",
+    "copy": "Copier",
+    "copied": "Copié !"
   },
   "contact": {
     "title": "Développeur Freelance .NET & IA",
@@ -51,8 +78,17 @@
       "subject": "Sujet",
       "message": "Message"
     },
-  "infoTitle": "Mes coordonnées",
-    "successMessage": "Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais."
+    "infoTitle": "Mes coordonnées",
+    "successMessage": "Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.",
+    "eyebrow": "// contact",
+    "bandTitle": "Développeur freelance .NET & IA",
+    "bandSubtitle": "Une mission, une idée d'amélioration du site, ou juste envie d'échanger ? Écrivez-moi.",
+    "availabilityTitle": "Disponible pour missions freelance",
+    "availabilityBody": "J'accompagne vos projets .NET et vos intégrations IA, en régie ou au forfait.",
+    "responseNote": "Réponse sous 48 h ouvrées.",
+    "linkedinSub": "Mon parcours & mes publications",
+    "maltSub": "Me contacter en freelance",
+    "emailSub": "Écrire directement"
   },
   "news": {
     "title": "Actualités .NET",
@@ -63,7 +99,12 @@
     "error": "Impossible de charger le flux d'actualités.",
     "partialError": "Certains flux n'ont pas pu être chargés.",
     "searchCategories": "Rechercher...",
-    "selectedCategories": "Sélection"
+    "selectedCategories": "Sélection",
+    "bandTitle": "Actualités",
+    "articles": "articles",
+    "feedUpToDate": "flux à jour",
+    "sourcesTitle": "Sources",
+    "searchPlaceholder": "rechercher un article…"
   },
   "footer": {
     "copyright": "© 2026 CraftsmanLab. Tous droits réservés."

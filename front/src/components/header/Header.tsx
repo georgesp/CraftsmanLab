@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { Link as RouterLink, useNavigate, useLocation } from 'react-router-dom';
 import {
   Link as MuiLink,
   Box,
@@ -23,9 +23,30 @@ import { COLORS, TYPOGRAPHY } from '../../styles';
 import { StyledAppBar, StyledToolbar, NavigationContainer } from './styles';
 import { LanguageSelector } from '../ui/LanguageSelector';
 
+// Couleur active de la nav par rubrique (« Atelier adouci »)
+const ACTIVE_COLOR: Record<string, string> = {
+  '/': COLORS.atelier.tips,
+  '/tips': COLORS.atelier.tips,
+  '/prompts': COLORS.atelier.prompts,
+  '/news': COLORS.atelier.news,
+  '/contact': COLORS.atelier.tips,
+};
+
 export const Header: React.FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Style appliqué au lien actif : couleur de rubrique + gras
+  const navSx = (path: string) => {
+    const active = location.pathname === path;
+    return {
+      fontWeight: active
+        ? TYPOGRAPHY.fontWeights.bold
+        : TYPOGRAPHY.fontWeights.medium,
+      color: active ? ACTIVE_COLOR[path] : undefined,
+    };
+  };
   const [query, setQuery] = useState('');
   const [open, setOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number>(-1);
@@ -113,21 +134,27 @@ export const Header: React.FC = () => {
           component={RouterLink}
           to="/"
           underline="none"
-          sx={{ display: 'flex', alignItems: 'center', mr: 'auto' }}
+          sx={{ display: 'flex', alignItems: 'center', gap: 1, mr: 'auto' }}
         >
           <Box
             component="img"
-            src="/noBgColor.png"
-            alt="CraftsmanLab"
-            sx={{
-              height: 56,
-              width: 'auto',
-              objectFit: 'contain',
-              display: 'block',
-              flexShrink: 0,
-              border: 'none',
-            }}
+            src="/symbol.svg"
+            alt=""
+            aria-hidden
+            sx={{ height: 24, width: 24, display: 'block', flexShrink: 0 }}
           />
+          <Box
+            component="span"
+            sx={{
+              fontFamily: TYPOGRAPHY.fontFamilies.display,
+              fontWeight: TYPOGRAPHY.fontWeights.bold,
+              fontSize: '19px',
+              letterSpacing: '-0.02em',
+              color: COLORS.atelier.textStrong,
+            }}
+          >
+            CraftsmanLab
+          </Box>
         </MuiLink>
 
         <Box
@@ -154,8 +181,9 @@ export const Header: React.FC = () => {
                   display: 'flex',
                   alignItems: 'center',
                   height: 40,
-                  borderRadius: 0,
-                  backgroundColor: COLORS.darkTheme.inputBackground,
+                  borderRadius: '10px',
+                  border: `1px solid ${COLORS.atelier.borderDefault}`,
+                  backgroundColor: '#FBFCFD',
                 }}
               >
                 <InputBase
@@ -307,12 +335,12 @@ export const Header: React.FC = () => {
         <NavigationContainer>
           <MuiLink
             component={RouterLink}
-            to="/news"
+            to="/"
             color="inherit"
             underline="none"
-            sx={{ fontWeight: TYPOGRAPHY.fontWeights.medium }}
+            sx={navSx('/')}
           >
-            {t('navigation.news')}
+            {t('navigation.home')}
           </MuiLink>
 
           <MuiLink
@@ -320,7 +348,7 @@ export const Header: React.FC = () => {
             to="/tips"
             color="inherit"
             underline="none"
-            sx={{ fontWeight: TYPOGRAPHY.fontWeights.medium }}
+            sx={navSx('/tips')}
           >
             {t('navigation.tips')}
           </MuiLink>
@@ -330,9 +358,19 @@ export const Header: React.FC = () => {
             to="/prompts"
             color="inherit"
             underline="none"
-            sx={{ fontWeight: TYPOGRAPHY.fontWeights.medium }}
+            sx={navSx('/prompts')}
           >
             {t('navigation.prompts')}
+          </MuiLink>
+
+          <MuiLink
+            component={RouterLink}
+            to="/news"
+            color="inherit"
+            underline="none"
+            sx={navSx('/news')}
+          >
+            {t('navigation.news')}
           </MuiLink>
 
           <MuiLink
@@ -340,7 +378,7 @@ export const Header: React.FC = () => {
             to="/contact"
             color="inherit"
             underline="none"
-            sx={{ fontWeight: TYPOGRAPHY.fontWeights.medium }}
+            sx={navSx('/contact')}
           >
             {t('navigation.contact')}
           </MuiLink>

@@ -55,20 +55,21 @@ describe('TipsPage - tag filtering', () => {
     expect(screen.getByText('B')).toBeInTheDocument();
     expect(screen.getByText('C')).toBeInTheDocument();
 
+    // Les facettes sont des cases à cocher : on clique le libellé de catégorie.
     // Click tag 'y' -> should keep A and B (both have y), hide C
-    fireEvent.click(screen.getByRole('button', { name: 'y' }));
+    fireEvent.click(screen.getByRole('checkbox', { name: 'y' }));
     expect(screen.getByText('A')).toBeInTheDocument();
     expect(screen.getByText('B')).toBeInTheDocument();
     expect(screen.queryByText('C')).not.toBeInTheDocument();
 
     // Click tag 'x' as well -> AND logic: both 'x' AND 'y' required -> only A matches
-    fireEvent.click(screen.getByRole('button', { name: 'x' }));
+    fireEvent.click(screen.getByRole('checkbox', { name: 'x' }));
     expect(screen.getByText('A')).toBeInTheDocument();
     expect(screen.queryByText('B')).not.toBeInTheDocument();
     expect(screen.queryByText('C')).not.toBeInTheDocument();
 
     // Deselect 'x' -> back to only 'y' selected -> A and B
-    fireEvent.click(screen.getByRole('button', { name: 'x' }));
+    fireEvent.click(screen.getByRole('checkbox', { name: 'x' }));
     expect(screen.getByText('A')).toBeInTheDocument();
     expect(screen.getByText('B')).toBeInTheDocument();
     expect(screen.queryByText('C')).not.toBeInTheDocument();

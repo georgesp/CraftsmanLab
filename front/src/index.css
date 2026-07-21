@@ -6,7 +6,7 @@
   color-scheme: light;
   /* Color tokens for light theme */
   color: #1A1D1F;
-  background-color: #FAFBFC; /* match COLORS.darkGreyBg (now light) */
+  background-color: #EEF0F3; /* match COLORS.darkGreyBg (now light) */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -33,14 +33,14 @@ body {
   margin: 0;
   min-width: 320px;
   overflow-x: hidden; /* Avoid unwanted horizontal scroll */
-  background-color: #FAFBFC; /* enforce light background on body */
+  background-color: #EEF0F3; /* enforce light background on body */
 }
 
 #root {
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: #FAFBFC; /* ensure root container matches light bg */
+  background-color: #EEF0F3; /* ensure root container matches light bg */
 }
 
 /* Always use dark theme background to avoid white banding at page bottom */

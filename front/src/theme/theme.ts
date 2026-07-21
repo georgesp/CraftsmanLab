@@ -4,12 +4,19 @@ import { TYPOGRAPHY } from '../styles/typography';
 import { SHADOWS } from '../styles/shadows';
 
 // Constante centralisée pour tous les border-radius du site
+// Refonte « Atelier adouci » : angles doux (le carré strict est abandonné)
 export const BORDER_RADIUS = {
-  none: 0,           // Pas d'arrondi (utilisé partout actuellement)
-  small: 4,          // Petit arrondi (si besoin futur)
-  medium: 8,         // Arrondi moyen (si besoin futur)
-  large: 12,         // Grand arrondi (si besoin futur)
-  circle: '50%',     // Cercle complet (avatars, icônes)
+  none: 0,
+  filter: 9,         // Lignes de filtre / facettes
+  input: 10,         // Inputs / boutons
+  card: 12,          // Cartes
+  panel: 16,         // Grands panneaux / encadrés
+  pill: 999,         // Chip langue, pastille dispo
+  // Alias historiques conservés pour compat
+  small: 9,
+  medium: 12,
+  large: 16,
+  circle: '50%',
 };
 
 export const telerikTheme = createTheme({
@@ -27,9 +34,10 @@ export const telerikTheme = createTheme({
       contrastText: COLORS.secondary.contrastText,
     },
     background: {
-      default: COLORS.darkGreyBg,
-      paper: COLORS.darkGreyBg,
+      default: COLORS.atelier.pageBg,
+      paper: COLORS.atelier.surface,
     },
+    divider: COLORS.atelier.borderDefault,
     text: {
       primary: COLORS.textPrimary,
       secondary: COLORS.textSecondary,
@@ -39,30 +47,35 @@ export const telerikTheme = createTheme({
   typography: {
     fontFamily: TYPOGRAPHY.fontFamily,
     h1: {
+      fontFamily: TYPOGRAPHY.fontFamilies.display,
       fontSize: TYPOGRAPHY.fontSizes.h1,
       fontWeight: TYPOGRAPHY.fontWeights.bold,
       lineHeight: TYPOGRAPHY.lineHeights.tight,
-      letterSpacing: TYPOGRAPHY.letterSpacing.tight,
-      color: COLORS.textPrimary,
+      letterSpacing: TYPOGRAPHY.atelier.trackingTight,
+      color: COLORS.atelier.textStrong,
     },
     h2: {
+      fontFamily: TYPOGRAPHY.fontFamilies.display,
       fontSize: TYPOGRAPHY.fontSizes.h2,
-      fontWeight: TYPOGRAPHY.fontWeights.semiBold,
+      fontWeight: TYPOGRAPHY.fontWeights.bold,
       lineHeight: TYPOGRAPHY.lineHeights.normal,
-      letterSpacing: TYPOGRAPHY.letterSpacing.normal,
-      color: COLORS.textPrimary,
+      letterSpacing: TYPOGRAPHY.atelier.tracking,
+      color: COLORS.atelier.textStrong,
     },
     h3: {
+      fontFamily: TYPOGRAPHY.fontFamilies.display,
       fontSize: TYPOGRAPHY.fontSizes.h3,
-      fontWeight: TYPOGRAPHY.fontWeights.semiBold,
+      fontWeight: TYPOGRAPHY.fontWeights.bold,
       lineHeight: TYPOGRAPHY.lineHeights.normal,
-      color: COLORS.textPrimary || '#E6EEF3',
+      letterSpacing: TYPOGRAPHY.atelier.tracking,
+      color: COLORS.atelier.textStrong,
     },
     h4: {
+      fontFamily: TYPOGRAPHY.fontFamilies.display,
       fontSize: TYPOGRAPHY.fontSizes.h4,
-      fontWeight: TYPOGRAPHY.fontWeights.semiBold,
+      fontWeight: TYPOGRAPHY.fontWeights.bold,
       lineHeight: TYPOGRAPHY.lineHeights.normal,
-      color: COLORS.textPrimary || '#E6EEF3',
+      color: COLORS.atelier.textStrong,
     },
     h5: {
       fontSize: TYPOGRAPHY.fontSizes.h5,
@@ -96,29 +109,33 @@ export const telerikTheme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: BORDER_RADIUS.none,
-          padding: '12px 24px',
+          borderRadius: BORDER_RADIUS.input,
+          padding: '10px 20px',
           fontSize: TYPOGRAPHY.fontSizes.button,
           fontWeight: TYPOGRAPHY.fontWeights.semiBold,
           textTransform: 'none',
           boxShadow: SHADOWS.none,
+          transition: 'background .15s ease, box-shadow .15s ease',
           '&:hover': {
             boxShadow: SHADOWS.button,
           },
         },
         contained: {
-          background: `linear-gradient(135deg, ${COLORS.primary.main} 0%, ${COLORS.primary.light} 100%)`,
+          background: COLORS.atelier.tips,
           color: COLORS.white,
           '&:hover': {
-            background: `linear-gradient(135deg, ${COLORS.primary.dark} 0%, ${COLORS.primary.main} 100%)`,
+            background: COLORS.atelier.tipsHover,
           },
         },
         outlined: {
-          borderWidth: '2px',
-          borderColor: COLORS.primary.main,
+          borderWidth: '1px',
+          borderColor: COLORS.atelier.borderDefault,
+          backgroundColor: COLORS.atelier.surface,
+          color: COLORS.atelier.textBody,
           '&:hover': {
-            borderWidth: '2px',
-            borderColor: COLORS.primary.dark,
+            borderWidth: '1px',
+            borderColor: COLORS.atelier.tips,
+            backgroundColor: COLORS.atelier.surface,
           },
         },
       },
@@ -126,7 +143,7 @@ export const telerikTheme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          backgroundColor: COLORS.darkGreyBg,
+          backgroundColor: COLORS.atelier.pageBg,
           margin: 0,
           padding: 0,
         },
@@ -135,25 +152,28 @@ export const telerikTheme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: BORDER_RADIUS.none,
+          borderRadius: BORDER_RADIUS.card,
           boxShadow: 'none',
-          border: 'none',
-          background: 'transparent',
-          '&:hover': {
-            boxShadow: 'none',
-            transform: 'none',
-            transition: 'none',
-          },
+          border: `1px solid ${COLORS.atelier.borderDefault}`,
+          background: COLORS.atelier.surface,
+          transition: 'box-shadow .2s ease, transform .2s ease',
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        rounded: {
+          borderRadius: BORDER_RADIUS.card,
         },
       },
     },
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: COLORS.darkGreyBg,
-          color: COLORS.white,
+          backgroundColor: COLORS.atelier.surface,
+          color: COLORS.atelier.textStrong,
           boxShadow: 'none',
-          borderBottom: 'none',
+          borderBottom: `1px solid ${COLORS.atelier.borderDefault}`,
         },
       },
     },
@@ -161,16 +181,22 @@ export const telerikTheme = createTheme({
       styleOverrides: {
         root: {
           '& .MuiOutlinedInput-root': {
-            borderRadius: BORDER_RADIUS.none,
+            borderRadius: BORDER_RADIUS.input,
+            backgroundColor: '#FBFCFD',
+            transition: 'border-color .15s ease, box-shadow .15s ease, background .15s ease',
             '& .MuiOutlinedInput-notchedOutline': {
-              borderColor: COLORS.searchInputText,
+              borderColor: COLORS.atelier.borderDefault,
             },
             '&:hover .MuiOutlinedInput-notchedOutline': {
-              borderColor: COLORS.searchInputText,
+              borderColor: COLORS.atelier.textFaint,
+            },
+            '&.Mui-focused': {
+              backgroundColor: COLORS.atelier.surface,
+              boxShadow: '0 0 0 3px rgba(25,118,210,.12)',
             },
             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-              borderColor: COLORS.searchInputText,
-              borderWidth: '2px',
+              borderColor: COLORS.atelier.tips,
+              borderWidth: '1px',
             },
           },
         },
@@ -179,7 +205,7 @@ export const telerikTheme = createTheme({
     MuiChip: {
       styleOverrides: {
         root: {
-          borderRadius: BORDER_RADIUS.none,
+          borderRadius: BORDER_RADIUS.pill,
           fontWeight: TYPOGRAPHY.fontWeights.medium,
           fontSize: TYPOGRAPHY.fontSizes.caption,
         },
@@ -188,13 +214,13 @@ export const telerikTheme = createTheme({
     MuiAlert: {
       styleOverrides: {
         root: {
-          borderRadius: BORDER_RADIUS.none,
+          borderRadius: BORDER_RADIUS.panel,
         },
       },
     },
   },
   shape: {
-    borderRadius: BORDER_RADIUS.none,
+    borderRadius: BORDER_RADIUS.card,
   },
   spacing: 8,
 });

@@ -1,564 +1,346 @@
 import * as React from 'react';
-import { Container, Typography, Box, Card, Grid, Link as MuiLink, Chip, Button } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Box, Typography, Button } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { COLORS, PAGE_SPACING, TYPOGRAPHY, LAYOUT } from '../../styles';
-import { LazyTipCardsGrid } from '../../components/tips/tip-cards-grid-lazy';
 import { PageLayout } from '../../components';
+import { AtelierContainer, IllusBadge } from '../../components/atelier';
+import { AtelierTipsGrid } from '../../components/tips/AtelierTipsGrid';
+import { AtelierPromptsGrid } from '../../components/prompts/AtelierPromptsGrid';
 import { rssSources } from '../../components/news/registry';
 import { tipsList } from '../../components/tips/registry';
-import NewspaperIcon from '@mui/icons-material/Newspaper';
-import { PromptCard, PromptCardContent } from '../Prompts/styles';
-import { TopSourcesFilter, type SourceInfo } from '../../components/news/TopSourcesFilter';
-import { TopKeywordsFilter, type KeywordInfo } from '../../components/news/TopKeywordsFilter';
-// Lazy-load the prompts grid to avoid importing import.meta-based registry in tests
-const LazyPromptCardsGrid = React.lazy(() =>
-  import('../../components/prompts/prompt-cards-grid').then((m) => ({
-    default: m.PromptCardsGrid,
-  })),
-);
+import { promptsList } from '../../components/prompts/registry';
+import { COLORS, TYPOGRAPHY } from '../../styles';
 
 export const HomePage: React.FC = () => {
   const { t, i18n } = useTranslation('pages');
-  const [selectedSource, setSelectedSource] = React.useState<string | null>(null);
-  const [selectedKeywords, setSelectedKeywords] = React.useState<string[]>([]);
-  const [selectedTipTags, setSelectedTipTags] = React.useState<string[]>([]);
+  const lang = i18n.language === 'fr' ? 'fr' : 'en';
 
-  const formatDate = (dateString: string) => {
+  const sourceTitle = (slug: string) => {
+    const s = rssSources.find((x) => x.meta.slug === slug);
+    const tr = s?.translations[lang] ?? s?.translations.en ?? s?.translations.fr;
+    return tr?.title ?? slug;
+  };
+
+  const latestNews = React.useMemo(
+    () =>
+      rssSources
+        .flatMap((source) =>
+          (source.data?.items ?? []).map((item) => ({ ...item, sourceSlug: source.meta.slug })),
+        )
+        .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime())
+        .slice(0, 3),
+    [],
+  );
+
+  const tipsCount = tipsList.length;
+  const promptsCount = promptsList.filter((p) => p.slug !== 'more').length;
+
+  const formatDate = (d: string) => {
     try {
-      const date = new Date(dateString);
-      return date.toLocaleDateString(i18n.language === 'fr' ? 'fr-FR' : 'en-US', {
+      return new Date(d).toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US', {
+        day: '2-digit',
+        month: 'short',
         year: 'numeric',
-        month: 'long',
-        day: 'numeric',
       });
     } catch {
-      return dateString;
+      return d;
     }
   };
 
-  // Get translated source info
-  const getSourceInfo = (sourceSlug: string) => {
-    const source = rssSources.find(s => s.meta.slug === sourceSlug);
-    if (!source) {
-      return { title: sourceSlug, description: '' };
-    }
+  const initials = (name: string) =>
+    name.replace(/[^A-Za-zÀ-ÿ ]/g, '').split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]?.toUpperCase()).join('') ||
+    name.slice(0, 2).toUpperCase();
 
-    const lang = i18n.language === 'fr' ? 'fr' : 'en';
-    const translation = source.translations[lang] ?? source.translations.en ?? source.translations.fr;
-    return {
-      title: translation?.title ?? sourceSlug,
-      description: translation?.description ?? '',
-      website: translation?.website,
-    };
-  };
-
-  // Calculate top 5 sources by article count
-  const topSources: SourceInfo[] = React.useMemo(() => {
-    const sourceCounts = rssSources.map(source => ({
-      slug: source.meta.slug,
-      name: getSourceInfo(source.meta.slug).title,
-      articleCount: source.data?.items?.length ?? 0,
-    }));
-    
-    return sourceCounts
-      .sort((a, b) => b.articleCount - a.articleCount)
-      .slice(0, 5);
-  }, [i18n.language]);
-
-  // Calculate top 30 keywords based on filtered articles
-  const topKeywords: KeywordInfo[] = React.useMemo(() => {
-    const keywordCounts: Record<string, number> = {};
-    
-    // Filtrer d'abord par source si une source est sélectionnée
-    const sourcesToInclude = selectedSource 
-      ? rssSources.filter(source => source.meta.slug === selectedSource)
-      : rssSources;
-    
-    sourcesToInclude.forEach(source => {
-      const items = source.data?.items ?? [];
-      items.forEach(item => {
-        // Si des keywords sont déjà sélectionnés, ne compter que les articles qui les ont tous
-        if (selectedKeywords.length > 0) {
-          const itemCategories = (item.categories || []).map(c => c.toLowerCase());
-          const selectedSet = new Set(selectedKeywords.map(k => k.toLowerCase()));
-          const hasAllSelected = Array.from(selectedSet).every(keyword => 
-            itemCategories.includes(keyword)
-          );
-          if (!hasAllSelected) return;
-        }
-        
-        // Compter les catégories de cet article
-        if (item.categories) {
-          item.categories.forEach(category => {
-            keywordCounts[category] = (keywordCounts[category] || 0) + 1;
-          });
-        }
-      });
-    });
-
-    return Object.entries(keywordCounts)
-      .map(([keyword, count]) => ({ keyword, count }))
-      .sort((a, b) => b.count - a.count)
-      .slice(0, 30);
-  }, [selectedSource, selectedKeywords]);
-
-  // Get latest 3 news articles
-  const latestNews = React.useMemo(() => {
-    return rssSources
-      .flatMap(source => {
-        const items = source.data?.items ?? [];
-        return items.map(item => ({
-          ...item,
-          sourceSlug: source.meta.slug,
-          sourceInfo: getSourceInfo(source.meta.slug),
-        }));
-      })
-      .filter(item => {
-        // Filter by source
-        if (selectedSource && item.sourceSlug !== selectedSource) {
-          return false;
-        }
-        
-        // Filter by keywords - l'article doit avoir toutes les catégories sélectionnées
-        if (selectedKeywords.length > 0) {
-          const itemCategories = (item.categories || []).map(c => c.toLowerCase());
-          const selectedSet = new Set(selectedKeywords.map(k => k.toLowerCase()));
-          return Array.from(selectedSet).every(keyword => 
-            itemCategories.includes(keyword)
-          );
-        }
-        
-        return true;
-      })
-      .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime())
-      .slice(0, 5);
-  }, [i18n.language, selectedSource, selectedKeywords]);
-
-  const handleSourceClick = (slug: string | null) => {
-    setSelectedSource(slug);
-  };
-
-  const handleKeywordClick = (keyword: string) => {
-    setSelectedKeywords(prev => {
-      if (prev.includes(keyword)) {
-        return prev.filter(k => k !== keyword);
-      }
-      return [...prev, keyword];
-    });
-  };
-
-  // Calculate top 30 tags for tips based on filtered tips
-  const topTipTags: KeywordInfo[] = React.useMemo(() => {
-    const tagCounts: Record<string, number> = {};
-    
-    // Filtrer les tips par les tags déjà sélectionnés
-    const tipsToInclude = selectedTipTags.length === 0 
-      ? tipsList
-      : tipsList.filter(tip => {
-          const categories = tip.categories || [];
-          const selectedSet = new Set(selectedTipTags);
-          return Array.from(selectedSet).every(tag => categories.includes(tag));
-        });
-    
-    tipsToInclude.forEach(tip => {
-      const categories = tip.categories || [];
-      categories.forEach(category => {
-        tagCounts[category] = (tagCounts[category] || 0) + 1;
-      });
-    });
-
-    return Object.entries(tagCounts)
-      .map(([keyword, count]) => ({ keyword, count }))
-      .sort((a, b) => b.count - a.count)
-      .slice(0, 30);
-  }, [selectedTipTags]);
-
-  // Filter tips by selected tags
-  const filteredTips = React.useMemo(() => {
-    if (selectedTipTags.length === 0) return tipsList;
-    
-    const selectedSet = new Set(selectedTipTags);
-    return tipsList.filter(tip => {
-      const categories = tip.categories || [];
-      // Le tip doit avoir toutes les catégories sélectionnées
-      return Array.from(selectedSet).every(tag => categories.includes(tag));
-    });
-  }, [selectedTipTags]);
-
-  const handleTipTagClick = (tag: string) => {
-    setSelectedTipTags(prev => {
-      if (prev.includes(tag)) {
-        return prev.filter(t => t !== tag);
-      }
-      return [...prev, tag];
-    });
-  };
+  const sectionHeading = (illus: 'code' | 'prompt', title: React.ReactNode, to: string) => (
+    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: '18px' }}>
+      <IllusBadge name={illus} size={30} />
+      <Typography
+        component="h2"
+        sx={{
+          fontFamily: TYPOGRAPHY.fontFamilies.display,
+          fontWeight: 700,
+          fontSize: '24px',
+          letterSpacing: '-0.02em',
+          m: 0,
+          color: COLORS.atelier.textStrong,
+          flex: 1,
+        }}
+      >
+        {title}
+      </Typography>
+      <Box
+        component={RouterLink}
+        to={to}
+        sx={{
+          fontFamily: TYPOGRAPHY.fontFamilies.mono,
+          fontSize: '12px',
+          color: COLORS.atelier.tips,
+          textDecoration: 'none',
+        }}
+      >
+        {t('home.seeAll', { defaultValue: 'voir tout' })} →
+      </Box>
+    </Box>
+  );
 
   return (
     <PageLayout>
-      {/* Decorative hatched band between header and content */}
-
-      <Container
-        maxWidth={false}
-        disableGutters
-        sx={{ px: 0, mx: 0, width: '100%', backgroundColor: COLORS.darkGreyBg }}
-      >
-        {/* Latest News Section */}
-        <Box sx={{ pt: 2, pb: 4, width: '100%' }}>
-          <Box sx={{ px: { xs: 1, md: 3 }, mx: 0, width: '100%' }}>
-            {/* Encadré avec fond coloré pour le titre */}
+      <AtelierContainer>
+        {/* HERO */}
+        <Box
+          component="section"
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', md: '1.05fr 0.95fr' },
+            gap: { xs: 4, md: '44px' },
+            alignItems: 'center',
+            px: { xs: 2.5, md: '46px' },
+            py: { xs: 5, md: '60px' },
+          }}
+        >
+          <Box>
             <Box
               sx={{
-                backgroundColor: COLORS.cardBgDark,
-                borderRadius: 2,
-                p: { xs: 1.5, sm: 2, md: 2 },
-                mb: 3,
+                fontFamily: TYPOGRAPHY.fontFamilies.mono,
+                fontSize: '12px',
+                letterSpacing: '.08em',
+                color: COLORS.atelier.tips,
+                mb: 1.5,
               }}
             >
-              <Typography variant="h4" align="left">
-                {t('home.latestNews', { defaultValue: 'Dernières actualités' })}
-              </Typography>
+              {t('home.heroEyebrow', { defaultValue: '// craftsmanlab.fr' })}
             </Box>
-            
-            {/* Layout en 2 colonnes : Filtres (gauche) + Actualités (droite) */}
-            <Box 
-              sx={{ 
-                display: 'flex', 
-                gap: 3, 
-                flexDirection: { xs: 'column', md: 'row' },
-                alignItems: { xs: 'stretch', md: 'stretch' }
-              }}
-            >
-              {/* Colonne de gauche - Filtres (25%) */}
-              <Box 
-                sx={{ 
-                  width: { xs: '100%', md: '25%' },
-                  maxWidth: LAYOUT.leftColumn.maxWidth,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 2,
-                }}
-              >
-                {/* Filtre par sources */}
-                <TopSourcesFilter
-                  sources={topSources}
-                  selectedSource={selectedSource}
-                  onSourceClick={handleSourceClick}
-                  fullHeight
-                />
-                
-                {/* Filtre par mots-clés */}
-                <TopKeywordsFilter
-                  keywords={topKeywords}
-                  selectedKeywords={selectedKeywords}
-                  onKeywordClick={handleKeywordClick}
-                  fullHeight
-                />
-              </Box>
-              
-              {/* Colonne de droite - Actualités (75%) */}
-              <Box sx={{ flex: 1, minWidth: 0 }}>
-                <Grid container spacing={PAGE_SPACING.cardGrid}>
-                  {latestNews.map((item) => (
-                    <Grid item xs={12} sm={12} md={12} key={item.guid}>
-                      <MuiLink
-                        href={item.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        underline="none"
-                        sx={{
-                          display: 'block',
-                          height: '100%',
-                          '&:hover': {
-                            '& .news-card': {
-                              transform: 'translateY(-4px)',
-                              boxShadow: 3,
-                            },
-                          },
-                        }}
-                      >
-                        <PromptCard
-                          className="news-card"
-                          sx={{
-                            backgroundColor: COLORS.cardBgDark,
-                            border: `${COLORS.cardBorderWidth} solid ${COLORS.cardBorder}`,
-                            height: '100%',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
-                            cursor: 'pointer',
-                          }}
-                        >
-                          <PromptCardContent sx={{ flex: 1, display: 'flex', flexDirection: 'column', padding: 0 }}>
-                            {/* Contenu de la card */}
-                            <Box sx={{ px: PAGE_SPACING.cardPadding, pt: PAGE_SPACING.cardPadding, pb: PAGE_SPACING.cardPadding, flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-                              {/* Titre avec icône */}
-                              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
-                                <Box
-                                  sx={{
-                                    display: 'inline-flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    width: 22,
-                                    height: 22,
-                                    backgroundColor: COLORS.newsIcon,
-                                    borderRadius: 0,
-                                    flexShrink: 0,
-                                  }}
-                                >
-                                  <NewspaperIcon sx={{ color: '#FFFFFF', fontSize: 12 }} />
-                                </Box>
-                                <Typography
-                                  variant="h6"
-                                  component="h3"
-                                  sx={{ fontWeight: TYPOGRAPHY.fontWeights.bold, mb: 0, color: 'text.primary' }}
-                                >
-                                  {item.title}
-                                </Typography>
-                              </Box>
-                              
-                              {/* Ligne séparatrice */}
-                              <Box sx={{ width: '100%', height: '1px', backgroundColor: COLORS.cardDivider, mb: 1, mx: -PAGE_SPACING.cardPadding }} />
-                              
-                              {/* Source badge et date */}
-                              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1, flexWrap: 'wrap' }}>
-                                <Chip
-                                  label={item.sourceInfo.title}
-                                  size="small"
-                                  sx={{
-                                    height: 20,
-                                    fontSize: '0.7rem',
-                                    backgroundColor: 'primary.main',
-                                    color: 'white',
-                                  }}
-                                />
-                                <Typography
-                                  variant="caption"
-                                  color="text.secondary"
-                                  sx={{ fontSize: '0.75rem' }}
-                                >
-                                  {item.creator && `${item.creator}, `}{formatDate(item.pubDate)}
-                                </Typography>
-                              </Box>
-
-                              <Typography
-                                variant="body2"
-                                sx={{
-                                  mb: 2,
-                                  flex: 1,
-                                  color: 'text.primary',
-                                  lineHeight: 1.6,
-                                  display: '-webkit-box',
-                                  WebkitLineClamp: 3,
-                                  WebkitBoxOrient: 'vertical',
-                                  overflow: 'hidden',
-                                }}
-                              >
-                                {item.contentSnippet}
-                              </Typography>
-
-                              {item.categories && item.categories.length > 0 && (
-                                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mt: 'auto' }}>
-                                  {item.categories.map((category, idx) => (
-                                    <Chip
-                                      key={idx}
-                                      label={category}
-                                      size="small"
-                                      variant="outlined"
-                                      sx={{
-                                        height: 20,
-                                        fontSize: '0.65rem',
-                                        borderColor: 'primary.main',
-                                        color: 'primary.main',
-                                      }}
-                                    />
-                                  ))}
-                                </Box>
-                              )}
-                            </Box>
-                          </PromptCardContent>
-                        </PromptCard>
-                      </MuiLink>
-                    </Grid>
-                  ))}
-                </Grid>
-                
-                {/* Bouton Voir plus */}
-                <Box sx={{ mt: 3 }}>
-                  <Button
-                    component={Link}
-                    to={{
-                      pathname: '/news',
-                      search: new URLSearchParams({
-                        ...(selectedSource && { source: selectedSource }),
-                        ...(selectedKeywords.length > 0 && { keywords: selectedKeywords.join(',') }),
-                      }).toString(),
-                    }}
-                    variant="outlined"
-                    fullWidth
-                    sx={{
-                      py: 0.56,
-                      borderWidth: '1px',
-                      borderColor: 'primary.main',
-                      color: 'primary.main',
-                      '&:hover': {
-                        borderColor: 'primary.light',
-                        backgroundColor: 'rgba(25, 118, 210, 0.08)',
-                      },
-                    }}
-                  >
-                    {t('home.seeMoreNews', { defaultValue: 'Voir plus d\'actualités' })}
-                  </Button>
-                </Box>
-              </Box>
-            </Box>
-          </Box>
-        </Box>
-        {/* Tips Section */}
-        <Box sx={{ pt: 2, pb: PAGE_SPACING.content.paddingY, width: '100%' }}>
-          <Box sx={{ px: { xs: 1, md: 3 }, mx: 0, width: '100%' }}>
-            {/* Encadré avec fond coloré pour le titre */}
-            <Box
+            <Typography
+              component="h1"
               sx={{
-                backgroundColor: COLORS.cardBgDark,
-                borderRadius: 2,
-                p: { xs: 1.5, sm: 2, md: 2 },
-                mb: 3,
+                fontFamily: TYPOGRAPHY.fontFamilies.display,
+                fontWeight: 800,
+                fontSize: { xs: '36px', md: '52px' },
+                letterSpacing: '-0.035em',
+                lineHeight: 1.06,
+                m: 0,
+                color: COLORS.atelier.textStrong,
               }}
             >
-              <Typography variant="h4" align="left">
-                {t('home.latestTips', { defaultValue: 'Derniers tips' })}
-              </Typography>
+              {t('home.heroTitle', { defaultValue: "L'établi du développeur .NET." })}
+            </Typography>
+            <Typography sx={{ mt: 2, fontSize: '17px', lineHeight: 1.55, color: COLORS.atelier.textBody, maxWidth: 460 }}>
+              {t('home.heroBody', { defaultValue: '' })}
+            </Typography>
+
+            <Box sx={{ display: 'flex', gap: 1.5, mt: 3, flexWrap: 'wrap' }}>
+              <Button component={RouterLink} to="/tips" variant="contained">
+                {t('home.ctaTips', { defaultValue: 'Explorer les tips' })}
+              </Button>
+              <Button component={RouterLink} to="/prompts" variant="outlined">
+                {t('home.ctaPrompts', { defaultValue: 'Voir les prompts' })}
+              </Button>
             </Box>
-            
-            {/* Layout en 2 colonnes : Filtres (gauche) + Tips (droite) */}
-            <Box 
-              sx={{ 
-                display: 'flex', 
-                gap: 3, 
-                flexDirection: { xs: 'column', md: 'row' },
-                alignItems: { xs: 'stretch', md: 'stretch' }
-              }}
-            >
-              {/* Colonne de gauche - Filtres par tags (25%) */}
-              <Box 
-                sx={{ 
-                  width: { xs: '100%', md: '25%' },
-                  maxWidth: LAYOUT.leftColumn.maxWidth,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 2,
-                }}
-              >
-                {/* Filtre par tags */}
-                <TopKeywordsFilter
-                  keywords={topTipTags}
-                  selectedKeywords={selectedTipTags}
-                  onKeywordClick={handleTipTagClick}
-                  title={t('home.tipsTags', { defaultValue: 'Tags' })}
-                  fullHeight
-                />
-              </Box>
-              
-              {/* Colonne de droite - Tips (75%) */}
-              <Box sx={{ flex: 1, minWidth: 0 }}>
-                {(() => {
-                  const isTest =
-                    typeof globalThis.process !== 'undefined' &&
-                    globalThis.process?.env?.NODE_ENV === 'test';
-                  if (isTest) return null;
-                  return (
-                    <React.Suspense fallback={null}>
-                      <LazyTipCardsGrid rows={3} items={filteredTips} />
-                    </React.Suspense>
-                  );
-                })()}
-                
-                {/* Bouton Voir plus */}
-                <Box sx={{ mt: 3 }}>
-                  <Button
-                    component={Link}
-                    to={{
-                      pathname: '/tips',
-                      search: new URLSearchParams({
-                        ...(selectedTipTags.length > 0 && { tags: selectedTipTags.join(',') }),
-                      }).toString(),
-                    }}
-                    variant="outlined"
-                    fullWidth
-                    sx={{
-                      py: 0.56,
-                      borderWidth: '1px',
-                      borderColor: 'primary.main',
-                      color: 'primary.main',
-                      '&:hover': {
-                        borderColor: 'primary.light',
-                        backgroundColor: 'rgba(25, 118, 210, 0.08)',
-                      },
-                    }}
+
+            {/* Stats */}
+            <Box sx={{ display: 'flex', gap: 3, mt: 4, flexWrap: 'wrap' }}>
+              {[
+                { illus: 'code' as const, label: `${tipsCount} ${t('home.statTips', { defaultValue: 'tips' })}` },
+                { illus: 'prompt' as const, label: `${promptsCount} ${t('home.statPrompts', { defaultValue: 'prompts' })}` },
+                { illus: 'book' as const, label: t('home.statWatch', { defaultValue: 'veille hebdo' }) },
+              ].map((s) => (
+                <Box key={s.label} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <IllusBadge name={s.illus} size={34} />
+                  <Box
+                    component="span"
+                    sx={{ fontFamily: TYPOGRAPHY.fontFamilies.mono, fontSize: '12px', color: COLORS.atelier.textBody }}
                   >
-                    {t('home.seeMoreTips', { defaultValue: 'Voir plus de tips' })}
-                  </Button>
+                    {s.label}
+                  </Box>
                 </Box>
-              </Box>
+              ))}
             </Box>
           </Box>
-        </Box>
 
-        {/* Latest Prompts Preview */}
-        <Box sx={{ px: 0, width: '100%' }}>
-          <Card
-            variant="outlined"
+          {/* Fenêtre de code */}
+          <Box
             sx={{
-              backgroundColor: COLORS.darkGreyBg,
-              mb: 0,
-              borderLeft: 0,
-              borderRight: 0,
-              width: '100%',
+              borderRadius: '16px',
+              overflow: 'hidden',
+              boxShadow: '0 30px 60px -30px rgba(15,20,32,.6)',
+              background: COLORS.atelier.codeBg,
             }}
           >
-            {/* Arrow card intégrée dans la grille via seeAllLink */}
-            <Box sx={{ px: { xs: 1, md: 3 }, mx: 0, width: '100%', mt: 1, mb: 2 }}>
-              {/* Encadré avec fond coloré pour le titre */}
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1,
+                px: 2,
+                py: 1.25,
+                background: COLORS.atelier.codeHeader,
+              }}
+            >
+              {['#FF5F56', '#FFBD2E', '#27C93F'].map((c) => (
+                <Box key={c} sx={{ width: 11, height: 11, borderRadius: '50%', background: c }} />
+              ))}
               <Box
-                sx={{
-                  backgroundColor: COLORS.cardBgDark,
-                  borderRadius: 2,
-                  p: { xs: 1.5, sm: 2, md: 2 },
-                  mb: 2,
-                }}
+                component="span"
+                sx={{ ml: 1.5, fontFamily: TYPOGRAPHY.fontFamilies.mono, fontSize: '12px', color: '#8A93A0' }}
               >
-                <Typography variant="h4" align="left">
-                  {t('home.latestPrompts')}
-                </Typography>
+                PizzaBuilder.cs
               </Box>
             </Box>
             <Box
+              component="pre"
               sx={{
-                px: { xs: 0, md: 1 },
-                marginBottom: 4,
-                marginLeft: 1,
-                marginRight: 1,
+                m: 0,
+                p: '20px 22px',
+                fontFamily: TYPOGRAPHY.fontFamilies.mono,
+                fontSize: '13px',
+                lineHeight: 1.7,
+                color: COLORS.atelier.codeText,
+                overflowX: 'auto',
               }}
             >
-              {(() => {
-                const isTest =
-                  typeof globalThis.process !== 'undefined' &&
-                  globalThis.process?.env?.NODE_ENV === 'test';
-                if (isTest) return null;
-                return (
-                  <React.Suspense fallback={null}>
-                    <LazyPromptCardsGrid rows={2} showMore={false} seeAllLink="/prompts" />
-                  </React.Suspense>
-                );
-              })()}
+              <Box component="span" sx={{ color: COLORS.atelier.codeComment }}>{'// Construction fluide\n'}</Box>
+              <Box component="span" sx={{ color: COLORS.atelier.codeKeyword }}>var</Box>
+              {' pizza = '}
+              <Box component="span" sx={{ color: COLORS.atelier.codeKeyword }}>new</Box>{' '}
+              <Box component="span" sx={{ color: COLORS.atelier.codeType }}>PizzaBuilder</Box>
+              {'()\n'}
+              {'    .WithBase('}
+              <Box component="span" sx={{ color: COLORS.atelier.codeType }}>Base</Box>
+              {'.Tomate)\n'}
+              {'    .AddTopping('}
+              <Box component="span" sx={{ color: '#CE9178' }}>&quot;mozzarella&quot;</Box>
+              {')\n'}
+              {'    .AddTopping('}
+              <Box component="span" sx={{ color: '#CE9178' }}>&quot;basilic&quot;</Box>
+              {')\n'}
+              {'    .Build();'}
             </Box>
-          </Card>
+          </Box>
         </Box>
-      </Container>
+
+        {/* ACTUALITÉS */}
+        <Box component="section" sx={{ px: { xs: 2.5, md: '46px' }, pb: 5 }}>
+          <Box
+            sx={{
+              background: COLORS.atelier.surface,
+              border: `1px solid ${COLORS.atelier.borderDefault}`,
+              borderRadius: '16px',
+              p: { xs: 2.5, md: '24px 28px' },
+            }}
+          >
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
+              <IllusBadge name="book" size={30} />
+              <Box
+                component="span"
+                sx={{ fontFamily: TYPOGRAPHY.fontFamilies.mono, fontSize: '12px', color: COLORS.atelier.textMuted, flex: 1 }}
+              >
+                {t('home.sectionNews', { defaultValue: '// actualités' })}
+              </Box>
+              <Box
+                component={RouterLink}
+                to="/news"
+                sx={{ fontFamily: TYPOGRAPHY.fontFamilies.mono, fontSize: '12px', color: COLORS.atelier.tips, textDecoration: 'none' }}
+              >
+                {t('home.seeAll', { defaultValue: 'voir tout' })} →
+              </Box>
+            </Box>
+
+            {latestNews.map((item, idx) => (
+              <Box
+                key={item.guid || item.link}
+                component="a"
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  display: 'grid',
+                  gridTemplateColumns: { xs: '32px 1fr', md: '44px 1fr 150px' },
+                  gap: 2,
+                  alignItems: 'center',
+                  p: '12px 6px',
+                  textDecoration: 'none',
+                  borderTop: idx === 0 ? 'none' : `1px solid ${COLORS.atelier.divider}`,
+                  borderRadius: '8px',
+                  transition: 'background .15s ease',
+                  '&:hover': { background: COLORS.atelier.surfaceHover },
+                }}
+              >
+                <Box
+                  sx={{
+                    width: 44,
+                    height: 44,
+                    borderRadius: '10px',
+                    background: COLORS.atelier.newsBg,
+                    color: COLORS.atelier.news,
+                    fontFamily: TYPOGRAPHY.fontFamilies.mono,
+                    fontSize: '13px',
+                    fontWeight: 600,
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  {initials(sourceTitle(item.sourceSlug))}
+                </Box>
+                <Box sx={{ minWidth: 0 }}>
+                  <Typography
+                    sx={{
+                      fontFamily: TYPOGRAPHY.fontFamilies.display,
+                      fontWeight: 700,
+                      fontSize: '16px',
+                      letterSpacing: '-0.01em',
+                      color: COLORS.atelier.textStrong,
+                      m: 0,
+                    }}
+                  >
+                    {item.title}
+                  </Typography>
+                  {item.contentSnippet && (
+                    <Typography
+                      sx={{
+                        fontSize: '13px',
+                        color: COLORS.atelier.textBodyAlt,
+                        mt: '2px',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      {item.contentSnippet}
+                    </Typography>
+                  )}
+                </Box>
+                <Box
+                  component="span"
+                  sx={{
+                    display: { xs: 'none', md: 'block' },
+                    textAlign: 'right',
+                    fontFamily: TYPOGRAPHY.fontFamilies.mono,
+                    fontSize: '11px',
+                    color: COLORS.atelier.textMuted,
+                  }}
+                >
+                  {formatDate(item.pubDate)}
+                </Box>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+
+        {/* TIPS */}
+        <Box component="section" sx={{ px: { xs: 2.5, md: '46px' }, pb: 5 }}>
+          {sectionHeading('code', t('home.sectionTips', { defaultValue: 'Tips & mémos' }), '/tips')}
+          <AtelierTipsGrid items={tipsList.slice(0, 4)} />
+        </Box>
+
+        {/* PROMPTS */}
+        <Box component="section" sx={{ px: { xs: 2.5, md: '46px' }, pb: '60px' }}>
+          {sectionHeading('prompt', t('home.latestPrompts', { defaultValue: 'Derniers prompts' }), '/prompts')}
+          <AtelierPromptsGrid items={promptsList.filter((p) => p.slug !== 'more').slice(0, 3)} />
+        </Box>
+      </AtelierContainer>
     </PageLayout>
   );
 };
 
-HomePage.displayName = 'HomePage';
+export default HomePage;

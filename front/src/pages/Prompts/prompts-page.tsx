@@ -1,146 +1,139 @@
-import { Fragment, type FC } from 'react';
-import { Container, Typography, Card, Box } from '@mui/material';
+import { type FC } from 'react';
+import { Box, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { ScrollToTopButton, PageLayout } from '../../components';
-import { PromptCardsGrid } from '../../components/prompts/prompt-cards-grid';
+import { AtelierContainer, SectionTitleBand } from '../../components/atelier';
+import { AtelierPromptsGrid } from '../../components/prompts/AtelierPromptsGrid';
+import { promptsList } from '../../components/prompts/registry';
 import { COLORS, TYPOGRAPHY } from '../../styles';
-import { PromptsPageContainer, GridContainer } from './styles';
 
 export const PromptsPage: FC = () => {
   const { t } = useTranslation('pages');
+  const count = promptsList.filter((p) => p.slug !== 'more').length;
+
+  const para = (children: React.ReactNode) => (
+    <Typography sx={{ fontSize: '15px', lineHeight: 1.65, color: COLORS.atelier.textBody, m: '0 0 14px' }}>
+      {children}
+    </Typography>
+  );
 
   return (
     <PageLayout>
-      <Container
-        maxWidth={false}
-        disableGutters
-        sx={{ px: 0, mx: 0, width: '100%', backgroundColor: COLORS.darkGreyBg, minHeight: '100vh' }}
-      >
-        <PromptsPageContainer
-          sx={{
-            // add small horizontal padding on xs/sm so text isn't flush against viewport edges
-            px: { xs: 2, sm: 3, md: 3 },
-            mx: 0,
-            width: '100%',
-            mb: 0,
-          }}
-        >
-          {/* Encadré avec fond coloré pour l'image et le texte */}
+      <AtelierContainer>
+        <SectionTitleBand illus="prompt" title={t('prompts.title', { defaultValue: 'Prompts' })} />
+
+        {/* Encadré pédagogique */}
+        <Box component="section" sx={{ px: { xs: 2.5, md: '46px' }, pt: 2, pb: 1 }}>
           <Box
             sx={{
-              backgroundColor: COLORS.cardBgDark,
-              borderRadius: 2,
-              p: { xs: 1.5, sm: 2, md: 2 },
-              mb: 1,
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', md: '340px 1fr' },
+              gap: { xs: 3, md: '40px' },
+              alignItems: 'start',
+              background: COLORS.atelier.surface,
+              border: `1px solid ${COLORS.atelier.borderDefault}`,
+              borderRadius: '16px',
+              p: { xs: 3, md: '32px 36px' },
             }}
           >
             <Box
+              component="img"
+              src="/image-ia.png"
+              alt="Illustration : cerveau connecté / IA"
               sx={{
-                display: 'flex',
-                // ensure stacking on small screens and row layout on larger ones
-                flexDirection: { xs: 'column', md: 'row' },
-                alignItems: 'stretch',
-                gap: { xs: 2, sm: 4 },
-                flexWrap: { xs: 'wrap', md: 'nowrap' },
+                width: '100%',
+                borderRadius: '12px',
+                border: `1px solid ${COLORS.atelier.borderDefault}`,
+                display: 'block',
               }}
-            >
-              <Box
+            />
+            <Box>
+              <Typography
+                component="h2"
                 sx={{
-                  // smaller on md+, centered and capped on small screens
-                  flex: { xs: '1 1 100%', md: '0 0 280px' },
-                  width: { xs: '100%', md: 280 },
-                  // cap the max width globally so it never grows too large on narrow viewports
-                  maxWidth: 320,
-                  mx: { xs: 'auto', md: 0 },
-                  alignSelf: { xs: 'center', md: 'stretch' },
-                  borderRadius: 1,
-                  boxShadow: 3,
-                  overflow: 'hidden',
-                  position: 'relative',
-                  backgroundColor: COLORS.darkGreyBg,
-                  display: 'flex',
+                  fontFamily: TYPOGRAPHY.fontFamilies.display,
+                  fontWeight: 700,
+                  fontSize: '24px',
+                  letterSpacing: '-0.02em',
+                  m: '0 0 14px',
+                  color: COLORS.atelier.textStrong,
                 }}
               >
-                <Box
-                  component="img"
-                  src="/image-ia.png"
-                  alt="Illustration intelligence artificielle"
-                  sx={{
-                    width: '100%',
-                    // fill the container on md+ so rounded border doesn't show empty area
-                    height: { xs: 'auto', md: '100%' },
-                    objectFit: { xs: 'contain', md: 'cover' },
-                    display: 'block',
-                  }}
-                />
-              </Box>
+                {t('prompts.whatIsPrompt')}
+              </Typography>
+              {para(t('prompts.promptDefinition'))}
+              {para(t('prompts.def2'))}
+              {para(t('prompts.def3'))}
               <Box
-                sx={{ position: 'relative', pl: { xs: 0, md: '0.75rem' }, flex: 1 }}
+                sx={{
+                  borderLeft: `3px solid ${COLORS.atelier.prompts}`,
+                  background: COLORS.atelier.promptsBgAlt,
+                  p: '12px 16px',
+                  borderRadius: '0 8px 8px 0',
+                  fontFamily: TYPOGRAPHY.fontFamilies.mono,
+                  fontSize: '13px',
+                  color: '#7A4A1A',
+                  m: '0 0 22px',
+                }}
               >
-                <Typography
-                  variant="h6"
-                  component="h2"
-                  gutterBottom
-                  sx={{ fontWeight: TYPOGRAPHY.fontWeights.semiBold, px: 0, mx: 0, width: '100%', color: 'text.primary' }}
-                >
-                  {t('prompts.whatIsPrompt')}
-                </Typography>
-                <Typography
-                  variant="body1"
-                  sx={{ px: 0, mx: 0, width: '100%', color: 'text.primary' }}
-                >
-                  {t('prompts.promptDefinitionFull')
-                    .split('\n')
-                    .map((line, idx) => (
-                      <Fragment key={idx}>
-                        {line}
-                        <br />
-                      </Fragment>
-                    ))}
-                </Typography>
-                <Typography
-                  variant="h6"
-                  component="h2"
-                  gutterBottom
-                  sx={{
-                    fontWeight: TYPOGRAPHY.fontWeights.semiBold,
-                    marginTop: 2,
-                    px: 0,
-                    mx: 0,
-                    width: '100%',
-                    color: 'text.primary',
-                  }}
-                >
-                  {t('prompts.whyPromptTitle')}
-                </Typography>
-                <Typography
-                  variant="body1"
-                  sx={{ px: 0, mx: 0, width: '100%', color: 'text.primary' }}
-                >
-                  {t('prompts.whyPromptBody1')}
-                  <br />
-                  {t('prompts.whyPromptBody2')}
-                </Typography>
+                {t('prompts.example')}
               </Box>
+              <Typography
+                component="h2"
+                sx={{
+                  fontFamily: TYPOGRAPHY.fontFamilies.display,
+                  fontWeight: 700,
+                  fontSize: '20px',
+                  letterSpacing: '-0.015em',
+                  m: '0 0 12px',
+                  color: COLORS.atelier.textStrong,
+                }}
+              >
+                {t('prompts.whyPromptTitle')}
+              </Typography>
+              {para(t('prompts.whyPromptBody1'))}
+              <Typography sx={{ fontSize: '15px', lineHeight: 1.65, color: COLORS.atelier.textBody, m: 0 }}>
+                {t('prompts.whyPromptBody2')}
+              </Typography>
             </Box>
           </Box>
-        </PromptsPageContainer>
-        <GridContainer>
-          <Card
-            variant="outlined"
+        </Box>
+
+        {/* Grille des prompts */}
+        <Box component="section" sx={{ px: { xs: 2.5, md: '46px' }, pt: '30px', pb: '60px' }}>
+          <Box
             sx={{
-              p: { xs: 2, md: 4 },
-              backgroundColor: COLORS.darkGreyBg,
-              mb: 0,
-              borderLeft: 0,
-              borderRight: 0,
-              width: '100%',
+              display: 'flex',
+              alignItems: 'baseline',
+              justifyContent: 'space-between',
+              mb: '18px',
             }}
           >
-            <PromptCardsGrid />
-          </Card>
-        </GridContainer>
-      </Container>
+            <Typography
+              component="h2"
+              sx={{
+                fontFamily: TYPOGRAPHY.fontFamilies.display,
+                fontWeight: 700,
+                fontSize: '22px',
+                letterSpacing: '-0.02em',
+                m: 0,
+                color: COLORS.atelier.textStrong,
+              }}
+            >
+              {t('prompts.available', { defaultValue: 'Les prompts disponibles' })}
+            </Typography>
+            <Box
+              component="span"
+              sx={{ fontFamily: TYPOGRAPHY.fontFamilies.mono, fontSize: '12.5px', color: COLORS.atelier.textBody }}
+            >
+              <b style={{ color: COLORS.atelier.textStrong }}>{count}</b>{' '}
+              {t('prompts.count', { defaultValue: 'prompts' })}
+            </Box>
+          </Box>
+
+          <AtelierPromptsGrid />
+        </Box>
+      </AtelierContainer>
       <ScrollToTopButton />
     </PageLayout>
   );

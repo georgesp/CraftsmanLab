@@ -8,14 +8,34 @@
     "articles": "articles",
     "seeMoreNews": "See more news",
     "tipsTags": "Tags",
-    "seeMoreTips": "See more tips"
+    "seeMoreTips": "See more tips",
+    "heroEyebrow": "// craftsmanlab.fr",
+    "heroTitle": "The .NET developer's workbench.",
+    "heroBody": "Tips, memos and system prompts to move faster every day — plus an up-to-date .NET watch.",
+    "ctaTips": "Explore the tips",
+    "ctaPrompts": "See the prompts",
+    "statTips": "tips",
+    "statPrompts": "prompts",
+    "statWatch": "weekly watch",
+    "sectionNews": "// news",
+    "sectionTips": "Tips & memos",
+    "sectionPrompts": "Prompts",
+    "seeAll": "see all"
   },
   "tips": {
     "title": "Tips and Memos",
     "description": "A collection of synthetic sheets on fundamental concepts of the .NET and C# ecosystem. Each tip aims to clarify an architectural point, a key interface or an API best practice.",
     "aiNote": "Don't be surprised: the content of the sheets was generated with the help of AI.",
     "searchKeywords": "Search...",
-    "selectedKeywords": "Selection"
+    "selectedKeywords": "Selection",
+    "bandTitle": "Tips & memos",
+    "subtitle": "Concise notes on the core concepts of the .NET and C# ecosystem.",
+    "results": "results",
+    "sortRecent": "sort: recent",
+    "categoriesGroup": "Categories",
+    "noteTitle": "Note",
+    "noteBody": "The content of these notes is drafted with AI assistance, then reviewed.",
+    "searchPlaceholder": "search a tip…"
   },
   "tipDetailPage": {
     "loading": "Loading…",
@@ -33,17 +53,24 @@
     "title": "Prompts",
     "description": "Collection of system prompts for artificial intelligence.",
     "whatIsPrompt": "What is a prompt?",
-  "promptDefinition": "A system prompt is the base text that is transmitted to an artificial intelligence model before any interaction. It is generally stored in a markdown file (.md) at the root of the project; you can have several depending on needs and scopes.",
-  "promptDefinitionFull": "A system prompt is the base text that is transmitted to an artificial intelligence model before any interaction. It is generally stored in a markdown file (.md) at the root of the project; you can have several depending on needs and scopes.\n\nThey act somewhat like the ten commandments that the AI agent will consider when generating its answers and code.\n\nTo ensure these rules are properly considered, it's best to specify them at the start of the conversation with the AI.\n\nFor example:\n«Considering the rules from the rules.prompt.md file, I'd like you to ...»",
-  "whyPromptTitle": "Why is a good prompt essential with AI?",
-  "whyPromptBody1": "A well-written prompt yields more relevant, precise, and tailored responses. It guides the AI, reduces misunderstandings, and maximizes the value of AI tools.",
-  "whyPromptBody2": "Think of the AI as a full-fledged collaborator: if the instruction is vague, it may misinterpret your expectations and provide inappropriate or off-topic responses."
+    "promptDefinition": "A system prompt is the base text that is transmitted to an artificial intelligence model before any interaction. It is generally stored in a markdown file (.md) at the root of the project; you can have several depending on needs and scopes.",
+    "promptDefinitionFull": "A system prompt is the base text that is transmitted to an artificial intelligence model before any interaction. It is generally stored in a markdown file (.md) at the root of the project; you can have several depending on needs and scopes.\n\nThey act somewhat like the ten commandments that the AI agent will consider when generating its answers and code.\n\nTo ensure these rules are properly considered, it's best to specify them at the start of the conversation with the AI.\n\nFor example:\n«Considering the rules from the rules.prompt.md file, I'd like you to ...»",
+    "whyPromptTitle": "Why is a good prompt essential with AI?",
+    "whyPromptBody1": "A well-written prompt yields more relevant, precise, and tailored responses. It guides the AI, reduces misunderstandings, and maximizes the value of AI tools.",
+    "whyPromptBody2": "Think of the AI as a full-fledged collaborator: if the instruction is vague, it may misinterpret your expectations and provide inappropriate or off-topic responses.",
+    "def2": "They are, in a way, the ten commandments the AI agent takes into account when generating its answers and code.",
+    "def3": "To make sure these rules are applied, it is best to state them at the start of the conversation with the AI. For example:",
+    "example": "“Taking into account the rules in rules.prompt.md, I would like you to …”",
+    "available": "Available prompts",
+    "count": "prompts",
+    "copy": "Copy",
+    "copied": "Copied!"
   },
   "contact": {
     "title": ".NET & AI Freelance Developer",
     "subtitle": "Are you looking for an experienced .NET developer with Artificial Intelligence skills?<br />Or would you like to see certain things added to the site?<br />Don't hesitate to contact me to discuss your needs or projects!",
     "socialNetworks": "My social networks",
-  "sendMessage": "Send me a message",
+    "sendMessage": "Send me a message",
     "formDescription": "Fill out the form below and I will respond quickly.",
     "form": {
       "fullName": "Full name",
@@ -51,22 +78,35 @@
       "subject": "Subject",
       "message": "Message"
     },
-  "infoTitle": "Contact details",
-    "successMessage": "Your message has been sent successfully! We will respond to you as soon as possible."
+    "infoTitle": "Contact details",
+    "successMessage": "Your message has been sent successfully! We will respond to you as soon as possible.",
+    "eyebrow": "// contact",
+    "bandTitle": "Freelance .NET & AI developer",
+    "bandSubtitle": "A project, an idea to improve the site, or just want to chat? Write to me.",
+    "availabilityTitle": "Available for freelance work",
+    "availabilityBody": "I support your .NET projects and AI integrations, on a time or fixed-price basis.",
+    "responseNote": "Reply within 48 business hours.",
+    "linkedinSub": "My background & posts",
+    "maltSub": "Hire me as a freelancer",
+    "emailSub": "Write directly"
   },
   "news": {
     "title": ".NET News",
     "allSources": "All sources",
     "lastUpdated": "Last updated: {{date}}",
-    "readArticle": "Read article",
+    "readArticle": "Read the article",
     "noItems": "No articles available at the moment.",
     "error": "Unable to load news feed.",
     "partialError": "Some feeds could not be loaded.",
     "searchCategories": "Search...",
-    "selectedCategories": "Selection"
+    "selectedCategories": "Selection",
+    "bandTitle": "News",
+    "articles": "articles",
+    "feedUpToDate": "feed up to date",
+    "sourcesTitle": "Sources",
+    "searchPlaceholder": "search an article…"
   },
   "footer": {
     "copyright": "© 2026 CraftsmanLab. All rights reserved."
   }
-
 }

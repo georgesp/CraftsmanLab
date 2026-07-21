@@ -1,14 +1,18 @@
 import { useMemo, useState, useEffect } from 'react';
-import { Container, Card, Typography, Box, Chip, TextField, InputAdornment, IconButton } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
-import CloseIcon from '@mui/icons-material/Close';
+import { Box, Typography } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 import { PageLayout, ScrollToTopButton } from '../../components';
-import { TipCardsGrid } from '../../components/tips/tip-cards-grid';
-import { COLORS } from '../../styles/colors';
-import { LAYOUT } from '../../styles/layout';
-import { GridContainer, PromptsPageContainer } from '../Prompts/styles';
+import {
+  AtelierContainer,
+  SectionTitleBand,
+  SearchField,
+  Facets,
+} from '../../components/atelier';
+import type { FacetGroup } from '../../components/atelier';
+import { AtelierTipsGrid } from '../../components/tips/AtelierTipsGrid';
+import { COLORS, TYPOGRAPHY } from '../../styles';
 import { tipsList } from '../../components/tips/registry';
 
 export const TipsPage: React.FC = () => {
@@ -17,12 +21,10 @@ export const TipsPage: React.FC = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [categoryFilter, setCategoryFilter] = useState<string>('');
 
-  // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Apply filters from URL params on mount
   useEffect(() => {
     const tagsParam = searchParams.get('tags');
     if (tagsParam) {
@@ -31,56 +33,45 @@ export const TipsPage: React.FC = () => {
     }
   }, [searchParams]);
 
-  // Compter les occurrences de chaque catégorie basé sur les tips filtrés
-  const categoryOccurrences = useMemo(() => {
-    const occurrences: Record<string, number> = {};
-    
-    // Filtrer les tips par les catégories déjà sélectionnées
-    const filteredTips = selectedCategories.length === 0
-      ? tipsList
-      : tipsList.filter((tip) => {
-          const categories = tip.categories ?? [];
-          const selectedSet = new Set(selectedCategories);
-          return Array.from(selectedSet).every((c) => categories.includes(c));
-        });
-    
-    filteredTips.forEach((tip) => {
-      (tip.categories || []).forEach((category) => {
-        const normalized = category.trim();
-        if (normalized) {
-          occurrences[normalized] = (occurrences[normalized] || 0) + 1;
-        }
-      });
+  // Tips filtrés par les catégories sélectionnées (ET logique).
+  const filtered = useMemo(() => {
+    if (selectedCategories.length === 0) return tipsList;
+    const selectedSet = new Set(selectedCategories);
+    return tipsList.filter((tip) => {
+      const categories = tip.categories ?? [];
+      return Array.from(selectedSet).every((c) => categories.includes(c));
     });
-    return occurrences;
   }, [selectedCategories]);
 
-  // Collect all categories from filtered tips, normalized & unique
-  const allCategories = useMemo(() => {
-    const filteredTips = selectedCategories.length === 0
-      ? tipsList
-      : tipsList.filter((tip) => {
-          const categories = tip.categories ?? [];
-          const selectedSet = new Set(selectedCategories);
-          return Array.from(selectedSet).every((c) => categories.includes(c));
-        });
-    
-    const categories = filteredTips.flatMap((tip) => tip.categories ?? []);
-    const norm = categories.map((s) => s.trim()).filter(Boolean);
-    return Array.from(new Set(norm)).sort((a, b) => {
-      // Trier par nombre d'occurrences (descendant), puis alphabétiquement
-      const countDiff = (categoryOccurrences[b] || 0) - (categoryOccurrences[a] || 0);
-      if (countDiff !== 0) return countDiff;
-      return a.localeCompare(b);
+  // Compte des occurrences par catégorie sur les tips filtrés.
+  const categoryOccurrences = useMemo(() => {
+    const occ: Record<string, number> = {};
+    filtered.forEach((tip) => {
+      (tip.categories || []).forEach((c) => {
+        const n = c.trim();
+        if (n) occ[n] = (occ[n] || 0) + 1;
+      });
     });
-  }, [categoryOccurrences, selectedCategories]);
+    return occ;
+  }, [filtered]);
 
-  // Filtrer les catégories par le texte de recherche
-  const filteredCategories = useMemo(() => {
-    if (!categoryFilter.trim()) return allCategories;
-    const lowerFilter = categoryFilter.toLowerCase();
-    return allCategories.filter((category) => category.toLowerCase().includes(lowerFilter));
-  }, [allCategories, categoryFilter]);
+  // Liste des catégories (triées par occurrence puis alpha), filtrées par recherche.
+  const facetGroups = useMemo<FacetGroup[]>(() => {
+    const all = Array.from(
+      new Set(filtered.flatMap((tip) => (tip.categories ?? []).map((s) => s.trim()).filter(Boolean))),
+    ).sort((a, b) => {
+      const diff = (categoryOccurrences[b] || 0) - (categoryOccurrences[a] || 0);
+      return diff !== 0 ? diff : a.localeCompare(b);
+    });
+    const q = categoryFilter.trim().toLowerCase();
+    const visible = q ? all.filter((c) => c.toLowerCase().includes(q)) : all;
+    return [
+      {
+        group: t('tips.categoriesGroup', { defaultValue: 'Catégories' }),
+        items: visible.map((c) => ({ label: c, count: categoryOccurrences[c] || 0 })),
+      },
+    ];
+  }, [filtered, categoryOccurrences, categoryFilter, t]);
 
   const toggleCategory = (category: string) => {
     setSelectedCategories((prev) =>
@@ -88,281 +79,115 @@ export const TipsPage: React.FC = () => {
     );
   };
 
-  const filtered = useMemo(() => {
-    if (selectedCategories.length === 0) return tipsList;
-    const selectedSet = new Set(selectedCategories);
-    return tipsList.filter((tip) => {
-      const categories = tip.categories ?? [];
-      // match si l'élément possède toutes les catégories sélectionnées
-      return Array.from(selectedSet).every((c) => categories.includes(c));
-    });
-  }, [selectedCategories]);
-
   return (
     <PageLayout>
-      <Container
-        maxWidth={false}
-        disableGutters
-        sx={{ px: 0, mx: 0, width: '100%', backgroundColor: COLORS.darkGreyBg }}
-      >
-        <PromptsPageContainer
+      <AtelierContainer>
+        <SectionTitleBand
+          illus="code"
+          title={t('tips.bandTitle', { defaultValue: 'Tips & mémos' })}
+          subtitle={t('tips.subtitle', { defaultValue: '' })}
+        />
+
+        <Box
+          component="section"
           sx={{
-            // add small horizontal padding on xs/sm so text isn't flush against viewport edges
-            px: { xs: 2, sm: 3, md: 3 },
-            mx: 0,
-            width: '100%',
-            mb: 0,
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', md: '270px 1fr' },
+            gap: '28px',
+            px: { xs: 2.5, md: '46px' },
+            pt: '26px',
+            pb: '60px',
+            alignItems: 'start',
           }}
         >
-          {/* Encadré avec fond coloré pour l'image et le texte */}
+          {/* Sidebar sticky */}
           <Box
+            component="aside"
             sx={{
-              backgroundColor: COLORS.cardBgDark,
-              borderRadius: 2,
-              p: { xs: 1.5, sm: 2, md: 2 },
-              mb: 1,
+              position: { md: 'sticky' },
+              top: 88,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 2,
             }}
           >
+            <SearchField
+              value={categoryFilter}
+              onChange={setCategoryFilter}
+              placeholder={t('tips.searchPlaceholder', { defaultValue: 'rechercher un tip…' })}
+            />
+
+            <Facets
+              groups={facetGroups}
+              accent={COLORS.atelier.tips}
+              accentBg={COLORS.atelier.tipsBg}
+              selected={selectedCategories}
+              onToggle={toggleCategory}
+            />
+
             <Box
               sx={{
-                display: 'flex',
-                alignItems: 'stretch',
-                // reduce the gap on md+ so text sits a bit closer to the image
-                gap: { xs: 1, sm: 2, md: 2 },
-                flexWrap: { xs: 'wrap', md: 'nowrap' },
+                background: COLORS.atelier.tipsBg,
+                border: `1px solid ${COLORS.atelier.tipsBorder}`,
+                borderRadius: '12px',
+                p: '16px 18px',
               }}
             >
               <Box
                 sx={{
-                  flex: { xs: '1 1 100%', md: '0 0 auto' },
-                  width: { xs: '100%', md: 'auto' },
-                  maxWidth: { xs: '100%', md: 'none' },
-                  alignSelf: { xs: 'center', md: 'stretch' },
-                  position: 'relative',
-                  display: 'flex',
-                  mr: { xs: 2, md: 0 },
-                  mb: { xs: 2, md: 0 },
+                  fontFamily: TYPOGRAPHY.fontFamilies.mono,
+                  fontSize: '11px',
+                  letterSpacing: '.08em',
+                  textTransform: 'uppercase',
+                  color: COLORS.atelier.tips,
+                  mb: '6px',
                 }}
               >
-                <Box
-                  component="img"
-                  src="/image-memo.png"
-                  alt="Illustration tips"
-                  sx={{
-                    width: 80,
-                    height: 'auto',
-                    objectFit: 'contain',
-                    display: 'block',
-                  }}
-                />
+                {t('tips.noteTitle', { defaultValue: 'À noter' })}
               </Box>
-              <Box
-                sx={{
-                  position: 'relative',
-                  // keep a small left padding on md+ so text is closer but not glued
-                  pl: { xs: 0, md: '0.75rem' },
-                  pr: 0,
-                  flex: 1,
-                  width: { xs: '100%', md: 'auto' },
-                  mr: { xs: 0, md: 3 },
-                }}
-              >
-                <Typography
-                  variant="body1"
-                  sx={{ px: 0, mx: 0, width: '100%', color: 'text.primary' }}
-                >
-                  {t('tips.description')} <br />
-                  {t('tips.aiNote')}
-                </Typography>
-              </Box>
+              <Typography sx={{ m: 0, fontSize: '13px', lineHeight: 1.55, color: COLORS.atelier.textBody }}>
+                {t('tips.noteBody', { defaultValue: '' })}
+              </Typography>
             </Box>
           </Box>
-        </PromptsPageContainer>
-        <GridContainer sx={{ pt: 0 }}>
-          <Card
-            variant="outlined"
-            sx={{
-              backgroundColor: COLORS.darkGreyBg,
-              p: { xs: 2, md: 4 },
-              boxShadow: 0,
-              borderLeft: 0,
-              borderRight: 0,
-              width: '100%',
-            }}
-          >
-            {/* Layout en 2 colonnes */}
-            <Box sx={{ display: 'flex', gap: { xs: 2, md: 3 }, flexDirection: 'row' }}>
-              {/* Colonne de gauche - Filtres par tags */}
-              <Box 
-                sx={{ 
-                  width: { xs: '35%', sm: '30%', md: '15%' },
-                  maxWidth: LAYOUT.leftColumn.maxWidth,
-                  flexShrink: 0,
+
+          {/* Colonne résultats */}
+          <Box>
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'baseline',
+                justifyContent: 'space-between',
+                mb: '18px',
+              }}
+            >
+              <Box
+                component="span"
+                sx={{ fontFamily: TYPOGRAPHY.fontFamilies.mono, fontSize: '12.5px', color: COLORS.atelier.textBody }}
+              >
+                <b style={{ color: COLORS.atelier.textStrong }}>{filtered.length}</b>{' '}
+                {t('tips.results', { defaultValue: 'résultats' })}
+              </Box>
+              <Box
+                component="span"
+                sx={{
+                  fontFamily: TYPOGRAPHY.fontFamilies.mono,
+                  fontSize: '12.5px',
+                  color: COLORS.atelier.textBody,
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '2px',
                 }}
               >
-                <Box sx={{ 
-                  position: { md: 'sticky' }, 
-                  top: 0,
-                }}>
-                  {/* Champ de recherche pour filtrer les tags */}
-                  <TextField
-                    fullWidth
-                    size="small"
-                    placeholder={t('tips.searchKeywords', { defaultValue: 'Rechercher...' })}
-                    value={categoryFilter}
-                    onChange={(e) => setCategoryFilter(e.target.value)}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <SearchIcon sx={{ fontSize: { xs: '0.875rem', md: '1rem' }, color: 'text.secondary' }} />
-                        </InputAdornment>
-                      ),
-                    }}
-                    sx={{
-                      mb: 2,
-                      '& .MuiOutlinedInput-root': {
-                        fontSize: { xs: '0.75rem', md: '0.875rem' },
-                        backgroundColor: COLORS.categoryInputBg,
-                        '&:hover': {
-                          backgroundColor: COLORS.categoryInputBgHover,
-                        },
-                        '&.Mui-focused': {
-                          backgroundColor: COLORS.categoryInputBgHover,
-                        },
-                      },
-                    }}
-                  />
-
-                  {/* Tags sélectionnés */}
-                  {selectedCategories.length > 0 && (
-                    <Box 
-                      sx={{ 
-                        mb: 2,
-                        p: 1.5,
-                        backgroundColor: COLORS.categorySelectedBg,
-                        borderRadius: 0,
-                        border: `1px solid ${COLORS.categorySelectedBorder}`,
-                      }}
-                    >
-                      <Typography 
-                        variant="caption" 
-                        sx={{ 
-                          display: 'block',
-                          mb: 1,
-                          fontSize: '0.75rem',
-                          fontWeight: 600,
-                          color: 'primary.main',
-                          textTransform: 'uppercase',
-                        }}
-                      >
-                        {t('tips.selectedKeywords', { defaultValue: 'Sélection' })} ({selectedCategories.length})
-                      </Typography>
-                      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
-                        {selectedCategories.map((category) => (
-                          <Box
-                            key={category}
-                            sx={{
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'space-between',
-                              backgroundColor: 'primary.main',
-                              color: 'white',
-                              px: 1,
-                              py: 0.5,
-                              borderRadius: 0,
-                              fontSize: '0.75rem',
-                            }}
-                          >
-                            <Typography sx={{ fontSize: '0.75rem', flex: 1 }}>
-                              {category}
-                            </Typography>
-                            <IconButton
-                              size="small"
-                              onClick={() => toggleCategory(category)}
-                              sx={{
-                                ml: 0.5,
-                                width: 18,
-                                height: 18,
-                                color: 'white',
-                                '&:hover': {
-                                    backgroundColor: '#E8EBF0',
-                                },
-                              }}
-                            >
-                              <CloseIcon sx={{ fontSize: '0.875rem' }} />
-                            </IconButton>
-                          </Box>
-                        ))}
-                      </Box>
-                    </Box>
-                  )}
-                  
-                  <Box sx={{ mb: 2 }}>
-                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.75 }}>
-                      {filteredCategories.map((category) => {
-                        const isSelected = selectedCategories.includes(category);
-                        
-                        return (
-                          <Chip
-                            key={category}
-                            aria-label={category}
-                            label={
-                              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                                <span>{category}</span>
-                                <Typography
-                                  component="span"
-                                  sx={{
-                                    fontSize: '0.7rem',
-                                    ml: 1,
-                                    opacity: 0.7,
-                                    fontWeight: 500,
-                                  }}
-                                >
-                                  {categoryOccurrences[category] || 0}
-                                </Typography>
-                              </Box>
-                            }
-                            onClick={() => toggleCategory(category)}
-                            size="small"
-                            sx={{
-                              height: { xs: 24, md: 28 },
-                              fontSize: { xs: '0.7rem', md: '0.8rem' },
-                              justifyContent: 'flex-start',
-                              backgroundColor: isSelected ? 'primary.main' : 'transparent',
-                              color: isSelected ? 'white' : 'text.primary',
-                              border: '1px solid',
-                              borderColor: isSelected ? 'primary.main' : COLORS.categoryChipBorder,
-                              cursor: 'pointer',
-                              transition: 'all 0.2s ease',
-                              '&:hover': {
-                                backgroundColor: isSelected 
-                                  ? 'primary.dark' 
-                                  : COLORS.categoryChipHover,
-                                borderColor: 'primary.main',
-                              },
-                              '& .MuiChip-label': {
-                                px: 1.5,
-                                width: '100%',
-                                textAlign: 'left',
-                                display: 'flex',
-                              },
-                            }}
-                          />
-                        );
-                      })}
-                    </Box>
-                  </Box>
-                </Box>
-              </Box>
-
-              {/* Colonne de droite - Tips (85%) */}
-              <Box sx={{ flex: 1, minWidth: 0 }}>
-                <TipCardsGrid items={filtered} />
+                {t('tips.sortRecent', { defaultValue: 'tri : récents' })}
+                <ExpandMoreIcon sx={{ fontSize: 15 }} />
               </Box>
             </Box>
-          </Card>
-        </GridContainer>
-      </Container>
+
+            <AtelierTipsGrid items={filtered} />
+          </Box>
+        </Box>
+      </AtelierContainer>
       <ScrollToTopButton />
     </PageLayout>
   );

@@ -12,4 +12,8 @@ export const SHADOWS = {
   
   // Ombre pour les chips de mots-clés sélectionnés
   chipSelected: '0 1px 6px rgba(2, 168, 233, 0.25)',
+
+  // Refonte « Atelier adouci »
+  cardHover: '0 14px 30px -16px rgba(17,21,29,.25)', // survol carte (+ translateY(-2px))
+  codeWindow: '0 30px 60px -30px rgba(15,20,32,.6)', // fenêtre de code hero
 };

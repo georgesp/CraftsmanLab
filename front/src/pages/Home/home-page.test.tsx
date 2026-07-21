@@ -10,13 +10,12 @@ const HomePageWrapper = () => (
 );
 
 describe('HomePage Component', () => {
-  test('renders logo image in header', () => {
+  test('renders brand logo in header', () => {
     render(<HomePageWrapper />);
 
-    // Vérifier que le logo CraftsmanLab est affiché
-    const logo = screen.getByAltText('CraftsmanLab');
-    expect(logo).toBeInTheDocument();
-    expect(logo).toHaveAttribute('src', '/noBgColor.png');
+    // La marque = symbole décoratif + wordmark texte « CraftsmanLab » (lien accueil)
+    const brandLink = screen.getAllByRole('link', { name: /CraftsmanLab/i })[0];
+    expect(brandLink).toHaveAttribute('href', '/');
   });
 
   test('renders main hero section', () => {

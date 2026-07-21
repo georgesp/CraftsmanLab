@@ -1,95 +1,36 @@
 import { useMemo, useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Container, Card, Typography, Box, Grid, Alert, Link as MuiLink, Chip, TextField, InputAdornment, IconButton, Tooltip } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
-import CloseIcon from '@mui/icons-material/Close';
+import { Box, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { PageLayout, ScrollToTopButton } from '../../components';
-import { COLORS, PAGE_SPACING, TYPOGRAPHY, LAYOUT } from '../../styles';
-import { GridContainer } from '../Prompts/styles';
-import { PromptCard, PromptCardContent } from '../Prompts/styles';
+import {
+  AtelierContainer,
+  SectionTitleBand,
+  SearchField,
+  Facets,
+} from '../../components/atelier';
+import type { FacetGroup } from '../../components/atelier';
+import { COLORS, TYPOGRAPHY } from '../../styles';
 import { rssSources } from '../../components/news/registry';
-import NewspaperIcon from '@mui/icons-material/Newspaper';
 
-// Groupement des catégories par thème
+// Thèmes de regroupement des catégories (facettes).
 const categoryThemes: Record<string, string[]> = {
-  'Sources': [], // Les sources seront ajoutées dynamiquement
-  'Languages & Versions': ['.NET', '.NET 10', '.NET 9', '.NET 8', '.NET 7', '.NET 6', '.NET 5', '.NET Core', '.NET Framework', 'C#', 'C# 14', 'C# 13', 'C# 12', 'C# 11', 'C# 10', 'C# 9', 'C# 8', 'F#', 'F# 10', 'TypeScript', 'JavaScript', 'Swift', 'Python', 'Java', 'Kotlin', 'Rust', 'Go'],
-  'Frameworks & Libraries': ['ASP.NET Core', 'ASP.NET', 'Blazor', 'Entity Framework Core', 'Entity Framework', '.NET MAUI', 'ML.NET', 'React', 'Angular', 'Vue'],
-  'Development Tools': ['Visual Studio', 'Visual Studio 2026', 'Visual Studio 2022', 'VS Code', 'Rider', 'ReSharper', 'JetBrains', 'Xcode', 'Git', 'IDE', 'Build'],
-  'Cloud & Platforms': ['Azure', 'Cosmos DB', 'Azure DevOps', 'GitHub', 'AWS', 'Google Cloud', 'Kubernetes', 'Docker', 'Cloudflare', 'Serverless'],
-  'AI & Agents': ['AI', 'Copilot', 'Agents', 'GPT-5', 'DeepSeek'],
-  'Testing & Quality': ['Testing', 'Unit Testing', 'Integration Testing', 'Test Automation', 'xUnit', 'NUnit'],
-  'DevOps & CI/CD': ['DevOps', 'CI/CD', 'GitHub Actions', 'Deployment', 'Monitoring'],
-  'Performance': ['Performance', 'JIT', 'NativeAOT', 'Optimization'],
-  'Architecture & Patterns': ['Microservices', 'Design Patterns', 'Architecture', 'Cloud Native', 'Best Practices', 'SOLID', 'Dependency Injection'],
-  'APIs & Protocols': ['API', 'HTTP', 'JSON', 'REST', 'OAuth 2.0', 'OAuth', 'OpenAPI'],
-  'Database': ['Database', 'SQL', 'Entity Framework Core', 'Cosmos DB', 'NoSQL'],
-  'Mobile': ['iOS', 'Android', 'Mobile', 'Xamarin', '.NET MAUI', 'Widgets'],
-  'Others': ['Preview', 'Templates', 'Configuration', 'Records', 'Hugo', 'UX']
+  'Langages & versions': ['.NET', '.NET 10', '.NET 9', '.NET 8', '.NET 7', '.NET 6', '.NET 5', '.NET Core', '.NET Framework', 'C#', 'C# 14', 'C# 13', 'C# 12', 'C# 11', 'C# 10', 'C# 9', 'C# 8', 'F#', 'TypeScript', 'JavaScript'],
+  'Frameworks & librairies': ['ASP.NET Core', 'ASP.NET', 'Blazor', 'Entity Framework Core', 'Entity Framework', '.NET MAUI', 'ML.NET', 'React', 'Angular', 'Vue'],
+  'Outils de développement': ['Visual Studio', 'Visual Studio 2026', 'Visual Studio 2022', 'VS Code', 'Rider', 'ReSharper', 'JetBrains', 'Git'],
+  'Cloud & plateformes': ['Azure', 'Cosmos DB', 'Azure DevOps', 'GitHub', 'AWS', 'Kubernetes', 'Docker'],
+  'IA & agents': ['AI', 'Copilot', 'Agents', 'GPT-5'],
+  'Autres': [],
 };
 
-// Fonction pour grouper les catégories par thème avec comptage des occurrences
-const groupCategoriesByTheme = (categories: string[], categoryOccurrences: Record<string, number>, sources: Array<{name: string, slug: string}>): Record<string, string[]> => {
-  const grouped: Record<string, string[]> = {};
-  const usedCategories = new Set<string>();
-
-  // Initialiser tous les thèmes
-  Object.keys(categoryThemes).forEach(theme => {
-    grouped[theme] = [];
-  });
-
-  // Ajouter les sources dans le thème "Sources"
-  sources.forEach(source => {
-    grouped['Sources'].push(source.name);
-  });
-
-  // Parcourir toutes les catégories et les assigner à leur thème
-  categories.forEach(category => {
-    let assigned = false;
-    for (const [theme, keywords] of Object.entries(categoryThemes)) {
-      if (theme === 'Others' || theme === 'Sources') continue;
-      if (keywords.some(keyword => {
-        const lowerCategory = category.toLowerCase();
-        const lowerKeyword = keyword.toLowerCase();
-        // Correspondance exacte (ignorer la casse)
-        if (lowerCategory === lowerKeyword) return true;
-        // Vérifier si le mot-clé apparaît comme mot complet dans la catégorie
-        const regex = new RegExp(`\\b${lowerKeyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
-        return regex.test(category);
-      })) {
-        if (!grouped[theme].includes(category)) {
-          grouped[theme].push(category);
-          usedCategories.add(category);
-        }
-        assigned = true;
-        break;
-      }
-    }
-    // Si non assigné, mettre dans "Others"
-    if (!assigned && !grouped['Others'].includes(category)) {
-      grouped['Others'].push(category);
-    }
-  });
-
-  // Supprimer les thèmes vides et trier par occurrences
-  Object.keys(grouped).forEach(theme => {
-    if (grouped[theme].length === 0) {
-      delete grouped[theme];
-    } else {
-      // Trier par nombre d'occurrences (descendant), puis alphabétiquement
-      grouped[theme].sort((a, b) => {
-        const countDiff = (categoryOccurrences[b] || 0) - (categoryOccurrences[a] || 0);
-        if (countDiff !== 0) return countDiff;
-        return a.localeCompare(b);
-      });
-    }
-  });
-
-  return grouped;
-};
+function themeForCategory(category: string): string {
+  const lower = category.toLowerCase();
+  for (const [theme, keywords] of Object.entries(categoryThemes)) {
+    if (theme === 'Autres') continue;
+    if (keywords.some((k) => k.toLowerCase() === lower)) return theme;
+  }
+  return 'Autres';
+}
 
 export const NewsPage: React.FC = () => {
   const { t, i18n } = useTranslation('pages');
@@ -97,34 +38,27 @@ export const NewsPage: React.FC = () => {
   const [selectedSource, setSelectedSource] = useState<string | null>(null);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [categoryFilter, setCategoryFilter] = useState<string>('');
-  const [expandedThemes, setExpandedThemes] = useState<Set<string>>(new Set());
+  const lang = i18n.language === 'fr' ? 'fr' : 'en';
 
-  // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Appliquer les filtres depuis l'URL au chargement
   useEffect(() => {
     const sourceParam = searchParams.get('source');
     const keywordsParam = searchParams.get('keywords');
-    
-    if (sourceParam) {
-      setSelectedSource(sourceParam);
-    }
-    
+    if (sourceParam) setSelectedSource(sourceParam);
     if (keywordsParam) {
-      const keywords = keywordsParam.split(',').filter(k => k.trim());
+      const keywords = keywordsParam.split(',').filter((k) => k.trim());
       setSelectedCategories(keywords);
     }
   }, [searchParams]);
 
   const formatDate = (dateString: string) => {
     try {
-      const date = new Date(dateString);
-      return date.toLocaleDateString(i18n.language === 'fr' ? 'fr-FR' : 'en-US', {
+      return new Date(dateString).toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US', {
         year: 'numeric',
-        month: 'long',
+        month: 'short',
         day: 'numeric',
       });
     } catch {
@@ -132,597 +66,407 @@ export const NewsPage: React.FC = () => {
     }
   };
 
-  // Get translated source info
   const getSourceInfo = (sourceSlug: string) => {
-    const source = rssSources.find(s => s.meta.slug === sourceSlug);
-    if (!source) return { title: sourceSlug, description: '' };
-
-    const lang = i18n.language === 'fr' ? 'fr' : 'en';
-    const translation = source.translations[lang] ?? source.translations.en ?? source.translations.fr;
-    return {
-      title: translation?.title ?? sourceSlug,
-      description: translation?.description ?? '',
-      website: translation?.website,
-    };
+    const source = rssSources.find((s) => s.meta.slug === sourceSlug);
+    if (!source) return { title: sourceSlug };
+    const tr = source.translations[lang] ?? source.translations.en ?? source.translations.fr;
+    return { title: tr?.title ?? sourceSlug };
   };
 
-  // Compter les occurrences de chaque catégorie (y compris les sources) basé sur les articles filtrés
+  // Occurrences par catégorie et par source (sur les articles filtrés).
   const categoryOccurrences = useMemo(() => {
-    const occurrences: Record<string, number> = {};
-    const lang = i18n.language === 'fr' ? 'fr' : 'en';
-    
+    const occ: Record<string, number> = {};
     rssSources
-      .filter(source => !selectedSource || source.meta.slug === selectedSource)
-      .forEach(source => {
-        const translation = source.translations[lang] ?? source.translations.en ?? source.translations.fr;
-        const sourceName = translation?.title ?? source.meta.slug;
-        
-        // Filtrer les items de cette source par les catégories sélectionnées
-        const filteredItems = (source.data?.items ?? []).filter(item => {
+      .filter((s) => !selectedSource || s.meta.slug === selectedSource)
+      .forEach((source) => {
+        const tr = source.translations[lang] ?? source.translations.en ?? source.translations.fr;
+        const sourceName = tr?.title ?? source.meta.slug;
+        const items = (source.data?.items ?? []).filter((item) => {
           if (selectedCategories.length === 0) return true;
-          const itemCategories = (item.categories || []).map(c => c.toLowerCase());
-          const selectedSet = new Set(selectedCategories.map(c => c.toLowerCase()));
-          return Array.from(selectedSet).every(cat => itemCategories.includes(cat));
+          const cats = (item.categories || []).map((c) => c.toLowerCase());
+          return selectedCategories.every((c) => cats.includes(c.toLowerCase()));
         });
-        
-        // Compter les articles filtrés par source
-        occurrences[sourceName] = filteredItems.length;
-        
-        // Compter les catégories des articles filtrés
-        filteredItems.forEach(item => {
-          (item.categories || []).forEach(cat => {
-            const normalized = cat.trim();
-            if (normalized) {
-              occurrences[normalized] = (occurrences[normalized] || 0) + 1;
-            }
-          });
-        });
+        occ[sourceName] = items.length;
+        items.forEach((item) =>
+          (item.categories || []).forEach((c) => {
+            const n = c.trim();
+            if (n) occ[n] = (occ[n] || 0) + 1;
+          }),
+        );
       });
-    return occurrences;
-  }, [i18n.language, selectedSource, selectedCategories]);
+    return occ;
+  }, [lang, selectedSource, selectedCategories]);
 
-  // Collect all unique categories from filtered items
   const allCategories = useMemo(() => {
-    const categories = rssSources
-      .filter(source => !selectedSource || source.meta.slug === selectedSource)
-      .flatMap(source =>
+    const cats = rssSources
+      .filter((s) => !selectedSource || s.meta.slug === selectedSource)
+      .flatMap((source) =>
         (source.data?.items ?? [])
-          .filter(item => {
+          .filter((item) => {
             if (selectedCategories.length === 0) return true;
-            const itemCategories = (item.categories || []).map(c => c.toLowerCase());
-            const selectedSet = new Set(selectedCategories.map(c => c.toLowerCase()));
-            return Array.from(selectedSet).every(cat => itemCategories.includes(cat));
+            const c = (item.categories || []).map((x) => x.toLowerCase());
+            return selectedCategories.every((x) => c.includes(x.toLowerCase()));
           })
-          .flatMap(item => item.categories || [])
-      );
-    const normalized = categories.map(c => c.trim()).filter(Boolean);
-    return Array.from(new Set(normalized)).sort((a, b) => a.localeCompare(b));
+          .flatMap((item) => item.categories || []),
+      )
+      .map((c) => c.trim())
+      .filter(Boolean);
+    return Array.from(new Set(cats));
   }, [selectedSource, selectedCategories]);
 
-  // Préparer la liste des sources pour le groupement
-  const sourcesList = useMemo(() => {
-    const lang = i18n.language === 'fr' ? 'fr' : 'en';
-    return rssSources.map(source => ({
-      name: (source.translations[lang] ?? source.translations.en ?? source.translations.fr)?.title ?? source.meta.slug,
-      slug: source.meta.slug,
-    }));
-  }, [i18n.language]);
+  const sourcesList = useMemo(
+    () =>
+      rssSources.map((source) => ({
+        name: (source.translations[lang] ?? source.translations.en ?? source.translations.fr)?.title ?? source.meta.slug,
+        slug: source.meta.slug,
+      })),
+    [lang],
+  );
 
-  // Grouper les catégories par thème
-  const groupedCategories = useMemo(() => {
-    return groupCategoriesByTheme(allCategories, categoryOccurrences, sourcesList);
-  }, [allCategories, categoryOccurrences, sourcesList]);
-
-  // Filtrer les catégories par le texte de recherche
-  const filteredGroupedCategories = useMemo(() => {
-    if (!categoryFilter.trim()) return groupedCategories;
-    
-    const filtered: Record<string, string[]> = {};
-    const lowerFilter = categoryFilter.toLowerCase();
-    
-    Object.entries(groupedCategories).forEach(([theme, categories]) => {
-      const matchingCategories = categories.filter(cat => 
-        cat.toLowerCase().includes(lowerFilter)
-      );
-      if (matchingCategories.length > 0) {
-        filtered[theme] = matchingCategories;
-      }
-    });
-    
-    return filtered;
-  }, [groupedCategories, categoryFilter]);
+  // Facettes de catégories groupées par thème, filtrées par recherche.
+  const facetGroups = useMemo<FacetGroup[]>(() => {
+    const byTheme: Record<string, string[]> = {};
+    const q = categoryFilter.trim().toLowerCase();
+    allCategories
+      .filter((c) => !q || c.toLowerCase().includes(q))
+      .forEach((c) => {
+        const theme = themeForCategory(c);
+        (byTheme[theme] ??= []).push(c);
+      });
+    return Object.keys(categoryThemes)
+      .filter((theme) => byTheme[theme]?.length)
+      .map((theme) => ({
+        group: theme,
+        items: byTheme[theme]
+          .sort((a, b) => (categoryOccurrences[b] || 0) - (categoryOccurrences[a] || 0) || a.localeCompare(b))
+          .map((c) => ({ label: c, count: categoryOccurrences[c] || 0 })),
+      }));
+  }, [allCategories, categoryFilter, categoryOccurrences]);
 
   const toggleCategory = (category: string) => {
-    // Vérifier si c'est une source
-    const lang = i18n.language === 'fr' ? 'fr' : 'en';
-    const sourceSlug = rssSources.find(s => s.translations[lang].title === category)?.meta.slug;
-    
-    if (sourceSlug) {
-      // C'est une source, utiliser setSelectedSource
-      setSelectedSource(selectedSource === sourceSlug ? null : sourceSlug);
-    } else {
-      // C'est une catégorie normale
-      setSelectedCategories((prev) =>
-        prev.includes(category) ? prev.filter((c) => c !== category) : [...prev, category],
-      );
-    }
+    setSelectedCategories((prev) =>
+      prev.includes(category) ? prev.filter((c) => c !== category) : [...prev, category],
+    );
   };
 
-  const toggleThemeExpansion = (theme: string) => {
-    setExpandedThemes((prev) => {
-      const newSet = new Set(prev);
-      if (newSet.has(theme)) {
-        newSet.delete(theme);
-      } else {
-        newSet.add(theme);
-      }
-      return newSet;
-    });
-  };
+  const toggleSource = (slug: string) =>
+    setSelectedSource((prev) => (prev === slug ? null : slug));
 
-  // Combiner tous les items de tous les feeds et les trier par date
   const allItems = useMemo(() => {
-    const items = rssSources
-      .filter(source => !selectedSource || source.meta.slug === selectedSource)
-      .flatMap(source =>
-        (source.data?.items ?? []).map(item => ({
+    return rssSources
+      .filter((s) => !selectedSource || s.meta.slug === selectedSource)
+      .flatMap((source) =>
+        (source.data?.items ?? []).map((item) => ({
           ...item,
           sourceSlug: source.meta.slug,
-          sourceInfo: getSourceInfo(source.meta.slug),
-        }))
+          sourceTitle: getSourceInfo(source.meta.slug).title,
+        })),
       )
-      .filter(item => {
-        // Filter by categories if any selected
+      .filter((item) => {
         if (selectedCategories.length === 0) return true;
-        const itemCategories = (item.categories || []).map(c => c.toLowerCase());
-        const selectedSet = new Set(selectedCategories.map(c => c.toLowerCase()));
-        // match if item has all selected categories
-        return Array.from(selectedSet).every(cat => itemCategories.includes(cat));
+        const c = (item.categories || []).map((x) => x.toLowerCase());
+        return selectedCategories.every((x) => c.includes(x.toLowerCase()));
       })
       .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
-    return items;
-  }, [i18n.language, selectedSource, selectedCategories]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lang, selectedSource, selectedCategories]);
 
-  // Vérifier s'il y a des erreurs
-  const hasErrors = rssSources.some(s => s.data?.error !== undefined);
-  const lastUpdated = rssSources[0]?.data?.lastUpdated;
+  const hasErrors = rssSources.some((s) => s.data?.error !== undefined);
+
+  const sourceInitials = (name: string) =>
+    name
+      .replace(/[^A-Za-zÀ-ÿ ]/g, '')
+      .split(/\s+/)
+      .filter(Boolean)
+      .slice(0, 2)
+      .map((w) => w[0]?.toUpperCase())
+      .join('') || name.slice(0, 2).toUpperCase();
 
   return (
     <PageLayout>
-      <Container
-        maxWidth={false}
-        disableGutters
-        sx={{ px: 0, mx: 0, width: '100%', backgroundColor: COLORS.darkGreyBg }}
-      >
-        <GridContainer sx={{ pt: 0 }}>
-          <Card
-            variant="outlined"
+      <AtelierContainer>
+        <SectionTitleBand illus="book" title={t('news.bandTitle', { defaultValue: 'Actualités' })} />
+
+        <Box
+          component="section"
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', md: '270px 1fr' },
+            gap: '28px',
+            px: { xs: 2.5, md: '46px' },
+            pt: '26px',
+            pb: '60px',
+            alignItems: 'start',
+          }}
+        >
+          {/* Sidebar : sticky + scroll interne pour ne pas dépendre de la hauteur des articles */}
+          <Box
+            component="aside"
             sx={{
-              backgroundColor: COLORS.darkGreyBg,
-              p: { xs: 2, md: 4 },
-              boxShadow: 0,
-              borderLeft: 0,
-              borderRight: 0,
-              width: '100%',
+              position: { md: 'sticky' },
+              top: 88,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 2,
+              maxHeight: { md: 'calc(100vh - 108px)' },
+              overflowY: { md: 'auto' },
+              // Léger espace pour la barre de défilement + scrollbar discrète
+              pr: { md: 0.5 },
+              scrollbarWidth: 'thin',
+              scrollbarColor: `${COLORS.atelier.borderDefault} transparent`,
+              '&::-webkit-scrollbar': { width: 8 },
+              '&::-webkit-scrollbar-thumb': {
+                backgroundColor: COLORS.atelier.borderDefault,
+                borderRadius: 8,
+              },
             }}
           >
-            {hasErrors && (
-              <Alert severity="warning" sx={{ mb: 2 }}>
-                {t('news.partialError', { defaultValue: 'Certains flux n\'ont pas pu être chargés.' })}
-              </Alert>
-            )}
+            <SearchField
+              value={categoryFilter}
+              onChange={setCategoryFilter}
+              placeholder={t('news.searchPlaceholder', { defaultValue: 'rechercher un article…' })}
+            />
 
-            {/* Dernière mise à jour */}
-            <Box sx={{ mb: 3, display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
-              {lastUpdated && (
-                <Typography
-                  variant="caption"
+            {/* Sources */}
+            <Box>
+              <Box
+                sx={{
+                  fontFamily: TYPOGRAPHY.fontFamilies.mono,
+                  fontSize: '11px',
+                  letterSpacing: '.1em',
+                  textTransform: 'uppercase',
+                  color: COLORS.atelier.news,
+                  fontWeight: 600,
+                  m: '0 2px 10px',
+                }}
+              >
+                {t('news.sourcesTitle', { defaultValue: 'Sources' })}
+              </Box>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                {sourcesList.map((s) => {
+                  const active = selectedSource === s.slug;
+                  return (
+                    <Box
+                      key={s.slug}
+                      role="button"
+                      aria-pressed={active}
+                      aria-label={s.name}
+                      tabIndex={0}
+                      onClick={() => toggleSource(s.slug)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          toggleSource(s.slug);
+                        }
+                      }}
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 1,
+                        p: '8px 10px',
+                        background: active ? COLORS.atelier.newsBg : COLORS.atelier.surface,
+                        border: `1px solid ${active ? COLORS.atelier.news : COLORS.atelier.borderDefault}`,
+                        borderRadius: '9px',
+                        cursor: 'pointer',
+                        outline: 'none',
+                        transition: 'border-color .15s ease, background .15s ease',
+                        '&:hover': { borderColor: COLORS.atelier.news, background: COLORS.atelier.newsBg },
+                        '&:focus-visible': { borderColor: COLORS.atelier.news, boxShadow: `0 0 0 3px ${COLORS.atelier.newsBg}` },
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          width: 22,
+                          height: 22,
+                          borderRadius: '6px',
+                          background: COLORS.atelier.newsBg,
+                          color: COLORS.atelier.news,
+                          fontFamily: TYPOGRAPHY.fontFamilies.mono,
+                          fontSize: '10px',
+                          fontWeight: 600,
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          flexShrink: 0,
+                        }}
+                      >
+                        {sourceInitials(s.name)}
+                      </Box>
+                      <Box component="span" sx={{ flex: 1, fontSize: '13px', color: active ? COLORS.atelier.news : COLORS.atelier.textBody }}>
+                        {s.name}
+                      </Box>
+                      <Box
+                        component="span"
+                        sx={{ fontFamily: TYPOGRAPHY.fontFamilies.mono, fontSize: '11px', color: COLORS.atelier.textFaint }}
+                      >
+                        {categoryOccurrences[s.name] ?? 0}
+                      </Box>
+                    </Box>
+                  );
+                })}
+              </Box>
+            </Box>
+
+            {/* Facettes de catégories */}
+            <Facets
+              groups={facetGroups}
+              accent={COLORS.atelier.news}
+              accentBg={COLORS.atelier.newsBg}
+              selected={selectedCategories}
+              onToggle={toggleCategory}
+            />
+          </Box>
+
+          {/* Colonne articles */}
+          <Box>
+            <Box sx={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', mb: '18px' }}>
+              <Box
+                component="span"
+                sx={{ fontFamily: TYPOGRAPHY.fontFamilies.mono, fontSize: '12.5px', color: COLORS.atelier.textBody }}
+              >
+                <b style={{ color: COLORS.atelier.textStrong }}>{allItems.length}</b>{' '}
+                {t('news.articles', { defaultValue: 'articles' })}
+              </Box>
+              {!hasErrors && (
+                <Box
+                  component="span"
                   sx={{
-                    color: 'text.secondary',
-                    whiteSpace: 'nowrap',
+                    fontFamily: TYPOGRAPHY.fontFamilies.mono,
+                    fontSize: '12px',
+                    color: COLORS.atelier.news,
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
                   }}
                 >
-                  {t('news.lastUpdated', {
-                    defaultValue: 'Dernière mise à jour : {{date}}',
-                    date: formatDate(lastUpdated),
-                  })}
-                </Typography>
+                  <Box sx={{ width: 8, height: 8, borderRadius: '50%', background: COLORS.atelier.news }} />
+                  {t('news.feedUpToDate', { defaultValue: 'flux à jour' })}
+                </Box>
               )}
             </Box>
 
-            {/* Layout en 2 colonnes */}
-            <Box sx={{ display: 'flex', gap: 3, flexDirection: { xs: 'column', md: 'row' } }}>
-              {/* Colonne de gauche - Filtres par catégories (15%) */}
-              <Box 
-                sx={{ 
-                  width: { xs: '100%', md: '15%' },
-                  maxWidth: LAYOUT.leftColumn.maxWidth,
-                  flexShrink: 0,
+            {allItems.length > 0 ? (
+              <Box
+                sx={{
+                  background: COLORS.atelier.surface,
+                  border: `1px solid ${COLORS.atelier.borderDefault}`,
+                  borderRadius: '16px',
+                  overflow: 'hidden',
                 }}
               >
-                <Box sx={{ 
-                  position: { md: 'sticky' }, 
-                  top: 0,
-                }}>
-                  {/* Catégories groupées par thème */}
-
-                  {/* Champ de recherche pour filtrer les catégories */}
-                  <TextField
-                    fullWidth
-                    size="small"
-                    placeholder={t('news.searchCategories', { defaultValue: 'Rechercher...' })}
-                    value={categoryFilter}
-                    onChange={(e) => setCategoryFilter(e.target.value)}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <SearchIcon sx={{ fontSize: '1rem', color: 'text.secondary' }} />
-                        </InputAdornment>
-                      ),
-                    }}
+                {allItems.map((item, idx) => (
+                  <Box
+                    key={item.guid || item.link}
                     sx={{
-                      mb: 2,
-                      '& .MuiOutlinedInput-root': {
-                        fontSize: '0.875rem',
-                        backgroundColor: COLORS.categoryInputBg,
-                        '&:hover': {
-                          backgroundColor: COLORS.categoryInputBgHover,
-                        },
-                        '&.Mui-focused': {
-                          backgroundColor: COLORS.categoryInputBgHover,
-                        },
-                      },
+                      display: 'grid',
+                      gridTemplateColumns: { xs: '32px 1fr', md: '44px 1fr 150px' },
+                      gap: 2,
+                      p: { xs: 2, md: '18px 22px' },
+                      borderTop: idx === 0 ? 'none' : `1px solid ${COLORS.atelier.divider}`,
+                      transition: 'background .15s ease',
+                      '&:hover': { background: COLORS.atelier.surfaceHover },
                     }}
-                  />
-
-                  {/* Catégories et sources sélectionnées */}
-                  {(selectedCategories.length > 0 || selectedSource) && (
-                    <Box 
-                      sx={{ 
-                        mb: 2,
-                        p: 1.5,
-                        backgroundColor: COLORS.categorySelectedBg,
-                        borderRadius: 0,
-                        border: `1px solid ${COLORS.categorySelectedBorder}`,
+                  >
+                    <Box
+                      sx={{
+                        width: 44,
+                        height: 44,
+                        borderRadius: '10px',
+                        background: COLORS.atelier.newsBg,
+                        color: COLORS.atelier.news,
+                        fontFamily: TYPOGRAPHY.fontFamilies.mono,
+                        fontSize: '13px',
+                        fontWeight: 600,
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
                       }}
                     >
-                      <Typography 
-                        variant="caption" 
-                        sx={{ 
-                          display: 'block',
-                          mb: 1,
-                          fontSize: '0.75rem',
-                          fontWeight: 600,
-                          color: 'primary.main',
-                          textTransform: 'uppercase',
+                      {sourceInitials(item.sourceTitle)}
+                    </Box>
+
+                    <Box sx={{ minWidth: 0 }}>
+                      <Box
+                        component="span"
+                        sx={{
+                          fontFamily: TYPOGRAPHY.fontFamilies.mono,
+                          fontSize: '11px',
+                          color: COLORS.atelier.textMuted,
                         }}
                       >
-                        {t('news.selectedCategories', { defaultValue: 'Sélection' })} ({selectedCategories.length + (selectedSource ? 1 : 0)})
-                      </Typography>
-                      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
-                        {selectedSource && (
-                          <Box
-                            sx={{
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'space-between',
-                              backgroundColor: 'primary.main',
-                              color: 'white',
-                              px: 1,
-                              py: 0.5,
-                              borderRadius: 0.5,
-                              fontSize: '0.75rem',
-                            }}
-                          >
-                            <Tooltip title={getSourceInfo(selectedSource).title} placement="right" enterDelay={500}>
-                              <Typography sx={{ fontSize: '0.75rem', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                                {getSourceInfo(selectedSource).title}
-                              </Typography>
-                            </Tooltip>
-                            <IconButton
-                              size="small"
-                              onClick={() => setSelectedSource(null)}
-                              sx={{
-                                ml: 0.5,
-                                width: 18,
-                                height: 18,
-                                color: 'white',
-                                '&:hover': {
-                                  backgroundColor: COLORS.iconButtonHover,
-                                },
-                              }}
-                            >
-                              <CloseIcon sx={{ fontSize: '0.875rem' }} />
-                            </IconButton>
-                          </Box>
-                        )}
-                        {selectedCategories.map((category) => (
-                          <Box
-                            key={category}
-                            sx={{
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'space-between',
-                              backgroundColor: 'primary.main',
-                              color: 'white',
-                              px: 1,
-                              py: 0.5,
-                              borderRadius: 0,
-                              fontSize: '0.75rem',
-                            }}
-                          >
-                            <Tooltip title={category} placement="right" enterDelay={500}>
-                              <Typography sx={{ fontSize: '0.75rem', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                                {category}
-                              </Typography>
-                            </Tooltip>
-                            <IconButton
-                              size="small"
-                              onClick={() => toggleCategory(category)}
-                              sx={{
-                                ml: 0.5,
-                                width: 18,
-                                height: 18,
-                                color: 'white',
-                                '&:hover': {
-                                  backgroundColor: COLORS.iconButtonHover,
-                                },
-                              }}
-                            >
-                              <CloseIcon sx={{ fontSize: '0.875rem' }} />
-                            </IconButton>
-                          </Box>
-                        ))}
+                        {item.sourceTitle}
+                        {item.categories?.[0] ? ` · ${item.categories[0]}` : ''}
                       </Box>
-                    </Box>
-                  )}
-                  
-                  <Box sx={{ mb: 2 }}>
-                    {Object.entries(filteredGroupedCategories).map(([theme, categories]) => {
-                      const isExpanded = expandedThemes.has(theme);
-                      const displayedCategories = isExpanded ? categories : categories.slice(0, 5);
-                      const hasMore = categories.length > 5;
-                      
-                      return (
-                        <Box key={theme} sx={{ mb: 3 }}>
-                          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1.5 }}>
-                            <Typography 
-                              variant="subtitle2" 
-                              sx={{ 
-                                fontSize: '0.875rem',
-                                fontWeight: 600,
-                                color: 'primary.main',
-                                textTransform: 'uppercase',
-                                letterSpacing: '0.5px',
-                              }}
-                            >
-                              {theme}
-                            </Typography>
-                            {hasMore && (
-                              <IconButton
-                                size="small"
-                                onClick={() => toggleThemeExpansion(theme)}
-                                sx={{
-                                  width: 20,
-                                  height: 20,
-                                  color: 'primary.main',
-                                  '&:hover': {
-                                    backgroundColor: COLORS.categorySelectedBg,
-                                  },
-                                }}
-                              >
-                                {isExpanded ? <RemoveIcon sx={{ fontSize: '1rem' }} /> : <AddIcon sx={{ fontSize: '1rem' }} />}
-                              </IconButton>
-                            )}
-                          </Box>
-                          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.75 }}>
-                            {displayedCategories.map((category) => {
-                              // Vérifier si c'est une source
-                              const lang = i18n.language === 'fr' ? 'fr' : 'en';
-                              const sourceSlug = rssSources.find(s => (s.translations[lang] ?? s.translations.en ?? s.translations.fr)?.title === category)?.meta.slug;
-                              const isSelected = sourceSlug 
-                                ? selectedSource === sourceSlug 
-                                : selectedCategories.includes(category);
-                              
-                              return (
-                                <Tooltip key={category} title={category} placement="right" enterDelay={500}>
-                                <Chip
-                                  label={
-                                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', minWidth: 0 }}>
-                                      <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0, flex: 1 }}>{category}</span>
-                                      <Typography
-                                        component="span"
-                                        sx={{
-                                          fontSize: '0.7rem',
-                                          ml: 1,
-                                          opacity: 0.7,
-                                          fontWeight: 500,
-                                          flexShrink: 0,
-                                        }}
-                                      >
-                                        {categoryOccurrences[category] || 0}
-                                      </Typography>
-                                    </Box>
-                                  }
-                                  onClick={() => toggleCategory(category)}
-                                  size="small"
-                                  sx={{
-                                    height: 28,
-                                    fontSize: '0.8rem',
-                                    justifyContent: 'flex-start',
-                                    backgroundColor: isSelected ? 'primary.main' : 'transparent',
-                                    color: isSelected ? 'white' : 'text.primary',
-                                    border: '1px solid',
-                                    borderColor: isSelected ? 'primary.main' : COLORS.categoryChipBorder,
-                                    cursor: 'pointer',
-                                    transition: 'all 0.2s ease',
-                                    '&:hover': {
-                                      backgroundColor: isSelected 
-                                        ? 'primary.dark' 
-                                        : COLORS.categoryChipHover,
-                                      borderColor: 'primary.main',
-                                    },
-                                    '& .MuiChip-label': {
-                                      px: 1.5,
-                                      width: '100%',
-                                      textAlign: 'left',
-                                      display: 'flex',
-                                    },
-                                  }}
-                                />
-                                </Tooltip>
-                              );
-                            })}
-                          </Box>
+                      <Typography
+                        component="h3"
+                        sx={{
+                          fontFamily: TYPOGRAPHY.fontFamilies.display,
+                          fontWeight: 700,
+                          fontSize: '18px',
+                          letterSpacing: '-0.01em',
+                          lineHeight: 1.25,
+                          m: '2px 0 0',
+                        }}
+                      >
+                        <Box
+                          component="a"
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          sx={{ color: COLORS.atelier.textStrong, textDecoration: 'none', '&:hover': { color: COLORS.atelier.tips } }}
+                        >
+                          {item.title}
                         </Box>
-                      );
-                    })}
-                  </Box>
-                </Box>
-              </Box>
+                      </Typography>
+                      {item.contentSnippet && (
+                        <Typography sx={{ fontSize: '13.5px', lineHeight: 1.5, color: COLORS.atelier.textBodyAlt, mt: '6px' }}>
+                          {item.contentSnippet}
+                        </Typography>
+                      )}
+                    </Box>
 
-              {/* Colonne de droite - Articles (70%) */}
-              <Box sx={{ flex: 1, minWidth: 0 }}>
-                {allItems.length > 0 && (
-                  <Grid container spacing={2}>
-                  {allItems.map((item) => (
-                    <Grid item xs={12} sm={12} md={12} key={item.guid}>
-                      <MuiLink
+                    <Box
+                      sx={{
+                        display: { xs: 'none', md: 'flex' },
+                        flexDirection: 'column',
+                        alignItems: 'flex-end',
+                        justifyContent: 'flex-start',
+                        gap: '8px',
+                      }}
+                    >
+                      <Box
+                        component="span"
+                        sx={{ fontFamily: TYPOGRAPHY.fontFamilies.mono, fontSize: '11px', color: COLORS.atelier.textMuted, whiteSpace: 'nowrap' }}
+                      >
+                        {formatDate(item.pubDate)}
+                      </Box>
+                      <Box
+                        component="a"
                         href={item.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        underline="none"
-                        sx={{
-                          display: 'block',
-                          height: '100%',
-                          '&:hover': {
-                            '& .news-card': {
-                              transform: 'translateY(-4px)',
-                              boxShadow: 3,
-                            },
-                          },
-                        }}
+                        aria-hidden
+                        tabIndex={-1}
+                        sx={{ fontSize: '13px', fontWeight: 600, color: COLORS.atelier.tips, textDecoration: 'none', whiteSpace: 'nowrap' }}
                       >
-                        <PromptCard
-                          className="news-card"
-                          sx={{
-                            backgroundColor: COLORS.cardBgDark,
-                            border: `${COLORS.cardBorderWidth} solid ${COLORS.cardBorder}`,
-                            height: '100%',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
-                            cursor: 'pointer',
-                          }}
-                        >
-                          <PromptCardContent sx={{ flex: 1, display: 'flex', flexDirection: 'column', padding: 0 }}>
-                            {/* Contenu de la card */}
-                            <Box sx={{ px: PAGE_SPACING.cardPadding, pt: PAGE_SPACING.cardPadding, pb: PAGE_SPACING.cardPadding, flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-                              {/* Titre avec icône */}
-                              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
-                                <Box
-                                  sx={{
-                                    display: 'inline-flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    width: 22,
-                                    height: 22,
-                                    backgroundColor: COLORS.newsIcon,
-                                    borderRadius: 0,
-                                    flexShrink: 0,
-                                  }}
-                                >
-                                  <NewspaperIcon sx={{ color: '#FFFFFF', fontSize: 12 }} />
-                                </Box>
-                                <Typography
-                                  variant="h6"
-                                  component="h3"
-                                  sx={{ fontWeight: TYPOGRAPHY.fontWeights.bold, mb: 0, color: 'text.primary' }}
-                                >
-                                  {item.title}
-                                </Typography>
-                              </Box>
-                              
-                              {/* Ligne séparatrice */}
-                              <Box sx={{ width: '100%', height: '1px', backgroundColor: COLORS.cardDivider, mb: 1, mx: -PAGE_SPACING.cardPadding }} />
-                              
-                              {/* Source badge et date */}
-                              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1, flexWrap: 'wrap' }}>
-                                <Chip
-                                  label={item.sourceInfo.title}
-                                  size="small"
-                                  sx={{
-                                    height: 20,
-                                    fontSize: '0.7rem',
-                                    backgroundColor: 'primary.main',
-                                    color: 'white',
-                                  }}
-                                />
-                                <Typography
-                                  variant="caption"
-                                  color="text.secondary"
-                                  sx={{ fontSize: '0.75rem' }}
-                                >
-                                  {item.creator && `${item.creator}, `}{formatDate(item.pubDate)}
-                                </Typography>
-                              </Box>
-
-                              <Typography
-                                variant="body2"
-                                sx={{
-                                  mb: 2,
-                                  flex: 1,
-                                  color: 'text.primary',
-                                  lineHeight: 1.6,
-                                  display: '-webkit-box',
-                                  WebkitLineClamp: 3,
-                                  WebkitBoxOrient: 'vertical',
-                                  overflow: 'hidden',
-                                }}
-                              >
-                                {item.contentSnippet}
-                              </Typography>
-
-                              {item.categories && item.categories.length > 0 && (
-                                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mt: 'auto' }}>
-                                  {item.categories.map((category, idx) => (
-                                    <Chip
-                                      key={idx}
-                                      label={category}
-                                      size="small"
-                                      variant="outlined"
-                                      sx={{
-                                        height: 20,
-                                        fontSize: '0.65rem',
-                                        borderColor: 'primary.main',
-                                        color: 'primary.main',
-                                      }}
-                                    />
-                                  ))}
-                                </Box>
-                              )}
-                            </Box>
-                          </PromptCardContent>
-                        </PromptCard>
-                      </MuiLink>
-                    </Grid>
-                  ))}
-                </Grid>
-                )}
-
-                {allItems.length === 0 && (
-                  <Typography variant="body1" sx={{ textAlign: 'center', py: 4, color: 'text.secondary' }}>
-                    {t('news.noItems', { defaultValue: 'Aucun article disponible pour le moment.' })}
-                  </Typography>
-                )}
+                        {t('news.readArticle', { defaultValue: "Lire l'article" })} →
+                      </Box>
+                    </Box>
+                  </Box>
+                ))}
               </Box>
-            </Box>
-          </Card>
-        </GridContainer>
-      </Container>
+            ) : (
+              <Typography sx={{ color: COLORS.atelier.textMuted, fontSize: '14px', py: 4 }}>
+                {t('news.noItems', { defaultValue: 'Aucun article' })}
+              </Typography>
+            )}
+          </Box>
+        </Box>
+      </AtelierContainer>
       <ScrollToTopButton />
     </PageLayout>
   );
 };
 
+NewsPage.displayName = 'NewsPage';
 export default NewsPage;

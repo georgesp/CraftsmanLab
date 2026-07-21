@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  
+  <circle cx="100" cy="100" r="78" fill="#FFF3E6"></circle>
+  
+  <g transform="translate(75,75)">
+    <circle cx="0" cy="0" r="22" stroke="#2D388A" stroke-width="6" fill="none"></circle>
+    <circle cx="0" cy="0" r="8" fill="#2D388A"></circle>
+    <g stroke="#2D388A" stroke-width="6" stroke-linecap="round">
+      <line x1="0" y1="-30" x2="0" y2="-22"></line>
+      <line x1="0" y1="22" x2="0" y2="30"></line>
+      <line x1="-30" y1="0" x2="-22" y2="0"></line>
+      <line x1="22" y1="0" x2="30" y2="0"></line>
+      <line x1="-21" y1="-21" x2="-16" y2="-16"></line>
+      <line x1="16" y1="16" x2="21" y2="21"></line>
+      <line x1="-21" y1="21" x2="-16" y2="16"></line>
+      <line x1="16" y1="-16" x2="21" y2="-21"></line>
+    </g>
+  </g>
+  
+  <g transform="translate(125,125) rotate(45)" stroke="#00AEEF" stroke-width="8" stroke-linecap="round" fill="none">
+    <path d="M-25 0 L25 0"></path>
+    <path d="M-30 -8 A8 8 0 0 0 -30 8 L-25 8 L-25 -8 Z" fill="#00AEEF"></path>
+    <path d="M30 -8 A8 8 0 0 1 30 8 L25 8 L25 -8 Z" fill="#00AEEF"></path>
+  </g>
+</svg>

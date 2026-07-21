@@ -21,7 +21,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({ children, showScrollToTo
           minHeight: '100vh',
           display: 'flex',
           flexDirection: 'column',
-          backgroundColor: COLORS.darkGreyBg,
+          backgroundColor: COLORS.atelier.deskBg,
         }}
       >
         <Header />

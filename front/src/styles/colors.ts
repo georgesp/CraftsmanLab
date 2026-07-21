@@ -4,6 +4,63 @@
 // Central color palette previously located at src/utils/colors.ts
 // Kept as a single exported object for backward compatibility with existing imports.
 export const COLORS = {
+  // =====================================================================
+  // Refonte « Atelier adouci » — nouveaux tokens (2026-07)
+  // Ajoutés sans retirer les clés existantes pour préserver la compat.
+  // =====================================================================
+  atelier: {
+    // Surfaces & fonds
+    pageBg: '#EEF0F3', // Fond de page (avec grille de lignes fines par-dessus)
+    pageGridLine: 'rgba(17,21,29,.025)', // Ligne de la grille technique (maille 46px)
+    deskBg: '#E6E8EC', // Fond « desk » autour de la page
+    surface: '#FFFFFF', // Cartes / panneaux
+    surfaceHover: '#F7F9FB', // Survol de ligne (fils actus)
+    borderDefault: '#E2E6EC', // Bordure par défaut
+    divider: '#EEF0F3', // Séparateur interne léger
+
+    // Textes
+    textStrong: '#11151D', // Titres
+    textBody: '#3A4250', // Texte courant
+    textBodyAlt: '#4A5260',
+    textMuted: '#8A93A0', // Méta / atténué
+    textFaint: '#A0A6AE', // Compteurs
+    textFainter: '#C0C6CF',
+
+    // Marque & rubriques
+    brandGradient: 'linear-gradient(135deg, #2D388A 0%, #00AEEF 100%)',
+    brandDeep: '#2D388A',
+    brandCyan: '#00AEEF',
+
+    // Bleu (Tips / action / liens)
+    tips: '#1976D2',
+    tipsHover: '#115293',
+    tipsBg: '#EAF4FE',
+    tipsBorder: '#C9E2FB',
+
+    // Orange (Prompts)
+    prompts: '#C45A00',
+    promptsBg: '#FFF3E6',
+    promptsBgAlt: '#FFF7EF',
+    promptsBorder: '#FFD9B3',
+
+    // Vert (Actualités)
+    news: '#2E7D32',
+    newsBg: '#E8F5E9',
+    newsBorder: '#C8E6C9',
+
+    // Fenêtre de code (hero)
+    codeBg: '#0F1420',
+    codeHeader: '#161C2A',
+    codeText: '#D4D4D4',
+    codeKeyword: '#569CD6',
+    codeType: '#4EC9B0',
+    codeComment: '#6A9955',
+
+    // Réseaux (Contact)
+    linkedin: '#0A66C2',
+    malt: '#FF5C5C',
+  },
+
   linkedInBlue: '#0A66C2', // Bleu LinkedIn, utilisé pour les liens et boutons
   linkedInlightBlue: '#0a66c242', // Bleu clair pour hover
   maltRed: '#FF5C5C', // Rouge Malt, utilisé pour les boutons

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Menu, MenuItem, Box } from '@mui/material';
-import { Language as LanguageIcon, ExpandMore } from '@mui/icons-material';
+import { ExpandMore } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 import { COLORS, TYPOGRAPHY } from '../../../styles';
 
@@ -35,19 +35,27 @@ export const LanguageSelector: React.FC = () => {
     <Box>
       <Button
         onClick={handleClick}
-        startIcon={<LanguageIcon fontSize="small" />}
         endIcon={<ExpandMore fontSize="small" />}
         sx={{
-          color: 'inherit',
+          color: COLORS.atelier.tips,
           textTransform: 'none',
-          fontWeight: TYPOGRAPHY.fontWeights.medium,
-          fontSize: TYPOGRAPHY.fontSizes.nav,
+          fontFamily: TYPOGRAPHY.fontFamilies.mono,
+          fontWeight: TYPOGRAPHY.fontWeights.semiBold,
+          fontSize: '12px',
+          lineHeight: 1,
+          minWidth: 0,
+          px: 1.25,
+          py: 0.5,
+          borderRadius: 999,
+          border: `1px solid ${COLORS.atelier.tipsBorder}`,
+          backgroundColor: COLORS.atelier.tipsBg,
           '&:hover': {
-            backgroundColor: COLORS.overlay.light10,
+            backgroundColor: COLORS.atelier.tipsBg,
+            borderColor: COLORS.atelier.tips,
           },
         }}
       >
-        {currentLanguage.flag} {currentLanguage.code.toUpperCase()}
+        {currentLanguage.code.toUpperCase()}
       </Button>
       <Menu
         anchorEl={anchorEl}
