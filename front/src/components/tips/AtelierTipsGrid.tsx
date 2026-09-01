@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { AtelierCard, IllusBadge } from '../atelier';
 import type { IllusName } from '../atelier';
@@ -25,7 +25,6 @@ function pickIllus(categories: string[] = []): IllusName {
 
 export const AtelierTipsGrid: React.FC<Props> = ({ items: externalItems }) => {
   const { t, i18n } = useTranslation('tips');
-  const navigate = useNavigate();
   const items = externalItems ?? tipsList;
 
   // Réutilise le pattern de traduction du site (titre / description par tip).
@@ -63,7 +62,6 @@ export const AtelierTipsGrid: React.FC<Props> = ({ items: externalItems }) => {
           <AtelierCard
             key={tip.slug}
             accent={COLORS.atelier.tips}
-            onClick={() => navigate(`/tips/${tip.slug}`)}
             sx={{ display: 'flex', flexDirection: 'column' }}
           >
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: '14px' }}>
@@ -103,7 +101,28 @@ export const AtelierTipsGrid: React.FC<Props> = ({ items: externalItems }) => {
                 color: COLORS.atelier.textStrong,
               }}
             >
-              {tr(tip.slug, 'title', tip.title)}
+              {/* Lien etire : un vrai <a href> pour les moteurs, dont la zone */}
+              {/* cliquable couvre toute la carte via le ::after. */}
+              <Box
+                component={RouterLink}
+                to={`/tips/${tip.slug}`}
+                sx={{
+                  color: 'inherit',
+                  textDecoration: 'none',
+                  outline: 'none',
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    inset: 0,
+                    borderRadius: '12px',
+                  },
+                  '&:focus-visible::after': {
+                    boxShadow: '0 0 0 3px rgba(25,118,210,.25)',
+                  },
+                }}
+              >
+                {tr(tip.slug, 'title', tip.title)}
+              </Box>
             </Typography>
 
             <Typography

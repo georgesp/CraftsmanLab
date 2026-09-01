@@ -2,6 +2,7 @@ import { useMemo, useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Box, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { useSeo } from '../../hooks/useSeo';
 import { PageLayout, ScrollToTopButton } from '../../components';
 import {
   AtelierContainer,
@@ -34,6 +35,11 @@ function themeForCategory(category: string): string {
 
 export const NewsPage: React.FC = () => {
   const { t, i18n } = useTranslation('pages');
+  useSeo({
+    title: t('seo.news.title'),
+    description: t('seo.news.description'),
+    path: '/news',
+  });
   const [searchParams] = useSearchParams();
   const [selectedSource, setSelectedSource] = useState<string | null>(null);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);

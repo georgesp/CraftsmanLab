@@ -2,6 +2,7 @@ import { useMemo, useState, useEffect } from 'react';
 import { Box, Typography } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useTranslation } from 'react-i18next';
+import { useSeo } from '../../hooks/useSeo';
 import { useSearchParams } from 'react-router-dom';
 import { PageLayout, ScrollToTopButton } from '../../components';
 import {
@@ -17,6 +18,11 @@ import { tipsList } from '../../components/tips/registry';
 
 export const TipsPage: React.FC = () => {
   const { t } = useTranslation('pages');
+  useSeo({
+    title: t('seo.tips.title'),
+    description: t('seo.tips.description'),
+    path: '/tips',
+  });
   const [searchParams] = useSearchParams();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [categoryFilter, setCategoryFilter] = useState<string>('');

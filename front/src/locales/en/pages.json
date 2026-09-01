@@ -108,5 +108,29 @@
   },
   "footer": {
     "copyright": "© 2026 CraftsmanLab. All rights reserved."
+  },
+  "seo": {
+    "home": {
+      "title": "CraftsmanLab — Tools and prompts for C# developers",
+      "description": "C#, .NET and T-SQL tips, ready-to-use prompts and technical news for .NET developers."
+    },
+    "tips": {
+      "title": "C# and .NET tips — CraftsmanLab",
+      "description": "A collection of short, practical tips on C#, .NET, T-SQL and developer tooling, with copy-ready code samples."
+    },
+    "prompts": {
+      "title": "Prompts for C# developers — CraftsmanLab",
+      "description": "Ready-to-use prompts to speed up your .NET work with AI assistants: conventions, code review, test generation."
+    },
+    "news": {
+      "title": ".NET news — CraftsmanLab",
+      "description": "The latest news from the .NET and C# ecosystem, aggregated from the community reference sources."
+    },
+    "contact": {
+      "title": "Contact — CraftsmanLab",
+      "description": "A question, a suggestion or a project proposal? Get in touch."
+    },
+    "tipDetailSuffix": "— CraftsmanLab",
+    "promptDetailSuffix": "— CraftsmanLab"
   }
 }

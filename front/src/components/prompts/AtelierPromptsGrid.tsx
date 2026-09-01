@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box, Typography, Snackbar } from '@mui/material';
 import DescriptionIcon from '@mui/icons-material/Description';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import { useNavigate } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { AtelierCard, RubricBadge } from '../atelier';
 import { promptsList } from './registry';
@@ -14,7 +14,6 @@ type Props = {
 
 export const AtelierPromptsGrid: React.FC<Props> = ({ items: externalItems }) => {
   const { t } = useTranslation(['prompts', 'pages']);
-  const navigate = useNavigate();
   const [toastOpen, setToastOpen] = useState(false);
   const items = (externalItems ?? promptsList).filter((p) => p.slug !== 'more');
 
@@ -48,7 +47,6 @@ export const AtelierPromptsGrid: React.FC<Props> = ({ items: externalItems }) =>
           return (
             <AtelierCard
               key={p.slug}
-              onClick={() => navigate(`/prompts/${p.slug}`)}
               sx={{ display: 'flex', flexDirection: 'column' }}
             >
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
@@ -69,7 +67,28 @@ export const AtelierPromptsGrid: React.FC<Props> = ({ items: externalItems }) =>
                     color: COLORS.atelier.textStrong,
                   }}
                 >
-                  {tr(p.slug, 'title', p.title)}
+                  {/* Lien etire : un vrai <a href> pour les moteurs, dont la zone */}
+                  {/* cliquable couvre toute la carte via le ::after. */}
+                  <Box
+                    component={RouterLink}
+                    to={`/prompts/${p.slug}`}
+                    sx={{
+                      color: 'inherit',
+                      textDecoration: 'none',
+                      outline: 'none',
+                      '&::after': {
+                        content: '""',
+                        position: 'absolute',
+                        inset: 0,
+                        borderRadius: '12px',
+                      },
+                      '&:focus-visible::after': {
+                        boxShadow: '0 0 0 3px rgba(25,118,210,.25)',
+                      },
+                    }}
+                  >
+                    {tr(p.slug, 'title', p.title)}
+                  </Box>
                 </Typography>
               </Box>
 
@@ -111,6 +130,9 @@ export const AtelierPromptsGrid: React.FC<Props> = ({ items: externalItems }) =>
                   type="button"
                   onClick={(e: React.MouseEvent) => handleCopy(e, desc)}
                   sx={{
+                    // Au-dessus du lien etire de la carte, sinon inaccessible.
+                    position: 'relative',
+                    zIndex: 1,
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '5px',

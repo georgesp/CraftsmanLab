@@ -1,6 +1,7 @@
 import { type FC } from 'react';
 import { Box, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { useSeo } from '../../hooks/useSeo';
 import { ScrollToTopButton, PageLayout } from '../../components';
 import { AtelierContainer, SectionTitleBand } from '../../components/atelier';
 import { AtelierPromptsGrid } from '../../components/prompts/AtelierPromptsGrid';
@@ -9,6 +10,11 @@ import { COLORS, TYPOGRAPHY } from '../../styles';
 
 export const PromptsPage: FC = () => {
   const { t } = useTranslation('pages');
+  useSeo({
+    title: t('seo.prompts.title'),
+    description: t('seo.prompts.description'),
+    path: '/prompts',
+  });
   const count = promptsList.filter((p) => p.slug !== 'more').length;
 
   const para = (children: React.ReactNode) => (

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useSeo } from '../../hooks/useSeo';
 import { PageLayout } from '../../components';
 import { AtelierContainer, IllusBadge } from '../../components/atelier';
 import { AtelierTipsGrid } from '../../components/tips/AtelierTipsGrid';
@@ -13,6 +14,11 @@ import { COLORS, TYPOGRAPHY } from '../../styles';
 
 export const HomePage: React.FC = () => {
   const { t, i18n } = useTranslation('pages');
+  useSeo({
+    title: t('seo.home.title'),
+    description: t('seo.home.description'),
+    path: '/',
+  });
   const lang = i18n.language === 'fr' ? 'fr' : 'en';
 
   const sourceTitle = (slug: string) => {

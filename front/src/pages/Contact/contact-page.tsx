@@ -4,6 +4,7 @@ import SendIcon from '@mui/icons-material/Send';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import NorthEastIcon from '@mui/icons-material/NorthEast';
 import { useTranslation } from 'react-i18next';
+import { useSeo } from '../../hooks/useSeo';
 import { PageLayout, ScrollToTopButton } from '../../components';
 import { AtelierContainer } from '../../components/atelier';
 import { COLORS, TYPOGRAPHY } from '../../styles';
@@ -11,6 +12,11 @@ import { CONTACT_EMAIL } from '../../utils/constants';
 
 export const ContactPage: React.FC = () => {
   const { t } = useTranslation(['pages', 'common']);
+  useSeo({
+    title: t('pages:seo.contact.title'),
+    description: t('pages:seo.contact.description'),
+    path: '/contact',
+  });
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [honeypot, setHoneypot] = useState('');
   const COOLDOWN_SECONDS = 30;

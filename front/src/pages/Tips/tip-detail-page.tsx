@@ -10,11 +10,11 @@ import { TipList } from '../../components/tips/tip-list';
 import { ViewAllTipsButton } from '../../components/ui';
 import { RelatedTipsList } from '../../components/tips/related-tips-list';
 import { tipsList } from '../../components/tips/registry';
-import { useCanonical } from '../../hooks/useCanonical';
+import { useSeo } from '../../hooks/useSeo';
 
 export const TipDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
-  const { t } = useTranslation('pages');
+  const { t } = useTranslation(['pages', 'tips']);
   const entry = slug ? findTipBySlug(slug) : undefined;
   const [LoadedComponent, setLoadedComponent] = useState<React.ComponentType | null>(null);
 
@@ -125,9 +125,30 @@ export const TipDetailPage: React.FC = () => {
     };
   }, [entry?.slug]);
 
-  // Set canonical for tip detail pages to non-www preferred host
-  const canonicalPath = entry ? `/tips/${entry.slug}` : undefined;
-  useCanonical(canonicalPath);
+  // Metadonnees SEO propres au tip : titre, description, canonical et Open Graph.
+  // Sans cela la page herite des valeurs uniques de index.html.
+  const trContenu = (cle: string, cleSecours: string, secours: string) => {
+    const direct = t(`tips:${cle}`, { defaultValue: '' });
+    if (direct && direct !== cle) return direct;
+    const viaContenu = t(`tips:${cleSecours}`, { defaultValue: '' });
+    if (viaContenu && viaContenu !== cleSecours) return viaContenu;
+    return secours;
+  };
+  const seoTitre = entry
+    ? `${trContenu(`${entry.slug}.title`, `${entry.slug}.content.mainTitle`, entry.title)} ${t('seo.tipDetailSuffix')}`
+    : undefined;
+  const seoDescription = entry
+    ? trContenu(
+        `${entry.slug}.shortDescription`,
+        `${entry.slug}.content.summary`,
+        entry.shortDescription,
+      )
+    : undefined;
+  useSeo({
+    title: seoTitre,
+    description: seoDescription,
+    path: entry ? `/tips/${entry.slug}` : undefined,
+  });
 
   return (
     <>

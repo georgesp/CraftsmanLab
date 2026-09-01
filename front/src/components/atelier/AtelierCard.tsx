@@ -47,6 +47,7 @@ export const AtelierCard: React.FC<AtelierCardProps> = ({
           : undefined
       }
       sx={{
+        position: 'relative',
         background: COLORS.atelier.surface,
         border: `1px solid ${COLORS.atelier.borderDefault}`,
         borderLeft: accent ? `3px solid ${accent}` : `1px solid ${COLORS.atelier.borderDefault}`,
