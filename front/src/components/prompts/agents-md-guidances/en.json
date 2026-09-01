@@ -1,0 +1,23 @@
+{
+  "agents-md-guidances": {
+    "title": "AGENTS.md Guidances",
+    "shortDescription": "Generate a complete AGENTS.md for a .NET repository, usable by Copilot, Cursor, Codex and Claude Code.",
+    "description": "A prompt to hand to a coding agent so it produces an AGENTS.md file tailored to your .NET repository.",
+    "content": {
+      "introduction": "AGENTS.md became in 2026 the open convention for describing a repository to coding agents: a single file at the root, read by Copilot, Cursor, Codex, Claude Code and others. This prompt guides an agent to explore your .NET repository and produce a complete AGENTS.md rather than a generic skeleton.",
+      "copyButton": "Copy prompt",
+      "copySuccess": "Prompt copied to clipboard!",
+      "writtenOn": "Written on",
+      "sources": "Sources: AGENTS.md convention and field feedback",
+      "useCasesTitle": "Use cases",
+      "useCases": [
+        "New .NET repository: produce the initial AGENTS.md before handing the first ticket to an agent, so it does not guess build and test commands.",
+        "Legacy codebase takeover: have the agent surface the conventions actually applied in the code, then decide what to keep and what to fix.",
+        "Monorepo: generate a root AGENTS.md plus one file per significant sub-project, the closest file to the edited code taking precedence.",
+        "Human onboarding: the resulting file also works as an entry sheet for a new developer, shorter and more actionable than a README.",
+        "Tool migration: move from .cursorrules or .github/copilot-instructions.md to the AGENTS.md convention, read by every agent.",
+        "Fewer review round trips: encode in the file the remarks that keep coming back in pull requests."
+      ]
+    }
+  }
+}

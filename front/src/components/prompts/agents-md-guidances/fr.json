@@ -1,0 +1,23 @@
+{
+  "agents-md-guidances": {
+    "title": "AGENTS.md Guidances",
+    "shortDescription": "Générer un AGENTS.md complet pour un dépôt .NET, exploitable par Copilot, Cursor, Codex et Claude Code.",
+    "description": "Prompt à donner à un agent de code pour qu'il produise un fichier AGENTS.md adapté à ton dépôt .NET.",
+    "content": {
+      "introduction": "AGENTS.md s'est imposé en 2026 comme la convention ouverte pour décrire un dépôt aux agents de code : un seul fichier à la racine, lu par Copilot, Cursor, Codex, Claude Code et les autres. Ce prompt guide un agent pour explorer ton dépôt .NET et en produire un AGENTS.md complet plutôt qu'un squelette générique.",
+      "copyButton": "Copier le prompt",
+      "copySuccess": "Prompt copié dans le presse-papiers !",
+      "writtenOn": "Écrit le",
+      "sources": "Sources: convention AGENTS.md et retours d'expérience",
+      "useCasesTitle": "Cas d'usage",
+      "useCases": [
+        "Nouveau dépôt .NET : produire l'AGENTS.md initial avant d'ouvrir le premier ticket à un agent, pour éviter qu'il devine les commandes de build et de test.",
+        "Dépôt legacy repris en main : faire expliciter par l'agent les conventions réellement appliquées dans le code, puis arbitrer ce qu'on garde et ce qu'on corrige.",
+        "Monorepo : générer un AGENTS.md racine puis un fichier par sous-projet significatif, le plus proche du code modifié faisant autorité.",
+        "Onboarding humain : le fichier obtenu sert aussi de fiche d'entrée pour un nouveau développeur, plus court et plus actionnable qu'un README.",
+        "Migration d'outil : passer de .cursorrules ou .github/copilot-instructions.md à la convention AGENTS.md, lue par tous les agents.",
+        "Réduction des allers-retours en revue : encoder dans le fichier les remarques qui reviennent systématiquement en pull request."
+      ]
+    }
+  }
+}

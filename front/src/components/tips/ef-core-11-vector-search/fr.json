@@ -1,0 +1,120 @@
+{
+  "ef-core-11-vector-search": {
+    "title": "EF Core 11 : recherche vectorielle",
+    "shortDescription": "Recherche sémantique directement dans SQL Server 2025, sans base vectorielle séparée, en LINQ typé.",
+    "content": {
+      "mainTitle": "EF Core 11 : recherche vectorielle avec SQL Server 2025",
+      "intro": "Jusqu'ici, ajouter de la recherche sémantique à une application .NET signifiait monter un second datastore : Qdrant, Pinecone, pgvector ou Azure AI Search. EF Core 11 change la donne en exposant nativement le type vector de SQL Server 2025, les index DiskANN et une API LINQ de recherche approximative. Tes embeddings vivent dans la même table que tes données métier, dans la même transaction, avec la même sauvegarde.",
+      "summary": "EF Core 11 expose le type vector de SQL Server 2025 : index DiskANN, recherche exacte ou approximative en LINQ, et recherche hybride avec le full-text search.",
+      "tocTitle": "Sommaire",
+      "tocItems": [
+        "Pourquoi chercher dans SQL Server",
+        "Prérequis et installation",
+        "Modéliser le vecteur et son index",
+        "Générer les embeddings",
+        "Requêter : exact ou approximatif",
+        "Recherche hybride",
+        "Cas d'utilisation concrets",
+        "Avantages et inconvénients face à une base vectorielle dédiée"
+      ],
+      "sections": {
+        "whyVector": {
+          "title": "Pourquoi chercher dans SQL Server",
+          "description": "Un moteur vectoriel dédié est excellent quand la recherche est ton produit. Mais dans la majorité des applications métier, la recherche sémantique est une fonctionnalité parmi d'autres, greffée sur des données déjà relationnelles. Sortir ces données vers un second système coûte cher.",
+          "painTitle": "Ce que coûte un datastore vectoriel séparé",
+          "painItems": [
+            "Deux sources de vérité à synchroniser, avec la dérive de données qui va avec",
+            "Pas de transaction commune : un document enregistré peut ne jamais arriver dans l'index",
+            "Filtrage métier compliqué : les droits, les dates et les statuts vivent dans SQL",
+            "Sauvegarde, restauration, chiffrement et conformité à traiter deux fois",
+            "Un composant d'infrastructure de plus à exploiter et à monitorer"
+          ]
+        },
+        "setup": {
+          "title": "Prérequis et installation",
+          "description": "Le support vectoriel de SQL Server est arrivé dans le provider EF Core 10 et se complète en EF Core 11 avec les index DiskANN et la recherche approximative. Côté base, seul SQL Server 2025 (ou Azure SQL) expose le type vector.",
+          "prereqTitle": "Ce qu'il te faut",
+          "prereqItems": [
+            "SQL Server 2025 ou Azure SQL Database, pour le type de données vector",
+            "EF Core 11 et le SDK .NET 11 (EF Core 11 ne cible plus les runtimes antérieurs)",
+            "Un générateur d'embeddings : Microsoft.Extensions.AI avec OpenAI, Azure OpenAI ou un modèle local",
+            "Si tu utilisais l'extension communautaire EFCore.SqlServer.VectorSearch, retire-la : elle est remplacée par le support natif"
+          ]
+        },
+        "model": {
+          "title": "Modéliser le vecteur et son index",
+          "description": "Le vecteur se déclare comme une propriété SqlVector<float>. La dimension est portée par le type de colonne et doit correspondre exactement au modèle d'embedding utilisé : 1536 pour text-embedding-3-small, 3072 pour text-embedding-3-large.",
+          "indexTitle": "Déclarer l'index vectoriel",
+          "indexDescription": "HasVectorIndex crée un index DiskANN. La métrique choisie ici (cosine, euclidean ou dot) doit être la même que celle passée à la requête, sinon l'index n'est pas utilisé.",
+          "sqlTitle": "SQL généré",
+          "sqlDescription": "La migration produit un CREATE VECTOR INDEX classique. Rien de magique côté base : tu peux le relire et l'ajuster.",
+          "migrationTitle": "Créer et appliquer la migration",
+          "migrationDescription": "EF Core 11 permet de créer et d'appliquer une migration en une seule commande grâce à l'option --add."
+        },
+        "embeddings": {
+          "title": "Générer les embeddings",
+          "description": "EF Core ne calcule pas les vecteurs : il les stocke et les interroge. La génération passe par Microsoft.Extensions.AI, qui abstrait le fournisseur derrière IEmbeddingGenerator. Si tu as déjà lu le tip sur Microsoft.Extensions.AI, tu es en terrain connu.",
+          "tipsTitle": "Points d'attention",
+          "tipsItems": [
+            "Un changement de modèle d'embedding invalide tous les vecteurs stockés : prévois une colonne de version de modèle",
+            "Normalise le texte avant génération (troncature, suppression du balisage) pour des résultats stables",
+            "Regroupe les appels de génération par lots : c'est le poste de coût principal lors d'un réindexage",
+            "Stocke aussi le hash du texte source pour ne régénérer que ce qui a changé"
+          ]
+        },
+        "query": {
+          "title": "Requêter : exact ou approximatif",
+          "description": "Deux mécaniques coexistent. EF.Functions.VectorDistance calcule la distance exacte : scan complet, résultat toujours juste. VectorSearch avec WithApproximate s'appuie sur l'index DiskANN : bien plus rapide, avec une part de rappel sacrifiée.",
+          "exactTitle": "Distance exacte",
+          "exactDescription": "Parfait tant que la table reste modeste (quelques dizaines de milliers de lignes) ou pour valider la qualité des résultats de référence.",
+          "approxTitle": "Recherche approximative (DiskANN)",
+          "approxDescription": "WithApproximate ajoute WITH APPROXIMATE au SQL généré et exploite l'index. Sans cet appel, la requête retombe sur un scan complet : c'est l'oubli le plus fréquent.",
+          "projectionTitle": "Filtrer et projeter",
+          "projectionDescription": "La recherche vectorielle reste une requête LINQ : tu peux filtrer sur la distance, projeter dans un DTO et limiter le nombre de résultats."
+        },
+        "hybrid": {
+          "title": "Recherche hybride",
+          "description": "La recherche vectorielle seule rate les correspondances exactes : références produit, codes d'erreur, noms propres. EF Core 11 configure aussi le full-text search de SQL Server, ce qui permet de combiner les deux et de fusionner les classements (typiquement par Reciprocal Rank Fusion).",
+          "note": "En pratique : récupère les k meilleurs résultats de chaque côté, fusionne les rangs, puis coupe au nombre voulu. Le full-text rattrape les termes littéraux, le vecteur rattrape les reformulations."
+        },
+        "useCases": {
+          "title": "Cas d'utilisation concrets",
+          "description": "Le bon repère : si tes données sont déjà dans SQL Server et que la recherche sémantique est une fonctionnalité, pas ton cœur de métier, reste dans SQL Server.",
+          "items": [
+            "Base de connaissances interne : retrouver une procédure à partir d'une question formulée librement",
+            "RAG applicatif : alimenter un assistant avec les documents que l'utilisateur a le droit de voir, le filtrage de droits restant en SQL",
+            "Déduplication et rapprochement : détecter des tickets, fiches clients ou fournisseurs quasi identiques",
+            "Recommandation de contenu : proposer des articles proches de celui consulté, sans moteur externe",
+            "Classification de tickets entrants : chercher les cas historiques les plus proches pour suggérer une catégorie"
+          ]
+        },
+        "comparison": {
+          "title": "Avantages et inconvénients face à une base vectorielle dédiée",
+          "description": "Le point de comparaison naturel, ce sont Qdrant, pgvector et Azure AI Search. Voici où le choix bascule.",
+          "prosTitle": "Ce que SQL Server plus EF Core apporte",
+          "prosItems": [
+            "Un seul datastore : embeddings et données métier écrits dans la même transaction",
+            "Filtrage métier natif : droits, dates, statuts et jointures sans réplication de données",
+            "Sauvegarde, restauration, haute disponibilité et conformité déjà en place",
+            "Requêtes typées en LINQ, migrations EF et modèle unique pour toute l'équipe",
+            "Aucun composant d'infrastructure supplémentaire à exploiter"
+          ],
+          "consTitle": "Ce qui plaide pour un moteur dédié",
+          "consItems": [
+            "SQL Server 2025 ou Azure SQL obligatoire : impossible sur une instance 2019 ou 2022",
+            "EF Core 11 impose .NET 11, qui n'est pas une version LTS",
+            "DiskANN reste moins paramétrable que Qdrant : quantification, sharding et réglages de rappel plus limités",
+            "Le type vector impose une limite de dimensions : vérifie-la avant de choisir ton modèle d'embedding",
+            "Sur des volumes très élevés, la construction et la maintenance de l'index pèsent sur la même instance que ta charge transactionnelle",
+            "Coût de licence SQL Server face à un pgvector ou un Qdrant auto-hébergé"
+          ],
+          "verdict": "En pratique : sous quelques millions de vecteurs, avec des données déjà relationnelles et un fort besoin de filtrage métier, SQL Server suffit largement et t'économise un composant entier. Au-delà, ou si la recherche est le produit lui-même, un moteur dédié reste le bon choix."
+        }
+      },
+      "footer": {
+        "sourceLabel": "Documentation Microsoft — EF Core SQL Server Vector Search",
+        "writtenOn": "Écrit le {{date}}"
+      }
+    }
+  }
+}
