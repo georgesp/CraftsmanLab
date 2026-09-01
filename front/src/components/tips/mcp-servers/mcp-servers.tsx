@@ -34,18 +34,31 @@ const McpServersTip: React.FC = () => {
       <Typography variant="h4">{t('mcp-servers.content.installation.title')}</Typography>
       <Typography paragraph>{t('mcp-servers.content.installation.intro')}</Typography>
       <Box component="ul">
-        {(
+        {Object.keys(
           // list methods as objects
-          Object.keys((t('mcp-servers.content.installation.methods', { returnObjects: true }) as Record<string, any>))
+          t('mcp-servers.content.installation.methods', { returnObjects: true }) as Record<
+            string,
+            any
+          >,
         ).map((k) => {
-          const method = (t(`mcp-servers.content.installation.methods.${k}`, { returnObjects: true }) as any) || {};
+          const method =
+            (t(`mcp-servers.content.installation.methods.${k}`, {
+              returnObjects: true,
+            }) as any) || {};
           return (
             <li key={k}>
               <Typography component="span">
                 <strong>{method.title}</strong>: {method.description}{' '}
                 {method.link && (
-                  <a href={method.link} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
-                    {t('mcp-servers.content.config.openMarketplace', { defaultValue: 'Open marketplace' })}
+                  <a
+                    href={method.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: 'inherit', textDecoration: 'underline' }}
+                  >
+                    {t('mcp-servers.content.config.openMarketplace', {
+                      defaultValue: 'Open marketplace',
+                    })}
                   </a>
                 )}
               </Typography>

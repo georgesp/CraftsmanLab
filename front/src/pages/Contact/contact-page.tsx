@@ -120,7 +120,10 @@ export const ContactPage: React.FC = () => {
     <PageLayout>
       <AtelierContainer>
         {/* Bandeau */}
-        <Box component="section" sx={{ px: { xs: 2.5, md: '46px' }, pt: { xs: 4, md: '46px' }, pb: 1 }}>
+        <Box
+          component="section"
+          sx={{ px: { xs: 2.5, md: '46px' }, pt: { xs: 4, md: '46px' }, pb: 1 }}
+        >
           <Box
             sx={{
               fontFamily: TYPOGRAPHY.fontFamilies.mono,
@@ -146,7 +149,9 @@ export const ContactPage: React.FC = () => {
           >
             {t('contact.bandTitle', { defaultValue: 'Développeur freelance .NET & IA' })}
           </Typography>
-          <Typography sx={{ mt: '8px', fontSize: '15.5px', color: COLORS.atelier.textBodyAlt, maxWidth: 640 }}>
+          <Typography
+            sx={{ mt: '8px', fontSize: '15.5px', color: COLORS.atelier.textBodyAlt, maxWidth: 640 }}
+          >
             {t('contact.bandSubtitle', { defaultValue: '' })}
           </Typography>
         </Box>
@@ -203,7 +208,14 @@ export const ContactPage: React.FC = () => {
                 style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
               />
 
-              <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 2, mb: 2 }}>
+              <Box
+                sx={{
+                  display: 'grid',
+                  gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+                  gap: 2,
+                  mb: 2,
+                }}
+              >
                 <TextField
                   fullWidth
                   size="small"
@@ -246,7 +258,12 @@ export const ContactPage: React.FC = () => {
               />
 
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, flexWrap: 'wrap' }}>
-                <Button type="submit" variant="contained" startIcon={<SendIcon />} disabled={isLoading}>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  startIcon={<SendIcon />}
+                  disabled={isLoading}
+                >
                   {isLoading
                     ? t('common:buttons.send') + '...'
                     : t('common:buttons.submit', { defaultValue: 'Envoyer le message' })}
@@ -290,10 +307,16 @@ export const ContactPage: React.FC = () => {
                   mb: 1.5,
                 }}
               >
-                <Box sx={{ width: 8, height: 8, borderRadius: '50%', background: COLORS.atelier.news }} />
-                {t('contact.availabilityTitle', { defaultValue: 'Disponible pour missions freelance' })}
+                <Box
+                  sx={{ width: 8, height: 8, borderRadius: '50%', background: COLORS.atelier.news }}
+                />
+                {t('contact.availabilityTitle', {
+                  defaultValue: 'Disponible pour missions freelance',
+                })}
               </Box>
-              <Typography sx={{ fontSize: '14px', lineHeight: 1.6, color: COLORS.atelier.textBody, m: 0 }}>
+              <Typography
+                sx={{ fontSize: '14px', lineHeight: 1.6, color: COLORS.atelier.textBody, m: 0 }}
+              >
                 {t('contact.availabilityBody', { defaultValue: '' })}
               </Typography>
             </Box>
@@ -336,7 +359,8 @@ export const ContactPage: React.FC = () => {
                       border: `1px solid ${COLORS.atelier.borderDefault}`,
                       borderRadius: '12px',
                       p: '12px 14px',
-                      transition: 'border-color .15s ease, box-shadow .15s ease, transform .15s ease',
+                      transition:
+                        'border-color .15s ease, box-shadow .15s ease, transform .15s ease',
                       '&:hover': {
                         borderColor: n.color,
                         boxShadow: `0 10px 24px -16px ${n.color}`,
@@ -345,7 +369,12 @@ export const ContactPage: React.FC = () => {
                     }}
                   >
                     {n.logo ? (
-                      <Box component="img" src={n.logo} alt="" sx={{ width: 38, height: 38, objectFit: 'contain' }} />
+                      <Box
+                        component="img"
+                        src={n.logo}
+                        alt=""
+                        sx={{ width: 38, height: 38, objectFit: 'contain' }}
+                      />
                     ) : (
                       <Box
                         sx={{
@@ -375,7 +404,9 @@ export const ContactPage: React.FC = () => {
                       >
                         {n.name}
                       </Typography>
-                      <Typography sx={{ fontSize: '12.5px', color: COLORS.atelier.textMuted }}>{n.sub}</Typography>
+                      <Typography sx={{ fontSize: '12.5px', color: COLORS.atelier.textMuted }}>
+                        {n.sub}
+                      </Typography>
                     </Box>
                     <NorthEastIcon sx={{ fontSize: 18, color: COLORS.atelier.textMuted }} />
                   </Box>

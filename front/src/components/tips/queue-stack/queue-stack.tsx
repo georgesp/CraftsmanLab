@@ -16,9 +16,9 @@ const QueueStackTip: React.FC = () => {
 
       <Typography variant="h5">{t('queue-stack.content.useCases.queue.title')}</Typography>
       <Typography paragraph>{t('queue-stack.content.useCases.queue.description')}</Typography>
-    <CodeBlock
-    language="csharp"
-    code={`// FIFO processing with Queue<T>
+      <CodeBlock
+        language="csharp"
+        code={`// FIFO processing with Queue<T>
 using System;
 using System.Collections.Generic;
 
@@ -40,12 +40,14 @@ while (jobs.Count > 0)
 // Running: Second
 // Running: Third
 `}
-    />
+      />
 
-    <Typography variant="h5">{t('queue-stack.content.useCases.concurrentQueue.title')}</Typography>
-    <Typography paragraph>
-    {t('queue-stack.content.useCases.concurrentQueue.description')}
-    </Typography>
+      <Typography variant="h5">
+        {t('queue-stack.content.useCases.concurrentQueue.title')}
+      </Typography>
+      <Typography paragraph>
+        {t('queue-stack.content.useCases.concurrentQueue.description')}
+      </Typography>
 
       <Typography variant="h5">{t('queue-stack.content.useCases.stack.title')}</Typography>
       <Typography paragraph>{t('queue-stack.content.useCases.stack.description')}</Typography>
@@ -75,11 +77,12 @@ while (history.Count > 0)
 // Back to: First
 `}
       />
-      <Typography variant="h5">{t('queue-stack.content.useCases.concurrentStack.title')}</Typography>
+      <Typography variant="h5">
+        {t('queue-stack.content.useCases.concurrentStack.title')}
+      </Typography>
       <Typography paragraph>
         {t('queue-stack.content.useCases.concurrentStack.description')}
       </Typography>
-      
 
       <Typography variant="h4">{t('queue-stack.content.summary.title')}</Typography>
       <Typography paragraph>{t('queue-stack.content.summary.text')}</Typography>

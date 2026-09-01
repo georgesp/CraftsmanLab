@@ -96,10 +96,15 @@ export const Facets: React.FC<FacetsProps> = ({
                   fontFamily: TYPOGRAPHY.fontFamilies.mono,
                   fontSize: '11px',
                   color: activeCount > 0 ? accent : COLORS.atelier.textFaint,
-                  fontWeight: activeCount > 0 ? TYPOGRAPHY.fontWeights.semiBold : TYPOGRAPHY.fontWeights.regular,
+                  fontWeight:
+                    activeCount > 0
+                      ? TYPOGRAPHY.fontWeights.semiBold
+                      : TYPOGRAPHY.fontWeights.regular,
                 }}
               >
-                {activeCount > 0 ? `${activeCount} actif${activeCount > 1 ? 's' : ''}` : g.items.length}
+                {activeCount > 0
+                  ? `${activeCount} actif${activeCount > 1 ? 's' : ''}`
+                  : g.items.length}
               </Box>
               <ExpandMoreIcon
                 sx={{
@@ -142,7 +147,10 @@ export const Facets: React.FC<FacetsProps> = ({
                         outline: 'none',
                         transition: 'border-color .15s ease, background .15s ease, color .15s ease',
                         '&:hover': { borderColor: accent, background: accentBg },
-                        '&:focus-visible': { borderColor: accent, boxShadow: `0 0 0 3px ${accentBg}` },
+                        '&:focus-visible': {
+                          borderColor: accent,
+                          boxShadow: `0 0 0 3px ${accentBg}`,
+                        },
                       }}
                     >
                       <Box

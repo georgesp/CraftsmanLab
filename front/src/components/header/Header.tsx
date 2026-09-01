@@ -41,9 +41,7 @@ export const Header: React.FC = () => {
   const navSx = (path: string) => {
     const active = location.pathname === path;
     return {
-      fontWeight: active
-        ? TYPOGRAPHY.fontWeights.bold
-        : TYPOGRAPHY.fontWeights.medium,
+      fontWeight: active ? TYPOGRAPHY.fontWeights.bold : TYPOGRAPHY.fontWeights.medium,
       color: active ? ACTIVE_COLOR[path] : undefined,
     };
   };
@@ -73,7 +71,7 @@ export const Header: React.FC = () => {
     // Navigue vers l'élément sélectionné (ou le premier si aucun sélectionné)
     const index = selectedIndex >= 0 ? selectedIndex : 0;
     const target = results[index];
-    
+
     if (target.kind === 'news') {
       // For news articles, open the external link in a new tab
       if (target.link) {
@@ -333,13 +331,7 @@ export const Header: React.FC = () => {
         </Box>
 
         <NavigationContainer>
-          <MuiLink
-            component={RouterLink}
-            to="/"
-            color="inherit"
-            underline="none"
-            sx={navSx('/')}
-          >
+          <MuiLink component={RouterLink} to="/" color="inherit" underline="none" sx={navSx('/')}>
             {t('navigation.home')}
           </MuiLink>
 

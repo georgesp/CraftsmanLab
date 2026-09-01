@@ -16,12 +16,7 @@ interface RubricBadgeProps {
  * Petit badge carré à coin doux avec icône blanche centrée.
  * Ex. badge « document » orange des cartes prompt.
  */
-export const RubricBadge: React.FC<RubricBadgeProps> = ({
-  icon,
-  color,
-  size = 34,
-  radius = 8,
-}) => (
+export const RubricBadge: React.FC<RubricBadgeProps> = ({ icon, color, size = 34, radius = 8 }) => (
   <Box
     sx={{
       width: size,

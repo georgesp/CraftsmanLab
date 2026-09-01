@@ -116,7 +116,11 @@ const TickerQTip: React.FC = () => {
       <Typography variant="h4" gutterBottom>
         {t('tickerq.content.installation.title')}
       </Typography>
-      <CodeBlock language="bash" ariaLabel="tickerq-install" code={t('tickerq.content.installation.commands')} />
+      <CodeBlock
+        language="bash"
+        ariaLabel="tickerq-install"
+        code={t('tickerq.content.installation.commands')}
+      />
       <Typography paragraph>{t('tickerq.content.installation.note')}</Typography>
 
       <Typography variant="h4" gutterBottom>
@@ -183,20 +187,40 @@ const TickerQTip: React.FC = () => {
         mt={4}
         pt={2}
         borderTop={(theme) => `1px solid ${theme.palette.divider}`}
-        sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 2 }}
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: 2,
+        }}
       >
-        <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
+        <Typography
+          variant="caption"
+          component="div"
+          sx={{ fontStyle: 'italic', color: 'text.secondary' }}
+        >
           {t('tickerq.content.sources.title')}{' '}
           {sources.map((s, i) => (
             <span key={s.url}>
-              <Link href={s.url} target="_blank" rel="noopener noreferrer" underline="always" color="inherit">
+              <Link
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                underline="always"
+                color="inherit"
+              >
                 {s.name}
               </Link>
               {i < sources.length - 1 ? ' • ' : ''}
             </span>
           ))}
         </Typography>
-        <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
+        <Typography
+          variant="caption"
+          component="div"
+          sx={{ fontStyle: 'italic', color: 'text.secondary' }}
+        >
           {t('tickerq.content.footer.writtenOn', { date: meta.writtenOn })}
         </Typography>
       </Box>

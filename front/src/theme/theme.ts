@@ -7,11 +7,11 @@ import { SHADOWS } from '../styles/shadows';
 // Refonte « Atelier adouci » : angles doux (le carré strict est abandonné)
 export const BORDER_RADIUS = {
   none: 0,
-  filter: 9,         // Lignes de filtre / facettes
-  input: 10,         // Inputs / boutons
-  card: 12,          // Cartes
-  panel: 16,         // Grands panneaux / encadrés
-  pill: 999,         // Chip langue, pastille dispo
+  filter: 9, // Lignes de filtre / facettes
+  input: 10, // Inputs / boutons
+  card: 12, // Cartes
+  panel: 16, // Grands panneaux / encadrés
+  pill: 999, // Chip langue, pastille dispo
   // Alias historiques conservés pour compat
   small: 9,
   medium: 12,

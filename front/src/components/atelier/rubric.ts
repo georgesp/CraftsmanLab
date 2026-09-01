@@ -28,10 +28,4 @@ export const RUBRICS: Record<Rubric, RubricTheme> = {
 };
 
 // Badges illustrations disponibles (fichiers /illus-*.svg dans public/).
-export type IllusName =
-  | 'code'
-  | 'layers'
-  | 'blueprint'
-  | 'tools'
-  | 'prompt'
-  | 'book';
+export type IllusName = 'code' | 'layers' | 'blueprint' | 'tools' | 'prompt' | 'book';

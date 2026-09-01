@@ -1,4 +1,12 @@
-import { Box, Typography, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import {
+  Box,
+  Typography,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from '@mui/material';
 import { Language as LanguageIcon } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 import { COLORS } from '../../styles/colors';
@@ -45,14 +53,10 @@ export const TopSourcesFilter: React.FC<TopSourcesFilterProps> = ({
       >
         {t('home.recommendedSources', { defaultValue: 'Sources recommandées' })}
       </Typography>
-      
+
       <List sx={{ p: 0 }}>
         {sources.map((source) => (
-          <ListItem
-            key={source.slug}
-            disablePadding
-            sx={{ mb: 0.25 }}
-          >
+          <ListItem key={source.slug} disablePadding sx={{ mb: 0.25 }}>
             <ListItemButton
               selected={selectedSource === source.slug}
               onClick={() => onSourceClick(selectedSource === source.slug ? null : source.slug)}

@@ -5,12 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useSeo } from '../../hooks/useSeo';
 import { useSearchParams } from 'react-router-dom';
 import { PageLayout, ScrollToTopButton } from '../../components';
-import {
-  AtelierContainer,
-  SectionTitleBand,
-  SearchField,
-  Facets,
-} from '../../components/atelier';
+import { AtelierContainer, SectionTitleBand, SearchField, Facets } from '../../components/atelier';
 import type { FacetGroup } from '../../components/atelier';
 import { AtelierTipsGrid } from '../../components/tips/AtelierTipsGrid';
 import { COLORS, TYPOGRAPHY } from '../../styles';
@@ -34,7 +29,10 @@ export const TipsPage: React.FC = () => {
   useEffect(() => {
     const tagsParam = searchParams.get('tags');
     if (tagsParam) {
-      const tags = tagsParam.split(',').map((tag) => tag.trim()).filter(Boolean);
+      const tags = tagsParam
+        .split(',')
+        .map((tag) => tag.trim())
+        .filter(Boolean);
       setSelectedCategories(tags);
     }
   }, [searchParams]);
@@ -64,7 +62,9 @@ export const TipsPage: React.FC = () => {
   // Liste des catégories (triées par occurrence puis alpha), filtrées par recherche.
   const facetGroups = useMemo<FacetGroup[]>(() => {
     const all = Array.from(
-      new Set(filtered.flatMap((tip) => (tip.categories ?? []).map((s) => s.trim()).filter(Boolean))),
+      new Set(
+        filtered.flatMap((tip) => (tip.categories ?? []).map((s) => s.trim()).filter(Boolean)),
+      ),
     ).sort((a, b) => {
       const diff = (categoryOccurrences[b] || 0) - (categoryOccurrences[a] || 0);
       return diff !== 0 ? diff : a.localeCompare(b);
@@ -151,7 +151,9 @@ export const TipsPage: React.FC = () => {
               >
                 {t('tips.noteTitle', { defaultValue: 'À noter' })}
               </Box>
-              <Typography sx={{ m: 0, fontSize: '13px', lineHeight: 1.55, color: COLORS.atelier.textBody }}>
+              <Typography
+                sx={{ m: 0, fontSize: '13px', lineHeight: 1.55, color: COLORS.atelier.textBody }}
+              >
                 {t('tips.noteBody', { defaultValue: '' })}
               </Typography>
             </Box>
@@ -169,7 +171,11 @@ export const TipsPage: React.FC = () => {
             >
               <Box
                 component="span"
-                sx={{ fontFamily: TYPOGRAPHY.fontFamilies.mono, fontSize: '12.5px', color: COLORS.atelier.textBody }}
+                sx={{
+                  fontFamily: TYPOGRAPHY.fontFamilies.mono,
+                  fontSize: '12.5px',
+                  color: COLORS.atelier.textBody,
+                }}
               >
                 <b style={{ color: COLORS.atelier.textStrong }}>{filtered.length}</b>{' '}
                 {t('tips.results', { defaultValue: 'résultats' })}

@@ -6,5 +6,13 @@ export const meta: TipMeta = {
   shortDescription: '',
   writtenOn: '2025-09-07',
   categories: ['C#', 'Interfaces'],
-  searchKeywords: ['default interface methods', 'c#', 'csharp', 'interfaces', 'c# 8', 'default implementation', 'traits'],
+  searchKeywords: [
+    'default interface methods',
+    'c#',
+    'csharp',
+    'interfaces',
+    'c# 8',
+    'default implementation',
+    'traits',
+  ],
 };

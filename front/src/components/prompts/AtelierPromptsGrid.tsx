@@ -45,16 +45,9 @@ export const AtelierPromptsGrid: React.FC<Props> = ({ items: externalItems }) =>
           const desc = tr(p.slug, 'shortDescription', p.shortDescription);
           const tag = p.keywords?.[0] ?? '';
           return (
-            <AtelierCard
-              key={p.slug}
-              sx={{ display: 'flex', flexDirection: 'column' }}
-            >
+            <AtelierCard key={p.slug} sx={{ display: 'flex', flexDirection: 'column' }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                <RubricBadge
-                  icon={<DescriptionIcon />}
-                  color={COLORS.atelier.prompts}
-                  size={34}
-                />
+                <RubricBadge icon={<DescriptionIcon />} color={COLORS.atelier.prompts} size={34} />
                 <Typography
                   component="h3"
                   sx={{
@@ -95,7 +88,13 @@ export const AtelierPromptsGrid: React.FC<Props> = ({ items: externalItems }) =>
               <Box sx={{ height: '1px', background: COLORS.atelier.divider, my: '16px' }} />
 
               <Typography
-                sx={{ fontSize: '14px', lineHeight: 1.55, color: COLORS.atelier.textBodyAlt, m: 0, flex: 1 }}
+                sx={{
+                  fontSize: '14px',
+                  lineHeight: 1.55,
+                  color: COLORS.atelier.textBodyAlt,
+                  m: 0,
+                  flex: 1,
+                }}
               >
                 {desc}
               </Typography>

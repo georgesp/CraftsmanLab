@@ -6,5 +6,15 @@ export const meta: TipMeta = {
   shortDescription: '',
   writtenOn: '2025-08-27',
   categories: ['MCP', 'AI'],
-  searchKeywords: ['mcp', 'model context protocol', 'servers', 'ai', 'copilot', 'claude', 'integrations', 'anthropic', 'llm'],
+  searchKeywords: [
+    'mcp',
+    'model context protocol',
+    'servers',
+    'ai',
+    'copilot',
+    'claude',
+    'integrations',
+    'anthropic',
+    'llm',
+  ],
 };

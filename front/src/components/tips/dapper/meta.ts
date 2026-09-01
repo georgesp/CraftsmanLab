@@ -6,5 +6,17 @@ export const meta: TipMeta = {
   shortDescription: '',
   writtenOn: '2025-08-12',
   categories: ['ORM', 'Mapping', 'C#', 'SQL'],
-  searchKeywords: ['dapper', 'orm', 'micro orm', 'sql', 'database', 'c#', 'csharp', 'mapping', 'query', 'ado.net', 'data access'],
+  searchKeywords: [
+    'dapper',
+    'orm',
+    'micro orm',
+    'sql',
+    'database',
+    'c#',
+    'csharp',
+    'mapping',
+    'query',
+    'ado.net',
+    'data access',
+  ],
 };

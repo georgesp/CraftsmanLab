@@ -6,5 +6,15 @@ export const meta: TipMeta = {
   shortDescription: '',
   writtenOn: '2025-10-15',
   categories: ['Excel', 'ClosedXML', 'C#'],
-  searchKeywords: ['closedxml', 'excel', 'c#', 'csharp', 'xlsx', 'spreadsheet', 'workbook', 'export', 'openxml'],
+  searchKeywords: [
+    'closedxml',
+    'excel',
+    'c#',
+    'csharp',
+    'xlsx',
+    'spreadsheet',
+    'workbook',
+    'export',
+    'openxml',
+  ],
 };

@@ -165,10 +165,10 @@ export const TipDetailPage: React.FC = () => {
                 <Grid item xs={12} md={3} lg={3}>
                   <Paper
                     variant="outlined"
-                    sx={{ 
-                      p: 2, 
-                      position: 'sticky', 
-                      top: 24, 
+                    sx={{
+                      p: 2,
+                      position: 'sticky',
+                      top: 24,
                       borderColor: COLORS.itemListHover,
                       height: 'fit-content',
                     }}
@@ -203,10 +203,10 @@ export const TipDetailPage: React.FC = () => {
                   <Grid item xs={12} md={3} lg={3}>
                     <Paper
                       variant="outlined"
-                      sx={{ 
-                        p: 2, 
-                        position: 'sticky', 
-                        top: 24, 
+                      sx={{
+                        p: 2,
+                        position: 'sticky',
+                        top: 24,
                         borderColor: COLORS.itemListHover,
                         height: 'fit-content',
                       }}

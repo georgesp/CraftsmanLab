@@ -16,8 +16,7 @@ function pickIllus(categories: string[] = []): IllusName {
   const c = categories.map((x) => x.toLowerCase());
   if (c.some((x) => x.includes('architecture') || x.includes('ddd') || x.includes('clean')))
     return 'blueprint';
-  if (c.some((x) => x.includes('test') || x.includes('perf') || x.includes('git')))
-    return 'tools';
+  if (c.some((x) => x.includes('test') || x.includes('perf') || x.includes('git'))) return 'tools';
   if (c.some((x) => x.includes('react') || x.includes('blazor') || x.includes('record')))
     return 'layers';
   return 'code';
@@ -126,7 +125,12 @@ export const AtelierTipsGrid: React.FC<Props> = ({ items: externalItems }) => {
             </Typography>
 
             <Typography
-              sx={{ fontSize: '14px', lineHeight: 1.5, color: COLORS.atelier.textBodyAlt, mt: '10px' }}
+              sx={{
+                fontSize: '14px',
+                lineHeight: 1.5,
+                color: COLORS.atelier.textBodyAlt,
+                mt: '10px',
+              }}
             >
               {tr(tip.slug, 'shortDescription', tip.shortDescription)}
             </Typography>

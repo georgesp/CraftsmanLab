@@ -6,5 +6,15 @@ export const meta: TipMeta = {
   shortDescription: '',
   writtenOn: '2025-08-12',
   categories: ['Tests', 'C#'],
-  searchKeywords: ['xunit', 'tests', 'c#', 'csharp', 'unit tests', 'testing framework', 'fact', 'theory', 'test runner'],
+  searchKeywords: [
+    'xunit',
+    'tests',
+    'c#',
+    'csharp',
+    'unit tests',
+    'testing framework',
+    'fact',
+    'theory',
+    'test runner',
+  ],
 };

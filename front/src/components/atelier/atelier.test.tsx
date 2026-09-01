@@ -6,14 +6,18 @@ import { telerikTheme } from '../../theme/theme';
 import { AtelierCard, Facets, IllusBadge, RUBRICS } from '.';
 import type { FacetGroup } from '.';
 
-const wrap = (ui: React.ReactNode) => (
-  <ThemeProvider theme={telerikTheme}>{ui}</ThemeProvider>
-);
+const wrap = (ui: React.ReactNode) => <ThemeProvider theme={telerikTheme}>{ui}</ThemeProvider>;
 
 describe('AtelierCard', () => {
   test('déclenche onClick au clic et à Enter', () => {
     const onClick = jest.fn();
-    render(wrap(<AtelierCard onClick={onClick} accent={RUBRICS.tips.fg}>Contenu</AtelierCard>));
+    render(
+      wrap(
+        <AtelierCard onClick={onClick} accent={RUBRICS.tips.fg}>
+          Contenu
+        </AtelierCard>,
+      ),
+    );
     const card = screen.getByRole('button');
     fireEvent.click(card);
     fireEvent.keyDown(card, { key: 'Enter' });
@@ -38,7 +42,13 @@ describe('IllusBadge', () => {
 
 describe('Facets', () => {
   const groups: FacetGroup[] = [
-    { group: 'Langages', items: [{ label: 'C#', count: 8 }, { label: 'F#', count: 2 }] },
+    {
+      group: 'Langages',
+      items: [
+        { label: 'C#', count: 8 },
+        { label: 'F#', count: 2 },
+      ],
+    },
   ];
 
   test('coche une facette', () => {

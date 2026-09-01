@@ -18,7 +18,9 @@ export const PromptsPage: FC = () => {
   const count = promptsList.filter((p) => p.slug !== 'more').length;
 
   const para = (children: React.ReactNode) => (
-    <Typography sx={{ fontSize: '15px', lineHeight: 1.65, color: COLORS.atelier.textBody, m: '0 0 14px' }}>
+    <Typography
+      sx={{ fontSize: '15px', lineHeight: 1.65, color: COLORS.atelier.textBody, m: '0 0 14px' }}
+    >
       {children}
     </Typography>
   );
@@ -98,7 +100,9 @@ export const PromptsPage: FC = () => {
                 {t('prompts.whyPromptTitle')}
               </Typography>
               {para(t('prompts.whyPromptBody1'))}
-              <Typography sx={{ fontSize: '15px', lineHeight: 1.65, color: COLORS.atelier.textBody, m: 0 }}>
+              <Typography
+                sx={{ fontSize: '15px', lineHeight: 1.65, color: COLORS.atelier.textBody, m: 0 }}
+              >
                 {t('prompts.whyPromptBody2')}
               </Typography>
             </Box>
@@ -130,7 +134,11 @@ export const PromptsPage: FC = () => {
             </Typography>
             <Box
               component="span"
-              sx={{ fontFamily: TYPOGRAPHY.fontFamilies.mono, fontSize: '12.5px', color: COLORS.atelier.textBody }}
+              sx={{
+                fontFamily: TYPOGRAPHY.fontFamilies.mono,
+                fontSize: '12.5px',
+                color: COLORS.atelier.textBody,
+              }}
             >
               <b style={{ color: COLORS.atelier.textStrong }}>{count}</b>{' '}
               {t('prompts.count', { defaultValue: 'prompts' })}

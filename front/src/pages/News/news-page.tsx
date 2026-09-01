@@ -4,24 +4,68 @@ import { Box, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useSeo } from '../../hooks/useSeo';
 import { PageLayout, ScrollToTopButton } from '../../components';
-import {
-  AtelierContainer,
-  SectionTitleBand,
-  SearchField,
-  Facets,
-} from '../../components/atelier';
+import { AtelierContainer, SectionTitleBand, SearchField, Facets } from '../../components/atelier';
 import type { FacetGroup } from '../../components/atelier';
 import { COLORS, TYPOGRAPHY } from '../../styles';
 import { rssSources } from '../../components/news/registry';
 
 // Thèmes de regroupement des catégories (facettes).
 const categoryThemes: Record<string, string[]> = {
-  'Langages & versions': ['.NET', '.NET 10', '.NET 9', '.NET 8', '.NET 7', '.NET 6', '.NET 5', '.NET Core', '.NET Framework', 'C#', 'C# 14', 'C# 13', 'C# 12', 'C# 11', 'C# 10', 'C# 9', 'C# 8', 'F#', 'TypeScript', 'JavaScript'],
-  'Frameworks & librairies': ['ASP.NET Core', 'ASP.NET', 'Blazor', 'Entity Framework Core', 'Entity Framework', '.NET MAUI', 'ML.NET', 'React', 'Angular', 'Vue'],
-  'Outils de développement': ['Visual Studio', 'Visual Studio 2026', 'Visual Studio 2022', 'VS Code', 'Rider', 'ReSharper', 'JetBrains', 'Git'],
-  'Cloud & plateformes': ['Azure', 'Cosmos DB', 'Azure DevOps', 'GitHub', 'AWS', 'Kubernetes', 'Docker'],
+  'Langages & versions': [
+    '.NET',
+    '.NET 10',
+    '.NET 9',
+    '.NET 8',
+    '.NET 7',
+    '.NET 6',
+    '.NET 5',
+    '.NET Core',
+    '.NET Framework',
+    'C#',
+    'C# 14',
+    'C# 13',
+    'C# 12',
+    'C# 11',
+    'C# 10',
+    'C# 9',
+    'C# 8',
+    'F#',
+    'TypeScript',
+    'JavaScript',
+  ],
+  'Frameworks & librairies': [
+    'ASP.NET Core',
+    'ASP.NET',
+    'Blazor',
+    'Entity Framework Core',
+    'Entity Framework',
+    '.NET MAUI',
+    'ML.NET',
+    'React',
+    'Angular',
+    'Vue',
+  ],
+  'Outils de développement': [
+    'Visual Studio',
+    'Visual Studio 2026',
+    'Visual Studio 2022',
+    'VS Code',
+    'Rider',
+    'ReSharper',
+    'JetBrains',
+    'Git',
+  ],
+  'Cloud & plateformes': [
+    'Azure',
+    'Cosmos DB',
+    'Azure DevOps',
+    'GitHub',
+    'AWS',
+    'Kubernetes',
+    'Docker',
+  ],
   'IA & agents': ['AI', 'Copilot', 'Agents', 'GPT-5'],
-  'Autres': [],
+  Autres: [],
 };
 
 function themeForCategory(category: string): string {
@@ -123,7 +167,9 @@ export const NewsPage: React.FC = () => {
   const sourcesList = useMemo(
     () =>
       rssSources.map((source) => ({
-        name: (source.translations[lang] ?? source.translations.en ?? source.translations.fr)?.title ?? source.meta.slug,
+        name:
+          (source.translations[lang] ?? source.translations.en ?? source.translations.fr)?.title ??
+          source.meta.slug,
         slug: source.meta.slug,
       })),
     [lang],
@@ -144,7 +190,10 @@ export const NewsPage: React.FC = () => {
       .map((theme) => ({
         group: theme,
         items: byTheme[theme]
-          .sort((a, b) => (categoryOccurrences[b] || 0) - (categoryOccurrences[a] || 0) || a.localeCompare(b))
+          .sort(
+            (a, b) =>
+              (categoryOccurrences[b] || 0) - (categoryOccurrences[a] || 0) || a.localeCompare(b),
+          )
           .map((c) => ({ label: c, count: categoryOccurrences[c] || 0 })),
       }));
   }, [allCategories, categoryFilter, categoryOccurrences]);
@@ -155,8 +204,7 @@ export const NewsPage: React.FC = () => {
     );
   };
 
-  const toggleSource = (slug: string) =>
-    setSelectedSource((prev) => (prev === slug ? null : slug));
+  const toggleSource = (slug: string) => setSelectedSource((prev) => (prev === slug ? null : slug));
 
   const allItems = useMemo(() => {
     return rssSources
@@ -191,7 +239,10 @@ export const NewsPage: React.FC = () => {
   return (
     <PageLayout>
       <AtelierContainer>
-        <SectionTitleBand illus="book" title={t('news.bandTitle', { defaultValue: 'Actualités' })} />
+        <SectionTitleBand
+          illus="book"
+          title={t('news.bandTitle', { defaultValue: 'Actualités' })}
+        />
 
         <Box
           component="section"
@@ -276,8 +327,14 @@ export const NewsPage: React.FC = () => {
                         cursor: 'pointer',
                         outline: 'none',
                         transition: 'border-color .15s ease, background .15s ease',
-                        '&:hover': { borderColor: COLORS.atelier.news, background: COLORS.atelier.newsBg },
-                        '&:focus-visible': { borderColor: COLORS.atelier.news, boxShadow: `0 0 0 3px ${COLORS.atelier.newsBg}` },
+                        '&:hover': {
+                          borderColor: COLORS.atelier.news,
+                          background: COLORS.atelier.newsBg,
+                        },
+                        '&:focus-visible': {
+                          borderColor: COLORS.atelier.news,
+                          boxShadow: `0 0 0 3px ${COLORS.atelier.newsBg}`,
+                        },
                       }}
                     >
                       <Box
@@ -298,12 +355,23 @@ export const NewsPage: React.FC = () => {
                       >
                         {sourceInitials(s.name)}
                       </Box>
-                      <Box component="span" sx={{ flex: 1, fontSize: '13px', color: active ? COLORS.atelier.news : COLORS.atelier.textBody }}>
+                      <Box
+                        component="span"
+                        sx={{
+                          flex: 1,
+                          fontSize: '13px',
+                          color: active ? COLORS.atelier.news : COLORS.atelier.textBody,
+                        }}
+                      >
                         {s.name}
                       </Box>
                       <Box
                         component="span"
-                        sx={{ fontFamily: TYPOGRAPHY.fontFamilies.mono, fontSize: '11px', color: COLORS.atelier.textFaint }}
+                        sx={{
+                          fontFamily: TYPOGRAPHY.fontFamilies.mono,
+                          fontSize: '11px',
+                          color: COLORS.atelier.textFaint,
+                        }}
                       >
                         {categoryOccurrences[s.name] ?? 0}
                       </Box>
@@ -325,10 +393,21 @@ export const NewsPage: React.FC = () => {
 
           {/* Colonne articles */}
           <Box>
-            <Box sx={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', mb: '18px' }}>
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'baseline',
+                justifyContent: 'space-between',
+                mb: '18px',
+              }}
+            >
               <Box
                 component="span"
-                sx={{ fontFamily: TYPOGRAPHY.fontFamilies.mono, fontSize: '12.5px', color: COLORS.atelier.textBody }}
+                sx={{
+                  fontFamily: TYPOGRAPHY.fontFamilies.mono,
+                  fontSize: '12.5px',
+                  color: COLORS.atelier.textBody,
+                }}
               >
                 <b style={{ color: COLORS.atelier.textStrong }}>{allItems.length}</b>{' '}
                 {t('news.articles', { defaultValue: 'articles' })}
@@ -345,7 +424,14 @@ export const NewsPage: React.FC = () => {
                     gap: '6px',
                   }}
                 >
-                  <Box sx={{ width: 8, height: 8, borderRadius: '50%', background: COLORS.atelier.news }} />
+                  <Box
+                    sx={{
+                      width: 8,
+                      height: 8,
+                      borderRadius: '50%',
+                      background: COLORS.atelier.news,
+                    }}
+                  />
                   {t('news.feedUpToDate', { defaultValue: 'flux à jour' })}
                 </Box>
               )}
@@ -419,13 +505,24 @@ export const NewsPage: React.FC = () => {
                           href={item.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          sx={{ color: COLORS.atelier.textStrong, textDecoration: 'none', '&:hover': { color: COLORS.atelier.tips } }}
+                          sx={{
+                            color: COLORS.atelier.textStrong,
+                            textDecoration: 'none',
+                            '&:hover': { color: COLORS.atelier.tips },
+                          }}
                         >
                           {item.title}
                         </Box>
                       </Typography>
                       {item.contentSnippet && (
-                        <Typography sx={{ fontSize: '13.5px', lineHeight: 1.5, color: COLORS.atelier.textBodyAlt, mt: '6px' }}>
+                        <Typography
+                          sx={{
+                            fontSize: '13.5px',
+                            lineHeight: 1.5,
+                            color: COLORS.atelier.textBodyAlt,
+                            mt: '6px',
+                          }}
+                        >
                           {item.contentSnippet}
                         </Typography>
                       )}
@@ -442,7 +539,12 @@ export const NewsPage: React.FC = () => {
                     >
                       <Box
                         component="span"
-                        sx={{ fontFamily: TYPOGRAPHY.fontFamilies.mono, fontSize: '11px', color: COLORS.atelier.textMuted, whiteSpace: 'nowrap' }}
+                        sx={{
+                          fontFamily: TYPOGRAPHY.fontFamilies.mono,
+                          fontSize: '11px',
+                          color: COLORS.atelier.textMuted,
+                          whiteSpace: 'nowrap',
+                        }}
                       >
                         {formatDate(item.pubDate)}
                       </Box>
@@ -453,7 +555,13 @@ export const NewsPage: React.FC = () => {
                         rel="noopener noreferrer"
                         aria-hidden
                         tabIndex={-1}
-                        sx={{ fontSize: '13px', fontWeight: 600, color: COLORS.atelier.tips, textDecoration: 'none', whiteSpace: 'nowrap' }}
+                        sx={{
+                          fontSize: '13px',
+                          fontWeight: 600,
+                          color: COLORS.atelier.tips,
+                          textDecoration: 'none',
+                          whiteSpace: 'nowrap',
+                        }}
                       >
                         {t('news.readArticle', { defaultValue: "Lire l'article" })} →
                       </Box>

@@ -6,5 +6,15 @@ export const meta: TipMeta = {
   shortDescription: '',
   writtenOn: '2025-09-06',
   categories: ['C#', 'Scheduler'],
-  searchKeywords: ['tickerq', 'c#', 'csharp', 'scheduler', 'task scheduler', 'cron', 'background jobs', 'timing', 'recurring tasks'],
+  searchKeywords: [
+    'tickerq',
+    'c#',
+    'csharp',
+    'scheduler',
+    'task scheduler',
+    'cron',
+    'background jobs',
+    'timing',
+    'recurring tasks',
+  ],
 };

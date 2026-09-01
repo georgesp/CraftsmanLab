@@ -53,20 +53,44 @@ export const tipsEntries: TipEntry[] = [
   { ...csharp12Meta, load: () => import('./tips/csharp-12/csharp-12') },
   { ...csharp14Meta, load: () => import('./tips/csharp-14/csharp-14') },
   { ...csharp15UnionsMeta, load: () => import('./tips/csharp-15-unions/csharp-15-unions') },
-  { ...csharpDefaultInterfaceMethodsMeta, load: () => import('./tips/csharp-default-interface-methods/csharp-default-interface-methods') },
-  { ...csharpPatternMatchingMeta, load: () => import('./tips/csharp-pattern-matching/csharp-pattern-matching') },
-  { ...csharpSolidPrinciplesMeta, load: () => import('./tips/csharp-solid-principles/csharp-solid-principles') },
+  {
+    ...csharpDefaultInterfaceMethodsMeta,
+    load: () => import('./tips/csharp-default-interface-methods/csharp-default-interface-methods'),
+  },
+  {
+    ...csharpPatternMatchingMeta,
+    load: () => import('./tips/csharp-pattern-matching/csharp-pattern-matching'),
+  },
+  {
+    ...csharpSolidPrinciplesMeta,
+    load: () => import('./tips/csharp-solid-principles/csharp-solid-principles'),
+  },
   { ...dapperMeta, load: () => import('./tips/dapper/dapper') },
   { ...diffplexMeta, load: () => import('./tips/diffplex/diffplex') },
   { ...dotnet10AsyncZipMeta, load: () => import('./tips/dotnet-10-async-zip/dotnet-10-async-zip') },
-  { ...dotnet11RuntimeAsyncMeta, load: () => import('./tips/dotnet-11-runtime-async/dotnet-11-runtime-async') },
-  { ...efCore11VectorSearchMeta, load: () => import('./tips/ef-core-11-vector-search/ef-core-11-vector-search') },
+  {
+    ...dotnet11RuntimeAsyncMeta,
+    load: () => import('./tips/dotnet-11-runtime-async/dotnet-11-runtime-async'),
+  },
+  {
+    ...efCore11VectorSearchMeta,
+    load: () => import('./tips/ef-core-11-vector-search/ef-core-11-vector-search'),
+  },
   { ...facetMeta, load: () => import('./tips/facet/facet') },
-  { ...keyValueCollectionMeta, load: () => import('./tips/keyValueCollection/key-value-collection') },
+  {
+    ...keyValueCollectionMeta,
+    load: () => import('./tips/keyValueCollection/key-value-collection'),
+  },
   { ...kokoroSharpMeta, load: () => import('./tips/kokoro-sharp/kokoro-sharp') },
   { ...mcpServersMeta, load: () => import('./tips/mcp-servers/mcp-servers') },
-  { ...microsoftExtensionsAiMeta, load: () => import('./tips/microsoft-extensions-ai/microsoft-extensions-ai') },
-  { ...microsoftExtensionsResilienceMeta, load: () => import('./tips/microsoft-extensions-resilience/microsoft-extensions-resilience') },
+  {
+    ...microsoftExtensionsAiMeta,
+    load: () => import('./tips/microsoft-extensions-ai/microsoft-extensions-ai'),
+  },
+  {
+    ...microsoftExtensionsResilienceMeta,
+    load: () => import('./tips/microsoft-extensions-resilience/microsoft-extensions-resilience'),
+  },
   { ...nsubstituteMeta, load: () => import('./tips/nsubstitute/nsubstitute') },
   { ...pollyMeta, load: () => import('./tips/polly/polly') },
   { ...queueStackMeta, load: () => import('./tips/queue-stack/queue-stack') },
@@ -88,11 +112,23 @@ import { meta as mcpServerCsharpGuidancesMeta } from './prompts/mcp-server-cshar
 export type PromptEntry = PromptMeta & { load: () => Promise<any> };
 
 export const promptsEntries: PromptEntry[] = [
-  { ...agentsMdGuidancesMeta, load: () => import('./prompts/agents-md-guidances/agents-md-guidances') },
-  { ...aspnetCoreGuidancesMeta, load: () => import('./prompts/aspnet-core-guidances/aspnet-core-guidances') },
+  {
+    ...agentsMdGuidancesMeta,
+    load: () => import('./prompts/agents-md-guidances/agents-md-guidances'),
+  },
+  {
+    ...aspnetCoreGuidancesMeta,
+    load: () => import('./prompts/aspnet-core-guidances/aspnet-core-guidances'),
+  },
   { ...asyncGuidancesMeta, load: () => import('./prompts/async-guidances/async-guidances') },
-  { ...craftsmanlabRulesMeta, load: () => import('./prompts/craftsmanlab-rules/craftsmanlab-front-rules') },
-  { ...mcpServerCsharpGuidancesMeta, load: () => import('./prompts/mcp-server-csharp-guidances/mcp-server-csharp-guidances') },
+  {
+    ...craftsmanlabRulesMeta,
+    load: () => import('./prompts/craftsmanlab-rules/craftsmanlab-front-rules'),
+  },
+  {
+    ...mcpServerCsharpGuidancesMeta,
+    load: () => import('./prompts/mcp-server-csharp-guidances/mcp-server-csharp-guidances'),
+  },
 ];
 
 // ----- Tips: translations -----

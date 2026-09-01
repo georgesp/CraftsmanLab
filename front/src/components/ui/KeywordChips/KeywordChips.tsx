@@ -6,10 +6,7 @@ type Props = {
   size?: 'small' | 'medium';
 };
 
-export const KeywordChips: React.FC<Props> = ({
-  keywords,
-  size = 'small',
-}) => {
+export const KeywordChips: React.FC<Props> = ({ keywords, size = 'small' }) => {
   if (!keywords.length) return null;
 
   return (

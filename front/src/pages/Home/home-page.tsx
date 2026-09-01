@@ -54,8 +54,13 @@ export const HomePage: React.FC = () => {
   };
 
   const initials = (name: string) =>
-    name.replace(/[^A-Za-zÀ-ÿ ]/g, '').split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]?.toUpperCase()).join('') ||
-    name.slice(0, 2).toUpperCase();
+    name
+      .replace(/[^A-Za-zÀ-ÿ ]/g, '')
+      .split(/\s+/)
+      .filter(Boolean)
+      .slice(0, 2)
+      .map((w) => w[0]?.toUpperCase())
+      .join('') || name.slice(0, 2).toUpperCase();
 
   const sectionHeading = (illus: 'code' | 'prompt', title: React.ReactNode, to: string) => (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: '18px' }}>
@@ -130,7 +135,15 @@ export const HomePage: React.FC = () => {
             >
               {t('home.heroTitle', { defaultValue: "L'établi du développeur .NET." })}
             </Typography>
-            <Typography sx={{ mt: 2, fontSize: '17px', lineHeight: 1.55, color: COLORS.atelier.textBody, maxWidth: 460 }}>
+            <Typography
+              sx={{
+                mt: 2,
+                fontSize: '17px',
+                lineHeight: 1.55,
+                color: COLORS.atelier.textBody,
+                maxWidth: 460,
+              }}
+            >
               {t('home.heroBody', { defaultValue: '' })}
             </Typography>
 
@@ -146,15 +159,28 @@ export const HomePage: React.FC = () => {
             {/* Stats */}
             <Box sx={{ display: 'flex', gap: 3, mt: 4, flexWrap: 'wrap' }}>
               {[
-                { illus: 'code' as const, label: `${tipsCount} ${t('home.statTips', { defaultValue: 'tips' })}` },
-                { illus: 'prompt' as const, label: `${promptsCount} ${t('home.statPrompts', { defaultValue: 'prompts' })}` },
-                { illus: 'book' as const, label: t('home.statWatch', { defaultValue: 'veille hebdo' }) },
+                {
+                  illus: 'code' as const,
+                  label: `${tipsCount} ${t('home.statTips', { defaultValue: 'tips' })}`,
+                },
+                {
+                  illus: 'prompt' as const,
+                  label: `${promptsCount} ${t('home.statPrompts', { defaultValue: 'prompts' })}`,
+                },
+                {
+                  illus: 'book' as const,
+                  label: t('home.statWatch', { defaultValue: 'veille hebdo' }),
+                },
               ].map((s) => (
                 <Box key={s.label} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <IllusBadge name={s.illus} size={34} />
                   <Box
                     component="span"
-                    sx={{ fontFamily: TYPOGRAPHY.fontFamilies.mono, fontSize: '12px', color: COLORS.atelier.textBody }}
+                    sx={{
+                      fontFamily: TYPOGRAPHY.fontFamilies.mono,
+                      fontSize: '12px',
+                      color: COLORS.atelier.textBody,
+                    }}
                   >
                     {s.label}
                   </Box>
@@ -187,7 +213,12 @@ export const HomePage: React.FC = () => {
               ))}
               <Box
                 component="span"
-                sx={{ ml: 1.5, fontFamily: TYPOGRAPHY.fontFamilies.mono, fontSize: '12px', color: '#8A93A0' }}
+                sx={{
+                  ml: 1.5,
+                  fontFamily: TYPOGRAPHY.fontFamilies.mono,
+                  fontSize: '12px',
+                  color: '#8A93A0',
+                }}
               >
                 PizzaBuilder.cs
               </Box>
@@ -204,20 +235,34 @@ export const HomePage: React.FC = () => {
                 overflowX: 'auto',
               }}
             >
-              <Box component="span" sx={{ color: COLORS.atelier.codeComment }}>{'// Construction fluide\n'}</Box>
-              <Box component="span" sx={{ color: COLORS.atelier.codeKeyword }}>var</Box>
+              <Box component="span" sx={{ color: COLORS.atelier.codeComment }}>
+                {'// Construction fluide\n'}
+              </Box>
+              <Box component="span" sx={{ color: COLORS.atelier.codeKeyword }}>
+                var
+              </Box>
               {' pizza = '}
-              <Box component="span" sx={{ color: COLORS.atelier.codeKeyword }}>new</Box>{' '}
-              <Box component="span" sx={{ color: COLORS.atelier.codeType }}>PizzaBuilder</Box>
+              <Box component="span" sx={{ color: COLORS.atelier.codeKeyword }}>
+                new
+              </Box>{' '}
+              <Box component="span" sx={{ color: COLORS.atelier.codeType }}>
+                PizzaBuilder
+              </Box>
               {'()\n'}
               {'    .WithBase('}
-              <Box component="span" sx={{ color: COLORS.atelier.codeType }}>Base</Box>
+              <Box component="span" sx={{ color: COLORS.atelier.codeType }}>
+                Base
+              </Box>
               {'.Tomate)\n'}
               {'    .AddTopping('}
-              <Box component="span" sx={{ color: '#CE9178' }}>&quot;mozzarella&quot;</Box>
+              <Box component="span" sx={{ color: '#CE9178' }}>
+                &quot;mozzarella&quot;
+              </Box>
               {')\n'}
               {'    .AddTopping('}
-              <Box component="span" sx={{ color: '#CE9178' }}>&quot;basilic&quot;</Box>
+              <Box component="span" sx={{ color: '#CE9178' }}>
+                &quot;basilic&quot;
+              </Box>
               {')\n'}
               {'    .Build();'}
             </Box>
@@ -238,14 +283,24 @@ export const HomePage: React.FC = () => {
               <IllusBadge name="book" size={30} />
               <Box
                 component="span"
-                sx={{ fontFamily: TYPOGRAPHY.fontFamilies.mono, fontSize: '12px', color: COLORS.atelier.textMuted, flex: 1 }}
+                sx={{
+                  fontFamily: TYPOGRAPHY.fontFamilies.mono,
+                  fontSize: '12px',
+                  color: COLORS.atelier.textMuted,
+                  flex: 1,
+                }}
               >
                 {t('home.sectionNews', { defaultValue: '// actualités' })}
               </Box>
               <Box
                 component={RouterLink}
                 to="/news"
-                sx={{ fontFamily: TYPOGRAPHY.fontFamilies.mono, fontSize: '12px', color: COLORS.atelier.tips, textDecoration: 'none' }}
+                sx={{
+                  fontFamily: TYPOGRAPHY.fontFamilies.mono,
+                  fontSize: '12px',
+                  color: COLORS.atelier.tips,
+                  textDecoration: 'none',
+                }}
               >
                 {t('home.seeAll', { defaultValue: 'voir tout' })} →
               </Box>
@@ -341,7 +396,11 @@ export const HomePage: React.FC = () => {
 
         {/* PROMPTS */}
         <Box component="section" sx={{ px: { xs: 2.5, md: '46px' }, pb: '60px' }}>
-          {sectionHeading('prompt', t('home.latestPrompts', { defaultValue: 'Derniers prompts' }), '/prompts')}
+          {sectionHeading(
+            'prompt',
+            t('home.latestPrompts', { defaultValue: 'Derniers prompts' }),
+            '/prompts',
+          )}
           <AtelierPromptsGrid items={promptsList.filter((p) => p.slug !== 'more').slice(0, 3)} />
         </Box>
       </AtelierContainer>

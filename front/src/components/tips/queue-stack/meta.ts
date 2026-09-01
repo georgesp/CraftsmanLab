@@ -6,5 +6,15 @@ export const meta: TipMeta = {
   shortDescription: '',
   writtenOn: '2025-08-30',
   categories: ['C#', 'Collections'],
-  searchKeywords: ['queue-stack', 'c#', 'csharp', 'collections', 'queue', 'stack', 'fifo', 'lifo', 'data structures'],
+  searchKeywords: [
+    'queue-stack',
+    'c#',
+    'csharp',
+    'collections',
+    'queue',
+    'stack',
+    'fifo',
+    'lifo',
+    'data structures',
+  ],
 };

@@ -6,5 +6,14 @@ export const meta: TipMeta = {
   shortDescription: '',
   writtenOn: '2025-08-16',
   categories: ['NuGet'],
-  searchKeywords: ['central package management', 'cpm', 'nuget', 'packages', 'dependencies', 'dotnet', 'versioning', 'directory.packages.props'],
+  searchKeywords: [
+    'central package management',
+    'cpm',
+    'nuget',
+    'packages',
+    'dependencies',
+    'dotnet',
+    'versioning',
+    'directory.packages.props',
+  ],
 };

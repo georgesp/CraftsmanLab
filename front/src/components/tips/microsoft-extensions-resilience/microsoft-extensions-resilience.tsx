@@ -1,20 +1,40 @@
 import { useTranslation } from 'react-i18next';
 import type { TipModule } from '..';
-import { Box, Typography, Link, Table, TableHead, TableRow, TableCell, TableBody, TableContainer, Paper } from '@mui/material';
+import {
+  Box,
+  Typography,
+  Link,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  TableContainer,
+  Paper,
+} from '@mui/material';
 import { CodeBlock } from '../../ui/CodeBlock/CodeBlock';
 import { meta } from './meta';
 
 const MsResilienceTip: React.FC = () => {
   const { t } = useTranslation('tips');
 
-  const _strategiesRaw = t('microsoft-extensions-resilience.content.sections.strategies.rows', { returnObjects: true });
+  const _strategiesRaw = t('microsoft-extensions-resilience.content.sections.strategies.rows', {
+    returnObjects: true,
+  });
   const strategies: Array<any> = Array.isArray(_strategiesRaw) ? _strategiesRaw : [];
 
-  const _bestPracticesRaw = t('microsoft-extensions-resilience.content.sections.bestPractices.items', { returnObjects: true });
+  const _bestPracticesRaw = t(
+    'microsoft-extensions-resilience.content.sections.bestPractices.items',
+    { returnObjects: true },
+  );
   const bestPractices: string[] = Array.isArray(_bestPracticesRaw) ? _bestPracticesRaw : [];
 
-  const _sourcesRaw = t('microsoft-extensions-resilience.content.footer.sources', { returnObjects: true });
-  const sources: Array<{ name: string; url: string }> = Array.isArray(_sourcesRaw) ? _sourcesRaw : [];
+  const _sourcesRaw = t('microsoft-extensions-resilience.content.footer.sources', {
+    returnObjects: true,
+  });
+  const sources: Array<{ name: string; url: string }> = Array.isArray(_sourcesRaw)
+    ? _sourcesRaw
+    : [];
 
   return (
     <Box>
@@ -105,9 +125,21 @@ app.Run();`}
         <Table size="small">
           <TableHead>
             <TableRow>
-              <TableCell><strong>{t('microsoft-extensions-resilience.content.sections.strategies.headers.0')}</strong></TableCell>
-              <TableCell><strong>{t('microsoft-extensions-resilience.content.sections.strategies.headers.1')}</strong></TableCell>
-              <TableCell><strong>{t('microsoft-extensions-resilience.content.sections.strategies.headers.2')}</strong></TableCell>
+              <TableCell>
+                <strong>
+                  {t('microsoft-extensions-resilience.content.sections.strategies.headers.0')}
+                </strong>
+              </TableCell>
+              <TableCell>
+                <strong>
+                  {t('microsoft-extensions-resilience.content.sections.strategies.headers.1')}
+                </strong>
+              </TableCell>
+              <TableCell>
+                <strong>
+                  {t('microsoft-extensions-resilience.content.sections.strategies.headers.2')}
+                </strong>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -115,7 +147,9 @@ app.Run();`}
               <TableRow key={i}>
                 <TableCell>{s.name}</TableCell>
                 <TableCell>{s.when}</TableCell>
-                <TableCell><code>{s.example}</code></TableCell>
+                <TableCell>
+                  <code>{s.example}</code>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -228,16 +262,16 @@ app.MapGet("/customer/{id}", async (string id, IResiliencePipelineProvider<strin
 });`}
       />
 
-    <Typography variant="h5" gutterBottom sx={{ mt: 3 }}>
-    {t('microsoft-extensions-resilience.content.sections.nonHttpDb.title')}
-    </Typography>
-    <Typography paragraph>
-    {t('microsoft-extensions-resilience.content.sections.nonHttpDb.description')}
-    </Typography>
-    <CodeBlock
-    language="csharp"
-    ariaLabel="ms-resilience-db-pipeline"
-    code={`using System.Data;
+      <Typography variant="h5" gutterBottom sx={{ mt: 3 }}>
+        {t('microsoft-extensions-resilience.content.sections.nonHttpDb.title')}
+      </Typography>
+      <Typography paragraph>
+        {t('microsoft-extensions-resilience.content.sections.nonHttpDb.description')}
+      </Typography>
+      <CodeBlock
+        language="csharp"
+        ariaLabel="ms-resilience-db-pipeline"
+        code={`using System.Data;
 using Microsoft.Data.SqlClient;
 using Polly;
 
@@ -311,7 +345,7 @@ public sealed class ProductRepository
 }
 // Remarque: vous pouvez remplacer ADO.NET par Dapper/EF Core; l'important est que l'appel
 // DB soit exécuté dans la lambda du pipeline.`}
-    />
+      />
 
       <Typography variant="h5" gutterBottom sx={{ mt: 3 }}>
         {t('microsoft-extensions-resilience.content.sections.observability.title')}
@@ -365,8 +399,12 @@ builder.Services.AddOpenTelemetry().WithMetrics(m => { /* ... */ }).WithTracing(
       <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>
         {t('microsoft-extensions-resilience.content.sections.summary.title')}
       </Typography>
-      <Typography paragraph>{t('microsoft-extensions-resilience.content.sections.summary.content')}</Typography>
-      <Typography paragraph>{t('microsoft-extensions-resilience.content.sections.summary.conclusion')}</Typography>
+      <Typography paragraph>
+        {t('microsoft-extensions-resilience.content.sections.summary.content')}
+      </Typography>
+      <Typography paragraph>
+        {t('microsoft-extensions-resilience.content.sections.summary.conclusion')}
+      </Typography>
 
       <Box
         mt={4}
@@ -374,11 +412,21 @@ builder.Services.AddOpenTelemetry().WithMetrics(m => { /* ... */ }).WithTracing(
         borderTop={(theme) => `1px solid ${theme.palette.divider}`}
         sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
       >
-        <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
+        <Typography
+          variant="caption"
+          component="div"
+          sx={{ fontStyle: 'italic', color: 'text.secondary' }}
+        >
           {t('microsoft-extensions-resilience.content.footer.sourcesLabel')}{' '}
           {sources.map((s, i) => (
             <span key={i}>
-              <Link href={s.url} target="_blank" rel="noopener noreferrer" underline="always" color="inherit">
+              <Link
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                underline="always"
+                color="inherit"
+              >
                 {s.name}
               </Link>
               {i < sources.length - 1 ? ' • ' : ''}

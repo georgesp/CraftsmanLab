@@ -13,27 +13,14 @@ const ClosedXML: React.FC = () => {
       <Typography variant="h3" gutterBottom>
         {t('closedxml.content.mainTitle')}
       </Typography>
-      <Typography paragraph>
-        {t('closedxml.content.intro')}
-      </Typography>
+      <Typography paragraph>{t('closedxml.content.intro')}</Typography>
 
-      <Typography variant="h4">
-        {t('closedxml.content.installation.title')}
-      </Typography>
-      <Typography paragraph>
-        {t('closedxml.content.installation.description')}
-      </Typography>
-      <CodeBlock
-        language="bash"
-        code={`dotnet add package ClosedXML`}
-      />
+      <Typography variant="h4">{t('closedxml.content.installation.title')}</Typography>
+      <Typography paragraph>{t('closedxml.content.installation.description')}</Typography>
+      <CodeBlock language="bash" code={`dotnet add package ClosedXML`} />
 
-      <Typography variant="h4">
-        {t('closedxml.content.createTable.title')}
-      </Typography>
-      <Typography paragraph>
-        {t('closedxml.content.createTable.description')}
-      </Typography>
+      <Typography variant="h4">{t('closedxml.content.createTable.title')}</Typography>
+      <Typography paragraph>{t('closedxml.content.createTable.description')}</Typography>
       <CodeBlock
         language="csharp"
         code={`// Define Product model
@@ -82,12 +69,8 @@ using (var workbook = new XLWorkbook())
 }`}
       />
 
-      <Typography variant="h4">
-        {t('closedxml.content.addStyle.title')}
-      </Typography>
-      <Typography paragraph>
-        {t('closedxml.content.addStyle.description')}
-      </Typography>
+      <Typography variant="h4">{t('closedxml.content.addStyle.title')}</Typography>
+      <Typography paragraph>{t('closedxml.content.addStyle.description')}</Typography>
       <CodeBlock
         language="csharp"
         code={`using ClosedXML.Excel;
@@ -121,12 +104,8 @@ using (var workbook = new XLWorkbook())
 }`}
       />
 
-      <Typography variant="h4">
-        {t('closedxml.content.fromTemplate.title')}
-      </Typography>
-      <Typography paragraph>
-        {t('closedxml.content.fromTemplate.description')}
-      </Typography>
+      <Typography variant="h4">{t('closedxml.content.fromTemplate.title')}</Typography>
+      <Typography paragraph>{t('closedxml.content.fromTemplate.description')}</Typography>
       <CodeBlock
         language="csharp"
         code={`using ClosedXML.Excel;
@@ -151,9 +130,7 @@ using (var workbook = new XLWorkbook("Template.xlsx"))
 }`}
       />
 
-      <Typography variant="h4">
-        {t('closedxml.content.advantages.title')}
-      </Typography>
+      <Typography variant="h4">{t('closedxml.content.advantages.title')}</Typography>
       <Typography component="div">
         <ul>
           <li>{t('closedxml.content.advantages.noExcel')}</li>
@@ -163,7 +140,6 @@ using (var workbook = new XLWorkbook("Template.xlsx"))
           <li>{t('closedxml.content.advantages.openSource')}</li>
         </ul>
       </Typography>
-
 
       <Box
         mt={4}
@@ -189,11 +165,7 @@ using (var workbook = new XLWorkbook("Template.xlsx"))
             {t('closedxml.content.footer.sourceLabel')}
           </a>
         </Typography>
-        <Typography
-          variant="caption"
-          component="div"
-          sx={{ color: 'text.secondary' }}
-        >
+        <Typography variant="caption" component="div" sx={{ color: 'text.secondary' }}>
           {t('closedxml.content.footer.writtenOn', { date: meta.writtenOn })}
         </Typography>
       </Box>
