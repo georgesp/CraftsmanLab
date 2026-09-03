@@ -1,0 +1,99 @@
+{
+  "dotnet-11-runtime-async": {
+    "title": ".NET 11 : runtime async",
+    "shortDescription": "Fin des state machines générées par le compilateur : moins d'allocations et des stack traces enfin lisibles.",
+    "content": {
+      "mainTitle": ".NET 11 : runtime async, la fin des state machines générées",
+      "intro": "Depuis C# 5, chaque méthode async est réécrite par le compilateur en une machine à états : une classe imbriquée, un champ d'état, une méthode MoveNext. Ce mécanisme fonctionne, mais il coûte des allocations et pollue toutes tes stack traces. .NET 11 déplace ce travail dans le runtime : le compilateur émet un simple appel, et c'est la VM qui gère la suspension. Ton code source, lui, ne change pas d'une ligne.",
+      "summary": "Runtime async déplace la mécanique de suspension des méthodes async du compilateur vers le runtime .NET 11 : IL plus simple, moins d'allocations, stack traces lisibles.",
+      "tocTitle": "Sommaire",
+      "tocItems": [
+        "Ce que génère le compilateur aujourd'hui",
+        "Ce que change runtime async",
+        "Activer et désactiver",
+        "Des stack traces lisibles",
+        "Covariance Task vers Task<T>",
+        "Cas d'utilisation concrets",
+        "Avantages et inconvénients face au modèle async classique"
+      ],
+      "sections": {
+        "stateMachine": {
+          "title": "Ce que génère le compilateur aujourd'hui",
+          "description": "Écris une méthode async de trois lignes et le compilateur produit une classe entière. Elle implémente IAsyncStateMachine, stocke l'état d'avancement dans un champ entier, et concentre tout le corps de ta méthode dans un MoveNext organisé en table de saut.",
+          "costTitle": "Ce que ça coûte",
+          "costItems": [
+            "Une allocation sur le tas dès que la méthode suspend réellement (boxing de la structure d'état)",
+            "Des frames MoveNext parasites dans chaque pile d'appels",
+            "Un IL volumineux, plus difficile à inliner et à optimiser",
+            "Des noms générés illisibles dans les profileurs et les dumps mémoire"
+          ]
+        },
+        "whatChanges": {
+          "title": "Ce que change runtime async",
+          "description": "Avec runtime async, le compilateur n'émet plus de classe d'état. Il émet un appel direct vers le runtime, qui prend en charge la suspension et la reprise. L'IL généré tient en quelques instructions, et le JIT peut l'optimiser comme n'importe quel appel.",
+          "gainsTitle": "Ce que tu y gagnes",
+          "gainsItems": [
+            "Moins d'allocations : la structure d'état n'est plus systématiquement promue sur le tas",
+            "Un IL nettement plus simple, donc plus de marge pour l'inlining",
+            "Depuis la Preview 4, l'inlining fonctionne aussi à la compilation ReadyToRun via crossgen2",
+            "Les bibliothèques du runtime .NET 11 sont désormais compilées avec runtime-async=on"
+          ]
+        },
+        "enable": {
+          "title": "Activer et désactiver",
+          "description": "Les bibliothèques du runtime en bénéficient déjà. Pour tes propres assemblys, l'activation passe par une propriété MSBuild. Attention : la fonctionnalité a évolué à chaque preview, vérifie la note de version de la preview que tu utilises.",
+          "enableTitle": "Activer sur ton projet",
+          "enableDescription": "Cible net11.0 et ajoute la feature au compilateur. En .NET 11 Preview 3, l'attribut RequiresPreviewFeatures n'est plus nécessaire.",
+          "disableTitle": "Sortie de secours",
+          "disableDescription": "Si un profileur, un réécrivain d'IL ou un outil de couverture n'est pas encore compatible, tu peux désactiver la fonctionnalité au niveau du projet. À noter : le commutateur d'environnement DOTNET_RuntimeAsync a été supprimé, il n'y a plus de désactivation à chaud."
+        },
+        "stackTraces": {
+          "title": "Des stack traces lisibles",
+          "description": "C'est le bénéfice le plus immédiat, et celui qui se voit dès le premier incident en production. Les frames MoveNext synthétiques disparaissent : la pile d'appels ressemble enfin aux méthodes que tu as écrites.",
+          "note": "Concrètement, cela change aussi la lecture des logs et des outils d'APM : le regroupement d'erreurs devient plus fiable, puisqu'il ne s'appuie plus sur des noms de types générés."
+        },
+        "covariance": {
+          "title": "Covariance Task vers Task<T>",
+          "description": "Autre apport lié de .NET 11 : une méthode dérivée peut désormais retourner Task<T> là où la méthode de base retourne Task. Le runtime génère l'adaptateur nécessaire pour que la répartition virtuelle reste correcte. Cela supprime une bonne partie des surcharges d'adaptation écrites à la main."
+        },
+        "useCases": {
+          "title": "Cas d'utilisation concrets",
+          "description": "Runtime async ne demande aucune réécriture. Ce sont surtout les charges fortement asynchrones qui en profitent.",
+          "items": [
+            "API ASP.NET Core à fort débit : chaque requête traverse des dizaines de méthodes async, l'allocation économisée se cumule",
+            "Workers et consommateurs de files : boucles de traitement longues où la pression sur le GC est le facteur limitant",
+            "Bibliothèques réutilisées largement : recompiler ta librairie avec runtime-async profite à tous ses appelants",
+            "Diagnostic d'incidents : piles d'appels exploitables sans décodage mental des noms générés",
+            "Applications sensibles à la latence de queue : moins de collectes gen0 déclenchées par les state machines"
+          ]
+        },
+        "comparison": {
+          "title": "Avantages et inconvénients face au modèle async classique",
+          "description": "Le point de comparaison, c'est le modèle actuel : la state machine générée par le compilateur, éprouvée depuis C# 5 et présente dans tous les runtimes .NET jusqu'à .NET 10 inclus.",
+          "prosTitle": "Ce que runtime async apporte",
+          "prosItems": [
+            "Aucun changement de code source : tes async et await restent identiques",
+            "Moins d'allocations et une pression GC réduite sur les chemins fortement asynchrones",
+            "Stack traces et profils mémoire enfin lisibles",
+            "Inlining possible jusque dans la compilation ReadyToRun",
+            "Activé par défaut dans les bibliothèques du runtime .NET 11"
+          ],
+          "consTitle": "Ce qui incite à la prudence",
+          "consItems": [
+            "Nécessite .NET 11, qui n'est pas une version LTS, avec une GA au 10 novembre 2026",
+            "Les gains réels n'apparaissent que lorsque tout le graphe d'appels est recompilé",
+            "Les outils qui réécrivent l'IL (AOP, instrumentation, couverture de code) peuvent nécessiter une mise à jour",
+            "Certains profileurs et agents d'APM doivent être validés avant une bascule en production",
+            "Plus de commutateur d'environnement pour revenir en arrière à chaud : la décision se prend à la compilation",
+            "Tes benchmarks de référence sont à refaire : les chiffres publiés ne valent pas pour ta charge"
+          ],
+          "verdict": "En pratique : active runtime async d'abord sur un service non critique, compare allocations et latence de queue avant et après, et valide ta chaîne d'observabilité. Le gain est réel mais graduel, alors que le risque se concentre entièrement sur l'outillage."
+        }
+      },
+      "footer": {
+        "sourceLabel": "Notes de version — .NET 11 Runtime",
+        "writtenOn": "Écrit le {{date}}"
+      }
+    }
+  }
+}

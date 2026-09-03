@@ -6,5 +6,15 @@ export const meta: TipMeta = {
   shortDescription: '',
   writtenOn: '2025-08-29',
   categories: ['C#', 'Patterns'],
-  searchKeywords: ['pattern matching', 'c#', 'csharp', 'patterns', 'switch', 'is', 'when', 'type patterns', 'property patterns'],
+  searchKeywords: [
+    'pattern matching',
+    'c#',
+    'csharp',
+    'patterns',
+    'switch',
+    'is',
+    'when',
+    'type patterns',
+    'property patterns',
+  ],
 };

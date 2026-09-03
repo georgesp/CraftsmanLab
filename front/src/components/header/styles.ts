@@ -4,9 +4,10 @@ import { COLORS, TYPOGRAPHY } from '../../styles';
 
 export const StyledAppBar = styled(AppBar)({
   width: '100%',
-  backgroundColor: COLORS.darkGreyBg,
-  color: COLORS.textPrimary,
-  borderBottom: `3px solid ${COLORS.cardBgDark}`,
+  backgroundColor: COLORS.atelier.surface,
+  color: COLORS.atelier.textStrong,
+  borderBottom: `1px solid ${COLORS.atelier.borderDefault}`,
+  boxShadow: 'none',
 });
 
 export const StyledToolbar = styled(Toolbar)(({ theme }) => ({
@@ -21,16 +22,23 @@ export const StyledToolbar = styled(Toolbar)(({ theme }) => ({
     minHeight: 64,
   },
 }));
+
+// Navigation en JetBrains Mono, minuscules — l'item actif est coloré par
+// la rubrique (voir Header.tsx qui applique la couleur active via `sx`).
 export const NavigationContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
-  gap: theme.spacing(3),
+  gap: theme.spacing(2.5),
   alignItems: 'center',
   '& a': {
-    color: COLORS.textPrimary,
-    fontSize: TYPOGRAPHY.fontSizes.nav,
+    color: COLORS.atelier.textBody,
+    fontFamily: TYPOGRAPHY.fontFamilies.mono,
+    fontSize: '13px',
+    textTransform: 'lowercase',
+    letterSpacing: '.02em',
     textDecoration: 'none',
+    transition: 'color .15s ease',
     '&:hover': {
-      color: theme.palette.primary.main,
+      color: COLORS.atelier.textStrong,
     },
   },
   // On small screens put navigation on its own line and align to the right

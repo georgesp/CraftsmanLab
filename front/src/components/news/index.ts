@@ -5,4 +5,3 @@ export { TopSourcesFilter } from './TopSourcesFilter';
 export type { SourceInfo } from './TopSourcesFilter';
 export { TopKeywordsFilter } from './TopKeywordsFilter';
 export type { KeywordInfo } from './TopKeywordsFilter';
-

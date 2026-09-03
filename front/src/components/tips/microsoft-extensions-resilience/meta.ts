@@ -6,5 +6,15 @@ export const meta: TipMeta = {
   shortDescription: '',
   writtenOn: '2025-09-06',
   categories: ['Resilience', 'C#'],
-  searchKeywords: ['microsoft.extensions.resilience', 'resilience', 'c#', 'csharp', 'retry', 'circuit breaker', 'polly', 'fault tolerance', 'http resilience'],
+  searchKeywords: [
+    'microsoft.extensions.resilience',
+    'resilience',
+    'c#',
+    'csharp',
+    'retry',
+    'circuit breaker',
+    'polly',
+    'fault tolerance',
+    'http resilience',
+  ],
 };

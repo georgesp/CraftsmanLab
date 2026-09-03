@@ -315,7 +315,9 @@ const AvaloniaUiTip: React.FC = () => {
       <Typography variant="h5" gutterBottom>
         {t('avalonia.content.sections.deployMac.bundleTitle')}
       </Typography>
-      <Typography paragraph>{t('avalonia.content.sections.deployMac.bundleDescription')}</Typography>
+      <Typography paragraph>
+        {t('avalonia.content.sections.deployMac.bundleDescription')}
+      </Typography>
       <Typography variant="h5" gutterBottom>
         {t('avalonia.content.sections.deployMac.publishTitle')}
       </Typography>

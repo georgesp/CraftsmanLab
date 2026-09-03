@@ -6,5 +6,15 @@ export const meta: TipMeta = {
   shortDescription: '',
   writtenOn: '2025-08-14',
   categories: ['Mapping', 'C#'],
-  searchKeywords: ['automapper', 'mapping', 'c#', 'csharp', 'object mapping', 'dto', 'mapper', 'transformation', 'projection'],
+  searchKeywords: [
+    'automapper',
+    'mapping',
+    'c#',
+    'csharp',
+    'object mapping',
+    'dto',
+    'mapper',
+    'transformation',
+    'projection',
+  ],
 };

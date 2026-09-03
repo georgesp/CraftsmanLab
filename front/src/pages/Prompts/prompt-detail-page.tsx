@@ -8,9 +8,10 @@ import { COLORS } from '../../styles/colors';
 import { findPromptBySlug } from '../../components/prompts/registry';
 import { PromptList } from '../../components/prompts/prompt-list';
 import { ViewAllTipsButton } from '../../components/ui';
+import { useSeo } from '../../hooks/useSeo';
 
 export const PromptDetailPage: React.FC = () => {
-  const { t } = useTranslation(['common', 'prompts']);
+  const { t } = useTranslation(['common', 'prompts', 'pages']);
   const { slug } = useParams<{ slug: string }>();
   const entry = slug ? findPromptBySlug(slug) : undefined;
   const [copyOpen, setCopyOpen] = useState(false);
@@ -44,7 +45,17 @@ export const PromptDetailPage: React.FC = () => {
     };
   }, [entry?.slug]);
 
-  // ...
+  // Metadonnees SEO propres au prompt : titre, description, canonical et Open Graph.
+  // Sans cela la page herite des valeurs uniques de index.html.
+  useSeo({
+    title: entry
+      ? `${getTranslatedText(entry.slug, 'title', entry.title)} ${t('pages:seo.promptDetailSuffix')}`
+      : undefined,
+    description: entry
+      ? getTranslatedText(entry.slug, 'shortDescription', entry.shortDescription)
+      : undefined,
+    path: entry ? `/prompts/${entry.slug}` : undefined,
+  });
 
   return (
     <>

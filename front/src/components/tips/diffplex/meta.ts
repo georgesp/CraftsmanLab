@@ -6,5 +6,15 @@ export const meta: TipMeta = {
   shortDescription: '',
   writtenOn: '2025-09-09',
   categories: ['Diff', 'Text', 'C#'],
-  searchKeywords: ['diffplex', 'diff', 'text', 'c#', 'csharp', 'comparison', 'text comparison', 'patch', 'merge'],
+  searchKeywords: [
+    'diffplex',
+    'diff',
+    'text',
+    'c#',
+    'csharp',
+    'comparison',
+    'text comparison',
+    'patch',
+    'merge',
+  ],
 };

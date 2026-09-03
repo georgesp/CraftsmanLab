@@ -83,7 +83,13 @@ const DiffPlexTip: React.FC = () => {
           {t('diffplex.content.footer.sourcesLabel')}{' '}
           {sources.map((s, i) => (
             <span key={i}>
-              <Link href={s.url} target="_blank" rel="noopener noreferrer" underline="always" color="inherit">
+              <Link
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                underline="always"
+                color="inherit"
+              >
                 {s.name}
               </Link>
               {i < sources.length - 1 ? ' • ' : ''}

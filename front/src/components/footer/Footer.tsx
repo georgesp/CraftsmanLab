@@ -10,18 +10,24 @@ export const Footer: React.FC = () => {
       sx={{
         mt: 0,
         px: 3,
-        py: 2,
-        backgroundColor: COLORS.darkGreyBg,
-        borderTop: 'none',
+        py: 2.5,
+        backgroundColor: COLORS.atelier.surface,
+        borderTop: `1px solid ${COLORS.atelier.borderDefault}`,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: 'text.primary',
-        fontSize: TYPOGRAPHY.fontSizes.body1,
       }}
     >
-      <Typography variant="caption" sx={{ fontSize: TYPOGRAPHY.fontSizes.body2, color: 'text.primary' }}>
-        {t('pages:footer.copyright', '© 2026 CraftsmanLab. Tous droits réservés.')}
+      <Typography
+        component="span"
+        sx={{
+          fontFamily: TYPOGRAPHY.fontFamilies.mono,
+          fontSize: '12px',
+          letterSpacing: '.03em',
+          color: COLORS.atelier.textMuted,
+        }}
+      >
+        {t('pages:footer.copyright', '© 2026 CraftsmanLab — Tous droits réservés.')}
       </Typography>
     </Box>
   );

@@ -41,8 +41,12 @@ const DevTip: React.FC = () => {
 
       <Typography variant="h4">{t('csharp-14.content.useCases.title')}</Typography>
 
-      <Typography id="extension-members" variant="h5">{t('csharp-14.content.useCases.extensionMembers.title')}</Typography>
-      <Typography paragraph>{t('csharp-14.content.useCases.extensionMembers.description')}</Typography>
+      <Typography id="extension-members" variant="h5">
+        {t('csharp-14.content.useCases.extensionMembers.title')}
+      </Typography>
+      <Typography paragraph>
+        {t('csharp-14.content.useCases.extensionMembers.description')}
+      </Typography>
       <CodeBlock
         language="csharp"
         code={`// Extension block for instance members
@@ -83,7 +87,9 @@ var identity = IEnumerable<int>.Identity;
 var combined = list1 + list2;`}
       />
 
-      <Typography id="field-keyword" variant="h5">{t('csharp-14.content.useCases.fieldKeyword.title')}</Typography>
+      <Typography id="field-keyword" variant="h5">
+        {t('csharp-14.content.useCases.fieldKeyword.title')}
+      </Typography>
       <Typography paragraph>{t('csharp-14.content.useCases.fieldKeyword.description')}</Typography>
       <CodeBlock
         language="csharp"
@@ -118,8 +124,12 @@ public string Data
 }`}
       />
 
-      <Typography id="null-conditional-assignment" variant="h5">{t('csharp-14.content.useCases.nullConditionalAssignment.title')}</Typography>
-      <Typography paragraph>{t('csharp-14.content.useCases.nullConditionalAssignment.description')}</Typography>
+      <Typography id="null-conditional-assignment" variant="h5">
+        {t('csharp-14.content.useCases.nullConditionalAssignment.title')}
+      </Typography>
+      <Typography paragraph>
+        {t('csharp-14.content.useCases.nullConditionalAssignment.description')}
+      </Typography>
       <CodeBlock
         language="csharp"
         code={`// Before C# 14
@@ -143,8 +153,12 @@ customer?.LastOrder = ExpensiveOrderLookup(); // ExpensiveOrderLookup() not call
 // counter?.Value++; // Compilation error`}
       />
 
-      <Typography id="nameof-unbound-generics" variant="h5">{t('csharp-14.content.useCases.nameofUnboundGenerics.title')}</Typography>
-      <Typography paragraph>{t('csharp-14.content.useCases.nameofUnboundGenerics.description')}</Typography>
+      <Typography id="nameof-unbound-generics" variant="h5">
+        {t('csharp-14.content.useCases.nameofUnboundGenerics.title')}
+      </Typography>
+      <Typography paragraph>
+        {t('csharp-14.content.useCases.nameofUnboundGenerics.description')}
+      </Typography>
       <CodeBlock
         language="csharp"
         code={`// C# 14: nameof with unbound generic types
@@ -166,8 +180,12 @@ throw new InvalidOperationException(
     $"{nameof(Dictionary<,>)} cannot be empty");`}
       />
 
-      <Typography id="implicit-span-conversions" variant="h5">{t('csharp-14.content.useCases.implicitSpanConversions.title')}</Typography>
-      <Typography paragraph>{t('csharp-14.content.useCases.implicitSpanConversions.description')}</Typography>
+      <Typography id="implicit-span-conversions" variant="h5">
+        {t('csharp-14.content.useCases.implicitSpanConversions.title')}
+      </Typography>
+      <Typography paragraph>
+        {t('csharp-14.content.useCases.implicitSpanConversions.description')}
+      </Typography>
       <CodeBlock
         language="csharp"
         code={`// Implicit conversions between arrays and spans
@@ -205,8 +223,12 @@ int[] data = { 1, 2, 3 };
 Display(data); // Calls ReadOnlySpan overload in C# 14`}
       />
 
-      <Typography id="lambda-modifiers" variant="h5">{t('csharp-14.content.useCases.lambdaModifiers.title')}</Typography>
-      <Typography paragraph>{t('csharp-14.content.useCases.lambdaModifiers.description')}</Typography>
+      <Typography id="lambda-modifiers" variant="h5">
+        {t('csharp-14.content.useCases.lambdaModifiers.title')}
+      </Typography>
+      <Typography paragraph>
+        {t('csharp-14.content.useCases.lambdaModifiers.description')}
+      </Typography>
       <CodeBlock
         language="csharp"
         code={`// Before C# 14: modifiers required explicit types
@@ -236,8 +258,12 @@ Func<ref readonly int, int> readValue = (ref readonly value) => value;
 Func<params int[], int> sum = (params int[] values) => values.Sum(); // OK`}
       />
 
-      <Typography id="partial-members" variant="h5">{t('csharp-14.content.useCases.partialMembers.title')}</Typography>
-      <Typography paragraph>{t('csharp-14.content.useCases.partialMembers.description')}</Typography>
+      <Typography id="partial-members" variant="h5">
+        {t('csharp-14.content.useCases.partialMembers.title')}
+      </Typography>
+      <Typography paragraph>
+        {t('csharp-14.content.useCases.partialMembers.description')}
+      </Typography>
       <CodeBlock
         language="csharp"
         code={`// Partial constructors
@@ -290,8 +316,12 @@ public partial class GeneratedModel
 }`}
       />
 
-      <Typography id="compound-assignment" variant="h5">{t('csharp-14.content.useCases.compoundAssignment.title')}</Typography>
-      <Typography paragraph>{t('csharp-14.content.useCases.compoundAssignment.description')}</Typography>
+      <Typography id="compound-assignment" variant="h5">
+        {t('csharp-14.content.useCases.compoundAssignment.title')}
+      </Typography>
+      <Typography paragraph>
+        {t('csharp-14.content.useCases.compoundAssignment.description')}
+      </Typography>
       <CodeBlock
         language="csharp"
         code={`// Custom type with compound assignment operators
@@ -371,9 +401,19 @@ score--;  // Points is now 150`}
         <li>{t('csharp-14.content.goodPractices.items.4')}</li>
       </ul>
 
-      <Box mt={4} pt={2} borderTop={theme => `1px solid ${theme.palette.divider}`} sx={{ display: 'flex', justifyContent: 'space-between' }}>
+      <Box
+        mt={4}
+        pt={2}
+        borderTop={(theme) => `1px solid ${theme.palette.divider}`}
+        sx={{ display: 'flex', justifyContent: 'space-between' }}
+      >
         <Typography variant="caption" sx={{ fontStyle: 'italic' }}>
-          <a href={t('csharp-14.content.footer.sourceUrl')} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
+          <a
+            href={t('csharp-14.content.footer.sourceUrl')}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: 'inherit', textDecoration: 'underline' }}
+          >
             {t('csharp-14.content.footer.sourceLabel')}
           </a>
         </Typography>

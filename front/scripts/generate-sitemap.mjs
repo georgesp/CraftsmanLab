@@ -10,8 +10,8 @@ async function getEntriesFromManifest() {
   const manifestPath = path.join(SRC_DIR, 'components', 'content-manifest.ts');
   const content = await fs.readFile(manifestPath, 'utf8');
   
-  // Extract tips slugs
-  const tipSlugs = [];
+  // Extract tips entries (slug + writtenOn)
+  const tipEntries = [];
   // Match all tip meta imports: import { meta as xxxMeta } from './tips/folder/meta';
   const tipsMetaImports = content.matchAll(/import\s*\{\s*meta\s+as\s+\w+Meta\s*\}\s*from\s*'\.\/tips\/([^']+)\/meta'/g);
   for (const match of tipsMetaImports) {
@@ -21,16 +21,17 @@ async function getEntriesFromManifest() {
     try {
       const metaContent = await fs.readFile(metaPath, 'utf8');
       const slugMatch = metaContent.match(/slug:\s*['"]([^'"]+)['"]/);
+      const dateMatch = metaContent.match(/writtenOn:\s*['"]([0-9]{4}-[0-9]{2}-[0-9]{2})['"]/);
       if (slugMatch) {
-        tipSlugs.push(slugMatch[1]);
+        tipEntries.push({ slug: slugMatch[1], lastmod: dateMatch ? dateMatch[1] : undefined });
       }
     } catch (e) {
       console.warn(`Could not read meta for tips/${folder}:`, e.message);
     }
   }
   
-  // Extract prompts slugs
-  const promptSlugs = [];
+  // Extract prompts entries (slug + writtenOn)
+  const promptEntries = [];
   // Match all prompt meta imports
   const promptsMetaImports = content.matchAll(/import\s*\{\s*meta\s+as\s+\w+Meta\s*\}\s*from\s*'\.\/prompts\/([^']+)\/meta'/g);
   for (const match of promptsMetaImports) {
@@ -40,45 +41,66 @@ async function getEntriesFromManifest() {
     try {
       const metaContent = await fs.readFile(metaPath, 'utf8');
       const slugMatch = metaContent.match(/slug:\s*['"]([^'"]+)['"]/);
+      const dateMatch = metaContent.match(/writtenOn:\s*['"]([0-9]{4}-[0-9]{2}-[0-9]{2})['"]/);
       if (slugMatch) {
-        promptSlugs.push(slugMatch[1]);
+        promptEntries.push({ slug: slugMatch[1], lastmod: dateMatch ? dateMatch[1] : undefined });
       }
     } catch (e) {
       console.warn(`Could not read meta for prompts/${folder}:`, e.message);
     }
   }
   
-  return { tipSlugs, promptSlugs };
+  return { tipEntries, promptEntries };
 }
 
-function buildUrlEntry(loc, changefreq = 'monthly', priority = '0.6') {
+function buildUrlEntry(loc, changefreq = 'monthly', priority = '0.6', lastmod) {
+  // <lastmod> indique a Google quand recrawler : sans lui, il se fie a ses
+  // propres heuristiques et peut ignorer longtemps une page mise a jour.
+  const ligneLastmod = lastmod ? `    <lastmod>${lastmod}</lastmod>\n` : '';
   return `  <url>
   <loc>${loc}</loc>
-    <changefreq>${changefreq}</changefreq>
+${ligneLastmod}    <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>
   </url>
 `;
 }
 
+/** Date la plus recente d'un lot d'entrees, au format AAAA-MM-JJ. */
+function dateLaPlusRecente(entrees) {
+  const dates = entrees.map((e) => e.lastmod).filter(Boolean).sort();
+  return dates.length ? dates[dates.length - 1] : undefined;
+}
+
 async function main() {
   try {
-    const { tipSlugs, promptSlugs } = await getEntriesFromManifest();
+    const { tipEntries, promptEntries } = await getEntriesFromManifest();
 
-    console.log(`Found ${promptSlugs.length} prompts and ${tipSlugs.length} tips`);
+    console.log(`Found ${promptEntries.length} prompts and ${tipEntries.length} tips`);
+
+    // Les pages de liste datent de leur contenu le plus recent. /news est
+    // alimentee par le flux RSS et /contact ne bouge pas : pas de lastmod pour
+    // elles, une date inventee ferait plus de mal que de bien.
+    const dernierTip = dateLaPlusRecente(tipEntries);
+    const dernierPrompt = dateLaPlusRecente(promptEntries);
+    const dernierContenu = dateLaPlusRecente([
+      { lastmod: dernierTip },
+      { lastmod: dernierPrompt },
+    ]);
 
     const urls = [];
-    urls.push({ loc: `${DOMAIN}/`, changefreq: 'weekly', priority: '1.0' });
-    urls.push({ loc: `${DOMAIN}/prompts`, changefreq: 'weekly', priority: '0.8' });
-    urls.push({ loc: `${DOMAIN}/tips`, changefreq: 'weekly', priority: '0.8' });
+    urls.push({ loc: `${DOMAIN}/`, changefreq: 'weekly', priority: '1.0', lastmod: dernierContenu });
+    urls.push({ loc: `${DOMAIN}/prompts`, changefreq: 'weekly', priority: '0.8', lastmod: dernierPrompt });
+    urls.push({ loc: `${DOMAIN}/tips`, changefreq: 'weekly', priority: '0.8', lastmod: dernierTip });
     urls.push({ loc: `${DOMAIN}/news`, changefreq: 'daily', priority: '0.8' });
     urls.push({ loc: `${DOMAIN}/contact`, changefreq: 'monthly', priority: '0.5' });
 
-    for (const s of promptSlugs) urls.push({ loc: `${DOMAIN}/prompts/${s}` });
-    for (const s of tipSlugs) urls.push({ loc: `${DOMAIN}/tips/${s}` });
+    for (const e of promptEntries)
+      urls.push({ loc: `${DOMAIN}/prompts/${e.slug}`, lastmod: e.lastmod });
+    for (const e of tipEntries) urls.push({ loc: `${DOMAIN}/tips/${e.slug}`, lastmod: e.lastmod });
 
     const xml = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'];
     for (const u of urls) {
-      xml.push(buildUrlEntry(u.loc, u.changefreq, u.priority));
+      xml.push(buildUrlEntry(u.loc, u.changefreq, u.priority, u.lastmod));
     }
     xml.push('</urlset>');
 

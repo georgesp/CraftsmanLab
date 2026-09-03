@@ -45,7 +45,7 @@ export const TopKeywordsFilter: React.FC<TopKeywordsFilterProps> = ({
       >
         {title || t('home.mostUsedTags', { defaultValue: 'Tags les plus utilisés' })}
       </Typography>
-      
+
       <Box
         sx={{
           display: 'flex',
@@ -62,14 +62,14 @@ export const TopKeywordsFilter: React.FC<TopKeywordsFilterProps> = ({
               onClick={() => onKeywordClick(keywordInfo.keyword)}
               size="small"
               sx={{
-                backgroundColor: isSelected ? COLORS.categorySelectedBg : COLORS.darkTheme.background,
+                backgroundColor: isSelected
+                  ? COLORS.categorySelectedBg
+                  : COLORS.darkTheme.background,
                 color: isSelected ? 'primary.main' : 'text.primary',
                 borderColor: isSelected ? 'primary.main' : COLORS.cardBorder,
                 border: '1px solid',
                 '&:hover': {
-                  backgroundColor: isSelected 
-                    ? COLORS.categoryChipHover
-                    : COLORS.categoryChipHover,
+                  backgroundColor: isSelected ? COLORS.categoryChipHover : COLORS.categoryChipHover,
                   borderColor: 'primary.main',
                 },
                 fontSize: '0.75rem',

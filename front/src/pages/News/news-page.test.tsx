@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, within } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import { NewsPage } from './news-page';
@@ -78,6 +78,11 @@ const renderNews = (path = '/news') =>
 
 // Returns the h3 heading for an article title, or null if absent.
 const articleHeading = (name: string) => screen.queryByRole('heading', { level: 3, name });
+// Sidebar controls in the "Atelier adouci" design:
+// - sources are role=button (aria-label = source name)
+// - categories are role=checkbox (aria-label = category)
+const sourceBtn = (name: string) => screen.getByRole('button', { name });
+const categoryBox = (name: string) => screen.getByRole('checkbox', { name });
 
 describe('NewsPage', () => {
   describe('initial render', () => {
@@ -93,11 +98,6 @@ describe('NewsPage', () => {
       const link = screen.getByRole('link', { name: /article alpha one/i });
       expect(link).toHaveAttribute('href', 'https://example.com/alpha-1');
       expect(link).toHaveAttribute('target', '_blank');
-    });
-
-    it('does not show the selected-filters panel when no filter is active', () => {
-      renderNews();
-      expect(screen.queryByText(/news\.selectedCategories/)).not.toBeInTheDocument();
     });
   });
 
@@ -136,31 +136,27 @@ describe('NewsPage', () => {
     });
   });
 
-  describe('source filter via sidebar chip click', () => {
-    it('clicking a source chip shows only articles from that source', () => {
+  describe('source filter via sidebar', () => {
+    it('clicking a source shows only articles from that source', () => {
       renderNews();
-      // Before any click: index 0 = sidebar chip for "Source Alpha"
-      fireEvent.click(screen.getAllByText('Source Alpha')[0]);
+      fireEvent.click(sourceBtn('Source Alpha'));
       expect(articleHeading('Article Alpha One')).toBeInTheDocument();
       expect(articleHeading('Article Alpha Two')).toBeInTheDocument();
       expect(articleHeading('Article Beta One')).not.toBeInTheDocument();
     });
 
-    it('clicking the active source chip a second time clears the filter', () => {
+    it('clicking the active source a second time clears the filter', () => {
       renderNews();
-      fireEvent.click(screen.getAllByText('Source Alpha')[0]); // select
-      // After select the selected-panel renders "Source Alpha" as Typography at index 0;
-      // the sidebar chip is now at index 1.
-      fireEvent.click(screen.getAllByText('Source Alpha')[1]); // deselect
+      fireEvent.click(sourceBtn('Source Alpha')); // select
+      fireEvent.click(sourceBtn('Source Alpha')); // deselect
       expect(articleHeading('Article Beta One')).toBeInTheDocument();
     });
   });
 
-  describe('category filter via sidebar chip click', () => {
-    it('clicking a category chip filters to articles that carry it', () => {
+  describe('category filter via sidebar', () => {
+    it('clicking a category filters to articles that carry it', () => {
       renderNews();
-      // index 0 = sidebar chip for "C#"
-      fireEvent.click(screen.getAllByText('C#')[0]);
+      fireEvent.click(categoryBox('C#'));
       expect(articleHeading('Article Alpha One')).toBeInTheDocument();
       expect(articleHeading('Article Beta One')).toBeInTheDocument();
       expect(articleHeading('Article Alpha Two')).not.toBeInTheDocument();
@@ -168,47 +164,26 @@ describe('NewsPage', () => {
 
     it('selecting a second category applies AND logic', () => {
       renderNews();
-      fireEvent.click(screen.getAllByText('C#')[0]);
-      // After selecting C#, ".NET" chip is still in sidebar (alpha-1 has .NET and is shown)
-      fireEvent.click(screen.getAllByText('.NET')[0]);
+      fireEvent.click(categoryBox('C#'));
+      fireEvent.click(categoryBox('.NET'));
       expect(articleHeading('Article Alpha One')).toBeInTheDocument();
       expect(articleHeading('Article Beta One')).not.toBeInTheDocument();
       expect(articleHeading('Article Alpha Two')).not.toBeInTheDocument();
     });
 
-    it('clicking an active category chip removes it from the filter', () => {
+    it('clicking an active category removes it from the filter', () => {
       renderNews();
-      fireEvent.click(screen.getAllByText('C#')[0]); // select
-      // After select the selected-panel renders "C#" as Typography at index 0;
-      // the sidebar chip is now at index 1.
-      fireEvent.click(screen.getAllByText('C#')[1]); // deselect
+      fireEvent.click(categoryBox('C#')); // select
+      fireEvent.click(categoryBox('C#')); // deselect
       expect(articleHeading('Article Alpha Two')).toBeInTheDocument();
     });
-  });
 
-  describe('active filter panel', () => {
-    it('shows the selected-filters panel when a category filter is active', () => {
+    it('marks a selected category as checked (aria-checked)', () => {
       renderNews();
-      fireEvent.click(screen.getAllByText('C#')[0]);
-      // The panel header text is "news.selectedCategories (1)" — match with regex
-      expect(screen.getByText(/news\.selectedCategories/)).toBeInTheDocument();
-    });
-
-    it('shows the selected-filters panel when a source filter is active', () => {
-      renderNews('/news?source=source-alpha');
-      expect(screen.getByText(/news\.selectedCategories/)).toBeInTheDocument();
-    });
-
-    it('close button on selected source restores all articles', () => {
-      renderNews('/news?source=source-alpha');
-      expect(articleHeading('Article Beta One')).not.toBeInTheDocument();
-      // Scope to the selected-filters panel to avoid matching the Header's search button.
-      // The panel header Typography contains "news.selectedCategories"; its parentElement is
-      // the outer Box div which also contains the per-filter close IconButtons.
-      const panelHeader = screen.getByText(/news\.selectedCategories/);
-      const panel = panelHeader.parentElement!;
-      fireEvent.click(within(panel).getByRole('button'));
-      expect(articleHeading('Article Beta One')).toBeInTheDocument();
+      const box = categoryBox('C#');
+      expect(box).toHaveAttribute('aria-checked', 'false');
+      fireEvent.click(box);
+      expect(categoryBox('C#')).toHaveAttribute('aria-checked', 'true');
     });
   });
 

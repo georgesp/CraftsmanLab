@@ -1,0 +1,115 @@
+{
+  "csharp-15-unions": {
+    "title": "C# 15: union types & closed hierarchies",
+    "shortDescription": "Model \"exactly one of these types\" natively, with an exhaustive switch checked by the compiler.",
+    "content": {
+      "mainTitle": "C# 15: union types and closed hierarchies",
+      "intro": "Modeling a value that is \"exactly one of these three types\" has always required workarounds in C#: an abstract class plus sealed classes, an enum plus optional fields, or a NuGet dependency such as OneOf. C# 15 finally ships two native building blocks: the union keyword and closed hierarchies. The compiler now knows the full list of cases, so your switch becomes exhaustive without a catch-all arm.",
+      "summary": "C# 15 union types and closed hierarchies let you model a fixed choice between several types, with exhaustive pattern matching verified at compile time.",
+      "tocTitle": "Table of contents",
+      "tocItems": [
+        "The problem today",
+        "Union types",
+        "Closed hierarchies",
+        "Exhaustive pattern matching",
+        "Enabling C# 15",
+        "Concrete use cases",
+        "Pros and cons versus OneOf"
+      ],
+      "sections": {
+        "whyUnions": {
+          "title": "The problem today",
+          "description": "Take a payment: it is approved, declined, or pending. Each case carries different data. In C# 14 you write an abstract class with one sealed class per case. It works, but the compiler can never prove your case list is complete: any assembly can derive a fourth case.",
+          "painTitle": "What it costs day to day",
+          "painItems": [
+            "A mandatory catch-all arm in every switch, otherwise warning CS8509",
+            "Adding a case breaks no build: missed spots surface in production",
+            "A lot of ceremony for what is just a choice between three shapes",
+            "Common alternative: a NuGet dependency (OneOf) that forces its own calling style"
+          ],
+          "codeCaption": "The classic modeling approach, with its defensive catch-all arm."
+        },
+        "unions": {
+          "title": "Union types",
+          "description": "The union keyword declares a type whose value is exactly one of the listed types. The declaration fits on one line and reuses types you already defined: records, classes, structs.",
+          "declarationTitle": "Declaring a union",
+          "declarationDescription": "The three records stay normal types, usable elsewhere. The union only declares the fixed choice between them.",
+          "usageTitle": "Consuming a union",
+          "usageDescription": "Conversion from each case is implicit, and the switch no longer needs a catch-all arm: the compiler knows the complete case list."
+        },
+        "closed": {
+          "title": "Closed hierarchies",
+          "description": "The closed modifier applies to a base class or record: only the declaring assembly can derive from it. Prefer this variant when your cases share common members or a real inheritance relationship, while union fits independent types better.",
+          "usageTitle": "Exhaustive switch over a closed hierarchy",
+          "usageDescription": "Add a new state in the assembly and this method stops compiling: exactly the safety net you want on a state machine.",
+          "note": "union and closed are complementary: union assembles independent types, closed locks down an existing hierarchy. Both give the compiler the same exhaustiveness guarantee."
+        },
+        "matching": {
+          "title": "Exhaustive pattern matching",
+          "description": "A union composes with everything pattern matching has done since C# 8: property patterns, nested type patterns, relational patterns. The difference is that exhaustiveness is now verified.",
+          "rulesTitle": "Rules to remember",
+          "rulesItems": [
+            "Without a catch-all arm, the compiler requires one arm per union case",
+            "A more specific arm (property pattern) does not count as covering the whole case: keep a general arm",
+            "Order still matters: most specific first, most general last",
+            "Adding a case to the union turns every incomplete switch into a compile error"
+          ]
+        },
+        "setup": {
+          "title": "Enabling C# 15",
+          "description": "C# 15 ships with .NET 11. At the time of writing this tip the release is still in preview: .NET 11 GA is announced for November 10, 2026. You need the .NET 11 SDK and LangVersion set to preview.",
+          "statusTitle": "Feature status",
+          "statusItems": [
+            "Compiler support for unions shipped in .NET 11 Preview 2",
+            "IDE support (completion, refactorings) arrived in Preview 3",
+            "Visual Studio 2026 Insiders or a recent JetBrains Rider recommended",
+            "Treat it as a preview: the syntax may still change before GA"
+          ],
+          "alsoTitle": "Other C# 15 features worth knowing",
+          "alsoItems": [
+            "Collection expression arguments: pass a capacity or comparer with the with(...) syntax",
+            "Extension indexers: declare an indexer inside an extension block",
+            "Labeled break and continue, to explicitly target an enclosing loop",
+            "Relaxed unsafe requirements on some pointer operations"
+          ]
+        },
+        "useCases": {
+          "title": "Concrete use cases",
+          "description": "Unions shine wherever an operation has several legitimate outcomes you do not want to express as an exception or as a boolean plus a message.",
+          "items": [
+            "Domain results: replace a hand-rolled Result<T> or a (bool Success, string Error) pair with an explicit choice between Success, ValidationFailed and NotAuthorized",
+            "State machines: order Draft, Paid, Shipped, Cancelled, with a switch that breaks at compile time when a state is added",
+            "Parsing and validation: ParseOk, ParseSyntaxError, ParseOutOfRange, each carrying its own data",
+            "API responses and anti-corruption layers: translate an HTTP code into typed cases instead of numeric code checks",
+            "Message handlers: a handler returning Handled, Rejected or Retry, without control-flow exceptions"
+          ]
+        },
+        "comparison": {
+          "title": "Pros and cons versus OneOf",
+          "description": "The current reference for unions in C# is the OneOf library. It works from C# 9 and is still installed in many projects. Here is how the two compare.",
+          "prosTitle": "What the native union brings",
+          "prosItems": [
+            "No NuGet dependency, no fixed-arity generic type (OneOf<T0, T1, T2>...)",
+            "The regular switch works: no lambda-based Match API to learn",
+            "Exhaustiveness verified by the compiler, with native error messages",
+            "Composes with existing pattern matching: property patterns, nesting, relational patterns",
+            "More readable signatures: PaymentResult instead of OneOf<Approved, Declined, Pending>"
+          ],
+          "consTitle": "What still argues for OneOf",
+          "consItems": [
+            "OneOf runs on .NET 8 LTS today; unions require .NET 11, not an LTS, GA only on November 10, 2026",
+            "The ecosystem has not caught up: System.Text.Json serialization, EF Core mapping, OpenAPI generators need case-by-case checks",
+            "OneOf offers battle-tested helpers (Match, Switch, TryPickT0) that native unions leave to you",
+            "Migrating an existing codebase means touching every affected public signature",
+            "IDE tooling for unions is still young: expect rough edges in preview"
+          ],
+          "verdict": "In practice: on a new service targeting .NET 11, go straight to native unions. On a .NET 8 or .NET 10 codebase in production, keep OneOf and hide unions behind your domain types so the migration stays mechanical when the time comes."
+        }
+      },
+      "footer": {
+        "sourceLabel": "Microsoft documentation — What's new in C# 15",
+        "writtenOn": "Written on {{date}}"
+      }
+    }
+  }
+}

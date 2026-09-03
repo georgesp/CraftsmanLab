@@ -6,5 +6,15 @@ export const meta: TipMeta = {
   shortDescription: '',
   writtenOn: '2025-08-11',
   categories: ['Collections', 'C#'],
-  searchKeywords: ['collection', 'collections', 'c#', 'csharp', 'list', 'array', 'ienumerable', 'linq', 'data structures'],
+  searchKeywords: [
+    'collection',
+    'collections',
+    'c#',
+    'csharp',
+    'list',
+    'array',
+    'ienumerable',
+    'linq',
+    'data structures',
+  ],
 };

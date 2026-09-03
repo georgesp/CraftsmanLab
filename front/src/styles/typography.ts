@@ -32,6 +32,31 @@ export const TYPOGRAPHY = {
   // Famille de police
   fontFamily: '"Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
 
+  // Refonte « Atelier adouci » : familles dédiées
+  fontFamilies: {
+    // Corps
+    sans: '"Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+    // Titres / display (extra-bold, tracking négatif)
+    display: '"Inter Tight", "Inter", system-ui, sans-serif',
+    // Labels, méta, nav, compteurs, code
+    mono: '"JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace',
+  },
+
+  // Échelle « Atelier adouci » (valeurs px du handoff)
+  atelier: {
+    heroH1: '52px', // Hero accueil — 800 / lh 1.06
+    listH1: '38px', // H1 pages liste — 800
+    contactH1: '44px',
+    h2: '24px', // Section — 700
+    h3: '18px', // Carte — 700
+    body: '15px',
+    meta: '13px', // JetBrains Mono
+    metaSmall: '11px',
+    tracking: '-0.02em',
+    trackingTight: '-0.035em',
+    trackingMono: '.08em',
+  },
+
   // Poids des polices
   fontWeights: {
     light: 300,

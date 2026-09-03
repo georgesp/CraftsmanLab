@@ -28,7 +28,7 @@ describe('ContactPage', () => {
     render(<ContactPageWrapper />);
 
     expect(screen.getByText('Mes réseaux sociaux')).toBeInTheDocument();
-    expect(screen.getByText('Mes coordonnées')).toBeInTheDocument();
+    // La refonte fusionne l'email dans le bloc « réseaux » (plus de section « Mes coordonnées »).
     expect(screen.getByText('contact@craftsmanlab.fr')).toBeInTheDocument();
   });
 

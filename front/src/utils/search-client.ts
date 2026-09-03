@@ -71,7 +71,7 @@ function buildIndex(): IndexedItem[] {
   // Indexer les articles de news
   for (const source of rssSources) {
     const sourceKeywords = source.meta.searchKeywords || [];
-    
+
     for (const article of source.data.items || []) {
       // Combine source keywords + article categories as search keywords
       const articleKeywords = [

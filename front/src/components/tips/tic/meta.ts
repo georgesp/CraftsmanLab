@@ -6,5 +6,15 @@ export const meta: TipMeta = {
   shortDescription: '',
   writtenOn: '2025-08-15',
   categories: ['C#', 'Patterns'],
-  searchKeywords: ['switch-tuple', 'c#', 'csharp', 'patterns', 'switch', 'tuple', 'pattern matching', 'deconstruction', 'multiple values'],
+  searchKeywords: [
+    'switch-tuple',
+    'c#',
+    'csharp',
+    'patterns',
+    'switch',
+    'tuple',
+    'pattern matching',
+    'deconstruction',
+    'multiple values',
+  ],
 };

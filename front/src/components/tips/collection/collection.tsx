@@ -17,18 +17,42 @@ const CollectionTip: React.FC = () => {
   ];
 
   // Read pros/cons as objects from translations (safer than i18n.exists checks)
-  const ienumerablePros = t('collection.content.sections.ienumerable.pros', { returnObjects: true }) as string[] | null;
-  const ienumerableCons = t('collection.content.sections.ienumerable.cons', { returnObjects: true }) as string[] | null;
-  const icollectionPros = t('collection.content.sections.icollection.pros', { returnObjects: true }) as string[] | null;
-  const icollectionCons = t('collection.content.sections.icollection.cons', { returnObjects: true }) as string[] | null;
-  const ireadOnlyCollectionPros = t('collection.content.sections.ireadonlycollection.pros', { returnObjects: true }) as string[] | null;
-  const ireadOnlyCollectionCons = t('collection.content.sections.ireadonlycollection.cons', { returnObjects: true }) as string[] | null;
-  const ilistPros = t('collection.content.sections.ilist.pros', { returnObjects: true }) as string[] | null;
-  const ilistCons = t('collection.content.sections.ilist.cons', { returnObjects: true }) as string[] | null;
-  const ireadOnlyListPros = t('collection.content.sections.ireadonlylist.pros', { returnObjects: true }) as string[] | null;
-  const ireadOnlyListCons = t('collection.content.sections.ireadonlylist.cons', { returnObjects: true }) as string[] | null;
-  const isetPros = t('collection.content.sections.iset.pros', { returnObjects: true }) as string[] | null;
-  const isetCons = t('collection.content.sections.iset.cons', { returnObjects: true }) as string[] | null;
+  const ienumerablePros = t('collection.content.sections.ienumerable.pros', {
+    returnObjects: true,
+  }) as string[] | null;
+  const ienumerableCons = t('collection.content.sections.ienumerable.cons', {
+    returnObjects: true,
+  }) as string[] | null;
+  const icollectionPros = t('collection.content.sections.icollection.pros', {
+    returnObjects: true,
+  }) as string[] | null;
+  const icollectionCons = t('collection.content.sections.icollection.cons', {
+    returnObjects: true,
+  }) as string[] | null;
+  const ireadOnlyCollectionPros = t('collection.content.sections.ireadonlycollection.pros', {
+    returnObjects: true,
+  }) as string[] | null;
+  const ireadOnlyCollectionCons = t('collection.content.sections.ireadonlycollection.cons', {
+    returnObjects: true,
+  }) as string[] | null;
+  const ilistPros = t('collection.content.sections.ilist.pros', { returnObjects: true }) as
+    | string[]
+    | null;
+  const ilistCons = t('collection.content.sections.ilist.cons', { returnObjects: true }) as
+    | string[]
+    | null;
+  const ireadOnlyListPros = t('collection.content.sections.ireadonlylist.pros', {
+    returnObjects: true,
+  }) as string[] | null;
+  const ireadOnlyListCons = t('collection.content.sections.ireadonlylist.cons', {
+    returnObjects: true,
+  }) as string[] | null;
+  const isetPros = t('collection.content.sections.iset.pros', { returnObjects: true }) as
+    | string[]
+    | null;
+  const isetCons = t('collection.content.sections.iset.cons', { returnObjects: true }) as
+    | string[]
+    | null;
 
   return (
     <TipContent>

@@ -1,0 +1,24 @@
+{
+  "mcp-server-csharp-guidances": {
+    "title": "MCP Server C# Guidances",
+    "shortDescription": "Best practices for writing a stateless MCP server in C# with the official v2.0 SDK.",
+    "description": "A guidance prompt for designing and implementing an MCP server in C# that matches the official v2.0 SDK.",
+    "content": {
+      "introduction": "The official Model Context Protocol C# SDK reached v2.0 on July 28, 2026, with a paradigm shift: stateless protocol by default, standardized HTTP headers and multi round-trip requests. This prompt gathers the rules to hand to a coding agent so it produces a correct MCP server, deployable on serverless as well as multi-instance setups.",
+      "copyButton": "Copy prompt",
+      "copySuccess": "Prompt copied to clipboard!",
+      "writtenOn": "Written on",
+      "sources": "Sources: MCP C# SDK v2.0 announcement on the",
+      "useCasesTitle": "Use cases",
+      "useCases": [
+        "Expose an internal source of truth (product catalog, directory, knowledge base) to an assistant, with permissions enforced on every call.",
+        "Wrap an existing business API behind typed MCP tools instead of letting the model build HTTP calls itself.",
+        "Automate side-effecting operations (job restart, cache purge) with user confirmation through the MRTR mechanism.",
+        "Migrate an MCP server written with the v1 SDK to v2.0: remove session state and validate multi-instance deployment.",
+        "Deploy on serverless or behind a load balancer without sticky sessions, every call being self-sufficient.",
+        "Frame a code review: use this prompt as a checklist to review an existing MCP server, section by section.",
+        "Build an internal MCP server to tool up the team: prepared SQL queries, report generation, ticket access."
+      ]
+    }
+  }
+}

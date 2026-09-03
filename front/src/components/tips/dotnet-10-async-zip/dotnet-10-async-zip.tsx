@@ -14,9 +14,7 @@ const DotNet10AsyncZip: React.FC = () => {
         {t('dotnet-10-async-zip.content.mainTitle')}
       </Typography>
 
-      <Typography paragraph>
-        {t('dotnet-10-async-zip.content.intro')}
-      </Typography>
+      <Typography paragraph>{t('dotnet-10-async-zip.content.intro')}</Typography>
 
       <Typography variant="h4">
         {t('dotnet-10-async-zip.content.sections.improvements.title')}
@@ -226,14 +224,10 @@ await ReadConcatenatedGzipAsync("data.gz");`}
       </Typography>
       <ul>
         <li>
-          <Typography>
-            {t('dotnet-10-async-zip.content.sections.benefits.list.better')}
-          </Typography>
+          <Typography>{t('dotnet-10-async-zip.content.sections.benefits.list.better')}</Typography>
         </li>
         <li>
-          <Typography>
-            {t('dotnet-10-async-zip.content.sections.benefits.list.async')}
-          </Typography>
+          <Typography>{t('dotnet-10-async-zip.content.sections.benefits.list.async')}</Typography>
         </li>
         <li>
           <Typography>
@@ -246,9 +240,7 @@ await ReadConcatenatedGzipAsync("data.gz");`}
           </Typography>
         </li>
         <li>
-          <Typography>
-            {t('dotnet-10-async-zip.content.sections.benefits.list.large')}
-          </Typography>
+          <Typography>{t('dotnet-10-async-zip.content.sections.benefits.list.large')}</Typography>
         </li>
       </ul>
 
@@ -262,14 +254,10 @@ await ReadConcatenatedGzipAsync("data.gz");`}
           </Typography>
         </li>
         <li>
-          <Typography>
-            {t('dotnet-10-async-zip.content.sections.keyPoints.list.auto')}
-          </Typography>
+          <Typography>{t('dotnet-10-async-zip.content.sections.keyPoints.list.auto')}</Typography>
         </li>
         <li>
-          <Typography>
-            {t('dotnet-10-async-zip.content.sections.keyPoints.list.io')}
-          </Typography>
+          <Typography>{t('dotnet-10-async-zip.content.sections.keyPoints.list.io')}</Typography>
         </li>
         <li>
           <Typography>
@@ -277,9 +265,7 @@ await ReadConcatenatedGzipAsync("data.gz");`}
           </Typography>
         </li>
         <li>
-          <Typography>
-            {t('dotnet-10-async-zip.content.sections.keyPoints.list.gzip')}
-          </Typography>
+          <Typography>{t('dotnet-10-async-zip.content.sections.keyPoints.list.gzip')}</Typography>
         </li>
       </ul>
 
@@ -289,7 +275,11 @@ await ReadConcatenatedGzipAsync("data.gz");`}
         borderTop={(theme) => `1px solid ${theme.palette.divider}`}
         sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
       >
-        <Typography variant="caption" component="div" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
+        <Typography
+          variant="caption"
+          component="div"
+          sx={{ fontStyle: 'italic', color: 'text.secondary' }}
+        >
           <a
             href="https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-10/libraries#zip-files"
             target="_blank"

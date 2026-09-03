@@ -6,5 +6,15 @@ export const meta: TipMeta = {
   shortDescription: '',
   writtenOn: '2025-11-27',
   categories: ['SQL', 'Performance'],
-  searchKeywords: ['tsql-schema-only', 'sql', 'performance', 'tsql', 't-sql', 'schema_only', 'sql server', 'optimization', 'lock hints'],
+  searchKeywords: [
+    'tsql-schema-only',
+    'sql',
+    'performance',
+    'tsql',
+    't-sql',
+    'schema_only',
+    'sql server',
+    'optimization',
+    'lock hints',
+  ],
 };

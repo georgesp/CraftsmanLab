@@ -11,12 +11,12 @@ const HeaderWrapper: React.FC = () => (
 );
 
 describe('Header', () => {
-  test('renders logo image', () => {
+  test('renders brand logo', () => {
     render(<HeaderWrapper />);
-    const logo = screen.getByAltText('CraftsmanLab');
-    expect(logo).toBeInTheDocument();
-    // The header uses the white-background logo in the current implementation
-    expect(logo).toHaveAttribute('src', '/noBgColor.png');
+    // La marque = symbole décoratif (symbol.svg) + wordmark texte « CraftsmanLab ».
+    // Le lien vers l'accueil porte le nom accessible via le wordmark.
+    const brandLink = screen.getByRole('link', { name: /CraftsmanLab/i });
+    expect(brandLink).toHaveAttribute('href', '/');
   });
 
   test('renders navigation links', () => {
@@ -29,8 +29,8 @@ describe('Header', () => {
 
   test('has proper accessibility attributes', () => {
     render(<HeaderWrapper />);
-    const logo = screen.getByAltText('CraftsmanLab');
-    expect(logo).toHaveAttribute('alt', 'CraftsmanLab');
+    const brandLink = screen.getByRole('link', { name: /CraftsmanLab/i });
+    expect(brandLink).toBeInTheDocument();
     const navigation = screen.getByRole('banner');
     expect(navigation).toBeInTheDocument();
   });

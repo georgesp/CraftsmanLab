@@ -18,9 +18,12 @@ const MicrosoftExtensionsAITip: React.FC = () => {
       ? [_useCasesRaw]
       : [];
 
-  const _capabilitiesRaw = t('microsoft-extensions-ai.content.sections.interfaces.chatClient.capabilities', {
-    returnObjects: true,
-  });
+  const _capabilitiesRaw = t(
+    'microsoft-extensions-ai.content.sections.interfaces.chatClient.capabilities',
+    {
+      returnObjects: true,
+    },
+  );
   const capabilities: string[] = Array.isArray(_capabilitiesRaw)
     ? _capabilitiesRaw
     : typeof _capabilitiesRaw === 'string'
@@ -234,11 +237,7 @@ foreach (var embedding in embeddings)
           </Link>
         </ListItem>
         <ListItem sx={{ display: 'list-item', py: 0.5 }}>
-          <Link
-            href="https://aka.ms/meai-samples"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link href="https://aka.ms/meai-samples" target="_blank" rel="noopener noreferrer">
             {t('microsoft-extensions-ai.content.sections.resources.samples')}
           </Link>
         </ListItem>

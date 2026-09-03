@@ -1,0 +1,115 @@
+{
+  "csharp-15-unions": {
+    "title": "C# 15 : union types & closed hierarchies",
+    "shortDescription": "Modélise nativement « exactement l'un de ces types », avec un switch exhaustif vérifié par le compilateur.",
+    "content": {
+      "mainTitle": "C# 15 : union types et hiérarchies fermées",
+      "intro": "Depuis toujours, modéliser en C# une valeur qui est « exactement l'un de ces trois types » impose des contorsions : classe abstraite plus classes scellées, enum plus champs optionnels, ou une dépendance NuGet comme OneOf. C# 15 apporte enfin deux briques natives : le mot-clé union et les hiérarchies closed. Résultat : le compilateur sait quels cas existent, et ton switch devient exhaustif sans clause fourre-tout.",
+      "summary": "Les union types et les hiérarchies closed de C# 15 permettent de modéliser un choix fermé entre plusieurs types, avec un pattern matching exhaustif vérifié à la compilation.",
+      "tocTitle": "Sommaire",
+      "tocItems": [
+        "Le problème aujourd'hui",
+        "Les union types",
+        "Les hiérarchies closed",
+        "Pattern matching exhaustif",
+        "Activer C# 15",
+        "Cas d'utilisation concrets",
+        "Avantages et inconvénients face à OneOf"
+      ],
+      "sections": {
+        "whyUnions": {
+          "title": "Le problème aujourd'hui",
+          "description": "Prends un paiement : il est approuvé, refusé, ou en attente. Chaque cas porte des données différentes. En C# 14 tu écris une classe abstraite avec une classe scellée par cas. Ça marche, mais le compilateur ne peut jamais prouver que ta liste de cas est complète : n'importe quel assembly peut dériver un quatrième cas.",
+          "painTitle": "Ce que ça coûte au quotidien",
+          "painItems": [
+            "Une clause fourre-tout obligatoire dans chaque switch, sinon l'avertissement CS8509",
+            "Ajouter un cas ne casse aucune compilation : les oublis se découvrent en production",
+            "Beaucoup de cérémonie pour ce qui est un simple choix entre trois formes",
+            "Alternative fréquente : une dépendance NuGet (OneOf) qui impose son propre style d'appel"
+          ],
+          "codeCaption": "La modélisation classique, avec sa clause fourre-tout défensive."
+        },
+        "unions": {
+          "title": "Les union types",
+          "description": "Le mot-clé union déclare un type dont la valeur est exactement l'un des types listés. La déclaration tient sur une ligne et réutilise des types que tu as déjà définis : records, classes, structs.",
+          "declarationTitle": "Déclarer une union",
+          "declarationDescription": "Les trois records restent des types normaux, utilisables ailleurs. L'union se contente de déclarer le choix fermé entre eux.",
+          "usageTitle": "Consommer une union",
+          "usageDescription": "La conversion depuis chaque cas est implicite, et le switch n'a plus besoin de clause fourre-tout : le compilateur connaît la liste complète des cas."
+        },
+        "closed": {
+          "title": "Les hiérarchies closed",
+          "description": "Le modificateur closed s'applique à une classe ou un record de base : seul l'assembly de déclaration peut en dériver. C'est la variante à privilégier quand tes cas partagent des membres communs ou une vraie relation d'héritage, là où l'union convient mieux à des types indépendants.",
+          "usageTitle": "Switch exhaustif sur une hiérarchie closed",
+          "usageDescription": "Ajoute un nouvel état dans l'assembly et cette méthode ne compile plus : c'est exactement le filet de sécurité qu'on attend d'une machine à états.",
+          "note": "union et closed sont complémentaires : union assemble des types indépendants, closed verrouille une hiérarchie existante. Les deux donnent la même garantie d'exhaustivité au compilateur."
+        },
+        "matching": {
+          "title": "Pattern matching exhaustif",
+          "description": "Une union se combine avec tout ce que le pattern matching sait déjà faire depuis C# 8 : patterns de propriété, patterns de type imbriqués, patterns relationnels. La différence, c'est que l'exhaustivité est désormais vérifiée.",
+          "rulesTitle": "Règles à retenir",
+          "rulesItems": [
+            "Sans clause fourre-tout, le compilateur exige un bras par cas de l'union",
+            "Un bras plus spécifique (pattern de propriété) ne compte pas comme couvrant tout le cas : garde un bras général",
+            "L'ordre reste significatif : du plus spécifique au plus général",
+            "Ajouter un cas à l'union transforme chaque switch incomplet en erreur de compilation"
+          ]
+        },
+        "setup": {
+          "title": "Activer C# 15",
+          "description": "C# 15 arrive avec .NET 11. Au moment de l'écriture de ce tip, la version est encore en preview : la GA de .NET 11 est annoncée pour le 10 novembre 2026. Il te faut le SDK .NET 11 et LangVersion en preview.",
+          "statusTitle": "État de la fonctionnalité",
+          "statusItems": [
+            "Support compilateur des unions livré en .NET 11 Preview 2",
+            "Support IDE (complétion, refactorings) arrivé en Preview 3",
+            "Visual Studio 2026 Insiders ou JetBrains Rider récent recommandé",
+            "À traiter comme une preview : la syntaxe peut encore bouger avant la GA"
+          ],
+          "alsoTitle": "Les autres nouveautés C# 15 à connaître",
+          "alsoItems": [
+            "Collection expression arguments : passer une capacité ou un comparateur avec la syntaxe with(...)",
+            "Extension indexers : déclarer un indexeur dans un bloc extension",
+            "break et continue étiquetés, pour cibler explicitement une boucle englobante",
+            "Assouplissement des exigences unsafe sur certaines opérations de pointeurs"
+          ]
+        },
+        "useCases": {
+          "title": "Cas d'utilisation concrets",
+          "description": "Les unions brillent partout où une opération a plusieurs issues légitimes qu'on ne veut pas exprimer par une exception ou un booléen accompagné d'un message.",
+          "items": [
+            "Résultats de domaine : remplacer un Result<T> maison ou un couple (bool Success, string Error) par un choix explicite entre Succès, ValidationÉchouée et NonAutorisé",
+            "Machines à états : commande Brouillon, Payée, Expédiée, Annulée, avec un switch qui casse à la compilation quand un état est ajouté",
+            "Parsing et validation : ParseOk, ParseErreurSyntaxe, ParseHorsBornes, chacun portant ses propres données",
+            "Réponses d'API et couches anticorruption : traduire un code HTTP en cas typés plutôt qu'en tests de codes numériques",
+            "Handlers de messages : un handler qui retourne Traité, Rejeté ou ÀRejouer, sans exception de flux de contrôle"
+          ]
+        },
+        "comparison": {
+          "title": "Avantages et inconvénients face à OneOf",
+          "description": "La référence actuelle pour faire des unions en C# est la librairie OneOf. Elle fonctionne dès C# 9 et reste installée dans beaucoup de projets. Voici comment les deux se comparent.",
+          "prosTitle": "Ce que l'union native apporte",
+          "prosItems": [
+            "Aucune dépendance NuGet, aucun type générique à arité fixe (OneOf<T0, T1, T2>...)",
+            "Le switch classique fonctionne : pas besoin d'apprendre une API Match à base de lambdas",
+            "Exhaustivité vérifiée par le compilateur, avec messages d'erreur natifs",
+            "Composable avec le pattern matching existant : patterns de propriété, imbrication, patterns relationnels",
+            "Meilleure lisibilité des signatures : PaymentResult au lieu de OneOf<Approved, Declined, Pending>"
+          ],
+          "consTitle": "Ce qui plaide encore pour OneOf",
+          "consItems": [
+            "OneOf tourne aujourd'hui sur .NET 8 LTS ; les unions exigent .NET 11, non LTS, en GA seulement le 10 novembre 2026",
+            "L'écosystème n'a pas encore rattrapé : sérialisation System.Text.Json, mapping EF Core, générateurs OpenAPI à vérifier au cas par cas",
+            "OneOf offre des helpers éprouvés (Match, Switch, TryPickT0) que l'union native laisse à ta charge",
+            "Migrer une base existante implique de toucher toutes les signatures publiques concernées",
+            "Le tooling IDE des unions est encore jeune : attends-toi à quelques rugosités en preview"
+          ],
+          "verdict": "En pratique : sur un nouveau service ciblant .NET 11, pars directement sur les unions natives. Sur une base .NET 8 ou .NET 10 en production, garde OneOf et isole les unions derrière tes types de domaine pour rendre la migration mécanique le jour venu."
+        }
+      },
+      "footer": {
+        "sourceLabel": "Documentation Microsoft — What's new in C# 15",
+        "writtenOn": "Écrit le {{date}}"
+      }
+    }
+  }
+}

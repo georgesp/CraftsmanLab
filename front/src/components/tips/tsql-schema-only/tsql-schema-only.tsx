@@ -23,9 +23,7 @@ const TsqlSchemaOnlyTip: React.FC = () => {
       <Typography variant="h5" gutterBottom>
         {t('tsql-schema-only.content.useCases.case1.title')}
       </Typography>
-      <Typography paragraph>
-        {t('tsql-schema-only.content.useCases.case1.description')}
-      </Typography>
+      <Typography paragraph>{t('tsql-schema-only.content.useCases.case1.description')}</Typography>
       <CodeBlock
         language="sql"
         ariaLabel="tsql-schema-only-case1"
@@ -48,9 +46,7 @@ VALUES (1, 100.50, SYSDATETIME());
       <Typography variant="h5" gutterBottom>
         {t('tsql-schema-only.content.useCases.case2.title')}
       </Typography>
-      <Typography paragraph>
-        {t('tsql-schema-only.content.useCases.case2.description')}
-      </Typography>
+      <Typography paragraph>{t('tsql-schema-only.content.useCases.case2.description')}</Typography>
       <CodeBlock
         language="sql"
         ariaLabel="tsql-schema-only-case2"
@@ -80,9 +76,7 @@ DELETE FROM dbo.StagingOrders;`}
       <Typography variant="h5" gutterBottom>
         {t('tsql-schema-only.content.useCases.case3.title')}
       </Typography>
-      <Typography paragraph>
-        {t('tsql-schema-only.content.useCases.case3.description')}
-      </Typography>
+      <Typography paragraph>{t('tsql-schema-only.content.useCases.case3.description')}</Typography>
       <CodeBlock
         language="sql"
         ariaLabel="tsql-schema-only-case3"
