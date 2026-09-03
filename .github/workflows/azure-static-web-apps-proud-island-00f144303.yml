@@ -43,6 +43,13 @@ jobs:
           npm ci --prefix front
           npm run build --prefix front
 
+      # Genere un index.html complet par route dans front/build.
+      # Sans cette etape la SPA sert la meme coquille vide pour toutes les URLs,
+      # ce qui empeche Google d'indexer les pages tips et prompts.
+      # Chrome est preinstalle sur les runners ubuntu-latest : rien a telecharger.
+      - name: Prerender static pages
+        run: npm run prerender --prefix front
+
       - name: Show frontend directory & build output (debug)
         run: |
           echo "PWD: $(pwd)"
