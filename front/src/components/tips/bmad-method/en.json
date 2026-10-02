@@ -1,0 +1,315 @@
+{
+  "bmad-method": {
+    "title": "BMAD Method: agile AI-driven development",
+    "shortDescription": "Install BMAD on macOS or Windows, understand its agents and its 10 key commands, then evolve a project step by step.",
+    "content": {
+      "mainTitle": "BMAD Method: from idea to reviewed code, without letting the AI decide for you",
+      "intro": "Coding assistants are great at implementation, but they readily turn unstated assumptions into code. BMAD Method (Breakthrough Method of Agile AI-Driven Development) is an open source framework that structures your work with AI: specialized agents (analyst, PM, architect, developer, UX), guided workflows, and documents that keep your decisions from one session to the next. A small fix goes straight to implementation; a complex initiative gets the depth of thinking it deserves. This tip covers the current version, distributed as skills (repository state as of October 2, 2026).",
+      "summary": "BMAD Method structures AI-assisted development with specialized agents and skill-based workflows: macOS/Windows install, 10 key commands and a complete workflow to evolve a project.",
+      "tocTitle": "Table of contents",
+      "tocItems": [
+        "What is BMAD Method?",
+        "Key concepts",
+        "Installing on macOS and Windows",
+        "The 10 main commands",
+        "Pros and cons compared with GitHub Spec Kit",
+        "Usage examples for developers",
+        "Concrete example: a thinking workflow to evolve a project"
+      ],
+      "sections": {
+        "whatIs": {
+          "title": "What is BMAD Method?",
+          "description": "BMAD is an agile method for AI Driven Development: it covers the whole effort, not only the code. What to build, how the pieces hold together, and how the project changes as you learn. The delivery loop has four moments: clarify a vague idea, plan a clear one, build and verify, then learn and adjust. You can enter the loop anywhere.",
+          "pointsTitle": "What sets it apart",
+          "points": [
+            "A process sized to the work: a clear change goes straight to build, a multi-epic project goes through PRD, architecture and slicing",
+            "Works on a brand-new project as well as on an inherited codebase, starting from what the code actually does",
+            "Durable context: product and technical decisions are written down and reused instead of being re-explained in every chat",
+            "Specialized perspectives: product, architecture, UX, development and testing, each with its own agent",
+            "Free and open source (MIT license), compatible with Claude Code, Codex, Cursor, Windsurf, Cline and most tools that support skills"
+          ]
+        },
+        "concepts": {
+          "title": "Key concepts",
+          "description": "Four notions are enough to read the documentation and BMAD's output without getting lost.",
+          "items": [
+            "Skill: a named command installed in your AI tool (a folder with a SKILL.md). It loads an agent, runs a workflow or performs a task",
+            "Agent: a specialized persona with a menu of short codes. Load the agent, then type a code to start a workflow without leaving the conversation",
+            "Initiative: the working folder of an effort. While an initiative is active, every document produced lands there, which keeps the context together",
+            "Epic, story and ticket: an epic is one coherent outcome that needs several build sessions; it is split into ordered stories in a tickets.toml file, each one delivered in a single session"
+          ],
+          "agentsTitle": "The five agents of the BMad Method module",
+          "agentsDescription": "Each agent is loaded with its skill, then driven through its menu codes. Codes are scoped to each agent: CR means competitive teardown for Mary but code review for Amelia.",
+          "agents": [
+            {
+              "name": "Mary",
+              "role": "business analyst",
+              "skill": "bmad-agent-analyst",
+              "codes": "brainstorming, market, domain and technical research, product brief, PRFAQ, project context"
+            },
+            {
+              "name": "John",
+              "role": "product manager",
+              "skill": "bmad-agent-pm",
+              "codes": "PRD (create, update, validate), correct course, ticket management"
+            },
+            {
+              "name": "Winston",
+              "role": "architect",
+              "skill": "bmad-agent-architect",
+              "codes": "architecture, planning work and dependencies"
+            },
+            {
+              "name": "Amelia",
+              "role": "senior developer",
+              "skill": "bmad-agent-dev",
+              "codes": "build, QA tests, code review, epic retrospective, tickets"
+            },
+            {
+              "name": "Sally",
+              "role": "UX designer",
+              "skill": "bmad-agent-ux-designer",
+              "codes": "UX design"
+            }
+          ],
+          "treeTitle": "What BMAD adds to your repository",
+          "treeDescription": "Skills go into your tool's own folder, shared configuration into _bmad/, and every generated document into _bmad-output/. Your customizations in _bmad/custom/ survive updates."
+        },
+        "install": {
+          "title": "Installing on macOS and Windows",
+          "description": "Installation has two steps: install the skills in the project with the skills CLI, then ask the bmad skill to set up the project. It works the same on both systems; only the prerequisites differ.",
+          "prereqTitle": "Prerequisites",
+          "prereqItems": [
+            "An AI coding tool that supports skills: Claude Code, Codex, Cursor, Windsurf, Cline, Antigravity…",
+            "Node.js 20.12 or later, with npm (used by the skills CLI)",
+            "Git",
+            "uv, Astral's Python package manager, used by bmad setup and by the skills' scripts"
+          ],
+          "macTitle": "On macOS",
+          "macDescription": "With Homebrew, a single command installs every prerequisite. Then move to your project root to install the skills: the CLI asks which skills and which AI tool to target.",
+          "windowsTitle": "On Windows",
+          "windowsDescription": "In PowerShell, winget installs the prerequisites. Remember to open a new terminal afterwards, otherwise node and uv will not be on the PATH yet.",
+          "windowsNote": "If PowerShell blocks npx with an execution policy error, allow signed scripts for your user. If you work in WSL, install Node.js and uv on the Linux side rather than using the Windows ones.",
+          "skillsTitle": "Choosing which skills to install",
+          "skillsDescription": "In interactive mode, select at least bmad (setup and help), plus the module records bmod-core-tools and bmod-method. For a first try, you can also install a small set of skills by name and add more later.",
+          "pluginDescription": "Alternative: use the Claude Code or Codex plugin marketplace, then install bmad-method (delivery workflows) and bmad-core-tools (standalone skills, including the bmad hub). Pick a single install method to avoid duplicate commands.",
+          "setupTitle": "Setting up and verifying the project",
+          "setupDescription": "Open your AI tool in the project folder and run bmad setup: it installs the shared runtime and module scripts under _bmad/, and asks any configuration questions the modules declare. bmad status then checks versions and tells you what to run next. Generated documents go to _bmad-output/ (configurable).",
+          "updateDescription": "To update, simply run bmad setup again: it runs npx skills update when a newer version exists, moves your customizations when a skill was renamed, offers to delete retired skills, then checks whether a migration applies. Restart your tool if its skill catalog does not refresh.",
+          "legacyNote": "Beware of older tutorials: previous versions were installed with an interactive installer and used different workflow names. If you pick up a project installed with an older v6, ask for bmad migrate method to move it onto the new folder layout."
+        },
+        "commands": {
+          "title": "The 10 main commands",
+          "description": "BMAD installs about thirty skills. Here are the ten you will use most often, from the help hub to code review. Each example is a prompt to type as is in your tool.",
+          "invokeNote": "Depending on the platform, a skill is invoked by its bare name (bmad), with a slash (/bmad in Claude Code) or with a dollar sign ($bmad in Codex). The examples below use Claude Code syntax. Tip: open a new chat for each workflow so contexts do not mix.",
+          "items": [
+            {
+              "name": "bmad",
+              "title": "The hub: help, next step, installation and initiatives",
+              "description": "The one entry point to remember. It reads the active initiative, checks which documents already exist and recommends the next command, in priority order. It also handles setup, status, migrate and creating or switching initiatives. When in doubt, ask it.",
+              "example": "/bmad I have an existing ASP.NET Core API and I want to add a billing module. Where do I start?"
+            },
+            {
+              "name": "bmad-build",
+              "title": "Implement a change end to end",
+              "description": "The core implementation skill. It accepts a sentence, an issue, a spec or a ticket, investigates the code, decides how much ceremony the change needs, submits a plan when warranted, implements, gets reviewed by independent reviewers, fixes and commits locally. With no argument, it resumes an unfinished plan or takes the next ready ticket.",
+              "example": "/bmad-build Fix the login form validation that accepts an empty password."
+            },
+            {
+              "name": "bmad-spec",
+              "title": "Condense an intent into a short contract",
+              "description": "Turns any input (idea, brief, PRD, transcript, notes) into a short spec: what must be true at the end, what must not change, what is out of scope. A spec that fits one session goes straight to bmad-build; an epic-sized one goes to bmad-ticket. Keep the input concise: beyond roughly forty pages, condense first.",
+              "example": "/bmad-spec Turn my notes about the CSV export of orders into a spec: scope, invariants and out of scope."
+            },
+            {
+              "name": "bmad-ticket",
+              "title": "Slice the work and run the board",
+              "description": "Slices an initiative into epics and an epic into ordered stories in tickets.toml. It can also write or refine a ticket and run the board: what is ready, status, assignment, publishing, cancelling.",
+              "example": "/bmad-ticket Slice the export-csv spec into stories in build order. Then tell me what is ready."
+            },
+            {
+              "name": "bmad-code-review",
+              "title": "Code review by several reviewers in parallel",
+              "description": "Runs several independent reviewers on a diff, a branch or a PR, then triages the findings: each one gets a verdict and evidence, nothing is dropped silently. Ideal before opening a PR or when reviewing a colleague's work.",
+              "example": "/bmad-code-review Review the changes on the feature/export-csv branch against main."
+            },
+            {
+              "name": "bmad-project-context",
+              "title": "Give agents the repository's context",
+              "description": "Writes, adopts, refreshes or audits a small verified block of instructions in AGENTS.md: conventions, build and test commands, security rules. It also records recurring agent mistakes as pitfalls. A handwritten AGENTS.md is adopted, not rewritten.",
+              "example": "/bmad-project-context Audit our AGENTS.md and add our rules: xUnit tests are mandatory, no new NuGet dependency without approval."
+            },
+            {
+              "name": "bmad-brainstorming",
+              "title": "Generate ideas in a facilitated session",
+              "description": "Facilitates a brainstorming session with varied creative techniques, aiming for a hundred ideas before organizing them. It switches angles regularly to avoid going in circles. Produces a brainstorm.html and, optionally, a markdown summary other skills can reuse.",
+              "example": "/bmad-brainstorming Help me find ideas to reduce drop-off in our checkout funnel."
+            },
+            {
+              "name": "bmad-prd",
+              "title": "Create, update or validate a PRD",
+              "description": "Guides the writing of a Product Requirements Document at the level of rigor you ask for. State the intent (create, update or validate), otherwise it will ask. A PRD is useful when several people must agree on the product or several epics must not diverge; otherwise go straight to a spec.",
+              "example": "/bmad-prd Create a PRD for the billing module based on the brief-billing brief."
+            },
+            {
+              "name": "bmad-architecture",
+              "title": "Record the technical decisions that keep things consistent",
+              "description": "Produces a short architecture document focused on the decisions that keep separately built parts consistent. It starts from a spec, an idea or the existing code, and can also update or validate an architecture. On an existing project, explicitly ask it to scan the code so it does not reinvent a component.",
+              "example": "/bmad-architecture Update the architecture to add a message queue between the API and the email service. Scan the existing code first."
+            },
+            {
+              "name": "bmad-party-mode",
+              "title": "Get several agents debating around a table",
+              "description": "Orchestrates a discussion between installed agents (or custom personas): they answer each other, disagree and ask you questions. Very effective to confront product, architecture and development viewpoints before a decision.",
+              "example": "/bmad-party-mode Winston, Amelia and Sally: SignalR or Server-Sent Events for our real-time notifications?"
+            }
+          ],
+          "bonusTitle": "Also worth knowing",
+          "bonusItems": [
+            "bmad-forge-idea: pressure-tests a half-formed idea by letting several personas attack it, until it holds or is dropped with confidence",
+            "bmad-advanced-elicitation: forces a second pass on the latest output with a named method (pre-mortem, first principles, red team…)",
+            "bmad-correct-course: assesses the impact of a significant mid-course change on the PRD, epics, architecture and UX. It requires a PRD: without one, update the spec with bmad-spec instead",
+            "bmad-retrospective: judges a finished epic from the evidence it left behind (tickets, plans, diffs, commits)",
+            "bmad-walkthrough: guides your human review of a commit, a PR or a folder",
+            "bmad-build-auto: one unattended build iteration, best kept for stories whose patterns are settled",
+            "bmad-deep-recon: sourced research (market, technical, competitive…) to support a decision"
+          ]
+        },
+        "comparison": {
+          "title": "Pros and cons compared with GitHub Spec Kit",
+          "description": "The closest competitor is GitHub Spec Kit, GitHub's spec-driven development toolkit: through slash commands it chains constitution, specification, technical plan, task list, implementation and convergence, and also offers extensions for bug fixing and idea assessment. Both start from the same idea, writing the intent before the code, but not with the same approach.",
+          "prosTitle": "What BMAD brings",
+          "prosItems": [
+            "A process that adapts to the size of the change, from a one-line fix to a multi-epic project, instead of a single pipeline",
+            "Specialized agents and party mode to confront product, architecture, UX and development",
+            "Multi-reviewer code review with triage built into build, and an evidence-based epic retrospective",
+            "Durable context per initiative, with linked PRD, architecture, specs and tickets",
+            "An ecosystem of official modules: Test Architect, Builder, Creative Intelligence Suite, Game Dev Studio, Loop"
+          ],
+          "consTitle": "Reasons for caution",
+          "consItems": [
+            "A real learning curve: about thirty skills and a vocabulary of its own (initiative, epic, ticket, menu codes)",
+            "A fast-moving project with frequent renames and migrations: tutorials older than a few months are often outdated",
+            "High token consumption on long workflows (parallel reviewers, party mode, full planning)",
+            "Review works best in a tool that can spawn subagents",
+            "Extra prerequisites (Node.js and uv) and extra folders to manage in the repository",
+            "Spec Kit remains simpler to adopt for a team that just wants to write a spec before coding"
+          ],
+          "verdict": "In practice: start with bmad-build alone on real changes to get used to the method, add bmad-spec and bmad-ticket as soon as an effort exceeds one session, and bring out PRD, architecture and party mode only when several people or several epics must stay aligned."
+        },
+        "devExamples": {
+          "title": "Usage examples for developers",
+          "description": "A few everyday situations and the matching prompt. Each time, open a new chat in your AI tool at the project root.",
+          "items": [
+            {
+              "title": "Fix a bug from an issue",
+              "description": "bmad-build reads the issue, investigates the code, proposes a plan when the fix is not trivial, then implements, reviews itself and commits. Unrelated problems found along the way are logged in deferred-work.md instead of widening the fix.",
+              "prompt": "/bmad-build Fix https://github.com/my-org/my-repo/issues/42"
+            },
+            {
+              "title": "Start on an inherited codebase",
+              "description": "First have a verified context written for agents, then ask the hub what it recommends for your first change.",
+              "prompt": "/bmad-project-context\n\n# then, in a new chat\n/bmad I just took over this Angular + .NET 8 application. I need to add role management. What is the right approach?"
+            },
+            {
+              "title": "Review a colleague's PR",
+              "description": "The multi-reviewer review gives a triaged list of findings, and the walkthrough guides your own human review.",
+              "prompt": "/bmad-code-review Review PR #128: focus on error handling and concurrency.\n\n# then\n/bmad-walkthrough Walk me through the changes in PR #128."
+            },
+            {
+              "title": "Challenge a plan before coding",
+              "description": "Right after a skill proposed a plan or a spec, ask for a second pass with a named method. A pre-mortem often finds the gaps a standard review misses.",
+              "prompt": "/bmad-advanced-elicitation Run a pre-mortem on the plan you just proposed."
+            },
+            {
+              "title": "Add automated tests to a shipped feature",
+              "description": "Generates API and end-to-end tests for code that is already implemented, following the project's test framework.",
+              "prompt": "/bmad-qa-generate-e2e-tests Create automated API and E2E tests for the CSV export of orders."
+            },
+            {
+              "title": "Clear the deferred backlog",
+              "description": "Each build stays focused on one goal and logs the rest in deferred-work.md. Pick those items up one by one.",
+              "prompt": "/bmad-build Handle the first item in deferred-work.md."
+            }
+          ]
+        },
+        "workflow": {
+          "title": "Concrete example: a thinking workflow to evolve a project",
+          "description": "Context: you maintain an appointment booking application in production (ASP.NET Core API and React front end). Customers ask for automatic reminders before their appointments. The idea is still vague: email or SMS? How long before? What about cancelled appointments? Here is how BMAD helps you think before coding, then deliver without losing track. Open a new chat at each step.",
+          "steps": [
+            {
+              "title": "Ask the hub for directions",
+              "description": "bmad inspects the project and suggests the right path. For an idea that is still vague, it recommends clarifying it before any spec.",
+              "prompt": "/bmad Our appointment app (ASP.NET Core + React) must send reminders before each appointment. I don't know the channel or the delay yet. Where do I start?"
+            },
+            {
+              "title": "Create an initiative",
+              "description": "Every document of the effort will land in the same folder, so later skills find them without you having to point at them.",
+              "prompt": "/bmad Create an initiative appointment-reminders and make it active."
+            },
+            {
+              "title": "Pressure-test the idea",
+              "description": "Several personas attack the weak spots: SMS cost, GDPR consent, time zones, last-minute cancellations. If the idea holds, a short forge document is written for what follows.",
+              "prompt": "/bmad-forge-idea Automatic reminders before appointments, by email and possibly SMS, with a delay configurable per practitioner. Challenge me on costs, GDPR and cancelled appointments."
+            },
+            {
+              "title": "Debate the technical options",
+              "description": "Party mode confronts the architect's, the developer's and the PM's viewpoints on how to schedule the sends, taking your hosting into account.",
+              "prompt": "/bmad-party-mode Winston, Amelia and John: Hangfire, Quartz.NET or Azure Functions to trigger the reminders? We are hosted on Azure App Service."
+            },
+            {
+              "title": "Record the architecture decisions",
+              "description": "The chosen decisions are written in a short document, starting from the existing code so nothing gets reinvented.",
+              "prompt": "/bmad-architecture From the forge report and the existing code, record the decisions for reminders: scheduling, sending, idempotency, logging and unsubscribe."
+            },
+            {
+              "title": "Write the spec and stress-test it",
+              "description": "The spec becomes the reference contract. A pre-mortem right after it spots what is missing before slicing.",
+              "prompt": "/bmad-spec Condense the forge report and the architecture into a spec: what must be true at the end, what must not change, out of scope.\n\n# then, in the same chat\n/bmad-advanced-elicitation Pre-mortem: six months from now, reminders are a failure. Why?"
+            },
+            {
+              "title": "Slice into stories",
+              "description": "bmad-ticket proposes a build order. Review it and spot the foundational stories that deserve a human checkpoint.",
+              "prompt": "/bmad-ticket Slice the appointment-reminders spec into stories in build order and flag the ones that deserve a checkpoint."
+            },
+            {
+              "title": "Build story by story",
+              "description": "One story per session, in a new chat each time. bmad-build leaves the story at built: you mark it done with bmad-ticket once verified. The first stories set the patterns: keep them attended before considering bmad-build-auto for the following ones.",
+              "prompt": "/bmad-build 1.1\n\n# once verified\n/bmad-ticket Mark story 1.1 as done.\n\n# new chat\n/bmad-build 1.2"
+            },
+            {
+              "title": "Review before the PR",
+              "description": "An independent review of the whole branch, on top of the reviews performed during each build.",
+              "prompt": "/bmad-code-review Review the changes on the feature/appointment-reminders branch against main."
+            },
+            {
+              "title": "Correct course when needs change",
+              "description": "Midway, the customer also wants push notifications. Rather than hacking it in, update the spec, then have the remaining stories re-sliced. On a PRD-driven effort, bmad-correct-course would run that impact analysis across the PRD, architecture and epics.",
+              "prompt": "/bmad-spec Update the appointment-reminders spec: the customer also wants push notifications in the mobile app.\n\n# then\n/bmad-ticket Revise the epic's remaining stories based on the updated spec."
+            },
+            {
+              "title": "Close the epic",
+              "description": "The retrospective compares the result with the epic's requirements using the evidence: tickets, plans, diffs and commits. It writes its document in the epic folder, with action items and an acceptance verdict. The epic is then closed with bmad-ticket.",
+              "prompt": "/bmad-retrospective Run the retrospective for the appointment reminders epic."
+            }
+          ],
+          "resultTitle": "What you get",
+          "result": "In the end, every decision is traced in the initiative: why the idea was kept, which technical choices were made, what the spec guarantees, and how each story was built. A developer picking the topic up six months later, human or agent, finds the whole reasoning. The layout below is indicative: exact file names depend on your BMAD version.",
+          "tipsTitle": "Good habits",
+          "tips": [
+            "One new chat per workflow: mixing contexts degrades results",
+            "Read plans before approving them: fixing a plan costs far less than fixing code",
+            "Do not feed bmad-spec a pile of raw documents: condense first",
+            "If you want to break an existing convention, say so explicitly and write why in the spec, otherwise build will follow the code in place",
+            "When unsure about what to do next, ask bmad rather than guessing"
+          ]
+        }
+      },
+      "footer": {
+        "sourceLabel": "GitHub repository — BMAD-METHOD",
+        "docsLabel": "Official documentation",
+        "writtenOn": "Written on {{date}}"
+      }
+    }
+  }
+}

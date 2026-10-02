@@ -1,0 +1,315 @@
+{
+  "bmad-method": {
+    "title": "BMAD Method : le développement agile piloté par l'IA",
+    "shortDescription": "Installer BMAD sur macOS ou Windows, comprendre ses agents et ses 10 commandes clés, puis faire évoluer un projet étape par étape.",
+    "content": {
+      "mainTitle": "BMAD Method : de l'idée au code relu, sans laisser l'IA décider à ta place",
+      "intro": "Les assistants de code sont excellents pour implémenter, mais ils transforment volontiers des hypothèses non dites en code. BMAD Method (Breakthrough Method of Agile AI-Driven Development) est un framework open source qui structure ton travail avec l'IA : des agents spécialisés (analyste, PM, architecte, développeur, UX), des workflows guidés et des documents qui conservent tes décisions d'une session à l'autre. Un petit correctif part directement en implémentation, un chantier complexe reçoit la profondeur de réflexion qu'il mérite. Ce tip couvre la version actuelle, distribuée sous forme de skills (état du dépôt au 2 octobre 2026).",
+      "summary": "BMAD Method structure le développement assisté par IA avec des agents spécialisés et des workflows sous forme de skills : installation macOS/Windows, 10 commandes clés et un workflow complet pour faire évoluer un projet.",
+      "tocTitle": "Sommaire",
+      "tocItems": [
+        "Qu'est-ce que BMAD Method ?",
+        "Les concepts à connaître",
+        "Installation sur macOS et Windows",
+        "Les 10 commandes principales",
+        "Avantages et inconvénients face à GitHub Spec Kit",
+        "Exemples d'utilisation pour un développeur",
+        "Exemple concret : un workflow de réflexion pour faire évoluer un projet"
+      ],
+      "sections": {
+        "whatIs": {
+          "title": "Qu'est-ce que BMAD Method ?",
+          "description": "BMAD est une méthode agile pour l'« AI Driven Development » : elle couvre tout l'effort, pas seulement le code. Quoi construire, comment les morceaux tiennent ensemble, et comment le projet évolue au fil de ce que tu apprends. Le cycle de livraison tient en quatre temps : clarifier une idée floue, planifier une idée claire, construire et vérifier, puis apprendre et ajuster. Tu peux entrer dans la boucle à n'importe quel endroit.",
+          "pointsTitle": "Ce qui le distingue",
+          "points": [
+            "Un processus dimensionné au travail : un changement clair va droit au build, un projet multi-epics passe par PRD, architecture et découpage",
+            "Fonctionne sur un projet neuf comme sur une base de code héritée, en partant de ce qui existe réellement dans le code",
+            "Un contexte durable : les décisions produit et techniques sont écrites et réutilisées, au lieu d'être réexpliquées à chaque chat",
+            "Des perspectives spécialisées : produit, architecture, UX, développement et tests, chacune avec son agent",
+            "Gratuit, open source (licence MIT), compatible avec Claude Code, Codex, Cursor, Windsurf, Cline et la plupart des outils qui gèrent les skills"
+          ]
+        },
+        "concepts": {
+          "title": "Les concepts à connaître",
+          "description": "Quatre notions suffisent pour lire la documentation et les sorties de BMAD sans se perdre.",
+          "items": [
+            "Skill : une commande nommée installée dans ton outil IA (un dossier avec un SKILL.md). Elle charge un agent, lance un workflow ou exécute une tâche",
+            "Agent : une persona spécialisée avec un menu de codes courts. Tu charges l'agent, puis tu tapes un code pour lancer un workflow sans quitter la conversation",
+            "Initiative : le dossier de travail d'un chantier. Quand une initiative est active, chaque document produit y atterrit, ce qui garde le contexte groupé",
+            "Epic, story et ticket : un epic est un résultat cohérent qui demande plusieurs sessions de build ; il est découpé en stories ordonnées dans un fichier tickets.toml, chacune réalisée en une session"
+          ],
+          "agentsTitle": "Les cinq agents du module BMad Method",
+          "agentsDescription": "Chaque agent se charge avec son skill, puis s'utilise via les codes de son menu. Les codes sont propres à chaque agent : CR signifie analyse concurrentielle chez Mary mais revue de code chez Amelia.",
+          "agents": [
+            {
+              "name": "Mary",
+              "role": "analyste métier",
+              "skill": "bmad-agent-analyst",
+              "codes": "brainstorming, recherches marché, domaine et technique, brief produit, PRFAQ, contexte projet"
+            },
+            {
+              "name": "John",
+              "role": "product manager",
+              "skill": "bmad-agent-pm",
+              "codes": "PRD (créer, mettre à jour, valider), correction de cap, gestion des tickets"
+            },
+            {
+              "name": "Winston",
+              "role": "architecte",
+              "skill": "bmad-agent-architect",
+              "codes": "architecture, planification du travail et des dépendances"
+            },
+            {
+              "name": "Amelia",
+              "role": "développeuse senior",
+              "skill": "bmad-agent-dev",
+              "codes": "build, tests QA, revue de code, rétrospective d'epic, tickets"
+            },
+            {
+              "name": "Sally",
+              "role": "designer UX",
+              "skill": "bmad-agent-ux-designer",
+              "codes": "conception UX"
+            }
+          ],
+          "treeTitle": "Ce que BMAD ajoute à ton dépôt",
+          "treeDescription": "Les skills vont dans le dossier propre à ton outil, la configuration partagée dans _bmad/, et tous les documents générés dans _bmad-output/. Tes personnalisations dans _bmad/custom/ survivent aux mises à jour."
+        },
+        "install": {
+          "title": "Installation sur macOS et Windows",
+          "description": "L'installation se fait en deux temps : installer les skills dans le projet avec la CLI skills, puis demander au skill bmad de configurer le projet. Le fonctionnement est identique sur les deux systèmes, seuls les prérequis changent.",
+          "prereqTitle": "Prérequis",
+          "prereqItems": [
+            "Un outil de codage IA qui gère les skills : Claude Code, Codex, Cursor, Windsurf, Cline, Antigravity…",
+            "Node.js 20.12 ou plus récent, avec npm (utilisé par la CLI skills)",
+            "Git",
+            "uv, le gestionnaire Python d'Astral, utilisé par bmad setup et par les scripts des skills"
+          ],
+          "macTitle": "Sur macOS",
+          "macDescription": "Avec Homebrew, une seule commande installe tous les prérequis. Place-toi ensuite à la racine de ton projet pour installer les skills : la CLI te demande quels skills et quel outil IA cibler.",
+          "windowsTitle": "Sur Windows",
+          "windowsDescription": "Dans PowerShell, winget installe les prérequis. Pense à ouvrir un nouveau terminal après l'installation, sinon node et uv ne seront pas encore dans le PATH.",
+          "windowsNote": "Si PowerShell bloque l'exécution de npx avec une erreur de stratégie d'exécution, autorise les scripts signés pour ton utilisateur. Si tu travailles dans WSL, installe Node.js et uv côté Linux plutôt que d'utiliser ceux de Windows.",
+          "skillsTitle": "Choisir les skills à installer",
+          "skillsDescription": "En mode interactif, coche au minimum bmad (setup et aide), ainsi que les enregistrements de modules bmod-core-tools et bmod-method. Pour un premier essai, tu peux aussi installer un petit jeu de skills par leur nom, puis en ajouter d'autres plus tard.",
+          "pluginDescription": "Alternative : passer par la marketplace de plugins de Claude Code ou de Codex, puis installer bmad-method (workflows de livraison) et bmad-core-tools (skills transverses, dont le hub bmad). Choisis une seule méthode d'installation pour éviter les commandes en double.",
+          "setupTitle": "Configurer et vérifier le projet",
+          "setupDescription": "Ouvre ton outil IA dans le dossier du projet et lance bmad setup : il installe le runtime partagé et les scripts des modules dans _bmad/, et te pose les éventuelles questions de configuration déclarées par les modules. bmad status vérifie ensuite les versions et te dit quoi lancer. Les documents générés vont dans _bmad-output/ (configurable).",
+          "updateDescription": "Pour mettre à jour, relance simplement bmad setup : il exécute npx skills update si une version plus récente existe, déplace tes personnalisations quand un skill a été renommé, propose de supprimer les skills retirés, puis vérifie si une migration s'applique. Redémarre ton outil si son catalogue de skills ne se rafraîchit pas.",
+          "legacyNote": "Attention aux anciens tutoriels : les versions précédentes s'installaient avec un installeur interactif et utilisaient d'autres noms de workflows. Si tu reprends un projet installé avec une v6 plus ancienne, demande bmad migrate method pour le passer sur la nouvelle organisation des dossiers."
+        },
+        "commands": {
+          "title": "Les 10 commandes principales",
+          "description": "BMAD installe une trentaine de skills. Voici les dix que tu utiliseras le plus souvent, du hub d'aide jusqu'à la revue de code. Chaque exemple est un prompt à taper tel quel dans ton outil.",
+          "invokeNote": "Selon la plateforme, un skill s'invoque par son nom seul (bmad), avec un slash (/bmad dans Claude Code) ou avec un dollar ($bmad dans Codex). Les exemples ci-dessous utilisent la syntaxe Claude Code. Conseil : ouvre un nouveau chat pour chaque workflow, pour ne pas mélanger les contextes.",
+          "items": [
+            {
+              "name": "bmad",
+              "title": "Le hub : aide, prochaine étape, installation et initiatives",
+              "description": "Le point d'entrée à retenir. Il lit l'initiative active, regarde quels documents existent déjà et te recommande la prochaine commande, dans l'ordre de priorité. Il gère aussi setup, status, migrate et la création ou le changement d'initiative. Dans le doute, demande-lui.",
+              "example": "/bmad J'ai une API ASP.NET Core existante et je veux ajouter un module de facturation. Par où je commence ?"
+            },
+            {
+              "name": "bmad-build",
+              "title": "Implémenter un changement de bout en bout",
+              "description": "Le skill d'implémentation central. Il accepte une phrase, une issue, une spec ou un ticket, enquête dans le code, décide lui-même du niveau de cérémonie nécessaire, te soumet un plan si le changement le justifie, implémente, se fait relire par des relecteurs indépendants, corrige et commite en local. Sans argument, il reprend un plan inachevé ou prend le prochain ticket prêt.",
+              "example": "/bmad-build Corrige la validation du formulaire de connexion qui accepte un mot de passe vide."
+            },
+            {
+              "name": "bmad-spec",
+              "title": "Condenser une intention en contrat court",
+              "description": "Transforme n'importe quelle entrée (idée, brief, PRD, transcription, notes) en spec courte : ce qui doit être vrai à la fin, ce qui ne doit pas changer, ce qui est hors périmètre. Une spec qui tient en une session part directement chez bmad-build ; une spec de la taille d'un epic part chez bmad-ticket. Garde l'entrée concise : au-delà d'une quarantaine de pages, condense d'abord.",
+              "example": "/bmad-spec Transforme mes notes sur l'export CSV des commandes en spec : périmètre, invariants et hors périmètre."
+            },
+            {
+              "name": "bmad-ticket",
+              "title": "Découper le travail et piloter le board",
+              "description": "Découpe une initiative en epics et un epic en stories ordonnées dans tickets.toml. Il sait aussi rédiger ou affiner un ticket, et gérer le board : ce qui est prêt, statut, assignation, publication, annulation.",
+              "example": "/bmad-ticket Découpe la spec export-csv en stories dans l'ordre de build. Ensuite, dis-moi ce qui est prêt."
+            },
+            {
+              "name": "bmad-code-review",
+              "title": "Revue de code par plusieurs relecteurs en parallèle",
+              "description": "Lance plusieurs relecteurs indépendants sur un diff, une branche ou une PR, puis trie les constats : chaque remarque reçoit un verdict et une preuve, rien n'est ignoré silencieusement. Idéal avant d'ouvrir une PR ou pour relire le travail d'un collègue.",
+              "example": "/bmad-code-review Relis les changements de la branche feature/export-csv par rapport à main."
+            },
+            {
+              "name": "bmad-project-context",
+              "title": "Donner aux agents le contexte du dépôt",
+              "description": "Écrit, adopte, rafraîchit ou audite un petit bloc d'instructions vérifiées dans AGENTS.md : conventions, commandes de build et de test, règles de sécurité. Il note aussi les erreurs récurrentes des agents comme pièges à éviter. Un AGENTS.md écrit à la main est conservé, pas réécrit.",
+              "example": "/bmad-project-context Audite notre AGENTS.md et ajoute nos règles : tests xUnit obligatoires, aucune nouvelle dépendance NuGet sans validation."
+            },
+            {
+              "name": "bmad-brainstorming",
+              "title": "Générer des idées avec une session animée",
+              "description": "Anime une séance de brainstorming avec des techniques créatives variées, en visant une centaine d'idées avant de les organiser. Il change régulièrement d'angle pour éviter de tourner en rond. Produit un brainstorm.html et, si tu veux, un résumé markdown réutilisable par les autres skills.",
+              "example": "/bmad-brainstorming Aide-moi à trouver des idées pour réduire l'abandon dans notre tunnel de commande."
+            },
+            {
+              "name": "bmad-prd",
+              "title": "Créer, mettre à jour ou valider un PRD",
+              "description": "Accompagne la rédaction d'un Product Requirements Document au niveau de rigueur que tu demandes. Précise l'intention (créer, mettre à jour ou valider), sinon il te la demande. Un PRD est utile quand plusieurs personnes doivent s'accorder sur le produit ou que plusieurs epics ne doivent pas diverger ; sinon, passe directement par une spec.",
+              "example": "/bmad-prd Crée un PRD pour le module de facturation à partir du brief brief-facturation."
+            },
+            {
+              "name": "bmad-architecture",
+              "title": "Fixer les décisions techniques qui assurent la cohérence",
+              "description": "Produit un document d'architecture court, centré sur les décisions qui gardent cohérentes des parties construites séparément. Il part d'une spec, d'une idée ou du code existant, et peut aussi mettre à jour ou valider une architecture. Sur un projet existant, demande-lui explicitement de scanner le code pour éviter de réinventer un composant.",
+              "example": "/bmad-architecture Mets à jour l'architecture pour ajouter une file de messages entre l'API et le service d'envoi d'e-mails. Scanne d'abord le code existant."
+            },
+            {
+              "name": "bmad-party-mode",
+              "title": "Faire débattre plusieurs agents autour d'une table",
+              "description": "Orchestre une discussion entre les agents installés (ou des personas personnalisées) : ils se répondent, se contredisent et t'interpellent. Très efficace pour confronter les points de vue produit, architecture et développement avant une décision.",
+              "example": "/bmad-party-mode Winston, Amelia et Sally : SignalR ou Server-Sent Events pour nos notifications temps réel ?"
+            }
+          ],
+          "bonusTitle": "À connaître aussi",
+          "bonusItems": [
+            "bmad-forge-idea : éprouve une idée à moitié formée en la faisant attaquer par plusieurs personas, jusqu'à ce qu'elle tienne ou soit abandonnée en connaissance de cause",
+            "bmad-advanced-elicitation : force une deuxième passe sur la dernière production avec une méthode nommée (pre-mortem, premiers principes, red team…)",
+            "bmad-correct-course : évalue l'impact d'un changement important en cours de route sur le PRD, les epics, l'architecture et l'UX. Il nécessite un PRD : sans PRD, mets plutôt la spec à jour avec bmad-spec",
+            "bmad-retrospective : juge un epic terminé à partir des preuves laissées (tickets, plans, diffs, commits)",
+            "bmad-walkthrough : te guide dans la relecture humaine d'un commit, d'une PR ou d'un dossier",
+            "bmad-build-auto : une itération de build sans intervention humaine, à réserver aux stories dont les patterns sont stabilisés",
+            "bmad-deep-recon : recherche documentée (marché, technique, concurrence…) pour appuyer une décision"
+          ]
+        },
+        "comparison": {
+          "title": "Avantages et inconvénients face à GitHub Spec Kit",
+          "description": "Le concurrent le plus proche est GitHub Spec Kit, la boîte à outils de « spec-driven development » de GitHub : elle enchaîne, via des commandes slash, constitution, spécification, plan technique, liste de tâches, implémentation puis convergence, et propose aussi des extensions pour la correction de bugs et l'évaluation d'idées. Les deux partagent la même idée de départ, écrire l'intention avant le code, mais pas la même approche.",
+          "prosTitle": "Ce que BMAD apporte",
+          "prosItems": [
+            "Un processus qui s'adapte à la taille du changement, du correctif d'une ligne au projet multi-epics, au lieu d'un pipeline unique",
+            "Des agents spécialisés et le party mode pour confronter produit, architecture, UX et développement",
+            "Une revue de code multi-relecteurs avec triage intégrée au build, et une rétrospective d'epic fondée sur les preuves",
+            "Un contexte durable par initiative, avec PRD, architecture, specs et tickets reliés",
+            "Un écosystème de modules officiels : Test Architect, Builder, Creative Intelligence Suite, Game Dev Studio, Loop"
+          ],
+          "consTitle": "Ce qui incite à la prudence",
+          "consItems": [
+            "Une courbe d'apprentissage réelle : une trentaine de skills et un vocabulaire propre (initiative, epic, ticket, menu codes)",
+            "Un projet qui évolue très vite, avec des renommages et des migrations fréquents : les tutoriels de plus de quelques mois sont souvent obsolètes",
+            "Une consommation de tokens élevée sur les workflows longs (relecteurs parallèles, party mode, planification complète)",
+            "La revue fonctionne au mieux sur un outil capable de lancer des sous-agents",
+            "Des prérequis en plus (Node.js et uv) et des dossiers supplémentaires à gérer dans le dépôt",
+            "Spec Kit reste plus simple à adopter pour une équipe qui veut juste écrire une spec avant de coder"
+          ],
+          "verdict": "En pratique : commence par bmad-build seul sur de vrais changements pour apprivoiser la méthode, ajoute bmad-spec et bmad-ticket dès qu'un chantier dépasse une session, et ne sors PRD, architecture et party mode que lorsque plusieurs personnes ou plusieurs epics doivent rester alignés."
+        },
+        "devExamples": {
+          "title": "Exemples d'utilisation pour un développeur",
+          "description": "Quelques situations du quotidien et le prompt qui va avec. À chaque fois, ouvre un nouveau chat dans ton outil IA, à la racine du projet.",
+          "items": [
+            {
+              "title": "Corriger un bug à partir d'une issue",
+              "description": "bmad-build lit l'issue, enquête dans le code, propose un plan si le correctif n'est pas trivial, puis implémente, se relit et commite. Les problèmes sans rapport repérés en route sont notés dans deferred-work.md au lieu d'élargir le correctif.",
+              "prompt": "/bmad-build Corrige https://github.com/mon-org/mon-repo/issues/42"
+            },
+            {
+              "title": "Démarrer sur une base de code héritée",
+              "description": "Fais d'abord écrire un contexte vérifié pour les agents, puis demande au hub ce qu'il recommande pour ta première évolution.",
+              "prompt": "/bmad-project-context\n\n# puis, dans un nouveau chat\n/bmad Je viens de reprendre cette application Angular + .NET 8. Je dois ajouter une gestion des rôles. Quelle est la bonne démarche ?"
+            },
+            {
+              "title": "Relire la PR d'un collègue",
+              "description": "La revue multi-relecteurs donne une liste triée de constats, et le walkthrough t'accompagne pour la relecture humaine.",
+              "prompt": "/bmad-code-review Relis la PR #128 : concentre-toi sur la gestion des erreurs et la concurrence.\n\n# puis\n/bmad-walkthrough Guide-moi dans les changements de la PR #128."
+            },
+            {
+              "title": "Challenger un plan avant de coder",
+              "description": "Juste après qu'un skill t'a proposé un plan ou une spec, demande une seconde passe avec une méthode nommée. Le pre-mortem trouve souvent les trous qu'une relecture classique rate.",
+              "prompt": "/bmad-advanced-elicitation Fais un pre-mortem sur le plan que tu viens de proposer."
+            },
+            {
+              "title": "Ajouter des tests automatisés sur une fonctionnalité livrée",
+              "description": "Génère des tests API et end-to-end pour du code déjà implémenté, en suivant le framework de test du projet.",
+              "prompt": "/bmad-qa-generate-e2e-tests Crée des tests automatisés API et E2E pour l'export CSV des commandes."
+            },
+            {
+              "title": "Vider le backlog des points différés",
+              "description": "Chaque build reste centré sur un seul objectif et note le reste dans deferred-work.md. Reprends ces éléments un par un.",
+              "prompt": "/bmad-build Traite le premier élément de deferred-work.md."
+            }
+          ]
+        },
+        "workflow": {
+          "title": "Exemple concret : un workflow de réflexion pour faire évoluer un projet",
+          "description": "Contexte : tu maintiens une application de prise de rendez-vous en production (API ASP.NET Core et front React). Les clients réclament des rappels automatiques avant leurs rendez-vous. L'idée reste floue : e-mail ou SMS ? Combien de temps avant ? Que faire des rendez-vous annulés ? Voici comment BMAD t'aide à réfléchir avant de coder, puis à livrer sans perdre le fil. Ouvre un nouveau chat à chaque étape.",
+          "steps": [
+            {
+              "title": "Demander la route au hub",
+              "description": "bmad inspecte le projet et te propose le chemin adapté. Pour une idée encore floue, il recommande de la clarifier avant toute spec.",
+              "prompt": "/bmad Notre app de rendez-vous (ASP.NET Core + React) doit envoyer des rappels avant chaque rendez-vous. Je ne sais pas encore quel canal ni quel délai. Par où je commence ?"
+            },
+            {
+              "title": "Créer une initiative",
+              "description": "Tous les documents du chantier atterriront dans le même dossier, ce qui permet aux skills suivants de les retrouver sans que tu les cites.",
+              "prompt": "/bmad Crée une initiative appointment-reminders et active-la."
+            },
+            {
+              "title": "Éprouver l'idée",
+              "description": "Plusieurs personas attaquent les points faibles : coût des SMS, consentement RGPD, fuseaux horaires, annulations de dernière minute. Si l'idée tient, un court document forge est écrit pour la suite.",
+              "prompt": "/bmad-forge-idea Rappels automatiques avant rendez-vous, par e-mail et éventuellement SMS, avec un délai configurable par le praticien. Challenge-moi sur les coûts, le RGPD et les rendez-vous annulés."
+            },
+            {
+              "title": "Faire débattre les choix techniques",
+              "description": "Le party mode confronte les points de vue de l'architecte, de la développeuse et du PM sur la planification des envois, en tenant compte de ton hébergement.",
+              "prompt": "/bmad-party-mode Winston, Amelia et John : Hangfire, Quartz.NET ou Azure Functions pour déclencher les rappels ? Nous sommes hébergés sur Azure App Service."
+            },
+            {
+              "title": "Fixer les décisions d'architecture",
+              "description": "Les décisions retenues sont écrites dans un document court, en partant du code existant pour ne rien réinventer.",
+              "prompt": "/bmad-architecture À partir du forge report et du code existant, enregistre les décisions pour les rappels : planification, envoi, idempotence, journalisation et désinscription."
+            },
+            {
+              "title": "Écrire la spec et la mettre à l'épreuve",
+              "description": "La spec devient le contrat de référence. Un pre-mortem juste après permet de repérer ce qui manque avant le découpage.",
+              "prompt": "/bmad-spec Condense le forge report et l'architecture en spec : ce qui doit être vrai à la fin, ce qui ne doit pas changer, hors périmètre.\n\n# puis, dans le même chat\n/bmad-advanced-elicitation Pre-mortem : dans six mois, les rappels sont un échec. Pourquoi ?"
+            },
+            {
+              "title": "Découper en stories",
+              "description": "bmad-ticket propose un ordre de build. Relis-le et repère les stories fondatrices qui méritent un point de contrôle humain.",
+              "prompt": "/bmad-ticket Découpe la spec appointment-reminders en stories dans l'ordre de build et signale celles qui méritent un point de contrôle."
+            },
+            {
+              "title": "Construire story par story",
+              "description": "Une story par session, dans un nouveau chat à chaque fois. bmad-build laisse la story au statut built : c'est toi qui la marques terminée avec bmad-ticket après vérification. Les premières stories posent les patterns : garde-les en mode attentif avant d'envisager bmad-build-auto pour les suivantes.",
+              "prompt": "/bmad-build 1.1\n\n# après vérification\n/bmad-ticket Marque la story 1.1 comme terminée.\n\n# nouveau chat\n/bmad-build 1.2"
+            },
+            {
+              "title": "Relire avant la PR",
+              "description": "Une revue indépendante de l'ensemble de la branche, en plus des revues faites pendant chaque build.",
+              "prompt": "/bmad-code-review Relis les changements de la branche feature/appointment-reminders par rapport à main."
+            },
+            {
+              "title": "Ajuster le cap si le besoin change",
+              "description": "En cours de route, le client veut aussi des notifications push. Plutôt que de bricoler, mets à jour la spec, puis fais revoir le découpage des stories restantes. Sur un chantier piloté par un PRD, bmad-correct-course ferait cette analyse d'impact sur le PRD, l'architecture et les epics.",
+              "prompt": "/bmad-spec Mets à jour la spec appointment-reminders : le client veut aussi des notifications push sur l'app mobile.\n\n# puis\n/bmad-ticket Revois les stories restantes de l'epic à partir de la spec mise à jour."
+            },
+            {
+              "title": "Clôturer l'epic",
+              "description": "La rétrospective compare le résultat aux exigences de l'epic à partir des preuves : tickets, plans, diffs et commits. Elle écrit son document dans le dossier de l'epic, avec des actions et un verdict d'acceptation. La clôture de l'epic se fait ensuite avec bmad-ticket.",
+              "prompt": "/bmad-retrospective Fais la rétrospective de l'epic des rappels de rendez-vous."
+            }
+          ],
+          "resultTitle": "Ce que tu obtiens",
+          "result": "À la fin, chaque décision est tracée dans l'initiative : pourquoi l'idée a été retenue, quels choix techniques ont été faits, ce que la spec garantit, et comment chaque story a été construite. Un développeur qui reprend le sujet dans six mois, humain ou agent, retrouve tout le raisonnement. L'arborescence ci-dessous est indicative : les noms exacts dépendent de ta version de BMAD.",
+          "tipsTitle": "Les bons réflexes",
+          "tips": [
+            "Un nouveau chat par workflow : mélanger les contextes dégrade les résultats",
+            "Lis les plans avant de les approuver : corriger un plan coûte bien moins cher que corriger du code",
+            "Ne donne pas une pile de documents bruts à bmad-spec : condense d'abord",
+            "Si tu veux casser une convention existante, dis-le explicitement et écris pourquoi dans la spec, sinon le build suivra le code en place",
+            "En cas de doute sur la marche à suivre, demande à bmad plutôt que de deviner"
+          ]
+        }
+      },
+      "footer": {
+        "sourceLabel": "Dépôt GitHub — BMAD-METHOD",
+        "docsLabel": "Documentation officielle",
+        "writtenOn": "Écrit le {{date}}"
+      }
+    }
+  }
+}

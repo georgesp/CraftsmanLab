@@ -10,6 +10,7 @@ import type { PromptMeta } from './prompts/prompt-types';
 // ----- Tips: metas (named imports) -----
 import { meta as automapperMeta } from './tips/automapper/meta';
 import { meta as avaloniaMeta } from './tips/avalonia/meta';
+import { meta as bmadMethodMeta } from './tips/bmad-method/meta';
 import { meta as closedxmlMeta } from './tips/closedxml/meta';
 import { meta as collectionMeta } from './tips/collection/meta';
 import { meta as cpmMeta } from './tips/cpm/meta';
@@ -46,6 +47,7 @@ export type TipEntry = TipMeta & { load: () => Promise<any> };
 export const tipsEntries: TipEntry[] = [
   { ...automapperMeta, load: () => import('./tips/automapper/automapper') },
   { ...avaloniaMeta, load: () => import('./tips/avalonia/avalonia') },
+  { ...bmadMethodMeta, load: () => import('./tips/bmad-method/bmad-method') },
   { ...closedxmlMeta, load: () => import('./tips/closedxml/closedxml') },
   { ...collectionMeta, load: () => import('./tips/collection/collection') },
   { ...cpmMeta, load: () => import('./tips/cpm/central-package-management') },
@@ -136,6 +138,8 @@ import automapperFr from './tips/automapper/fr.json';
 import automapperEn from './tips/automapper/en.json';
 import avaloniaFr from './tips/avalonia/fr.json';
 import avaloniaEn from './tips/avalonia/en.json';
+import bmadMethodFr from './tips/bmad-method/fr.json';
+import bmadMethodEn from './tips/bmad-method/en.json';
 import closedxmlFr from './tips/closedxml/fr.json';
 import closedxmlEn from './tips/closedxml/en.json';
 import collectionFr from './tips/collection/fr.json';
@@ -200,6 +204,7 @@ import xunitEn from './tips/xunit/en.json';
 export const tipsTranslationsFr = {
   ...automapperFr,
   ...avaloniaFr,
+  ...bmadMethodFr,
   ...closedxmlFr,
   ...collectionFr,
   ...cpmFr,
@@ -235,6 +240,7 @@ export const tipsTranslationsFr = {
 export const tipsTranslationsEn = {
   ...automapperEn,
   ...avaloniaEn,
+  ...bmadMethodEn,
   ...closedxmlEn,
   ...collectionEn,
   ...cpmEn,
