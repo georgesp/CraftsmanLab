@@ -35,6 +35,7 @@ import { meta as microsoftExtensionsResilienceMeta } from './tips/microsoft-exte
 import { meta as nsubstituteMeta } from './tips/nsubstitute/meta';
 import { meta as pollyMeta } from './tips/polly/meta';
 import { meta as queueStackMeta } from './tips/queue-stack/meta';
+import { meta as specKitMeta } from './tips/spec-kit/meta';
 import { meta as ticMeta } from './tips/tic/meta';
 import { meta as tickerqMeta } from './tips/tickerq/meta';
 import { meta as tsqlApplyMeta } from './tips/tsql-apply/meta';
@@ -96,6 +97,7 @@ export const tipsEntries: TipEntry[] = [
   { ...nsubstituteMeta, load: () => import('./tips/nsubstitute/nsubstitute') },
   { ...pollyMeta, load: () => import('./tips/polly/polly') },
   { ...queueStackMeta, load: () => import('./tips/queue-stack/queue-stack') },
+  { ...specKitMeta, load: () => import('./tips/spec-kit/spec-kit') },
   { ...ticMeta, load: () => import('./tips/tic/switch-tuple') },
   { ...tickerqMeta, load: () => import('./tips/tickerq/tickerq') },
   { ...tsqlApplyMeta, load: () => import('./tips/tsql-apply/tsql-apply') },
@@ -188,6 +190,8 @@ import pollyFr from './tips/polly/fr.json';
 import pollyEn from './tips/polly/en.json';
 import queueStackFr from './tips/queue-stack/fr.json';
 import queueStackEn from './tips/queue-stack/en.json';
+import specKitFr from './tips/spec-kit/fr.json';
+import specKitEn from './tips/spec-kit/en.json';
 import ticFr from './tips/tic/fr.json';
 import ticEn from './tips/tic/en.json';
 import tickerqFr from './tips/tickerq/fr.json';
@@ -229,6 +233,7 @@ export const tipsTranslationsFr = {
   ...nsubstituteFr,
   ...pollyFr,
   ...queueStackFr,
+  ...specKitFr,
   ...ticFr,
   ...tickerqFr,
   ...tsqlApplyFr,
@@ -265,6 +270,7 @@ export const tipsTranslationsEn = {
   ...nsubstituteEn,
   ...pollyEn,
   ...queueStackEn,
+  ...specKitEn,
   ...ticEn,
   ...tickerqEn,
   ...tsqlApplyEn,

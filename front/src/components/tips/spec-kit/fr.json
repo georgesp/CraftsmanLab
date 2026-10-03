@@ -1,0 +1,278 @@
+{
+  "spec-kit": {
+    "title": "GitHub Spec Kit : le développement piloté par les spécifications",
+    "shortDescription": "Installer Spec Kit sur macOS ou Windows, comprendre ses 10 commandes clés et faire évoluer un projet en partant d'une spec plutôt que d'un prompt.",
+    "content": {
+      "mainTitle": "GitHub Spec Kit : écrire le quoi et le pourquoi avant de laisser l'IA coder le comment",
+      "intro": "Le « vibe coding » marche très bien pour un prototype, beaucoup moins pour une fonctionnalité qui doit vivre en production. Spec Kit, la boîte à outils open source de GitHub, propose l'inverse : décrire d'abord le besoin dans une spécification, en tirer un plan technique puis une liste de tâches, et seulement ensuite faire implémenter l'agent, avec un contrôle final de convergence. Il fonctionne avec GitHub Copilot, Claude Code, Codex, Cursor, Gemini CLI et une trentaine d'autres agents. Ce tip couvre la version 1.1 (état du dépôt au 3 octobre 2026).",
+      "summary": "GitHub Spec Kit structure le développement assisté par IA autour d'une spec, d'un plan et de tâches : installation macOS/Windows, 10 commandes clés et un workflow complet pour faire évoluer un projet.",
+      "tocTitle": "Sommaire",
+      "tocItems": [
+        "Qu'est-ce que Spec Kit ?",
+        "Les concepts à connaître",
+        "Installation sur macOS et Windows",
+        "Les 10 commandes principales",
+        "Avantages et inconvénients face à BMAD Method",
+        "Exemples d'utilisation pour un développeur",
+        "Exemple concret : un workflow de réflexion pour faire évoluer un projet"
+      ],
+      "sections": {
+        "whatIs": {
+          "title": "Qu'est-ce que Spec Kit ?",
+          "description": "Spec Kit outille le Spec-Driven Development (SDD) : la spécification devient l'artefact central, et le code en découle. Concrètement, c'est une CLI Python (specify) qui installe dans ton projet des templates, des scripts et des skills pour ton agent IA. Tu enchaînes ensuite les skills dans le chat de l'agent : constitution, spécification, plan, tâches, implémentation, convergence. Deux autres processus sont livrés en extensions optionnelles : la correction de bugs et l'évaluation d'idées.",
+          "pointsTitle": "Ce qui le distingue",
+          "points": [
+            "Une séparation nette entre le quoi et le pourquoi (la spec) et le comment (le plan technique)",
+            "Des points de contrôle qualité optionnels : clarification, checklists et analyse de cohérence avant d'écrire une ligne de code",
+            "Une convergence finale qui compare le code à la spec et ajoute les tâches manquantes au lieu de déclarer victoire trop tôt",
+            "Une compatibilité très large : plus de trente agents, de GitHub Copilot à Claude Code en passant par Codex et Cursor",
+            "Projet officiel GitHub, open source (licence MIT), extensible par extensions, presets, workflows et bundles"
+          ]
+        },
+        "concepts": {
+          "title": "Les concepts à connaître",
+          "description": "Cinq notions suffisent pour suivre la méthode sans se perdre.",
+          "items": [
+            "Constitution : les principes du projet (qualité, tests, compatibilité, sécurité). Écrite une fois, elle sert de référence à toutes les étapes suivantes",
+            "Spec, plan et tâches : spec.md décrit le besoin côté utilisateur, plan.md le choix technique, tasks.md la liste ordonnée des tâches avec les possibilités de parallélisation",
+            "Dossier de feature : chaque fonctionnalité a son répertoire sous specs/. La feature active est celle indiquée dans .specify/feature.json, pas la branche Git courante",
+            "Quality gates : clarify, checklist et analyze sont facultatifs mais recommandés dès qu'une fonctionnalité comporte de l'ambiguïté",
+            "Extensions, presets, workflows et bundles : ajoutent des processus (bug, assess, git, github), adaptent les templates, automatisent des étapes ou packagent une configuration par rôle"
+          ],
+          "treeTitle": "Ce que Spec Kit ajoute à ton dépôt",
+          "treeDescription": "Le dossier .specify/ contient la constitution, les scripts et les templates. Les skills vont dans le dossier propre à ton agent, et chaque fonctionnalité produit son propre dossier sous specs/."
+        },
+        "install": {
+          "title": "Installation sur macOS et Windows",
+          "description": "L'installation tient en deux temps : installer la CLI specify une fois sur la machine, puis initialiser chaque projet avec specify init. Windows est pris en charge nativement, sans WSL, grâce aux scripts PowerShell.",
+          "prereqTitle": "Prérequis",
+          "prereqItems": [
+            "Un agent IA pris en charge : GitHub Copilot, Claude Code, Codex, Cursor, Gemini CLI, Junie, opencode…",
+            "uv, le gestionnaire Python d'Astral (pipx fonctionne aussi)",
+            "Python 3.11 ou plus récent : uv peut le télécharger automatiquement s'il manque",
+            "Git, facultatif : nécessaire seulement pour l'extension git (branches numérotées par feature)"
+          ],
+          "macTitle": "Sur macOS",
+          "macDescription": "Avec Homebrew, installe uv, puis la CLI specify en tant qu'outil uv. specify version confirme que la commande est disponible.",
+          "windowsTitle": "Sur Windows",
+          "windowsDescription": "Dans PowerShell, winget installe uv. Ouvre un nouveau terminal après l'installation pour que uv soit dans le PATH, puis installe la CLI. Si tu préfères, l'installeur officiel de uv fonctionne aussi depuis PowerShell.",
+          "initTitle": "Initialiser un projet",
+          "initNewDescription": "Pour un nouveau projet, specify init te propose de choisir ton agent. Tu peux aussi le préciser avec --integration : la clé dépend de l'agent (copilot, claude, codex, cursor-agent, gemini…).",
+          "initExistingDescription": "Sur un dépôt existant, commence par committer ou mettre de côté ton travail et crée une branche dédiée. --here cible le dossier courant et --force autorise un dossier non vide : l'initialisation ajoute .specify/ et les skills de l'agent sans réécrire ton application, mais elle peut remplacer des fichiers situés aux emplacements qu'elle gère (par exemple un .vscode/settings.json ou des fichiers sous .github/ selon l'agent). Relis le diff avant de continuer. L'initialisation ne déduit pas non plus de spec pour l'existant : seule la prochaine évolution sera spécifiée.",
+          "maintenanceTitle": "Vérifier et mettre à jour",
+          "maintenanceDescription": "La CLI sait vérifier si une nouvelle version existe, se mettre à jour, puis rafraîchir les fichiers du projet.",
+          "legacyNote": "Attention aux anciens tutoriels : ils installent souvent la CLI avec uvx --from git+https://github.com/github/spec-kit.git et utilisent les commandes à point (/speckit.specify). Ces commandes existent toujours en mode « commands », mais Copilot et Claude Code utilisent désormais par défaut le mode skills, avec un tiret : /speckit-specify."
+        },
+        "commands": {
+          "title": "Les 10 commandes principales",
+          "description": "Ce sont des skills à invoquer dans le chat de ton agent, une par une, en relisant le résultat avant de passer à la suivante. Ce ne sont pas des commandes de terminal : seules l'installation et l'initialisation se font dans le terminal.",
+          "invokeNote": "La syntaxe dépend de l'agent : /speckit-specify pour Copilot et Claude Code en mode skills, $speckit-specify pour Codex, /speckit.specify en mode commands et dans la documentation de référence. Les exemples ci-dessous utilisent /speckit-*.",
+          "items": [
+            {
+              "name": "/speckit-constitution",
+              "title": "Poser les principes du projet",
+              "description": "Crée ou met à jour la constitution, contre laquelle toutes les étapes suivantes sont évaluées. À lancer une fois par projet, puis à mettre à jour quand tes principes changent. Sur un projet existant, n'y mets que des règles déjà vraies ou explicitement adoptées par l'équipe.",
+              "example": "/speckit-constitution Préserver la compatibilité de l'API publique. Respecter les frontières des services existants. Toute migration de base de données inclut un plan de retour arrière. Tests xUnit obligatoires."
+            },
+            {
+              "name": "/speckit-specify",
+              "title": "Décrire ce qu'il faut construire",
+              "description": "Crée la spécification de la fonctionnalité à partir d'une description en langage naturel. Concentre-toi sur le quoi et le pourquoi, le comportement côté utilisateur et les limites à ne pas franchir. La stack technique viendra au moment du plan.",
+              "example": "/speckit-specify Ajouter un export CSV sur la page des commandes. Conserver les filtres et les règles d'autorisation actuels. N'exporter que les lignes visibles par l'utilisateur connecté, sans modifier la réponse JSON de l'API existante."
+            },
+            {
+              "name": "/speckit-clarify",
+              "title": "Lever les ambiguïtés avant de planifier",
+              "description": "Pose jusqu'à cinq questions ciblées sur les zones floues de la spec et réintègre tes réponses dans spec.md. Tu peux le relancer plusieurs fois, en ciblant un sujet différent à chaque passe.",
+              "example": "/speckit-clarify Concentre-toi sur les volumes : nombre maximal de lignes, encodage du fichier et comportement si l'export dépasse le délai de la requête."
+            },
+            {
+              "name": "/speckit-plan",
+              "title": "Choisir la stack et l'architecture",
+              "description": "Génère le plan technique et les artefacts de conception : research.md, data-model.md, contrats d'interface et quickstart.md. C'est ici que tu donnes la stack, les contraintes techniques et les conventions à réutiliser.",
+              "example": "/speckit-plan Backend ASP.NET Core 10 avec EF Core existant, génération CSV en streaming avec CsvHelper. Front React : un bouton dans la barre d'outils de la grille existante. Réutiliser le service d'autorisation actuel."
+            },
+            {
+              "name": "/speckit-checklist",
+              "title": "Tester la qualité des exigences",
+              "description": "Génère une checklist qui vérifie que la spec est complète, claire et cohérente : des « tests unitaires pour tes exigences ». C'est au relecteur, pas à l'agent, de cocher chaque point une fois le critère satisfait.",
+              "example": "/speckit-checklist Concentre-toi sur la sécurité et les cas limites de l'export."
+            },
+            {
+              "name": "/speckit-tasks",
+              "title": "Découper le travail en tâches ordonnées",
+              "description": "Produit un tasks.md ordonné par dépendances : phase Setup, phase Foundational, puis une phase par user story par ordre de priorité, et enfin une phase Polish. Les tâches parallélisables sont marquées.",
+              "example": "/speckit-tasks"
+            },
+            {
+              "name": "/speckit-analyze",
+              "title": "Vérifier la cohérence avant d'implémenter",
+              "description": "Analyse en lecture seule spec.md, plan.md et tasks.md : une tâche sans exigence, un choix du plan qui contredit la spec, un trou dans la couverture. S'il signale un problème, corrige-le à la source (spec, plan ou tâches) puis relance-le jusqu'à obtenir un rapport propre.",
+              "example": "/speckit-analyze"
+            },
+            {
+              "name": "/speckit-implement",
+              "title": "Exécuter les tâches",
+              "description": "Réalise les tâches de tasks.md dans l'ordre des dépendances. Il vérifie d'abord l'état des checklists et te demande confirmation s'il reste des points non cochés. Sur une grosse fonctionnalité, procède par étapes pour ne pas saturer le contexte de l'agent.",
+              "example": "/speckit-implement Implémente uniquement les phases Setup et Foundational. Arrête-toi avant les user stories."
+            },
+            {
+              "name": "/speckit-converge",
+              "title": "Comparer le code à la spec",
+              "description": "Évalue le code par rapport à la spec, au plan et aux tâches. Il ne touche jamais au code : soit il conclut « Converged », soit il ajoute les tâches manquantes dans tasks.md. Enchaîne implement et converge jusqu'à obtenir « Converged ».",
+              "example": "/speckit-converge"
+            },
+            {
+              "name": "/speckit-taskstoissues",
+              "title": "Transformer les tâches en issues GitHub",
+              "description": "Facultatif : convertit tasks.md en issues dans le dépôt du remote origin, sans créer de doublons. Il a besoin des outils MCP GitHub. Cette commande migre vers l'extension github, installable avec specify extension add github.",
+              "example": "/speckit-taskstoissues"
+            }
+          ],
+          "bonusTitle": "À connaître aussi",
+          "bonusItems": [
+            "Extension bug (specify extension add bug) : /speckit-bug-assess, /speckit-bug-fix et /speckit-bug-test séparent diagnostic, correction et vérification",
+            "Extension assess (specify extension add assess) : intake, research, define, shape puis decide, pour évaluer une idée jusqu'à une décision go, needs-clarification ou kill",
+            "Extension git : branches numérotées par feature (001-nom-de-la-feature)",
+            "specify extension search et specify preset : catalogues d'extensions et de presets de la communauté",
+            "specify artifact list --json : liste toutes les commandes, templates et scripts actifs et indique quelle couche l'emporte"
+          ]
+        },
+        "comparison": {
+          "title": "Avantages et inconvénients face à BMAD Method",
+          "description": "BMAD Method, que nous avons présenté dans un autre tip, poursuit le même objectif : rendre les intentions explicites avant le code. BMAD mise sur des agents spécialisés et un processus qui s'adapte à la taille du changement ; Spec Kit sur un pipeline linéaire et des artefacts standardisés.",
+          "prosTitle": "Ce que Spec Kit apporte",
+          "prosItems": [
+            "Une prise en main rapide : un pipeline lisible et une dizaine de commandes au cœur",
+            "Une séparation stricte entre spec et plan, qui évite de figer la technique trop tôt",
+            "Des quality gates explicites (clarify, checklist, analyze) et une convergence qui détecte les oublis",
+            "Une compatibilité très large (plus de trente agents), avec un excellent support de GitHub Copilot",
+            "Un projet porté par GitHub, au rythme de publication soutenu et à l'écosystème d'extensions très actif",
+            "Windows natif grâce aux scripts PowerShell"
+          ],
+          "consTitle": "Ce qui incite à la prudence",
+          "consItems": [
+            "Un processus assez cérémonieux pour un petit changement : pour une correction d'une ligne, mieux vaut demander directement à l'agent",
+            "Pas d'agents spécialisés ni de débat entre agents dans le cœur du produit, comme le party mode de BMAD (les bundles permettent seulement de packager une configuration par rôle)",
+            "La maintenance des specs dans la durée est à décider en équipe : historique figé, spec vivante ou réconciliation",
+            "Beaucoup de documents générés à relire, ce qui demande de la discipline pour ne pas valider sans lire",
+            "Des renommages fréquents (commandes à point puis à tiret, taskstoissues qui migre en extension) qui rendent obsolètes une partie des tutoriels"
+          ],
+          "verdict": "En pratique : Spec Kit est idéal pour une équipe qui veut un cadre simple et partagé, surtout avec Copilot, sur des fonctionnalités de taille moyenne. BMAD prend l'avantage sur les projets multi-epics ou quand tu veux confronter plusieurs points de vue avant de décider. Les deux se combinent : la communauté propose même des extensions qui font le pont avec d'autres méthodes."
+        },
+        "devExamples": {
+          "title": "Exemples d'utilisation pour un développeur",
+          "description": "Quelques situations du quotidien et les commandes qui vont avec. Lance chaque skill dans le chat de ton agent, à la racine du projet.",
+          "items": [
+            {
+              "title": "Corriger un bug proprement",
+              "description": "L'extension bug sépare le diagnostic, la correction et la vérification. Les rapports sont rangés dans .specify/bugs/. Une correction sans vérification n'est pas considérée comme réussie.",
+              "prompt": "specify extension add bug\n\n# puis dans le chat de l'agent\n/speckit-bug-assess \"La soumission d'un mot de passe vide fait planter le formulaire de connexion.\" slug=login-crash\n/speckit-bug-fix slug=login-crash\n/speckit-bug-test slug=login-crash"
+            },
+            {
+              "title": "Évaluer une idée avant de s'engager",
+              "description": "L'extension assess rassemble des éléments de preuve et se termine par une décision argumentée. Elle fonctionne même dans un dossier sans code.",
+              "prompt": "specify extension add assess\n\n# puis, une étape à la fois\n/speckit-assess-intake \"Permettre de travailler hors ligne et de synchroniser au retour du réseau.\" slug=offline-mode\n/speckit-assess-research slug=offline-mode\n/speckit-assess-define slug=offline-mode\n/speckit-assess-shape slug=offline-mode\n/speckit-assess-decide slug=offline-mode"
+            },
+            {
+              "title": "Adopter Spec Kit sur un projet existant",
+              "description": "Initialise sur une branche dédiée, puis écris une constitution fondée sur ce qui est déjà vrai : README, décisions d'architecture, CI.",
+              "prompt": "git switch -c chore/adopt-spec-kit\nspecify init --here --force --integration copilot\n\n# puis\n/speckit-constitution Déduis nos principes du README, du dossier docs/adr et de la CI. N'invente aucune règle."
+            },
+            {
+              "title": "Implémenter une grosse fonctionnalité par étapes",
+              "description": "Découpe les appels à implement pour garder un contexte maîtrisé et valider chaque étape avant la suivante.",
+              "prompt": "/speckit-implement Implémente uniquement la user story 1 : l'export des commandes filtrées.\n\n# après validation\n/speckit-implement Passe à la user story 2 : l'export planifié par e-mail."
+            },
+            {
+              "title": "Revérifier après une revue de code",
+              "description": "Après des modifications manuelles ou une revue, relance l'analyse et la convergence pour t'assurer que spec, plan et code restent alignés.",
+              "prompt": "/speckit-analyze\n/speckit-converge"
+            },
+            {
+              "title": "Suivre le travail dans GitHub",
+              "description": "Transforme les tâches en issues pour les répartir dans l'équipe ou les suivre dans un projet GitHub.",
+              "prompt": "specify extension add github\n\n# puis\n/speckit-github-taskstoissues"
+            }
+          ]
+        },
+        "workflow": {
+          "title": "Exemple concret : un workflow de réflexion pour faire évoluer un projet",
+          "description": "Contexte : tu maintiens une application de gestion de commandes en production (API ASP.NET Core et front React). La direction commerciale veut un tableau de bord des ventes. Le besoin est encore vague : quels indicateurs ? Quelle fraîcheur des données ? Qui y a accès ? Voici comment Spec Kit t'aide à réfléchir avant de coder, puis à livrer en vérifiant que rien n'a été oublié.",
+          "steps": [
+            {
+              "title": "Partir d'une base relisible",
+              "description": "Une branche dédiée et un dépôt propre permettent de relire chaque fichier ajouté par Spec Kit comme une revue de code normale.",
+              "prompt": "git switch -c feature/sales-dashboard\nspecify init --here --force --integration copilot"
+            },
+            {
+              "title": "Poser la constitution à partir de l'existant",
+              "description": "Les principes doivent refléter la réalité du dépôt. Des règles inventées créent du bruit au lieu de contraintes utiles.",
+              "prompt": "/speckit-constitution Principes déjà en vigueur : API REST versionnée, pas de rupture de compatibilité, tests xUnit et Vitest obligatoires, accessibilité WCAG AA côté front, aucune donnée personnelle dans les logs."
+            },
+            {
+              "title": "Éprouver l'idée (facultatif)",
+              "description": "Si tu doutes encore de la valeur du tableau de bord, l'extension assess t'aide à décider avec des éléments concrets avant d'écrire la moindre spec.",
+              "prompt": "specify extension add assess\n/speckit-assess-intake \"Tableau de bord des ventes pour la direction commerciale.\" slug=sales-dashboard\n/speckit-assess-define slug=sales-dashboard\n/speckit-assess-shape slug=sales-dashboard\n/speckit-assess-decide slug=sales-dashboard"
+            },
+            {
+              "title": "Écrire la spec : le quoi et le pourquoi",
+              "description": "Décris les utilisateurs, les indicateurs attendus et les limites, sans parler de technique.",
+              "prompt": "/speckit-specify Tableau de bord des ventes pour les responsables commerciaux : chiffre d'affaires par période, top 10 des produits, comparaison avec l'année précédente, filtres par région. Accès réservé au rôle Sales. Ne pas modifier les écrans de commande existants."
+            },
+            {
+              "title": "Clarifier les zones floues",
+              "description": "Les questions ciblées font ressortir ce que tu n'avais pas tranché : fraîcheur des données, fuseaux horaires, devises.",
+              "prompt": "/speckit-clarify Concentre-toi sur la fraîcheur des données, les fuseaux horaires et les commandes annulées ou remboursées."
+            },
+            {
+              "title": "Planifier la technique",
+              "description": "Le plan arrive seulement maintenant, avec ta stack et les composants à réutiliser.",
+              "prompt": "/speckit-plan Agrégats calculés par un job Hangfire nocturne dans une table dédiée via EF Core. Endpoint REST en lecture seule. Front React avec la librairie de graphiques déjà utilisée dans le projet. Réutiliser la politique d'autorisation par rôle existante."
+            },
+            {
+              "title": "Tester la qualité des exigences",
+              "description": "Relis la checklist générée et coche toi-même les points satisfaits. S'il reste des trous, reviens à clarify ou specify.",
+              "prompt": "/speckit-checklist Concentre-toi sur les règles de calcul des indicateurs et les permissions."
+            },
+            {
+              "title": "Découper et vérifier la cohérence",
+              "description": "Génère les tâches, puis fais analyser l'ensemble avant d'écrire du code, tant que les corrections coûtent encore peu.",
+              "prompt": "/speckit-tasks\n/speckit-analyze"
+            },
+            {
+              "title": "Implémenter par étapes",
+              "description": "Commence par les fondations, valide, puis enchaîne les user stories une par une.",
+              "prompt": "/speckit-implement Implémente uniquement les phases Setup et Foundational : table d'agrégats, job nocturne et endpoint.\n\n# après validation\n/speckit-implement Implémente la user story 1 : chiffre d'affaires par période."
+            },
+            {
+              "title": "Converger jusqu'au bout",
+              "description": "Converge compare le résultat à la spec et ajoute les tâches manquantes. Boucle implement puis converge jusqu'à « Converged », puis ouvre ta PR.",
+              "prompt": "/speckit-converge\n\n# si des tâches ont été ajoutées\n/speckit-implement\n/speckit-converge"
+            },
+            {
+              "title": "Faire évoluer la fonctionnalité",
+              "description": "Trois mois plus tard, on te demande un export PDF du tableau de bord. Deux options : créer une nouvelle feature qui laisse l'ancienne intacte comme historique, ou mettre à jour la spec existante et régénérer plan et tâches. Choisis une règle en équipe et tiens-la.",
+              "prompt": "# Nouvelle feature, l'ancienne reste un historique\n/speckit-specify Export PDF mensuel du tableau de bord des ventes, envoyé par e-mail aux responsables régionaux. S'appuie sur la feature sales-dashboard existante."
+            }
+          ],
+          "resultTitle": "Ce que tu obtiens",
+          "result": "À la fin, le dossier specs/ de la fonctionnalité contient la spec clarifiée, le plan, le modèle de données, les contrats et la liste des tâches réalisées. Une personne qui reprend le sujet, humaine ou agent, comprend ce qui a été demandé, pourquoi, et comment cela a été construit.",
+          "tipsTitle": "Les bons réflexes",
+          "tips": [
+            "Une commande à la fois : relis chaque résultat avant de passer à la suivante",
+            "Garde la technique hors de la spec : elle appartient au plan",
+            "Corrige les problèmes à la source signalée par analyze plutôt que de rapiécer tasks.md",
+            "Ne coche pas une checklist sans l'avoir relue : c'est ton rôle, pas celui de l'agent",
+            "Pour une correction triviale, inutile de sortir tout le processus : demande directement à l'agent"
+          ]
+        }
+      },
+      "footer": {
+        "sourceLabel": "Dépôt GitHub — spec-kit",
+        "docsLabel": "Documentation officielle",
+        "writtenOn": "Écrit le {{date}}"
+      }
+    }
+  }
+}
